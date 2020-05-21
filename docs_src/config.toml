@@ -20,6 +20,12 @@ home = [ "HTML", "RSS", "JSON"]
 keepWhitespace=true
 
 [[menu.shortcuts]]
+name = "<i class='fab fa-slideshare'></i>&nbsp;Presentation"
+identifier = "prez"
+url = "/prez"
+weight = 5
+
+[[menu.shortcuts]]
 name = "<i class='fab fa-github'></i>&nbsp;Github repo"
 identifier = "ds"
 url = "https://github.com/maxatome/go-testdeep"

@@ -1,0 +1,179 @@
+// cmp-funcs-begin OMIT
+Cmp(t TestingT, got, expected interface{}, args ...interface{}) bool
+CmpError(t TestingT, got error, args ...interface{}) bool
+CmpFalse(t TestingT, got interface{}, args ...interface{}) bool
+CmpLax(t TestingT, got interface{}, expected interface{}, args ...interface{}) bool
+CmpNoError(t TestingT, got error, args ...interface{}) bool
+CmpNot(t TestingT, got interface{}, notExpected interface{}, args ...interface{}) bool
+CmpNotPanic(t TestingT, fn func(), args ...interface{}) bool
+CmpPanic(t TestingT, fn func(), expectedPanic interface{}, args ...interface{}) bool
+CmpTrue(t TestingT, got interface{}, args ...interface{}) bool
+// cmp-funcs-end OMIT
+
+
+// test-names-example-begin OMIT
+td.Cmp(t, got, "Bob", `Hey! got has to be "Bob" here!`)
+// test-names-example-end OMIT
+
+
+// test-names-proto-begin OMIT
+func Cmp(t TestingT, got, expected interface{}, args ...interface{}) bool
+// test-names-proto-end OMIT
+
+
+// test-names-doc-begin OMIT
+// "args..." are optional and allow to name the test. This name is
+// used in case of failure to qualify the test. If len(args) > 1 and
+// the first item of "args" is a string and contains a '%' rune then
+// fmt.Fprintf is used to compose the name, else "args" are passed to
+// fmt.Fprint. Do not forget it is the name of the test, not the
+// reason of a potential failure.
+// test-names-doc-end OMIT
+
+
+// test-names-fprint-begin OMIT
+td.Cmp(td, got, 12, "Check got is", 12)    → fmt.Fprint
+td.Cmp(td, got, 12, "Check got is %d", 12) → fmt.Fprintf
+td.Cmp(td, got, 12, lastErr)               → fmt.Fprint
+// test-names-fprint-end OMIT
+
+
+// operators-example-begin OMIT
+              here ↴
+td.Cmp(t, age,     td.Between(40, 45))
+td.Cmp(t, headers, td.ContainsKey("X-Ovh-Account"))
+td.Cmp(t, err,     td.Contains("Internal server error"))
+td.Cmp(t, grants,  td.Empty())
+td.Cmp(t, price,   td.N(float64(12.03), float64(0.01)))
+td.Cmp(t, name,    td.Re(`^[A-Z][A-Za-z-]+\z`))
+td.Cmp(t, ids,     td.Set(789, 456, 123))
+td.Cmp(t, tags,    td.SuperMapOf(map[string]bool{"enabled": true, "shared": true}, nil))
+// operators-example-end OMIT
+
+
+// operators-all-begin OMIT
+All           Contains      Isa           N             NotZero       SStruct       SuperMapOf
+Any           ContainsKey   JSON          NaN           PPtr          String        SuperSetOf
+Array         Delay         Keys          Nil           Ptr           Struct        Tag
+ArrayEach     Empty         Lax           None          Re            SubBagOf      TruncTime
+Bag           Gt            Len           Not           ReAll         SubJSONOf     Values
+Between       Gte           Lt            NotAny        Set           SubMapOf      Zero
+Cap           HasPrefix     Lte           NotEmpty      Shallow       SubSetOf
+Catch         HasSuffix     Map           NotNaN        Slice         SuperBagOf
+Code          Ignore        MapEach       NotNil        Smuggle       SuperJSONOf
+// operators-all-end OMIT
+
+
+// shortcuts-pattern-begin OMIT
+td.Cmp(t, got, td.HasPrefix(expectedPrefix), …) → td.CmpHasPrefix(t, got, expectedPrefix, …)
+td.Cmp(t, got, td.HasSuffix(expectedSuffix), …) → td.CmpHasSuffix(t, got, expectedSuffix, …)
+                  ¯¯¯¯¯¯¯¯¯                             ¯¯¯¯¯¯¯¯¯
+td.Cmp(t, got, td.NotEmpty(), …) → td.CmpNotEmpty(t, got, …)
+                  ¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯
+// shortcuts-pattern-end OMIT
+
+
+// shortcuts-notlax-begin OMIT
+td.Cmp(t, got, td.Not(notExpected)) → td.CmpNot(t, got, notExpected)
+td.Cmp(t, got, td.Lax(expected))    → td.CmpLax(t, got, expected)
+                  ¯¯¯                       ¯¯¯
+// shortcuts-notlax-end OMIT
+
+
+// tdt-anchor-begin OMIT
+func (t *T) A(operator TestDeep, model ...interface{}) interface{}
+func (t *T) Anchor(operator TestDeep, model ...interface{}) interface{}
+func (t *T) AnchorsPersistTemporarily() func()
+func (t *T) DoAnchorsPersist() bool
+func (t *T) ResetAnchors()
+func (t *T) SetAnchorsPersist(persist bool)
+// tdt-anchor-end OMIT
+
+
+// nested1-begin OMIT
+CmpNotZero(t, …) — CmpBetween(t, …) — CmpLen(t, …)
+// nested1-end OMIT
+
+
+// nested2-begin OMIT
+SStruct(model interface{}, expectedFields StructFields)
+// nested2-end OMIT
+
+
+// anat-anchor-begin OMIT
+func A(operator TestDeep, model ...interface{}) interface{}
+          │                └ if the type can not be guessed from the operator
+          └ the operator to use
+
+// model is not needed when operator knows the type behind the operator
+tdt.A(td.Between(40, 45)).(int)
+
+// model is mandatory if the type behind cannot be guessed
+tdt.A(td.NotZero(), int64(666)).(int64)
+
+// for reflect lovers, they can use the longer version
+tdt.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64)
+// anat-anchor-end OMIT
+
+
+// tdt1-construction-begin OMIT
+func NewT(t TestingFT, config ...ContextConfig) *T                  // inherit properties from t
+func Assert(t TestingFT, config ...ContextConfig) *T                // test failures are not fatal
+func Require(t TestingFT, config ...ContextConfig) *T               // t.Fatal if a test fails
+func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)   // Assert() + Require()
+// tdt1-construction-end OMIT
+
+
+// tdt1-configuring-begin OMIT
+func (t *T) BeLax(enable ...bool) *T           // enable/disable strict type comparison
+func (t *T) FailureIsFatal(enable ...bool) *T  // enable/disable failure "fatality"
+func (t *T) RootName(rootName string) *T       // change data root name, "DATA" by default
+func (t *T) UseEqual(enable ...bool) *T        // delegate cmp to UseEqual() method if available
+// tdt1-configuring-end OMIT
+
+
+// tdt2-main-begin OMIT
+func (t *T) Cmp(got, expected interface{}, args ...interface{}) bool
+func (t *T) CmpError(got error, args ...interface{}) bool
+func (t *T) CmpLax(got interface{}, expected interface{}, args ...interface{}) bool
+func (t *T) CmpNoError(got error, args ...interface{}) bool
+func (t *T) CmpNotPanic(fn func(), args ...interface{}) bool
+func (t *T) CmpPanic(fn func(), expected interface{}, args ...interface{}) bool
+func (t *T) False(got interface{}, args ...interface{}) bool
+func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool
+func (t *T) RunT(name string, f func(t *T)) bool
+func (t *T) True(got interface{}, args ...interface{}) bool
+// tdt2-main-end OMIT
+
+// tdt2-main2-begin OMIT
+func EqDeeply(got, expected interface{}) bool
+func EqDeeplyError(got, expected interface{}) error
+// tdt2-main2-end OMIT
+
+
+// tdt3-shortcuts-begin OMIT
+t.Cmp(got, td.HasPrefix(expected), …) → t.HasPrefix(got, expected, …)
+t.Cmp(got, td.HasSuffix(expected), …) → t.HasSuffix(got, expected, …)
+              ¯¯¯¯¯¯¯¯¯                   ¯¯¯¯¯¯¯¯¯
+t.Cmp(got, td.NotEmpty(), …) → t.NotEmpty(t, got, …)
+              ¯¯¯¯¯¯¯¯           ¯¯¯¯¯¯¯¯
+// tdt3-shortcuts-end OMIT
+
+// tdt3-not-begin OMIT
+t.Cmp(got, td.Not(notExpected)) → t.Not(got, notExpected)
+              ¯¯¯                   ¯¯¯
+// tdt3-not-end OMIT
+
+
+// smugglers-begin OMIT
+Cap           Contains      Keys          Len           Ptr           Tag
+Catch         ContainsKey   Lax           PPtr          Smuggle       Values
+// smugglers-end OMIT
+
+// smugglers-example-begin OMIT
+td.Cmp(t, list,    td.Len(td.Between(3, 4)))
+td.Cmp(t, headers, td.ContainsKey(td.HasPrefix("X-Ovh")))
+td.Cmp(t, &age,    td.Ptr(td.Gt(18))))
+td.Cmp(t, ageStr,  td.Smuggle(strconv.Atoi, td.Catch(&age, td.Gt(18))))
+td.Cmp(t, headers, td.Keys(td.SuperSetOf("X-Ovh-Account", "X-Remote-IP")))
+// smugglers-example-end OMIT
