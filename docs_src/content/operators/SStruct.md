@@ -26,8 +26,8 @@ td.Cmp(t, td.SStruct(
     Name: "John Doe",
   },
   td.StructFields{
-    Age:      td.Between(40, 45),
-    Children: td.Ignore(),
+    "Age":      td.Between(40, 45),
+    "Children": td.Ignore(),
   }),
 )
 ```
