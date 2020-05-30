@@ -47,7 +47,7 @@ var personTests = []struct {
 func TestGetPerson(tt *testing.T) {                     === RUN   TestGetPerson/Bob
 	t := td.Assert(tt)                                  === RUN   TestGetPerson/Marcel
 	for _, pt := range personTests {                    === RUN   TestGetPerson/Alice
-		t.RunT(pt.name, func(t *td.T) {                 === RUN   TestGetPerson/Brian
+		t.Run(pt.name, func(t *td.T) {                  === RUN   TestGetPerson/Brian
 			person, err := GetPerson(pt.name)           --- PASS: TestGetPerson (0.00s)
 			t.Cmp(err, pt.expectedErr)                      --- PASS: TestGetPerson/Bob (0.00s)
 			t.Cmp(person, pt.expectedPerson)                --- PASS: TestGetPerson/Marcel (0.00s)

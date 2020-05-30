@@ -259,7 +259,7 @@ Main methods:
 In fact mostly the same as main functions, but:
 - [CmpFalse()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFalse) / [CmpTrue()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpTrue) → [(t *T) False()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False) / [(t *T) True()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True)
 - [CmpNot()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNot) → [(t *T) Not()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not)
-- new [(t *T) RunT()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunT)
+- new [(t *T) Run()](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run)
 
 See [documentation](https://go-testdeep.zetta.rocks/functions/td-t/)
 for details

@@ -501,7 +501,7 @@ instance (return a new instance):</p>
 <span num="141">func (t *T) CmpPanic(fn func(), expected interface{}, args ...interface{}) bool</span>
 <span num="142">func (t *T) False(got interface{}, args ...interface{}) bool</span>
 <span num="143">func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool</span>
-<span num="144">func (t *T) RunT(name string, f func(t *T)) bool</span>
+<span num="144">func (t *T) Run(name string, f func(t *T)) bool</span>
 <span num="145">func (t *T) True(got interface{}, args ...interface{}) bool</span>
 </pre>
 </div>
@@ -509,7 +509,7 @@ instance (return a new instance):</p>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFalse" target="_blank" rel="noopener">CmpFalse()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpTrue" target="_blank" rel="noopener">CmpTrue()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False" target="_blank" rel="noopener">(t *T) False()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True" target="_blank" rel="noopener">(t *T) True()</a></li>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNot" target="_blank" rel="noopener">CmpNot()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not" target="_blank" rel="noopener">(t *T) Not()</a></li>
-<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunT" target="_blank" rel="noopener">(t *T) RunT()</a></li>
+<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run" target="_blank" rel="noopener">(t *T) Run()</a></li>
 </ul>
 <p>See <a href="https://go-testdeep.zetta.rocks/functions/td-t/" target="_blank" rel="noopener">documentation</a>
 for details</p>
@@ -619,7 +619,7 @@ and
 <span num="47">func TestGetPerson(tt *testing.T) {                     === RUN   TestGetPerson/Bob</span>
 <span num="48">    t := td.Assert(tt)                                  === RUN   TestGetPerson/Marcel</span>
 <span num="49">    for _, pt := range personTests {                    === RUN   TestGetPerson/Alice</span>
-<span num="50">        t.RunT(pt.name, func(t *td.T) {                 === RUN   TestGetPerson/Brian</span>
+<span num="50">        t.Run(pt.name, func(t *td.T) {                  === RUN   TestGetPerson/Brian</span>
 <span num="51">            person, err := GetPerson(pt.name)           --- PASS: TestGetPerson (0.00s)</span>
 <span num="52">            t.Cmp(err, pt.expectedErr)                      --- PASS: TestGetPerson/Bob (0.00s)</span>
 <span num="53">            t.Cmp(person, pt.expectedPerson)                --- PASS: TestGetPerson/Marcel (0.00s)</span>
