@@ -1,7 +1,7 @@
 # go-testdeep
 
 Maxime Soulé
-2020-05-15
+2020-05-31
 https://go-testdeep.zetta.rocks/
 
 
@@ -434,9 +434,9 @@ Operator anchoring works out of the box too
 
 Some stats:
 - +24k lines of go code
-- 99.777% code coverage
+- 99.779% code coverage
 - go report A+
-- 16 releases since 2018
+- 17 releases since 2018
 
 Links:
 - [Home page](https://go-testdeep.zetta.rocks/)
