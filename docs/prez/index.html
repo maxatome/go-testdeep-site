@@ -457,13 +457,13 @@ directly</p>
         <h3>td.T — 1/5</h3>
   <div class="code">
 <pre><span num="3">type T struct {</span>
-<span num="4">    TestingFT               // implemented by *testing.T</span>
-<span num="5">    Config    ContextConfig // defaults to DefaultContextConfig</span>
+<span num="4">    testing.TB               // implemented by *testing.T</span>
+<span num="5">    Config     ContextConfig // defaults to DefaultContextConfig</span>
 <span num="6">}</span>
 </pre>
 </div>
 <p>See
-<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#TestingFT" target="_blank" rel="noopener">TestingFT</a>
+<a href="https://golang.org/pkg/testing/#TB" target="_blank" rel="noopener">testing.TB</a>
 interface,
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig" target="_blank" rel="noopener">ContextConfig</a>
 struct and
@@ -471,10 +471,10 @@ struct and
 variable</p>
 <p>Construction:</p>
   <div class="code">
-<pre><span num="120">func NewT(t TestingFT, config ...ContextConfig) *T                  // inherit properties from t</span>
-<span num="121">func Assert(t TestingFT, config ...ContextConfig) *T                // test failures are not fatal</span>
-<span num="122">func Require(t TestingFT, config ...ContextConfig) *T               // t.Fatal if a test fails</span>
-<span num="123">func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)   // Assert() + Require()</span>
+<pre><span num="120">func NewT(t testing.TB, config ...ContextConfig) *T                 // inherit properties from t</span>
+<span num="121">func Assert(t testing.TB, config ...ContextConfig) *T               // test failures are not fatal</span>
+<span num="122">func Require(t testing.TB, config ...ContextConfig) *T              // t.Fatal if a test fails</span>
+<span num="123">func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() + Require()</span>
 </pre>
 </div>
 <p>Configuring

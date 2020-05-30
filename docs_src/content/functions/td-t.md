@@ -17,10 +17,10 @@ func TestMyFunc(tt *testing.T) {
 }
 ```
 
-- [`func NewT(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT)
-- [`func Assert(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert)
-- [`func Require(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require)
-- [`func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire)
+- [`func NewT(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT)
+- [`func Assert(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert)
+- [`func Require(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require)
+- [`func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire)
 
 
 ### Configuring [`*td.T`]

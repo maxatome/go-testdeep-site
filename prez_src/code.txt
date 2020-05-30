@@ -117,10 +117,10 @@ tdt.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64)
 
 
 // tdt1-construction-begin OMIT
-func NewT(t TestingFT, config ...ContextConfig) *T                  // inherit properties from t
-func Assert(t TestingFT, config ...ContextConfig) *T                // test failures are not fatal
-func Require(t TestingFT, config ...ContextConfig) *T               // t.Fatal if a test fails
-func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)   // Assert() + Require()
+func NewT(t testing.TB, config ...ContextConfig) *T                 // inherit properties from t
+func Assert(t testing.TB, config ...ContextConfig) *T               // test failures are not fatal
+func Require(t testing.TB, config ...ContextConfig) *T              // t.Fatal if a test fails
+func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() + Require()
 // tdt1-construction-end OMIT
 
 

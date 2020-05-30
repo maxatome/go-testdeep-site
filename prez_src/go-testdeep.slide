@@ -232,7 +232,7 @@ directly
 .code td_t.go /^type T /,/^}/
 
 See
-[TestingFT](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#TestingFT)
+[testing.TB](https://golang.org/pkg/testing/#TB)
 interface,
 [ContextConfig](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig)
 struct and
