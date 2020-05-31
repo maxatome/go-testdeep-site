@@ -17,10 +17,10 @@ func TestMyFunc(tt *testing.T) {
 }
 ```
 
-- [`func NewT(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT)
-- [`func Assert(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert)
-- [`func Require(t TestingFT, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require)
-- [`func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire)
+- [`func NewT(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT)
+- [`func Assert(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert)
+- [`func Require(t testing.TB, config ...ContextConfig) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require)
+- [`func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire)
 
 
 ### Configuring [`*td.T`]
@@ -69,7 +69,7 @@ func TestMyFunc(tt *testing.T) {
 - [`func (t *T) False(got interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False)
 - [`func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not)
   (in fact the shortcut of [`Not` operator]({{< ref "operators/Not" >}}))
-- [`func (t *T) RunT(name string, f func(t *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunT)
+- [`func (t *T) Run(name string, f func(t *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run)
 - [`func (t *T) True(got interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True)
 
 [`CmpDeeply()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply)

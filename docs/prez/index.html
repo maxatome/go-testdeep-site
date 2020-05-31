@@ -33,7 +33,7 @@
     Maxime Soulé
   </p>
   <p>
-    2020-05-15
+    2020-05-31
   </p>
           </div>
           <div class="presenter">
@@ -457,13 +457,13 @@ directly</p>
         <h3>td.T — 1/5</h3>
   <div class="code">
 <pre><span num="3">type T struct {</span>
-<span num="4">    TestingFT               // implemented by *testing.T</span>
-<span num="5">    Config    ContextConfig // defaults to DefaultContextConfig</span>
+<span num="4">    testing.TB               // implemented by *testing.T</span>
+<span num="5">    Config     ContextConfig // defaults to DefaultContextConfig</span>
 <span num="6">}</span>
 </pre>
 </div>
 <p>See
-<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#TestingFT" target="_blank" rel="noopener">TestingFT</a>
+<a href="https://golang.org/pkg/testing/#TB" target="_blank" rel="noopener">testing.TB</a>
 interface,
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig" target="_blank" rel="noopener">ContextConfig</a>
 struct and
@@ -471,10 +471,10 @@ struct and
 variable</p>
 <p>Construction:</p>
   <div class="code">
-<pre><span num="120">func NewT(t TestingFT, config ...ContextConfig) *T                  // inherit properties from t</span>
-<span num="121">func Assert(t TestingFT, config ...ContextConfig) *T                // test failures are not fatal</span>
-<span num="122">func Require(t TestingFT, config ...ContextConfig) *T               // t.Fatal if a test fails</span>
-<span num="123">func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)   // Assert() + Require()</span>
+<pre><span num="120">func NewT(t testing.TB, config ...ContextConfig) *T                 // inherit properties from t</span>
+<span num="121">func Assert(t testing.TB, config ...ContextConfig) *T               // test failures are not fatal</span>
+<span num="122">func Require(t testing.TB, config ...ContextConfig) *T              // t.Fatal if a test fails</span>
+<span num="123">func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() + Require()</span>
 </pre>
 </div>
 <p>Configuring
@@ -501,7 +501,7 @@ instance (return a new instance):</p>
 <span num="141">func (t *T) CmpPanic(fn func(), expected interface{}, args ...interface{}) bool</span>
 <span num="142">func (t *T) False(got interface{}, args ...interface{}) bool</span>
 <span num="143">func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool</span>
-<span num="144">func (t *T) RunT(name string, f func(t *T)) bool</span>
+<span num="144">func (t *T) Run(name string, f func(t *T)) bool</span>
 <span num="145">func (t *T) True(got interface{}, args ...interface{}) bool</span>
 </pre>
 </div>
@@ -509,7 +509,7 @@ instance (return a new instance):</p>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFalse" target="_blank" rel="noopener">CmpFalse()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpTrue" target="_blank" rel="noopener">CmpTrue()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False" target="_blank" rel="noopener">(t *T) False()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True" target="_blank" rel="noopener">(t *T) True()</a></li>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNot" target="_blank" rel="noopener">CmpNot()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not" target="_blank" rel="noopener">(t *T) Not()</a></li>
-<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunT" target="_blank" rel="noopener">(t *T) RunT()</a></li>
+<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run" target="_blank" rel="noopener">(t *T) Run()</a></li>
 </ul>
 <p>See <a href="https://go-testdeep.zetta.rocks/functions/td-t/" target="_blank" rel="noopener">documentation</a>
 for details</p>
@@ -619,7 +619,7 @@ and
 <span num="47">func TestGetPerson(tt *testing.T) {                     === RUN   TestGetPerson/Bob</span>
 <span num="48">    t := td.Assert(tt)                                  === RUN   TestGetPerson/Marcel</span>
 <span num="49">    for _, pt := range personTests {                    === RUN   TestGetPerson/Alice</span>
-<span num="50">        t.RunT(pt.name, func(t *td.T) {                 === RUN   TestGetPerson/Brian</span>
+<span num="50">        t.Run(pt.name, func(t *td.T) {                  === RUN   TestGetPerson/Brian</span>
 <span num="51">            person, err := GetPerson(pt.name)           --- PASS: TestGetPerson (0.00s)</span>
 <span num="52">            t.Cmp(err, pt.expectedErr)                      --- PASS: TestGetPerson/Bob (0.00s)</span>
 <span num="53">            t.Cmp(person, pt.expectedPerson)                --- PASS: TestGetPerson/Marcel (0.00s)</span>
@@ -814,9 +814,9 @@ fed by any already created
         <p>Some stats:</p>
 <ul>
 <li>+24k lines of go code</li>
-<li>99.777% code coverage</li>
+<li>99.779% code coverage</li>
 <li>go report A+</li>
-<li>16 releases since 2018</li>
+<li>17 releases since 2018</li>
 </ul>
 <p>Links:</p>
 <ul>
@@ -835,7 +835,7 @@ fed by any already created
     Maxime Soulé
   </p>
   <p>
-    2020-05-15
+    2020-05-31
   </p>
 <p class="link"><a href="https://go-testdeep.zetta.rocks/" target="_blank">https://go-testdeep.zetta.rocks/</a></p>
           </div>

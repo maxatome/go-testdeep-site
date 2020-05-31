@@ -1,8 +1,8 @@
 package main
 
 type T struct {
-	TestingFT               // implemented by *testing.T
-	Config    ContextConfig // defaults to DefaultContextConfig
+	testing.TB               // implemented by *testing.T
+	Config     ContextConfig // defaults to DefaultContextConfig
 }
 
 func TestVals(t *testing.T) {

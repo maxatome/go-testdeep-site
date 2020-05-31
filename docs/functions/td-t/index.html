@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>td.T :: go-testdeep</title>
-<link href=/css/nucleus.css?1590572996 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1590572996 rel=stylesheet>
-<link href=/css/hybrid.css?1590572996 rel=stylesheet>
-<link href=/css/featherlight.min.css?1590572996 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1590572996 rel=stylesheet>
-<link href=/css/auto-complete.css?1590572996 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1590572996 rel=stylesheet>
-<link href=/css/theme.css?1590572996 rel=stylesheet>
-<link href=/css/hugo-theme.css?1590572996 rel=stylesheet>
-<link href=/css/theme-green.css?1590572996 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1590572996></script>
+<link href=/css/nucleus.css?1590834757 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1590834757 rel=stylesheet>
+<link href=/css/hybrid.css?1590834757 rel=stylesheet>
+<link href=/css/featherlight.min.css?1590834757 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1590834757 rel=stylesheet>
+<link href=/css/auto-complete.css?1590834757 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1590834757 rel=stylesheet>
+<link href=/css/theme.css?1590834757 rel=stylesheet>
+<link href=/css/hugo-theme.css?1590834757 rel=stylesheet>
+<link href=/css/theme-green.css?1590834757 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1590834757></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1590572996></script>
-<script type=text/javascript src=/js/auto-complete.js?1590572996></script>
+<script type=text/javascript src=/js/lunr.min.js?1590834757></script>
+<script type=text/javascript src=/js/auto-complete.js?1590834757></script>
 <script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1590572996></script>
+<script type=text/javascript src=/js/search.js?1590834757></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -495,10 +495,10 @@ td.T
   t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>MyFunc</span>(), <span style=color:#3677a9>12</span>)
 }
 </code></pre></div><ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT><code>func NewT(t TestingFT, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert><code>func Assert(t TestingFT, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require><code>func Require(t TestingFT, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire><code>func AssertRequire(t TestingFT, config ...ContextConfig) (*T, *T)</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT><code>func NewT(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert><code>func Assert(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require><code>func Require(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire><code>func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)</code></a></li>
 </ul>
 <h3 id=configuring-tdt>Configuring <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></h3>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyFunc</span>(tt *testing.T) {
@@ -539,7 +539,7 @@ td.T
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False><code>func (t *T) False(got interface{}, args ...interface{}) bool</code></a></li>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not><code>func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool</code></a>
 (in fact the shortcut of <a href=/operators/not/><code>Not</code> operator</a>)</li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunT><code>func (t *T) RunT(name string, f func(t *T)) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run><code>func (t *T) Run(name string, f func(t *T)) bool</code></a></li>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True><code>func (t *T) True(got interface{}, args ...interface{}) bool</code></a></li>
 </ul>
 <p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply><code>CmpDeeply()</code></a>
@@ -589,18 +589,18 @@ page. See <a href=/operators/>operators list</a>.</p>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1590572996></script>
-<script src=/js/perfect-scrollbar.min.js?1590572996></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1590572996></script>
-<script src=/js/jquery.sticky.js?1590572996></script>
-<script src=/js/featherlight.min.js?1590572996></script>
-<script src=/js/highlight.pack.js?1590572996></script>
+<script src=/js/clipboard.min.js?1590834757></script>
+<script src=/js/perfect-scrollbar.min.js?1590834757></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1590834757></script>
+<script src=/js/jquery.sticky.js?1590834757></script>
+<script src=/js/featherlight.min.js?1590834757></script>
+<script src=/js/highlight.pack.js?1590834757></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1590572996></script>
-<script src=/js/learn.js?1590572996></script>
-<script src=/js/hugo-learn.js?1590572996></script>
-<link href=/mermaid/mermaid.css?1590572996 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1590572996></script>
+<script src=/js/modernizr.custom-3.6.0.js?1590834757></script>
+<script src=/js/learn.js?1590834757></script>
+<script src=/js/hugo-learn.js?1590834757></script>
+<link href=/mermaid/mermaid.css?1590834757 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1590834757></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
