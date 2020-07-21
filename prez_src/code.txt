@@ -142,6 +142,7 @@ func (t *T) CmpPanic(fn func(), expected interface{}, args ...interface{}) bool
 func (t *T) False(got interface{}, args ...interface{}) bool
 func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool
 func (t *T) Run(name string, f func(t *T)) bool
+func (t *T) RunAssertRequire(name string, f func(assert *T, require *T)) bool
 func (t *T) True(got interface{}, args ...interface{}) bool
 // tdt2-main-end OMIT
 

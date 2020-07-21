@@ -70,6 +70,7 @@ func TestMyFunc(tt *testing.T) {
 - [`func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not)
   (in fact the shortcut of [`Not` operator]({{< ref "operators/Not" >}}))
 - [`func (t *T) Run(name string, f func(t *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run)
+- [`func (t *T) RunAssertRequire(name string, f func(assert *T, require *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire)
 - [`func (t *T) True(got interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True)
 
 [`CmpDeeply()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply)

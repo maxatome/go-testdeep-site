@@ -33,7 +33,7 @@
     Maxime Soulé
   </p>
   <p>
-    2020-05-31
+    2020-07-20
   </p>
           </div>
           <div class="presenter">
@@ -502,14 +502,15 @@ instance (return a new instance):</p>
 <span num="142">func (t *T) False(got interface{}, args ...interface{}) bool</span>
 <span num="143">func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool</span>
 <span num="144">func (t *T) Run(name string, f func(t *T)) bool</span>
-<span num="145">func (t *T) True(got interface{}, args ...interface{}) bool</span>
+<span num="145">func (t *T) RunAssertRequire(name string, f func(assert *T, require *T)) bool</span>
+<span num="146">func (t *T) True(got interface{}, args ...interface{}) bool</span>
 </pre>
 </div>
 <p>In fact mostly the same as main functions, but:</p>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFalse" target="_blank" rel="noopener">CmpFalse()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpTrue" target="_blank" rel="noopener">CmpTrue()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False" target="_blank" rel="noopener">(t *T) False()</a> / <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True" target="_blank" rel="noopener">(t *T) True()</a></li>
 <li><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNot" target="_blank" rel="noopener">CmpNot()</a> → <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not" target="_blank" rel="noopener">(t *T) Not()</a></li>
-<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run" target="_blank" rel="noopener">(t *T) Run()</a></li>
+<li>new <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run" target="_blank" rel="noopener">(t *T) Run()</a> and <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire" target="_blank" rel="noopener">(t *T) RunAssertRequire()</a></li>
 </ul>
 <p>See <a href="https://go-testdeep.zetta.rocks/functions/td-t/" target="_blank" rel="noopener">documentation</a>
 for details</p>
@@ -813,10 +814,10 @@ fed by any already created
         <h3>End</h3>
         <p>Some stats:</p>
 <ul>
-<li>+24k lines of go code</li>
+<li>+25k lines of go code</li>
 <li>99.779% code coverage</li>
 <li>go report A+</li>
-<li>17 releases since 2018</li>
+<li>18 releases since 2018</li>
 </ul>
 <p>Links:</p>
 <ul>
@@ -835,7 +836,7 @@ fed by any already created
     Maxime Soulé
   </p>
   <p>
-    2020-05-31
+    2020-07-20
   </p>
 <p class="link"><a href="https://go-testdeep.zetta.rocks/" target="_blank">https://go-testdeep.zetta.rocks/</a></p>
           </div>
