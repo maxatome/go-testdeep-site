@@ -674,12 +674,12 @@ func TestMyGinGonicApi(t *testing.T) {
 1. for the `$id` placeholder, [`Catch`]({{< ref "Catch" >}}) its
    value: put it in `id` variable and check it is
    [`NotZero`]({{< ref "NotZero" >}});
-1. for the `$created_at` placeholder, use the [`All`]({{< ref "All" >}})
+1. for the `$createdAt` placeholder, use the [`All`]({{< ref "All" >}})
    operator. It combines several operators like a AND;
-1. check that `$created_at` date ends with "Z" using
+1. check that `$createdAt` date ends with "Z" using
    [`HasSuffix`]({{< ref "HasSuffix" >}}). As we expect a RFC3339
    date, we require it in UTC time zone;
-1. convert `$created_at` date into a `time.Time` using a custom
+1. convert `$createdAt` date into a `time.Time` using a custom
    function thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator;
 1. then [`Catch`]({{< ref "Catch" >}}) the resulting value: put it in
    `createdAt` variable and check it is greater or equal than
