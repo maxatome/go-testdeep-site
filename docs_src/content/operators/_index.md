@@ -67,6 +67,9 @@ weight = 15
 [`JSON`]({{< ref "JSON" >}})
 : compares against JSON representation
 
+[`JSONPointer`]({{< ref "JSONPointer" >}})
+: compares against JSON representation using a JSON pointer
+
 [`Keys`]({{< ref "Keys" >}})
 : checks keys of a map
 
@@ -210,6 +213,9 @@ The following operators are smuggler ones:
 [`ContainsKey`]({{< ref "ContainsKey" >}})
 : checks that a map contains a key
 
+[`JSONPointer`]({{< ref "JSONPointer" >}})
+: compares against JSON representation using a JSON pointer
+
 [`Keys`]({{< ref "Keys" >}})
 : checks keys of a map
 
@@ -267,6 +273,7 @@ The following operators are smuggler ones:
 [`Ignore`]: {{< ref "Ignore" >}}
 [`Isa`]: {{< ref "Isa" >}}
 [`JSON`]: {{< ref "JSON" >}}
+[`JSONPointer`]: {{< ref "JSONPointer" >}}
 [`Keys`]: {{< ref "Keys" >}}
 [`Lax`]: {{< ref "Lax" >}}
 [`Len`]: {{< ref "Len" >}}
@@ -325,6 +332,7 @@ The following operators are smuggler ones:
 [`CmpHasSuffix`]: {{< ref "HasSuffix#cmphassuffix-shortcut" >}}
 [`CmpIsa`]: {{< ref "Isa#cmpisa-shortcut" >}}
 [`CmpJSON`]: {{< ref "JSON#cmpjson-shortcut" >}}
+[`CmpJSONPointer`]: {{< ref "JSONPointer#cmpjsonpointer-shortcut" >}}
 [`CmpKeys`]: {{< ref "Keys#cmpkeys-shortcut" >}}
 [`CmpLax`]: {{< ref "Lax#cmplax-shortcut" >}}
 [`CmpLen`]: {{< ref "Len#cmplen-shortcut" >}}
@@ -382,6 +390,7 @@ The following operators are smuggler ones:
 [`T.HasSuffix`]: {{< ref "HasSuffix#thassuffix-shortcut" >}}
 [`T.Isa`]: {{< ref "Isa#tisa-shortcut" >}}
 [`T.JSON`]: {{< ref "JSON#tjson-shortcut" >}}
+[`T.JSONPointer`]: {{< ref "JSONPointer#tjsonpointer-shortcut" >}}
 [`T.Keys`]: {{< ref "Keys#tkeys-shortcut" >}}
 [`T.CmpLax`]: {{< ref "Lax#tcmplax-shortcut" >}}
 [`T.Len`]: {{< ref "Len#tlen-shortcut" >}}
