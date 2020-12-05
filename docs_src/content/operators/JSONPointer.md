@@ -8,7 +8,7 @@ func JSONPointer(pointer string, expectedValue interface{}) TestDeep
 ```
 
 JSONPointer is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the JSON
-representation of data, get the value corresponding to the [`JSON`]({{< ref "JSON" >}})
+representation of data, gets the value corresponding to the [`JSON`]({{< ref "JSON" >}})
 pointer *pointer* (as RFC 6901 specifies it) and compares it to
 *expectedValue*.
 
