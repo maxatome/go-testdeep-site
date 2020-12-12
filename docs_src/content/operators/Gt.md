@@ -61,7 +61,7 @@ td.Cmp(t, time.Now(), td.Gt(before))
 ## CmpGt shortcut
 
 ```go
-func CmpGt(t TestingT, got interface{}, minExpectedValue interface{}, args ...interface{}) bool
+func CmpGt(t TestingT, got, minExpectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpGt is a shortcut for:
@@ -121,7 +121,7 @@ reason of a potential failure.
 ## T.Gt shortcut
 
 ```go
-func (t *T) Gt(got interface{}, minExpectedValue interface{}, args ...interface{}) bool
+func (t *T) Gt(got, minExpectedValue interface{}, args ...interface{}) bool
 ```
 
 [`Gt`]({{< ref "Gt" >}}) is a shortcut for:

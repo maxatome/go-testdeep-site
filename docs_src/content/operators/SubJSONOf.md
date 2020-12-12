@@ -307,7 +307,7 @@ parameters) have shortcuts. They follow:
 ## CmpSubJSONOf shortcut
 
 ```go
-func CmpSubJSONOf(t TestingT, got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func CmpSubJSONOf(t TestingT, got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 CmpSubJSONOf is a shortcut for:
@@ -458,7 +458,7 @@ reason of a potential failure.
 ## T.SubJSONOf shortcut
 
 ```go
-func (t *T) SubJSONOf(got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func (t *T) SubJSONOf(got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 [`SubJSONOf`]({{< ref "SubJSONOf" >}}) is a shortcut for:

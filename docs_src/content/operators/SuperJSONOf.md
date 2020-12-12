@@ -322,7 +322,7 @@ parameters) have shortcuts. They follow:
 ## CmpSuperJSONOf shortcut
 
 ```go
-func CmpSuperJSONOf(t TestingT, got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func CmpSuperJSONOf(t TestingT, got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 CmpSuperJSONOf is a shortcut for:
@@ -485,7 +485,7 @@ reason of a potential failure.
 ## T.SuperJSONOf shortcut
 
 ```go
-func (t *T) SuperJSONOf(got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func (t *T) SuperJSONOf(got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) is a shortcut for:

@@ -81,7 +81,7 @@ td.Cmp(t, got,
 ## CmpArray shortcut
 
 ```go
-func CmpArray(t TestingT, got interface{}, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func CmpArray(t TestingT, got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
 ```
 
 CmpArray is a shortcut for:
@@ -152,7 +152,7 @@ reason of a potential failure.
 ## T.Array shortcut
 
 ```go
-func (t *T) Array(got interface{}, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func (t *T) Array(got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
 ```
 
 [`Array`]({{< ref "Array" >}}) is a shortcut for:

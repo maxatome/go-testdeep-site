@@ -90,7 +90,7 @@ td.Cmp(t, got,
 ## CmpSlice shortcut
 
 ```go
-func CmpSlice(t TestingT, got interface{}, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func CmpSlice(t TestingT, got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
 ```
 
 CmpSlice is a shortcut for:
@@ -171,7 +171,7 @@ reason of a potential failure.
 ## T.Slice shortcut
 
 ```go
-func (t *T) Slice(got interface{}, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func (t *T) Slice(got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
 ```
 
 [`Slice`]({{< ref "Slice" >}}) is a shortcut for:

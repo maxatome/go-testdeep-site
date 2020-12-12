@@ -67,7 +67,7 @@ operator]({{< ref "operators" >}}). In this case, it delegates [`TypeBehind()`](
 ## CmpLax shortcut
 
 ```go
-func CmpLax(t TestingT, got interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpLax(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpLax is a shortcut for:
@@ -121,7 +121,7 @@ reason of a potential failure.
 ## T.CmpLax shortcut
 
 ```go
-func (t *T) CmpLax(got interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) CmpLax(got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpLax is a shortcut for:

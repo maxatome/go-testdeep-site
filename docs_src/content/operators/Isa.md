@@ -107,7 +107,7 @@ it implements [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) or not).
 ## CmpIsa shortcut
 
 ```go
-func CmpIsa(t TestingT, got interface{}, model interface{}, args ...interface{}) bool
+func CmpIsa(t TestingT, got, model interface{}, args ...interface{}) bool
 ```
 
 CmpIsa is a shortcut for:
@@ -196,7 +196,7 @@ reason of a potential failure.
 ## T.Isa shortcut
 
 ```go
-func (t *T) Isa(got interface{}, model interface{}, args ...interface{}) bool
+func (t *T) Isa(got, model interface{}, args ...interface{}) bool
 ```
 
 [`Isa`]({{< ref "Isa" >}}) is a shortcut for:

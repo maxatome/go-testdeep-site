@@ -106,7 +106,7 @@ td.Cmp(t, got, td.ArrayEach(
 ## CmpArrayEach shortcut
 
 ```go
-func CmpArrayEach(t TestingT, got interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpArrayEach(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpArrayEach is a shortcut for:
@@ -200,7 +200,7 @@ reason of a potential failure.
 ## T.ArrayEach shortcut
 
 ```go
-func (t *T) ArrayEach(got interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) ArrayEach(got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 [`ArrayEach`]({{< ref "ArrayEach" >}}) is a shortcut for:

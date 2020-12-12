@@ -110,7 +110,7 @@ td.Cmp(t, &a, td.Shallow(&b)) // succeeds as both slices point to the same area,
 ## CmpShallow shortcut
 
 ```go
-func CmpShallow(t TestingT, got interface{}, expectedPtr interface{}, args ...interface{}) bool
+func CmpShallow(t TestingT, got, expectedPtr interface{}, args ...interface{}) bool
 ```
 
 CmpShallow is a shortcut for:
@@ -197,7 +197,7 @@ reason of a potential failure.
 ## T.Shallow shortcut
 
 ```go
-func (t *T) Shallow(got interface{}, expectedPtr interface{}, args ...interface{}) bool
+func (t *T) Shallow(got, expectedPtr interface{}, args ...interface{}) bool
 ```
 
 [`Shallow`]({{< ref "Shallow" >}}) is a shortcut for:

@@ -69,7 +69,7 @@ td.Cmp(t, before, td.Lt(time.Now()))
 ## CmpLte shortcut
 
 ```go
-func CmpLte(t TestingT, got interface{}, maxExpectedValue interface{}, args ...interface{}) bool
+func CmpLte(t TestingT, got, maxExpectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpLte is a shortcut for:
@@ -137,7 +137,7 @@ reason of a potential failure.
 ## T.Lte shortcut
 
 ```go
-func (t *T) Lte(got interface{}, maxExpectedValue interface{}, args ...interface{}) bool
+func (t *T) Lte(got, maxExpectedValue interface{}, args ...interface{}) bool
 ```
 
 [`Lte`]({{< ref "Lte" >}}) is a shortcut for:

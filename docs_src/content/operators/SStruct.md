@@ -106,7 +106,7 @@ succeed.
 ## CmpSStruct shortcut
 
 ```go
-func CmpSStruct(t TestingT, got interface{}, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func CmpSStruct(t TestingT, got, model interface{}, expectedFields StructFields, args ...interface{}) bool
 ```
 
 CmpSStruct is a shortcut for:
@@ -191,7 +191,7 @@ reason of a potential failure.
 ## T.SStruct shortcut
 
 ```go
-func (t *T) SStruct(got interface{}, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func (t *T) SStruct(got, model interface{}, expectedFields StructFields, args ...interface{}) bool
 ```
 
 [`SStruct`]({{< ref "SStruct" >}}) is a shortcut for:

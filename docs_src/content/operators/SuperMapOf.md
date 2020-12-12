@@ -90,7 +90,7 @@ td.Cmp(t, got, td.SuperMapOf(
 ## CmpSuperMapOf shortcut
 
 ```go
-func CmpSuperMapOf(t TestingT, got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func CmpSuperMapOf(t TestingT, got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 CmpSuperMapOf is a shortcut for:
@@ -152,7 +152,7 @@ reason of a potential failure.
 ## T.SuperMapOf shortcut
 
 ```go
-func (t *T) SuperMapOf(got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func (t *T) SuperMapOf(got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 [`SuperMapOf`]({{< ref "SuperMapOf" >}}) is a shortcut for:

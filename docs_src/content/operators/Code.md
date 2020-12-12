@@ -124,7 +124,7 @@ operator should be used instead.
 ## CmpCode shortcut
 
 ```go
-func CmpCode(t TestingT, got interface{}, fn interface{}, args ...interface{}) bool
+func CmpCode(t TestingT, got, fn interface{}, args ...interface{}) bool
 ```
 
 CmpCode is a shortcut for:
@@ -201,7 +201,7 @@ reason of a potential failure.
 ## T.Code shortcut
 
 ```go
-func (t *T) Code(got interface{}, fn interface{}, args ...interface{}) bool
+func (t *T) Code(got, fn interface{}, args ...interface{}) bool
 ```
 
 [`Code`]({{< ref "Code" >}}) is a shortcut for:

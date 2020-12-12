@@ -92,7 +92,7 @@ td.Cmp(t, hnum, td.ContainsKey((*byte)(nil))) // fails: (*byte)(nil) ≠ (*int)(
 ## CmpContainsKey shortcut
 
 ```go
-func CmpContainsKey(t TestingT, got interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpContainsKey(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpContainsKey is a shortcut for:
@@ -163,7 +163,7 @@ reason of a potential failure.
 ## T.ContainsKey shortcut
 
 ```go
-func (t *T) ContainsKey(got interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) ContainsKey(got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 [`ContainsKey`]({{< ref "ContainsKey" >}}) is a shortcut for:

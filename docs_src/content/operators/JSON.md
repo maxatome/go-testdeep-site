@@ -297,7 +297,7 @@ parameters) have shortcuts. They follow:
 ## CmpJSON shortcut
 
 ```go
-func CmpJSON(t TestingT, got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func CmpJSON(t TestingT, got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 CmpJSON is a shortcut for:
@@ -460,7 +460,7 @@ reason of a potential failure.
 ## T.JSON shortcut
 
 ```go
-func (t *T) JSON(got interface{}, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func (t *T) JSON(got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
 ```
 
 [`JSON`]({{< ref "JSON" >}}) is a shortcut for:

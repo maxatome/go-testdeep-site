@@ -77,7 +77,7 @@ td.Cmp(t, gotDate, td.TruncTime(expected, time.Second)) // succeeds
 ## CmpTruncTime shortcut
 
 ```go
-func CmpTruncTime(t TestingT, got interface{}, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
+func CmpTruncTime(t TestingT, got, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
 ```
 
 CmpTruncTime is a shortcut for:
@@ -146,7 +146,7 @@ reason of a potential failure.
 ## T.TruncTime shortcut
 
 ```go
-func (t *T) TruncTime(got interface{}, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
+func (t *T) TruncTime(got, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
 ```
 
 [`TruncTime`]({{< ref "TruncTime" >}}) is a shortcut for:

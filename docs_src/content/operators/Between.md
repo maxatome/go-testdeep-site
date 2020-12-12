@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Between(from interface{}, to interface{}, bounds ...BoundsKind) TestDeep
+func Between(from, to interface{}, bounds ...BoundsKind) TestDeep
 ```
 
 [`Between`]({{< ref "Between" >}}) operator checks that data is between *from* and
@@ -107,7 +107,7 @@ tc.Cmp(t, 17, td.Between(17, 20, BoundsOutOut)) // fails
 ## CmpBetween shortcut
 
 ```go
-func CmpBetween(t TestingT, got interface{}, from interface{}, to interface{}, bounds BoundsKind, args ...interface{}) bool
+func CmpBetween(t TestingT, got, from , to interface{}, bounds BoundsKind, args ...interface{}) bool
 ```
 
 CmpBetween is a shortcut for:
@@ -207,7 +207,7 @@ reason of a potential failure.
 ## T.Between shortcut
 
 ```go
-func (t *T) Between(got interface{}, from interface{}, to interface{}, bounds BoundsKind, args ...interface{}) bool
+func (t *T) Between(got, from , to interface{}, bounds BoundsKind, args ...interface{}) bool
 ```
 
 [`Between`]({{< ref "Between" >}}) is a shortcut for:

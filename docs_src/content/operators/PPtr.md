@@ -64,7 +64,7 @@ non-`nil` of course).
 ## CmpPPtr shortcut
 
 ```go
-func CmpPPtr(t TestingT, got interface{}, val interface{}, args ...interface{}) bool
+func CmpPPtr(t TestingT, got, val interface{}, args ...interface{}) bool
 ```
 
 CmpPPtr is a shortcut for:
@@ -109,7 +109,7 @@ reason of a potential failure.
 ## T.PPtr shortcut
 
 ```go
-func (t *T) PPtr(got interface{}, val interface{}, args ...interface{}) bool
+func (t *T) PPtr(got, val interface{}, args ...interface{}) bool
 ```
 
 [`PPtr`]({{< ref "PPtr" >}}) is a shortcut for:

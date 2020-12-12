@@ -110,7 +110,7 @@ td.Cmp(t, gotSlice, td.Len(td.Between(3, 4)))
 ## CmpLen shortcut
 
 ```go
-func CmpLen(t TestingT, got interface{}, expectedLen interface{}, args ...interface{}) bool
+func CmpLen(t TestingT, got, expectedLen interface{}, args ...interface{}) bool
 ```
 
 CmpLen is a shortcut for:
@@ -216,7 +216,7 @@ reason of a potential failure.
 ## T.Len shortcut
 
 ```go
-func (t *T) Len(got interface{}, expectedLen interface{}, args ...interface{}) bool
+func (t *T) Len(got, expectedLen interface{}, args ...interface{}) bool
 ```
 
 [`Len`]({{< ref "Len" >}}) is a shortcut for:

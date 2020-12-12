@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Smuggle(fn interface{}, expectedValue interface{}) TestDeep
+func Smuggle(fn, expectedValue interface{}) TestDeep
 ```
 
 [`Smuggle`]({{< ref "Smuggle" >}}) operator allows to change data contents or mutate it into
@@ -446,7 +446,7 @@ type. The fields-path `string` *fn* shortcut is not available with
 ## CmpSmuggle shortcut
 
 ```go
-func CmpSmuggle(t TestingT, got interface{}, fn interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpSmuggle(t TestingT, got, fn , expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpSmuggle is a shortcut for:
@@ -682,7 +682,7 @@ reason of a potential failure.
 ## T.Smuggle shortcut
 
 ```go
-func (t *T) Smuggle(got interface{}, fn interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) Smuggle(got, fn , expectedValue interface{}, args ...interface{}) bool
 ```
 
 [`Smuggle`]({{< ref "Smuggle" >}}) is a shortcut for:

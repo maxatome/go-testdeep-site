@@ -50,7 +50,7 @@ td.Cmp(t, 12, td.Not(12)) // fails
 ## CmpNot shortcut
 
 ```go
-func CmpNot(t TestingT, got interface{}, notExpected interface{}, args ...interface{}) bool
+func CmpNot(t TestingT, got, notExpected interface{}, args ...interface{}) bool
 ```
 
 CmpNot is a shortcut for:
@@ -101,7 +101,7 @@ reason of a potential failure.
 ## T.Not shortcut
 
 ```go
-func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool
+func (t *T) Not(got, notExpected interface{}, args ...interface{}) bool
 ```
 
 [`Not`]({{< ref "Not" >}}) is a shortcut for:

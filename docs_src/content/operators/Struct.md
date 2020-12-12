@@ -102,7 +102,7 @@ succeed. Non-expected fields are ignored.
 ## CmpStruct shortcut
 
 ```go
-func CmpStruct(t TestingT, got interface{}, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func CmpStruct(t TestingT, got, model interface{}, expectedFields StructFields, args ...interface{}) bool
 ```
 
 CmpStruct is a shortcut for:
@@ -186,7 +186,7 @@ reason of a potential failure.
 ## T.Struct shortcut
 
 ```go
-func (t *T) Struct(got interface{}, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func (t *T) Struct(got, model interface{}, expectedFields StructFields, args ...interface{}) bool
 ```
 
 [`Struct`]({{< ref "Struct" >}}) is a shortcut for:

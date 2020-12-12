@@ -39,7 +39,7 @@ td.Cmp(t, 12.2, td.N(12., 0.1)) // fails
 ## CmpN shortcut
 
 ```go
-func CmpN(t TestingT, got interface{}, num interface{}, tolerance interface{}, args ...interface{}) bool
+func CmpN(t TestingT, got, num , tolerance interface{}, args ...interface{}) bool
 ```
 
 CmpN is a shortcut for:
@@ -84,7 +84,7 @@ reason of a potential failure.
 ## T.N shortcut
 
 ```go
-func (t *T) N(got interface{}, num interface{}, tolerance interface{}, args ...interface{}) bool
+func (t *T) N(got, num , tolerance interface{}, args ...interface{}) bool
 ```
 
 [`N`]({{< ref "N" >}}) is a shortcut for:

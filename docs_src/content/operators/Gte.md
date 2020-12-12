@@ -69,7 +69,7 @@ td.Cmp(t, time.Now(), td.Gte(before))
 ## CmpGte shortcut
 
 ```go
-func CmpGte(t TestingT, got interface{}, minExpectedValue interface{}, args ...interface{}) bool
+func CmpGte(t TestingT, got, minExpectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpGte is a shortcut for:
@@ -137,7 +137,7 @@ reason of a potential failure.
 ## T.Gte shortcut
 
 ```go
-func (t *T) Gte(got interface{}, minExpectedValue interface{}, args ...interface{}) bool
+func (t *T) Gte(got, minExpectedValue interface{}, args ...interface{}) bool
 ```
 
 [`Gte`]({{< ref "Gte" >}}) is a shortcut for:

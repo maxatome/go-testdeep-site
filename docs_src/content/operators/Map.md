@@ -108,7 +108,7 @@ td.Cmp(t, got, td.Map(
 ## CmpMap shortcut
 
 ```go
-func CmpMap(t TestingT, got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func CmpMap(t TestingT, got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 CmpMap is a shortcut for:
@@ -189,7 +189,7 @@ reason of a potential failure.
 ## T.Map shortcut
 
 ```go
-func (t *T) Map(got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func (t *T) Map(got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 [`Map`]({{< ref "Map" >}}) is a shortcut for:

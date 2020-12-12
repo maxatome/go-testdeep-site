@@ -90,7 +90,7 @@ td.Cmp(t, got, td.SubMapOf(
 ## CmpSubMapOf shortcut
 
 ```go
-func CmpSubMapOf(t TestingT, got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func CmpSubMapOf(t TestingT, got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 CmpSubMapOf is a shortcut for:
@@ -151,7 +151,7 @@ reason of a potential failure.
 ## T.SubMapOf shortcut
 
 ```go
-func (t *T) SubMapOf(got interface{}, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func (t *T) SubMapOf(got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
 ```
 
 [`SubMapOf`]({{< ref "SubMapOf" >}}) is a shortcut for:

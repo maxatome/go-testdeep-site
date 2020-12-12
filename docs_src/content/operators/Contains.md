@@ -260,7 +260,7 @@ td.Cmp(t, hash, td.Contains(td.Nil()))    // succeeds
 ## CmpContains shortcut
 
 ```go
-func CmpContains(t TestingT, got interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpContains(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpContains is a shortcut for:
@@ -430,7 +430,7 @@ reason of a potential failure.
 ## T.Contains shortcut
 
 ```go
-func (t *T) Contains(got interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) Contains(got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 [`Contains`]({{< ref "Contains" >}}) is a shortcut for:

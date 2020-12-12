@@ -54,7 +54,7 @@ pointer on the returned value (if non-`nil` of course).
 ## CmpPtr shortcut
 
 ```go
-func CmpPtr(t TestingT, got interface{}, val interface{}, args ...interface{}) bool
+func CmpPtr(t TestingT, got, val interface{}, args ...interface{}) bool
 ```
 
 CmpPtr is a shortcut for:
@@ -98,7 +98,7 @@ reason of a potential failure.
 ## T.Ptr shortcut
 
 ```go
-func (t *T) Ptr(got interface{}, val interface{}, args ...interface{}) bool
+func (t *T) Ptr(got, val interface{}, args ...interface{}) bool
 ```
 
 [`Ptr`]({{< ref "Ptr" >}}) is a shortcut for:

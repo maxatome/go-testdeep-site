@@ -62,7 +62,7 @@ td.Cmp(t, got, td.Values(td.Bag("c", "a", "b"))) // succeeds
 ## CmpValues shortcut
 
 ```go
-func CmpValues(t TestingT, got interface{}, val interface{}, args ...interface{}) bool
+func CmpValues(t TestingT, got, val interface{}, args ...interface{}) bool
 ```
 
 CmpValues is a shortcut for:
@@ -118,7 +118,7 @@ reason of a potential failure.
 ## T.Values shortcut
 
 ```go
-func (t *T) Values(got interface{}, val interface{}, args ...interface{}) bool
+func (t *T) Values(got, val interface{}, args ...interface{}) bool
 ```
 
 [`Values`]({{< ref "Values" >}}) is a shortcut for:

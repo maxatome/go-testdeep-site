@@ -58,7 +58,7 @@ td.Cmp(t, got, td.MapEach(td.Len(3))) // succeeds as values are 3 chars long
 ## CmpMapEach shortcut
 
 ```go
-func CmpMapEach(t TestingT, got interface{}, expectedValue interface{}, args ...interface{}) bool
+func CmpMapEach(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 CmpMapEach is a shortcut for:
@@ -119,7 +119,7 @@ reason of a potential failure.
 ## T.MapEach shortcut
 
 ```go
-func (t *T) MapEach(got interface{}, expectedValue interface{}, args ...interface{}) bool
+func (t *T) MapEach(got, expectedValue interface{}, args ...interface{}) bool
 ```
 
 [`MapEach`]({{< ref "MapEach" >}}) is a shortcut for:

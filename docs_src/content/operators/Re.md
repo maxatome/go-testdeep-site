@@ -157,7 +157,7 @@ td.Cmp(t, "John Doe",
 ## CmpRe shortcut
 
 ```go
-func CmpRe(t TestingT, got interface{}, reg interface{}, capture interface{}, args ...interface{}) bool
+func CmpRe(t TestingT, got, reg , capture interface{}, args ...interface{}) bool
 ```
 
 CmpRe is a shortcut for:
@@ -311,7 +311,7 @@ reason of a potential failure.
 ## T.Re shortcut
 
 ```go
-func (t *T) Re(got interface{}, reg interface{}, capture interface{}, args ...interface{}) bool
+func (t *T) Re(got, reg , capture interface{}, args ...interface{}) bool
 ```
 
 [`Re`]({{< ref "Re" >}}) is a shortcut for:

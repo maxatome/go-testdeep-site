@@ -71,7 +71,7 @@ td.Cmp(t, gotSlice, td.Cap(td.Between(3, 4)))
 ## CmpCap shortcut
 
 ```go
-func CmpCap(t TestingT, got interface{}, expectedCap interface{}, args ...interface{}) bool
+func CmpCap(t TestingT, got, expectedCap interface{}, args ...interface{}) bool
 ```
 
 CmpCap is a shortcut for:
@@ -139,7 +139,7 @@ reason of a potential failure.
 ## T.Cap shortcut
 
 ```go
-func (t *T) Cap(got interface{}, expectedCap interface{}, args ...interface{}) bool
+func (t *T) Cap(got, expectedCap interface{}, args ...interface{}) bool
 ```
 
 [`Cap`]({{< ref "Cap" >}}) is a shortcut for:
