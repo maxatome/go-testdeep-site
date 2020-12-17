@@ -13,14 +13,13 @@ allows [golang](https://golang.org/) extremely flexible deep
 comparison. It is built for testing.
 
 {{< display-inline >}}
-[![GoLines](https://img.shields.io/badge/25196-lines_of_go-brightgreen)](https://github.com/maxatome/go-testdeep)
+[![GoLines](https://img.shields.io/badge/27020-lines_of_go-brightgreen)](https://github.com/maxatome/go-testdeep)
 [![Coverage Status](https://coveralls.io/repos/github/maxatome/go-testdeep/badge.svg?branch=master)](https://coveralls.io/github/maxatome/go-testdeep?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/maxatome/go-testdeep)](https://goreportcard.com/report/github.com/maxatome/go-testdeep)
-[![Releases](https://img.shields.io/badge/%23%20releases-18-blueviolet)](https://github.com/maxatome/go-testdeep/releases)
-[![Version](https://img.shields.io/github/tag/maxatome/go-testdeep.svg)](https://github.com/maxatome/go-testdeep/releases/tag/v1.7.0)
+[![Releases](https://img.shields.io/badge/%23%20releases-19-blueviolet)](https://github.com/maxatome/go-testdeep/releases)
+[![Version](https://img.shields.io/github/tag/maxatome/go-testdeep.svg)](https://github.com/maxatome/go-testdeep/releases/tag/v1.8.0)
 {{< /display-inline >}}
 
 ![logo](images/logo.png)
 
 ## ← use the right menu to navigate. A good starting point is [the introduction]({{< ref "introduction" >}}) or the [presentation](/prez)
-
