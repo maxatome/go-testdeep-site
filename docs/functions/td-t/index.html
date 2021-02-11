@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.78.2">
+<meta name=generator content="Hugo 0.80.0">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>td.T :: go-testdeep</title>
-<link href=/css/nucleus.css?1608192471 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1608192471 rel=stylesheet>
-<link href=/css/hybrid.css?1608192471 rel=stylesheet>
-<link href=/css/featherlight.min.css?1608192471 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1608192471 rel=stylesheet>
-<link href=/css/auto-complete.css?1608192471 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1608192471 rel=stylesheet>
-<link href=/css/theme.css?1608192471 rel=stylesheet>
-<link href=/css/hugo-theme.css?1608192471 rel=stylesheet>
-<link href=/css/theme-green.css?1608192471 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1608192471></script>
+<link href=/css/nucleus.css?1613075535 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1613075535 rel=stylesheet>
+<link href=/css/hybrid.css?1613075535 rel=stylesheet>
+<link href=/css/featherlight.min.css?1613075535 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1613075535 rel=stylesheet>
+<link href=/css/auto-complete.css?1613075535 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1613075535 rel=stylesheet>
+<link href=/css/theme.css?1613075535 rel=stylesheet>
+<link href=/css/hugo-theme.css?1613075535 rel=stylesheet>
+<link href=/css/theme-green.css?1613075535 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1613075535></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1608192471></script>
-<script type=text/javascript src=/js/auto-complete.js?1608192471></script>
+<script type=text/javascript src=/js/lunr.min.js?1613075535></script>
+<script type=text/javascript src=/js/auto-complete.js?1613075535></script>
 <script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1608192471></script>
+<script type=text/javascript src=/js/search.js?1613075535></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -474,6 +474,7 @@ FAQ
 <li><a href=#main-methods-of-tdt>Main methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
 <li><a href=#anchoring-methods-of-tdt>Anchoring methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
 <li><a href=#shortcut-methods-of-tdt>Shortcut methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
+<li><a href=#comparison-hooks>Comparison hooks</a></li>
 </ul>
 </li>
 </ul>
@@ -545,7 +546,7 @@ td.T
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not><code>func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool</code></a>
 (in fact the shortcut of <a href=/operators/not/><code>Not</code> operator</a>)</li>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run><code>func (t *T) Run(name string, f func(t *T)) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire><code>func (t *T) RunAssertRequire(name string, f func(assert *T, require *T)) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire><code>func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool</code></a></li>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True><code>func (t *T) True(got interface{}, args ...interface{}) bool</code></a></li>
 </ul>
 <p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply><code>CmpDeeply()</code></a>
@@ -583,6 +584,24 @@ the correponding <a href=/operators/>Testdeep operator</a>:</p>
 shortcut method stays <a href=/operators/lax/#cmplax-shortcut><code>CmpLax</code></a>.</p>
 <p>Each shortcut method is described in the corresponding operator
 page. See <a href=/operators/>operators list</a>.</p>
+<h3 id=comparison-hooks>Comparison hooks</h3>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestCmpHook</span>(tt *testing.T) {
+  t := td.<span style=color:#447fcf>NewT</span>(tt)
+
+  <span style=color:#999;font-style:italic>// Test time.Time via its Equal() method instead of default
+</span><span style=color:#999;font-style:italic></span>  <span style=color:#999;font-style:italic>// field/field (note it bypasses the UseEqual flag)
+</span><span style=color:#999;font-style:italic></span>  t = t.<span style=color:#447fcf>WithCmpHooks</span>((time.Time).Equal)
+  date, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2020-09-08T22:13:54+02:00&#34;</span>)
+  t.<span style=color:#447fcf>Cmp</span>(date, date.<span style=color:#447fcf>UTC</span>()) <span style=color:#999;font-style:italic>// succeeds
+</span><span style=color:#999;font-style:italic></span>
+  <span style=color:#999;font-style:italic>// Each encountered string is converted to int
+</span><span style=color:#999;font-style:italic></span>  t = t.<span style=color:#447fcf>WithSmuggleHooks</span>(strconv.Atoi)
+  t.<span style=color:#447fcf>Cmp</span>(<span style=color:#ed9d13>&#34;123&#34;</span>, <span style=color:#3677a9>123</span>) <span style=color:#999;font-style:italic>// succeeds
+</span><span style=color:#999;font-style:italic></span>}
+</code></pre></div><ul>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks><code>func (t *T) WithCmpHooks(fns ...interface{}) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks><code>func (t *T) WithSmuggleHooks(fns ...interface{}) *T</code></a></li>
+</ul>
 <footer class=footline>
 </footer>
 </div>
@@ -595,18 +614,18 @@ page. See <a href=/operators/>operators list</a>.</p>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1608192471></script>
-<script src=/js/perfect-scrollbar.min.js?1608192471></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1608192471></script>
-<script src=/js/jquery.sticky.js?1608192471></script>
-<script src=/js/featherlight.min.js?1608192471></script>
-<script src=/js/highlight.pack.js?1608192471></script>
+<script src=/js/clipboard.min.js?1613075535></script>
+<script src=/js/perfect-scrollbar.min.js?1613075535></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1613075535></script>
+<script src=/js/jquery.sticky.js?1613075535></script>
+<script src=/js/featherlight.min.js?1613075535></script>
+<script src=/js/highlight.pack.js?1613075535></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1608192471></script>
-<script src=/js/learn.js?1608192471></script>
-<script src=/js/hugo-learn.js?1608192471></script>
-<link href=/mermaid/mermaid.css?1608192471 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1608192471></script>
+<script src=/js/modernizr.custom-3.6.0.js?1613075535></script>
+<script src=/js/learn.js?1613075535></script>
+<script src=/js/hugo-learn.js?1613075535></script>
+<link href=/mermaid/mermaid.css?1613075535 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1613075535></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
