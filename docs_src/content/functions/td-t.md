@@ -70,7 +70,7 @@ func TestMyFunc(tt *testing.T) {
 - [`func (t *T) Not(got interface{}, notExpected interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not)
   (in fact the shortcut of [`Not` operator]({{< ref "operators/Not" >}}))
 - [`func (t *T) Run(name string, f func(t *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run)
-- [`func (t *T) RunAssertRequire(name string, f func(assert *T, require *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire)
+- [`func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire)
 - [`func (t *T) True(got interface{}, args ...interface{}) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True)
 
 [`CmpDeeply()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply)
@@ -120,6 +120,28 @@ shortcut method stays [`CmpLax`]({{< ref "operators/Lax#cmplax-shortcut" >}}).
 
 Each shortcut method is described in the corresponding operator
 page. See [operators list]({{< ref "operators" >}}).
+
+
+### Comparison hooks
+
+```go
+func TestCmpHook(tt *testing.T) {
+  t := td.NewT(tt)
+
+  // Test time.Time via its Equal() method instead of default
+  // field/field (note it bypasses the UseEqual flag)
+  t = t.WithCmpHooks((time.Time).Equal)
+  date, _ := time.Parse(time.RFC3339, "2020-09-08T22:13:54+02:00")
+  t.Cmp(date, date.UTC()) // succeeds
+
+  // Each encountered string is converted to int
+  t = t.WithSmuggleHooks(strconv.Atoi)
+  t.Cmp("123", 123) // succeeds
+}
+```
+
+- [`func (t *T) WithCmpHooks(fns ...interface{}) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks)
+- [`func (t *T) WithSmuggleHooks(fns ...interface{}) *T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks)
 
 
 [`td.T`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T
