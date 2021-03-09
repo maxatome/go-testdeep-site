@@ -20,9 +20,10 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 *expectedJSON* JSON value can contain placeholders. The *params*
 are for any placeholder parameters in *expectedJSON*. *params* can
-contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. A placeholder can
-be numeric like `$2` or named like `$name` and always references an
-item in *params*.
+contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. Raw values are
+first [`json.Marshal`](https://pkg.go.dev/json/#Marshal)'ed then [`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed in an `interface{}`. A
+placeholder can be numeric like `$2` or named like `$name` and always
+references an item in *params*.
 
 Numeric placeholders reference the n'th "operators" item (starting
 at 1). Named placeholders are used with [`Tag`]({{< ref "Tag" >}}) operator as follows:
@@ -104,9 +105,46 @@ Comments, like in go, have 2 forms. To quote the Go language specification:
   with the first subsequent character sequence */.
 
 
-Last but not least, simple operators can be directly embedded in
-JSON data without requiring any placeholder but using directly
-`$^OperatorName`. They are operator shortcuts:
+Most operators can be directly embedded in [`JSON`]({{< ref "JSON" >}}) without requiring
+any placeholder.
+
+```go
+td.Cmp(t, gotValue,
+  td.JSON(`
+{
+  "fullname": HasPrefix("Foo"),
+  "age":      Between(41, 43),
+  "details":  SuperMapOf({
+    "address": NotEmpty(),
+    "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
+  })
+}`))
+```
+
+Placeholders can be used anywhere, even in operators parameters as in:
+
+```go
+td.Cmp(t, gotValue, td.JSON(`{"fullname": HasPrefix($1)}`, "Zip"))
+```
+
+A few notes about operators embedding:
+
+- [`SubMapOf`]({{< ref "SubMapOf" >}}) and [`SuperMapOf`]({{< ref "SuperMapOf" >}}) take only one parameter, a JSON object;
+- the optional 3rd parameter of [`Between`]({{< ref "Between" >}}) has to be specified as a `string`
+  and can be: "[]" or "[`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)" (default), "[[" or "[`BoundsInOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)",
+  "]]" or "[`BoundsOutIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)", "][" or "[`BoundsOutOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)";
+- not all operators are embeddable only the following are;
+- [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`Gt`]({{< ref "Gt" >}}),
+  [`Gte`]({{< ref "Gte" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Ignore`]({{< ref "Ignore" >}}), JSONPointer, [`Keys`]({{< ref "Keys" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}),
+  [`MapEach`]({{< ref "MapEach" >}}), [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}), [`NotNil`]({{< ref "NotNil" >}}),
+  [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubMapOf`]({{< ref "SubMapOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}),
+  [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}), [`Values`]({{< ref "Values" >}}) and [`Zero`]({{< ref "Zero" >}}).
+
+
+Operators taking no parameters can also be directly embedded in
+JSON data using `$^OperatorName` or "`$^OperatorName`" notation. They
+are named shortcut operators (they predate the above operators embedding
+but they subsist for compatibility):
 
 ```go
 td.Cmp(t, gotValue, td.JSON(`{"id": $1}`, td.NotZero()))
@@ -118,8 +156,16 @@ can be written as:
 td.Cmp(t, gotValue, td.JSON(`{"id": $^NotZero}`))
 ```
 
-Unfortunately, only simple operators (in fact those which take no
-parameters) have shortcuts. They follow:
+or
+
+```go
+td.Cmp(t, gotValue, td.JSON(`{"id": "$^NotZero"}`))
+```
+
+As for placeholders, there is no differences between `$^NotZero` and
+"`$^NotZero`".
+
+The allowed shortcut operators follow:
 
 - [`Empty`]({{< ref "Empty" >}})    → `$^Empty`
 - [`Ignore`]({{< ref "Ignore" >}})   → `$^Ignore`
@@ -229,15 +275,55 @@ parameters) have shortcuts. They follow:
 			td.Tag("name", td.HasSuffix("Foobar"))))
 	fmt.Println("check got with named placeholders:", ok)
 
-	ok = td.Cmp(t, got, td.JSON(`{"age": $^NotZero, "fullname": $^NotEmpty}`))
-	fmt.Println("check got with operator shortcuts:", ok)
-
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+
+```{{% /expand%}}
+{{%expand "Embedding example" %}}```go
+	t := &testing.T{}
+
+	got := &struct {
+		Fullname string `json:"fullname"`
+		Age      int    `json:"age"`
+	}{
+		Fullname: "Bob Foobar",
+		Age:      42,
+	}
+
+	ok := td.Cmp(t, got, td.JSON(`{"age": NotZero(), "fullname": NotEmpty()}`))
+	fmt.Println("check got with simple operators:", ok)
+
+	ok = td.Cmp(t, got, td.JSON(`{"age": $^NotZero, "fullname": $^NotEmpty}`))
+	fmt.Println("check got with operator shortcuts:", ok)
+
+	ok = td.Cmp(t, got, td.JSON(`
+{
+  "age":      Between(40, 42, "]]"), // in ]40; 42]
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar")  // ← comma is optional here
+  )
+}`))
+	fmt.Println("check got with complex operators:", ok)
+
+	ok = td.Cmp(t, got, td.JSON(`
+{
+  "age":      Between(40, 42, "]["), // in ]40; 42[ → 42 excluded
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar"),
+  )
+}`))
+	fmt.Println("check got with complex operators:", ok)
+
+	// Output:
+	// check got with simple operators: true
 	// check got with operator shortcuts: true
+	// check got with complex operators: true
+	// check got with complex operators: false
 
 ```{{% /expand%}}
 {{%expand "File example" %}}```go
@@ -400,15 +486,55 @@ reason of a potential failure.
 	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
-	ok = td.CmpJSON(t, got, `{"age": $^NotZero, "fullname": $^NotEmpty}`, nil)
-	fmt.Println("check got with operator shortcuts:", ok)
-
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+
+```{{% /expand%}}
+{{%expand "Embedding example" %}}```go
+	t := &testing.T{}
+
+	got := &struct {
+		Fullname string `json:"fullname"`
+		Age      int    `json:"age"`
+	}{
+		Fullname: "Bob Foobar",
+		Age:      42,
+	}
+
+	ok := td.CmpJSON(t, got, `{"age": NotZero(), "fullname": NotEmpty()}`, nil)
+	fmt.Println("check got with simple operators:", ok)
+
+	ok = td.CmpJSON(t, got, `{"age": $^NotZero, "fullname": $^NotEmpty}`, nil)
+	fmt.Println("check got with operator shortcuts:", ok)
+
+	ok = td.CmpJSON(t, got, `
+{
+  "age":      Between(40, 42, "]]"), // in ]40; 42]
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar")  // ← comma is optional here
+  )
+}`, nil)
+	fmt.Println("check got with complex operators:", ok)
+
+	ok = td.CmpJSON(t, got, `
+{
+  "age":      Between(40, 42, "]["), // in ]40; 42[ → 42 excluded
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar"),
+  )
+}`, nil)
+	fmt.Println("check got with complex operators:", ok)
+
+	// Output:
+	// check got with simple operators: true
 	// check got with operator shortcuts: true
+	// check got with complex operators: true
+	// check got with complex operators: false
 
 ```{{% /expand%}}
 {{%expand "File example" %}}```go
@@ -563,15 +689,55 @@ reason of a potential failure.
 	ok = t.JSON(got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
-	ok = t.JSON(got, `{"age": $^NotZero, "fullname": $^NotEmpty}`, nil)
-	fmt.Println("check got with operator shortcuts:", ok)
-
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+
+```{{% /expand%}}
+{{%expand "Embedding example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	got := &struct {
+		Fullname string `json:"fullname"`
+		Age      int    `json:"age"`
+	}{
+		Fullname: "Bob Foobar",
+		Age:      42,
+	}
+
+	ok := t.JSON(got, `{"age": NotZero(), "fullname": NotEmpty()}`, nil)
+	fmt.Println("check got with simple operators:", ok)
+
+	ok = t.JSON(got, `{"age": $^NotZero, "fullname": $^NotEmpty}`, nil)
+	fmt.Println("check got with operator shortcuts:", ok)
+
+	ok = t.JSON(got, `
+{
+  "age":      Between(40, 42, "]]"), // in ]40; 42]
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar")  // ← comma is optional here
+  )
+}`, nil)
+	fmt.Println("check got with complex operators:", ok)
+
+	ok = t.JSON(got, `
+{
+  "age":      Between(40, 42, "]["), // in ]40; 42[ → 42 excluded
+  "fullname": All(
+    HasPrefix("Bob"),
+    HasSuffix("bar"),
+  )
+}`, nil)
+	fmt.Println("check got with complex operators:", ok)
+
+	// Output:
+	// check got with simple operators: true
 	// check got with operator shortcuts: true
+	// check got with complex operators: true
+	// check got with complex operators: false
 
 ```{{% /expand%}}
 {{%expand "File example" %}}```go

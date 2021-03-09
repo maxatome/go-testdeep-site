@@ -91,17 +91,17 @@ func TestMyApi(t *testing.T) {
     CmpJSONBody(td.JSON(`
 // Note that comments are allowed
 {
-  "id":         $id,          // set by the API/DB
-  "name":       "Bob",
-  "age":        42,
-  "created_at": "$createdAt", // set by the API/DB
+  "id":         $id,             // set by the API/DB
+  "name":       "Alice",
+  "age":        Between(40, 45), // ← ④
+  "created_at": "$createdAt",    // set by the API/DB
 }`,
-      td.Tag("id", td.Catch(&id, td.NotZero())),        // ← ④
-      td.Tag("created_at", td.All(                      // ← ⑤
-        td.HasSuffix("Z"),                              // ← ⑥
-        td.Smuggle(func(s string) (time.Time, error) {  // ← ⑦
+      td.Tag("id", td.Catch(&id, td.NotZero())),        // ← ⑤
+      td.Tag("created_at", td.All(                      // ← ⑥
+        td.HasSuffix("Z"),                              // ← ⑦
+        td.Smuggle(func(s string) (time.Time, error) {  // ← ⑧
           return time.Parse(time.RFC3339Nano, s)
-        }, td.Catch(&createdAt, td.Between(testAPI.SentAt(), time.Now()))), // ← ⑧
+        }, td.Catch(&createdAt, td.Between(testAPI.SentAt(), time.Now()))), // ← ⑨
       )),
     ))
   if !testAPI.Failed() {
@@ -115,6 +115,7 @@ func TestMyApi(t *testing.T) {
 1. the expected response HTTP status should be `http.StatusCreated`
    and the line just below, the body should match the
    [`JSON`]({{< ref "JSON" >}}) operator;
+1. some operators can be embedded, like [`Between`] here;
 1. for the `$id` placeholder, [`Catch`]({{< ref "Catch" >}}) its
    value: put it in `id` variable and check it is
    [`NotZero`]({{< ref "NotZero" >}});
@@ -138,7 +139,7 @@ Example of produced error in case of mismatch:
 
 ## Description
 
-go-testdeep is a go rewrite and adaptation of wonderful
+go-testdeep is historically a go rewrite and adaptation of wonderful
 [Test::Deep perl](https://metacpan.org/pod/Test::Deep).
 
 In golang, comparing data structure is usually done using
