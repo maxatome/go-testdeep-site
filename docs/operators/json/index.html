@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>JSON :: go-testdeep</title>
-<link href=/css/nucleus.css?1613075535 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1613075535 rel=stylesheet>
-<link href=/css/hybrid.css?1613075535 rel=stylesheet>
-<link href=/css/featherlight.min.css?1613075535 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1613075535 rel=stylesheet>
-<link href=/css/auto-complete.css?1613075535 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1613075535 rel=stylesheet>
-<link href=/css/theme.css?1613075535 rel=stylesheet>
-<link href=/css/hugo-theme.css?1613075535 rel=stylesheet>
-<link href=/css/theme-green.css?1613075535 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1613075535></script>
+<link href=/css/nucleus.css?1615328764 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1615328764 rel=stylesheet>
+<link href=/css/hybrid.css?1615328764 rel=stylesheet>
+<link href=/css/featherlight.min.css?1615328764 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1615328764 rel=stylesheet>
+<link href=/css/auto-complete.css?1615328764 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1615328764 rel=stylesheet>
+<link href=/css/theme.css?1615328764 rel=stylesheet>
+<link href=/css/hugo-theme.css?1615328764 rel=stylesheet>
+<link href=/css/theme-green.css?1615328764 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1615328764></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1613075535></script>
-<script type=text/javascript src=/js/auto-complete.js?1613075535></script>
+<script type=text/javascript src=/js/lunr.min.js?1615328764></script>
+<script type=text/javascript src=/js/auto-complete.js?1615328764></script>
 <script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1613075535></script>
+<script type=text/javascript src=/js/search.js?1615328764></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -438,6 +438,9 @@ FAQ
 <a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><i class="fas fa-book"></i>&nbsp;godoc API tester — tdhttp</a>
 </li>
 <li>
+<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><i class="fas fa-book"></i>&nbsp;godoc API tester — tdsuite</a>
+</li>
+<li>
 <a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><i class="fas fa-book"></i>&nbsp;godoc helpers utils — tdutil</a>
 </li>
 </ul>
@@ -507,9 +510,10 @@ unmarshaling)</li>
 </ul>
 <p><em>expectedJSON</em> JSON value can contain placeholders. The <em>params</em>
 are for any placeholder parameters in <em>expectedJSON</em>. <em>params</em> can
-contain <a href=/operators/>TestDeep operators</a> as well as raw values. A placeholder can
-be numeric like <code>$2</code> or named like <code>$name</code> and always references an
-item in <em>params</em>.</p>
+contain <a href=/operators/>TestDeep operators</a> as well as raw values. Raw values are
+first <a href=https://pkg.go.dev/json/#Marshal><code>json.Marshal</code></a>&lsquo;ed then <a href=https://pkg.go.dev/json/#Unmarshal><code>json.Unmarshal</code></a>&lsquo;ed in an <code>interface{}</code>. A
+placeholder can be numeric like <code>$2</code> or named like <code>$name</code> and always
+references an item in <em>params</em>.</p>
 <p>Numeric placeholders reference the n&rsquo;th &ldquo;operators&rdquo; item (starting
 at 1). Named placeholders are used with <a href=/operators/tag/><code>Tag</code></a> operator as follows:</p>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
@@ -565,14 +569,45 @@ end of the line.</li>
 <li>multi-lines comments start with the character sequence /* and stop
 with the first subsequent character sequence */.</li>
 </ul>
-<p>Last but not least, simple operators can be directly embedded in
-JSON data without requiring any placeholder but using directly
-<code>$^OperatorName</code>. They are operator shortcuts:</p>
+<p>Most operators can be directly embedded in <a href=/operators/json/><code>JSON</code></a> without requiring
+any placeholder.</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: HasPrefix(&#34;Foo&#34;),
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(41, 43),
+</span><span style=color:#ed9d13>  &#34;details&#34;:  SuperMapOf({
+</span><span style=color:#ed9d13>    &#34;address&#34;: NotEmpty(),
+</span><span style=color:#ed9d13>    &#34;car&#34;:     Any(&#34;Peugeot&#34;, &#34;Tesla&#34;, &#34;Jeep&#34;) // any of these
+</span><span style=color:#ed9d13>  })
+</span><span style=color:#ed9d13>}`</span>))
+</code></pre></div><p>Placeholders can be used anywhere, even in operators parameters as in:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: HasPrefix($1)}`</span>, <span style=color:#ed9d13>&#34;Zip&#34;</span>))
+</code></pre></div><p>A few notes about operators embedding:</p>
+<ul>
+<li><a href=/operators/submapof/><code>SubMapOf</code></a> and <a href=/operators/supermapof/><code>SuperMapOf</code></a> take only one parameter, a JSON object;</li>
+<li>the optional 3rd parameter of <a href=/operators/between/><code>Between</code></a> has to be specified as a <code>string</code>
+and can be: &ldquo;[]&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInIn</code></a>&rdquo; (default), &ldquo;[[&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInOut</code></a>&rdquo;,
+&ldquo;]]&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsOutIn</code></a>&rdquo;, &ldquo;][&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsOutOut</code></a>";</li>
+<li>not all operators are embeddable only the following are;</li>
+<li><a href=/operators/all/><code>All</code></a>, <a href=/operators/any/><code>Any</code></a>, <a href=/operators/arrayeach/><code>ArrayEach</code></a>, <a href=/operators/bag/><code>Bag</code></a>, <a href=/operators/between/><code>Between</code></a>, <a href=/operators/contains/><code>Contains</code></a>, <a href=/operators/containskey/><code>ContainsKey</code></a>, <a href=/operators/empty/><code>Empty</code></a>, <a href=/operators/gt/><code>Gt</code></a>,
+<a href=/operators/gte/><code>Gte</code></a>, <a href=/operators/hasprefix/><code>HasPrefix</code></a>, <a href=/operators/hassuffix/><code>HasSuffix</code></a>, <a href=/operators/ignore/><code>Ignore</code></a>, JSONPointer, <a href=/operators/keys/><code>Keys</code></a>, <a href=/operators/len/><code>Len</code></a>, <a href=/operators/lt/><code>Lt</code></a>, <a href=/operators/lte/><code>Lte</code></a>,
+<a href=/operators/mapeach/><code>MapEach</code></a>, <a href=/operators/n/><code>N</code></a>, <a href=/operators/nan/><code>NaN</code></a>, <a href=/operators/nil/><code>Nil</code></a>, <a href=/operators/none/><code>None</code></a>, <a href=/operators/not/><code>Not</code></a>, <a href=/operators/notany/><code>NotAny</code></a>, <a href=/operators/notempty/><code>NotEmpty</code></a>, <a href=/operators/notnan/><code>NotNaN</code></a>, <a href=/operators/notnil/><code>NotNil</code></a>,
+<a href=/operators/notzero/><code>NotZero</code></a>, <a href=/operators/re/><code>Re</code></a>, <a href=/operators/reall/><code>ReAll</code></a>, <a href=/operators/set/><code>Set</code></a>, <a href=/operators/subbagof/><code>SubBagOf</code></a>, <a href=/operators/submapof/><code>SubMapOf</code></a>, <a href=/operators/subsetof/><code>SubSetOf</code></a>, <a href=/operators/superbagof/><code>SuperBagOf</code></a>,
+<a href=/operators/supermapof/><code>SuperMapOf</code></a>, <a href=/operators/supersetof/><code>SuperSetOf</code></a>, <a href=/operators/values/><code>Values</code></a> and <a href=/operators/zero/><code>Zero</code></a>.</li>
+</ul>
+<p>Operators taking no parameters can also be directly embedded in
+JSON data using <code>$^OperatorName</code> or &ldquo;<code>$^OperatorName</code>&rdquo; notation. They
+are named shortcut operators (they predate the above operators embedding
+but they subsist for compatibility):</p>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
 </code></pre></div><p>can be written as:</p>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero}`</span>))
-</code></pre></div><p>Unfortunately, only simple operators (in fact those which take no
-parameters) have shortcuts. They follow:</p>
+</code></pre></div><p>or</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;}`</span>))
+</code></pre></div><p>As for placeholders, there is no differences between <code>$^NotZero</code> and
+&ldquo;<code>$^NotZero</code>&rdquo;.</p>
+<p>The allowed shortcut operators follow:</p>
 <ul>
 <li><a href=/operators/empty/><code>Empty</code></a> → <code>$^Empty</code></li>
 <li><a href=/operators/ignore/><code>Ignore</code></a> → <code>$^Ignore</code></li>
@@ -696,15 +731,64 @@ Placeholders example
 			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
-	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>))
-	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
-
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Embedding example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+	}{
+		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
+		Age:      <span style=color:#3677a9>42</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;age&#34;: NotZero(), &#34;fullname&#34;: NotEmpty()}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with simple operators:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;]]&#34;), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;][&#34;), // in ]40; 42[ → 42 excluded
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;),
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -883,15 +967,64 @@ Placeholders example
 	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
-	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
-	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
-
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Embedding example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+	}{
+		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
+		Age:      <span style=color:#3677a9>42</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: NotZero(), &#34;fullname&#34;: NotEmpty()}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with simple operators:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;]]&#34;), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;][&#34;), // in ]40; 42[ → 42 excluded
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;),
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1062,15 +1195,64 @@ Placeholders example
 	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
-	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
-	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
-
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Embedding example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+
+	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+	}{
+		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
+		Age:      <span style=color:#3677a9>42</span>,
+	}
+
+	ok := t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: NotZero(), &#34;fullname&#34;: NotEmpty()}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with simple operators:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: $^NotZero, &#34;fullname&#34;: $^NotEmpty}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with operator shortcuts:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;]]&#34;), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(40, 42, &#34;][&#34;), // in ]40; 42[ → 42 excluded
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix(&#34;Bob&#34;),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;),
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1142,18 +1324,18 @@ File example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1613075535></script>
-<script src=/js/perfect-scrollbar.min.js?1613075535></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1613075535></script>
-<script src=/js/jquery.sticky.js?1613075535></script>
-<script src=/js/featherlight.min.js?1613075535></script>
-<script src=/js/highlight.pack.js?1613075535></script>
+<script src=/js/clipboard.min.js?1615328764></script>
+<script src=/js/perfect-scrollbar.min.js?1615328764></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1615328764></script>
+<script src=/js/jquery.sticky.js?1615328764></script>
+<script src=/js/featherlight.min.js?1615328764></script>
+<script src=/js/highlight.pack.js?1615328764></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1613075535></script>
-<script src=/js/learn.js?1613075535></script>
-<script src=/js/hugo-learn.js?1613075535></script>
-<link href=/mermaid/mermaid.css?1613075535 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1613075535></script>
+<script src=/js/modernizr.custom-3.6.0.js?1615328764></script>
+<script src=/js/learn.js?1615328764></script>
+<script src=/js/hugo-learn.js?1615328764></script>
+<link href=/mermaid/mermaid.css?1615328764 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1615328764></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
