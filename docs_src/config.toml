@@ -44,7 +44,7 @@ url = "https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp"
 weight = 20
 
 [[menu.shortcuts]]
-name = "<i class='fas fa-book'></i>&nbsp;godoc API tester — tdsuite"
+name = "<i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite"
 identifier = "godoc-tdsuite"
 url = "https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite"
 weight = 25
