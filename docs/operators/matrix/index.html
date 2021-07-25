@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.80.0">
+<meta name=generator content="Hugo 0.84.4">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Operators matrices :: go-testdeep</title>
-<link href=/css/nucleus.css?1615881234 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1615881234 rel=stylesheet>
-<link href=/css/hybrid.css?1615881234 rel=stylesheet>
-<link href=/css/featherlight.min.css?1615881234 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1615881234 rel=stylesheet>
-<link href=/css/auto-complete.css?1615881234 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1615881234 rel=stylesheet>
-<link href=/css/theme.css?1615881234 rel=stylesheet>
-<link href=/css/hugo-theme.css?1615881234 rel=stylesheet>
-<link href=/css/theme-green.css?1615881234 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1615881234></script>
+<link href=/css/nucleus.css?1627198239 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1627198239 rel=stylesheet>
+<link href=/css/hybrid.css?1627198239 rel=stylesheet>
+<link href=/css/featherlight.min.css?1627198239 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1627198239 rel=stylesheet>
+<link href=/css/auto-complete.css?1627198239 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1627198239 rel=stylesheet>
+<link href=/css/theme.css?1627198239 rel=stylesheet>
+<link href=/css/hugo-theme.css?1627198239 rel=stylesheet>
+<link href=/css/theme-green.css?1627198239 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1627198239></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1615881234></script>
-<script type=text/javascript src=/js/auto-complete.js?1615881234></script>
-<script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1615881234></script>
+<script type=text/javascript src=/js/lunr.min.js?1627198239></script>
+<script type=text/javascript src=/js/auto-complete.js?1627198239></script>
+<script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
+<script type=text/javascript src=/js/search.js?1627198239></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -387,6 +387,11 @@ SuperMapOf
 <li data-nav-id=/operators/supersetof/ title=SuperSetOf class=dd-item>
 <a href=/operators/supersetof/>
 SuperSetOf
+</a>
+</li>
+<li data-nav-id=/operators/supersliceof/ title=SuperSliceOf class=dd-item>
+<a href=/operators/supersliceof/>
+SuperSliceOf
 </a>
 </li>
 <li data-nav-id=/operators/tag/ title=Tag class=dd-item>
@@ -1671,6 +1676,24 @@ Operators matrices
 <td><a href=/operators/supersetof/><code>SuperSetOf</code></a></td>
 </tr>
 <tr>
+<td><a href=/operators/supersliceof/><code>SuperSliceOf</code></a></td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>ptr on array/slice</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td><a href=/operators/supersliceof/><code>SuperSliceOf</code></a></td>
+</tr>
+<tr>
 <td><a href=/operators/tag/><code>Tag</code></a></td>
 <td>✓</td>
 <td>✓</td>
@@ -1706,24 +1729,6 @@ Operators matrices
 <td>✗</td>
 <td><a href=/operators/trunctime/><code>TruncTime</code></a></td>
 </tr>
-<tr>
-<td><a href=/operators/values/><code>Values</code></a></td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✗</td>
-<td>✓</td>
-<td>✗</td>
-<td>✗</td>
-<td>✓</td>
-<td>✗</td>
-<td>✗</td>
-<td><a href=/operators/values/><code>Values</code></a></td>
-</tr>
 </tbody>
 </table>
 <table>
@@ -1748,6 +1753,24 @@ Operators matrices
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href=/operators/values/><code>Values</code></a></td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td><a href=/operators/values/><code>Values</code></a></td>
+</tr>
 <tr>
 <td><a href=/operators/zero/><code>Zero</code></a></td>
 <td>✓</td>
@@ -1951,6 +1974,7 @@ using this operator with this go type can succeed</li>
 <li><a href=/operators/subsetof/><code>SubSetOf</code></a></li>
 <li><a href=/operators/superbagof/><code>SuperBagOf</code></a></li>
 <li><a href=/operators/supersetof/><code>SuperSetOf</code></a></li>
+<li><a href=/operators/supersliceof/><code>SuperSliceOf</code></a></li>
 <li><a href=/operators/tag/><code>Tag</code></a></li>
 <li><a href=/operators/zero/><code>Zero</code></a></li>
 </ul>
@@ -1992,6 +2016,7 @@ using this operator with this go type can succeed</li>
 <li><a href=/operators/subsetof/><code>SubSetOf</code></a></li>
 <li><a href=/operators/superbagof/><code>SuperBagOf</code></a></li>
 <li><a href=/operators/supersetof/><code>SuperSetOf</code></a></li>
+<li><a href=/operators/supersliceof/><code>SuperSliceOf</code></a></li>
 <li><a href=/operators/tag/><code>Tag</code></a></li>
 <li><a href=/operators/zero/><code>Zero</code></a></li>
 </ul>
@@ -2111,6 +2136,7 @@ listed below:</p>
 <li><a href=/operators/superjsonof/><code>SuperJSONOf</code></a> only ptr on map/struct</li>
 <li><a href=/operators/supermapof/><code>SuperMapOf</code></a> only ptr on map</li>
 <li><a href=/operators/supersetof/><code>SuperSetOf</code></a> only ptr on array/slice</li>
+<li><a href=/operators/supersliceof/><code>SuperSliceOf</code></a> only ptr on array/slice</li>
 <li><a href=/operators/tag/><code>Tag</code></a></li>
 <li><a href=/operators/zero/><code>Zero</code></a></li>
 </ul>
@@ -2170,18 +2196,18 @@ listed below:</p>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1615881234></script>
-<script src=/js/perfect-scrollbar.min.js?1615881234></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1615881234></script>
-<script src=/js/jquery.sticky.js?1615881234></script>
-<script src=/js/featherlight.min.js?1615881234></script>
-<script src=/js/highlight.pack.js?1615881234></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1615881234></script>
-<script src=/js/learn.js?1615881234></script>
-<script src=/js/hugo-learn.js?1615881234></script>
-<link href=/mermaid/mermaid.css?1615881234 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1615881234></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+<script src=/js/clipboard.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1627198239></script>
+<script src=/js/jquery.sticky.js?1627198239></script>
+<script src=/js/featherlight.min.js?1627198239></script>
+<script src=/js/highlight.pack.js?1627198239></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1627198239></script>
+<script src=/js/learn.js?1627198239></script>
+<script src=/js/hugo-learn.js?1627198239></script>
+<link href=/mermaid/mermaid.css?1627198239 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1627198239></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

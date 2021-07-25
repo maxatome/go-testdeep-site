@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.80.0">
+<meta name=generator content="Hugo 0.84.4">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Smuggle :: go-testdeep</title>
-<link href=/css/nucleus.css?1615881235 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1615881235 rel=stylesheet>
-<link href=/css/hybrid.css?1615881235 rel=stylesheet>
-<link href=/css/featherlight.min.css?1615881235 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1615881235 rel=stylesheet>
-<link href=/css/auto-complete.css?1615881235 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1615881235 rel=stylesheet>
-<link href=/css/theme.css?1615881235 rel=stylesheet>
-<link href=/css/hugo-theme.css?1615881235 rel=stylesheet>
-<link href=/css/theme-green.css?1615881235 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1615881235></script>
+<link href=/css/nucleus.css?1627198239 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1627198239 rel=stylesheet>
+<link href=/css/hybrid.css?1627198239 rel=stylesheet>
+<link href=/css/featherlight.min.css?1627198239 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1627198239 rel=stylesheet>
+<link href=/css/auto-complete.css?1627198239 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1627198239 rel=stylesheet>
+<link href=/css/theme.css?1627198239 rel=stylesheet>
+<link href=/css/hugo-theme.css?1627198239 rel=stylesheet>
+<link href=/css/theme-green.css?1627198239 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1627198239></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1615881235></script>
-<script type=text/javascript src=/js/auto-complete.js?1615881235></script>
-<script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1615881235></script>
+<script type=text/javascript src=/js/lunr.min.js?1627198239></script>
+<script type=text/javascript src=/js/auto-complete.js?1627198239></script>
+<script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
+<script type=text/javascript src=/js/search.js?1627198239></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -389,6 +389,11 @@ SuperMapOf
 SuperSetOf
 </a>
 </li>
+<li data-nav-id=/operators/supersliceof/ title=SuperSliceOf class=dd-item>
+<a href=/operators/supersliceof/>
+SuperSliceOf
+</a>
+</li>
 <li data-nav-id=/operators/tag/ title=Tag class=dd-item>
 <a href=/operators/tag/>
 Tag
@@ -607,26 +612,34 @@ when the second boolean returned value is true.</p>
 </code></pre></div><p><a href=/operators/smuggle/><code>Smuggle</code></a> can also be used to access a struct field embedded in
 several struct layers.</p>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ Num <span style=color:#6ab825;font-weight:700>int</span> }
-<span style=color:#6ab825;font-weight:700>type</span> B <span style=color:#6ab825;font-weight:700>struct</span>{ A *A }
+<span style=color:#6ab825;font-weight:700>type</span> B <span style=color:#6ab825;font-weight:700>struct</span>{ As <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*A }
 <span style=color:#6ab825;font-weight:700>type</span> C <span style=color:#6ab825;font-weight:700>struct</span>{ B B }
-got := C{B: B{A: &amp;A{Num: <span style=color:#3677a9>12</span>}}}
+got := C{B: B{As: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*A{<span style=color:#ed9d13>&#34;foo&#34;</span>: {Num: <span style=color:#3677a9>12</span>}}}}
 
 <span style=color:#999;font-style:italic>// Tests that got.B.A.Num is 12
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(c C) <span style=color:#6ab825;font-weight:700>int</span> {
-    <span style=color:#6ab825;font-weight:700>return</span> c.B.A.Num
+    <span style=color:#6ab825;font-weight:700>return</span> c.B.As[<span style=color:#ed9d13>&#34;foo&#34;</span>].Num
   }, <span style=color:#3677a9>12</span>))
-</code></pre></div><p>As brought up above, a field-path can be passed as <em>fn</em> value
+</code></pre></div><p>As brought up above, a fields-path can be passed as <em>fn</em> value
 instead of a function pointer. Using this feature, the Cmp
 call in the above example can be rewritten as follows:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Tests that got.B.A.Num is 12
-</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.A.Num&#34;</span>, <span style=color:#3677a9>12</span>))
-</code></pre></div><p>Contrary to JSONPointer operator, private fields can be followed
-but not maps nor slices items.</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Tests that got.B.As[&#34;foo&#34;].Num is 12
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.As[foo].Num&#34;</span>, <span style=color:#3677a9>12</span>))
+</code></pre></div><p>Contrary to JSONPointer operator, private fields can be
+followed. Arrays, slices and maps work using the index/key inside
+square brackets (e.g. [12] or [foo]). Maps work only for simple key
+types (<code>string</code> or numbers), without "" when using strings
+(e.g. [foo]).</p>
 <p>Behind the scenes, a temporary function is automatically created to
 achieve the same goal, but add some checks against <code>nil</code> values and
-auto-dereference interfaces and pointers.</p>
-<p>The difference between <a href=/operators/smuggle/><code>Smuggle</code></a> and <a href=/operators/code/><code>Code</code></a> operators is that <a href=/operators/code/><code>Code</code></a> is
+auto-dereference interfaces and pointers, even on several levels,
+like in:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ N <span style=color:#6ab825;font-weight:700>interface</span>{} }
+num := <span style=color:#3677a9>12</span>
+pnum := &amp;num
+td.<span style=color:#447fcf>Cmp</span>(t, A{N: &amp;pnum}, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;N&#34;</span>, <span style=color:#3677a9>12</span>))
+</code></pre></div><p>The difference between <a href=/operators/smuggle/><code>Smuggle</code></a> and <a href=/operators/code/><code>Code</code></a> operators is that <a href=/operators/code/><code>Code</code></a> is
 used to do a final comparison while <a href=/operators/smuggle/><code>Smuggle</code></a> transforms the data and
 then steps down in favor of generic comparison process. Moreover,
 the type accepted as input for the function is more lax to
@@ -644,7 +657,7 @@ type. The fields-path <code>string</code> <em>fn</em> shortcut is not available 
 <h3 id=examples>Examples</h3>
 <p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Convert example
@@ -709,7 +722,7 @@ Convert example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Lax example
@@ -732,7 +745,7 @@ Lax example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Auto_unmarshal example
@@ -763,7 +776,7 @@ Auto_unmarshal example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Complex example
@@ -827,7 +840,7 @@ Complex example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Interface example
@@ -868,7 +881,7 @@ Interface example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Field_path example
@@ -925,10 +938,20 @@ Field_path example
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;Body.Value.Num&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>100</span>, <span style=color:#3677a9>200</span>)))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check Num using an other fields-path:&#34;</span>, ok)
 
+	<span style=color:#999;font-style:italic>// Note that maps and array/slices are supported
+</span><span style=color:#999;font-style:italic></span>	got.Request.Body.Value = <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>interface</span>{}{
+		<span style=color:#ed9d13>&#34;foo&#34;</span>: []<span style=color:#6ab825;font-weight:700>interface</span>{}{
+			<span style=color:#3677a9>3</span>: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#3677a9>666</span>: <span style=color:#ed9d13>&#34;bar&#34;</span>},
+		},
+	}
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;Body.Value[foo][3][666]&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check fields-path including maps/slices:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num by hand: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using a fields-path: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using an other fields-path: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check fields-path including maps/slices: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -951,7 +974,7 @@ reason of a potential failure.</p>
 <h3 id=examples-1>Examples</h3>
 <p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Convert example
@@ -1005,7 +1028,7 @@ Convert example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Lax example
@@ -1027,7 +1050,7 @@ Lax example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Auto_unmarshal example
@@ -1055,7 +1078,7 @@ Auto_unmarshal example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Complex example
@@ -1113,7 +1136,7 @@ Complex example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Interface example
@@ -1150,7 +1173,7 @@ Interface example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Field_path example
@@ -1204,10 +1227,20 @@ Field_path example
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>CmpSmuggle</span>(t, got, <span style=color:#ed9d13>&#34;Body.Value.Num&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>100</span>, <span style=color:#3677a9>200</span>))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check Num using an other fields-path:&#34;</span>, ok)
 
+	<span style=color:#999;font-style:italic>// Note that maps and array/slices are supported
+</span><span style=color:#999;font-style:italic></span>	got.Request.Body.Value = <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>interface</span>{}{
+		<span style=color:#ed9d13>&#34;foo&#34;</span>: []<span style=color:#6ab825;font-weight:700>interface</span>{}{
+			<span style=color:#3677a9>3</span>: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#3677a9>666</span>: <span style=color:#ed9d13>&#34;bar&#34;</span>},
+		},
+	}
+	ok = td.<span style=color:#447fcf>CmpSmuggle</span>(t, got, <span style=color:#ed9d13>&#34;Body.Value[foo][3][666]&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check fields-path including maps/slices:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num by hand: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using a fields-path: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using an other fields-path: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check fields-path including maps/slices: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1230,7 +1263,7 @@ reason of a potential failure.</p>
 <h3 id=examples-2>Examples</h3>
 <p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Convert example
@@ -1284,7 +1317,7 @@ Convert example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Lax example
@@ -1306,7 +1339,7 @@ Lax example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Auto_unmarshal example
@@ -1334,7 +1367,7 @@ Auto_unmarshal example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Complex example
@@ -1392,7 +1425,7 @@ Complex example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Interface example
@@ -1429,7 +1462,7 @@ Interface example
 </div>
 </div>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Field_path example
@@ -1483,10 +1516,20 @@ Field_path example
 </span><span style=color:#999;font-style:italic></span>	ok = t.<span style=color:#447fcf>Smuggle</span>(got, <span style=color:#ed9d13>&#34;Body.Value.Num&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>100</span>, <span style=color:#3677a9>200</span>))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check Num using an other fields-path:&#34;</span>, ok)
 
+	<span style=color:#999;font-style:italic>// Note that maps and array/slices are supported
+</span><span style=color:#999;font-style:italic></span>	got.Request.Body.Value = <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>interface</span>{}{
+		<span style=color:#ed9d13>&#34;foo&#34;</span>: []<span style=color:#6ab825;font-weight:700>interface</span>{}{
+			<span style=color:#3677a9>3</span>: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#3677a9>666</span>: <span style=color:#ed9d13>&#34;bar&#34;</span>},
+		},
+	}
+	ok = t.<span style=color:#447fcf>Smuggle</span>(got, <span style=color:#ed9d13>&#34;Body.Value[foo][3][666]&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check fields-path including maps/slices:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num by hand: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using a fields-path: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check Num using an other fields-path: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check fields-path including maps/slices: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1503,18 +1546,18 @@ Field_path example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1615881235></script>
-<script src=/js/perfect-scrollbar.min.js?1615881235></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1615881235></script>
-<script src=/js/jquery.sticky.js?1615881235></script>
-<script src=/js/featherlight.min.js?1615881235></script>
-<script src=/js/highlight.pack.js?1615881235></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1615881235></script>
-<script src=/js/learn.js?1615881235></script>
-<script src=/js/hugo-learn.js?1615881235></script>
-<link href=/mermaid/mermaid.css?1615881235 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1615881235></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+<script src=/js/clipboard.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1627198239></script>
+<script src=/js/jquery.sticky.js?1627198239></script>
+<script src=/js/featherlight.min.js?1627198239></script>
+<script src=/js/highlight.pack.js?1627198239></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1627198239></script>
+<script src=/js/learn.js?1627198239></script>
+<script src=/js/hugo-learn.js?1627198239></script>
+<link href=/mermaid/mermaid.css?1627198239 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1627198239></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

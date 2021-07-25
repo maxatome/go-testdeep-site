@@ -161,32 +161,43 @@ several struct layers.
 
 ```go
 type A struct{ Num int }
-type B struct{ A *A }
+type B struct{ As map[string]*A }
 type C struct{ B B }
-got := C{B: B{A: &A{Num: 12}}}
+got := C{B: B{As: map[string]*A{"foo": {Num: 12}}}}
 
 // Tests that got.B.A.Num is 12
 td.Cmp(t, got,
   td.Smuggle(func(c C) int {
-    return c.B.A.Num
+    return c.B.As["foo"].Num
   }, 12))
 ```
 
-As brought up above, a field-path can be passed as *fn* value
+As brought up above, a fields-path can be passed as *fn* value
 instead of a function pointer. Using this feature, the Cmp
 call in the above example can be rewritten as follows:
 
 ```go
-// Tests that got.B.A.Num is 12
-td.Cmp(t, got, td.Smuggle("B.A.Num", 12))
+// Tests that got.B.As["foo"].Num is 12
+td.Cmp(t, got, td.Smuggle("B.As[foo].Num", 12))
 ```
 
-Contrary to JSONPointer operator, private fields can be followed
-but not maps nor slices items.
+Contrary to JSONPointer operator, private fields can be
+followed. Arrays, slices and maps work using the index/key inside
+square brackets (e.g. [12] or [foo]). Maps work only for simple key
+types (`string` or numbers), without "" when using strings
+(e.g. [foo]).
 
 Behind the scenes, a temporary function is automatically created to
 achieve the same goal, but add some checks against `nil` values and
-auto-dereference interfaces and pointers.
+auto-dereference interfaces and pointers, even on several levels,
+like in:
+
+```go
+type A struct{ N interface{} }
+num := 12
+pnum := &num
+td.Cmp(t, A{N: &pnum}, td.Smuggle("N", 12))
+```
 
 The difference between [`Smuggle`]({{< ref "Smuggle" >}}) and [`Code`]({{< ref "Code" >}}) operators is that [`Code`]({{< ref "Code" >}}) is
 used to do a final comparison while [`Smuggle`]({{< ref "Smuggle" >}}) transforms the data and
@@ -437,10 +448,20 @@ type. The fields-path `string` *fn* shortcut is not available with
 	ok = td.Cmp(t, got, td.Smuggle("Body.Value.Num", td.Between(100, 200)))
 	fmt.Println("check Num using an other fields-path:", ok)
 
+	// Note that maps and array/slices are supported
+	got.Request.Body.Value = map[string]interface{}{
+		"foo": []interface{}{
+			3: map[int]string{666: "bar"},
+		},
+	}
+	ok = td.Cmp(t, got, td.Smuggle("Body.Value[foo][3][666]", "bar"))
+	fmt.Println("check fields-path including maps/slices:", ok)
+
 	// Output:
 	// check Num by hand: true
 	// check Num using a fields-path: true
 	// check Num using an other fields-path: true
+	// check fields-path including maps/slices: true
 
 ```{{% /expand%}}
 ## CmpSmuggle shortcut
@@ -673,10 +694,20 @@ reason of a potential failure.
 	ok = td.CmpSmuggle(t, got, "Body.Value.Num", td.Between(100, 200))
 	fmt.Println("check Num using an other fields-path:", ok)
 
+	// Note that maps and array/slices are supported
+	got.Request.Body.Value = map[string]interface{}{
+		"foo": []interface{}{
+			3: map[int]string{666: "bar"},
+		},
+	}
+	ok = td.CmpSmuggle(t, got, "Body.Value[foo][3][666]", "bar")
+	fmt.Println("check fields-path including maps/slices:", ok)
+
 	// Output:
 	// check Num by hand: true
 	// check Num using a fields-path: true
 	// check Num using an other fields-path: true
+	// check fields-path including maps/slices: true
 
 ```{{% /expand%}}
 ## T.Smuggle shortcut
@@ -909,9 +940,19 @@ reason of a potential failure.
 	ok = t.Smuggle(got, "Body.Value.Num", td.Between(100, 200))
 	fmt.Println("check Num using an other fields-path:", ok)
 
+	// Note that maps and array/slices are supported
+	got.Request.Body.Value = map[string]interface{}{
+		"foo": []interface{}{
+			3: map[int]string{666: "bar"},
+		},
+	}
+	ok = t.Smuggle(got, "Body.Value[foo][3][666]", "bar")
+	fmt.Println("check fields-path including maps/slices:", ok)
+
 	// Output:
 	// check Num by hand: true
 	// check Num using a fields-path: true
 	// check Num using an other fields-path: true
+	// check fields-path including maps/slices: true
 
 ```{{% /expand%}}

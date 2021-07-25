@@ -65,7 +65,7 @@ got := Item{Val: 1, Next: &Item{Val: 2, Next: &Item{Val: 3}}}
 td.Cmp(t, got, td.JSONPointer("/Next/Next", Item{Val: 3}))
 ```
 
-Contrary to [`Smuggle`]({{< ref "Smuggle" >}}) operator and its field-path feature, only
+Contrary to [`Smuggle`]({{< ref "Smuggle" >}}) operator and its fields-path feature, only
 public fields can be followed, as private ones are never (un)marshalled.
 
 There is no JSONHas nor JSONHasnt operators to only check a [`JSON`]({{< ref "JSON" >}})

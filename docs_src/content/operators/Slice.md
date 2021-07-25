@@ -8,8 +8,13 @@ func Slice(model interface{}, expectedEntries ArrayEntries) TestDeep
 ```
 
 [`Slice`]({{< ref "Slice" >}}) operator compares the contents of a slice or a pointer on a
-slice against the non-zero values of *model* (if any) and the
-values of *expectedEntries*.
+slice against the values of *model* and the values of
+*expectedEntries*. Entries with zero values of *model* are ignored
+if the same entry is present in *expectedEntries*, otherwise they
+are taken into account. An entry cannot be present in both *model*
+and *expectedEntries*, except if it is a zero-value in *model*. At
+the end, all entries are checked. To check only some entries of a
+slice, see [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}) operator.
 
 *model* must be the same type as compared data.
 
@@ -19,8 +24,8 @@ no [TestDeep operator]({{< ref "operators" >}}) are involved.
 ```go
 got := []int{12, 14, 17}
 td.Cmp(t, got, td.Slice([]int{0, 14}, td.ArrayEntries{0: 12, 2: 17})) // succeeds
-td.Cmp(t, got,
-  td.Slice([]int{0, 14}, td.ArrayEntries{0: td.Gt(10), 2: td.Gt(15)})) // succeeds
+td.Cmp(t, &got,
+  td.Slice(&[]int{0, 14}, td.ArrayEntries{0: td.Gt(10), 2: td.Gt(15)})) // succeeds
 ```
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *model*.

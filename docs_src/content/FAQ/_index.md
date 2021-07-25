@@ -931,6 +931,14 @@ You want to add a new `FooBar` operator.
 - [ ] add operator tests in `td_foo_bar_test.go` file;
 - [ ] in `example_test.go` file, add examples function(s) `ExampleFooBar*`
   in alphabetical order;
+- [ ] should this operator be available in [`JSON`]({{< ref "JSON" >}}),
+  [`SubJSONOf`]({{< ref "SubJSONOf" >}}) and
+  [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) operators?
+  - If no, add `FooBar` to the `forbiddenOpsInJSON` map in
+    [`td/td_json.go`](https://github.com/maxatome/go-testdeep/blob/master/td/td_json.go)
+    with a possible alternative text to help the user,
+  - If yes, does `FooBar` needs specific handling as [`N`]({{< ref "N" >}}) or
+    [`Between`]({{< ref "Between" >}}) does for example?
 - [ ] automatically generate `CmpFooBar` & `T.FooBar` (+ examples) code:
   `./tools/gen_funcs.pl`
 - [ ] do not forget to run tests: `go test ./...`

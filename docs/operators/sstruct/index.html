@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.80.0">
+<meta name=generator content="Hugo 0.84.4">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>SStruct :: go-testdeep</title>
-<link href=/css/nucleus.css?1615881235 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1615881235 rel=stylesheet>
-<link href=/css/hybrid.css?1615881235 rel=stylesheet>
-<link href=/css/featherlight.min.css?1615881235 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1615881235 rel=stylesheet>
-<link href=/css/auto-complete.css?1615881235 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1615881235 rel=stylesheet>
-<link href=/css/theme.css?1615881235 rel=stylesheet>
-<link href=/css/hugo-theme.css?1615881235 rel=stylesheet>
-<link href=/css/theme-green.css?1615881235 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1615881235></script>
+<link href=/css/nucleus.css?1627198239 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1627198239 rel=stylesheet>
+<link href=/css/hybrid.css?1627198239 rel=stylesheet>
+<link href=/css/featherlight.min.css?1627198239 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1627198239 rel=stylesheet>
+<link href=/css/auto-complete.css?1627198239 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1627198239 rel=stylesheet>
+<link href=/css/theme.css?1627198239 rel=stylesheet>
+<link href=/css/hugo-theme.css?1627198239 rel=stylesheet>
+<link href=/css/theme-green.css?1627198239 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1627198239></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1615881235></script>
-<script type=text/javascript src=/js/auto-complete.js?1615881235></script>
-<script type=text/javascript>var baseurl="https:\/\/go-testdeep.zetta.rocks\/";</script>
-<script type=text/javascript src=/js/search.js?1615881235></script>
+<script type=text/javascript src=/js/lunr.min.js?1627198239></script>
+<script type=text/javascript src=/js/auto-complete.js?1627198239></script>
+<script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
+<script type=text/javascript src=/js/search.js?1627198239></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -389,6 +389,11 @@ SuperMapOf
 SuperSetOf
 </a>
 </li>
+<li data-nav-id=/operators/supersliceof/ title=SuperSliceOf class=dd-item>
+<a href=/operators/supersliceof/>
+SuperSliceOf
+</a>
+</li>
 <li data-nav-id=/operators/tag/ title=Tag class=dd-item>
 <a href=/operators/tag/>
 Tag
@@ -472,17 +477,17 @@ FAQ
 <ul>
 <li>
 <ul>
-<li><a href=#example>Example</a></li>
+<li><a href=#examples>Examples</a></li>
 </ul>
 </li>
 <li><a href=#cmpsstruct-shortcut>CmpSStruct shortcut</a>
 <ul>
-<li><a href=#example-1>Example</a></li>
+<li><a href=#examples-1>Examples</a></li>
 </ul>
 </li>
 <li><a href=#tsstruct-shortcut>T.SStruct shortcut</a>
 <ul>
-<li><a href=#example-2>Example</a></li>
+<li><a href=#examples-2>Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -507,7 +512,7 @@ difference with <a href=/operators/struct/><code>Struct</code></a> operator.</p>
 <p><em>expectedFields</em> can be <code>nil</code>, if no <a href=/operators/>TestDeep operators</a> are involved.</p>
 <p>To ignore a field, one has to specify it in <em>expectedFields</em> and
 use the <a href=/operators/ignore/><code>Ignore</code></a> operator.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, td.<span style=color:#447fcf>SStruct</span>(
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SStruct</span>(
   Person{
     Name: <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
   },
@@ -516,15 +521,72 @@ use the <a href=/operators/ignore/><code>Ignore</code></a> operator.</p>
     <span style=color:#ed9d13>&#34;Children&#34;</span>: td.<span style=color:#447fcf>Ignore</span>(),
   }),
 )
+</code></pre></div><p><em>expectedFields</em> can also contain regexps or shell patterns to
+match multiple fields not explicitly listed in <em>model</em> and in
+<em>expectedFields</em>. Regexps are prefixed by &ldquo;=~&rdquo; or &ldquo;!~&rdquo; to
+respectively match or don&rsquo;t-match. Shell patterns are prefixed by &ldquo;=&rdquo;
+or &ldquo;!&rdquo; to respectively match or don&rsquo;t-match.</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SStruct</span>(
+  Person{
+    Name: <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
+  },
+  td.StructFields{
+    <span style=color:#ed9d13>&#34;=*At&#34;</span>:     td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// matches CreatedAt &amp; UpdatedAt fields using shell pattern
+</span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;=~^[a-z]&#34;</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// explicitly ignore private fields using a regexp
+</span><span style=color:#999;font-style:italic></span>  }),
+)
+</code></pre></div><p>When several patterns can match a same field, it is advised to tell
+go-testdeep in which order patterns should be tested, as once a
+pattern matches a field, the other patterns are ignored for this
+field. To do so, each pattern can be prefixed by a number, as in:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SStruct</span>(
+  Person{
+    Name: <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
+  },
+  td.StructFields{
+    <span style=color:#ed9d13>&#34;1=*At&#34;</span>:     td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()),
+    <span style=color:#ed9d13>&#34;2=~^[a-z]&#34;</span>: td.<span style=color:#447fcf>NotNil</span>(),
+  }),
+)
+</code></pre></div><p>This way, &ldquo;*At&rdquo; shell pattern is always used before &ldquo;^[a-z]&rdquo;
+regexp, so if a field &ldquo;createdAt&rdquo; exists it is tested against
+<a href=https://pkg.go.dev/time/#Now><code>time.Now</code></a>() and never against <a href=/operators/notnil/><code>NotNil</code></a>. A pattern without a
+prefix number is the same as specifying &ldquo;0&rdquo; as prefix.</p>
+<p>To make it clearer, some spaces can be added, as well as bigger
+numbers used:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SStruct</span>(
+  Person{
+    Name: <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
+  },
+  td.StructFields{
+    <span style=color:#ed9d13>&#34; 900 =  *At&#34;</span>:    td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()),
+    <span style=color:#ed9d13>&#34;2000 =~ ^[a-z]&#34;</span>: td.<span style=color:#447fcf>NotNil</span>(),
+  }),
+)
+</code></pre></div><p>The following example combines all possibilities:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SStruct</span>(
+  Person{
+    NickName: <span style=color:#ed9d13>&#34;Joe&#34;</span>,
+  },
+  td.StructFields{
+    <span style=color:#ed9d13>&#34;Firstname&#34;</span>:               td.<span style=color:#447fcf>Any</span>(<span style=color:#ed9d13>&#34;John&#34;</span>, <span style=color:#ed9d13>&#34;Johnny&#34;</span>),
+    <span style=color:#ed9d13>&#34;1 =  *[nN]ame&#34;</span>:           td.<span style=color:#447fcf>NotEmpty</span>(), <span style=color:#999;font-style:italic>// matches LastName, lastname, …
+</span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;2 !  [A-Z]*&#34;</span>:             td.<span style=color:#447fcf>NotZero</span>(),  <span style=color:#999;font-style:italic>// matches all private fields
+</span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;3 =~ ^(Crea|Upda)tedAt$&#34;</span>: td.<span style=color:#447fcf>Gte</span>(time.<span style=color:#447fcf>Now</span>()),
+    <span style=color:#ed9d13>&#34;4 !~ ^(Dogs|Children)$&#34;</span>:  td.<span style=color:#447fcf>Zero</span>(),   <span style=color:#999;font-style:italic>// matches all remaining fields except Dogs and Children
+</span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;5 =~ .&#34;</span>:                  td.<span style=color:#447fcf>NotNil</span>(), <span style=color:#999;font-style:italic>// matches all remaining fields (same as &#34;5 = *&#34;)
+</span><span style=color:#999;font-style:italic></span>  }),
+)
 </code></pre></div><p>During a match, all expected and zero fields must be found to
 succeed.</p>
 <p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <a href=https://pkg.go.dev/reflect/#Type><code>reflect.Type</code></a> of <em>model</em>.</p>
 <blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SStruct> SStruct godoc</a>.</p>
 </blockquote>
-<h3 id=example>Example</h3>
+<h3 id=examples>Examples</h3>
+<p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Base example
@@ -551,7 +613,7 @@ Base example
 			<span style=color:#ed9d13>&#34;Age&#34;</span>: td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>),
 		}),
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model can be empty
 </span><span style=color:#999;font-style:italic></span>	got.NumChildren = <span style=color:#3677a9>3</span>
@@ -562,7 +624,7 @@ Base example
 			<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 		}),
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Works with pointers too
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, &amp;got,
@@ -572,7 +634,7 @@ Base example
 			<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 		}),
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using pointer):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model does not need to be instanciated
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, &amp;got,
@@ -582,17 +644,79 @@ Base example
 			<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 		}),
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using nil model):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using pointer): true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using nil model): true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
 </div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Patterns example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Firstname <span style=color:#6ab825;font-weight:700>string</span>
+		Lastname  <span style=color:#6ab825;font-weight:700>string</span>
+		Surname   <span style=color:#6ab825;font-weight:700>string</span>
+		Nickname  <span style=color:#6ab825;font-weight:700>string</span>
+		CreatedAt time.Time
+		UpdatedAt time.Time
+		DeletedAt *time.Time
+		id        <span style=color:#6ab825;font-weight:700>int64</span>
+		secret    <span style=color:#6ab825;font-weight:700>string</span>
+	}
+
+	now := time.<span style=color:#447fcf>Now</span>()
+	got := Person{
+		Firstname: <span style=color:#ed9d13>&#34;Maxime&#34;</span>,
+		Lastname:  <span style=color:#ed9d13>&#34;Foo&#34;</span>,
+		Surname:   <span style=color:#ed9d13>&#34;Max&#34;</span>,
+		Nickname:  <span style=color:#ed9d13>&#34;max&#34;</span>,
+		CreatedAt: now,
+		UpdatedAt: now,
+		DeletedAt: <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#999;font-style:italic>// not deleted yet
+</span><span style=color:#999;font-style:italic></span>		id:        <span style=color:#3677a9>2345</span>,
+		secret:    <span style=color:#ed9d13>&#34;5ecr3T&#34;</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;mix shell &amp; regexp patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;ordered patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Ordered patterns match only remaining fields:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Ordered patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div></p>
 <h2 id=cmpsstruct-shortcut>CmpSStruct shortcut</h2>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSStruct</span>(t TestingT, got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedFields StructFields, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpSStruct is a shortcut for:</p>
@@ -608,9 +732,10 @@ reason of a potential failure.</p>
 <blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpSStruct> CmpSStruct godoc</a>.</p>
 </blockquote>
-<h3 id=example-1>Example</h3>
+<h3 id=examples-1>Examples</h3>
+<p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Base example
@@ -636,7 +761,7 @@ Base example
 		<span style=color:#ed9d13>&#34;Age&#34;</span>: td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model can be empty
 </span><span style=color:#999;font-style:italic></span>	got.NumChildren = <span style=color:#3677a9>3</span>
@@ -646,7 +771,7 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Works with pointers too
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>CmpSStruct</span>(t, &amp;got, &amp;Person{}, td.StructFields{
@@ -655,7 +780,7 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using pointer):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model does not need to be instanciated
 </span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>CmpSStruct</span>(t, &amp;got, (*Person)(<span style=color:#6ab825;font-weight:700>nil</span>), td.StructFields{
@@ -664,17 +789,79 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using nil model):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using pointer): true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using nil model): true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
 </div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Patterns example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Firstname <span style=color:#6ab825;font-weight:700>string</span>
+		Lastname  <span style=color:#6ab825;font-weight:700>string</span>
+		Surname   <span style=color:#6ab825;font-weight:700>string</span>
+		Nickname  <span style=color:#6ab825;font-weight:700>string</span>
+		CreatedAt time.Time
+		UpdatedAt time.Time
+		DeletedAt *time.Time
+		id        <span style=color:#6ab825;font-weight:700>int64</span>
+		secret    <span style=color:#6ab825;font-weight:700>string</span>
+	}
+
+	now := time.<span style=color:#447fcf>Now</span>()
+	got := Person{
+		Firstname: <span style=color:#ed9d13>&#34;Maxime&#34;</span>,
+		Lastname:  <span style=color:#ed9d13>&#34;Foo&#34;</span>,
+		Surname:   <span style=color:#ed9d13>&#34;Max&#34;</span>,
+		Nickname:  <span style=color:#ed9d13>&#34;max&#34;</span>,
+		CreatedAt: now,
+		UpdatedAt: now,
+		DeletedAt: <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#999;font-style:italic>// not deleted yet
+</span><span style=color:#999;font-style:italic></span>		id:        <span style=color:#3677a9>2345</span>,
+		secret:    <span style=color:#ed9d13>&#34;5ecr3T&#34;</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;mix shell &amp; regexp patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;ordered patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Ordered patterns match only remaining fields:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Ordered patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div></p>
 <h2 id=tsstruct-shortcut>T.SStruct shortcut</h2>
 <div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>SStruct</span>(got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedFields StructFields, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/sstruct/><code>SStruct</code></a> is a shortcut for:</p>
@@ -690,9 +877,10 @@ reason of a potential failure.</p>
 <blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SStruct> T.SStruct godoc</a>.</p>
 </blockquote>
-<h3 id=example-2>Example</h3>
+<h3 id=examples-2>Examples</h3>
+<p>
 <div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this);$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right';});});">
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
 Base example
@@ -718,7 +906,7 @@ Base example
 		<span style=color:#ed9d13>&#34;Age&#34;</span>: td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model can be empty
 </span><span style=color:#999;font-style:italic></span>	got.NumChildren = <span style=color:#3677a9>3</span>
@@ -728,7 +916,7 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children:&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Works with pointers too
 </span><span style=color:#999;font-style:italic></span>	ok = t.<span style=color:#447fcf>SStruct</span>(&amp;got, &amp;Person{}, td.StructFields{
@@ -737,7 +925,7 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using pointer):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Model does not need to be instanciated
 </span><span style=color:#999;font-style:italic></span>	ok = t.<span style=color:#447fcf>SStruct</span>(&amp;got, (*Person)(<span style=color:#6ab825;font-weight:700>nil</span>), td.StructFields{
@@ -746,17 +934,79 @@ Base example
 		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Not</span>(<span style=color:#3677a9>0</span>),
 	},
 		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar has some children (using nil model):&#34;</span>, ok)
 
 	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using pointer): true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar has some children (using nil model): true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
 </div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Patterns example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Firstname <span style=color:#6ab825;font-weight:700>string</span>
+		Lastname  <span style=color:#6ab825;font-weight:700>string</span>
+		Surname   <span style=color:#6ab825;font-weight:700>string</span>
+		Nickname  <span style=color:#6ab825;font-weight:700>string</span>
+		CreatedAt time.Time
+		UpdatedAt time.Time
+		DeletedAt *time.Time
+		id        <span style=color:#6ab825;font-weight:700>int64</span>
+		secret    <span style=color:#6ab825;font-weight:700>string</span>
+	}
+
+	now := time.<span style=color:#447fcf>Now</span>()
+	got := Person{
+		Firstname: <span style=color:#ed9d13>&#34;Maxime&#34;</span>,
+		Lastname:  <span style=color:#ed9d13>&#34;Foo&#34;</span>,
+		Surname:   <span style=color:#ed9d13>&#34;Max&#34;</span>,
+		Nickname:  <span style=color:#ed9d13>&#34;max&#34;</span>,
+		CreatedAt: now,
+		UpdatedAt: now,
+		DeletedAt: <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#999;font-style:italic>// not deleted yet
+</span><span style=color:#999;font-style:italic></span>		id:        <span style=color:#3677a9>2345</span>,
+		secret:    <span style=color:#ed9d13>&#34;5ecr3T&#34;</span>,
+	}
+
+	ok := t.<span style=color:#447fcf>Cmp</span>(got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;mix shell &amp; regexp patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>Cmp</span>(got,
+		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
+			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span><span style=color:#999;font-style:italic></span>		}),
+		<span style=color:#ed9d13>&#34;ordered patterns&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Ordered patterns match only remaining fields:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Ordered patterns match only remaining fields: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div></p>
 <footer class=footline>
 </footer>
 </div>
@@ -769,18 +1019,18 @@ Base example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1615881235></script>
-<script src=/js/perfect-scrollbar.min.js?1615881235></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1615881235></script>
-<script src=/js/jquery.sticky.js?1615881235></script>
-<script src=/js/featherlight.min.js?1615881235></script>
-<script src=/js/highlight.pack.js?1615881235></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script src=/js/modernizr.custom-3.6.0.js?1615881235></script>
-<script src=/js/learn.js?1615881235></script>
-<script src=/js/hugo-learn.js?1615881235></script>
-<link href=/mermaid/mermaid.css?1615881235 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1615881235></script>
-<script>mermaid.initialize({startOnLoad:true});</script>
+<script src=/js/clipboard.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.min.js?1627198239></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1627198239></script>
+<script src=/js/jquery.sticky.js?1627198239></script>
+<script src=/js/featherlight.min.js?1627198239></script>
+<script src=/js/highlight.pack.js?1627198239></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1627198239></script>
+<script src=/js/learn.js?1627198239></script>
+<script src=/js/hugo-learn.js?1627198239></script>
+<link href=/mermaid/mermaid.css?1627198239 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1627198239></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

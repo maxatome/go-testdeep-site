@@ -178,6 +178,9 @@ weight = 15
 [`SuperSetOf`]({{< ref "SuperSetOf" >}})
 : compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items but with potentially some extra items
 
+[`SuperSliceOf`]({{< ref "SuperSliceOf" >}})
+: compares the contents of a slice, a pointer on a slice, an array or a pointer on an array but with potentially some extra entries
+
 [`Tag`]({{< ref "Tag" >}})
 : names an operator or a value. Only useful as a parameter of JSON operator, to name placeholders
 
@@ -312,6 +315,7 @@ The following operators are smuggler ones:
 [`SuperJSONOf`]: {{< ref "SuperJSONOf" >}}
 [`SuperMapOf`]: {{< ref "SuperMapOf" >}}
 [`SuperSetOf`]: {{< ref "SuperSetOf" >}}
+[`SuperSliceOf`]: {{< ref "SuperSliceOf" >}}
 [`Tag`]: {{< ref "Tag" >}}
 [`TruncTime`]: {{< ref "TruncTime" >}}
 [`Values`]: {{< ref "Values" >}}
@@ -371,6 +375,7 @@ The following operators are smuggler ones:
 [`CmpSuperJSONOf`]: {{< ref "SuperJSONOf#cmpsuperjsonof-shortcut" >}}
 [`CmpSuperMapOf`]: {{< ref "SuperMapOf#cmpsupermapof-shortcut" >}}
 [`CmpSuperSetOf`]: {{< ref "SuperSetOf#cmpsupersetof-shortcut" >}}
+[`CmpSuperSliceOf`]: {{< ref "SuperSliceOf#cmpsupersliceof-shortcut" >}}
 [`CmpTruncTime`]: {{< ref "TruncTime#cmptrunctime-shortcut" >}}
 [`CmpValues`]: {{< ref "Values#cmpvalues-shortcut" >}}
 [`CmpZero`]: {{< ref "Zero#cmpzero-shortcut" >}}
@@ -429,6 +434,7 @@ The following operators are smuggler ones:
 [`T.SuperJSONOf`]: {{< ref "SuperJSONOf#tsuperjsonof-shortcut" >}}
 [`T.SuperMapOf`]: {{< ref "SuperMapOf#tsupermapof-shortcut" >}}
 [`T.SuperSetOf`]: {{< ref "SuperSetOf#tsupersetof-shortcut" >}}
+[`T.SuperSliceOf`]: {{< ref "SuperSliceOf#tsupersliceof-shortcut" >}}
 [`T.TruncTime`]: {{< ref "TruncTime#ttrunctime-shortcut" >}}
 [`T.Values`]: {{< ref "Values#tvalues-shortcut" >}}
 [`T.Zero`]: {{< ref "Zero#tzero-shortcut" >}}

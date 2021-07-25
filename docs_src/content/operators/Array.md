@@ -8,8 +8,13 @@ func Array(model interface{}, expectedEntries ArrayEntries) TestDeep
 ```
 
 [`Array`]({{< ref "Array" >}}) operator compares the contents of an array or a pointer on an
-array against the non-zero values of *model* (if any) and the
-values of *expectedEntries*.
+array against the values of *model* and the values of
+*expectedEntries*. Entries with zero values of *model* are ignored
+if the same entry is present in *expectedEntries*, otherwise they
+are taken into account. An entry cannot be present in both *model*
+and *expectedEntries*, except if it is a zero-value in *model*. At
+the end, all entries are checked. To check only some entries of an
+array, see [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}) operator.
 
 *model* must be the same type as compared data.
 
@@ -19,8 +24,8 @@ no [TestDeep operator]({{< ref "operators" >}}) are involved.
 ```go
 got := [3]int{12, 14, 17}
 td.Cmp(t, got, td.Array([3]int{0, 14}, td.ArrayEntries{0: 12, 2: 17})) // succeeds
-td.Cmp(t, got,
-  td.Array([3]int{0, 14}, td.ArrayEntries{0: td.Gt(10), 2: td.Gt(15)})) // succeeds
+td.Cmp(t, &got,
+  td.Array(&[3]int{0, 14}, td.ArrayEntries{0: td.Gt(10), 2: td.Gt(15)})) // succeeds
 ```
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *model*.
@@ -38,10 +43,22 @@ td.Cmp(t, got,
 	ok := td.Cmp(t, got,
 		td.Array([3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()}),
 		"checks array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Simple array:", ok)
+
+	ok = td.Cmp(t, &got,
+		td.Array(&[3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()}),
+		"checks array %v", got)
+	fmt.Println("Array pointer:", ok)
+
+	ok = td.Cmp(t, &got,
+		td.Array((*[3]int)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()}),
+		"checks array %v", got)
+	fmt.Println("Array pointer, nil model:", ok)
 
 	// Output:
-	// true
+	// Simple array: true
+	// Array pointer: true
+	// Array pointer, nil model: true
 
 ```{{% /expand%}}
 {{%expand "TypedArray example" %}}```go
@@ -54,28 +71,28 @@ td.Cmp(t, got,
 	ok := td.Cmp(t, got,
 		td.Array(MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()}),
 		"checks typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Typed array:", ok)
 
 	ok = td.Cmp(t, &got,
 		td.Array(&MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()}),
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array:", ok)
 
 	ok = td.Cmp(t, &got,
 		td.Array(&MyArray{}, td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()}),
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, empty model:", ok)
 
 	ok = td.Cmp(t, &got,
 		td.Array((*MyArray)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()}),
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, nil model:", ok)
 
 	// Output:
-	// true
-	// true
-	// true
-	// true
+	// Typed array: true
+	// Pointer on a typed array: true
+	// Pointer on a typed array, empty model: true
+	// Pointer on a typed array, nil model: true
 
 ```{{% /expand%}}
 ## CmpArray shortcut
@@ -113,10 +130,20 @@ reason of a potential failure.
 
 	ok := td.CmpArray(t, got, [3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Simple array:", ok)
+
+	ok = td.CmpArray(t, &got, &[3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
+		"checks array %v", got)
+	fmt.Println("Array pointer:", ok)
+
+	ok = td.CmpArray(t, &got, (*[3]int)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
+		"checks array %v", got)
+	fmt.Println("Array pointer, nil model:", ok)
 
 	// Output:
-	// true
+	// Simple array: true
+	// Array pointer: true
+	// Array pointer, nil model: true
 
 ```{{% /expand%}}
 {{%expand "TypedArray example" %}}```go
@@ -128,25 +155,25 @@ reason of a potential failure.
 
 	ok := td.CmpArray(t, got, MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Typed array:", ok)
 
 	ok = td.CmpArray(t, &got, &MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array:", ok)
 
 	ok = td.CmpArray(t, &got, &MyArray{}, td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, empty model:", ok)
 
 	ok = td.CmpArray(t, &got, (*MyArray)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, nil model:", ok)
 
 	// Output:
-	// true
-	// true
-	// true
-	// true
+	// Typed array: true
+	// Pointer on a typed array: true
+	// Pointer on a typed array, empty model: true
+	// Pointer on a typed array, nil model: true
 
 ```{{% /expand%}}
 ## T.Array shortcut
@@ -184,10 +211,20 @@ reason of a potential failure.
 
 	ok := t.Array(got, [3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Simple array:", ok)
+
+	ok = t.Array(&got, &[3]int{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
+		"checks array %v", got)
+	fmt.Println("Array pointer:", ok)
+
+	ok = t.Array(&got, (*[3]int)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
+		"checks array %v", got)
+	fmt.Println("Array pointer, nil model:", ok)
 
 	// Output:
-	// true
+	// Simple array: true
+	// Array pointer: true
+	// Array pointer, nil model: true
 
 ```{{% /expand%}}
 {{%expand "TypedArray example" %}}```go
@@ -199,24 +236,24 @@ reason of a potential failure.
 
 	ok := t.Array(got, MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Typed array:", ok)
 
 	ok = t.Array(&got, &MyArray{42}, td.ArrayEntries{1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array:", ok)
 
 	ok = t.Array(&got, &MyArray{}, td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, empty model:", ok)
 
 	ok = t.Array(&got, (*MyArray)(nil), td.ArrayEntries{0: 42, 1: 58, 2: td.Ignore()},
 		"checks pointer on typed array %v", got)
-	fmt.Println(ok)
+	fmt.Println("Pointer on a typed array, nil model:", ok)
 
 	// Output:
-	// true
-	// true
-	// true
-	// true
+	// Typed array: true
+	// Pointer on a typed array: true
+	// Pointer on a typed array, empty model: true
+	// Pointer on a typed array, nil model: true
 
 ```{{% /expand%}}

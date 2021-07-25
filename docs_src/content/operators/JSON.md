@@ -20,8 +20,9 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 *expectedJSON* JSON value can contain placeholders. The *params*
 are for any placeholder parameters in *expectedJSON*. *params* can
-contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. Raw values are
-first [`json.Marshal`](https://pkg.go.dev/json/#Marshal)'ed then [`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed in an `interface{}`. A
+contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. Raw values, that
+do not contain [TestDeep operators]({{< ref "operators" >}}) deeply nested, are first
+[`json.Marshal`](https://pkg.go.dev/json/#Marshal)'ed then [`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed in an `interface{}`. A
 placeholder can be numeric like `$2` or named like `$name` and always
 references an item in *params*.
 

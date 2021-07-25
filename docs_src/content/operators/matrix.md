@@ -81,12 +81,13 @@ weight: 1
 | [`SuperJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SuperJSONOf`] |
 | [`SuperMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SuperMapOf`] |
 | [`SuperSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSetOf`] |
+| [`SuperSliceOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSliceOf`] |
 | [`Tag`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Tag`] |
 | [`TruncTime`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | [`time.Time`] | todo | ✓ | ✗ | ✗ | [`TruncTime`] |
-| [`Values`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | [`Values`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`Values`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | [`Values`] |
 | [`Zero`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Zero`] |
 
 [`T`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T
@@ -161,6 +162,7 @@ weight: 1
 [`SuperJSONOf`]: {{< ref "SuperJSONOf" >}}
 [`SuperMapOf`]: {{< ref "SuperMapOf" >}}
 [`SuperSetOf`]: {{< ref "SuperSetOf" >}}
+[`SuperSliceOf`]: {{< ref "SuperSliceOf" >}}
 [`Tag`]: {{< ref "Tag" >}}
 [`TruncTime`]: {{< ref "TruncTime" >}}
 [`Values`]: {{< ref "Values" >}}
@@ -220,6 +222,7 @@ weight: 1
 [`CmpSuperJSONOf`]: {{< ref "SuperJSONOf#cmpsuperjsonof-shortcut" >}}
 [`CmpSuperMapOf`]: {{< ref "SuperMapOf#cmpsupermapof-shortcut" >}}
 [`CmpSuperSetOf`]: {{< ref "SuperSetOf#cmpsupersetof-shortcut" >}}
+[`CmpSuperSliceOf`]: {{< ref "SuperSliceOf#cmpsupersliceof-shortcut" >}}
 [`CmpTruncTime`]: {{< ref "TruncTime#cmptrunctime-shortcut" >}}
 [`CmpValues`]: {{< ref "Values#cmpvalues-shortcut" >}}
 [`CmpZero`]: {{< ref "Zero#cmpzero-shortcut" >}}
@@ -278,6 +281,7 @@ weight: 1
 [`T.SuperJSONOf`]: {{< ref "SuperJSONOf#tsuperjsonof-shortcut" >}}
 [`T.SuperMapOf`]: {{< ref "SuperMapOf#tsupermapof-shortcut" >}}
 [`T.SuperSetOf`]: {{< ref "SuperSetOf#tsupersetof-shortcut" >}}
+[`T.SuperSliceOf`]: {{< ref "SuperSliceOf#tsupersliceof-shortcut" >}}
 [`T.TruncTime`]: {{< ref "TruncTime#ttrunctime-shortcut" >}}
 [`T.Values`]: {{< ref "Values#tvalues-shortcut" >}}
 [`T.Zero`]: {{< ref "Zero#tzero-shortcut" >}}
@@ -482,6 +486,7 @@ Operators likely to succeed for each go type:
 - [`SubSetOf`]
 - [`SuperBagOf`]
 - [`SuperSetOf`]
+- [`SuperSliceOf`]
 - [`Tag`]
 - [`Zero`]
 <!-- go-array-matrix:end -->
@@ -525,6 +530,7 @@ Operators likely to succeed for each go type:
 - [`SubSetOf`]
 - [`SuperBagOf`]
 - [`SuperSetOf`]
+- [`SuperSliceOf`]
 - [`Tag`]
 - [`Zero`]
 <!-- go-slice-matrix:end -->
@@ -653,6 +659,7 @@ listed below:
 - [`SuperJSONOf`] only ptr on map/struct
 - [`SuperMapOf`] only ptr on map
 - [`SuperSetOf`] only ptr on array/slice
+- [`SuperSliceOf`] only ptr on array/slice
 - [`Tag`]
 - [`Zero`]
 <!-- go-ptr-matrix:end -->

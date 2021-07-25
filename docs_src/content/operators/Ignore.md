@@ -13,7 +13,7 @@ for example. Or comparing a struct with [`SStruct`]({{< ref "SStruct" >}}) and w
 ignore some fields:
 
 ```go
-td.Cmp(t, td.SStruct(
+td.Cmp(t, got, td.SStruct(
   Person{
     Name: "John Doe",
   },
