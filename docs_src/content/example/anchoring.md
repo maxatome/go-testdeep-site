@@ -3,7 +3,7 @@ title = "Using anchoring"
 weight = 60
 +++
 
-Last, operators can directly be anchored in litterals, still using the
+Operators can also directly be anchored in litterals, still using the
 [`td.T` type]({{< ref "functions/td-t" >}}), avoiding the use of the
 [`Struct`]({{< ref "Struct" >}}) operator:
 
@@ -19,10 +19,11 @@ func TestCreateRecord(tt *testing.T) {
   t := td.NewT(tt)
 
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if t.CmpNoError(err) {
-    t.RootName("RECORD"). // Use RECORD instead of DATA in failure reports
+    // Use RECORD instead of DATA in failure reports
+    t.RootName("RECORD").
       Cmp(record,
         &Record{
           Name:      "Bob",
@@ -34,6 +35,8 @@ func TestCreateRecord(tt *testing.T) {
   }
 }
 ```
+
+Test it in playground: https://play.golang.org/p/xoGFzmpsSZT
 
 See the
 [`Anchor`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor)

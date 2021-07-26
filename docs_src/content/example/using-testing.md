@@ -15,7 +15,7 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if err != nil {
     t.Errorf("An error occurred: %s", err)
@@ -30,7 +30,7 @@ func TestCreateRecord(t *testing.T) {
         record.Name, expected.Name)
     }
     if record.Age != expected.Age {
-      t.Errorf("Age field differs, got=%s, expected=%s",
+      t.Errorf("Age field differs, got=%d, expected=%d",
         record.Age, expected.Age)
     }
     if before.After(record.CreatedAt) ||
@@ -40,3 +40,5 @@ func TestCreateRecord(t *testing.T) {
   }
 }
 ```
+
+Test in in playground: https://play.golang.org/p/Qyc7L2z1Rf-

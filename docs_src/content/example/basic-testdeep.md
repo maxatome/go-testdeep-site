@@ -17,7 +17,7 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if td.CmpNoError(t, err) {
     td.Cmp(t, record.Id, td.NotZero(), "Id initialized")
@@ -27,6 +27,8 @@ func TestCreateRecord(t *testing.T) {
   }
 }
 ```
+
+Test it in playground: https://play.golang.org/p/nPCr9Jeyi43
 
 As we cannot guess the `Id` field value before its creation, we use the
 [`NotZero`]({{< ref "operators/NotZero" >}}) operator to check it is
@@ -47,8 +49,7 @@ import (
 )
 
 func TestCreateRecord(t *testing.T) {
-  before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if td.CmpNoError(t, err) {
     td.Cmp(t, record, &Record{

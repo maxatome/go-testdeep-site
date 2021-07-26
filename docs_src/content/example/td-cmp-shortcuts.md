@@ -20,7 +20,7 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if td.CmpNoError(t, err) {
     td.CmpStruct(t, record,
@@ -36,3 +36,5 @@ func TestCreateRecord(t *testing.T) {
   }
 }
 ```
+
+Test it in playground: https://play.golang.org/p/gOhqXtWSzJ-

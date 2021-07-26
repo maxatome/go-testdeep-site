@@ -19,8 +19,7 @@ import (
 )
 
 func TestCreateRecord(t *testing.T) {
-  before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if td.CmpNoError(t, err) {
     td.Cmp(t, record,
@@ -34,6 +33,8 @@ func TestCreateRecord(t *testing.T) {
   }
 }
 ```
+
+Test in in playground: https://play.golang.org/p/nIYSQmxCSMC
 
 The [`Struct`]({{< ref "operators/Struct" >}}) operator, used here,
 ignores zero fields in its model parameter.
@@ -50,7 +51,7 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if td.CmpNoError(t, err) {
     td.Cmp(t, record,
@@ -67,6 +68,8 @@ func TestCreateRecord(t *testing.T) {
   }
 }
 ```
+
+Test it in playground: https://play.golang.org/p/CtlDR1R5y7s
 
 See the use of the [`Struct`]({{< ref "operators/Struct" >}})
 operator. It is needed here to overcome the go static typing system

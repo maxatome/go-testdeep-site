@@ -19,7 +19,7 @@ func TestCreateRecord(tt *testing.T) {
   t := td.NewT(tt)
 
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord()
+  record, err := CreateRecord("Bob", 23)
 
   if t.CmpNoError(err) {
     t := t.RootName("RECORD") // Use RECORD instead of DATA in failure reports
@@ -39,7 +39,7 @@ func TestCreateRecord(tt *testing.T) {
     // Or using Cmp method, it's a matter of taste
     t.Cmp(record,
       td.Struct(
-        Record{
+        &Record{
           Name: "Bob",
           Age:  23,
         },
@@ -51,6 +51,8 @@ func TestCreateRecord(tt *testing.T) {
   }
 }
 ```
+
+Test it in playground: https://play.golang.org/p/eqgjJu6Lpec
 
 Note the use of
 [`RootName`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RootName)
