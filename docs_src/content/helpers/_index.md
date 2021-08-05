@@ -12,6 +12,18 @@ package helper allows to easily test HTTP APIs.
 It handles any kind of API, with some specific features for the routes
 accepting and/or returning JSON or XML.
 
+All known web frameworks are handled:
+- net/http standard, see Main example below
+- [Beego]({{< ref "FAQ#beego" >}})
+- [echo]({{< ref "FAQ#echo" >}})
+- [Gin]({{< ref "FAQ#gin" >}})
+- [gorilla/mux]({{< ref "FAQ#gorillamux" >}})
+- [go-swagger]({{< ref "FAQ#go-swagger" >}})
+- [HttpRouter]({{< ref "FAQ#httprouter" >}})
+- [pat]({{< ref "FAQ#pat" >}})
+- and any other ones as long as they provides a
+  [`net/http.Handler`](https://pkg.go.dev/net/http#Handler) instance.
+
 See examples of use in
 [`tdhttp` package example section](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp/#pkg-examples),
 in
