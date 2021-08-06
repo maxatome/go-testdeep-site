@@ -21,7 +21,7 @@ All known web frameworks are handled:
 - [go-swagger]({{< ref "FAQ#go-swagger" >}})
 - [HttpRouter]({{< ref "FAQ#httprouter" >}})
 - [pat]({{< ref "FAQ#pat" >}})
-- and any other ones as long as they provides a
+- and any other ones as long as they provide a
   [`net/http.Handler`](https://pkg.go.dev/net/http#Handler) instance.
 
 See examples of use in
@@ -363,6 +363,15 @@ func TestMyAPI(t *testing.T) {
 }
 ```{{% /expand%}}
 <!-- tdhttp:end -->
+
+
+## Tests suite helper aka `tdsuite`
+
+The package
+[`tdsuite`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite)
+adds tests suite feature to go-testdeep in a non-intrusive way, but
+easily and powerfully.
+
 
 ## Helpers utils aka `tdutil`
 
