@@ -615,6 +615,159 @@ If you prefer to do one function call instead of chaining methods as
 above, you can try [CmpJSONResponse](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse).
 
 
+## And what about other HTTP frameworks?
+
+[`tdhttp.NewTestAPI()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI)
+function needs a [`http.Handler`](https://pkg.go.dev/net/http#Handler)
+instance.
+
+Let's see for each following framework how to get it:
+
+### Beego
+
+[home](https://beego.me/) / [sources](https://github.com/beego/beego/)
+
+In single instance mode,
+[`web.BeeApp`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer)
+variable is a
+[`*web.HttpServer`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer)
+instance containing a `Handlers` field whose
+[`*ControllerRegister`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister)
+type implements
+[`http.Handler`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP):
+```golang
+testAPI := tdhttp.NewTestAPI(t, web.BeeApp.Handlers)
+```
+In multi instances mode, each instance is a
+[`*web.HttpServer`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer)
+so the same rule applies for each instance to test:
+```golang
+testAPI := tdhttp.NewTestAPI(t, instance.Handlers)
+```
+
+### echo
+
+[home](https://echo.labstack.com/) / [sources](https://github.com/labstack/echo)
+
+Starting v3.0.0,
+[`echo.New()`](https://pkg.go.dev/github.com/labstack/echo/v4#New)
+returns a [`*echo.Echo`](https://pkg.go.dev/github.com/labstack/echo/v4#Echo)
+instance that implements
+[`http.Handler`](https://pkg.go.dev/github.com/labstack/echo/v4#Echo.ServeHTTP)
+interface, so this instance can be fed as is to
+[`tdhttp.NewTestAPI`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI):
+```golang
+e := echo.New()
+// Add routes to e
+…
+testAPI := tdhttp.NewTestAPI(t, e) // e implements http.Handler
+```
+
+### Gin
+
+[home](https://gin-gonic.com/) / [sources](https://github.com/gin-gonic/gin)
+
+[`gin.Default()`](https://pkg.go.dev/github.com/gin-gonic/gin#Default)
+and [`gin.New()`](https://pkg.go.dev/github.com/gin-gonic/gin#New)
+return both a
+[`*gin.Engine`](https://pkg.go.dev/github.com/gin-gonic/gin#Engine)
+instance that implements
+[`http.Handler`](https://pkg.go.dev/github.com/gin-gonic/gin#Engine.ServeHTTP)
+interface, so this instance can be fed as is to
+[`tdhttp.NewTestAPI`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI):
+```golang
+engine := gin.Default()
+// Add routes to engine
+…
+testAPI := tdhttp.NewTestAPI(t, engine) // engine implements http.Handler
+```
+
+### gorilla/mux
+
+[home](https://www.gorillatoolkit.org/) / [sources](https://github.com/gorilla/mux)
+
+[`mux.NewRouter()`](https://pkg.go.dev/github.com/gorilla/mux#NewRouter)
+returns a [`*mux.Router`](https://pkg.go.dev/github.com/gorilla/mux#Router)
+instance that implements
+[`http.Handler`](https://pkg.go.dev/github.com/gorilla/mux#Router.ServeHTTP)
+interface, so this instance can be fed as is to
+[`tdhttp.NewTestAPI`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI):
+```golang
+r := mux.NewRouter()
+// Add routes to r
+…
+testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
+```
+
+### go-swagger
+
+[home](https://goswagger.io/) / [sources](https://github.com/go-swagger/go-swagger)
+
+2 cases here, the default generation and the Stratoscale template:
+- default generation requires some tricks to retrieve the
+  [`http.Handler`](https://pkg.go.dev/net/http#Handler) instance:
+  ```golang
+  swaggerSpec, err := loads.Embedded(restapi.SwaggerJSON, restapi.FlatSwaggerJSON)
+  td.Require(t).CmpNoError(err, "Swagger spec is loaded")
+  api := operations.NewXxxAPI(swaggerSpec) // Xxx is the name of your API
+  server := restapi.NewServer(api)
+  server.ConfigureAPI()
+  hdl := server.GetHandler() // returns an http.Handler instance
+  testAPI := tdhttp.NewTestAPI(t, hdl)
+  ```
+- with Stratoscale template, it is simpler:
+  ```golang
+  hdl, _, err := restapi.HandlerAPI(restapi.Config{
+    Tag1API:  Tag1{},
+    Tag2API:  Tag2{},
+  })
+  td.Require(t).CmpNoError(err, "API correctly set up")
+  // hdl is an http.Handler instance
+  testAPI := tdhttp.NewTestAPI(t, hdl)
+  ```
+
+### HttpRouter
+
+[home / sources](https://github.com/julienschmidt/httprouter)
+
+[`httprouter.New()`](https://pkg.go.dev/github.com/julienschmidt/httprouter#New)
+returns a
+[`*httprouter.Router`](https://pkg.go.dev/github.com/julienschmidt/httprouter#Router)
+instance that implements
+[`http.Handler`](https://pkg.go.dev/github.com/julienschmidt/httprouter#Router.ServeHTTP)
+interface, so this instance can be fed as is to
+[`tdhttp.NewTestAPI`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI):
+```golang
+r := httprouter.New()
+// Add routes to r
+…
+testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
+```
+
+### pat
+
+[home / sources](https://github.com/gorilla/pat)
+
+[`pat.New()`](https://pkg.go.dev/github.com/gorilla/pat#New)
+returns a [`*pat.Router`](https://pkg.go.dev/github.com/gorilla/pat#Router)
+instance that implements
+[`http.Handler`](https://pkg.go.dev/github.com/gorilla/pat#Router.ServeHTTP)
+interface, so this instance can be fed as is to
+[`tdhttp.NewTestAPI`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI):
+```golang
+router := pat.New()
+// Add routes to router
+…
+testAPI := tdhttp.NewTestAPI(t, router) // router implements http.Handler
+```
+
+### Another web framework not listed here?
+
+[File an issue](https://github.com/maxatome/go-testdeep-site/issues)
+or [open a PR](https://github.com/maxatome/go-testdeep-site/pulls) to
+fix this!
+
+
 ## OK, but how to be sure the response content is well JSONified?
 
 Again, [`tdhttp` helper](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
@@ -624,7 +777,7 @@ With the help of [`JSON`]({{< ref "JSON" >}}) operator of course! See
 it below, used with [`Catch`]({{< ref "Catch" >}}) (note it can be used
 without), for a `POST` example:
 
-```go
+```golang
 type Person struct {
   ID        uint64    `json:"id"`
   Name      string    `json:"name"`
@@ -707,7 +860,7 @@ But [PRs are welcome](https://github.com/maxatome/go-testdeep/pulls)!
 
 Historically the main package of go-testdeep was `testdeep` as in:
 
-```go
+```golang
 import (
   "testing"
 
@@ -721,7 +874,7 @@ func TestMyFunc(t *testing.T) {
 
 As `testdeep` was boring to type, renaming it to `td` became a habit as in:
 
-```go
+```golang
 import (
   "testing"
 
@@ -741,7 +894,7 @@ type aliases.
 
 So the previous examples (that are still working) can now be written as:
 
-```go
+```golang
 import (
   "testing"
 
@@ -863,7 +1016,7 @@ TESTDEEP_COLOR_OK=black:green \
 
 Just add this single line in playground:
 
-```go
+```golang
 func init() { os.Setenv("TESTDEEP_COLOR", "off") }
 ```
 
@@ -892,7 +1045,7 @@ zone ("Z" suffix) and then to compare it as a `time.Time` against
 `expectedValue` (which can be another [operator]({{< ref "operators" >}})
 or, of course, a `time.Time` value).
 
-```go
+```golang
 func RFC3339ZToTime(expectedValue interface{}) td.TestDeep {
   return td.All(
     td.HasSuffix("Z"),
@@ -905,7 +1058,7 @@ func RFC3339ZToTime(expectedValue interface{}) td.TestDeep {
 
 It could be used as:
 
-```go
+```golang
 before := time.Now()
 record := NewRecord()
 td.Cmp(t, record,

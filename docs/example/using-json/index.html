@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.85.0">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>N :: go-testdeep</title>
+<title>Using JSON :: go-testdeep</title>
 <link href=/css/nucleus.css?1628238371 rel=stylesheet>
 <link href=/css/fontawesome-all.min.css?1628238371 rel=stylesheet>
 <link href=/css/hybrid.css?1628238371 rel=stylesheet>
@@ -21,7 +21,7 @@
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
 </head>
-<body data-url=/operators/n/>
+<body data-url=/example/using-json/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -44,7 +44,8 @@
 Introduction
 </a>
 </li>
-<li data-nav-id=/example/ title=Tutorial class=dd-item>
+<li data-nav-id=/example/ title=Tutorial class="dd-item
+parent">
 <a href=/example/>
 Tutorial
 </a>
@@ -79,7 +80,7 @@ td.T type
 Using anchoring
 </a>
 </li>
-<li data-nav-id=/example/using-json/ title="Using JSON" class=dd-item>
+<li data-nav-id=/example/using-json/ title="Using JSON" class="dd-item active">
 <a href=/example/using-json/>
 Using JSON
 </a>
@@ -98,8 +99,7 @@ td.T
 </li>
 </ul>
 </li>
-<li data-nav-id=/operators/ title=Operators class="dd-item
-parent">
+<li data-nav-id=/operators/ title=Operators class=dd-item>
 <a href=/operators/>
 Operators
 </a>
@@ -249,7 +249,7 @@ Map
 MapEach
 </a>
 </li>
-<li data-nav-id=/operators/n/ title=N class="dd-item active">
+<li data-nav-id=/operators/n/ title=N class=dd-item>
 <a href=/operators/n/>
 N
 </a>
@@ -473,30 +473,12 @@ FAQ
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/> <span itemprop=name>go-testdeep</span><meta itemprop=position content="1"></a></span> > <span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/operators/> <span itemprop=name>Operators</span><meta itemprop=position content="2"></a></span> > N
+<span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/> <span itemprop=name>go-testdeep</span><meta itemprop=position content="1"></a></span> > <span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/example/> <span itemprop=name>Tutorial</span><meta itemprop=position content="2"></a></span> > Using JSON
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#example>Example</a></li>
-</ul>
-</li>
-<li><a href=#cmpn-shortcut>CmpN shortcut</a>
-<ul>
-<li><a href=#example-1>Example</a></li>
-</ul>
-</li>
-<li><a href=#tn-shortcut>T.N shortcut</a>
-<ul>
-<li><a href=#example-2>Example</a></li>
-</ul>
-</li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </div>
 </div>
@@ -505,130 +487,49 @@ FAQ
 </div>
 <div id=body-inner>
 <h1>
-N
+Using JSON
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>N</span>(num <span style=color:#6ab825;font-weight:700>interface</span>{}, tolerance ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
-</code></pre></div><p><a href=/operators/n/><code>N</code></a> operator compares a numeric data against <em>num</em> ± <em>tolerance</em>. If
-<em>tolerance</em> is missing, it defaults to 0. <em>num</em> and <em>tolerance</em>
-must be the same kind as the compared value.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>12.2</span>, td.<span style=color:#447fcf>N</span>(<span style=color:#3677a9>12.</span>, <span style=color:#3677a9>0.3</span>)) <span style=color:#999;font-style:italic>// succeeds
-</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>12.2</span>, td.<span style=color:#447fcf>N</span>(<span style=color:#3677a9>12.</span>, <span style=color:#3677a9>0.1</span>)) <span style=color:#999;font-style:italic>// fails
-</span></code></pre></div><p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <a href=https://pkg.go.dev/reflect/#Type><code>reflect.Type</code></a> of <em>num</em>.</p>
-<blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#N> N godoc</a>.</p>
-</blockquote>
-<h3 id=example>Example</h3>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
-Base example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<p>JSON is a first class citizen in go-testdeep world thanks to its
+specific operators: <a href=/operators/json/><code>JSON</code></a>,
+<a href=/operators/subjsonof/><code>SubJSONOf</code></a>,
+<a href=/operators/superjsonof/><code>SuperJSONOf</code></a> and
+<a href=/operators/jsonpointer/><code>JSONPointer</code></a>.</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
+  <span style=color:#ed9d13>&#34;testing&#34;</span>
+  <span style=color:#ed9d13>&#34;time&#34;</span>
 
-	got := <span style=color:#3677a9>1.12345</span>
+  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+)
 
-	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>N</span>(<span style=color:#3677a9>1.1234</span>, <span style=color:#3677a9>0.00006</span>),
-		<span style=color:#ed9d13>&#34;checks %v = 1.1234 ± 0.00006&#34;</span>, got)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
+<span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestCreateRecord</span>(tt *testing.T) {
+  t := td.<span style=color:#447fcf>NewT</span>(tt)
 
-	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>
-</code></pre></div>
-</div>
-</div>
-<h2 id=cmpn-shortcut>CmpN shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpN</span>(t TestingT, got, num , tolerance <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
-</code></pre></div><p>CmpN is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>N</span>(num, tolerance), args...)
-</code></pre></div><p>See above for details.</p>
-<p><a href=/operators/n/><code>N()</code></a> optional parameter <em>tolerance</em> is here mandatory.
-0 value should be passed to mimic its absence in
-original <a href=/operators/n/><code>N()</code></a> call.</p>
-<p>Returns true if the test is OK, false if it fails.</p>
-<p><em>args&mldr;</em> are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If <code>len(args) > 1</code> and
-the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
-<a href=https://pkg.go.dev/fmt/#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
-<a href=https://pkg.go.dev/fmt/#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
-reason of a potential failure.</p>
-<blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpN> CmpN godoc</a>.</p>
-</blockquote>
-<h3 id=example-1>Example</h3>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
-Base example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+  before := time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Truncate</span>(time.Second)
+  record, err := <span style=color:#447fcf>CreateRecord</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>23</span>)
 
-	got := <span style=color:#3677a9>1.12345</span>
-
-	ok := td.<span style=color:#447fcf>CmpN</span>(t, got, <span style=color:#3677a9>1.1234</span>, <span style=color:#3677a9>0.00006</span>,
-		<span style=color:#ed9d13>&#34;checks %v = 1.1234 ± 0.00006&#34;</span>, got)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
-
-	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>
-</code></pre></div>
-</div>
-</div>
-<h2 id=tn-shortcut>T.N shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>N</span>(got, num , tolerance <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
-</code></pre></div><p><a href=/operators/n/><code>N</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>N</span>(num, tolerance), args...)
-</code></pre></div><p>See above for details.</p>
-<p><a href=/operators/n/><code>N()</code></a> optional parameter <em>tolerance</em> is here mandatory.
-0 value should be passed to mimic its absence in
-original <a href=/operators/n/><code>N()</code></a> call.</p>
-<p>Returns true if the test is OK, false if it fails.</p>
-<p><em>args&mldr;</em> are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If <code>len(args) > 1</code> and
-the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
-<a href=https://pkg.go.dev/fmt/#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
-<a href=https://pkg.go.dev/fmt/#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
-reason of a potential failure.</p>
-<blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.N> T.N godoc</a>.</p>
-</blockquote>
-<h3 id=example-2>Example</h3>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
-Base example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
-
-	got := <span style=color:#3677a9>1.12345</span>
-
-	ok := t.<span style=color:#447fcf>N</span>(got, <span style=color:#3677a9>1.1234</span>, <span style=color:#3677a9>0.00006</span>,
-		<span style=color:#ed9d13>&#34;checks %v = 1.1234 ± 0.00006&#34;</span>, got)
-	fmt.<span style=color:#447fcf>Println</span>(ok)
-
-	<span style=color:#999;font-style:italic>// Output:
-</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
-</span><span style=color:#999;font-style:italic></span>
-</code></pre></div>
-</div>
-</div>
+  <span style=color:#6ab825;font-weight:700>if</span> t.<span style=color:#447fcf>CmpNoError</span>(err) {
+    t = t.<span style=color:#447fcf>RootName</span>(<span style=color:#ed9d13>&#34;RECORD&#34;</span>) <span style=color:#999;font-style:italic>// Use RECORD instead of DATA in failure reports
+</span><span style=color:#999;font-style:italic></span>    t.<span style=color:#447fcf>Cmp</span>(record, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;Name&#34;:      &#34;Bob&#34;,
+</span><span style=color:#ed9d13>  &#34;Age&#34;:       23,
+</span><span style=color:#ed9d13>  &#34;Id&#34;:        NotZero(), // comments and operators allowed!
+</span><span style=color:#ed9d13>  &#34;CreatedAt&#34;: Between($1, $2)
+</span><span style=color:#ed9d13>}`</span>,
+      before,
+      time.<span style=color:#447fcf>Now</span>(),
+    ),
+      <span style=color:#ed9d13>&#34;Newly created record&#34;</span>)
+  }
+}
+</code></pre></div><p>Test it in playground: <a href=https://play.golang.org/p/uoBnve85kNk>https://play.golang.org/p/uoBnve85kNk</a></p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=/operators/mapeach/ title=MapEach> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/operators/nan/ title=NaN style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=/example/anchoring/ title="Using anchoring"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/functions/ title=Functions style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
