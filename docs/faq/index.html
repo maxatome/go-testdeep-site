@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>FAQ :: go-testdeep</title>
-<link href=/css/nucleus.css?1627289149 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1627289149 rel=stylesheet>
-<link href=/css/hybrid.css?1627289149 rel=stylesheet>
-<link href=/css/featherlight.min.css?1627289149 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1627289149 rel=stylesheet>
-<link href=/css/auto-complete.css?1627289149 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1627289149 rel=stylesheet>
-<link href=/css/theme.css?1627289149 rel=stylesheet>
-<link href=/css/hugo-theme.css?1627289149 rel=stylesheet>
-<link href=/css/theme-green.css?1627289149 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1627289149></script>
+<link href=/css/nucleus.css?1628238372 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1628238372 rel=stylesheet>
+<link href=/css/hybrid.css?1628238372 rel=stylesheet>
+<link href=/css/featherlight.min.css?1628238372 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1628238372 rel=stylesheet>
+<link href=/css/auto-complete.css?1628238372 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1628238372 rel=stylesheet>
+<link href=/css/theme.css?1628238372 rel=stylesheet>
+<link href=/css/hugo-theme.css?1628238372 rel=stylesheet>
+<link href=/css/theme-green.css?1628238372 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1628238372></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1627289149></script>
-<script type=text/javascript src=/js/auto-complete.js?1627289149></script>
+<script type=text/javascript src=/js/lunr.min.js?1628238372></script>
+<script type=text/javascript src=/js/auto-complete.js?1628238372></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1627289149></script>
+<script type=text/javascript src=/js/search.js?1628238372></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -491,6 +491,18 @@ FAQ
 <li><a href=#what-about-testing-the-response-using-my-api>What about testing the response using my API?</a></li>
 <li><a href=#arf-i-use-gin-gonic-and-so-no-nethttp-handlers>Arf, I use Gin Gonic, and so no <code>net/http</code> handlers</a></li>
 <li><a href=#fine-the-request-succeeds-and-the-id-is-not-0-but-what-is-the-id-real-value>Fine, the request succeeds and the ID is not 0, but what is the ID real value?</a></li>
+<li><a href=#and-what-about-other-http-frameworks>And what about other HTTP frameworks?</a>
+<ul>
+<li><a href=#beego>Beego</a></li>
+<li><a href=#echo>echo</a></li>
+<li><a href=#gin>Gin</a></li>
+<li><a href=#gorillamux>gorilla/mux</a></li>
+<li><a href=#go-swagger>go-swagger</a></li>
+<li><a href=#httprouter>HttpRouter</a></li>
+<li><a href=#pat>pat</a></li>
+<li><a href=#another-web-framework-not-listed-here>Another web framework not listed here?</a></li>
+</ul>
+</li>
 <li><a href=#ok-but-how-to-be-sure-the-response-content-is-well-jsonified>OK, but how to be sure the response content is well JSONified?</a></li>
 <li><a href=#my-api-use-xml-not-json>My API use XML not JSON!</a></li>
 <li><a href=#should-i-import-githubcommaxatomego-testdeep-or-githubcommaxatomego-testdeeptd>Should I import <code>github.com/maxatome/go-testdeep</code> or <code>github.com/maxatome/go-testdeep/td</code>?</a></li>
@@ -1045,13 +1057,125 @@ variable and check it is greater or equal than <code>y2019</code> variable
 </ol>
 <p>If you prefer to do one function call instead of chaining methods as
 above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse>CmpJSONResponse</a>.</p>
+<h2 id=and-what-about-other-http-frameworks>And what about other HTTP frameworks?</h2>
+<p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI()</code></a>
+function needs a <a href=https://pkg.go.dev/net/http#Handler><code>http.Handler</code></a>
+instance.</p>
+<p>Let&rsquo;s see for each following framework how to get it:</p>
+<h3 id=beego>Beego</h3>
+<p><a href=https://beego.me/>home</a> / <a href=https://github.com/beego/beego/>sources</a></p>
+<p>In single instance mode,
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer><code>web.BeeApp</code></a>
+variable is a
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer><code>*web.HttpServer</code></a>
+instance containing a <code>Handlers</code> field whose
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister><code>*ControllerRegister</code></a>
+type implements
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP><code>http.Handler</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, web.BeeApp.Handlers)
+</code></pre></div><p>In multi instances mode, each instance is a
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer><code>*web.HttpServer</code></a>
+so the same rule applies for each instance to test:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, instance.Handlers)
+</code></pre></div><h3 id=echo>echo</h3>
+<p><a href=https://echo.labstack.com/>home</a> / <a href=https://github.com/labstack/echo>sources</a></p>
+<p>Starting v3.0.0,
+<a href=https://pkg.go.dev/github.com/labstack/echo/v4#New><code>echo.New()</code></a>
+returns a <a href=https://pkg.go.dev/github.com/labstack/echo/v4#Echo><code>*echo.Echo</code></a>
+instance that implements
+<a href=https://pkg.go.dev/github.com/labstack/echo/v4#Echo.ServeHTTP><code>http.Handler</code></a>
+interface, so this instance can be fed as is to
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>e := echo.<span style=color:#447fcf>New</span>()
+<span style=color:#999;font-style:italic>// Add routes to e
+</span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
+testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, e) <span style=color:#999;font-style:italic>// e implements http.Handler
+</span></code></pre></div><h3 id=gin>Gin</h3>
+<p><a href=https://gin-gonic.com/>home</a> / <a href=https://github.com/gin-gonic/gin>sources</a></p>
+<p><a href=https://pkg.go.dev/github.com/gin-gonic/gin#Default><code>gin.Default()</code></a>
+and <a href=https://pkg.go.dev/github.com/gin-gonic/gin#New><code>gin.New()</code></a>
+return both a
+<a href=https://pkg.go.dev/github.com/gin-gonic/gin#Engine><code>*gin.Engine</code></a>
+instance that implements
+<a href=https://pkg.go.dev/github.com/gin-gonic/gin#Engine.ServeHTTP><code>http.Handler</code></a>
+interface, so this instance can be fed as is to
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>engine := gin.<span style=color:#447fcf>Default</span>()
+<span style=color:#999;font-style:italic>// Add routes to engine
+</span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
+testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, engine) <span style=color:#999;font-style:italic>// engine implements http.Handler
+</span></code></pre></div><h3 id=gorillamux>gorilla/mux</h3>
+<p><a href=https://www.gorillatoolkit.org/>home</a> / <a href=https://github.com/gorilla/mux>sources</a></p>
+<p><a href=https://pkg.go.dev/github.com/gorilla/mux#NewRouter><code>mux.NewRouter()</code></a>
+returns a <a href=https://pkg.go.dev/github.com/gorilla/mux#Router><code>*mux.Router</code></a>
+instance that implements
+<a href=https://pkg.go.dev/github.com/gorilla/mux#Router.ServeHTTP><code>http.Handler</code></a>
+interface, so this instance can be fed as is to
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := mux.<span style=color:#447fcf>NewRouter</span>()
+<span style=color:#999;font-style:italic>// Add routes to r
+</span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
+testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
+</span></code></pre></div><h3 id=go-swagger>go-swagger</h3>
+<p><a href=https://goswagger.io/>home</a> / <a href=https://github.com/go-swagger/go-swagger>sources</a></p>
+<p>2 cases here, the default generation and the Stratoscale template:</p>
+<ul>
+<li>default generation requires some tricks to retrieve the
+<a href=https://pkg.go.dev/net/http#Handler><code>http.Handler</code></a> instance:
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>swaggerSpec, err := loads.<span style=color:#447fcf>Embedded</span>(restapi.SwaggerJSON, restapi.FlatSwaggerJSON)
+td.<span style=color:#447fcf>Require</span>(t).<span style=color:#447fcf>CmpNoError</span>(err, <span style=color:#ed9d13>&#34;Swagger spec is loaded&#34;</span>)
+api := operations.<span style=color:#447fcf>NewXxxAPI</span>(swaggerSpec) <span style=color:#999;font-style:italic>// Xxx is the name of your API
+</span><span style=color:#999;font-style:italic></span>server := restapi.<span style=color:#447fcf>NewServer</span>(api)
+server.<span style=color:#447fcf>ConfigureAPI</span>()
+hdl := server.<span style=color:#447fcf>GetHandler</span>() <span style=color:#999;font-style:italic>// returns an http.Handler instance
+</span><span style=color:#999;font-style:italic></span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
+</code></pre></div></li>
+<li>with Stratoscale template, it is simpler:
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>hdl, _, err := restapi.<span style=color:#447fcf>HandlerAPI</span>(restapi.Config{
+  Tag1API:  Tag1{},
+  Tag2API:  Tag2{},
+})
+td.<span style=color:#447fcf>Require</span>(t).<span style=color:#447fcf>CmpNoError</span>(err, <span style=color:#ed9d13>&#34;API correctly set up&#34;</span>)
+<span style=color:#999;font-style:italic>// hdl is an http.Handler instance
+</span><span style=color:#999;font-style:italic></span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
+</code></pre></div></li>
+</ul>
+<h3 id=httprouter>HttpRouter</h3>
+<p><a href=https://github.com/julienschmidt/httprouter>home / sources</a></p>
+<p><a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#New><code>httprouter.New()</code></a>
+returns a
+<a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#Router><code>*httprouter.Router</code></a>
+instance that implements
+<a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#Router.ServeHTTP><code>http.Handler</code></a>
+interface, so this instance can be fed as is to
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := httprouter.<span style=color:#447fcf>New</span>()
+<span style=color:#999;font-style:italic>// Add routes to r
+</span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
+testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
+</span></code></pre></div><h3 id=pat>pat</h3>
+<p><a href=https://github.com/gorilla/pat>home / sources</a></p>
+<p><a href=https://pkg.go.dev/github.com/gorilla/pat#New><code>pat.New()</code></a>
+returns a <a href=https://pkg.go.dev/github.com/gorilla/pat#Router><code>*pat.Router</code></a>
+instance that implements
+<a href=https://pkg.go.dev/github.com/gorilla/pat#Router.ServeHTTP><code>http.Handler</code></a>
+interface, so this instance can be fed as is to
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>router := pat.<span style=color:#447fcf>New</span>()
+<span style=color:#999;font-style:italic>// Add routes to router
+</span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
+testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, router) <span style=color:#999;font-style:italic>// router implements http.Handler
+</span></code></pre></div><h3 id=another-web-framework-not-listed-here>Another web framework not listed here?</h3>
+<p><a href=https://github.com/maxatome/go-testdeep-site/issues>File an issue</a>
+or <a href=https://github.com/maxatome/go-testdeep-site/pulls>open a PR</a> to
+fix this!</p>
 <h2 id=ok-but-how-to-be-sure-the-response-content-is-well-jsonified>OK, but how to be sure the response content is well JSONified?</h2>
 <p>Again, <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>
 is your friend!</p>
 <p>With the help of <a href=/operators/json/><code>JSON</code></a> operator of course! See
 it below, used with <a href=/operators/catch/><code>Catch</code></a> (note it can be used
 without), for a <code>POST</code> example:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
   ID        <span style=color:#6ab825;font-weight:700>uint64</span>    <span style=color:#ed9d13>`json:&#34;id&#34;`</span>
   Name      <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
   Age       <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
@@ -1123,7 +1247,7 @@ counterpart yet.
 But <a href=https://github.com/maxatome/go-testdeep/pulls>PRs are welcome</a>!</p>
 <h2 id=should-i-import-githubcommaxatomego-testdeep-or-githubcommaxatomego-testdeeptd>Should I import <code>github.com/maxatome/go-testdeep</code> or <code>github.com/maxatome/go-testdeep/td</code>?</h2>
 <p>Historically the main package of go-testdeep was <code>testdeep</code> as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep&#34;</span>
@@ -1133,7 +1257,7 @@ But <a href=https://github.com/maxatome/go-testdeep/pulls>PRs are welcome</a>!</
   testdeep.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>GetPerson</span>(), Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>})
 }
 </code></pre></div><p>As <code>testdeep</code> was boring to type, renaming it to <code>td</code> became a habit as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   td <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep&#34;</span>
@@ -1148,7 +1272,7 @@ taken to create a new package <code>github.com/maxatome/go-testdeep/td</code>
 while keeping <code>github.com/maxatome/go-testdeep</code> working thanks to go
 type aliases.</p>
 <p>So the previous examples (that are still working) can now be written as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
@@ -1237,7 +1361,7 @@ foreground_color:background_color   # set foreground AND background color
 </span><span style=color:#ed9d13></span>    go <span style=color:#24909d>test</span>
 </code></pre></div><h2 id=playgolangorg-does-not-handle-colors-error-output-is-nasty>play.golang.org does not handle colors, error output is nasty</h2>
 <p>Just add this single line in playground:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>init</span>() { os.<span style=color:#447fcf>Setenv</span>(<span style=color:#ed9d13>&#34;TESTDEEP_COLOR&#34;</span>, <span style=color:#ed9d13>&#34;off&#34;</span>) }
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>init</span>() { os.<span style=color:#447fcf>Setenv</span>(<span style=color:#ed9d13>&#34;TESTDEEP_COLOR&#34;</span>, <span style=color:#ed9d13>&#34;off&#34;</span>) }
 </code></pre></div><p>Until playground supports <a href=https://en.wikipedia.org/wiki/ANSI_escape_code#Colors>ANSI color escape
 sequences</a>.</p>
 <h2 id=the-x-testing-framework-allows-to-testdo-y-while-go-testdeep-not>The <code>X</code> testing framework allows to test/do <code>Y</code> while go-testdeep not</h2>
@@ -1256,7 +1380,7 @@ check that a string contains a RFC3339 formatted time, in UTC time
 zone (&ldquo;Z&rdquo; suffix) and then to compare it as a <code>time.Time</code> against
 <code>expectedValue</code> (which can be another <a href=/operators/>operator</a>
 or, of course, a <code>time.Time</code> value).</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>RFC3339ZToTime</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) td.TestDeep {
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>RFC3339ZToTime</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) td.TestDeep {
   <span style=color:#6ab825;font-weight:700>return</span> td.<span style=color:#447fcf>All</span>(
     td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Z&#34;</span>),
     td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(s <span style=color:#6ab825;font-weight:700>string</span>) (time.Time, <span style=color:#6ab825;font-weight:700>error</span>) {
@@ -1265,7 +1389,7 @@ or, of course, a <code>time.Time</code> value).</p>
   )
 }
 </code></pre></div><p>It could be used as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>before := time.<span style=color:#447fcf>Now</span>()
+<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>before := time.<span style=color:#447fcf>Now</span>()
 record := <span style=color:#447fcf>NewRecord</span>()
 td.<span style=color:#447fcf>Cmp</span>(t, record,
   td.<span style=color:#447fcf>SuperJSONOf</span>(<span style=color:#ed9d13>`{&#34;created_at&#34;: $1}`</span>,
@@ -1320,18 +1444,18 @@ to update corresponding <code>CmpFooBar</code> & <code>T.FooBar</code> examples.
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1627289149></script>
-<script src=/js/perfect-scrollbar.min.js?1627289149></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1627289149></script>
-<script src=/js/jquery.sticky.js?1627289149></script>
-<script src=/js/featherlight.min.js?1627289149></script>
-<script src=/js/highlight.pack.js?1627289149></script>
+<script src=/js/clipboard.min.js?1628238372></script>
+<script src=/js/perfect-scrollbar.min.js?1628238372></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1628238372></script>
+<script src=/js/jquery.sticky.js?1628238372></script>
+<script src=/js/featherlight.min.js?1628238372></script>
+<script src=/js/highlight.pack.js?1628238372></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1627289149></script>
-<script src=/js/learn.js?1627289149></script>
-<script src=/js/hugo-learn.js?1627289149></script>
-<link href=/mermaid/mermaid.css?1627289149 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1627289149></script>
+<script src=/js/modernizr.custom-3.6.0.js?1628238372></script>
+<script src=/js/learn.js?1628238372></script>
+<script src=/js/hugo-learn.js?1628238372></script>
+<link href=/mermaid/mermaid.css?1628238372 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1628238372></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
