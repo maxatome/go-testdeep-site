@@ -132,7 +132,7 @@ func TestMyApi(t *testing.T) {
    or equal than `time.Now()`.
 
 
-Example of produced error in case of mismatch:
+#### Example of produced error in case of mismatch {#error-output}
 
 ![error output](/images/colored-output.svg)
 
