@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Any :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446378 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446378 rel=stylesheet>
-<link href=/css/hybrid.css?1630446378 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446378 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446378 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446378 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446378 rel=stylesheet>
-<link href=/css/theme.css?1630446378 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446378 rel=stylesheet>
-<link href=/css/theme-green.css?1630446378 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446378></script>
+<link href=/css/nucleus.css?1632428595 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428595 rel=stylesheet>
+<link href=/css/hybrid.css?1632428595 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428595 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428595 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428595 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428595 rel=stylesheet>
+<link href=/css/theme.css?1632428595 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428595 rel=stylesheet>
+<link href=/css/theme-green.css?1632428595 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428595></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446378></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446378></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428595></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428595></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446378></script>
+<script type=text/javascript src=/js/search.js?1632428595></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,11 +507,11 @@ FAQ
 <h1>
 Any
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Any</span>(expectedValues ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Any</span>(expectedValues ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/any/><code>Any</code></a> operator compares data against several expected values. During
 a match, at least one of them has to match to succeed. Consider it
 as a &ldquo;OR&rdquo; logical operator.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foo&#34;</span>, td.<span style=color:#447fcf>Any</span>(<span style=color:#ed9d13>&#34;bar&#34;</span>, <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>)) <span style=color:#999;font-style:italic>// succeeds
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foo&#34;</span>, td.<span style=color:#447fcf>Any</span>(<span style=color:#ed9d13>&#34;bar&#34;</span>, <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>)) <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foo&#34;</span>, td.<span style=color:#447fcf>Any</span>(
   td.<span style=color:#447fcf>Len</span>(<span style=color:#3677a9>4</span>),
   td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;f&#34;</span>),
@@ -519,7 +519,7 @@ as a &ldquo;OR&rdquo; logical operator.</p>
 )) <span style=color:#999;font-style:italic>// succeeds coz &#34;f&#34; prefix
 </span></code></pre></div><p>Note <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten><code>Flatten</code></a> function can be used to group or reuse some values or
 operators and so avoid boring and inefficient copies:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>stringOps := td.<span style=color:#447fcf>Flatten</span>([]td.TestDeep{td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;f&#34;</span>), td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;z&#34;</span>)})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>stringOps := td.<span style=color:#447fcf>Flatten</span>([]td.TestDeep{td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;f&#34;</span>), td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;z&#34;</span>)})
 td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar&#34;</span>, td.<span style=color:#447fcf>All</span>(
   td.<span style=color:#447fcf>Len</span>(<span style=color:#3677a9>4</span>),
   stringOps,
@@ -539,7 +539,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo/bar&#34;</span>
 
@@ -574,9 +574,9 @@ Base example
 </div>
 </div>
 <h2 id=cmpany-shortcut>CmpAny shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpAny</span>(t TestingT, got <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedValues []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpAny</span>(t TestingT, got <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedValues []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpAny is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Any</span>(expectedValues...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Any</span>(expectedValues...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -597,7 +597,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo/bar&#34;</span>
 
@@ -630,9 +630,9 @@ Base example
 </div>
 </div>
 <h2 id=tany-shortcut>T.Any shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Any</span>(got <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedValues []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Any</span>(got <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedValues []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/any/><code>Any</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Any</span>(expectedValues...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Any</span>(expectedValues...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -653,7 +653,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#ed9d13>&#34;foo/bar&#34;</span>
 
@@ -697,18 +697,18 @@ Base example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446378></script>
-<script src=/js/jquery.sticky.js?1630446378></script>
-<script src=/js/featherlight.min.js?1630446378></script>
-<script src=/js/highlight.pack.js?1630446378></script>
+<script src=/js/clipboard.min.js?1632428595></script>
+<script src=/js/perfect-scrollbar.min.js?1632428595></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428595></script>
+<script src=/js/jquery.sticky.js?1632428595></script>
+<script src=/js/featherlight.min.js?1632428595></script>
+<script src=/js/highlight.pack.js?1632428595></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446378></script>
-<script src=/js/learn.js?1630446378></script>
-<script src=/js/hugo-learn.js?1630446378></script>
-<link href=/mermaid/mermaid.css?1630446378 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446378></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428595></script>
+<script src=/js/learn.js?1632428595></script>
+<script src=/js/hugo-learn.js?1632428595></script>
+<link href=/mermaid/mermaid.css?1632428595 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428595></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

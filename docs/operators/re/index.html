@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Re :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446379 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446379 rel=stylesheet>
-<link href=/css/hybrid.css?1630446379 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446379 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446379 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446379 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446379 rel=stylesheet>
-<link href=/css/theme.css?1630446379 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446379 rel=stylesheet>
-<link href=/css/theme-green.css?1630446379 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446379></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446379></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446379></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446379></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 Re
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Re</span>(reg <span style=color:#6ab825;font-weight:700>interface</span>{}, capture ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Re</span>(reg <span style=color:#6ab825;font-weight:700>interface</span>{}, capture ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/re/><code>Re</code></a> operator allows to apply a regexp on a <code>string</code> (or convertible),
 <code>[]byte</code>, <a href=https://pkg.go.dev/builtin/#error><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer><code>fmt.Stringer</code></a> interface (<a href=https://pkg.go.dev/builtin/#error><code>error</code></a> interface is tested
 before <a href=https://pkg.go.dev/fmt/#Stringer><code>fmt.Stringer</code></a>.)</p>
@@ -517,7 +517,7 @@ compiled using <a href=https://pkg.go.dev/regexp/#MustCompile><code>regexp.MustC
 regexp groups. Groups are presented as a <code>[]string</code> or <code>[][]byte</code>
 depending the original matched data. Note that an other operator
 can be used here.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar zip!&#34;</span>, td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^foobar`</span>)) <span style=color:#999;font-style:italic>// succeeds
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar zip!&#34;</span>, td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^foobar`</span>)) <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
   td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(\w+) (\w+)`</span>, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;John&#34;</span>, <span style=color:#ed9d13>&#34;Doe&#34;</span>})) <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
@@ -535,7 +535,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo bar&#34;</span>
 	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>), <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -560,7 +560,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
@@ -581,7 +581,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
 	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>), <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -601,7 +601,7 @@ Capture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo bar biz&#34;</span>
 	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>, td.<span style=color:#447fcf>Set</span>(<span style=color:#ed9d13>&#34;biz&#34;</span>, <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>)),
@@ -628,7 +628,7 @@ Compiled example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -655,7 +655,7 @@ CompiledStringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -678,7 +678,7 @@ CompiledError example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -700,7 +700,7 @@ CompiledCapture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>)
 
@@ -722,9 +722,9 @@ CompiledCapture example
 </div>
 </div></p>
 <h2 id=cmpre-shortcut>CmpRe shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpRe</span>(t TestingT, got, reg , capture <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpRe</span>(t TestingT, got, reg , capture <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpRe is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Re</span>(reg, capture), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Re</span>(reg, capture), args...)
 </code></pre></div><p>See above for details.</p>
 <p><a href=/operators/re/><code>Re()</code></a> optional parameter <em>capture</em> is here mandatory.
 <code>nil</code> value should be passed to mimic its absence in
@@ -749,7 +749,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo bar&#34;</span>
 	ok := td.<span style=color:#447fcf>CmpRe</span>(t, got, <span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>, <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -774,7 +774,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
@@ -795,7 +795,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
 	ok := td.<span style=color:#447fcf>CmpRe</span>(t, got, <span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>, <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -815,7 +815,7 @@ Capture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foo bar biz&#34;</span>
 	ok := td.<span style=color:#447fcf>CmpRe</span>(t, got, <span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>, td.<span style=color:#447fcf>Set</span>(<span style=color:#ed9d13>&#34;biz&#34;</span>, <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>),
@@ -842,7 +842,7 @@ Compiled example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -869,7 +869,7 @@ CompiledStringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -892,7 +892,7 @@ CompiledError example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -914,7 +914,7 @@ CompiledCapture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>)
 
@@ -936,9 +936,9 @@ CompiledCapture example
 </div>
 </div></p>
 <h2 id=tre-shortcut>T.Re shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Re</span>(got, reg , capture <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Re</span>(got, reg , capture <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/re/><code>Re</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Re</span>(reg, capture), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Re</span>(reg, capture), args...)
 </code></pre></div><p>See above for details.</p>
 <p><a href=/operators/re/><code>Re()</code></a> optional parameter <em>capture</em> is here mandatory.
 <code>nil</code> value should be passed to mimic its absence in
@@ -963,7 +963,7 @@ Base example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#ed9d13>&#34;foo bar&#34;</span>
 	ok := t.<span style=color:#447fcf>Re</span>(got, <span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>, <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -988,7 +988,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
@@ -1009,7 +1009,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foo bar&#34;</span>)
 	ok := t.<span style=color:#447fcf>Re</span>(got, <span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>, <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;checks value %s&#34;</span>, got)
@@ -1029,7 +1029,7 @@ Capture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#ed9d13>&#34;foo bar biz&#34;</span>
 	ok := t.<span style=color:#447fcf>Re</span>(got, <span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>, td.<span style=color:#447fcf>Set</span>(<span style=color:#ed9d13>&#34;biz&#34;</span>, <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>),
@@ -1056,7 +1056,7 @@ Compiled example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -1083,7 +1083,7 @@ CompiledStringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -1106,7 +1106,7 @@ CompiledError example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>&#34;(zip|bar)$&#34;</span>)
 
@@ -1128,7 +1128,7 @@ CompiledCapture example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	expected := regexp.<span style=color:#447fcf>MustCompile</span>(<span style=color:#ed9d13>`^(\w+) (\w+) (\w+)$`</span>)
 
@@ -1161,18 +1161,18 @@ CompiledCapture example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

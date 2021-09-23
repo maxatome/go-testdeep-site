@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>SuperMapOf :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446379 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446379 rel=stylesheet>
-<link href=/css/hybrid.css?1630446379 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446379 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446379 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446379 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446379 rel=stylesheet>
-<link href=/css/theme.css?1630446379 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446379 rel=stylesheet>
-<link href=/css/theme-green.css?1630446379 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446379></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446379></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446379></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446379></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 SuperMapOf
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>SuperMapOf</span>(model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>SuperMapOf</span>(model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries) TestDeep
 </code></pre></div><p><a href=/operators/supermapof/><code>SuperMapOf</code></a> operator compares the contents of a map against the non-zero
 values of <em>model</em> (if any) and the values of <em>expectedEntries</em>.</p>
 <p><em>model</em> must be the same type as compared data.</p>
@@ -515,7 +515,7 @@ values of <em>model</em> (if any) and the values of <em>expectedEntries</em>.</p
 no <a href=/operators/>TestDeep operator</a> are involved.</p>
 <p>During a match, each expected entry should match in the compared
 map. But some entries in the compared map may not be expected.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>string</span>{
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>string</span>{
   <span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#ed9d13>&#34;test&#34;</span>,
   <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#ed9d13>&#34;wizz&#34;</span>,
   <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#ed9d13>&#34;buzz&#34;</span>,
@@ -551,7 +551,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>42</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>89</span>}
 
@@ -574,7 +574,7 @@ TypedMap example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyMap <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -599,9 +599,9 @@ TypedMap example
 </div>
 </div></p>
 <h2 id=cmpsupermapof-shortcut>CmpSuperMapOf shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSuperMapOf</span>(t TestingT, got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSuperMapOf</span>(t TestingT, got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpSuperMapOf is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SuperMapOf</span>(model, expectedEntries), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SuperMapOf</span>(model, expectedEntries), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -623,7 +623,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>42</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>89</span>}
 
@@ -645,7 +645,7 @@ TypedMap example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyMap <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -668,9 +668,9 @@ TypedMap example
 </div>
 </div></p>
 <h2 id=tsupermapof-shortcut>T.SuperMapOf shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>SuperMapOf</span>(got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>SuperMapOf</span>(got, model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedEntries MapEntries, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/supermapof/><code>SuperMapOf</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>SuperMapOf</span>(model, expectedEntries), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>SuperMapOf</span>(model, expectedEntries), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -692,7 +692,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>42</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>89</span>}
 
@@ -714,7 +714,7 @@ TypedMap example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyMap <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -748,18 +748,18 @@ TypedMap example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

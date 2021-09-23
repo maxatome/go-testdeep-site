@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>JSON :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446378 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446378 rel=stylesheet>
-<link href=/css/hybrid.css?1630446378 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446378 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446378 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446378 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446378 rel=stylesheet>
-<link href=/css/theme.css?1630446378 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446378 rel=stylesheet>
-<link href=/css/theme-green.css?1630446378 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446378></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446378></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446378></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446378></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 JSON
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>JSON</span>(expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>JSON</span>(expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/json/><code>JSON</code></a> operator allows to compare the JSON representation of data
 against <em>expectedJSON</em>. <em>expectedJSON</em> can be a:</p>
 <ul>
@@ -520,20 +520,18 @@ unmarshaling)</li>
 </ul>
 <p><em>expectedJSON</em> JSON value can contain placeholders. The <em>params</em>
 are for any placeholder parameters in <em>expectedJSON</em>. <em>params</em> can
-contain <a href=/operators/>TestDeep operators</a> as well as raw values. Raw values, that
-do not contain <a href=/operators/>TestDeep operators</a> deeply nested, are first
-<a href=https://pkg.go.dev/json/#Marshal><code>json.Marshal</code></a>&lsquo;ed then <a href=https://pkg.go.dev/json/#Unmarshal><code>json.Unmarshal</code></a>&lsquo;ed in an <code>interface{}</code>. A
-placeholder can be numeric like <code>$2</code> or named like <code>$name</code> and always
-references an item in <em>params</em>.</p>
+contain <a href=/operators/>TestDeep operators</a> as well as raw values. A placeholder can
+be numeric like <code>$2</code> or named like <code>$name</code> and always references an
+item in <em>params</em>.</p>
 <p>Numeric placeholders reference the n&rsquo;th &ldquo;operators&rdquo; item (starting
 at 1). Named placeholders are used with <a href=/operators/tag/><code>Tag</code></a> operator as follows:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: $name, &#34;age&#34;: $2, &#34;gender&#34;: $3}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>),                  <span style=color:#999;font-style:italic>// matches only $2
 </span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;male&#34;</span>))                             <span style=color:#999;font-style:italic>// matches only $3
 </span></code></pre></div><p>Note that placeholders can be double-quoted as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: &#34;$name&#34;, &#34;age&#34;: &#34;$2&#34;, &#34;gender&#34;: &#34;$3&#34;}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>),                  <span style=color:#999;font-style:italic>// matches only $2
@@ -543,15 +541,27 @@ item is (= double quoting a placeholder matching a number is not a
 problem). It is just a matter of taste, double-quoting placeholders
 can be preferred when the JSON data has to conform to the JSON
 specification, like when used in a &ldquo;.json&rdquo; file.</p>
+<p><a href=/operators/json/><code>JSON</code></a> does its best to convert back the <a href=/operators/json/><code>JSON</code></a> corresponding to a
+placeholder to the type of the placeholder or, if the placeholder
+is an operator, to the type behind the operator. Allowing to do
+things like:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1}`</span>, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>}))
+td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>2</span>, <span style=color:#3677a9>4</span>), <span style=color:#3677a9>4</span>}))
+td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1}`</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>27</span>, <span style=color:#3677a9>32</span>)))
+</code></pre></div><p>Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled <a href=/operators/json/><code>JSON</code></a> form (so as <code>bool</code>, <code>float64</code>,
+<code>string</code>, <code>[]interface{}</code>, <code>map[string]interface{}</code> or simply <code>nil</code>).</p>
 <p>Note <em>expectedJSON</em> can be a <code>[]byte</code>, JSON filename or <a href=https://pkg.go.dev/io/#Reader><code>io.Reader</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>&#34;file.json&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>&#34;file.json&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>([]<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`[1, $1, 3]`</span>), td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(osFile, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 </code></pre></div><p>A JSON filename ends with &ldquo;.json&rdquo;.</p>
 <p>To avoid a legit &ldquo;$&rdquo; <code>string</code> prefix causes a bad placeholder <a href=https://pkg.go.dev/builtin/#error><code>error</code></a>,
 just double it to escape it. Note it is only needed when the &ldquo;$&rdquo; is
 the first character of a <code>string</code>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: &#34;$name&#34;, &#34;details&#34;: &#34;$$info&#34;, &#34;age&#34;: $2}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>)))                 <span style=color:#999;font-style:italic>// matches only $2
@@ -560,7 +570,7 @@ placeholders are involved here.</p>
 <p>Note that <a href=/operators/lax/><code>Lax</code></a> mode is automatically enabled by <a href=/operators/json/><code>JSON</code></a> operator to
 simplify numeric tests.</p>
 <p>Comments can be embedded in JSON data:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
 </span><span style=color:#ed9d13>  // A guy properties:
@@ -582,7 +592,7 @@ with the first subsequent character sequence */.</li>
 </ul>
 <p>Most operators can be directly embedded in <a href=/operators/json/><code>JSON</code></a> without requiring
 any placeholder.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
 </span><span style=color:#ed9d13>  &#34;fullname&#34;: HasPrefix(&#34;Foo&#34;),
@@ -593,7 +603,7 @@ any placeholder.</p>
 </span><span style=color:#ed9d13>  })
 </span><span style=color:#ed9d13>}`</span>))
 </code></pre></div><p>Placeholders can be used anywhere, even in operators parameters as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: HasPrefix($1)}`</span>, <span style=color:#ed9d13>&#34;Zip&#34;</span>))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: HasPrefix($1)}`</span>, <span style=color:#ed9d13>&#34;Zip&#34;</span>))
 </code></pre></div><p>A few notes about operators embedding:</p>
 <ul>
 <li><a href=/operators/submapof/><code>SubMapOf</code></a> and <a href=/operators/supermapof/><code>SuperMapOf</code></a> take only one parameter, a JSON object;</li>
@@ -611,11 +621,11 @@ and can be: &ldquo;[]&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/max
 JSON data using <code>$^OperatorName</code> or &ldquo;<code>$^OperatorName</code>&rdquo; notation. They
 are named shortcut operators (they predate the above operators embedding
 but they subsist for compatibility):</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
 </code></pre></div><p>can be written as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero}`</span>))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero}`</span>))
 </code></pre></div><p>or</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;}`</span>))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;}`</span>))
 </code></pre></div><p>As for placeholders, there is no differences between <code>$^NotZero</code> and
 &ldquo;<code>$^NotZero</code>&rdquo;.</p>
 <p>The allowed shortcut operators follow:</p>
@@ -647,7 +657,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -711,12 +721,15 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
-	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
-		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
-		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
-	}{
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+		Children []*Person <span style=color:#ed9d13>`json:&#34;children,omitempty&#34;`</span>
+	}
+
+	got := &amp;Person{
 		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
 		Age:      <span style=color:#3677a9>42</span>,
 	}
@@ -742,11 +755,26 @@ Placeholders example
 			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
+	got.Children = []*Person{
+		{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+		{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+	}
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name, &#34;children&#34;: $children}`</span>,
+			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)),
+			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>)),
+			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;children&#34;</span>, td.<span style=color:#447fcf>Bag</span>(
+				&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+				&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+			))))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -759,7 +787,7 @@ Embedding example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -812,7 +840,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -868,9 +896,9 @@ File example
 </div>
 </div></p>
 <h2 id=cmpjson-shortcut>CmpJSON shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpJSON</span>(t TestingT, got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpJSON</span>(t TestingT, got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpJSON is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(expectedJSON, params...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(expectedJSON, params...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -892,7 +920,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -956,12 +984,15 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
-	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
-		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
-		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
-	}{
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+		Children []*Person <span style=color:#ed9d13>`json:&#34;children,omitempty&#34;`</span>
+	}
+
+	got := &amp;Person{
 		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
 		Age:      <span style=color:#3677a9>42</span>,
 	}
@@ -978,11 +1009,22 @@ Placeholders example
 	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
+	got.Children = []*Person{
+		{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+		{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+	}
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name, &#34;children&#34;: $children}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;children&#34;</span>, td.<span style=color:#447fcf>Bag</span>(
+		&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+		&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+	))})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -995,7 +1037,7 @@ Embedding example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1048,7 +1090,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1096,9 +1138,9 @@ File example
 </div>
 </div></p>
 <h2 id=tjson-shortcut>T.JSON shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>JSON</span>(got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>JSON</span>(got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/json/><code>JSON</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>JSON</span>(expectedJSON, params...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>JSON</span>(expectedJSON, params...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -1120,7 +1162,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1184,12 +1226,15 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
-	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
-		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
-		Age      <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
-	}{
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Fullname <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
+		Age      <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+		Children []*Person <span style=color:#ed9d13>`json:&#34;children,omitempty&#34;`</span>
+	}
+
+	got := &amp;Person{
 		Fullname: <span style=color:#ed9d13>&#34;Bob Foobar&#34;</span>,
 		Age:      <span style=color:#3677a9>42</span>,
 	}
@@ -1206,11 +1251,22 @@ Placeholders example
 	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with named placeholders:&#34;</span>, ok)
 
+	got.Children = []*Person{
+		{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+		{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+	}
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: $age, &#34;fullname&#34;: $name, &#34;children&#34;: $children}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;age&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Foobar&#34;</span>)), td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;children&#34;</span>, td.<span style=color:#447fcf>Bag</span>(
+		&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>},
+		&amp;Person{Fullname: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>28</span>},
+	))})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1223,7 +1279,7 @@ Embedding example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1276,7 +1332,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1335,18 +1391,18 @@ File example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446378></script>
-<script src=/js/jquery.sticky.js?1630446378></script>
-<script src=/js/featherlight.min.js?1630446378></script>
-<script src=/js/highlight.pack.js?1630446378></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446378></script>
-<script src=/js/learn.js?1630446378></script>
-<script src=/js/hugo-learn.js?1630446378></script>
-<link href=/mermaid/mermaid.css?1630446378 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446378></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

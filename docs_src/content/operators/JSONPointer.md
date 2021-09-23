@@ -12,6 +12,8 @@ representation of data, gets the value corresponding to the [`JSON`]({{< ref "JS
 pointer *pointer* (as RFC 6901 specifies it) and compares it to
 *expectedValue*.
 
+[`Lax`]({{< ref "Lax" >}}) mode is automatically enabled to simplify numeric tests.
+
 JSONPointer does its best to convert back the [`JSON`]({{< ref "JSON" >}}) pointed data to
 the type of *expectedValue* or to the type behind the
 *expectedValue* operator, if it is an operator. Allowing to do
@@ -31,18 +33,16 @@ td.Cmp(t,
   td.JSONPointer("/next/next",
     td.Struct(Item{}, td.StructFields{"Val": td.Gte(3)})),
 )
-```
 
-It does this conversion only if the expected type is a struct, a
-struct pointer or implements the encoding/json.Unmarshaler
-interface. In the case the conversion does not occur, the [`Lax`]({{< ref "Lax" >}}) mode
-is automatically enabled to simplify numeric tests.
-
-```go
 got := map[string]int64{"zzz": 42} // 42 is int64 here
 td.Cmp(t, got, td.JSONPointer("/zzz", 42))
 td.Cmp(t, got, td.JSONPointer("/zzz", td.Between(40, 45)))
 ```
+
+Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+`string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
 
 Note that as any [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
 [`JSON`]({{< ref "JSON" >}}) operator works out of the box:

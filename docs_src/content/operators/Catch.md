@@ -47,6 +47,11 @@ if td.Cmp(t, CreateRecord("test"),
 }
 ```
 
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *expectedValue*,
+except if *expectedValue* is a [TestDeep operator]({{< ref "operators" >}}). In this case, it
+delegates [`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator, but if `nil` is returned by
+this call, the dereferenced [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *target* is returned.
+
 
 > See also [<i class='fas fa-book'></i> Catch godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Catch).
 

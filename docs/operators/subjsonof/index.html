@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>SubJSONOf :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446379 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446379 rel=stylesheet>
-<link href=/css/hybrid.css?1630446379 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446379 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446379 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446379 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446379 rel=stylesheet>
-<link href=/css/theme.css?1630446379 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446379 rel=stylesheet>
-<link href=/css/theme-green.css?1630446379 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446379></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446379></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446379></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446379></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 SubJSONOf
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>SubJSONOf</span>(expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>SubJSONOf</span>(expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params ...<span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/subjsonof/><code>SubJSONOf</code></a> operator allows to compare the JSON representation of
 data against <em>expectedJSON</em>. Unlike <a href=/operators/json/><code>JSON</code></a> operator, marshalled data
 must be a JSON object/map (aka {…}). <em>expectedJSON</em> can be a:</p>
@@ -523,7 +523,7 @@ unmarshaling)</li>
 (aka {…}) too. During a match, each expected entry should match in
 the compared map. But some expected entries can be missing from the
 compared map.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> MyStruct <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> MyStruct <span style=color:#6ab825;font-weight:700>struct</span> {
   Name <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
   Age  <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
 }
@@ -540,13 +540,13 @@ be numeric like <code>$2</code> or named like <code>$name</code> and always refe
 item in <em>params</em>.</p>
 <p>Numeric placeholders reference the n&rsquo;th &ldquo;operators&rdquo; item (starting
 at 1). Named placeholders are used with <a href=/operators/tag/><code>Tag</code></a> operator as follows:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: $name, &#34;age&#34;: $2, &#34;gender&#34;: $3}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>),                  <span style=color:#999;font-style:italic>// matches only $2
 </span><span style=color:#999;font-style:italic></span>    <span style=color:#ed9d13>&#34;male&#34;</span>))                             <span style=color:#999;font-style:italic>// matches only $3
 </span></code></pre></div><p>Note that placeholders can be double-quoted as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: &#34;$name&#34;, &#34;age&#34;: &#34;$2&#34;, &#34;gender&#34;: &#34;$3&#34;}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>),                  <span style=color:#999;font-style:italic>// matches only $2
@@ -556,15 +556,29 @@ item is (= double quoting a placeholder matching a number is not a
 problem). It is just a matter of taste, double-quoting placeholders
 can be preferred when the JSON data has to conform to the JSON
 specification, like when used in a &ldquo;.json&rdquo; file.</p>
+<p><a href=/operators/subjsonof/><code>SubJSONOf</code></a> does its best to convert back the <a href=/operators/json/><code>JSON</code></a> corresponding to a
+placeholder to the type of the placeholder or, if the placeholder
+is an operator, to the type behind the operator. Allowing to do
+things like:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1, &#34;bar&#34;: 12}`</span>, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>}))
+td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1, &#34;bar&#34;: 12}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>2</span>, <span style=color:#3677a9>4</span>), <span style=color:#3677a9>4</span>}))
+td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:$1, &#34;bar&#34;: 12}`</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>27</span>, <span style=color:#3677a9>32</span>)))
+</code></pre></div><p>Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled <a href=/operators/json/><code>JSON</code></a> form (so as <code>bool</code>, <code>float64</code>,
+<code>string</code>, <code>[]interface{}</code>, <code>map[string]interface{}</code> or simply <code>nil</code>).</p>
 <p>Note <em>expectedJSON</em> can be a <code>[]byte</code>, JSON filename or <a href=https://pkg.go.dev/io/#Reader><code>io.Reader</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>&#34;file.json&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>&#34;file.json&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>([]<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`[1, $1, 3]`</span>), td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(osFile, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>)))
 </code></pre></div><p>A JSON filename ends with &ldquo;.json&rdquo;.</p>
 <p>To avoid a legit &ldquo;$&rdquo; <code>string</code> prefix causes a bad placeholder <a href=https://pkg.go.dev/builtin/#error><code>error</code></a>,
 just double it to escape it. Note it is only needed when the &ldquo;$&rdquo; is
 the first character of a <code>string</code>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: &#34;$name&#34;, &#34;details&#34;: &#34;$$info&#34;, &#34;age&#34;: $2}`</span>,
     td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;name&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Foo&#34;</span>)), <span style=color:#999;font-style:italic>// matches $1 and $name
 </span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>)))                 <span style=color:#999;font-style:italic>// matches only $2
@@ -573,7 +587,7 @@ placeholders are involved here.</p>
 <p>Note that <a href=/operators/lax/><code>Lax</code></a> mode is automatically enabled by <a href=/operators/subjsonof/><code>SubJSONOf</code></a> operator to
 simplify numeric tests.</p>
 <p>Comments can be embedded in JSON data:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
   <span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
 </span><span style=color:#ed9d13>  // A guy properties:
@@ -593,14 +607,46 @@ end of the line.</li>
 <li>multi-lines comments start with the character sequence /* and stop
 with the first subsequent character sequence */.</li>
 </ul>
-<p>Last but not least, simple operators can be directly embedded in
-JSON data without requiring any placeholder but using directly
-<code>$^OperatorName</code>. They are operator shortcuts:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
+<p>Most operators can be directly embedded in <a href=/operators/subjsonof/><code>SubJSONOf</code></a> without requiring
+any placeholder.</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: HasPrefix(&#34;Foo&#34;),
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between(41, 43),
+</span><span style=color:#ed9d13>  &#34;details&#34;:  SuperMapOf({
+</span><span style=color:#ed9d13>    &#34;address&#34;: NotEmpty(),
+</span><span style=color:#ed9d13>    &#34;car&#34;:     Any(&#34;Peugeot&#34;, &#34;Tesla&#34;, &#34;Jeep&#34;) // any of these
+</span><span style=color:#ed9d13>  })
+</span><span style=color:#ed9d13>}`</span>))
+</code></pre></div><p>Placeholders can be used anywhere, even in operators parameters as in:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;fullname&#34;: HasPrefix($1), &#34;bar&#34;: 42}`</span>, <span style=color:#ed9d13>&#34;Zip&#34;</span>))
+</code></pre></div><p>A few notes about operators embedding:</p>
+<ul>
+<li><a href=/operators/submapof/><code>SubMapOf</code></a> and <a href=/operators/supermapof/><code>SuperMapOf</code></a> take only one parameter, a JSON object;</li>
+<li>the optional 3rd parameter of <a href=/operators/between/><code>Between</code></a> has to be specified as a <code>string</code>
+and can be: &ldquo;[]&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInIn</code></a>&rdquo; (default), &ldquo;[[&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInOut</code></a>&rdquo;,
+&ldquo;]]&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsOutIn</code></a>&rdquo;, &ldquo;][&rdquo; or &ldquo;<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsOutOut</code></a>";</li>
+<li>not all operators are embeddable only the following are;</li>
+<li><a href=/operators/all/><code>All</code></a>, <a href=/operators/any/><code>Any</code></a>, <a href=/operators/arrayeach/><code>ArrayEach</code></a>, <a href=/operators/bag/><code>Bag</code></a>, <a href=/operators/between/><code>Between</code></a>, <a href=/operators/contains/><code>Contains</code></a>, <a href=/operators/containskey/><code>ContainsKey</code></a>, <a href=/operators/empty/><code>Empty</code></a>, <a href=/operators/gt/><code>Gt</code></a>,
+<a href=/operators/gte/><code>Gte</code></a>, <a href=/operators/hasprefix/><code>HasPrefix</code></a>, <a href=/operators/hassuffix/><code>HasSuffix</code></a>, <a href=/operators/ignore/><code>Ignore</code></a>, JSONPointer, <a href=/operators/keys/><code>Keys</code></a>, <a href=/operators/len/><code>Len</code></a>, <a href=/operators/lt/><code>Lt</code></a>, <a href=/operators/lte/><code>Lte</code></a>,
+<a href=/operators/mapeach/><code>MapEach</code></a>, <a href=/operators/n/><code>N</code></a>, <a href=/operators/nan/><code>NaN</code></a>, <a href=/operators/nil/><code>Nil</code></a>, <a href=/operators/none/><code>None</code></a>, <a href=/operators/not/><code>Not</code></a>, <a href=/operators/notany/><code>NotAny</code></a>, <a href=/operators/notempty/><code>NotEmpty</code></a>, <a href=/operators/notnan/><code>NotNaN</code></a>, <a href=/operators/notnil/><code>NotNil</code></a>,
+<a href=/operators/notzero/><code>NotZero</code></a>, <a href=/operators/re/><code>Re</code></a>, <a href=/operators/reall/><code>ReAll</code></a>, <a href=/operators/set/><code>Set</code></a>, <a href=/operators/subbagof/><code>SubBagOf</code></a>, <a href=/operators/submapof/><code>SubMapOf</code></a>, <a href=/operators/subsetof/><code>SubSetOf</code></a>, <a href=/operators/superbagof/><code>SuperBagOf</code></a>,
+<a href=/operators/supermapof/><code>SuperMapOf</code></a>, <a href=/operators/supersetof/><code>SuperSetOf</code></a>, <a href=/operators/values/><code>Values</code></a> and <a href=/operators/zero/><code>Zero</code></a>.</li>
+</ul>
+<p>Operators taking no parameters can also be directly embedded in
+JSON data using <code>$^OperatorName</code> or &ldquo;<code>$^OperatorName</code>&rdquo; notation. They
+are named shortcut operators (they predate the above operators embedding
+but they subsist for compatibility):</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1, &#34;bar&#34;: 42}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
 </code></pre></div><p>can be written as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero}`</span>))
-</code></pre></div><p>Unfortunately, only simple operators (in fact those which take no
-parameters) have shortcuts. They follow:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero, &#34;bar&#34;: 42}`</span>))
+</code></pre></div><p>or</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;, &#34;bar&#34;: 42}`</span>))
+</code></pre></div><p>As for placeholders, there is no differences between <code>$^NotZero</code> and
+&ldquo;<code>$^NotZero</code>&rdquo;.</p>
+<p>The allowed shortcut operators follow:</p>
 <ul>
 <li><a href=/operators/empty/><code>Empty</code></a> → <code>$^Empty</code></li>
 <li><a href=/operators/ignore/><code>Ignore</code></a> → <code>$^Ignore</code></li>
@@ -626,7 +672,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -674,7 +720,7 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -732,7 +778,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -792,9 +838,9 @@ File example
 </div>
 </div></p>
 <h2 id=cmpsubjsonof-shortcut>CmpSubJSONOf shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSubJSONOf</span>(t TestingT, got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSubJSONOf</span>(t TestingT, got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpSubJSONOf is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SubJSONOf</span>(expectedJSON, params...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>SubJSONOf</span>(expectedJSON, params...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -816,7 +862,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -864,7 +910,7 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -907,7 +953,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -959,9 +1005,9 @@ File example
 </div>
 </div></p>
 <h2 id=tsubjsonof-shortcut>T.SubJSONOf shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>SubJSONOf</span>(got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>SubJSONOf</span>(got, expectedJSON <span style=color:#6ab825;font-weight:700>interface</span>{}, params []<span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/subjsonof/><code>SubJSONOf</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>SubJSONOf</span>(expectedJSON, params...), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>SubJSONOf</span>(expectedJSON, params...), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -983,7 +1029,7 @@ Basic example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1031,7 +1077,7 @@ Placeholders example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1074,7 +1120,7 @@ File example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := &amp;<span style=color:#6ab825;font-weight:700>struct</span> {
 		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -1137,18 +1183,18 @@ File example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

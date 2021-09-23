@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>ArrayEach :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446378 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446378 rel=stylesheet>
-<link href=/css/hybrid.css?1630446378 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446378 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446378 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446378 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446378 rel=stylesheet>
-<link href=/css/theme.css?1630446378 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446378 rel=stylesheet>
-<link href=/css/theme-green.css?1630446378 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446378></script>
+<link href=/css/nucleus.css?1632428595 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428595 rel=stylesheet>
+<link href=/css/hybrid.css?1632428595 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428595 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428595 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428595 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428595 rel=stylesheet>
+<link href=/css/theme.css?1632428595 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428595 rel=stylesheet>
+<link href=/css/theme-green.css?1632428595 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428595></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446378></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446378></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428595></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428595></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446378></script>
+<script type=text/javascript src=/js/search.js?1632428595></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,16 +507,16 @@ FAQ
 <h1>
 ArrayEach
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>ArrayEach</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>ArrayEach</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/arrayeach/><code>ArrayEach</code></a> operator has to be applied on arrays or slices or on
 pointers on array/slice. It compares each item of data array/slice
 against <em>expectedValue</em>. During a match, all items have to match to
 succeed.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>, <span style=color:#ed9d13>&#34;biz&#34;</span>}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>, <span style=color:#ed9d13>&#34;biz&#34;</span>}
 td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ArrayEach</span>(td.<span style=color:#447fcf>Len</span>(<span style=color:#3677a9>3</span>)))         <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ArrayEach</span>(td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;b&#34;</span>))) <span style=color:#999;font-style:italic>// fails coz &#34;foo&#34;
 </span></code></pre></div><p>Works on slices as well:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := []Person{
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := []Person{
   {Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>},
   {Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>24</span>},
 }
@@ -538,7 +538,7 @@ Array example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -560,7 +560,7 @@ TypedArray example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyArray [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -589,7 +589,7 @@ Slice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -611,7 +611,7 @@ TypedSlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MySlice []<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -633,9 +633,9 @@ TypedSlice example
 </div>
 </div></p>
 <h2 id=cmparrayeach-shortcut>CmpArrayEach shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpArrayEach</span>(t TestingT, got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpArrayEach</span>(t TestingT, got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpArrayEach is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ArrayEach</span>(expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ArrayEach</span>(expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -657,7 +657,7 @@ Array example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -679,7 +679,7 @@ TypedArray example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyArray [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -708,7 +708,7 @@ Slice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -730,7 +730,7 @@ TypedSlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> MySlice []<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -752,9 +752,9 @@ TypedSlice example
 </div>
 </div></p>
 <h2 id=tarrayeach-shortcut>T.ArrayEach shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>ArrayEach</span>(got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>ArrayEach</span>(got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/arrayeach/><code>ArrayEach</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>ArrayEach</span>(expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>ArrayEach</span>(expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -776,7 +776,7 @@ Array example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -798,7 +798,7 @@ TypedArray example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#6ab825;font-weight:700>type</span> MyArray [<span style=color:#3677a9>3</span>]<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -827,7 +827,7 @@ Slice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>42</span>, <span style=color:#3677a9>58</span>, <span style=color:#3677a9>26</span>}
 
@@ -849,7 +849,7 @@ TypedSlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#6ab825;font-weight:700>type</span> MySlice []<span style=color:#6ab825;font-weight:700>int</span>
 
@@ -882,18 +882,18 @@ TypedSlice example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446378></script>
-<script src=/js/jquery.sticky.js?1630446378></script>
-<script src=/js/featherlight.min.js?1630446378></script>
-<script src=/js/highlight.pack.js?1630446378></script>
+<script src=/js/clipboard.min.js?1632428595></script>
+<script src=/js/perfect-scrollbar.min.js?1632428595></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428595></script>
+<script src=/js/jquery.sticky.js?1632428595></script>
+<script src=/js/featherlight.min.js?1632428595></script>
+<script src=/js/highlight.pack.js?1632428595></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446378></script>
-<script src=/js/learn.js?1630446378></script>
-<script src=/js/hugo-learn.js?1630446378></script>
-<link href=/mermaid/mermaid.css?1630446378 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446378></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428595></script>
+<script src=/js/learn.js?1632428595></script>
+<script src=/js/hugo-learn.js?1632428595></script>
+<link href=/mermaid/mermaid.css?1632428595 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428595></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

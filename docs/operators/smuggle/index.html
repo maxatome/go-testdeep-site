@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Smuggle :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446379 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446379 rel=stylesheet>
-<link href=/css/hybrid.css?1630446379 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446379 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446379 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446379 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446379 rel=stylesheet>
-<link href=/css/theme.css?1630446379 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446379 rel=stylesheet>
-<link href=/css/theme-green.css?1630446379 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446379></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446379></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446379></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446379></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 Smuggle
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Smuggle</span>(fn, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Smuggle</span>(fn, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/smuggle/><code>Smuggle</code></a> operator allows to change data contents or mutate it into
 another type before stepping down in favor of generic comparison
 process. Of course it is a <a href=/operators/#smuggler-operators>smuggler operator</a>. So <em>fn</em> is a function
@@ -517,14 +517,14 @@ type of the compared value (as a convenient shortcut, <em>fn</em> can be a
 details).</p>
 <p><em>fn</em> must return at least one value. These value will be compared as is
 to <em>expectedValue</em>, here integer 28:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0028&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0028&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(value <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>int</span> {
     num, _ := strconv.<span style=color:#447fcf>Atoi</span>(value)
     <span style=color:#6ab825;font-weight:700>return</span> num
   }, <span style=color:#3677a9>28</span>),
 )
 </code></pre></div><p>or using an other <a href=/operators/>TestDeep operator</a>, here <a href=/operators/between/><code>Between(28, 30)</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(value <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>int</span> {
     num, _ := strconv.<span style=color:#447fcf>Atoi</span>(value)
     <span style=color:#6ab825;font-weight:700>return</span> num
@@ -532,7 +532,7 @@ to <em>expectedValue</em>, here integer 28:</p>
 )
 </code></pre></div><p><em>fn</em> can return a second boolean value, used to tell that a problem
 occurred and so stop the comparison:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(value <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#6ab825;font-weight:700>bool</span>) {
     num, err := strconv.<span style=color:#447fcf>Atoi</span>(value)
     <span style=color:#6ab825;font-weight:700>return</span> num, err == <span style=color:#6ab825;font-weight:700>nil</span>
@@ -540,7 +540,7 @@ occurred and so stop the comparison:</p>
 )
 </code></pre></div><p><em>fn</em> can return a third <code>string</code> value which is used to describe the
 test when a problem occurred (false second boolean value):</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(value <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
     num, err := strconv.<span style=color:#447fcf>Atoi</span>(value)
     <span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
@@ -552,24 +552,24 @@ test when a problem occurred (false second boolean value):</p>
 </code></pre></div><p>Instead of returning (X, <code>bool</code>) or (X, <code>bool</code>, <code>string</code>), <em>fn</em> can
 return (X, <a href=https://pkg.go.dev/builtin/#error><code>error</code></a>). When a problem occurs, the returned <a href=https://pkg.go.dev/builtin/#error><code>error</code></a> is
 non-<code>nil</code>, as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(value <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#6ab825;font-weight:700>error</span>) {
     num, err := strconv.<span style=color:#447fcf>Atoi</span>(value)
     <span style=color:#6ab825;font-weight:700>return</span> num, err
   }, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>28</span>, <span style=color:#3677a9>30</span>)),
 )
 </code></pre></div><p>Which can be simplified to:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>, td.<span style=color:#447fcf>Smuggle</span>(strconv.Atoi, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>28</span>, <span style=color:#3677a9>30</span>)))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0029&#34;</span>, td.<span style=color:#447fcf>Smuggle</span>(strconv.Atoi, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>28</span>, <span style=color:#3677a9>30</span>)))
 </code></pre></div><p>Imagine you want to compare that the Year of a date is between 2010
 and 2020:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2015</span>, time.May, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>0</span>, time.UTC),
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2015</span>, time.May, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>0</span>, time.UTC),
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(date time.Time) <span style=color:#6ab825;font-weight:700>int</span> { <span style=color:#6ab825;font-weight:700>return</span> date.<span style=color:#447fcf>Year</span>() },
     td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>2010</span>, <span style=color:#3677a9>2020</span>)),
 )
 </code></pre></div><p>In this case the data location forwarded to next test will be
 something like &ldquo;DATA.MyTimeField&rdquo;, but you can act on it
 too by returning a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SmuggledGot><code>SmuggledGot</code></a> struct (by value or by address):</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2015</span>, time.May, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>0</span>, time.UTC),
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2015</span>, time.May, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>0</span>, time.UTC),
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(date time.Time) SmuggledGot {
     <span style=color:#6ab825;font-weight:700>return</span> SmuggledGot{
       Name: <span style=color:#ed9d13>&#34;Year&#34;</span>,
@@ -585,7 +585,7 @@ added when Name starts with a Letter.</p>
 and they are only used when <em>fn</em> has only one returned value or
 when the second boolean returned value is true.</p>
 <p>Of course, all cases can go together:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Accepts a &#34;YYYY/mm/DD HH:MM:SS&#34; string to produce a time.Time and tests
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Accepts a &#34;YYYY/mm/DD HH:MM:SS&#34; string to produce a time.Time and tests
 </span><span style=color:#999;font-style:italic>// whether this date is contained between 2 hours before now and now.
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;2020-01-25 12:13:14&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(date <span style=color:#6ab825;font-weight:700>string</span>) (*SmuggledGot, <span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
@@ -600,7 +600,7 @@ when the second boolean returned value is true.</p>
   }, td.<span style=color:#447fcf>Between</span>(time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Add</span>(-<span style=color:#3677a9>2</span>*time.Hour), time.<span style=color:#447fcf>Now</span>())),
 )
 </code></pre></div><p>or:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Accepts a &#34;YYYY/mm/DD HH:MM:SS&#34; string to produce a time.Time and tests
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Accepts a &#34;YYYY/mm/DD HH:MM:SS&#34; string to produce a time.Time and tests
 </span><span style=color:#999;font-style:italic>// whether this date is contained between 2 hours before now and now.
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;2020-01-25 12:13:14&#34;</span>,
   td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(date <span style=color:#6ab825;font-weight:700>string</span>) (*SmuggledGot, <span style=color:#6ab825;font-weight:700>error</span>) {
@@ -616,7 +616,7 @@ when the second boolean returned value is true.</p>
 )
 </code></pre></div><p><a href=/operators/smuggle/><code>Smuggle</code></a> can also be used to access a struct field embedded in
 several struct layers.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ Num <span style=color:#6ab825;font-weight:700>int</span> }
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ Num <span style=color:#6ab825;font-weight:700>int</span> }
 <span style=color:#6ab825;font-weight:700>type</span> B <span style=color:#6ab825;font-weight:700>struct</span>{ As <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*A }
 <span style=color:#6ab825;font-weight:700>type</span> C <span style=color:#6ab825;font-weight:700>struct</span>{ B B }
 got := C{B: B{As: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*A{<span style=color:#ed9d13>&#34;foo&#34;</span>: {Num: <span style=color:#3677a9>12</span>}}}}
@@ -629,7 +629,7 @@ got := C{B: B{As: <span style=color:#6ab825;font-weight:700>map</span>[<span sty
 </code></pre></div><p>As brought up above, a fields-path can be passed as <em>fn</em> value
 instead of a function pointer. Using this feature, the Cmp
 call in the above example can be rewritten as follows:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Tests that got.B.As[&#34;foo&#34;].Num is 12
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#999;font-style:italic>// Tests that got.B.As[&#34;foo&#34;].Num is 12
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.As[foo].Num&#34;</span>, <span style=color:#3677a9>12</span>))
 </code></pre></div><p>Contrary to JSONPointer operator, private fields can be
 followed. Arrays, slices and maps work using the index/key inside
@@ -640,7 +640,7 @@ types (<code>string</code> or numbers), without "" when using strings
 achieve the same goal, but add some checks against <code>nil</code> values and
 auto-dereference interfaces and pointers, even on several levels,
 like in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ N <span style=color:#6ab825;font-weight:700>interface</span>{} }
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ N <span style=color:#6ab825;font-weight:700>interface</span>{} }
 num := <span style=color:#3677a9>12</span>
 pnum := &amp;num
 td.<span style=color:#447fcf>Cmp</span>(t, A{N: &amp;pnum}, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;N&#34;</span>, <span style=color:#3677a9>12</span>))
@@ -669,7 +669,7 @@ Convert example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#24909d>int64</span>(<span style=color:#3677a9>123</span>)
 
@@ -734,7 +734,7 @@ Lax example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// got is an int16 and Smuggle func input is an int64: it is OK
 </span><span style=color:#999;font-style:italic></span>	got := <span style=color:#24909d>int</span>(<span style=color:#3677a9>123</span>)
@@ -757,7 +757,7 @@ Auto_unmarshal example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// Automatically json.Unmarshal to compare
 </span><span style=color:#999;font-style:italic></span>	got := []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`{&#34;a&#34;:1,&#34;b&#34;:2}`</span>)
@@ -788,7 +788,7 @@ Complex example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// No end date but a start date and a duration
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> StartDuration <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -852,7 +852,7 @@ Interface example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	gotTime, err := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2018-05-23T12:13:14Z&#34;</span>)
 	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
@@ -893,7 +893,7 @@ Field_path example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> Body <span style=color:#6ab825;font-weight:700>struct</span> {
 		Name  <span style=color:#6ab825;font-weight:700>string</span>
@@ -962,9 +962,9 @@ Field_path example
 </div>
 </div></p>
 <h2 id=cmpsmuggle-shortcut>CmpSmuggle shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSmuggle</span>(t TestingT, got, fn , expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSmuggle</span>(t TestingT, got, fn , expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpSmuggle is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(fn, expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(fn, expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -986,7 +986,7 @@ Convert example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#24909d>int64</span>(<span style=color:#3677a9>123</span>)
 
@@ -1040,7 +1040,7 @@ Lax example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// got is an int16 and Smuggle func input is an int64: it is OK
 </span><span style=color:#999;font-style:italic></span>	got := <span style=color:#24909d>int</span>(<span style=color:#3677a9>123</span>)
@@ -1062,7 +1062,7 @@ Auto_unmarshal example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// Automatically json.Unmarshal to compare
 </span><span style=color:#999;font-style:italic></span>	got := []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`{&#34;a&#34;:1,&#34;b&#34;:2}`</span>)
@@ -1090,7 +1090,7 @@ Complex example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// No end date but a start date and a duration
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> StartDuration <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -1148,7 +1148,7 @@ Interface example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	gotTime, err := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2018-05-23T12:13:14Z&#34;</span>)
 	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
@@ -1185,7 +1185,7 @@ Field_path example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#6ab825;font-weight:700>type</span> Body <span style=color:#6ab825;font-weight:700>struct</span> {
 		Name  <span style=color:#6ab825;font-weight:700>string</span>
@@ -1251,9 +1251,9 @@ Field_path example
 </div>
 </div></p>
 <h2 id=tsmuggle-shortcut>T.Smuggle shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Smuggle</span>(got, fn , expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Smuggle</span>(got, fn , expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/smuggle/><code>Smuggle</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Smuggle</span>(fn, expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Smuggle</span>(fn, expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -1275,7 +1275,7 @@ Convert example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#24909d>int64</span>(<span style=color:#3677a9>123</span>)
 
@@ -1329,7 +1329,7 @@ Lax example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// got is an int16 and Smuggle func input is an int64: it is OK
 </span><span style=color:#999;font-style:italic></span>	got := <span style=color:#24909d>int</span>(<span style=color:#3677a9>123</span>)
@@ -1351,7 +1351,7 @@ Auto_unmarshal example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// Automatically json.Unmarshal to compare
 </span><span style=color:#999;font-style:italic></span>	got := []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`{&#34;a&#34;:1,&#34;b&#34;:2}`</span>)
@@ -1379,7 +1379,7 @@ Complex example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// No end date but a start date and a duration
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> StartDuration <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -1437,7 +1437,7 @@ Interface example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	gotTime, err := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2018-05-23T12:13:14Z&#34;</span>)
 	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
@@ -1474,7 +1474,7 @@ Field_path example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#6ab825;font-weight:700>type</span> Body <span style=color:#6ab825;font-weight:700>struct</span> {
 		Name  <span style=color:#6ab825;font-weight:700>string</span>
@@ -1551,18 +1551,18 @@ Field_path example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

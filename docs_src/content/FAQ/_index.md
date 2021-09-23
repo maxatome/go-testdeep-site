@@ -1017,10 +1017,16 @@ TESTDEEP_COLOR_OK=black:green \
 Just add this single line in playground:
 
 ```golang
+import _ "github.com/maxatome/go-testdeep/helpers/nocolor"
+```
+
+(since go-testdeep v1.10.0) or:
+
+```golang
 func init() { os.Setenv("TESTDEEP_COLOR", "off") }
 ```
 
-Until playground supports [ANSI color escape
+until playground supports [ANSI color escape
 sequences](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors).
 
 

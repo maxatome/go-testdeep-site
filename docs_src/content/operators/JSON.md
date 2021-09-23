@@ -20,11 +20,9 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 *expectedJSON* JSON value can contain placeholders. The *params*
 are for any placeholder parameters in *expectedJSON*. *params* can
-contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. Raw values, that
-do not contain [TestDeep operators]({{< ref "operators" >}}) deeply nested, are first
-[`json.Marshal`](https://pkg.go.dev/json/#Marshal)'ed then [`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed in an `interface{}`. A
-placeholder can be numeric like `$2` or named like `$name` and always
-references an item in *params*.
+contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. A placeholder can
+be numeric like `$2` or named like `$name` and always references an
+item in *params*.
 
 Numeric placeholders reference the n'th "operators" item (starting
 at 1). Named placeholders are used with [`Tag`]({{< ref "Tag" >}}) operator as follows:
@@ -52,6 +50,23 @@ item is (= double quoting a placeholder matching a number is not a
 problem). It is just a matter of taste, double-quoting placeholders
 can be preferred when the JSON data has to conform to the JSON
 specification, like when used in a ".json" file.
+
+[`JSON`]({{< ref "JSON" >}}) does its best to convert back the [`JSON`]({{< ref "JSON" >}}) corresponding to a
+placeholder to the type of the placeholder or, if the placeholder
+is an operator, to the type behind the operator. Allowing to do
+things like:
+
+```go
+td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, []int{1, 2, 3, 4}))
+td.Cmp(t, gotValue,
+  td.JSON(`{"foo":$1}`, []interface{}{1, 2, td.Between(2, 4), 4}))
+td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, td.Between(27, 32)))
+```
+
+Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+`string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
 
 Note *expectedJSON* can be a `[]byte`, JSON filename or [`io.Reader`](https://pkg.go.dev/io/#Reader):
 
@@ -247,10 +262,13 @@ The allowed shortcut operators follow:
 {{%expand "Placeholders example" %}}```go
 	t := &testing.T{}
 
-	got := &struct {
-		Fullname string `json:"fullname"`
-		Age      int    `json:"age"`
-	}{
+	type Person struct {
+		Fullname string    `json:"fullname"`
+		Age      int       `json:"age"`
+		Children []*Person `json:"children,omitempty"`
+	}
+
+	got := &Person{
 		Fullname: "Bob Foobar",
 		Age:      42,
 	}
@@ -276,11 +294,26 @@ The allowed shortcut operators follow:
 			td.Tag("name", td.HasSuffix("Foobar"))))
 	fmt.Println("check got with named placeholders:", ok)
 
+	got.Children = []*Person{
+		{Fullname: "Alice", Age: 28},
+		{Fullname: "Brian", Age: 22},
+	}
+	ok = td.Cmp(t, got,
+		td.JSON(`{"age": $age, "fullname": $name, "children": $children}`,
+			td.Tag("age", td.Between(40, 45)),
+			td.Tag("name", td.HasSuffix("Foobar")),
+			td.Tag("children", td.Bag(
+				&Person{Fullname: "Brian", Age: 22},
+				&Person{Fullname: "Alice", Age: 28},
+			))))
+	fmt.Println("check got w/named placeholders, and children w/go structs:", ok)
+
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+	// check got w/named placeholders, and children w/go structs: true
 
 ```{{% /expand%}}
 {{%expand "Embedding example" %}}```go
@@ -467,10 +500,13 @@ reason of a potential failure.
 {{%expand "Placeholders example" %}}```go
 	t := &testing.T{}
 
-	got := &struct {
-		Fullname string `json:"fullname"`
-		Age      int    `json:"age"`
-	}{
+	type Person struct {
+		Fullname string    `json:"fullname"`
+		Age      int       `json:"age"`
+		Children []*Person `json:"children,omitempty"`
+	}
+
+	got := &Person{
 		Fullname: "Bob Foobar",
 		Age:      42,
 	}
@@ -487,11 +523,22 @@ reason of a potential failure.
 	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
+	got.Children = []*Person{
+		{Fullname: "Alice", Age: 28},
+		{Fullname: "Brian", Age: 22},
+	}
+	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name, "children": $children}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
+		&Person{Fullname: "Brian", Age: 22},
+		&Person{Fullname: "Alice", Age: 28},
+	))})
+	fmt.Println("check got w/named placeholders, and children w/go structs:", ok)
+
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+	// check got w/named placeholders, and children w/go structs: true
 
 ```{{% /expand%}}
 {{%expand "Embedding example" %}}```go
@@ -670,10 +717,13 @@ reason of a potential failure.
 {{%expand "Placeholders example" %}}```go
 	t := td.NewT(&testing.T{})
 
-	got := &struct {
-		Fullname string `json:"fullname"`
-		Age      int    `json:"age"`
-	}{
+	type Person struct {
+		Fullname string    `json:"fullname"`
+		Age      int       `json:"age"`
+		Children []*Person `json:"children,omitempty"`
+	}
+
+	got := &Person{
 		Fullname: "Bob Foobar",
 		Age:      42,
 	}
@@ -690,11 +740,22 @@ reason of a potential failure.
 	ok = t.JSON(got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
+	got.Children = []*Person{
+		{Fullname: "Alice", Age: 28},
+		{Fullname: "Brian", Age: 22},
+	}
+	ok = t.JSON(got, `{"age": $age, "fullname": $name, "children": $children}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
+		&Person{Fullname: "Brian", Age: 22},
+		&Person{Fullname: "Alice", Age: 28},
+	))})
+	fmt.Println("check got w/named placeholders, and children w/go structs:", ok)
+
 	// Output:
 	// check got with numeric placeholders without operators: true
 	// check got with numeric placeholders: true
 	// check got with double-quoted numeric placeholders: true
 	// check got with named placeholders: true
+	// check got w/named placeholders, and children w/go structs: true
 
 ```{{% /expand%}}
 {{%expand "Embedding example" %}}```go

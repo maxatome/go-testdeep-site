@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>JSONPointer :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446378 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446378 rel=stylesheet>
-<link href=/css/hybrid.css?1630446378 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446378 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446378 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446378 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446378 rel=stylesheet>
-<link href=/css/theme.css?1630446378 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446378 rel=stylesheet>
-<link href=/css/theme-green.css?1630446378 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446378></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446378></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446378></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446378></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,16 +507,17 @@ FAQ
 <h1>
 JSONPointer
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>JSONPointer</span>(pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>JSONPointer</span>(pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p>JSONPointer is a <a href=/operators/#smuggler-operators>smuggler operator</a>. It takes the JSON
 representation of data, gets the value corresponding to the <a href=/operators/json/><code>JSON</code></a>
 pointer <em>pointer</em> (as RFC 6901 specifies it) and compares it to
 <em>expectedValue</em>.</p>
+<p><a href=/operators/lax/><code>Lax</code></a> mode is automatically enabled to simplify numeric tests.</p>
 <p>JSONPointer does its best to convert back the <a href=/operators/json/><code>JSON</code></a> pointed data to
 the type of <em>expectedValue</em> or to the type behind the
 <em>expectedValue</em> operator, if it is an operator. Allowing to do
 things like:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
   Val  <span style=color:#6ab825;font-weight:700>int</span>   <span style=color:#ed9d13>`json:&#34;val&#34;`</span>
   Next *Item <span style=color:#ed9d13>`json:&#34;next&#34;`</span>
 }
@@ -529,20 +530,21 @@ td.<span style=color:#447fcf>Cmp</span>(t,
   td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/next/next&#34;</span>,
     td.<span style=color:#447fcf>Struct</span>(Item{}, td.StructFields{<span style=color:#ed9d13>&#34;Val&#34;</span>: td.<span style=color:#447fcf>Gte</span>(<span style=color:#3677a9>3</span>)})),
 )
-</code></pre></div><p>It does this conversion only if the expected type is a struct, a
-struct pointer or implements the encoding/json.Unmarshaler
-interface. In the case the conversion does not occur, the <a href=/operators/lax/><code>Lax</code></a> mode
-is automatically enabled to simplify numeric tests.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int64</span>{<span style=color:#ed9d13>&#34;zzz&#34;</span>: <span style=color:#3677a9>42</span>} <span style=color:#999;font-style:italic>// 42 is int64 here
+
+got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int64</span>{<span style=color:#ed9d13>&#34;zzz&#34;</span>: <span style=color:#3677a9>42</span>} <span style=color:#999;font-style:italic>// 42 is int64 here
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/zzz&#34;</span>, <span style=color:#3677a9>42</span>))
 td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/zzz&#34;</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)))
-</code></pre></div><p>Note that as any <a href=/operators/>TestDeep operator</a> can be used as <em>expectedValue</em>,
+</code></pre></div><p>Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled <a href=/operators/json/><code>JSON</code></a> form (so as <code>bool</code>, <code>float64</code>,
+<code>string</code>, <code>[]interface{}</code>, <code>map[string]interface{}</code> or simply <code>nil</code>).</p>
+<p>Note that as any <a href=/operators/>TestDeep operator</a> can be used as <em>expectedValue</em>,
 <a href=/operators/json/><code>JSON</code></a> operator works out of the box:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:{&#34;bar&#34;: {&#34;zip&#34;: true}}}`</span>)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:{&#34;bar&#34;: {&#34;zip&#34;: true}}}`</span>)
 td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/foo/bar&#34;</span>, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;zip&#34;: true}`</span>)))
 </code></pre></div><p>It can be used with structs lacking json tags. In this case, fields
 names have to be used in <a href=/operators/json/><code>JSON</code></a> pointer:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
   Val  <span style=color:#6ab825;font-weight:700>int</span>
   Next *Item
 }
@@ -553,7 +555,7 @@ td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSO
 public fields can be followed, as private ones are never (un)marshalled.</p>
 <p>There is no JSONHas nor JSONHasnt operators to only check a <a href=/operators/json/><code>JSON</code></a>
 pointer exists or not, but they can easily be emulated:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>JSONHas := <span style=color:#6ab825;font-weight:700>func</span>(pointer <span style=color:#6ab825;font-weight:700>string</span>) td.TestDeep {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>JSONHas := <span style=color:#6ab825;font-weight:700>func</span>(pointer <span style=color:#6ab825;font-weight:700>string</span>) td.TestDeep {
   <span style=color:#6ab825;font-weight:700>return</span> td.<span style=color:#447fcf>JSONPointer</span>(pointer, td.<span style=color:#447fcf>Ignore</span>())
 }
 
@@ -575,7 +577,7 @@ Rfc6901 example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -664,7 +666,7 @@ Struct example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// Without json tags, encoding/json uses public fields name
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -726,7 +728,7 @@ Has_hasnt example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -779,9 +781,9 @@ Has_hasnt example
 </div>
 </div></p>
 <h2 id=cmpjsonpointer-shortcut>CmpJSONPointer shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpJSONPointer</span>(t TestingT, got <span style=color:#6ab825;font-weight:700>interface</span>{}, pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpJSONPointer</span>(t TestingT, got <span style=color:#6ab825;font-weight:700>interface</span>{}, pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpJSONPointer is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(pointer, expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(pointer, expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -803,7 +805,7 @@ Rfc6901 example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -892,7 +894,7 @@ Struct example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// Without json tags, encoding/json uses public fields name
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -952,7 +954,7 @@ Has_hasnt example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -1005,9 +1007,9 @@ Has_hasnt example
 </div>
 </div></p>
 <h2 id=tjsonpointer-shortcut>T.JSONPointer shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>JSONPointer</span>(got <span style=color:#6ab825;font-weight:700>interface</span>{}, pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>JSONPointer</span>(got <span style=color:#6ab825;font-weight:700>interface</span>{}, pointer <span style=color:#6ab825;font-weight:700>string</span>, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>JSONPointer is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>JSONPointer</span>(pointer, expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>JSONPointer</span>(pointer, expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -1029,7 +1031,7 @@ Rfc6901 example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -1118,7 +1120,7 @@ Struct example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// Without json tags, encoding/json uses public fields name
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#6ab825;font-weight:700>type</span> Item <span style=color:#6ab825;font-weight:700>struct</span> {
@@ -1178,7 +1180,7 @@ Has_hasnt example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#ed9d13>`
 </span><span style=color:#ed9d13>{
@@ -1242,18 +1244,18 @@ Has_hasnt example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

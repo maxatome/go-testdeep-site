@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>FAQ :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446379 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446379 rel=stylesheet>
-<link href=/css/hybrid.css?1630446379 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446379 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446379 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446379 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446379 rel=stylesheet>
-<link href=/css/theme.css?1630446379 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446379 rel=stylesheet>
-<link href=/css/theme-green.css?1630446379 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446379></script>
+<link href=/css/nucleus.css?1632428596 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428596 rel=stylesheet>
+<link href=/css/hybrid.css?1632428596 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428596 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428596 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428596 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428596 rel=stylesheet>
+<link href=/css/theme.css?1632428596 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428596 rel=stylesheet>
+<link href=/css/theme-green.css?1632428596 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428596></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446379></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446379></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428596></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428596></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446379></script>
+<script type=text/javascript src=/js/search.js?1632428596></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -529,7 +529,7 @@ FAQ
 FAQ
 </h1>
 <h2 id=how-to-mix-strict-requirements-and-simple-assertions>How to mix strict requirements and simple assertions?</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
@@ -544,7 +544,7 @@ FAQ
 </span><span style=color:#999;font-style:italic></span>  assert.<span style=color:#447fcf>Cmp</span>(got, expected)  <span style=color:#999;font-style:italic>// if it fails: report error + continue
 </span><span style=color:#999;font-style:italic></span>}
 </code></pre></div><h2 id=why-nil-is-handled-so-specifically>Why <code>nil</code> is handled so specifically?</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> pn *<span style=color:#6ab825;font-weight:700>int</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> pn *<span style=color:#6ab825;font-weight:700>int</span>
 td.<span style=color:#447fcf>Cmp</span>(t, pn, <span style=color:#6ab825;font-weight:700>nil</span>)
 </code></pre></div><p>fails with the error <img src=/images/faq-nil-colored-output.svg alt="error output"></p>
 <p>And, yes, it is normal. (TL;DR use
@@ -553,10 +553,10 @@ instead, safer, or use
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpLax><code>CmpLax</code></a>,
 but be careful of edge cases.)</p>
 <p>To understand why, look at the following examples:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> err <span style=color:#6ab825;font-weight:700>error</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> err <span style=color:#6ab825;font-weight:700>error</span>
 td.<span style=color:#447fcf>Cmp</span>(t, err, <span style=color:#6ab825;font-weight:700>nil</span>)
 </code></pre></div><p>works (and you want it works), but</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> err <span style=color:#6ab825;font-weight:700>error</span> = (*MyError)(<span style=color:#6ab825;font-weight:700>nil</span>)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> err <span style=color:#6ab825;font-weight:700>error</span> = (*MyError)(<span style=color:#6ab825;font-weight:700>nil</span>)
 td.<span style=color:#447fcf>Cmp</span>(t, err, <span style=color:#6ab825;font-weight:700>nil</span>)
 </code></pre></div><p>fails with the error
 <img src=/images/faq-error-nil-colored-output.svg alt="error output"></p>
@@ -574,7 +574,7 @@ between <code>error((*MyError)(nil))</code> and <code>(*MyError)(nil)</code> whe
 strongly typed, to be able to detect when a non-nil interface contains
 a nil pointer.</p>
 <p>So to recap:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> pn *<span style=color:#6ab825;font-weight:700>int</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>var</span> pn *<span style=color:#6ab825;font-weight:700>int</span>
 td.<span style=color:#447fcf>Cmp</span>(t, pn, <span style=color:#6ab825;font-weight:700>nil</span>)               <span style=color:#999;font-style:italic>// fails as nil is not strongly typed
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, pn, (*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))       <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, pn, td.<span style=color:#447fcf>Nil</span>())          <span style=color:#999;font-style:italic>// succeeds
@@ -612,7 +612,7 @@ or nil direcly in expected parameter of <a href=https://pkg.go.dev/github.com/ma
 </ul>
 <h2 id=how-does-operator-anchoring-work>How does operator anchoring work?</h2>
 <p>Take this struct, returned by a <code>GetPerson()</code> function:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
   ID   <span style=color:#6ab825;font-weight:700>int64</span>
   Name <span style=color:#6ab825;font-weight:700>string</span>
   Age  <span style=color:#6ab825;font-weight:700>uint8</span>
@@ -624,7 +624,7 @@ or nil direcly in expected parameter of <a href=https://pkg.go.dev/github.com/ma
 <li><code>Age</code> field should be ≥ 40 and ≤ 45.</li>
 </ul>
 <p>Without operator anchoring:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
   t := td.<span style=color:#447fcf>NewT</span>(tt)
 
   t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(),               <span style=color:#999;font-style:italic>// ← ①
@@ -651,7 +651,7 @@ operator for details.</li>
 </ol>
 <p>With operator anchoring, the use of <a href=/operators/struct/><code>Struct</code></a>
 operator is no longer needed:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
   t := td.<span style=color:#447fcf>NewT</span>(tt)
 
   t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(), <span style=color:#999;font-style:italic>// ← ①
@@ -667,7 +667,7 @@ operator is no longer needed:</p>
 <li><code>Name</code> field should always be &ldquo;Bob&rdquo;, no change here;</li>
 <li><code>ID</code> field should be ≠ 0: anchor the <a href=/operators/notzero/><code>NotZero</code></a>
 operator using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method. Break this line down:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t.<span style=color:#447fcf>A</span>(            <span style=color:#999;font-style:italic>// ← ①
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t.<span style=color:#447fcf>A</span>(            <span style=color:#999;font-style:italic>// ← ①
 </span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#999;font-style:italic>// ← ②
 </span><span style=color:#999;font-style:italic></span>  <span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>),     <span style=color:#999;font-style:italic>// ← ③
 </span><span style=color:#999;font-style:italic></span>).(<span style=color:#6ab825;font-weight:700>int64</span>)       <span style=color:#999;font-style:italic>// ← ④
@@ -688,7 +688,7 @@ to pass it,</li>
 <li><code>Age </code>field should be ≥ 40 and ≤ 45: anchor the
 <a href=/operators/between/><code>Between</code></a> operator using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a>
 method. Break this line down:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t.<span style=color:#447fcf>A</span>(                                <span style=color:#999;font-style:italic>// ← ①
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t.<span style=color:#447fcf>A</span>(                                <span style=color:#999;font-style:italic>// ← ①
 </span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>)), <span style=color:#999;font-style:italic>// ← ②
 </span><span style=color:#999;font-style:italic></span>).(<span style=color:#6ab825;font-weight:700>uint8</span>)                           <span style=color:#999;font-style:italic>// ← ③
 </span></code></pre></div><ol>
@@ -707,7 +707,7 @@ from <a href=/operators/between/><code>Between</code></a>,</li>
 <p>Some rules have to be kept in mind:</p>
 <ul>
 <li>never cast a value returned by <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> or <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor><code>Anchor</code></a> methods:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
 </span><span style=color:#999;font-style:italic></span>t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)         <span style=color:#999;font-style:italic>// OK
 </span><span style=color:#999;font-style:italic></span><span style=color:#24909d>uint16</span>(t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)) <span style=color:#999;font-style:italic>// Not OK!
 </span><span style=color:#999;font-style:italic></span>t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint16</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>uint16</span>)      <span style=color:#999;font-style:italic>// OK
@@ -715,7 +715,7 @@ from <a href=/operators/between/><code>Between</code></a>,</li>
 <li>anchored operators disappear once the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call done. To
 share them between <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> calls, use the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist><code>SetAnchorsPersist</code></a>
 method as in:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
 </span><span style=color:#999;font-style:italic></span>age := t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))).(<span style=color:#6ab825;font-weight:700>uint8</span>)
 
 t.<span style=color:#447fcf>SetAnchorsPersist</span>(<span style=color:#6ab825;font-weight:700>true</span>) <span style=color:#999;font-style:italic>// ← Don&#39;t reset anchors after next Cmp() call
@@ -734,7 +734,7 @@ t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span
 <h2 id=how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</h2>
 <p>The <a href=/operators/smuggle/><code>Smuggle</code></a> operator is done for that,
 here with the help of <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>ReadAll</code></a>.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
   <span style=color:#ed9d13>&#34;testing&#34;</span>
   <span style=color:#ed9d13>&#34;io/ioutil&#34;</span>
@@ -753,7 +753,7 @@ here with the help of <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>Re
 <p>No problem, <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>ReadAll</code></a> the
 body by yourself and cast returned <code>[]byte</code> contents to <code>string</code>,
 still using <a href=/operators/smuggle/><code>Smuggle</code></a> operator:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;io&#34;</span>
   <span style=color:#ed9d13>&#34;io/ioutil&#34;</span>
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
@@ -777,7 +777,7 @@ still using <a href=/operators/smuggle/><code>Smuggle</code></a> operator:</p>
 </code></pre></div><h2 id=ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</h2>
 <p>No problem, <a href=https://golang.org/pkg/encoding/json/#Decoder>JSON decode</a>
 while reading the body:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
   <span style=color:#ed9d13>&#34;io&#34;</span>
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
@@ -810,7 +810,7 @@ while reading the body:</p>
 </code></pre></div><h2 id=ok-but-you-are-funny-this-response-sends-a-new-created-object-so-i-dont-know-the-id-in-advance>OK, but you are funny, this response sends a new created object, so I don&rsquo;t know the ID in advance!</h2>
 <p>No problem, use <a href=/operators/struct/><code>Struct</code></a> operator to test
 that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code> field):</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
   <span style=color:#ed9d13>&#34;io&#34;</span>
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
@@ -862,7 +862,7 @@ that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code>
 </code></pre></div><h2 id=what-about-testing-the-response-using-my-api>What about testing the response using my API?</h2>
 <p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>
 is done for that!</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
   <span style=color:#ed9d13>&#34;testing&#34;</span>
@@ -947,7 +947,7 @@ implements <code>http.Handler</code>
 interface</a>!
 So keep using
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;net/http&#34;</span>
   <span style=color:#ed9d13>&#34;testing&#34;</span>
   <span style=color:#ed9d13>&#34;time&#34;</span>
@@ -1017,7 +1017,7 @@ above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/he
 <p>Stay with <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>!</p>
 <p>In fact you can <a href=/operators/catch/><code>Catch</code></a> the <code>ID</code> before comparing
 it to 0 (as well as <code>CreatedAt</code> in fact). Try:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyGinGonicApi</span>(t *testing.T) {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyGinGonicApi</span>(t *testing.T) {
   myAPI := <span style=color:#447fcf>MyGinGonicAPI</span>()
 
   <span style=color:#6ab825;font-weight:700>var</span> id <span style=color:#6ab825;font-weight:700>uint64</span>
@@ -1072,11 +1072,11 @@ instance containing a <code>Handlers</code> field whose
 <a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister><code>*ControllerRegister</code></a>
 type implements
 <a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP><code>http.Handler</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, web.BeeApp.Handlers)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, web.BeeApp.Handlers)
 </code></pre></div><p>In multi instances mode, each instance is a
 <a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer><code>*web.HttpServer</code></a>
 so the same rule applies for each instance to test:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, instance.Handlers)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, instance.Handlers)
 </code></pre></div><h3 id=echo>echo</h3>
 <p><a href=https://echo.labstack.com/>home</a> / <a href=https://github.com/labstack/echo>sources</a></p>
 <p>Starting v3.0.0,
@@ -1086,7 +1086,7 @@ instance that implements
 <a href=https://pkg.go.dev/github.com/labstack/echo/v4#Echo.ServeHTTP><code>http.Handler</code></a>
 interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>e := echo.<span style=color:#447fcf>New</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>e := echo.<span style=color:#447fcf>New</span>()
 <span style=color:#999;font-style:italic>// Add routes to e
 </span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
 testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, e) <span style=color:#999;font-style:italic>// e implements http.Handler
@@ -1100,7 +1100,7 @@ instance that implements
 <a href=https://pkg.go.dev/github.com/gin-gonic/gin#Engine.ServeHTTP><code>http.Handler</code></a>
 interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>engine := gin.<span style=color:#447fcf>Default</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>engine := gin.<span style=color:#447fcf>Default</span>()
 <span style=color:#999;font-style:italic>// Add routes to engine
 </span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
 testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, engine) <span style=color:#999;font-style:italic>// engine implements http.Handler
@@ -1112,7 +1112,7 @@ instance that implements
 <a href=https://pkg.go.dev/github.com/gorilla/mux#Router.ServeHTTP><code>http.Handler</code></a>
 interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := mux.<span style=color:#447fcf>NewRouter</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := mux.<span style=color:#447fcf>NewRouter</span>()
 <span style=color:#999;font-style:italic>// Add routes to r
 </span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
 testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
@@ -1122,7 +1122,7 @@ testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=
 <ul>
 <li>default generation requires some tricks to retrieve the
 <a href=https://pkg.go.dev/net/http#Handler><code>http.Handler</code></a> instance:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>swaggerSpec, err := loads.<span style=color:#447fcf>Embedded</span>(restapi.SwaggerJSON, restapi.FlatSwaggerJSON)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>swaggerSpec, err := loads.<span style=color:#447fcf>Embedded</span>(restapi.SwaggerJSON, restapi.FlatSwaggerJSON)
 td.<span style=color:#447fcf>Require</span>(t).<span style=color:#447fcf>CmpNoError</span>(err, <span style=color:#ed9d13>&#34;Swagger spec is loaded&#34;</span>)
 api := operations.<span style=color:#447fcf>NewXxxAPI</span>(swaggerSpec) <span style=color:#999;font-style:italic>// Xxx is the name of your API
 </span><span style=color:#999;font-style:italic></span>server := restapi.<span style=color:#447fcf>NewServer</span>(api)
@@ -1131,7 +1131,7 @@ hdl := server.<span style=color:#447fcf>GetHandler</span>() <span style=color:#9
 </span><span style=color:#999;font-style:italic></span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
 </code></pre></div></li>
 <li>with Stratoscale template, it is simpler:
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>hdl, _, err := restapi.<span style=color:#447fcf>HandlerAPI</span>(restapi.Config{
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>hdl, _, err := restapi.<span style=color:#447fcf>HandlerAPI</span>(restapi.Config{
   Tag1API:  Tag1{},
   Tag2API:  Tag2{},
 })
@@ -1149,7 +1149,7 @@ instance that implements
 <a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#Router.ServeHTTP><code>http.Handler</code></a>
 interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := httprouter.<span style=color:#447fcf>New</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>r := httprouter.<span style=color:#447fcf>New</span>()
 <span style=color:#999;font-style:italic>// Add routes to r
 </span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
 testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
@@ -1161,7 +1161,7 @@ instance that implements
 <a href=https://pkg.go.dev/github.com/gorilla/pat#Router.ServeHTTP><code>http.Handler</code></a>
 interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>router := pat.<span style=color:#447fcf>New</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>router := pat.<span style=color:#447fcf>New</span>()
 <span style=color:#999;font-style:italic>// Add routes to router
 </span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
 testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, router) <span style=color:#999;font-style:italic>// router implements http.Handler
@@ -1175,7 +1175,7 @@ is your friend!</p>
 <p>With the help of <a href=/operators/json/><code>JSON</code></a> operator of course! See
 it below, used with <a href=/operators/catch/><code>Catch</code></a> (note it can be used
 without), for a <code>POST</code> example:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
   ID        <span style=color:#6ab825;font-weight:700>uint64</span>    <span style=color:#ed9d13>`json:&#34;id&#34;`</span>
   Name      <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
   Age       <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
@@ -1247,7 +1247,7 @@ counterpart yet.
 But <a href=https://github.com/maxatome/go-testdeep/pulls>PRs are welcome</a>!</p>
 <h2 id=should-i-import-githubcommaxatomego-testdeep-or-githubcommaxatomego-testdeeptd>Should I import <code>github.com/maxatome/go-testdeep</code> or <code>github.com/maxatome/go-testdeep/td</code>?</h2>
 <p>Historically the main package of go-testdeep was <code>testdeep</code> as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep&#34;</span>
@@ -1257,7 +1257,7 @@ But <a href=https://github.com/maxatome/go-testdeep/pulls>PRs are welcome</a>!</
   testdeep.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>GetPerson</span>(), Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>})
 }
 </code></pre></div><p>As <code>testdeep</code> was boring to type, renaming it to <code>td</code> became a habit as in:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   td <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep&#34;</span>
@@ -1272,7 +1272,7 @@ taken to create a new package <code>github.com/maxatome/go-testdeep/td</code>
 while keeping <code>github.com/maxatome/go-testdeep</code> working thanks to go
 type aliases.</p>
 <p>So the previous examples (that are still working) can now be written as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> (
   <span style=color:#ed9d13>&#34;testing&#34;</span>
 
   <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
@@ -1289,25 +1289,25 @@ type aliases.</p>
 <ul>
 <li>
 <p>If you rename the <code>testdeep</code> package to <code>td</code> as in:</p>
-<pre><code>import td &quot;github.com/maxatome/go-testdeep&quot;
+<pre tabindex=0><code>import td &quot;github.com/maxatome/go-testdeep&quot;
 …
   td.DefaultContextConfig = td.ContextConfig{…}
 </code></pre><p>then just change the import line to:</p>
-<pre><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
+<pre tabindex=0><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
 </code></pre></li>
 <li>
 <p>Otherwise, you have two choices:</p>
 <ol>
 <li>either add a new import line:
-<pre><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
+<pre tabindex=0><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
 </code></pre><p>then use <code>td.DefaultContextConfig</code> instead of
 <code>testdeep.DefaultContextConfig</code>, and continue to use <code>testdeep</code>
 package elsewhere.</p>
 </li>
 <li>or replace the import line:
-<pre><code>import &quot;github.com/maxatome/go-testdeep&quot;
+<pre tabindex=0><code>import &quot;github.com/maxatome/go-testdeep&quot;
 </code></pre><p>by</p>
-<pre><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
+<pre tabindex=0><code>import &quot;github.com/maxatome/go-testdeep/td&quot;
 </code></pre><p>then rename all occurrences of <code>testdeep</code> package to <code>td</code>.</p>
 </li>
 </ol>
@@ -1319,9 +1319,9 @@ package elsewhere.</p>
 before stopping during one comparison (one <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> execution for
 example). It defaults to <code>10</code>.</p>
 <p>Example:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_MAX_ERRORS</span>=<span style=color:#3677a9>30</span> go <span style=color:#24909d>test</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_MAX_ERRORS</span>=<span style=color:#3677a9>30</span> go <span style=color:#24909d>test</span>
 </code></pre></div><p>Setting it to <code>-1</code> means no limit:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_MAX_ERRORS</span>=-1 go <span style=color:#24909d>test</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_MAX_ERRORS</span>=-1 go <span style=color:#24909d>test</span>
 </code></pre></div><h2 id=how-do-i-change-these-crappy-colors>How do I change these crappy colors?</h2>
 <p>Using some environment variables:</p>
 <ul>
@@ -1339,7 +1339,7 @@ for color format, it defaults to <code>red</code>;</li>
 <h3 id=color-format>Color format</h3>
 <p>A color in <code>TESTDEEP_COLOR_*</code> environment variables has the following
 format:</p>
-<pre><code>foreground_color                    # set foreground color, background one untouched
+<pre tabindex=0><code>foreground_color                    # set foreground color, background one untouched
 foreground_color:background_color   # set foreground AND background color
 :background_color                   # set background color, foreground one untouched
 </code></pre><p><code>foreground_color</code> and <code>background_color</code> can be:</p>
@@ -1355,14 +1355,16 @@ foreground_color:background_color   # set foreground AND background color
 <li><code>gray</code></li>
 </ul>
 <p>For example:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_COLOR_OK</span>=black:green <span style=color:#ed9d13>\
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#40ffff>TESTDEEP_COLOR_OK</span>=black:green <span style=color:#ed9d13>\
 </span><span style=color:#ed9d13></span>    <span style=color:#40ffff>TESTDEEP_COLOR_BAD</span>=white:red <span style=color:#ed9d13>\
 </span><span style=color:#ed9d13></span>    <span style=color:#40ffff>TESTDEEP_COLOR_TITLE</span>=yellow <span style=color:#ed9d13>\
 </span><span style=color:#ed9d13></span>    go <span style=color:#24909d>test</span>
 </code></pre></div><h2 id=playgolangorg-does-not-handle-colors-error-output-is-nasty>play.golang.org does not handle colors, error output is nasty</h2>
 <p>Just add this single line in playground:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>init</span>() { os.<span style=color:#447fcf>Setenv</span>(<span style=color:#ed9d13>&#34;TESTDEEP_COLOR&#34;</span>, <span style=color:#ed9d13>&#34;off&#34;</span>) }
-</code></pre></div><p>Until playground supports <a href=https://en.wikipedia.org/wiki/ANSI_escape_code#Colors>ANSI color escape
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>import</span> _ <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/helpers/nocolor&#34;</span>
+</code></pre></div><p>(since go-testdeep v1.10.0) or:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>init</span>() { os.<span style=color:#447fcf>Setenv</span>(<span style=color:#ed9d13>&#34;TESTDEEP_COLOR&#34;</span>, <span style=color:#ed9d13>&#34;off&#34;</span>) }
+</code></pre></div><p>until playground supports <a href=https://en.wikipedia.org/wiki/ANSI_escape_code#Colors>ANSI color escape
 sequences</a>.</p>
 <h2 id=the-x-testing-framework-allows-to-testdo-y-while-go-testdeep-not>The <code>X</code> testing framework allows to test/do <code>Y</code> while go-testdeep not</h2>
 <p>The <a href=/operators/code/><code>Code</code></a> and <a href=/operators/smuggle/><code>Smuggle</code></a>
@@ -1380,7 +1382,7 @@ check that a string contains a RFC3339 formatted time, in UTC time
 zone (&ldquo;Z&rdquo; suffix) and then to compare it as a <code>time.Time</code> against
 <code>expectedValue</code> (which can be another <a href=/operators/>operator</a>
 or, of course, a <code>time.Time</code> value).</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>RFC3339ZToTime</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) td.TestDeep {
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>RFC3339ZToTime</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) td.TestDeep {
   <span style=color:#6ab825;font-weight:700>return</span> td.<span style=color:#447fcf>All</span>(
     td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Z&#34;</span>),
     td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(s <span style=color:#6ab825;font-weight:700>string</span>) (time.Time, <span style=color:#6ab825;font-weight:700>error</span>) {
@@ -1389,7 +1391,7 @@ or, of course, a <code>time.Time</code> value).</p>
   )
 }
 </code></pre></div><p>It could be used as:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>before := time.<span style=color:#447fcf>Now</span>()
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang>before := time.<span style=color:#447fcf>Now</span>()
 record := <span style=color:#447fcf>NewRecord</span>()
 td.<span style=color:#447fcf>Cmp</span>(t, record,
   td.<span style=color:#447fcf>SuperJSONOf</span>(<span style=color:#ed9d13>`{&#34;created_at&#34;: $1}`</span>,
@@ -1444,18 +1446,18 @@ to update corresponding <code>CmpFooBar</code> & <code>T.FooBar</code> examples.
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.min.js?1630446379></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446379></script>
-<script src=/js/jquery.sticky.js?1630446379></script>
-<script src=/js/featherlight.min.js?1630446379></script>
-<script src=/js/highlight.pack.js?1630446379></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446379></script>
-<script src=/js/learn.js?1630446379></script>
-<script src=/js/hugo-learn.js?1630446379></script>
-<link href=/mermaid/mermaid.css?1630446379 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446379></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

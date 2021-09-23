@@ -70,6 +70,25 @@ problem). It is just a matter of taste, double-quoting placeholders
 can be preferred when the JSON data has to conform to the JSON
 specification, like when used in a ".json" file.
 
+[`SubJSONOf`]({{< ref "SubJSONOf" >}}) does its best to convert back the [`JSON`]({{< ref "JSON" >}}) corresponding to a
+placeholder to the type of the placeholder or, if the placeholder
+is an operator, to the type behind the operator. Allowing to do
+things like:
+
+```go
+td.Cmp(t, gotValue,
+  td.SubJSONOf(`{"foo":$1, "bar": 12}`, []int{1, 2, 3, 4}))
+td.Cmp(t, gotValue,
+  td.SubJSONOf(`{"foo":$1, "bar": 12}`, []interface{}{1, 2, td.Between(2, 4), 4}))
+td.Cmp(t, gotValue,
+  td.SubJSONOf(`{"foo":$1, "bar": 12}`, td.Between(27, 32)))
+```
+
+Of course, it does this conversion only if the expected type can be
+guessed. In the case the conversion cannot occur, data is compared
+as is, in its freshly unmarshalled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+`string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
+
 Note *expectedJSON* can be a `[]byte`, JSON filename or [`io.Reader`](https://pkg.go.dev/io/#Reader):
 
 ```go
@@ -123,22 +142,68 @@ Comments, like in go, have 2 forms. To quote the Go language specification:
   with the first subsequent character sequence */.
 
 
-Last but not least, simple operators can be directly embedded in
-JSON data without requiring any placeholder but using directly
-`$^OperatorName`. They are operator shortcuts:
+Most operators can be directly embedded in [`SubJSONOf`]({{< ref "SubJSONOf" >}}) without requiring
+any placeholder.
 
 ```go
-td.Cmp(t, gotValue, td.SubJSONOf(`{"id": $1}`, td.NotZero()))
+td.Cmp(t, gotValue,
+  td.SubJSONOf(`
+{
+  "fullname": HasPrefix("Foo"),
+  "age":      Between(41, 43),
+  "details":  SuperMapOf({
+    "address": NotEmpty(),
+    "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
+  })
+}`))
+```
+
+Placeholders can be used anywhere, even in operators parameters as in:
+
+```go
+td.Cmp(t, gotValue,
+  td.SubJSONOf(`{"fullname": HasPrefix($1), "bar": 42}`, "Zip"))
+```
+
+A few notes about operators embedding:
+
+- [`SubMapOf`]({{< ref "SubMapOf" >}}) and [`SuperMapOf`]({{< ref "SuperMapOf" >}}) take only one parameter, a JSON object;
+- the optional 3rd parameter of [`Between`]({{< ref "Between" >}}) has to be specified as a `string`
+  and can be: "[]" or "[`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)" (default), "[[" or "[`BoundsInOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)",
+  "]]" or "[`BoundsOutIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)", "][" or "[`BoundsOutOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)";
+- not all operators are embeddable only the following are;
+- [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`Gt`]({{< ref "Gt" >}}),
+  [`Gte`]({{< ref "Gte" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Ignore`]({{< ref "Ignore" >}}), JSONPointer, [`Keys`]({{< ref "Keys" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}),
+  [`MapEach`]({{< ref "MapEach" >}}), [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}), [`NotNil`]({{< ref "NotNil" >}}),
+  [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubMapOf`]({{< ref "SubMapOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}),
+  [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}), [`Values`]({{< ref "Values" >}}) and [`Zero`]({{< ref "Zero" >}}).
+
+
+Operators taking no parameters can also be directly embedded in
+JSON data using `$^OperatorName` or "`$^OperatorName`" notation. They
+are named shortcut operators (they predate the above operators embedding
+but they subsist for compatibility):
+
+```go
+td.Cmp(t, gotValue, td.SubJSONOf(`{"id": $1, "bar": 42}`, td.NotZero()))
 ```
 
 can be written as:
 
 ```go
-td.Cmp(t, gotValue, td.SubJSONOf(`{"id": $^NotZero}`))
+td.Cmp(t, gotValue, td.SubJSONOf(`{"id": $^NotZero, "bar": 42}`))
 ```
 
-Unfortunately, only simple operators (in fact those which take no
-parameters) have shortcuts. They follow:
+or
+
+```go
+td.Cmp(t, gotValue, td.SubJSONOf(`{"id": "$^NotZero", "bar": 42}`))
+```
+
+As for placeholders, there is no differences between `$^NotZero` and
+"`$^NotZero`".
+
+The allowed shortcut operators follow:
 
 - [`Empty`]({{< ref "Empty" >}})    → `$^Empty`
 - [`Ignore`]({{< ref "Ignore" >}})   → `$^Ignore`

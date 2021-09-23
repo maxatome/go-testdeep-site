@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.85.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Contains :: go-testdeep</title>
-<link href=/css/nucleus.css?1630446378 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1630446378 rel=stylesheet>
-<link href=/css/hybrid.css?1630446378 rel=stylesheet>
-<link href=/css/featherlight.min.css?1630446378 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1630446378 rel=stylesheet>
-<link href=/css/auto-complete.css?1630446378 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1630446378 rel=stylesheet>
-<link href=/css/theme.css?1630446378 rel=stylesheet>
-<link href=/css/hugo-theme.css?1630446378 rel=stylesheet>
-<link href=/css/theme-green.css?1630446378 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1630446378></script>
+<link href=/css/nucleus.css?1632428595 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1632428595 rel=stylesheet>
+<link href=/css/hybrid.css?1632428595 rel=stylesheet>
+<link href=/css/featherlight.min.css?1632428595 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1632428595 rel=stylesheet>
+<link href=/css/auto-complete.css?1632428595 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1632428595 rel=stylesheet>
+<link href=/css/theme.css?1632428595 rel=stylesheet>
+<link href=/css/hugo-theme.css?1632428595 rel=stylesheet>
+<link href=/css/theme-green.css?1632428595 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1632428595></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1630446378></script>
-<script type=text/javascript src=/js/auto-complete.js?1630446378></script>
+<script type=text/javascript src=/js/lunr.min.js?1632428595></script>
+<script type=text/javascript src=/js/auto-complete.js?1632428595></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1630446378></script>
+<script type=text/javascript src=/js/search.js?1632428595></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,7 +507,7 @@ FAQ
 <h1>
 Contains
 </h1>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Contains</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Contains</span>(expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/contains/><code>Contains</code></a> is a <a href=/operators/#smuggler-operators>smuggler operator</a> to check if something is contained
 in another thing. <a href=/operators/contains/><code>Contains</code></a> has to be applied on arrays, slices, maps or
 strings. It tries to be as smarter as possible.</p>
@@ -518,7 +518,7 @@ way: item per item.</p>
 <p>If data is a slice, and <em>expectedValue</em> has the same type, then
 <em>expectedValue</em> is searched as a sub-slice, otherwise
 <em>expectedValue</em> is compared to each slice value.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>list := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>, <span style=color:#3677a9>28</span>}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>list := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>12</span>, <span style=color:#3677a9>34</span>, <span style=color:#3677a9>28</span>}
 td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>34</span>))                 <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>30</span>, <span style=color:#3677a9>35</span>))) <span style=color:#999;font-style:italic>// succeeds too
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>35</span>))                 <span style=color:#999;font-style:italic>// fails
@@ -526,7 +526,7 @@ td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Co
 </span></code></pre></div><p>If data is an array or a map, each value is compared to
 <em>expectedValue</em>. <a href=/operators/map/><code>Map</code></a> keys are not checked: see <a href=/operators/containskey/><code>ContainsKey</code></a> to check
 map keys existence.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>hash := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>34</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>28</span>}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>hash := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>34</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>28</span>}
 td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>34</span>))                 <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>30</span>, <span style=color:#3677a9>35</span>))) <span style=color:#999;font-style:italic>// succeeds too
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>35</span>))                 <span style=color:#999;font-style:italic>// fails
@@ -540,7 +540,7 @@ td.<span style=color:#447fcf>Cmp</span>(t, array, td.<span style=color:#447fcf>C
 <a href=https://pkg.go.dev/fmt/#Stringer><code>fmt.Stringer</code></a>), <em>expectedValue</em> can be a <code>string</code>, a <code>[]byte</code>, a <code>rune</code> or
 a <code>byte</code>. In this case, it tests if the got <code>string</code> contains this
 expected <code>string</code>, <code>[]byte</code>, <code>rune</code> or <code>byte</code>.</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := <span style=color:#ed9d13>&#34;foo bar&#34;</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>got := <span style=color:#ed9d13>&#34;foo bar&#34;</span>
 td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#39;o&#39;</span>))                  <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Contains</span>(<span style=color:#24909d>rune</span>(<span style=color:#ed9d13>&#39;o&#39;</span>)))            <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#39;n&#39;</span>, <span style=color:#ed9d13>&#39;p&#39;</span>))) <span style=color:#999;font-style:italic>// succeeds
@@ -558,15 +558,15 @@ td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>Con
 bstr := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;fmt.Stringer!&#34;</span>)
 td.<span style=color:#447fcf>Cmp</span>(t, bstr, td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#34;String&#34;</span>)) <span style=color:#999;font-style:italic>// succeeds
 </span></code></pre></div><p>Pitfall: if you want to check if 2 words are contained in got, don&rsquo;t do:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar&#34;</span>, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>All</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>))) <span style=color:#999;font-style:italic>// Bad!
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar&#34;</span>, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>All</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>))) <span style=color:#999;font-style:italic>// Bad!
 </span></code></pre></div><p>as <a href=/operators/>TestDeep operator</a> <a href=/operators/all/><code>All</code></a> in <a href=/operators/contains/><code>Contains</code></a> operates on each <code>rune</code>, so it
 does not work as expected, but do::</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar&#34;</span>, td.<span style=color:#447fcf>All</span>(td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>), td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#34;bar&#34;</span>)))
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;foobar&#34;</span>, td.<span style=color:#447fcf>All</span>(td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>), td.<span style=color:#447fcf>Contains</span>(<span style=color:#ed9d13>&#34;bar&#34;</span>)))
 </code></pre></div><p>When <a href=/operators/contains/><code>Contains(nil)</code></a> is used, <code>nil</code> is automatically converted to a
 typed <code>nil</code> on the fly to avoid confusion (if the array/slice/map
 item type allows it of course.) So all following Cmp calls
 are equivalent (except the <code>(*byte)(nil)</code> one):</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>num := <span style=color:#3677a9>123</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>num := <span style=color:#3677a9>123</span>
 list := []*<span style=color:#6ab825;font-weight:700>int</span>{&amp;num, <span style=color:#6ab825;font-weight:700>nil</span>}
 td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>(<span style=color:#6ab825;font-weight:700>nil</span>))         <span style=color:#999;font-style:italic>// succeeds → (*int)(nil)
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>((*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))) <span style=color:#999;font-style:italic>// succeeds
@@ -574,7 +574,7 @@ td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Co
 </span><span style=color:#999;font-style:italic>// But...
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, list, td.<span style=color:#447fcf>Contains</span>((*<span style=color:#6ab825;font-weight:700>byte</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))) <span style=color:#999;font-style:italic>// fails: (*byte)(nil) ≠ (*int)(nil)
 </span></code></pre></div><p>As well as these ones:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>hash := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: &amp;num}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>hash := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]*<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#6ab825;font-weight:700>nil</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: &amp;num}
 td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>(<span style=color:#6ab825;font-weight:700>nil</span>))         <span style=color:#999;font-style:italic>// succeeds → (*int)(nil)
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>((*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))) <span style=color:#999;font-style:italic>// succeeds
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>Contains</span>(td.<span style=color:#447fcf>Nil</span>()))    <span style=color:#999;font-style:italic>// succeeds
@@ -591,7 +591,7 @@ ArraySlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	ok := td.<span style=color:#447fcf>Cmp</span>(t, [...]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>11</span>, <span style=color:#3677a9>22</span>, <span style=color:#3677a9>33</span>, <span style=color:#3677a9>44</span>}, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>22</span>))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;array contains 22:&#34;</span>, ok)
@@ -626,7 +626,7 @@ Nil example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	num := <span style=color:#3677a9>123</span>
 	got := [...]*<span style=color:#6ab825;font-weight:700>int</span>{&amp;num, <span style=color:#6ab825;font-weight:700>nil</span>}
@@ -660,7 +660,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	ok := td.<span style=color:#447fcf>Cmp</span>(t,
 		<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, td.<span style=color:#447fcf>Contains</span>(<span style=color:#3677a9>22</span>))
@@ -686,7 +686,7 @@ String example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foobar&#34;</span>
 
@@ -723,7 +723,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
@@ -757,7 +757,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
 
@@ -783,9 +783,9 @@ Error example
 </div>
 </div></p>
 <h2 id=cmpcontains-shortcut>CmpContains shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpContains</span>(t TestingT, got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpContains</span>(t TestingT, got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p>CmpContains is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Contains</span>(expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Contains</span>(expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -807,7 +807,7 @@ ArraySlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	ok := td.<span style=color:#447fcf>CmpContains</span>(t, [...]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>11</span>, <span style=color:#3677a9>22</span>, <span style=color:#3677a9>33</span>, <span style=color:#3677a9>44</span>}, <span style=color:#3677a9>22</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;array contains 22:&#34;</span>, ok)
@@ -842,7 +842,7 @@ Nil example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	num := <span style=color:#3677a9>123</span>
 	got := [...]*<span style=color:#6ab825;font-weight:700>int</span>{&amp;num, <span style=color:#6ab825;font-weight:700>nil</span>}
@@ -876,7 +876,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	ok := td.<span style=color:#447fcf>CmpContains</span>(t, <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, <span style=color:#3677a9>22</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains value 22:&#34;</span>, ok)
@@ -899,7 +899,7 @@ String example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := <span style=color:#ed9d13>&#34;foobar&#34;</span>
 
@@ -936,7 +936,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
@@ -970,7 +970,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
 
@@ -996,9 +996,9 @@ Error example
 </div>
 </div></p>
 <h2 id=tcontains-shortcut>T.Contains shortcut</h2>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Contains</span>(got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Contains</span>(got, expectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
 </code></pre></div><p><a href=/operators/contains/><code>Contains</code></a> is a shortcut for:</p>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Contains</span>(expectedValue), args...)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Contains</span>(expectedValue), args...)
 </code></pre></div><p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -1020,7 +1020,7 @@ ArraySlice example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	ok := t.<span style=color:#447fcf>Contains</span>([...]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>11</span>, <span style=color:#3677a9>22</span>, <span style=color:#3677a9>33</span>, <span style=color:#3677a9>44</span>}, <span style=color:#3677a9>22</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;array contains 22:&#34;</span>, ok)
@@ -1055,7 +1055,7 @@ Nil example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	num := <span style=color:#3677a9>123</span>
 	got := [...]*<span style=color:#6ab825;font-weight:700>int</span>{&amp;num, <span style=color:#6ab825;font-weight:700>nil</span>}
@@ -1089,7 +1089,7 @@ Map example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	ok := t.<span style=color:#447fcf>Contains</span>(<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, <span style=color:#3677a9>22</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains value 22:&#34;</span>, ok)
@@ -1112,7 +1112,7 @@ String example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := <span style=color:#ed9d13>&#34;foobar&#34;</span>
 
@@ -1149,7 +1149,7 @@ Stringer example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	<span style=color:#999;font-style:italic>// bytes.Buffer implements fmt.Stringer
 </span><span style=color:#999;font-style:italic></span>	got := bytes.<span style=color:#447fcf>NewBufferString</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
@@ -1183,7 +1183,7 @@ Error example
 </span>
 </div>
 <div class=expand-content style=display:none>
-<div class=highlight><pre style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 
 	got := errors.<span style=color:#447fcf>New</span>(<span style=color:#ed9d13>&#34;foobar&#34;</span>)
 
@@ -1220,18 +1220,18 @@ Error example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.min.js?1630446378></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1630446378></script>
-<script src=/js/jquery.sticky.js?1630446378></script>
-<script src=/js/featherlight.min.js?1630446378></script>
-<script src=/js/highlight.pack.js?1630446378></script>
+<script src=/js/clipboard.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.min.js?1632428596></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1632428596></script>
+<script src=/js/jquery.sticky.js?1632428596></script>
+<script src=/js/featherlight.min.js?1632428596></script>
+<script src=/js/highlight.pack.js?1632428596></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1630446378></script>
-<script src=/js/learn.js?1630446378></script>
-<script src=/js/hugo-learn.js?1630446378></script>
-<link href=/mermaid/mermaid.css?1630446378 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1630446378></script>
+<script src=/js/modernizr.custom-3.6.0.js?1632428596></script>
+<script src=/js/learn.js?1632428596></script>
+<script src=/js/hugo-learn.js?1632428596></script>
+<link href=/mermaid/mermaid.css?1632428596 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1632428596></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
