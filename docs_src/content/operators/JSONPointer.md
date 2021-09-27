@@ -41,7 +41,7 @@ td.Cmp(t, got, td.JSONPointer("/zzz", td.Between(40, 45)))
 
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
-as is, in its freshly unmarshalled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
 `string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
 
 Note that as any [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
@@ -66,7 +66,7 @@ td.Cmp(t, got, td.JSONPointer("/Next/Next", Item{Val: 3}))
 ```
 
 Contrary to [`Smuggle`]({{< ref "Smuggle" >}}) operator and its fields-path feature, only
-public fields can be followed, as private ones are never (un)marshalled.
+public fields can be followed, as private ones are never (un)marshaled.
 
 There is no JSONHas nor JSONHasnt operators to only check a [`JSON`]({{< ref "JSON" >}})
 pointer exists or not, but they can easily be emulated:

@@ -65,7 +65,7 @@ td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, td.Between(27, 32)))
 
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
-as is, in its freshly unmarshalled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
 `string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
 
 Note *expectedJSON* can be a `[]byte`, JSON filename or [`io.Reader`](https://pkg.go.dev/io/#Reader):
