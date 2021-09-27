@@ -30,14 +30,13 @@ func TestCreateRecord(tt *testing.T) {
   "Name":      "Bob",
   "Age":       23,
   "Id":        NotZero(), // comments and operators allowed!
-  "CreatedAt": Between($1, $2)
+  "CreatedAt": $1
 }`,
-      before,
-      time.Now(),
+      td.Between(before, time.Now()),
     ),
       "Newly created record")
   }
 }
 ```
 
-Test it in playground: https://play.golang.org/p/uoBnve85kNk
+Test it in playground: https://play.golang.org/p/pUC-RMPWyhu

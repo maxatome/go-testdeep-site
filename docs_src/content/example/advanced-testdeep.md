@@ -34,7 +34,7 @@ func TestCreateRecord(t *testing.T) {
 }
 ```
 
-Test in in playground: https://play.golang.org/p/nIYSQmxCSMC
+Test in in playground: https://play.golang.org/p/-HdKRKY7Kbk
 
 The [`Struct`]({{< ref "operators/Struct" >}}) operator, used here,
 ignores zero fields in its model parameter.
@@ -69,7 +69,7 @@ func TestCreateRecord(t *testing.T) {
 }
 ```
 
-Test it in playground: https://play.golang.org/p/CtlDR1R5y7s
+Test it in playground: https://play.golang.org/p/PGyi0d3ZXMa
 
 See the use of the [`Struct`]({{< ref "operators/Struct" >}})
 operator. It is needed here to overcome the go static typing system

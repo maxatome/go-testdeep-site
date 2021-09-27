@@ -36,7 +36,7 @@ func TestCreateRecord(tt *testing.T) {
 }
 ```
 
-Test it in playground: https://play.golang.org/p/xoGFzmpsSZT
+Test it in playground: https://play.golang.org/p/OzoW5CSNUP5
 
 See the
 [`Anchor`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor)

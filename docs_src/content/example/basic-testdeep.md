@@ -28,7 +28,7 @@ func TestCreateRecord(t *testing.T) {
 }
 ```
 
-Test it in playground: https://play.golang.org/p/nPCr9Jeyi43
+Test it in playground: https://play.golang.org/p/bfe-aj_gx8Q
 
 As we cannot guess the `Id` field value before its creation, we use the
 [`NotZero`]({{< ref "operators/NotZero" >}}) operator to check it is

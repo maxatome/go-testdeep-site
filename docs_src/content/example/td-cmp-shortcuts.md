@@ -37,4 +37,4 @@ func TestCreateRecord(t *testing.T) {
 }
 ```
 
-Test it in playground: https://play.golang.org/p/gOhqXtWSzJ-
+Test it in playground: https://play.golang.org/p/d2FxGASUa_B

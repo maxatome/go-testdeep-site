@@ -52,7 +52,7 @@ func TestCreateRecord(tt *testing.T) {
 }
 ```
 
-Test it in playground: https://play.golang.org/p/eqgjJu6Lpec
+Test it in playground: https://play.golang.org/p/sH4PRrVjqFM
 
 Note the use of
 [`RootName`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RootName)
