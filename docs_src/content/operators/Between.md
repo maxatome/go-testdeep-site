@@ -10,9 +10,10 @@ func Between(from, to interface{}, bounds ...BoundsKind) TestDeep
 [`Between`]({{< ref "Between" >}}) operator checks that data is between *from* and
 *to*. *from* and *to* can be any numeric, `string` or [`time.Time`](https://pkg.go.dev/time/#Time) (or
 assignable) value. *from* and *to* must be the same kind as the
-compared value if numeric, and the same type if `string` or [`time.Time`](https://pkg.go.dev/time/#Time) (or
-assignable). *bounds* allows to specify whether bounds are included
-or not:
+compared value if numeric, and the same type if `string` or [`time.Time`](https://pkg.go.dev/time/#Time)
+(or assignable). [`time.Duration`](https://pkg.go.dev/time/#Duration) type is accepted as *to* when *from*
+is [`time.Time`](https://pkg.go.dev/time/#Time) or convertible. *bounds* allows to specify whether
+bounds are included or not:
 
 - [`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind) (default): between *from* and *to* both included
 - [`BoundsInOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind): between *from* included and *to* excluded
@@ -102,6 +103,37 @@ tc.Cmp(t, 17, td.Between(17, 20, BoundsOutOut)) // fails
 	// false
 	// true
 	// false
+
+```{{% /expand%}}
+{{%expand "Time example" %}}```go
+	t := &testing.T{}
+
+	before := time.Now()
+	occurredAt := time.Now()
+	after := time.Now()
+
+	ok := td.Cmp(t, occurredAt, td.Between(before, after))
+	fmt.Println("It occurred between before and after:", ok)
+
+	type MyTime time.Time
+	ok = td.Cmp(t, MyTime(occurredAt), td.Between(MyTime(before), MyTime(after)))
+	fmt.Println("Same for convertible MyTime type:", ok)
+
+	ok = td.Cmp(t, MyTime(occurredAt), td.Between(before, after))
+	fmt.Println("MyTime vs time.Time:", ok)
+
+	ok = td.Cmp(t, occurredAt, td.Between(before, 10*time.Second))
+	fmt.Println("Using a time.Duration as TO:", ok)
+
+	ok = td.Cmp(t, MyTime(occurredAt), td.Between(MyTime(before), 10*time.Second))
+	fmt.Println("Using MyTime as FROM and time.Duration as TO:", ok)
+
+	// Output:
+	// It occurred between before and after: true
+	// Same for convertible MyTime type: true
+	// MyTime vs time.Time: false
+	// Using a time.Duration as TO: true
+	// Using MyTime as FROM and time.Duration as TO: true
 
 ```{{% /expand%}}
 ## CmpBetween shortcut
@@ -204,6 +236,37 @@ reason of a potential failure.
 	// false
 
 ```{{% /expand%}}
+{{%expand "Time example" %}}```go
+	t := &testing.T{}
+
+	before := time.Now()
+	occurredAt := time.Now()
+	after := time.Now()
+
+	ok := td.CmpBetween(t, occurredAt, before, after, td.BoundsInIn)
+	fmt.Println("It occurred between before and after:", ok)
+
+	type MyTime time.Time
+	ok = td.CmpBetween(t, MyTime(occurredAt), MyTime(before), MyTime(after), td.BoundsInIn)
+	fmt.Println("Same for convertible MyTime type:", ok)
+
+	ok = td.CmpBetween(t, MyTime(occurredAt), before, after, td.BoundsInIn)
+	fmt.Println("MyTime vs time.Time:", ok)
+
+	ok = td.CmpBetween(t, occurredAt, before, 10*time.Second, td.BoundsInIn)
+	fmt.Println("Using a time.Duration as TO:", ok)
+
+	ok = td.CmpBetween(t, MyTime(occurredAt), MyTime(before), 10*time.Second, td.BoundsInIn)
+	fmt.Println("Using MyTime as FROM and time.Duration as TO:", ok)
+
+	// Output:
+	// It occurred between before and after: true
+	// Same for convertible MyTime type: true
+	// MyTime vs time.Time: false
+	// Using a time.Duration as TO: true
+	// Using MyTime as FROM and time.Duration as TO: true
+
+```{{% /expand%}}
 ## T.Between shortcut
 
 ```go
@@ -302,5 +365,36 @@ reason of a potential failure.
 	// false
 	// true
 	// false
+
+```{{% /expand%}}
+{{%expand "Time example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	before := time.Now()
+	occurredAt := time.Now()
+	after := time.Now()
+
+	ok := t.Between(occurredAt, before, after, td.BoundsInIn)
+	fmt.Println("It occurred between before and after:", ok)
+
+	type MyTime time.Time
+	ok = t.Between(MyTime(occurredAt), MyTime(before), MyTime(after), td.BoundsInIn)
+	fmt.Println("Same for convertible MyTime type:", ok)
+
+	ok = t.Between(MyTime(occurredAt), before, after, td.BoundsInIn)
+	fmt.Println("MyTime vs time.Time:", ok)
+
+	ok = t.Between(occurredAt, before, 10*time.Second, td.BoundsInIn)
+	fmt.Println("Using a time.Duration as TO:", ok)
+
+	ok = t.Between(MyTime(occurredAt), MyTime(before), 10*time.Second, td.BoundsInIn)
+	fmt.Println("Using MyTime as FROM and time.Duration as TO:", ok)
+
+	// Output:
+	// It occurred between before and after: true
+	// Same for convertible MyTime type: true
+	// MyTime vs time.Time: false
+	// Using a time.Duration as TO: true
+	// Using MyTime as FROM and time.Duration as TO: true
 
 ```{{% /expand%}}

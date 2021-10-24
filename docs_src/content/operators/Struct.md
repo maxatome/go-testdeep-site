@@ -214,7 +214,7 @@ succeed. Non-expected fields are ignored.
 		"ordered patterns")
 	fmt.Println("Ordered patterns match only remaining fields:", ok)
 
-	// Output
+	// Output:
 	// Patterns match only remaining fields: true
 	// Ordered patterns match only remaining fields: true
 
@@ -343,7 +343,7 @@ reason of a potential failure.
 		"ordered patterns")
 	fmt.Println("Ordered patterns match only remaining fields:", ok)
 
-	// Output
+	// Output:
 	// Patterns match only remaining fields: true
 	// Ordered patterns match only remaining fields: true
 
@@ -472,7 +472,7 @@ reason of a potential failure.
 		"ordered patterns")
 	fmt.Println("Ordered patterns match only remaining fields:", ok)
 
-	// Output
+	// Output:
 	// Patterns match only remaining fields: true
 	// Ordered patterns match only remaining fields: true
 

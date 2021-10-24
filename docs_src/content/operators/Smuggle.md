@@ -392,7 +392,7 @@ type. The fields-path `string` *fn* shortcut is not available with
 			"2018-05-23 12:13:14 +0000 UTC"))
 	fmt.Println("stringified MyTime OK:", ok)
 
-	// Output
+	// Output:
 	// stringified time.Time OK: true
 	// stringified MyTime OK: false
 
@@ -641,7 +641,7 @@ reason of a potential failure.
 	}, "2018-05-23 12:13:14 +0000 UTC")
 	fmt.Println("stringified MyTime OK:", ok)
 
-	// Output
+	// Output:
 	// stringified time.Time OK: true
 	// stringified MyTime OK: false
 
@@ -887,7 +887,7 @@ reason of a potential failure.
 	}, "2018-05-23 12:13:14 +0000 UTC")
 	fmt.Println("stringified MyTime OK:", ok)
 
-	// Output
+	// Output:
 	// stringified time.Time OK: true
 	// stringified MyTime OK: false
 
