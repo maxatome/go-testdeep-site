@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>JSON :: go-testdeep</title>
-<link href=/css/nucleus.css?1632778435 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1632778435 rel=stylesheet>
-<link href=/css/hybrid.css?1632778435 rel=stylesheet>
-<link href=/css/featherlight.min.css?1632778435 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1632778435 rel=stylesheet>
-<link href=/css/auto-complete.css?1632778435 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1632778435 rel=stylesheet>
-<link href=/css/theme.css?1632778435 rel=stylesheet>
-<link href=/css/hugo-theme.css?1632778435 rel=stylesheet>
-<link href=/css/theme-green.css?1632778435 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1632778435></script>
+<link href=/css/nucleus.css?1635095467 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1635095467 rel=stylesheet>
+<link href=/css/hybrid.css?1635095467 rel=stylesheet>
+<link href=/css/featherlight.min.css?1635095467 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1635095467 rel=stylesheet>
+<link href=/css/auto-complete.css?1635095467 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1635095467 rel=stylesheet>
+<link href=/css/theme.css?1635095467 rel=stylesheet>
+<link href=/css/hugo-theme.css?1635095467 rel=stylesheet>
+<link href=/css/theme-green.css?1635095467 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1635095467></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1632778435></script>
-<script type=text/javascript src=/js/auto-complete.js?1632778435></script>
+<script type=text/javascript src=/js/lunr.min.js?1635095467></script>
+<script type=text/javascript src=/js/auto-complete.js?1635095467></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1632778435></script>
+<script type=text/javascript src=/js/search.js?1635095467></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -769,12 +769,19 @@ Placeholders example
 			))))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
 
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;age&#34;: Between($1, $2), &#34;fullname&#34;: HasSuffix($suffix), &#34;children&#34;: Len(2)}`</span>,
+			<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>,
+			td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;suffix&#34;</span>, <span style=color:#ed9d13>&#34;Foobar&#34;</span>)))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/num &amp; named placeholders:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/num &amp; named placeholders: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -823,11 +830,24 @@ Embedding example
 </span><span style=color:#ed9d13>}`</span>))
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
 
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between($1, $2, $3), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix($4),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>,
+		<span style=color:#3677a9>40</span>, <span style=color:#3677a9>42</span>, td.BoundsOutIn,
+		<span style=color:#ed9d13>&#34;Bob&#34;</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators, w/placeholder args:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators, w/placeholder args: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1019,12 +1039,16 @@ Placeholders example
 	))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
 
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`{&#34;age&#34;: Between($1, $2), &#34;fullname&#34;: HasSuffix($suffix), &#34;children&#34;: Len(2)}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>, td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;suffix&#34;</span>, <span style=color:#ed9d13>&#34;Foobar&#34;</span>)})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/num &amp; named placeholders:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/num &amp; named placeholders: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1073,11 +1097,22 @@ Embedding example
 </span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
 
+	ok = td.<span style=color:#447fcf>CmpJSON</span>(t, got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between($1, $2, $3), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix($4),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>40</span>, <span style=color:#3677a9>42</span>, td.BoundsOutIn, <span style=color:#ed9d13>&#34;Bob&#34;</span>})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators, w/placeholder args:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators, w/placeholder args: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1261,12 +1296,16 @@ Placeholders example
 	))})
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/named placeholders, and children w/go structs:&#34;</span>, ok)
 
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`{&#34;age&#34;: Between($1, $2), &#34;fullname&#34;: HasSuffix($suffix), &#34;children&#34;: Len(2)}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>, td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;suffix&#34;</span>, <span style=color:#ed9d13>&#34;Foobar&#34;</span>)})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got w/num &amp; named placeholders:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders without operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with double-quoted numeric placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with named placeholders: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/named placeholders, and children w/go structs: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got w/num &amp; named placeholders: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1315,11 +1354,22 @@ Embedding example
 </span><span style=color:#ed9d13>}`</span>, <span style=color:#6ab825;font-weight:700>nil</span>)
 	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators:&#34;</span>, ok)
 
+	ok = t.<span style=color:#447fcf>JSON</span>(got, <span style=color:#ed9d13>`
+</span><span style=color:#ed9d13>{
+</span><span style=color:#ed9d13>  &#34;age&#34;:      Between($1, $2, $3), // in ]40; 42]
+</span><span style=color:#ed9d13>  &#34;fullname&#34;: All(
+</span><span style=color:#ed9d13>    HasPrefix($4),
+</span><span style=color:#ed9d13>    HasSuffix(&#34;bar&#34;)  // ← comma is optional here
+</span><span style=color:#ed9d13>  )
+</span><span style=color:#ed9d13>}`</span>, []<span style=color:#6ab825;font-weight:700>interface</span>{}{<span style=color:#3677a9>40</span>, <span style=color:#3677a9>42</span>, td.BoundsOutIn, <span style=color:#ed9d13>&#34;Bob&#34;</span>})
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;check got with complex operators, w/placeholder args:&#34;</span>, ok)
+
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with simple operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with operator shortcuts: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// check got with complex operators, w/placeholder args: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1391,18 +1441,18 @@ File example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1632778435></script>
-<script src=/js/perfect-scrollbar.min.js?1632778435></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1632778435></script>
-<script src=/js/jquery.sticky.js?1632778435></script>
-<script src=/js/featherlight.min.js?1632778435></script>
-<script src=/js/highlight.pack.js?1632778435></script>
+<script src=/js/clipboard.min.js?1635095467></script>
+<script src=/js/perfect-scrollbar.min.js?1635095467></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1635095467></script>
+<script src=/js/jquery.sticky.js?1635095467></script>
+<script src=/js/featherlight.min.js?1635095467></script>
+<script src=/js/highlight.pack.js?1635095467></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1632778435></script>
-<script src=/js/learn.js?1632778435></script>
-<script src=/js/hugo-learn.js?1632778435></script>
-<link href=/mermaid/mermaid.css?1632778435 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1632778435></script>
+<script src=/js/modernizr.custom-3.6.0.js?1635095467></script>
+<script src=/js/learn.js?1635095467></script>
+<script src=/js/hugo-learn.js?1635095467></script>
+<link href=/mermaid/mermaid.css?1635095467 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1635095467></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Between :: go-testdeep</title>
-<link href=/css/nucleus.css?1632778435 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1632778435 rel=stylesheet>
-<link href=/css/hybrid.css?1632778435 rel=stylesheet>
-<link href=/css/featherlight.min.css?1632778435 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1632778435 rel=stylesheet>
-<link href=/css/auto-complete.css?1632778435 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1632778435 rel=stylesheet>
-<link href=/css/theme.css?1632778435 rel=stylesheet>
-<link href=/css/hugo-theme.css?1632778435 rel=stylesheet>
-<link href=/css/theme-green.css?1632778435 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1632778435></script>
+<link href=/css/nucleus.css?1635095466 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1635095466 rel=stylesheet>
+<link href=/css/hybrid.css?1635095466 rel=stylesheet>
+<link href=/css/featherlight.min.css?1635095466 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1635095466 rel=stylesheet>
+<link href=/css/auto-complete.css?1635095466 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1635095466 rel=stylesheet>
+<link href=/css/theme.css?1635095466 rel=stylesheet>
+<link href=/css/hugo-theme.css?1635095466 rel=stylesheet>
+<link href=/css/theme-green.css?1635095466 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1635095466></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1632778435></script>
-<script type=text/javascript src=/js/auto-complete.js?1632778435></script>
+<script type=text/javascript src=/js/lunr.min.js?1635095466></script>
+<script type=text/javascript src=/js/auto-complete.js?1635095466></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1632778435></script>
+<script type=text/javascript src=/js/search.js?1635095466></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -511,9 +511,10 @@ Between
 </code></pre></div><p><a href=/operators/between/><code>Between</code></a> operator checks that data is between <em>from</em> and
 <em>to</em>. <em>from</em> and <em>to</em> can be any numeric, <code>string</code> or <a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> (or
 assignable) value. <em>from</em> and <em>to</em> must be the same kind as the
-compared value if numeric, and the same type if <code>string</code> or <a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> (or
-assignable). <em>bounds</em> allows to specify whether bounds are included
-or not:</p>
+compared value if numeric, and the same type if <code>string</code> or <a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a>
+(or assignable). <a href=https://pkg.go.dev/time/#Duration><code>time.Duration</code></a> type is accepted as <em>to</em> when <em>from</em>
+is <a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> or convertible. <em>bounds</em> allows to specify whether
+bounds are included or not:</p>
 <ul>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInIn</code></a> (default): between <em>from</em> and <em>to</em> both included</li>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind><code>BoundsInOut</code></a>: between <em>from</em> included and <em>to</em> excluded</li>
@@ -613,6 +614,46 @@ String example
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// false
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// true
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// false
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Time example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	before := time.<span style=color:#447fcf>Now</span>()
+	occurredAt := time.<span style=color:#447fcf>Now</span>()
+	after := time.<span style=color:#447fcf>Now</span>()
+
+	ok := td.<span style=color:#447fcf>Cmp</span>(t, occurredAt, td.<span style=color:#447fcf>Between</span>(before, after))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+
+	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after)))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(before, after))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, occurredAt, td.<span style=color:#447fcf>Between</span>(before, <span style=color:#3677a9>10</span>*time.Second))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -722,6 +763,46 @@ String example
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Time example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	before := time.<span style=color:#447fcf>Now</span>()
+	occurredAt := time.<span style=color:#447fcf>Now</span>()
+	after := time.<span style=color:#447fcf>Now</span>()
+
+	ok := td.<span style=color:#447fcf>CmpBetween</span>(t, occurredAt, before, after, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+
+	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
+	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after), td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), before, after, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, occurredAt, before, <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
 </div></p>
 <h2 id=tbetween-shortcut>T.Between shortcut</h2>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Between</span>(got, from , to <span style=color:#6ab825;font-weight:700>interface</span>{}, bounds BoundsKind, args ...<span style=color:#6ab825;font-weight:700>interface</span>{}) <span style=color:#6ab825;font-weight:700>bool</span>
@@ -828,6 +909,46 @@ String example
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Time example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+
+	before := time.<span style=color:#447fcf>Now</span>()
+	occurredAt := time.<span style=color:#447fcf>Now</span>()
+	after := time.<span style=color:#447fcf>Now</span>()
+
+	ok := t.<span style=color:#447fcf>Between</span>(occurredAt, before, after, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+
+	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
+	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after), td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), before, after, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>Between</span>(occurredAt, before, <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
 </div></p>
 <footer class=footline>
 </footer>
@@ -841,18 +962,18 @@ String example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1632778435></script>
-<script src=/js/perfect-scrollbar.min.js?1632778435></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1632778435></script>
-<script src=/js/jquery.sticky.js?1632778435></script>
-<script src=/js/featherlight.min.js?1632778435></script>
-<script src=/js/highlight.pack.js?1632778435></script>
+<script src=/js/clipboard.min.js?1635095466></script>
+<script src=/js/perfect-scrollbar.min.js?1635095466></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1635095466></script>
+<script src=/js/jquery.sticky.js?1635095466></script>
+<script src=/js/featherlight.min.js?1635095466></script>
+<script src=/js/highlight.pack.js?1635095466></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1632778435></script>
-<script src=/js/learn.js?1632778435></script>
-<script src=/js/hugo-learn.js?1632778435></script>
-<link href=/mermaid/mermaid.css?1632778435 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1632778435></script>
+<script src=/js/modernizr.custom-3.6.0.js?1635095466></script>
+<script src=/js/learn.js?1635095466></script>
+<script src=/js/hugo-learn.js?1635095466></script>
+<link href=/mermaid/mermaid.css?1635095466 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1635095466></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
