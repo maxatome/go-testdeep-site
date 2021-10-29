@@ -6,17 +6,17 @@
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Smuggle :: go-testdeep</title>
-<link href=/css/nucleus.css?1635095467 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1635095467 rel=stylesheet>
-<link href=/css/hybrid.css?1635095467 rel=stylesheet>
-<link href=/css/featherlight.min.css?1635095467 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1635095467 rel=stylesheet>
-<link href=/css/auto-complete.css?1635095467 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1635095467 rel=stylesheet>
-<link href=/css/theme.css?1635095467 rel=stylesheet>
-<link href=/css/hugo-theme.css?1635095467 rel=stylesheet>
-<link href=/css/theme-green.css?1635095467 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1635095467></script>
+<link href=/css/nucleus.css?1635543313 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1635543313 rel=stylesheet>
+<link href=/css/hybrid.css?1635543313 rel=stylesheet>
+<link href=/css/featherlight.min.css?1635543313 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1635543313 rel=stylesheet>
+<link href=/css/auto-complete.css?1635543313 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1635543313 rel=stylesheet>
+<link href=/css/theme.css?1635543313 rel=stylesheet>
+<link href=/css/hugo-theme.css?1635543313 rel=stylesheet>
+<link href=/css/theme-green.css?1635543313 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1635543313></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1635095467></script>
-<script type=text/javascript src=/js/auto-complete.js?1635095467></script>
+<script type=text/javascript src=/js/lunr.min.js?1635543313></script>
+<script type=text/javascript src=/js/auto-complete.js?1635543313></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1635095467></script>
+<script type=text/javascript src=/js/search.js?1635543313></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -512,9 +512,10 @@ Smuggle
 another type before stepping down in favor of generic comparison
 process. Of course it is a <a href=/operators/#smuggler-operators>smuggler operator</a>. So <em>fn</em> is a function
 that must take one parameter whose type must be convertible to the
-type of the compared value (as a convenient shortcut, <em>fn</em> can be a
-<code>string</code> specifying a fields-path through structs, see below for
-details).</p>
+type of the compared value.</p>
+<p>As convenient shortcuts, <em>fn</em> can be a <code>string</code> specifying a
+fields-path through structs, maps & slices, or any other type, in
+this case a simple cast is done (see below for details).</p>
 <p><em>fn</em> must return at least one value. These value will be compared as is
 to <em>expectedValue</em>, here integer 28:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>&#34;0028&#34;</span>,
@@ -644,15 +645,34 @@ like in:</p>
 num := <span style=color:#3677a9>12</span>
 pnum := &amp;num
 td.<span style=color:#447fcf>Cmp</span>(t, A{N: &amp;pnum}, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;N&#34;</span>, <span style=color:#3677a9>12</span>))
-</code></pre></div><p>The difference between <a href=/operators/smuggle/><code>Smuggle</code></a> and <a href=/operators/code/><code>Code</code></a> operators is that <a href=/operators/code/><code>Code</code></a> is
+</code></pre></div><p>Last but not least, a simple type can be passed as <em>fn</em> to operate
+a cast, handling specifically strings and slices of bytes:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+<span style=color:#999;font-style:italic>// or equally
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>((json.RawMessage)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+</code></pre></div><p>converts on the fly a <code>string</code> to a json.RawMessage so <a href=/operators/json/><code>JSON</code></a> operator
+can parse it as <a href=/operators/json/><code>JSON</code></a>. This is mostly a shortcut for:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>(
+  <span style=color:#6ab825;font-weight:700>func</span>(r json.RawMessage) json.RawMessage { <span style=color:#6ab825;font-weight:700>return</span> r },
+  td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+</code></pre></div><p>except that for strings and slices of bytes (like here), it accepts
+<a href=https://pkg.go.dev/io/#Reader><code>io.Reader</code></a> interface too:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>var</span> body io.Reader
+<span style=color:#999;font-style:italic>// …
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, body, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+<span style=color:#999;font-style:italic>// or equally
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, body, td.<span style=color:#447fcf>Smuggle</span>((json.RawMessage)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+</code></pre></div><p>This last example allows to easily inject body content into <a href=/operators/json/><code>JSON</code></a>
+operator.</p>
+<p>The difference between <a href=/operators/smuggle/><code>Smuggle</code></a> and <a href=/operators/code/><code>Code</code></a> operators is that <a href=/operators/code/><code>Code</code></a> is
 used to do a final comparison while <a href=/operators/smuggle/><code>Smuggle</code></a> transforms the data and
 then steps down in favor of generic comparison process. Moreover,
 the type accepted as input for the function is more lax to
-facilitate the tests writing (e.g. the function can accept a <code>float64</code>
-and the got value be an <code>int</code>). See examples. On the other hand, the
-output type is strict and must match exactly the expected value
-type. The fields-path <code>string</code> <em>fn</em> shortcut is not available with
-<a href=/operators/code/><code>Code</code></a> operator.</p>
+facilitate the writing of tests (e.g. the function can accept a
+<code>float64</code> and the got value be an <code>int</code>). See examples. On the other
+hand, the output type is strict and must match exactly the expected
+value type. The fields-path <code>string</code> <em>fn</em> shortcut and the cast
+feature are not available with <a href=/operators/code/><code>Code</code></a> operator.</p>
 <p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <a href=https://pkg.go.dev/reflect/#Type><code>reflect.Type</code></a> of only parameter of
 <em>fn</em>. For the case where <em>fn</em> is a fields-path, it is always
 <code>interface{}</code>, as the type can not be known in advance.</p>
@@ -776,6 +796,36 @@ Auto_unmarshal example
 
 	<span style=color:#999;font-style:italic>// Output:
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents is OK: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Cast example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#999;font-style:italic>// A string containing JSON
+</span><span style=color:#999;font-style:italic></span>	got := <span style=color:#ed9d13>`{ &#34;foo&#34;: 123 }`</span>
+
+	<span style=color:#999;font-style:italic>// Automatically cast a string to a json.RawMessage so td.JSON can operate
+</span><span style=color:#999;font-style:italic></span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>)))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents in string is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Automatically read from io.Reader to a json.RawMessage
+</span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, bytes.<span style=color:#447fcf>NewReader</span>([]<span style=color:#24909d>byte</span>(got)),
+		td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>)))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents just read is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents in string is OK: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents just read is OK: true
 </span><span style=color:#999;font-style:italic></span>
 </code></pre></div>
 </div>
@@ -1086,6 +1136,34 @@ Auto_unmarshal example
 <div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
+Cast example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#999;font-style:italic>// A string containing JSON
+</span><span style=color:#999;font-style:italic></span>	got := <span style=color:#ed9d13>`{ &#34;foo&#34;: 123 }`</span>
+
+	<span style=color:#999;font-style:italic>// Automatically cast a string to a json.RawMessage so td.JSON can operate
+</span><span style=color:#999;font-style:italic></span>	ok := td.<span style=color:#447fcf>CmpSmuggle</span>(t, got, json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents in string is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Automatically read from io.Reader to a json.RawMessage
+</span><span style=color:#999;font-style:italic></span>	ok = td.<span style=color:#447fcf>CmpSmuggle</span>(t, bytes.<span style=color:#447fcf>NewReader</span>([]<span style=color:#24909d>byte</span>(got)), json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents just read is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents in string is OK: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents just read is OK: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
 Complex example
 </span>
 </div>
@@ -1375,6 +1453,34 @@ Auto_unmarshal example
 <div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
+Cast example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+
+	<span style=color:#999;font-style:italic>// A string containing JSON
+</span><span style=color:#999;font-style:italic></span>	got := <span style=color:#ed9d13>`{ &#34;foo&#34;: 123 }`</span>
+
+	<span style=color:#999;font-style:italic>// Automatically cast a string to a json.RawMessage so td.JSON can operate
+</span><span style=color:#999;font-style:italic></span>	ok := t.<span style=color:#447fcf>Smuggle</span>(got, json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents in string is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Automatically read from io.Reader to a json.RawMessage
+</span><span style=color:#999;font-style:italic></span>	ok = t.<span style=color:#447fcf>Smuggle</span>(bytes.<span style=color:#447fcf>NewReader</span>([]<span style=color:#24909d>byte</span>(got)), json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:123}`</span>))
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;JSON contents just read is OK:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents in string is OK: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// JSON contents just read is OK: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
 Complex example
 </span>
 </div>
@@ -1551,18 +1657,18 @@ Field_path example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1635095467></script>
-<script src=/js/perfect-scrollbar.min.js?1635095467></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1635095467></script>
-<script src=/js/jquery.sticky.js?1635095467></script>
-<script src=/js/featherlight.min.js?1635095467></script>
-<script src=/js/highlight.pack.js?1635095467></script>
+<script src=/js/clipboard.min.js?1635543313></script>
+<script src=/js/perfect-scrollbar.min.js?1635543313></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1635543313></script>
+<script src=/js/jquery.sticky.js?1635543313></script>
+<script src=/js/featherlight.min.js?1635543313></script>
+<script src=/js/highlight.pack.js?1635543313></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1635095467></script>
-<script src=/js/learn.js?1635095467></script>
-<script src=/js/hugo-learn.js?1635095467></script>
-<link href=/mermaid/mermaid.css?1635095467 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1635095467></script>
+<script src=/js/modernizr.custom-3.6.0.js?1635543313></script>
+<script src=/js/learn.js?1635543313></script>
+<script src=/js/hugo-learn.js?1635543313></script>
+<link href=/mermaid/mermaid.css?1635543313 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1635543313></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
