@@ -11,9 +11,11 @@ func Smuggle(fn, expectedValue interface{}) TestDeep
 another type before stepping down in favor of generic comparison
 process. Of course it is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). So *fn* is a function
 that must take one parameter whose type must be convertible to the
-type of the compared value (as a convenient shortcut, *fn* can be a
-`string` specifying a fields-path through structs, see below for
-details).
+type of the compared value.
+
+As convenient shortcuts, *fn* can be a `string` specifying a
+fields-path through structs, maps & slices, or any other type, in
+this case a simple cast is done (see below for details).
 
 *fn* must return at least one value. These value will be compared as is
 to *expectedValue*, here integer 28:
@@ -199,15 +201,47 @@ pnum := &num
 td.Cmp(t, A{N: &pnum}, td.Smuggle("N", 12))
 ```
 
+Last but not least, a simple type can be passed as *fn* to operate
+a cast, handling specifically strings and slices of bytes:
+
+```go
+td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
+// or equally
+td.Cmp(t, `{"foo":1}`, td.Smuggle((json.RawMessage)(nil), td.JSON(`{"foo":1}`)))
+```
+
+converts on the fly a `string` to a json.RawMessage so [`JSON`]({{< ref "JSON" >}}) operator
+can parse it as [`JSON`]({{< ref "JSON" >}}). This is mostly a shortcut for:
+
+```go
+td.Cmp(t, `{"foo":1}`, td.Smuggle(
+  func(r json.RawMessage) json.RawMessage { return r },
+  td.JSON(`{"foo":1}`)))
+```
+
+except that for strings and slices of bytes (like here), it accepts
+[`io.Reader`](https://pkg.go.dev/io/#Reader) interface too:
+
+```go
+var body io.Reader
+// …
+td.Cmp(t, body, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
+// or equally
+td.Cmp(t, body, td.Smuggle((json.RawMessage)(nil), td.JSON(`{"foo":1}`)))
+```
+
+This last example allows to easily inject body content into [`JSON`]({{< ref "JSON" >}})
+operator.
+
 The difference between [`Smuggle`]({{< ref "Smuggle" >}}) and [`Code`]({{< ref "Code" >}}) operators is that [`Code`]({{< ref "Code" >}}) is
 used to do a final comparison while [`Smuggle`]({{< ref "Smuggle" >}}) transforms the data and
 then steps down in favor of generic comparison process. Moreover,
 the type accepted as input for the function is more lax to
-facilitate the tests writing (e.g. the function can accept a `float64`
-and the got value be an `int`). See examples. On the other hand, the
-output type is strict and must match exactly the expected value
-type. The fields-path `string` *fn* shortcut is not available with
-[`Code`]({{< ref "Code" >}}) operator.
+facilitate the writing of tests (e.g. the function can accept a
+`float64` and the got value be an `int`). See examples. On the other
+hand, the output type is strict and must match exactly the expected
+value type. The fields-path `string` *fn* shortcut and the cast
+feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of only parameter of
 *fn*. For the case where *fn* is a fields-path, it is always
@@ -308,6 +342,27 @@ type. The fields-path `string` *fn* shortcut is not available with
 
 	// Output:
 	// JSON contents is OK: true
+
+```{{% /expand%}}
+{{%expand "Cast example" %}}```go
+	t := &testing.T{}
+
+	// A string containing JSON
+	got := `{ "foo": 123 }`
+
+	// Automatically cast a string to a json.RawMessage so td.JSON can operate
+	ok := td.Cmp(t, got,
+		td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":123}`)))
+	fmt.Println("JSON contents in string is OK:", ok)
+
+	// Automatically read from io.Reader to a json.RawMessage
+	ok = td.Cmp(t, bytes.NewReader([]byte(got)),
+		td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":123}`)))
+	fmt.Println("JSON contents just read is OK:", ok)
+
+	// Output:
+	// JSON contents in string is OK: true
+	// JSON contents just read is OK: true
 
 ```{{% /expand%}}
 {{%expand "Complex example" %}}```go
@@ -569,6 +624,25 @@ reason of a potential failure.
 	// JSON contents is OK: true
 
 ```{{% /expand%}}
+{{%expand "Cast example" %}}```go
+	t := &testing.T{}
+
+	// A string containing JSON
+	got := `{ "foo": 123 }`
+
+	// Automatically cast a string to a json.RawMessage so td.JSON can operate
+	ok := td.CmpSmuggle(t, got, json.RawMessage{}, td.JSON(`{"foo":123}`))
+	fmt.Println("JSON contents in string is OK:", ok)
+
+	// Automatically read from io.Reader to a json.RawMessage
+	ok = td.CmpSmuggle(t, bytes.NewReader([]byte(got)), json.RawMessage{}, td.JSON(`{"foo":123}`))
+	fmt.Println("JSON contents just read is OK:", ok)
+
+	// Output:
+	// JSON contents in string is OK: true
+	// JSON contents just read is OK: true
+
+```{{% /expand%}}
 {{%expand "Complex example" %}}```go
 	t := &testing.T{}
 
@@ -813,6 +887,25 @@ reason of a potential failure.
 
 	// Output:
 	// JSON contents is OK: true
+
+```{{% /expand%}}
+{{%expand "Cast example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	// A string containing JSON
+	got := `{ "foo": 123 }`
+
+	// Automatically cast a string to a json.RawMessage so td.JSON can operate
+	ok := t.Smuggle(got, json.RawMessage{}, td.JSON(`{"foo":123}`))
+	fmt.Println("JSON contents in string is OK:", ok)
+
+	// Automatically read from io.Reader to a json.RawMessage
+	ok = t.Smuggle(bytes.NewReader([]byte(got)), json.RawMessage{}, td.JSON(`{"foo":123}`))
+	fmt.Println("JSON contents just read is OK:", ok)
+
+	// Output:
+	// JSON contents in string is OK: true
+	// JSON contents just read is OK: true
 
 ```{{% /expand%}}
 {{%expand "Complex example" %}}```go
