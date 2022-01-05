@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.90.1">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Lte :: go-testdeep</title>
-<link href=/css/nucleus.css?1635543313 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1635543313 rel=stylesheet>
-<link href=/css/hybrid.css?1635543313 rel=stylesheet>
-<link href=/css/featherlight.min.css?1635543313 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1635543313 rel=stylesheet>
-<link href=/css/auto-complete.css?1635543313 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1635543313 rel=stylesheet>
-<link href=/css/theme.css?1635543313 rel=stylesheet>
-<link href=/css/hugo-theme.css?1635543313 rel=stylesheet>
-<link href=/css/theme-green.css?1635543313 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1635543313></script>
+<link href=/css/nucleus.css?1641405810 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1641405810 rel=stylesheet>
+<link href=/css/hybrid.css?1641405810 rel=stylesheet>
+<link href=/css/featherlight.min.css?1641405810 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1641405810 rel=stylesheet>
+<link href=/css/auto-complete.css?1641405810 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1641405810 rel=stylesheet>
+<link href=/css/theme.css?1641405810 rel=stylesheet>
+<link href=/css/hugo-theme.css?1641405810 rel=stylesheet>
+<link href=/css/theme-green.css?1641405810 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1641405810></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1635543313></script>
-<script type=text/javascript src=/js/auto-complete.js?1635543313></script>
+<script type=text/javascript src=/js/lunr.min.js?1641405810></script>
+<script type=text/javascript src=/js/auto-complete.js?1641405810></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1635543313></script>
+<script type=text/javascript src=/js/search.js?1641405810></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -509,10 +509,13 @@ Lte
 </h1>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Lte</span>(maxExpectedValue <span style=color:#6ab825;font-weight:700>interface</span>{}) TestDeep
 </code></pre></div><p><a href=/operators/lte/><code>Lte</code></a> operator checks that data is lesser or equal than
-<em>maxExpectedValue</em>. <em>maxExpectedValue</em> can be any numeric or
-<a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> (or assignable) value. <em>maxExpectedValue</em> must be the
-same kind as the compared value if numeric, and the same type if
-<a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> (or assignable).</p>
+<em>maxExpectedValue</em>. <em>maxExpectedValue</em> can be any numeric, <code>string</code>,
+<a href=https://pkg.go.dev/time/#Time><code>time.Time</code></a> (or assignable) value or implements at least one of the
+two following methods:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> (a T) <span style=color:#447fcf>Less</span>(b T) <span style=color:#6ab825;font-weight:700>bool</span>   <span style=color:#999;font-style:italic>// returns true if a &lt; b
+</span><span style=color:#999;font-style:italic></span><span style=color:#6ab825;font-weight:700>func</span> (a T) <span style=color:#447fcf>Compare</span>(b T) <span style=color:#6ab825;font-weight:700>int</span> <span style=color:#999;font-style:italic>// returns -1 if a &lt; b, 1 if a &gt; b, 0 if a == b
+</span></code></pre></div><p><em>maxExpectedValue</em> must be the same type as the compared value,
+except if BeLax config flag is true.</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>17</span>, td.<span style=color:#447fcf>Lte</span>(<span style=color:#3677a9>17</span>))
 before := time.<span style=color:#447fcf>Now</span>()
 td.<span style=color:#447fcf>Cmp</span>(t, before, td.<span style=color:#447fcf>Lt</span>(time.<span style=color:#447fcf>Now</span>()))
@@ -742,18 +745,18 @@ String example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1635543313></script>
-<script src=/js/perfect-scrollbar.min.js?1635543313></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1635543313></script>
-<script src=/js/jquery.sticky.js?1635543313></script>
-<script src=/js/featherlight.min.js?1635543313></script>
-<script src=/js/highlight.pack.js?1635543313></script>
+<script src=/js/clipboard.min.js?1641405811></script>
+<script src=/js/perfect-scrollbar.min.js?1641405811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1641405811></script>
+<script src=/js/jquery.sticky.js?1641405811></script>
+<script src=/js/featherlight.min.js?1641405811></script>
+<script src=/js/highlight.pack.js?1641405811></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1635543313></script>
-<script src=/js/learn.js?1635543313></script>
-<script src=/js/hugo-learn.js?1635543313></script>
-<link href=/mermaid/mermaid.css?1635543313 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1635543313></script>
+<script src=/js/modernizr.custom-3.6.0.js?1641405811></script>
+<script src=/js/learn.js?1641405811></script>
+<script src=/js/hugo-learn.js?1641405811></script>
+<link href=/mermaid/mermaid.css?1641405811 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1641405811></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
