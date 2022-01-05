@@ -9,7 +9,8 @@ func N(num interface{}, tolerance ...interface{}) TestDeep
 
 [`N`]({{< ref "N" >}}) operator compares a numeric data against *num* ± *tolerance*. If
 *tolerance* is missing, it defaults to 0. *num* and *tolerance*
-must be the same kind as the compared value.
+must be the same type as the compared value, except if BeLax config
+flag is true.
 
 ```go
 td.Cmp(t, 12.2, td.N(12., 0.3)) // succeeds

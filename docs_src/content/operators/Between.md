@@ -8,12 +8,18 @@ func Between(from, to interface{}, bounds ...BoundsKind) TestDeep
 ```
 
 [`Between`]({{< ref "Between" >}}) operator checks that data is between *from* and
-*to*. *from* and *to* can be any numeric, `string` or [`time.Time`](https://pkg.go.dev/time/#Time) (or
-assignable) value. *from* and *to* must be the same kind as the
-compared value if numeric, and the same type if `string` or [`time.Time`](https://pkg.go.dev/time/#Time)
-(or assignable). [`time.Duration`](https://pkg.go.dev/time/#Duration) type is accepted as *to* when *from*
-is [`time.Time`](https://pkg.go.dev/time/#Time) or convertible. *bounds* allows to specify whether
-bounds are included or not:
+*to*. *from* and *to* can be any numeric, `string`, [`time.Time`](https://pkg.go.dev/time/#Time) (or
+assignable) value or implement at least one of the two following
+methods:
+```go
+func (a T) Less(b T) bool   // returns true if a < b
+func (a T) Compare(b T) int // returns -1 if a < b, 1 if a > b, 0 if a == b
+```
+
+*from* and *to* must be the same type as the compared value, except
+if BeLax config flag is true. [`time.Duration`](https://pkg.go.dev/time/#Duration) type is accepted as
+*to* when *from* is [`time.Time`](https://pkg.go.dev/time/#Time) or convertible. *bounds* allows to
+specify whether bounds are included or not:
 
 - [`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind) (default): between *from* and *to* both included
 - [`BoundsInOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind): between *from* included and *to* excluded
@@ -28,6 +34,9 @@ tc.Cmp(t, 17, td.Between(17, 20))               // succeeds, BoundsInIn by defau
 tc.Cmp(t, 17, td.Between(10, 17, BoundsInOut))  // fails
 tc.Cmp(t, 17, td.Between(10, 17, BoundsOutIn))  // succeeds
 tc.Cmp(t, 17, td.Between(17, 20, BoundsOutOut)) // fails
+tc.Cmp(t,                                       // succeeds
+  netip.MustParse("127.0.0.1"),
+  td.Between(netip.MustParse("127.0.0.0"), netip.MustParse("127.255.255.255")))
 ```
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *from* (same as the *to* one.)

@@ -121,6 +121,13 @@ Comments, like in go, have 2 forms. To quote the Go language specification:
   with the first subsequent character sequence */.
 
 
+Other [`JSON`]({{< ref "JSON" >}}) divergences:
+
+- ',' can precede a '}' or a ']' (as in go);
+- int_lit & float_lit numbers as defined in go spec are accepted;
+- numbers can be prefixed by '+'.
+
+
 Most operators can be directly embedded in [`JSON`]({{< ref "JSON" >}}) without requiring
 any placeholder.
 

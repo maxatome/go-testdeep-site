@@ -8,10 +8,16 @@ func Lte(maxExpectedValue interface{}) TestDeep
 ```
 
 [`Lte`]({{< ref "Lte" >}}) operator checks that data is lesser or equal than
-*maxExpectedValue*. *maxExpectedValue* can be any numeric or
-[`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) value. *maxExpectedValue* must be the
-same kind as the compared value if numeric, and the same type if
-[`time.Time`](https://pkg.go.dev/time/#Time) (or assignable).
+*maxExpectedValue*. *maxExpectedValue* can be any numeric, `string`,
+[`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) value or implements at least one of the
+two following methods:
+```go
+func (a T) Less(b T) bool   // returns true if a < b
+func (a T) Compare(b T) int // returns -1 if a < b, 1 if a > b, 0 if a == b
+```
+
+*maxExpectedValue* must be the same type as the compared value,
+except if BeLax config flag is true.
 
 ```go
 td.Cmp(t, 17, td.Lte(17))

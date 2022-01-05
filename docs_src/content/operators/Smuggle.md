@@ -287,7 +287,7 @@ feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 
 	ok = td.Cmp(t, "123",
 		td.Smuggle(
-			func(numStr string) (int, error) { // nolint: gocritic
+			func(numStr string) (int, error) { //nolint: gocritic
 				return strconv.Atoi(numStr)
 			},
 			td.Between(120, 130)),
@@ -573,7 +573,7 @@ reason of a potential failure.
 		"checks that number in %#v is in [120 .. 130]")
 	fmt.Println(ok)
 
-	ok = td.CmpSmuggle(t, "123", func(numStr string) (int, error) { // nolint: gocritic
+	ok = td.CmpSmuggle(t, "123", func(numStr string) (int, error) { //nolint: gocritic
 		return strconv.Atoi(numStr)
 	}, td.Between(120, 130),
 		"checks that number in %#v is in [120 .. 130]")
@@ -838,7 +838,7 @@ reason of a potential failure.
 		"checks that number in %#v is in [120 .. 130]")
 	fmt.Println(ok)
 
-	ok = t.Smuggle("123", func(numStr string) (int, error) { // nolint: gocritic
+	ok = t.Smuggle("123", func(numStr string) (int, error) { //nolint: gocritic
 		return strconv.Atoi(numStr)
 	}, td.Between(120, 130),
 		"checks that number in %#v is in [120 .. 130]")
