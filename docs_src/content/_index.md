@@ -22,4 +22,4 @@ comparison. It is built for testing.
 
 ![logo](images/logo.png)
 
-## ← use the right menu to navigate. A good starting point is [the introduction]({{< ref "introduction" >}}) or the [presentation](/prez)
+## ← use the left menu to navigate. A good starting point is [the introduction]({{< ref "introduction" >}}) or the [presentation](/prez)
