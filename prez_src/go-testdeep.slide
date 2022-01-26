@@ -1,7 +1,7 @@
 # go-testdeep
 
 Maxime Soulé
-2020-07-20
+2022-01-28
 https://go-testdeep.zetta.rocks/
 
 
@@ -9,39 +9,46 @@ https://go-testdeep.zetta.rocks/
 
 .image logo.svg 500 _
 
+
 ##
 
 .image enlarge-your-tests.svg 500 _
+
 
 ## Go testing
 
 Why a test framework?
 
-To avoid boilerplate code, especially error reports, like:
+To avoid boilerplate code, especially error reports
+[🔗](https://goplay.tools/snippet/IUn7QyAGlDO)
 
 .code without-framework.go /^import/,/^}/
 
 
 ## Using a test framework
 
-For example using [go-testdeep](https://go-testdeep.zetta.rocks/):
+For example using [go-testdeep](https://go-testdeep.zetta.rocks/)
+[🔗](https://goplay.tools/snippet/kegHifglchh)
 
 .code with-framework.go /^import/,/^}/
 
-In most cases, there is not even test names:
+In most cases, there is not even test names
+[🔗](https://goplay.tools/snippet/_H3-Ru-fq9H)
 
 .code with-framework.go /without-test-name/,/^}/
 
 
 ## Why go-testdeep instead of an existing framework?
 
-Custom comparison engine allowing the use of operators
+Custom comparison engine allowing the use of powerful operators
 
-Accurate (and colored) error reports
+Accurate and colored [error reports](https://go-testdeep.zetta.rocks/introduction/#error-output)
 
-60 operators to match in all circumstances
+[62 operators](https://go-testdeep.zetta.rocks/operators/) to match in
+all circumstances
 
-Fully documented with plenty examples
+Fully [documented](https://pkg.go.dev/github.com/maxatome/go-testdeep/td)
+with plenty examples
 
 Consistent API: `got` parameter is always before `expected` one
 
@@ -50,9 +57,39 @@ Very few basic functions, all others are operators shortcuts _(args... allow to 
 .code code.txt /cmp-funcs-begin/,/cmp-funcs-end/
 
 
+## Why go-testdeep instead of an existing framework? (part 2)
+
+Unique [anchoring feature](https://go-testdeep.zetta.rocks/example/anchoring/),
+to easily test literals
+
+[JSON](https://go-testdeep.zetta.rocks/operators/json/) content
+testable like never before
+
+Table driven tests are simple to write and maintain
+
+Comparison engine can be [configured](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#pkg-variables)
+to be lax, to ignore struct unexported fields, to treat specifically some
+types, to display _N_ errors before giving up
+
+Efficient [flattening](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten)
+of `[]X` slices into `...interface{}` of variadic functions
+
+A function returning several values can be tested in one call, thanks to
+[tuples](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Tuple)
+
+[tdhttp](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
+helper allows to easily test HTTP APIs regardless of the web framework used
+
+[tdsuite](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite)
+helper handles consistent and flexible suites of tests
+
+Probably some others reasons you will discover by yourself :)
+
+
 ## Test names
 
-As many testing frameworks, tests can be named:
+As many testing frameworks, tests can optionally be named
+[🔗](https://goplay.tools/snippet/J8TQd1Bd69I)
 
 .code code.txt /test-names-example-begin/,/test-names-example-end/
 
@@ -70,6 +107,7 @@ So, no risk of mistake between
 [Cmp](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) and
 a (nonexistent) Cmpf: only use
 [Cmp](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp)!
+[🔗](https://goplay.tools/snippet/D_yOUslC2xJ)
 
 .code code.txt /test-names-fprint-begin/,/test-names-fprint-end/
 
@@ -84,27 +122,26 @@ It allows go-testdeep to know exactly where a test fails in a big
 structure, and even to continue testing in this structure to report
 several mismatches at the same time (up to 10 by default)
 
-Reports are also very accurate and, cherry on the cake, colorized:
+Reports are also very accurate and colorized, instead of awful diffs you see elsewhere…
 
 .image colored-output.svg
 
-instead of awful diffs you see elsewhere…
 
+## 62 operators to match in all circumstances
 
-## 60 operators to match in all circumstances
-
-Some examples, see the expected (3rd) parameter:
+Some examples, see the expected (3rd) parameter
+[🔗](https://goplay.tools/snippet/qrWLPxbrSg7)
 
 .code code.txt /operators-example-begin/,/operators-example-end/
 
-[All operators](https://go-testdeep.zetta.rocks/operators/):
+[All operators](https://go-testdeep.zetta.rocks/operators/) follow
 
 .code code.txt /operators-all-begin/,/operators-all-end/
 
 
 ## Almost all operators have shortcuts
 
-Always the same pattern:
+Always the same pattern
 
 .code code.txt /shortcuts-pattern-begin/,/shortcuts-pattern-end/
 
@@ -128,7 +165,7 @@ because having a shortcut in these cases is a nonsense
 
 ## Matching nested structs/slices/maps
 
-Take this structure:
+Take this structure returned by a `GetPerson` function:
 
 .code nested.go /^type Person/,/^}/
 
@@ -144,11 +181,12 @@ We want to check:
 
 ## Operators in nested structs/slices/maps — 1/4 classic way, like others
 
-Like other frameworks, we can do:
+Like other frameworks, we can do [🔗](https://goplay.tools/snippet/7V3D7ylIwA4)
 
 .code nested.go /nested1-begin/,/nested1-end/
 
 Exercise: replace the following shortcuts in the code above ↑
+[🔗](https://goplay.tools/snippet/UTUSegMNb53)
 
 .code code.txt /nested1-begin/,/nested1-end/
 
@@ -157,11 +195,12 @@ Exercise: replace the following shortcuts in the code above ↑
 
 [SStruct](https://go-testdeep.zetta.rocks/operators/sstruct/)
 is the strict-[Struct](https://go-testdeep.zetta.rocks/operators/struct/)
-operator:
+operator
 
 .code code.txt /nested2-begin/,/nested2-end/
 
-Strict because omitted fields are checked against their zero value:
+Strict because omitted fields are checked against their zero value, instead of ignoring them
+[🔗](https://goplay.tools/snippet/8XV4mnP5Phn)
 
 .code nested.go /nested2-begin/,/nested2-end/
 
@@ -169,18 +208,29 @@ Strict because omitted fields are checked against their zero value:
 ## Operators in nested structs/slices/maps — 3/4 using JSON operator
 
 [JSON](https://go-testdeep.zetta.rocks/operators/json/)
-allows to compare the JSON representation (comments are allowed!):
+allows to compare the JSON representation (comments are allowed!)
+[🔗](https://goplay.tools/snippet/Kqr99mrB_jb)
 
 .code nested.go /nested3-begin/,/nested3-end/
 
 
+## Operators in nested structs/slices/maps — 3/4 using JSON + Bag ops
+
+[JSON](https://go-testdeep.zetta.rocks/operators/json/)
+allows to compare the JSON representation (comments are allowed!)
+[🔗](https://goplay.tools/snippet/KCvXH3lLwiB)
+
+.code nested.go /nested3-bag-begin/,/nested3-bag-end/
+
+
 ## Operators in nested structs/slices/maps — 4/4 using anchoring
 
-Anchoring feature allows to put operators directly in litterals
+Anchoring feature allows to put operators directly in literals
 
 To keep track of anchors, a
 [td.T](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T)
-instance is needed:
+instance is needed
+[🔗](https://goplay.tools/snippet/w8IwhKdhR8t)
 
 .code nested.go /nested4-begin/,/nested4-end/
 
@@ -210,14 +260,15 @@ function
 
 ## Encapsulating testing.T
 
-Instead of doing:
+Instead of doing [🔗](https://goplay.tools/snippet/8X1uV_S-Ss8)
 
 .code td_t.go /^func TestVals/,/^}/
 
 one can build a
 [td.T](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T)
 instance encapsulating the
-[testing.T](https://golang.org/pkg/testing/#T) one:
+[testing.T](https://golang.org/pkg/testing/#T) one
+[🔗](https://goplay.tools/snippet/qnTFVPdV-vH)
 
 .code td_t.go /tdt-begin/,/^}/
 
@@ -227,7 +278,7 @@ instance provides some advantages over using td.Cmp* functions
 directly
 
 
-## td.T — 1/5
+## td.T — Introduction — 1/6
 
 .code td_t.go /^type T /,/^}/
 
@@ -250,9 +301,7 @@ instance (return a new instance):
 .code code.txt /tdt1-configuring-begin/,/tdt1-configuring-end/
 
 
-## td.T — 2/5
-
-Main methods:
+## td.T — Main methods — 2/6
 
 .code code.txt /tdt2-main-begin/,/tdt2-main-end/
 
@@ -264,7 +313,8 @@ In fact mostly the same as main functions, but:
 See [documentation](https://go-testdeep.zetta.rocks/functions/td-t/)
 for details
 
-## td.T — 3/5
+
+## td.T — Shortcuts — 3/6
 
 Shortcuts, as for td functions, follow always the same pattern:
 
@@ -290,7 +340,7 @@ Same 4 operators without shortcut:
 because having a shortcut in these cases is a nonsense
 
 
-## td.T — 4/5
+## td.T — Anchoring — 4/6
 
 Anchoring related methods:
 
@@ -306,19 +356,36 @@ this can be overridden thanks to
 and
 [AnchorsPersistTemporarily](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorsPersistTemporarily)
 
-Useful for helpers writers
+Useful for helpers writers or table driven tests _afficionados_ :)
 
 
-## td.T — 5/5
+## td.T — Simple example — 5/6
 
-Simple example:
+[🔗](https://goplay.tools/snippet/dqRj7N_Yte6)
 
 .code tdt4.go /^import/,/^}/
 
 
+## td.T — Advanced usage — 6/6
+
+[WithCmpHooks](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks)
+allows to register comparison functions for some types
+[🔗](https://goplay.tools/snippet/-NGjAMq5zbD)
+
+.code code.txt /tdt6-WithCmpHooks-begin/,/tdt6-WithCmpHooks-end/
+
+[WithSmuggleHooks](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks)
+allows to register functions to alter the data before comparing it
+[🔗](https://goplay.tools/snippet/bp8J5X_2CtK)
+
+.code code.txt /tdt6-WithSmuggleHooks-begin/,/tdt6-WithSmuggleHooks-end/
+
+Smuggle hooks are run just before Cmp hooks and are not run again for
+their returned value
+
 ## Table driven tests — the heaven of go-testdeep operators
 
-// https://play.golang.org/p/CtGiKqUUXMe
+[🔗](https://goplay.tools/snippet/ys8Hncyo7i7)
 
 .code example_test.go /^var personTests/,/end OMIT/
 
@@ -334,7 +401,7 @@ Smuggler operators follows:
 
 .code code.txt /smugglers-begin/,/smugglers-end/
 
-Some examples:
+Some examples [🔗](https://goplay.tools/snippet/OEFin92sp8I)
 
 .code code.txt /smugglers-example-begin/,/smugglers-example-end/
 
@@ -348,12 +415,14 @@ allow to achieve what others cannot for your very special use cases
 Below, only the year of [time.Time](https://golang.org/pkg/time/#Time)
 is important
 
-With [Code](https://go-testdeep.zetta.rocks/operators/code/), you do the test:
+With [Code](https://go-testdeep.zetta.rocks/operators/code/), you do the test
+[🔗](https://goplay.tools/snippet/i7eXzG1m0fi)
 
 .code custom.go /Code-begin/,/Code-end/
 
 With [Smuggle](https://go-testdeep.zetta.rocks/operators/smuggle/),
-you transform the value and delegate the test:
+you transform the value and delegate the test
+[🔗](https://goplay.tools/snippet/0Re0iw5B3_0)
 
 .code custom.go /Smuggle-begin/,/Smuggle-end/
 
@@ -379,11 +448,12 @@ in `*catch`
 
 This new operator is useful when used with
 [JSON](https://go-testdeep.zetta.rocks/operators/json/) operator
+[🔗](https://goplay.tools/snippet/J22moEQ-qoZ)
 
 .code custom.go /^func TestCreateArticle/,/^}/
 
 
-## tdhttp or how to easily test a http.Handler
+## The tdhttp helper or how to easily test a http.Handler
 
 And now you want to test your API, aka a
 [http.Handler](https://golang.org/pkg/net/http/#Handler)
@@ -391,13 +461,14 @@ And now you want to test your API, aka a
 Thanks to the [tdhttp
 helper](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
 and all these *#@!# operators, nothing is easier!
+[🔗](https://goplay.tools/snippet/9KVNvHhLhAa)
 
 .code tdhttp.go /^import/,/^}/
 
 
 ## tdhttp for any framework
 
-myAPI is here a [http.Handler](https://golang.org/pkg/net/http/#Handler)
+myAPI is here a [http.Handler](https://golang.org/pkg/net/http/#Handler) ↴
 
 .code tdhttp.go /ta := tdhttp.NewTestAPI/,/ta-end/
 
@@ -406,9 +477,13 @@ That's pretty cool as:
 - gin-gonic [*gin.Engine](https://pkg.go.dev/github.com/gin-gonic/gin#Engine)
 - net/http [*http.ServeMux](https://golang.org/pkg/net/http/#ServeMux)
 - go-swagger [restapi.configureAPI()](https://github.com/go-swagger/go-swagger/blob/master/generator/templates/server/configureapi.gotmpl#L47) or [restapi.HandlerAPI()](https://github.com/go-swagger/go-swagger/blob/master/generator/templates/contrib/stratoscale/server/configureapi.gotmpl#L88) return value
+- Beego, echo, gorilla/mux, HttpRouter, pat
 - any other?
 
 implement all [http.Handler](https://golang.org/pkg/net/http/#Handler)!
+Check the
+[HTTP frameworks section](https://go-testdeep.zetta.rocks/faq/#and-what-about-other-http-frameworks)
+of the [FAQ](https://go-testdeep.zetta.rocks/faq/)
 
 You can now change your web framework and keep your test framework :)
 
@@ -419,28 +494,83 @@ Ready to use GET, POST, PATCH, PUT, DELETE, HEAD requests, but can be
 fed by any already created
 [http.Request](https://golang.org/pkg/net/http/#Request)
 
-Support out of the box `application/x-www-form-urlencoded`,
-`application/json` and `application/xml` encoding
+Supports out of the box `application/x-www-form-urlencoded`,
+`application/json`, `application/xml` and `multipart/form-data` encoding &
+[cookies](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#TestAPI.CmpCookies)
 
-Support `string` and `[]byte` bodies so you can handle the encoding by yourself
+Supports `string` and `[]byte` bodies so you can handle the encoding by yourself
 
 Operator anchoring works out of the box too
+[🔗](https://goplay.tools/snippet/PyOE-OhJf9B)
 
 .code tdhttp.go /TestMyApiAnchor/,/^}/
+
+
+## tdhttp with easy debug
+
+Thanks to [AutoDumpResponse](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#TestAPI.AutoDumpResponse),
+[Or](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#TestAPI.Or) &
+[OrDumpResponse](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#TestAPI.OrDumpResponse)
+methods, you can inpect the HTTP response to see what happened in case
+of failure [🔗](https://goplay.tools/snippet/LBNQ8E6EZNC)
+
+.code tdhttp.go /TestMyApiDumpIfFailure/,/^\}$/
+
+
+## The tdsuite helper — Simple example — 1/3
+
+Or tests suites with one hand tied behind your back
+[🔗](https://goplay.tools/snippet/R1glx6Ja9AJ)
+
+.code tdsuite.go /^import/,/very-end/
+
+
+## tdsuite — All hooks — 2/3
+
+Each method Test* of the suite is run in a sub-test
+
+`assert` or `assert+require`, you choose
+
+Several hooks can be implemented:
+
+.code code.txt /tdsuite-begin/,/tdsuite-end/
+
+[Setup](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite#Setup)
+and
+[Destroy](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite#Destroy)
+are respectively called before any test is run and after all tests ran
+
+[PreTest](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite#PreTest)
+and
+[PostTest](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite#PostTest)
+are respectively called before and after each test
+
+[BetweenTests](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/BetweenTests)
+is called between 2 consecutive tests (after the PostTest call of
+previous test but before the PreTest call of next test)
+
+If a hook returns a non-nil error, the suite fails immediately
+
+
+## tdsuite — Composing suites — 3/3
+
+.code tdsuite.go /compose-begin/,/compose-end/
+
 
 ## End
 
 .background logo-rev.svg
 
 Some stats:
-- +25k lines of go code
-- 99.781% code coverage
+- +37k lines of go code
+- 99.855% code coverage
 - go report A+
-- 18 releases since 2018
+- 24 releases since 2018
 
 Links:
 - [Home page](https://go-testdeep.zetta.rocks/)
-- [Github](https://github.com/maxatome/go-testdeep)
 - [godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td)
 - [godoc API tester — tdhttp](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
+- [godoc testing suite — tdsuite](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite)
 - [godoc helpers utils — tdutil](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil)
+- [Github](https://github.com/maxatome/go-testdeep) ← _don't forget to_ ⭐ :)

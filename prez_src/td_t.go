@@ -2,7 +2,7 @@ package main
 
 type T struct {
 	testing.TB               // implemented by *testing.T
-	Config     ContextConfig // defaults to DefaultContextConfig
+	Config     ContextConfig // defaults to td.DefaultContextConfig
 }
 
 func TestVals(t *testing.T) {
@@ -13,9 +13,9 @@ func TestVals(t *testing.T) {
 
 // tdt-begin OMIT
 func TestVals(t *testing.T) {
-	tt := td.NewT(t) // HL
+	assert := td.Assert(t) // HL
 
 	got := GetPerson("Bob")
-	tt.Cmp(got.Age, td.Between(40, 45))
-	tt.Cmp(got.Children, td.Len(2))
+	assert.Cmp(got.Age, td.Between(40, 45))
+	assert.Cmp(got.Children, td.Len(2))
 }

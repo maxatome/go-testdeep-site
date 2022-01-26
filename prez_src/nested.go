@@ -29,17 +29,15 @@ func Test(t *testing.T) {
 	// nested1-end OMIT
 
 	// nested2-begin OMIT
-	got := GetPerson("Bob")
-	td.Cmp(t, got,
-		td.SStruct(
-			Person{Name: "Bob"},
+	td.Cmp(t, GetPerson("Bob"),
+		td.SStruct(Person{Name: "Bob"}, // HL
 			td.StructFields{
 				"ID":  td.NotZero(),
 				"Age": td.Between(40, 45),
 				"Children": td.Bag(
-					td.SStruct(&Person{Name: "Alice", Age: 20},
+					td.SStruct(&Person{Name: "Alice", Age: 20}, // HL
 						td.StructFields{"ID": td.NotZero()}),
-					td.SStruct(&Person{Name: "Brian", Age: 18},
+					td.SStruct(&Person{Name: "Brian", Age: 18}, // HL
 						td.StructFields{"ID": td.NotZero()}),
 				),
 			},
@@ -47,45 +45,70 @@ func Test(t *testing.T) {
 	// nested2-end OMIT
 
 	// nested3-begin OMIT
-	td.Cmp(t, got, td.JSON(`
-    {
-        "id":       $^NotZero, // ← simple operator (8 others are eligible)
-        "name":     "Bob"
-        "age":      $1,        // ← placeholder (could be "$1" or $BobAge, see JSON operator doc)
-        "children": [
-            {
-                "id":       $^NotZero,
-                "name":     "Alice",
-                "age":      20,
-                "children": null,
-            },
-            {
-                "id":       $^NotZero,
-                "name":     "Brian",
-                "age":      18,
-                "children": null,
-            }
-        ]
-    }`,
-		td.Between(40, 45),
+	td.Cmp(t, GetPerson("Bob"), td.JSON(`
+		{
+			"id":   $1,     // ← placeholder (could be "$1" or $BobAge, see JSON operator doc)
+			"name": "Bob",
+			"age":  Between(40, 45),     // yes, most operators are embedable
+			"children": [
+				{
+					"id":       NotZero(),
+					"name":     "Alice",
+					"age":      20,
+					"children": Empty(), /* null is "empty" */
+				},
+				{
+					"id":       NotZero(),
+					"name":     "Brian",
+					"age":      18,
+					"children": Nil(),
+				}
+			]
+		}`,
+		td.Catch(&bobID, td.NotZero()), // $1 catches the ID of Bob on the fly and sets bobID var
 	))
 	// nested3-end OMIT
 
+	// nested3-bag-begin OMIT
+	td.Cmp(t, GetPerson("Bob"), td.JSON(`
+		{
+			"id":   $1,     // ← placeholder (could be "$1" or $BobAge, see JSON operator doc)
+			"name": "Bob",
+			"age":  Between(40, 45),     // yes, most operators are embedable
+			"children": Bag(             // ← Bag HERE
+				{
+					"id":       NotZero(),
+					"name":     "Brian",
+					"age":      18,
+					"children": Nil(),
+				},
+				{
+					"id":       NotZero(),
+					"name":     "Alice",
+					"age":      20,
+					"children": Empty(), /* null is "empty" */
+				},
+			)
+		}`,
+		td.Catch(&bobID, td.NotZero()), // $1 catches the ID of Bob on the fly and sets bobID var
+	))
+	// nested3-bag-end OMIT
+
 	// nested4-begin OMIT
-	tdt := td.NewT(t)
-	tdt.Cmp(got,
+	assert := td.Assert(t)
+	assert.Cmp(GetPerson("Bob"),
 		Person{
-			ID:   tdt.A(td.NotZero(), int64(0)).(int64), // HL
+			ID:   assert.A(td.Catch(&bobID, td.NotZero())).(int64), // HL
 			Name: "Bob",
-			Age:  tdt.A(td.Between(40, 45)).(int), // HL
+			Age:  assert.A(td.Between(40, 45)).(int), // HL
 			Children: []*Person{
 				{
-					ID:   tdt.A(td.NotZero(), int64(0)).(int64), // HL
+					ID:   assert.A(td.NotZero(), int64(0)).(int64), // HL
 					Name: "Alice",
 					Age:  20,
 				},
 				{
-					ID:   tdt.A(td.NotZero(), int64(0)).(int64), // HL
+					ID:   assert.A(td.NotZero(), int64(0)).(int64), // HL
 					Name: "Brian",
 					Age:  18,
 				},

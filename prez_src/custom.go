@@ -28,7 +28,7 @@ func CheckDateGte(t time.Time, catch *time.Time) td.TestDeep {
 		td.Smuggle(func(s string) (time.Time, error) {
 			t, err := time.Parse(time.RFC3339Nano, s)
 			if err == nil && t.IsZero() {
-				err = fmt.Errorf("zero time")
+				err = errors.New("zero time")
 			}
 			return t, err
 		}, op))
@@ -41,15 +41,16 @@ func TestCreateArticle(t *testing.T) {
 		CreatedAt time.Time `json:"created_at"`
 	}
 
-	beforeCreation := time.Now()
 	var createdAt time.Time
+	beforeCreation := time.Now()
 	td.Cmp(t, CreateArticle("Car"),
-		td.JSON(`{"id": $^NotZero, "code": "Car", "created_at": $1}`,
+		td.JSON(`{"id": NotZero(), "code": "Car", "created_at": $1}`,
 			CheckDateGte(beforeCreation, &createdAt)))
 
 	// If the test succeeds, then "created_at" value is well a RFC3339
 	// datetime in UTC timezone and its value is directly exploitable as
 	// time.Time thanks to createdAt variable
+	t.Logf("Article created at %s", createdAt)
 }
 
 func TestCustom(t *testing.T) {

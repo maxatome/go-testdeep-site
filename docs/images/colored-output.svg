@@ -2,22 +2,135 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="205.53027mm"
-   height="56.126606mm"
-   viewBox="0 0 205.53027 56.126606"
+   width="255.73621mm"
+   height="76.689537mm"
+   viewBox="0 0 255.7362 76.689537"
    version="1.1"
    id="svg102"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="colored-output.svg">
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="colored-output.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs96" />
+     id="defs96">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path63700" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path63697" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path63694" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path63691" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path63712" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path63709" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path63709-0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path63712-6" />
+    </marker>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,8 +139,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="264.765"
-     inkscape:cy="47.299063"
+     inkscape:cx="370.22091"
+     inkscape:cy="40.911178"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,11 +148,14 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1918"
-     inkscape:window-height="1052"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata99">
     <rdf:RDF>
@@ -48,7 +164,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,17 +171,17 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(35.485374,-68.609314)">
+     transform="translate(33.573761,-70.497025)">
     <rect
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.40593809;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529299;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
        id="rect10"
-       width="205.53027"
-       height="56.126606"
-       x="-35.485374"
-       y="68.609314" />
+       width="255.73621"
+       height="76.689537"
+       x="-33.573761"
+       y="70.497025" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:6px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:6px;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-30.864933"
        y="76.93869"
        id="text889"><tspan
@@ -74,51 +189,154 @@
          id="tspan887"
          x="-30.864933"
          y="76.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.26458332px">client_test.go:449: <tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px">service_test.go:449: <tspan
    id="tspan968"
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#ffff00;stroke-width:0.26458332px">Failed test 'body contents is OK'</tspan></tspan><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#ffff00;stroke-width:0.264583px">Failed test 'Service is OK'</tspan></tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="82.93869"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.26458332px"
-         id="tspan891">    Response.Body.Name: values differ</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.264583px"
+         id="tspan891">    SERVICE.Owner.Age: values differ</tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="88.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ff0000;stroke-width:0.26458332px"
-         id="tspan893"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';stroke-width:0.26458332px"
-   id="tspan172">          got: </tspan>&quot;Bob&quot;</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.264583px"
+         id="tspan11865">          <tspan
+   style="fill:#ff0000"
+   id="tspan14361">got: <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:monospace;-inkscape-font-specification:monospace"
+   id="tspan18853">22</tspan></tspan></tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="94.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#00ff00;stroke-width:0.26458332px"
-         id="tspan895"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ff00;stroke-width:0.26458332px"
-   id="tspan102">     expected: </tspan>&quot;Alice&quot;</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.264583px"
+         id="tspan11867">     <tspan
+   style="fill:#00ff00"
+   id="tspan16793">expected: <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:monospace;-inkscape-font-specification:monospace"
+   id="tspan21015">40 ≤ got ≤ 45</tspan></tspan></tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="100.93869"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.26458332px"
-         id="tspan897">    Response.Body.Age: values differ</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px"
+         id="tspan11869">    [under operator Between at service_test.go:451]</tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="106.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ff0000;stroke-width:0.26458332px"
-         id="tspan899"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#ff0000;stroke-width:0.26458332px"
-   id="tspan176">          got: </tspan>22</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ffff;stroke-width:0.264583px"
+         id="tspan24299">    SERVICE.Owner.Name: values differ</tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="112.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#00ff00;stroke-width:0.26458332px"
-         id="tspan901"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ff00;stroke-width:0.26458332px"
-   id="tspan106">     expected: </tspan>40 ≤ got ≤ 45</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ff0000;stroke-width:0.264583px"
+         id="tspan893"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';stroke-width:0.264583px"
+   id="tspan172">          got: </tspan>&quot;Bob&quot;</tspan><tspan
          sodipodi:role="line"
          x="-30.864933"
          y="118.93869"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.26458332px"
-         id="tspan903">    [under TestDeep operator Struct at client_test.go:451]</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#00ff00;stroke-width:0.264583px"
+         id="tspan895"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#00ff00;stroke-width:0.264583px"
+   id="tspan102">     expected: </tspan>&quot;Alice&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="-30.864933"
+         y="124.93869"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px"
+         id="tspan903">    [under operator Struct at service_test.go:450]</tspan><tspan
+         sodipodi:role="line"
+         x="-30.864933"
+         y="130.93869"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px"
+         id="tspan2443">    This is how we got here:</tspan><tspan
+         sodipodi:role="line"
+         x="-30.864933"
+         y="136.93869"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px"
+         id="tspan32275">        testOneService() internal/service/service_test.go:449</tspan><tspan
+         sodipodi:role="line"
+         x="-30.864933"
+         y="142.93869"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:6px;font-family:monospace;-inkscape-font-specification:monospace;fill:#ffffff;stroke-width:0.264583px"
+         id="tspan32277">        TestService()    internal/service/service_test.go:430</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="133.69086"
+       y="131.49297"
+       id="text45948"><tspan
+         sodipodi:role="line"
+         id="tspan45946"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.69086"
+         y="131.49297">only displayed if call stack is deep</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.69086"
+         y="137.66658"
+         id="tspan49870">or if not at the root of the module</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.69086"
+         y="143.84019"
+         id="tspan49872">to help to find quickly the error</tspan></text>
+    <path
+       style="fill:none;stroke:#ff6600;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 103.22751,99.612581 29.66692,11.492589 -30.20146,13.09621"
+       id="path63599"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#ff6600;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 103.00097,129.95421 29.57026,-1e-5"
+       id="path63599-2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff6600;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 103.00097,75.558332 29.57026,-10e-6"
+       id="path63599-2-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ff6600;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 103.00097,81.705531 29.57026,-10e-6"
+       id="path63599-2-1"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="133.67639"
+       y="109.51766"
+       id="text65431"><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.67639"
+         y="109.51766"
+         id="tspan71563">only displayed if the expected</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.67639"
+         y="115.69128"
+         id="tspan72227">value belongs to an operator</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="133.69086"
+       y="77.068146"
+       id="text65431-8"><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.69086"
+         y="77.068146"
+         id="tspan72227-8">test name if provided</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="133.35806"
+       y="83.319214"
+       id="text65431-8-7"><tspan
+         sodipodi:role="line"
+         style="font-size:4.93889px;fill:#ff6600;stroke-width:0.264583"
+         x="133.35806"
+         y="83.319214"
+         id="tspan72227-8-0">location &amp; reason of failure</tspan></text>
   </g>
 </svg>

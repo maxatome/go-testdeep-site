@@ -35,22 +35,19 @@ var personTests = []struct {
 	expectedErr    td.TestDeep
 	expectedPerson td.TestDeep
 }{
-	{"Bob", nil,
-		td.SStruct(
-			&Person{Name: "Bob", Age: 41},
-			td.StructFields{"ID": td.NotZero(), "Children": td.Len(2)})},
+	{"Bob", nil, td.JSON(`{"name":"Bob","age":41,"id":NotZero(),"children":Len(2)}`)},
 	{"Marcel", td.String("User not found"), td.Nil()},
 	{"Alice", nil, td.SStruct(&Person{Name: "Alice", Age: 20}, td.StructFields{"ID": td.NotZero()})},
 	{"Brian", nil, td.SStruct(&Person{Name: "Brian", Age: 18}, td.StructFields{"ID": td.NotZero()})},
 }
                                                         === RUN   TestGetPerson
-func TestGetPerson(tt *testing.T) {                     === RUN   TestGetPerson/Bob
-	t := td.Assert(tt)                                  === RUN   TestGetPerson/Marcel
+func TestGetPerson(t *testing.T) {                      === RUN   TestGetPerson/Bob
+	assert := td.Assert(t)                              === RUN   TestGetPerson/Marcel
 	for _, pt := range personTests {                    === RUN   TestGetPerson/Alice
-		t.Run(pt.name, func(t *td.T) {                  === RUN   TestGetPerson/Brian
+		assert.Run(pt.name, func(assert *td.T) {        === RUN   TestGetPerson/Brian
 			person, err := GetPerson(pt.name)           --- PASS: TestGetPerson (0.00s)
-			t.Cmp(err, pt.expectedErr)                      --- PASS: TestGetPerson/Bob (0.00s)
-			t.Cmp(person, pt.expectedPerson)                --- PASS: TestGetPerson/Marcel (0.00s)
+			assert.Cmp(err, pt.expectedErr)                 --- PASS: TestGetPerson/Bob (0.00s)
+			assert.Cmp(person, pt.expectedPerson)           --- PASS: TestGetPerson/Marcel (0.00s)
 		})                                                  --- PASS: TestGetPerson/Alice (0.00s)
 	}                                                       --- PASS: TestGetPerson/Brian (0.00s)
 }                                                       PASS
