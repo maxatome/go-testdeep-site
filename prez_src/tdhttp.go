@@ -11,25 +11,44 @@ func TestMyApi(t *testing.T) {
 	ta := tdhttp.NewTestAPI(t, myAPI)
 	// ta-end OMIT
 
-	ta.Get("/person/Bob", "Accept", "application/json").
-		CmpStatus(htp.StatusOK).
+	var id int64
+	ta.Name("Retrieve a person").
+		Get("/person/Bob", "Accept", "application/json").
+		CmpStatus(http.StatusOK).
 		CmpHeader(td.ContainsKey("X-Custom-Header")).
-		CmpJSONBody(td.JSON(`{"id": $1, "name": "Bob", "age":  26}`, td.NotZero()))
+		CmpJSONBody(td.JSON(`{"id": $1, "name": "Bob", "age":  26}`, td.Catch(&id, td.NotZero())))
 
-	if !ta.Failed() {
-		t.Log("Good job pal!")
-	}
+	t.Logf("Did the test succeeded? %t, ID of Bob is %d", !ta.Failed(), id)
 }
 
 func TestMyApiAnchor(t *testing.T) {
 	ta := tdhttp.NewTestAPI(t, myAPI)
 
+	var id int64
 	ta.Get("/person/Bob", "Accept", "application/json").
-		CmpStatus(htp.StatusOK).
-		CmpHeader(td.ContainsKey("X-Custom-Header")).
+		CmpStatus(http.StatusOK).
 		CmpJSONBody(Person{
-			ID:   ta.A(td.NotZero(), int64(0)).(int64), // HL
+			ID:   ta.A(td.Catch(&id, td.NotZero())).(int64), // HL
 			Name: "Bob",
-			Age:  ta.A(td.Between(40, 45)).(int), // HL
+			Age:  ta.A(td.Between(25, 30)).(int), // HL
 		})
+}
+
+func TestMyApiDumpIfFailure(t *testing.T) {
+	ta := tdhttp.NewTestAPI(t, myAPI)
+
+	var id int64
+	ta.Name("Person creation").
+		PostJSON("/person", PersonNew{Name: "Bob"}).
+		CmpStatus(http.StatusCreated).
+		CmpJSONBody(td.JSON(`
+			{
+			  "id": $1,
+			  "name": "Bob",
+			  "created_at": $2
+			}`,
+			td.Catch(&id, td.NotZero()), // catch just created ID
+			td.Gte(ta.SentAt()),         // check that created_at is ≥ request sent date
+		)).
+		OrDumpResponse() // if some test fails, the response is dumped // HL
 }
