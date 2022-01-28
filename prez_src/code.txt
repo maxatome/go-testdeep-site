@@ -32,7 +32,7 @@ func Cmp(t TestingT, got, expected interface{}, args ...interface{}) bool
 
 
 // test-names-fprint-begin OMIT
-td.Cmp(t, got, 12, "Check got is ", 12)    → fmt.Fprint
+td.Cmp(t, got, 12, "Check got is ", 12)   → fmt.Fprint
 td.Cmp(t, got, 12, "Check got is %d", 12) → fmt.Fprintf
 td.Cmp(t, got, 12, lastErr)               → fmt.Fprint
 // test-names-fprint-end OMIT
