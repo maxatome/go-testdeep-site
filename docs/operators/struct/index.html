@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.0">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Struct :: go-testdeep</title>
-<link href=/css/nucleus.css?1641464830 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1641464830 rel=stylesheet>
-<link href=/css/hybrid.css?1641464830 rel=stylesheet>
-<link href=/css/featherlight.min.css?1641464830 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1641464830 rel=stylesheet>
-<link href=/css/auto-complete.css?1641464830 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1641464830 rel=stylesheet>
-<link href=/css/theme.css?1641464830 rel=stylesheet>
-<link href=/css/hugo-theme.css?1641464830 rel=stylesheet>
-<link href=/css/theme-green.css?1641464830 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1641464830></script>
+<link href=/css/nucleus.css?1643579287 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1643579287 rel=stylesheet>
+<link href=/css/hybrid.css?1643579287 rel=stylesheet>
+<link href=/css/featherlight.min.css?1643579287 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1643579287 rel=stylesheet>
+<link href=/css/auto-complete.css?1643579287 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1643579287 rel=stylesheet>
+<link href=/css/theme.css?1643579287 rel=stylesheet>
+<link href=/css/hugo-theme.css?1643579287 rel=stylesheet>
+<link href=/css/theme-green.css?1643579287 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1643579287></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1641464830></script>
-<script type=text/javascript src=/js/auto-complete.js?1641464830></script>
+<script type=text/javascript src=/js/lunr.min.js?1643579287></script>
+<script type=text/javascript src=/js/auto-complete.js?1643579287></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1641464830></script>
+<script type=text/javascript src=/js/search.js?1643579287></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -507,22 +507,44 @@ FAQ
 <h1>
 Struct
 </h1>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Struct</span>(model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedFields StructFields) TestDeep
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Struct</span>(model <span style=color:#6ab825;font-weight:700>interface</span>{}, expectedFields ...StructFields) TestDeep
 </code></pre></div><p><a href=/operators/struct/><code>Struct</code></a> operator compares the contents of a struct or a pointer on a
 struct against the non-zero values of <em>model</em> (if any) and the
 values of <em>expectedFields</em>. See <a href=/operators/sstruct/><code>SStruct</code></a> to compares against zero
 fields without specifying them in <em>expectedFields</em>.</p>
 <p><em>model</em> must be the same type as compared data.</p>
-<p><em>expectedFields</em> can be <code>nil</code>, if no zero entries are expected and
-no <a href=/operators/>TestDeep operators</a> are involved.</p>
+<p><em>expectedFields</em> can be omitted, if no zero entries are expected
+and no <a href=/operators/>TestDeep operators</a> are involved. If <em>expectedFields</em>
+contains more than one item, all items are merged before their use,
+from left to right.</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Struct</span>(
   Person{
     Name: <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
   },
   td.StructFields{
+    <span style=color:#ed9d13>&#34;Children&#34;</span>: <span style=color:#3677a9>4</span>,
+  },
+  td.StructFields{
     <span style=color:#ed9d13>&#34;Age&#34;</span>:      td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>),
-    <span style=color:#ed9d13>&#34;Children&#34;</span>: <span style=color:#3677a9>0</span>,
-  }),
+    <span style=color:#ed9d13>&#34;Children&#34;</span>: <span style=color:#3677a9>0</span>, <span style=color:#999;font-style:italic>// overwrite 4
+</span><span style=color:#999;font-style:italic></span>  }),
+)
+</code></pre></div><p>It is an <a href=https://pkg.go.dev/builtin/#error><code>error</code></a> to set a non-zero field in <em>model</em> AND to set the
+same field in <em>expectedFields</em>, as in such cases the <a href=/operators/struct/><code>Struct</code></a>
+operator does not know if the user wants to override the non-zero
+<em>model</em> field value or if it is an <a href=https://pkg.go.dev/builtin/#error><code>error</code></a>. To explicitly override a
+non-zero <em>model</em> in <em>expectedFields</em>, just prefix its name with a
+&ldquo;>&rdquo; (followed by some optional spaces), as in:</p>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Struct</span>(
+  Person{
+    Name:     <span style=color:#ed9d13>&#34;John Doe&#34;</span>,
+    Age:      <span style=color:#3677a9>23</span>,
+    Children: <span style=color:#3677a9>4</span>,
+  },
+  td.StructFields{
+    <span style=color:#ed9d13>&#34;&gt; Age&#34;</span>:     td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>),
+    <span style=color:#ed9d13>&#34;&gt;Children&#34;</span>: <span style=color:#3677a9>0</span>, <span style=color:#999;font-style:italic>// spaces after &#34;&gt;&#34; are optional
+</span><span style=color:#999;font-style:italic></span>  }),
 )
 </code></pre></div><p><em>expectedFields</em> can also contain regexps or shell patterns to
 match multiple fields not explicitly listed in <em>model</em> and in
@@ -661,6 +683,61 @@ Base example
 <div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
+Overwrite_model example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Name        <span style=color:#6ab825;font-weight:700>string</span>
+		Age         <span style=color:#6ab825;font-weight:700>int</span>
+		NumChildren <span style=color:#6ab825;font-weight:700>int</span>
+	}
+
+	got := Person{
+		Name:        <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:         <span style=color:#3677a9>42</span>,
+		NumChildren: <span style=color:#3677a9>3</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(
+			Person{
+				Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+				Age:  <span style=color:#3677a9>53</span>,
+			},
+			td.StructFields{
+				<span style=color:#ed9d13>&#34;&gt;Age&#34;</span>:        td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// &#34;&gt;&#34; to overwrite Age:53 in model
+</span><span style=color:#999;font-style:italic></span>				<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+			}),
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
+		td.<span style=color:#447fcf>Struct</span>(
+			Person{
+				Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+				Age:  <span style=color:#3677a9>53</span>,
+			},
+			td.StructFields{
+				<span style=color:#ed9d13>&#34;&gt; Age&#34;</span>:       td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// same, &#34;&gt;&#34; can be followed by spaces
+</span><span style=color:#999;font-style:italic></span>				<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+			}),
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
 Patterns example
 </span>
 </div>
@@ -718,6 +795,9 @@ Patterns example
 </code></pre></div><p>CmpStruct is a shortcut for:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Struct</span>(model, expectedFields), args...)
 </code></pre></div><p>See above for details.</p>
+<p><a href=/operators/struct/><code>Struct()</code></a> optional parameter <em>expectedFields</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=/operators/struct/><code>Struct()</code></a> call.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If <code>len(args) > 1</code> and
@@ -799,6 +879,55 @@ Base example
 <div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
+Overwrite_model example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := &amp;testing.T{}
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Name        <span style=color:#6ab825;font-weight:700>string</span>
+		Age         <span style=color:#6ab825;font-weight:700>int</span>
+		NumChildren <span style=color:#6ab825;font-weight:700>int</span>
+	}
+
+	got := Person{
+		Name:        <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:         <span style=color:#3677a9>42</span>,
+		NumChildren: <span style=color:#3677a9>3</span>,
+	}
+
+	ok := td.<span style=color:#447fcf>CmpStruct</span>(t, got, Person{
+		Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:  <span style=color:#3677a9>53</span>,
+	}, td.StructFields{
+		<span style=color:#ed9d13>&#34;&gt;Age&#34;</span>:        td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// &#34;&gt;&#34; to overwrite Age:53 in model
+</span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+	},
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	ok = td.<span style=color:#447fcf>CmpStruct</span>(t, got, Person{
+		Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:  <span style=color:#3677a9>53</span>,
+	}, td.StructFields{
+		<span style=color:#ed9d13>&#34;&gt; Age&#34;</span>:       td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// same, &#34;&gt;&#34; can be followed by spaces
+</span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+	},
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
 Patterns example
 </span>
 </div>
@@ -854,6 +983,9 @@ Patterns example
 </code></pre></div><p><a href=/operators/struct/><code>Struct</code></a> is a shortcut for:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Struct</span>(model, expectedFields), args...)
 </code></pre></div><p>See above for details.</p>
+<p><a href=/operators/struct/><code>Struct()</code></a> optional parameter <em>expectedFields</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=/operators/struct/><code>Struct()</code></a> call.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If <code>len(args) > 1</code> and
@@ -935,6 +1067,55 @@ Base example
 <div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
 <i style=font-size:x-small class="fas fa-chevron-right"></i>
 <span>
+Overwrite_model example
+</span>
+</div>
+<div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+
+	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+		Name        <span style=color:#6ab825;font-weight:700>string</span>
+		Age         <span style=color:#6ab825;font-weight:700>int</span>
+		NumChildren <span style=color:#6ab825;font-weight:700>int</span>
+	}
+
+	got := Person{
+		Name:        <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:         <span style=color:#3677a9>42</span>,
+		NumChildren: <span style=color:#3677a9>3</span>,
+	}
+
+	ok := t.<span style=color:#447fcf>Struct</span>(got, Person{
+		Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:  <span style=color:#3677a9>53</span>,
+	}, td.StructFields{
+		<span style=color:#ed9d13>&#34;&gt;Age&#34;</span>:        td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// &#34;&gt;&#34; to overwrite Age:53 in model
+</span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+	},
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	ok = t.<span style=color:#447fcf>Struct</span>(got, Person{
+		Name: <span style=color:#ed9d13>&#34;Foobar&#34;</span>,
+		Age:  <span style=color:#3677a9>53</span>,
+	}, td.StructFields{
+		<span style=color:#ed9d13>&#34;&gt; Age&#34;</span>:       td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>), <span style=color:#999;font-style:italic>// same, &#34;&gt;&#34; can be followed by spaces
+</span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>&#34;NumChildren&#34;</span>: td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>2</span>),
+	},
+		<span style=color:#ed9d13>&#34;checks %v is the right Person&#34;</span>)
+	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Foobar is between 40 &amp; 50:&#34;</span>, ok)
+
+	<span style=color:#999;font-style:italic>// Output:
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// Foobar is between 40 &amp; 50: true
+</span><span style=color:#999;font-style:italic></span>
+</code></pre></div>
+</div>
+</div>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick="$h=$(this),$h.next('div').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('div').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
 Patterns example
 </span>
 </div>
@@ -997,18 +1178,18 @@ Patterns example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1641464830></script>
-<script src=/js/perfect-scrollbar.min.js?1641464830></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1641464830></script>
-<script src=/js/jquery.sticky.js?1641464830></script>
-<script src=/js/featherlight.min.js?1641464830></script>
-<script src=/js/highlight.pack.js?1641464830></script>
+<script src=/js/clipboard.min.js?1643579288></script>
+<script src=/js/perfect-scrollbar.min.js?1643579288></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1643579288></script>
+<script src=/js/jquery.sticky.js?1643579288></script>
+<script src=/js/featherlight.min.js?1643579288></script>
+<script src=/js/highlight.pack.js?1643579288></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1641464830></script>
-<script src=/js/learn.js?1641464830></script>
-<script src=/js/hugo-learn.js?1641464830></script>
-<link href=/mermaid/mermaid.css?1641464830 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1641464830></script>
+<script src=/js/modernizr.custom-3.6.0.js?1643579288></script>
+<script src=/js/learn.js?1643579288></script>
+<script src=/js/hugo-learn.js?1643579288></script>
+<link href=/mermaid/mermaid.css?1643579288 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1643579288></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
