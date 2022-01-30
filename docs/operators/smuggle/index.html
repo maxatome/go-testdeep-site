@@ -2,21 +2,21 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.0">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
 <title>Smuggle :: go-testdeep</title>
-<link href=/css/nucleus.css?1641464830 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1641464830 rel=stylesheet>
-<link href=/css/hybrid.css?1641464830 rel=stylesheet>
-<link href=/css/featherlight.min.css?1641464830 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1641464830 rel=stylesheet>
-<link href=/css/auto-complete.css?1641464830 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1641464830 rel=stylesheet>
-<link href=/css/theme.css?1641464830 rel=stylesheet>
-<link href=/css/hugo-theme.css?1641464830 rel=stylesheet>
-<link href=/css/theme-green.css?1641464830 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1641464830></script>
+<link href=/css/nucleus.css?1643579287 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1643579287 rel=stylesheet>
+<link href=/css/hybrid.css?1643579287 rel=stylesheet>
+<link href=/css/featherlight.min.css?1643579287 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1643579287 rel=stylesheet>
+<link href=/css/auto-complete.css?1643579287 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1643579287 rel=stylesheet>
+<link href=/css/theme.css?1643579287 rel=stylesheet>
+<link href=/css/hugo-theme.css?1643579287 rel=stylesheet>
+<link href=/css/theme-green.css?1643579287 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1643579287></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
 <meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style>
@@ -32,10 +32,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=/js/lunr.min.js?1641464830></script>
-<script type=text/javascript src=/js/auto-complete.js?1641464830></script>
+<script type=text/javascript src=/js/lunr.min.js?1643579287></script>
+<script type=text/javascript src=/js/auto-complete.js?1643579287></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1641464830></script>
+<script type=text/javascript src=/js/search.js?1643579287></script>
 </div>
 <div class=highlightable>
 <ul class=topics>
@@ -649,7 +649,7 @@ td.<span style=color:#447fcf>Cmp</span>(t, A{N: &amp;pnum}, td.<span style=color
 a cast, handling specifically strings and slices of bytes:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
 <span style=color:#999;font-style:italic>// or equally
-</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>((json.RawMessage)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>(json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
 </code></pre></div><p>converts on the fly a <code>string</code> to a json.RawMessage so <a href=/operators/json/><code>JSON</code></a> operator
 can parse it as <a href=/operators/json/><code>JSON</code></a>. This is mostly a shortcut for:</p>
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go>td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>, td.<span style=color:#447fcf>Smuggle</span>(
@@ -661,7 +661,7 @@ can parse it as <a href=/operators/json/><code>JSON</code></a>. This is mostly a
 <span style=color:#999;font-style:italic>// …
 </span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, body, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
 <span style=color:#999;font-style:italic>// or equally
-</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, body, td.<span style=color:#447fcf>Smuggle</span>((json.RawMessage)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
+</span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, body, td.<span style=color:#447fcf>Smuggle</span>(json.<span style=color:#447fcf>RawMessage</span>(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;foo&#34;:1}`</span>)))
 </code></pre></div><p>This last example allows to easily inject body content into <a href=/operators/json/><code>JSON</code></a>
 operator.</p>
 <p>The difference between <a href=/operators/smuggle/><code>Smuggle</code></a> and <a href=/operators/code/><code>Code</code></a> operators is that <a href=/operators/code/><code>Code</code></a> is
@@ -849,10 +849,10 @@ Complex example
 	<span style=color:#999;font-style:italic>// Checks that end date is between 17th and 19th February both at 0h
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// for each of these durations in hours
 </span><span style=color:#999;font-style:italic></span>
-	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span>, <span style=color:#3677a9>72</span>, <span style=color:#3677a9>96</span>} {
+	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span> * time.Hour, <span style=color:#3677a9>72</span> * time.Hour, <span style=color:#3677a9>96</span> * time.Hour} {
 		got := StartDuration{
 			StartDate: time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2018</span>, time.February, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>12</span>, <span style=color:#3677a9>13</span>, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>0</span>, time.UTC),
-			Duration:  duration * time.Hour,
+			Duration:  duration,
 		}
 
 		<span style=color:#999;font-style:italic>// Simplest way, but in case of Between() failure, error will be bound
@@ -1179,10 +1179,10 @@ Complex example
 	<span style=color:#999;font-style:italic>// Checks that end date is between 17th and 19th February both at 0h
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// for each of these durations in hours
 </span><span style=color:#999;font-style:italic></span>
-	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span>, <span style=color:#3677a9>72</span>, <span style=color:#3677a9>96</span>} {
+	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span> * time.Hour, <span style=color:#3677a9>72</span> * time.Hour, <span style=color:#3677a9>96</span> * time.Hour} {
 		got := StartDuration{
 			StartDate: time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2018</span>, time.February, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>12</span>, <span style=color:#3677a9>13</span>, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>0</span>, time.UTC),
-			Duration:  duration * time.Hour,
+			Duration:  duration,
 		}
 
 		<span style=color:#999;font-style:italic>// Simplest way, but in case of Between() failure, error will be bound
@@ -1496,10 +1496,10 @@ Complex example
 	<span style=color:#999;font-style:italic>// Checks that end date is between 17th and 19th February both at 0h
 </span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// for each of these durations in hours
 </span><span style=color:#999;font-style:italic></span>
-	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span>, <span style=color:#3677a9>72</span>, <span style=color:#3677a9>96</span>} {
+	<span style=color:#6ab825;font-weight:700>for</span> _, duration := <span style=color:#6ab825;font-weight:700>range</span> []time.Duration{<span style=color:#3677a9>48</span> * time.Hour, <span style=color:#3677a9>72</span> * time.Hour, <span style=color:#3677a9>96</span> * time.Hour} {
 		got := StartDuration{
 			StartDate: time.<span style=color:#447fcf>Date</span>(<span style=color:#3677a9>2018</span>, time.February, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>12</span>, <span style=color:#3677a9>13</span>, <span style=color:#3677a9>14</span>, <span style=color:#3677a9>0</span>, time.UTC),
-			Duration:  duration * time.Hour,
+			Duration:  duration,
 		}
 
 		<span style=color:#999;font-style:italic>// Simplest way, but in case of Between() failure, error will be bound
@@ -1657,18 +1657,18 @@ Field_path example
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=/js/clipboard.min.js?1641464830></script>
-<script src=/js/perfect-scrollbar.min.js?1641464830></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1641464830></script>
-<script src=/js/jquery.sticky.js?1641464830></script>
-<script src=/js/featherlight.min.js?1641464830></script>
-<script src=/js/highlight.pack.js?1641464830></script>
+<script src=/js/clipboard.min.js?1643579288></script>
+<script src=/js/perfect-scrollbar.min.js?1643579288></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1643579288></script>
+<script src=/js/jquery.sticky.js?1643579288></script>
+<script src=/js/featherlight.min.js?1643579288></script>
+<script src=/js/highlight.pack.js?1643579288></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1641464830></script>
-<script src=/js/learn.js?1641464830></script>
-<script src=/js/hugo-learn.js?1641464830></script>
-<link href=/mermaid/mermaid.css?1641464830 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1641464830></script>
+<script src=/js/modernizr.custom-3.6.0.js?1643579288></script>
+<script src=/js/learn.js?1643579288></script>
+<script src=/js/hugo-learn.js?1643579288></script>
+<link href=/mermaid/mermaid.css?1643579288 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1643579288></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>

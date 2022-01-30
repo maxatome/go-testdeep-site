@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Struct(model interface{}, expectedFields StructFields) TestDeep
+func Struct(model interface{}, expectedFields ...StructFields) TestDeep
 ```
 
 [`Struct`]({{< ref "Struct" >}}) operator compares the contents of a struct or a pointer on a
@@ -14,8 +14,10 @@ fields without specifying them in *expectedFields*.
 
 *model* must be the same type as compared data.
 
-*expectedFields* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{< ref "operators" >}}) are involved.
+*expectedFields* can be omitted, if no zero entries are expected
+and no [TestDeep operators]({{< ref "operators" >}}) are involved. If *expectedFields*
+contains more than one item, all items are merged before their use,
+from left to right.
 
 ```go
 td.Cmp(t, got, td.Struct(
@@ -23,8 +25,32 @@ td.Cmp(t, got, td.Struct(
     Name: "John Doe",
   },
   td.StructFields{
+    "Children": 4,
+  },
+  td.StructFields{
     "Age":      td.Between(40, 45),
-    "Children": 0,
+    "Children": 0, // overwrite 4
+  }),
+)
+```
+
+It is an [`error`](https://pkg.go.dev/builtin/#error) to set a non-zero field in *model* AND to set the
+same field in *expectedFields*, as in such cases the [`Struct`]({{< ref "Struct" >}})
+operator does not know if the user wants to override the non-zero
+*model* field value or if it is an [`error`](https://pkg.go.dev/builtin/#error). To explicitly override a
+non-zero *model* in *expectedFields*, just prefix its name with a
+">" (followed by some optional spaces), as in:
+
+```go
+td.Cmp(t, got, td.Struct(
+  Person{
+    Name:     "John Doe",
+    Age:      23,
+    Children: 4,
+  },
+  td.StructFields{
+    "> Age":     td.Between(40, 45),
+    ">Children": 0, // spaces after ">" are optional
   }),
 )
 ```
@@ -172,6 +198,52 @@ succeed. Non-expected fields are ignored.
 	// Foobar has some children (using nil model): true
 
 ```{{% /expand%}}
+{{%expand "Overwrite_model example" %}}```go
+	t := &testing.T{}
+
+	type Person struct {
+		Name        string
+		Age         int
+		NumChildren int
+	}
+
+	got := Person{
+		Name:        "Foobar",
+		Age:         42,
+		NumChildren: 3,
+	}
+
+	ok := td.Cmp(t, got,
+		td.Struct(
+			Person{
+				Name: "Foobar",
+				Age:  53,
+			},
+			td.StructFields{
+				">Age":        td.Between(40, 50), // ">" to overwrite Age:53 in model
+				"NumChildren": td.Gt(2),
+			}),
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	ok = td.Cmp(t, got,
+		td.Struct(
+			Person{
+				Name: "Foobar",
+				Age:  53,
+			},
+			td.StructFields{
+				"> Age":       td.Between(40, 50), // same, ">" can be followed by spaces
+				"NumChildren": td.Gt(2),
+			}),
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	// Output:
+	// Foobar is between 40 & 50: true
+	// Foobar is between 40 & 50: true
+
+```{{% /expand%}}
 {{%expand "Patterns example" %}}```go
 	t := &testing.T{}
 
@@ -232,6 +304,10 @@ td.Cmp(t, got, td.Struct(model, expectedFields), args...)
 ```
 
 See above for details.
+
+[`Struct()`]({{< ref "Struct" >}}) optional parameter *expectedFields* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Struct()`]({{< ref "Struct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -303,6 +379,46 @@ reason of a potential failure.
 	// Foobar has some children (using nil model): true
 
 ```{{% /expand%}}
+{{%expand "Overwrite_model example" %}}```go
+	t := &testing.T{}
+
+	type Person struct {
+		Name        string
+		Age         int
+		NumChildren int
+	}
+
+	got := Person{
+		Name:        "Foobar",
+		Age:         42,
+		NumChildren: 3,
+	}
+
+	ok := td.CmpStruct(t, got, Person{
+		Name: "Foobar",
+		Age:  53,
+	}, td.StructFields{
+		">Age":        td.Between(40, 50), // ">" to overwrite Age:53 in model
+		"NumChildren": td.Gt(2),
+	},
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	ok = td.CmpStruct(t, got, Person{
+		Name: "Foobar",
+		Age:  53,
+	}, td.StructFields{
+		"> Age":       td.Between(40, 50), // same, ">" can be followed by spaces
+		"NumChildren": td.Gt(2),
+	},
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	// Output:
+	// Foobar is between 40 & 50: true
+	// Foobar is between 40 & 50: true
+
+```{{% /expand%}}
 {{%expand "Patterns example" %}}```go
 	t := &testing.T{}
 
@@ -361,6 +477,10 @@ t.Cmp(got, td.Struct(model, expectedFields), args...)
 ```
 
 See above for details.
+
+[`Struct()`]({{< ref "Struct" >}}) optional parameter *expectedFields* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Struct()`]({{< ref "Struct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -430,6 +550,46 @@ reason of a potential failure.
 	// Foobar has some children: true
 	// Foobar has some children (using pointer): true
 	// Foobar has some children (using nil model): true
+
+```{{% /expand%}}
+{{%expand "Overwrite_model example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	type Person struct {
+		Name        string
+		Age         int
+		NumChildren int
+	}
+
+	got := Person{
+		Name:        "Foobar",
+		Age:         42,
+		NumChildren: 3,
+	}
+
+	ok := t.Struct(got, Person{
+		Name: "Foobar",
+		Age:  53,
+	}, td.StructFields{
+		">Age":        td.Between(40, 50), // ">" to overwrite Age:53 in model
+		"NumChildren": td.Gt(2),
+	},
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	ok = t.Struct(got, Person{
+		Name: "Foobar",
+		Age:  53,
+	}, td.StructFields{
+		"> Age":       td.Between(40, 50), // same, ">" can be followed by spaces
+		"NumChildren": td.Gt(2),
+	},
+		"checks %v is the right Person")
+	fmt.Println("Foobar is between 40 & 50:", ok)
+
+	// Output:
+	// Foobar is between 40 & 50: true
+	// Foobar is between 40 & 50: true
 
 ```{{% /expand%}}
 {{%expand "Patterns example" %}}```go
