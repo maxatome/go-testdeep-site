@@ -4,9 +4,8 @@ HOST=http://127.0.0.1:3999
 
 TARGET="$(dirname $0)/../docs/prez"
 
-for i in css.css styles.css; do
-    curl -s $HOST/static/$i > $TARGET/static/$i
-done
+curl -s $HOST/static/styles.css |
+    perl -pE 'BEGIN { undef $/ } s,^ +/\* Add explicit links \*/.*?\n\n,,smg' > $TARGET/static/styles.css
 
 for i in *.svg; do
     [ $i != colored-output.svg -a $i != logo.svg ] &&
