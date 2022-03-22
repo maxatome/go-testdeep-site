@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Array(model interface{}, expectedEntries ArrayEntries) TestDeep
+func Array(model any, expectedEntries ArrayEntries) TestDeep
 ```
 
 [`Array`]({{< ref "Array" >}}) operator compares the contents of an array or a pointer on an
@@ -98,7 +98,7 @@ td.Cmp(t, &got,
 ## CmpArray shortcut
 
 ```go
-func CmpArray(t TestingT, got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func CmpArray(t TestingT, got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 CmpArray is a shortcut for:
@@ -110,6 +110,8 @@ td.Cmp(t, got, td.Array(model, expectedEntries), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -179,7 +181,7 @@ reason of a potential failure.
 ## T.Array shortcut
 
 ```go
-func (t *T) Array(got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func (t *T) Array(got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 [`Array`]({{< ref "Array" >}}) is a shortcut for:

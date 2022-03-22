@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func SubBagOf(expectedItems ...interface{}) TestDeep
+func SubBagOf(expectedItems ...any) TestDeep
 ```
 
 [`SubBagOf`]({{< ref "SubBagOf" >}}) operator compares the contents of an array or a slice (or a
@@ -25,7 +25,7 @@ td.Cmp(t, personSlice, td.SubBagOf(
 ))
 ```
 
-To flatten a non-`[]interface{}` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
+To flatten a non-`[]any` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
 and so avoid boring and inefficient copies:
 
 ```go
@@ -75,9 +75,9 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 		"checks at least all items match, in any order with TestDeep operators")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5, 9, 8}
 	ok = td.Cmp(t, got, td.SubBagOf(td.Flatten(expected)),
 		"checks at least all expected items are present, in any order")
@@ -93,7 +93,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpSubBagOf shortcut
 
 ```go
-func CmpSubBagOf(t TestingT, got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func CmpSubBagOf(t TestingT, got any, expectedItems []any, args ...any) bool
 ```
 
 CmpSubBagOf is a shortcut for:
@@ -105,6 +105,8 @@ td.Cmp(t, got, td.SubBagOf(expectedItems...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -123,26 +125,26 @@ reason of a potential failure.
 
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
-	ok := td.CmpSubBagOf(t, got, []interface{}{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 8, 9, 9},
+	ok := td.CmpSubBagOf(t, got, []any{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 8, 9, 9},
 		"checks at least all items are present, in any order")
 	fmt.Println(ok)
 
 	// got contains one 8 too many
-	ok = td.CmpSubBagOf(t, got, []interface{}{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 9, 9},
+	ok = td.CmpSubBagOf(t, got, []any{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 9, 9},
 		"checks at least all items are present, in any order")
 	fmt.Println(ok)
 
 	got = []int{1, 3, 5, 2}
 
-	ok = td.CmpSubBagOf(t, got, []interface{}{td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Gt(4), td.Gt(4)},
+	ok = td.CmpSubBagOf(t, got, []any{td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Gt(4), td.Gt(4)},
 		"checks at least all items match, in any order with TestDeep operators")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5, 9, 8}
-	ok = td.CmpSubBagOf(t, got, []interface{}{td.Flatten(expected)},
+	ok = td.CmpSubBagOf(t, got, []any{td.Flatten(expected)},
 		"checks at least all expected items are present, in any order")
 	fmt.Println(ok)
 
@@ -156,7 +158,7 @@ reason of a potential failure.
 ## T.SubBagOf shortcut
 
 ```go
-func (t *T) SubBagOf(got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func (t *T) SubBagOf(got any, expectedItems []any, args ...any) bool
 ```
 
 [`SubBagOf`]({{< ref "SubBagOf" >}}) is a shortcut for:
@@ -186,26 +188,26 @@ reason of a potential failure.
 
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
-	ok := t.SubBagOf(got, []interface{}{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 8, 9, 9},
+	ok := t.SubBagOf(got, []any{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 8, 9, 9},
 		"checks at least all items are present, in any order")
 	fmt.Println(ok)
 
 	// got contains one 8 too many
-	ok = t.SubBagOf(got, []interface{}{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 9, 9},
+	ok = t.SubBagOf(got, []any{0, 0, 1, 1, 2, 2, 3, 3, 5, 5, 8, 9, 9},
 		"checks at least all items are present, in any order")
 	fmt.Println(ok)
 
 	got = []int{1, 3, 5, 2}
 
-	ok = t.SubBagOf(got, []interface{}{td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Gt(4), td.Gt(4)},
+	ok = t.SubBagOf(got, []any{td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Between(0, 3), td.Gt(4), td.Gt(4)},
 		"checks at least all items match, in any order with TestDeep operators")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5, 9, 8}
-	ok = t.SubBagOf(got, []interface{}{td.Flatten(expected)},
+	ok = t.SubBagOf(got, []any{td.Flatten(expected)},
 		"checks at least all expected items are present, in any order")
 	fmt.Println(ok)
 

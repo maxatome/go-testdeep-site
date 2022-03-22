@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func None(notExpectedValues ...interface{}) TestDeep
+func None(notExpectedValues ...any) TestDeep
 ```
 
 [`None`]({{< ref "None" >}}) operator compares data against several not expected
@@ -71,7 +71,7 @@ td.Cmp(t, 9, td.None(prime, even)) // succeeds
 ## CmpNone shortcut
 
 ```go
-func CmpNone(t TestingT, got interface{}, notExpectedValues []interface{}, args ...interface{}) bool
+func CmpNone(t TestingT, got any, notExpectedValues []any, args ...any) bool
 ```
 
 CmpNone is a shortcut for:
@@ -83,6 +83,8 @@ td.Cmp(t, got, td.None(notExpectedValues...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -101,26 +103,26 @@ reason of a potential failure.
 
 	got := 18
 
-	ok := td.CmpNone(t, got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok := td.CmpNone(t, got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	got = 20
 
-	ok = td.CmpNone(t, got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok = td.CmpNone(t, got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	got = 142
 
-	ok = td.CmpNone(t, got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok = td.CmpNone(t, got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	prime := td.Flatten([]int{1, 2, 3, 5, 7, 11, 13})
 	even := td.Flatten([]int{2, 4, 6, 8, 10, 12, 14})
 	for _, got := range [...]int{9, 3, 8, 15} {
-		ok = td.CmpNone(t, got, []interface{}{prime, even, td.Gt(14)},
+		ok = td.CmpNone(t, got, []any{prime, even, td.Gt(14)},
 			"checks %v is not prime number, nor an even number and not > 14")
 		fmt.Printf("%d → %t\n", got, ok)
 	}
@@ -138,7 +140,7 @@ reason of a potential failure.
 ## T.None shortcut
 
 ```go
-func (t *T) None(got interface{}, notExpectedValues []interface{}, args ...interface{}) bool
+func (t *T) None(got any, notExpectedValues []any, args ...any) bool
 ```
 
 [`None`]({{< ref "None" >}}) is a shortcut for:
@@ -168,26 +170,26 @@ reason of a potential failure.
 
 	got := 18
 
-	ok := t.None(got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok := t.None(got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	got = 20
 
-	ok = t.None(got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok = t.None(got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	got = 142
 
-	ok = t.None(got, []interface{}{0, 10, 20, 30, td.Between(100, 199)},
+	ok = t.None(got, []any{0, 10, 20, 30, td.Between(100, 199)},
 		"checks %v is non-null, and ≠ 10, 20 & 30, and not in [100-199]", got)
 	fmt.Println(ok)
 
 	prime := td.Flatten([]int{1, 2, 3, 5, 7, 11, 13})
 	even := td.Flatten([]int{2, 4, 6, 8, 10, 12, 14})
 	for _, got := range [...]int{9, 3, 8, 15} {
-		ok = t.None(got, []interface{}{prime, even, td.Gt(14)},
+		ok = t.None(got, []any{prime, even, td.Gt(14)},
 			"checks %v is not prime number, nor an even number and not > 14")
 		fmt.Printf("%d → %t\n", got, ok)
 	}

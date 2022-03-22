@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Smuggle(fn, expectedValue interface{}) TestDeep
+func Smuggle(fn, expectedValue any) TestDeep
 ```
 
 [`Smuggle`]({{< ref "Smuggle" >}}) operator allows to change data contents or mutate it into
@@ -14,7 +14,7 @@ that must take one parameter whose type must be convertible to the
 type of the compared value.
 
 As convenient shortcuts, *fn* can be a `string` specifying a
-fields-path through structs, maps & slices, or any other type, in
+fields-path through structs, maps & slices, or `any` other type, in
 this case a simple cast is done (see below for details).
 
 *fn* must return at least one value. These value will be compared as is
@@ -195,7 +195,7 @@ auto-dereference interfaces and pointers, even on several levels,
 like in:
 
 ```go
-type A struct{ N interface{} }
+type A struct{ N any }
 num := 12
 pnum := &num
 td.Cmp(t, A{N: &pnum}, td.Smuggle("N", 12))
@@ -245,7 +245,7 @@ feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of only parameter of
 *fn*. For the case where *fn* is a fields-path, it is always
-`interface{}`, as the type can not be known in advance.
+`any`, as the type can not be known in advance.
 
 
 > See also [<i class='fas fa-book'></i> Smuggle godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Smuggle).
@@ -457,7 +457,7 @@ feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 
 	type Body struct {
 		Name  string
-		Value interface{}
+		Value any
 	}
 	type Request struct {
 		Body *Body
@@ -504,8 +504,8 @@ feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]interface{}{
-		"foo": []interface{}{
+	got.Request.Body.Value = map[string]any{
+		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},
 	}
@@ -522,7 +522,7 @@ feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 ## CmpSmuggle shortcut
 
 ```go
-func CmpSmuggle(t TestingT, got, fn , expectedValue interface{}, args ...interface{}) bool
+func CmpSmuggle(t TestingT, got, fn , expectedValue any, args ...any) bool
 ```
 
 CmpSmuggle is a shortcut for:
@@ -534,6 +534,8 @@ td.Cmp(t, got, td.Smuggle(fn, expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -725,7 +727,7 @@ reason of a potential failure.
 
 	type Body struct {
 		Name  string
-		Value interface{}
+		Value any
 	}
 	type Request struct {
 		Body *Body
@@ -769,8 +771,8 @@ reason of a potential failure.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]interface{}{
-		"foo": []interface{}{
+	got.Request.Body.Value = map[string]any{
+		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},
 	}
@@ -787,7 +789,7 @@ reason of a potential failure.
 ## T.Smuggle shortcut
 
 ```go
-func (t *T) Smuggle(got, fn , expectedValue interface{}, args ...interface{}) bool
+func (t *T) Smuggle(got, fn , expectedValue any, args ...any) bool
 ```
 
 [`Smuggle`]({{< ref "Smuggle" >}}) is a shortcut for:
@@ -990,7 +992,7 @@ reason of a potential failure.
 
 	type Body struct {
 		Name  string
-		Value interface{}
+		Value any
 	}
 	type Request struct {
 		Body *Body
@@ -1034,8 +1036,8 @@ reason of a potential failure.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]interface{}{
-		"foo": []interface{}{
+	got.Request.Body.Value = map[string]any{
+		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},
 	}

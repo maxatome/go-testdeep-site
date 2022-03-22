@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func Lt(maxExpectedValue interface{}) TestDeep
+func Lt(maxExpectedValue any) TestDeep
 ```
 
 [`Lt`]({{< ref "Lt" >}}) operator checks that data is lesser than
-*maxExpectedValue*. *maxExpectedValue* can be any numeric, `string`,
+*maxExpectedValue*. *maxExpectedValue* can be `any` numeric, `string`,
 [`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) value or implements at least one of the
 two following methods:
 ```go
@@ -67,7 +67,7 @@ td.Cmp(t, before, td.Lt(time.Now()))
 ## CmpLt shortcut
 
 ```go
-func CmpLt(t TestingT, got, maxExpectedValue interface{}, args ...interface{}) bool
+func CmpLt(t TestingT, got, maxExpectedValue any, args ...any) bool
 ```
 
 CmpLt is a shortcut for:
@@ -79,6 +79,8 @@ td.Cmp(t, got, td.Lt(maxExpectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -127,7 +129,7 @@ reason of a potential failure.
 ## T.Lt shortcut
 
 ```go
-func (t *T) Lt(got, maxExpectedValue interface{}, args ...interface{}) bool
+func (t *T) Lt(got, maxExpectedValue any, args ...any) bool
 ```
 
 [`Lt`]({{< ref "Lt" >}}) is a shortcut for:

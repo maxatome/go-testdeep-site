@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func Map(model interface{}, expectedEntries MapEntries) TestDeep
+func Map(model any, expectedEntries MapEntries) TestDeep
 ```
 
 [`Map`]({{< ref "Map" >}}) operator compares the contents of a map against the non-zero
-values of *model* (if any) and the values of *expectedEntries*.
+values of *model* (if `any`) and the values of *expectedEntries*.
 
 *model* must be the same type as compared data.
 
@@ -108,7 +108,7 @@ td.Cmp(t, got, td.Map(
 ## CmpMap shortcut
 
 ```go
-func CmpMap(t TestingT, got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func CmpMap(t TestingT, got, model any, expectedEntries MapEntries, args ...any) bool
 ```
 
 CmpMap is a shortcut for:
@@ -120,6 +120,8 @@ td.Cmp(t, got, td.Map(model, expectedEntries), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -189,7 +191,7 @@ reason of a potential failure.
 ## T.Map shortcut
 
 ```go
-func (t *T) Map(got, model interface{}, expectedEntries MapEntries, args ...interface{}) bool
+func (t *T) Map(got, model any, expectedEntries MapEntries, args ...any) bool
 ```
 
 [`Map`]({{< ref "Map" >}}) is a shortcut for:

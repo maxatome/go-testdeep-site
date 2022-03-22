@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Values(val interface{}) TestDeep
+func Values(val any) TestDeep
 ```
 
 [`Values`]({{< ref "Values" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes a map and compares its
@@ -62,7 +62,7 @@ td.Cmp(t, got, td.Values(td.Bag("c", "a", "b"))) // succeeds
 ## CmpValues shortcut
 
 ```go
-func CmpValues(t TestingT, got, val interface{}, args ...interface{}) bool
+func CmpValues(t TestingT, got, val any, args ...any) bool
 ```
 
 CmpValues is a shortcut for:
@@ -74,6 +74,8 @@ td.Cmp(t, got, td.Values(val), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -118,7 +120,7 @@ reason of a potential failure.
 ## T.Values shortcut
 
 ```go
-func (t *T) Values(got, val interface{}, args ...interface{}) bool
+func (t *T) Values(got, val any, args ...any) bool
 ```
 
 [`Values`]({{< ref "Values" >}}) is a shortcut for:

@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Bag(expectedItems ...interface{}) TestDeep
+func Bag(expectedItems ...any) TestDeep
 ```
 
 [`Bag`]({{< ref "Bag" >}}) operator compares the contents of an array or a slice (or a
@@ -28,7 +28,7 @@ td.Cmp(t, personSlice, td.Bag(
 ))
 ```
 
-To flatten a non-`[]interface{}` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
+To flatten a non-`[]any` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
 and so avoid boring and inefficient copies:
 
 ```go
@@ -80,9 +80,9 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5}
 	ok = td.Cmp(t, got, td.Bag(td.Flatten(expected), td.Gt(7)),
 		"checks all expected items are present, in any order")
@@ -99,7 +99,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpBag shortcut
 
 ```go
-func CmpBag(t TestingT, got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func CmpBag(t TestingT, got any, expectedItems []any, args ...any) bool
 ```
 
 CmpBag is a shortcut for:
@@ -111,6 +111,8 @@ td.Cmp(t, got, td.Bag(expectedItems...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -130,33 +132,33 @@ reason of a potential failure.
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
 	// Matches as all items are present
-	ok := td.CmpBag(t, got, []interface{}{1, 1, 2, 3, 5, 8, 8},
+	ok := td.CmpBag(t, got, []any{1, 1, 2, 3, 5, 8, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	// Does not match as got contains 2 times 1 and 8, and these
 	// duplicates are not expected
-	ok = td.CmpBag(t, got, []interface{}{1, 2, 3, 5, 8},
+	ok = td.CmpBag(t, got, []any{1, 2, 3, 5, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	got = []int{1, 3, 5, 8, 2}
 
 	// Duplicates of 1 and 8 are expected but not present in got
-	ok = td.CmpBag(t, got, []interface{}{1, 1, 2, 3, 5, 8, 8},
+	ok = td.CmpBag(t, got, []any{1, 1, 2, 3, 5, 8, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	// Matches as all items are present
-	ok = td.CmpBag(t, got, []interface{}{1, 2, 3, 5, td.Gt(7)},
+	ok = td.CmpBag(t, got, []any{1, 2, 3, 5, td.Gt(7)},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5}
-	ok = td.CmpBag(t, got, []interface{}{td.Flatten(expected), td.Gt(7)},
+	ok = td.CmpBag(t, got, []any{td.Flatten(expected), td.Gt(7)},
 		"checks all expected items are present, in any order")
 	fmt.Println(ok)
 
@@ -171,7 +173,7 @@ reason of a potential failure.
 ## T.Bag shortcut
 
 ```go
-func (t *T) Bag(got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func (t *T) Bag(got any, expectedItems []any, args ...any) bool
 ```
 
 [`Bag`]({{< ref "Bag" >}}) is a shortcut for:
@@ -202,33 +204,33 @@ reason of a potential failure.
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
 	// Matches as all items are present
-	ok := t.Bag(got, []interface{}{1, 1, 2, 3, 5, 8, 8},
+	ok := t.Bag(got, []any{1, 1, 2, 3, 5, 8, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	// Does not match as got contains 2 times 1 and 8, and these
 	// duplicates are not expected
-	ok = t.Bag(got, []interface{}{1, 2, 3, 5, 8},
+	ok = t.Bag(got, []any{1, 2, 3, 5, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	got = []int{1, 3, 5, 8, 2}
 
 	// Duplicates of 1 and 8 are expected but not present in got
-	ok = t.Bag(got, []interface{}{1, 1, 2, 3, 5, 8, 8},
+	ok = t.Bag(got, []any{1, 1, 2, 3, 5, 8, 8},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
 	// Matches as all items are present
-	ok = t.Bag(got, []interface{}{1, 2, 3, 5, td.Gt(7)},
+	ok = t.Bag(got, []any{1, 2, 3, 5, td.Gt(7)},
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 5}
-	ok = t.Bag(got, []interface{}{td.Flatten(expected), td.Gt(7)},
+	ok = t.Bag(got, []any{td.Flatten(expected), td.Gt(7)},
 		"checks all expected items are present, in any order")
 	fmt.Println(ok)
 

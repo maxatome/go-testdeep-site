@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func Gte(minExpectedValue interface{}) TestDeep
+func Gte(minExpectedValue any) TestDeep
 ```
 
 [`Gte`]({{< ref "Gte" >}}) operator checks that data is greater or equal than
-*minExpectedValue*. *minExpectedValue* can be any numeric, `string`,
+*minExpectedValue*. *minExpectedValue* can be `any` numeric, `string`,
 [`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) value or implements at least one of the
 two following methods:
 ```go
@@ -75,7 +75,7 @@ td.Cmp(t, time.Now(), td.Gte(before))
 ## CmpGte shortcut
 
 ```go
-func CmpGte(t TestingT, got, minExpectedValue interface{}, args ...interface{}) bool
+func CmpGte(t TestingT, got, minExpectedValue any, args ...any) bool
 ```
 
 CmpGte is a shortcut for:
@@ -87,6 +87,8 @@ td.Cmp(t, got, td.Gte(minExpectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -143,7 +145,7 @@ reason of a potential failure.
 ## T.Gte shortcut
 
 ```go
-func (t *T) Gte(got, minExpectedValue interface{}, args ...interface{}) bool
+func (t *T) Gte(got, minExpectedValue any, args ...any) bool
 ```
 
 [`Gte`]({{< ref "Gte" >}}) is a shortcut for:

@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func SubSetOf(expectedItems ...interface{}) TestDeep
+func SubSetOf(expectedItems ...any) TestDeep
 ```
 
 [`SubSetOf`]({{< ref "SubSetOf" >}}) operator compares the contents of an array or a slice (or a
@@ -26,7 +26,7 @@ td.Cmp(t, personSlice, td.SubSetOf(
 ))
 ```
 
-To flatten a non-`[]interface{}` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
+To flatten a non-`[]any` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
 and so avoid boring and inefficient copies:
 
 ```go
@@ -66,9 +66,9 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 4, 5, 6, 7, 8}
 	ok = td.Cmp(t, got, td.SubSetOf(td.Flatten(expected)),
 		"checks at least all expected items are present, in any order, ignoring duplicates")
@@ -83,7 +83,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpSubSetOf shortcut
 
 ```go
-func CmpSubSetOf(t TestingT, got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func CmpSubSetOf(t TestingT, got any, expectedItems []any, args ...any) bool
 ```
 
 CmpSubSetOf is a shortcut for:
@@ -95,6 +95,8 @@ td.Cmp(t, got, td.SubSetOf(expectedItems...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -114,21 +116,21 @@ reason of a potential failure.
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
 	// Matches as all items are expected, ignoring duplicates
-	ok := td.CmpSubSetOf(t, got, []interface{}{1, 2, 3, 4, 5, 6, 7, 8},
+	ok := td.CmpSubSetOf(t, got, []any{1, 2, 3, 4, 5, 6, 7, 8},
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
 	// Tries its best to not raise an error when a value can be matched
 	// by several SubSetOf entries
-	ok = td.CmpSubSetOf(t, got, []interface{}{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
+	ok = td.CmpSubSetOf(t, got, []any{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 4, 5, 6, 7, 8}
-	ok = td.CmpSubSetOf(t, got, []interface{}{td.Flatten(expected)},
+	ok = td.CmpSubSetOf(t, got, []any{td.Flatten(expected)},
 		"checks at least all expected items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
@@ -141,7 +143,7 @@ reason of a potential failure.
 ## T.SubSetOf shortcut
 
 ```go
-func (t *T) SubSetOf(got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func (t *T) SubSetOf(got any, expectedItems []any, args ...any) bool
 ```
 
 [`SubSetOf`]({{< ref "SubSetOf" >}}) is a shortcut for:
@@ -172,21 +174,21 @@ reason of a potential failure.
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
 	// Matches as all items are expected, ignoring duplicates
-	ok := t.SubSetOf(got, []interface{}{1, 2, 3, 4, 5, 6, 7, 8},
+	ok := t.SubSetOf(got, []any{1, 2, 3, 4, 5, 6, 7, 8},
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
 	// Tries its best to not raise an error when a value can be matched
 	// by several SubSetOf entries
-	ok = t.SubSetOf(got, []interface{}{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
+	ok = t.SubSetOf(got, []any{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3, 4, 5, 6, 7, 8}
-	ok = t.SubSetOf(got, []interface{}{td.Flatten(expected)},
+	ok = t.SubSetOf(got, []any{td.Flatten(expected)},
 		"checks at least all expected items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 

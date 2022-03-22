@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func ContainsKey(expectedValue interface{}) TestDeep
+func ContainsKey(expectedValue any) TestDeep
 ```
 
 [`ContainsKey`]({{< ref "ContainsKey" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) and works on maps only. It
@@ -92,7 +92,7 @@ td.Cmp(t, hnum, td.ContainsKey((*byte)(nil))) // fails: (*byte)(nil) ≠ (*int)(
 ## CmpContainsKey shortcut
 
 ```go
-func CmpContainsKey(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
+func CmpContainsKey(t TestingT, got, expectedValue any, args ...any) bool
 ```
 
 CmpContainsKey is a shortcut for:
@@ -104,6 +104,8 @@ td.Cmp(t, got, td.ContainsKey(expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -163,7 +165,7 @@ reason of a potential failure.
 ## T.ContainsKey shortcut
 
 ```go
-func (t *T) ContainsKey(got, expectedValue interface{}, args ...interface{}) bool
+func (t *T) ContainsKey(got, expectedValue any, args ...any) bool
 ```
 
 [`ContainsKey`]({{< ref "ContainsKey" >}}) is a shortcut for:

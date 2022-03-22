@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Any(expectedValues ...interface{}) TestDeep
+func Any(expectedValues ...any) TestDeep
 ```
 
 [`Any`]({{< ref "Any" >}}) operator compares data against several expected values. During
@@ -59,7 +59,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("a/c"), td.Re(`^xx`), td.Re(`ar$`)})
 	ok = td.Cmp(t,
 		got,
@@ -76,7 +76,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpAny shortcut
 
 ```go
-func CmpAny(t TestingT, got interface{}, expectedValues []interface{}, args ...interface{}) bool
+func CmpAny(t TestingT, got any, expectedValues []any, args ...any) bool
 ```
 
 CmpAny is a shortcut for:
@@ -88,6 +88,8 @@ td.Cmp(t, got, td.Any(expectedValues...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -108,21 +110,21 @@ reason of a potential failure.
 
 	// Checks got string against:
 	//   "zip" regexp *OR* "bar" suffix
-	ok := td.CmpAny(t, got, []interface{}{td.Re("zip"), td.HasSuffix("bar")},
+	ok := td.CmpAny(t, got, []any{td.Re("zip"), td.HasSuffix("bar")},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// Checks got string against:
 	//   "zip" regexp *OR* "foo" suffix
-	ok = td.CmpAny(t, got, []interface{}{td.Re("zip"), td.HasSuffix("foo")},
+	ok = td.CmpAny(t, got, []any{td.Re("zip"), td.HasSuffix("foo")},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("a/c"), td.Re(`^xx`), td.Re(`ar$`)})
-	ok = td.CmpAny(t, got, []interface{}{td.HasPrefix("xxx"), regOps, td.HasSuffix("zip")},
+	ok = td.CmpAny(t, got, []any{td.HasPrefix("xxx"), regOps, td.HasSuffix("zip")},
 		"check at least one operator matches value %s", got)
 	fmt.Println(ok)
 
@@ -135,7 +137,7 @@ reason of a potential failure.
 ## T.Any shortcut
 
 ```go
-func (t *T) Any(got interface{}, expectedValues []interface{}, args ...interface{}) bool
+func (t *T) Any(got any, expectedValues []any, args ...any) bool
 ```
 
 [`Any`]({{< ref "Any" >}}) is a shortcut for:
@@ -167,21 +169,21 @@ reason of a potential failure.
 
 	// Checks got string against:
 	//   "zip" regexp *OR* "bar" suffix
-	ok := t.Any(got, []interface{}{td.Re("zip"), td.HasSuffix("bar")},
+	ok := t.Any(got, []any{td.Re("zip"), td.HasSuffix("bar")},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// Checks got string against:
 	//   "zip" regexp *OR* "foo" suffix
-	ok = t.Any(got, []interface{}{td.Re("zip"), td.HasSuffix("foo")},
+	ok = t.Any(got, []any{td.Re("zip"), td.HasSuffix("foo")},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("a/c"), td.Re(`^xx`), td.Re(`ar$`)})
-	ok = t.Any(got, []interface{}{td.HasPrefix("xxx"), regOps, td.HasSuffix("zip")},
+	ok = t.Any(got, []any{td.HasPrefix("xxx"), regOps, td.HasSuffix("zip")},
 		"check at least one operator matches value %s", got)
 	fmt.Println(ok)
 

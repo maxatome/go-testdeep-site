@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func PPtr(val interface{}) TestDeep
+func PPtr(val any) TestDeep
 ```
 
 [`PPtr`]({{< ref "PPtr" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the address of the address of
@@ -64,7 +64,7 @@ non-`nil` of course).
 ## CmpPPtr shortcut
 
 ```go
-func CmpPPtr(t TestingT, got, val interface{}, args ...interface{}) bool
+func CmpPPtr(t TestingT, got, val any, args ...any) bool
 ```
 
 CmpPPtr is a shortcut for:
@@ -76,6 +76,8 @@ td.Cmp(t, got, td.PPtr(val), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -109,7 +111,7 @@ reason of a potential failure.
 ## T.PPtr shortcut
 
 ```go
-func (t *T) PPtr(got, val interface{}, args ...interface{}) bool
+func (t *T) PPtr(got, val any, args ...any) bool
 ```
 
 [`PPtr`]({{< ref "PPtr" >}}) is a shortcut for:

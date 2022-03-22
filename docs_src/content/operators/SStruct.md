@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func SStruct(model interface{}, expectedFields ...StructFields) TestDeep
+func SStruct(model any, expectedFields ...StructFields) TestDeep
 ```
 
 [`SStruct`]({{< ref "SStruct" >}}) operator (aka strict-[`Struct`]({{< ref "Struct" >}})) compares the contents of a
-struct or a pointer on a struct against values of *model* (if any)
+struct or a pointer on a struct against values of *model* (if `any`)
 and the values of *expectedFields*. The zero values are compared
 too even if they are omitted from *expectedFields*: that is the
 difference with [`Struct`]({{< ref "Struct" >}}) operator.
@@ -304,7 +304,7 @@ succeed.
 ## CmpSStruct shortcut
 
 ```go
-func CmpSStruct(t TestingT, got, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func CmpSStruct(t TestingT, got, model any, expectedFields StructFields, args ...any) bool
 ```
 
 CmpSStruct is a shortcut for:
@@ -320,6 +320,8 @@ See above for details.
 original [`SStruct()`]({{< ref "SStruct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -486,7 +488,7 @@ reason of a potential failure.
 ## T.SStruct shortcut
 
 ```go
-func (t *T) SStruct(got, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func (t *T) SStruct(got, model any, expectedFields StructFields, args ...any) bool
 ```
 
 [`SStruct`]({{< ref "SStruct" >}}) is a shortcut for:

@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func NotAny(notExpectedItems ...interface{}) TestDeep
+func NotAny(notExpectedItems ...any) TestDeep
 ```
 
 [`NotAny`]({{< ref "NotAny" >}}) operator checks that the contents of an array or a slice (or
-a pointer on array/slice) does not contain any of *notExpectedItems*.
+a pointer on array/slice) does not contain `any` of *notExpectedItems*.
 
 ```go
 td.Cmp(t, []int{1}, td.NotAny(1, 2, 3)) // fails
@@ -21,7 +21,7 @@ td.Cmp(t, personSlice, td.NotAny(
 ))
 ```
 
-To flatten a non-`[]interface{}` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
+To flatten a non-`[]any` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
 and so avoid boring and inefficient copies:
 
 ```go
@@ -61,9 +61,9 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 		"checks %v contains no item listed in NotAny()", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using notExpected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	notExpected := []int{3, 6, 8, 41, 43}
 	ok = td.Cmp(t, got, td.NotAny(td.Flatten(notExpected)),
 		"checks %v contains no item listed in notExpected", got)
@@ -78,7 +78,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpNotAny shortcut
 
 ```go
-func CmpNotAny(t TestingT, got interface{}, notExpectedItems []interface{}, args ...interface{}) bool
+func CmpNotAny(t TestingT, got any, notExpectedItems []any, args ...any) bool
 ```
 
 CmpNotAny is a shortcut for:
@@ -90,6 +90,8 @@ td.Cmp(t, got, td.NotAny(notExpectedItems...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -108,19 +110,19 @@ reason of a potential failure.
 
 	got := []int{4, 5, 9, 42}
 
-	ok := td.CmpNotAny(t, got, []interface{}{3, 6, 8, 41, 43},
+	ok := td.CmpNotAny(t, got, []any{3, 6, 8, 41, 43},
 		"checks %v contains no item listed in NotAny()", got)
 	fmt.Println(ok)
 
-	ok = td.CmpNotAny(t, got, []interface{}{3, 6, 8, 42, 43},
+	ok = td.CmpNotAny(t, got, []any{3, 6, 8, 42, 43},
 		"checks %v contains no item listed in NotAny()", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using notExpected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	notExpected := []int{3, 6, 8, 41, 43}
-	ok = td.CmpNotAny(t, got, []interface{}{td.Flatten(notExpected)},
+	ok = td.CmpNotAny(t, got, []any{td.Flatten(notExpected)},
 		"checks %v contains no item listed in notExpected", got)
 	fmt.Println(ok)
 
@@ -133,7 +135,7 @@ reason of a potential failure.
 ## T.NotAny shortcut
 
 ```go
-func (t *T) NotAny(got interface{}, notExpectedItems []interface{}, args ...interface{}) bool
+func (t *T) NotAny(got any, notExpectedItems []any, args ...any) bool
 ```
 
 [`NotAny`]({{< ref "NotAny" >}}) is a shortcut for:
@@ -163,19 +165,19 @@ reason of a potential failure.
 
 	got := []int{4, 5, 9, 42}
 
-	ok := t.NotAny(got, []interface{}{3, 6, 8, 41, 43},
+	ok := t.NotAny(got, []any{3, 6, 8, 41, 43},
 		"checks %v contains no item listed in NotAny()", got)
 	fmt.Println(ok)
 
-	ok = t.NotAny(got, []interface{}{3, 6, 8, 42, 43},
+	ok = t.NotAny(got, []any{3, 6, 8, 42, 43},
 		"checks %v contains no item listed in NotAny()", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using notExpected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	notExpected := []int{3, 6, 8, 41, 43}
-	ok = t.NotAny(got, []interface{}{td.Flatten(notExpected)},
+	ok = t.NotAny(got, []any{td.Flatten(notExpected)},
 		"checks %v contains no item listed in notExpected", got)
 	fmt.Println(ok)
 

@@ -59,9 +59,9 @@ fails with the error
 and in most cases you want it fails, because `err` is not nil! The
 pointer stored in the interface is nil, but not the interface itself.
 
-As [`Cmp`] `got` parameter type is `interface{}`, when you pass an
+As [`Cmp`] `got` parameter type is `any`, when you pass an
 interface variable in it (whatever the interface is), [`Cmp`] always
-receives an `interface{}`. So here, [`Cmp`] receives `(*MyError)(nil)`
+receives an `any`. So here, [`Cmp`] receives `(*MyError)(nil)`
 in the `got` interface, and not `error((*MyError)(nil))` ⇒ the `error`
 interface information is lost at the compilation time.
 
@@ -196,7 +196,7 @@ func TestPerson(tt *testing.T) {
       from the operator, but as [`NotZero`]({{< ref "NotZero" >}}) can
       handle any kind of number, it is not the case here. So we have
       to pass it,
-   4. as [`A`] method returns an `interface{}`, we need to assert the
+   4. as [`A`] method returns an `any`, we need to assert the
       `int64` type to bypass the golang static typing system,
 5. `Age `field should be ≥ 40 and ≤ 45: anchor the
    [`Between`]({{< ref "between" >}}) operator using the [`A`]
@@ -212,7 +212,7 @@ func TestPerson(tt *testing.T) {
       knows the type of its operands (here `uint8`), there is no need
       to tell [`A`] the returned type must be `uint8`. It can be deduced
       from [`Between`]({{< ref "between" >}}),
-   3. as [`A`] method returns an `interface{}`, we need to assert the
+   3. as [`A`] method returns an `any`, we need to assert the
       `uint8` type to bypass the golang static typing system.
 
 Note the [`A`] method is a shortcut of [`Anchor`] method.
@@ -1052,7 +1052,7 @@ zone ("Z" suffix) and then to compare it as a `time.Time` against
 or, of course, a `time.Time` value).
 
 ```golang
-func RFC3339ZToTime(expectedValue interface{}) td.TestDeep {
+func RFC3339ZToTime(expectedValue any) td.TestDeep {
   return td.All(
     td.HasSuffix("Z"),
     td.Smuggle(func(s string) (time.Time, error) {

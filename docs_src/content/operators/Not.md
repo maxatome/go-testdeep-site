@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Not(notExpected interface{}) TestDeep
+func Not(notExpected any) TestDeep
 ```
 
 [`Not`]({{< ref "Not" >}}) operator compares data against the not expected value. During a
@@ -50,7 +50,7 @@ td.Cmp(t, 12, td.Not(12)) // fails
 ## CmpNot shortcut
 
 ```go
-func CmpNot(t TestingT, got, notExpected interface{}, args ...interface{}) bool
+func CmpNot(t TestingT, got, notExpected any, args ...any) bool
 ```
 
 CmpNot is a shortcut for:
@@ -62,6 +62,8 @@ td.Cmp(t, got, td.Not(notExpected), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -101,7 +103,7 @@ reason of a potential failure.
 ## T.Not shortcut
 
 ```go
-func (t *T) Not(got, notExpected interface{}, args ...interface{}) bool
+func (t *T) Not(got, notExpected any, args ...any) bool
 ```
 
 [`Not`]({{< ref "Not" >}}) is a shortcut for:

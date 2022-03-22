@@ -73,7 +73,7 @@ td.Cmp(t, bstr, td.HasSuffix("!")) // succeeds
 ## CmpHasSuffix shortcut
 
 ```go
-func CmpHasSuffix(t TestingT, got interface{}, expected string, args ...interface{}) bool
+func CmpHasSuffix(t TestingT, got any, expected string, args ...any) bool
 ```
 
 CmpHasSuffix is a shortcut for:
@@ -85,6 +85,8 @@ td.Cmp(t, got, td.HasSuffix(expected), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -142,7 +144,7 @@ reason of a potential failure.
 ## T.HasSuffix shortcut
 
 ```go
-func (t *T) HasSuffix(got interface{}, expected string, args ...interface{}) bool
+func (t *T) HasSuffix(got any, expected string, args ...any) bool
 ```
 
 [`HasSuffix`]({{< ref "HasSuffix" >}}) is a shortcut for:

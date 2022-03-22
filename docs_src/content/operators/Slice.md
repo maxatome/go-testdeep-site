@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Slice(model interface{}, expectedEntries ArrayEntries) TestDeep
+func Slice(model any, expectedEntries ArrayEntries) TestDeep
 ```
 
 [`Slice`]({{< ref "Slice" >}}) operator compares the contents of a slice or a pointer on a
@@ -95,7 +95,7 @@ td.Cmp(t, &got,
 ## CmpSlice shortcut
 
 ```go
-func CmpSlice(t TestingT, got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func CmpSlice(t TestingT, got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 CmpSlice is a shortcut for:
@@ -107,6 +107,8 @@ td.Cmp(t, got, td.Slice(model, expectedEntries), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -176,7 +178,7 @@ reason of a potential failure.
 ## T.Slice shortcut
 
 ```go
-func (t *T) Slice(got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func (t *T) Slice(got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 [`Slice`]({{< ref "Slice" >}}) is a shortcut for:

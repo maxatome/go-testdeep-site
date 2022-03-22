@@ -4,12 +4,12 @@ weight: 10
 ---
 
 ```go
-func SuperSliceOf(model interface{}, expectedEntries ArrayEntries) TestDeep
+func SuperSliceOf(model any, expectedEntries ArrayEntries) TestDeep
 ```
 
 [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}) operator compares the contents of an array, a pointer
 on an array, a slice or a pointer on a slice against the non-zero
-values of *model* (if any) and the values of *expectedEntries*. So
+values of *model* (if `any`) and the values of *expectedEntries*. So
 entries with zero value of *model* are always ignored. If a zero
 value check is needed, this zero value has to be set in
 *expectedEntries*. An entry cannot be present in both *model* and
@@ -182,7 +182,7 @@ td.Cmp(t, &got, td.SuperSliceOf(&[5]int{0, 14}, td.ArrayEntries{2: td.Gt(16)})) 
 ## CmpSuperSliceOf shortcut
 
 ```go
-func CmpSuperSliceOf(t TestingT, got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func CmpSuperSliceOf(t TestingT, got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 CmpSuperSliceOf is a shortcut for:
@@ -194,6 +194,8 @@ td.Cmp(t, got, td.SuperSliceOf(model, expectedEntries), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -326,7 +328,7 @@ reason of a potential failure.
 ## T.SuperSliceOf shortcut
 
 ```go
-func (t *T) SuperSliceOf(got, model interface{}, expectedEntries ArrayEntries, args ...interface{}) bool
+func (t *T) SuperSliceOf(got, model any, expectedEntries ArrayEntries, args ...any) bool
 ```
 
 [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}) is a shortcut for:

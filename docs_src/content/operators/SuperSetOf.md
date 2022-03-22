@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func SuperSetOf(expectedItems ...interface{}) TestDeep
+func SuperSetOf(expectedItems ...any) TestDeep
 ```
 
 [`SuperSetOf`]({{< ref "SuperSetOf" >}}) operator compares the contents of an array or a slice (or
@@ -26,7 +26,7 @@ td.Cmp(t, personSlice, td.SuperSetOf(
 ))
 ```
 
-To flatten a non-`[]interface{}` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
+To flatten a non-`[]any` slice/array, use [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) function
 and so avoid boring and inefficient copies:
 
 ```go
@@ -63,9 +63,9 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 		"checks at least 2 items of %v match ignoring duplicates", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3}
 	ok = td.Cmp(t, got, td.SuperSetOf(td.Flatten(expected)),
 		"checks the expected items are present, in any order and ignoring duplicates")
@@ -80,7 +80,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpSuperSetOf shortcut
 
 ```go
-func CmpSuperSetOf(t TestingT, got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func CmpSuperSetOf(t TestingT, got any, expectedItems []any, args ...any) bool
 ```
 
 CmpSuperSetOf is a shortcut for:
@@ -92,6 +92,8 @@ td.Cmp(t, got, td.SuperSetOf(expectedItems...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -110,19 +112,19 @@ reason of a potential failure.
 
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
-	ok := td.CmpSuperSetOf(t, got, []interface{}{1, 2, 3},
+	ok := td.CmpSuperSetOf(t, got, []any{1, 2, 3},
 		"checks the items are present, in any order and ignoring duplicates")
 	fmt.Println(ok)
 
-	ok = td.CmpSuperSetOf(t, got, []interface{}{td.Gt(5), td.Lte(2)},
+	ok = td.CmpSuperSetOf(t, got, []any{td.Gt(5), td.Lte(2)},
 		"checks at least 2 items of %v match ignoring duplicates", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3}
-	ok = td.CmpSuperSetOf(t, got, []interface{}{td.Flatten(expected)},
+	ok = td.CmpSuperSetOf(t, got, []any{td.Flatten(expected)},
 		"checks the expected items are present, in any order and ignoring duplicates")
 	fmt.Println(ok)
 
@@ -135,7 +137,7 @@ reason of a potential failure.
 ## T.SuperSetOf shortcut
 
 ```go
-func (t *T) SuperSetOf(got interface{}, expectedItems []interface{}, args ...interface{}) bool
+func (t *T) SuperSetOf(got any, expectedItems []any, args ...any) bool
 ```
 
 [`SuperSetOf`]({{< ref "SuperSetOf" >}}) is a shortcut for:
@@ -165,19 +167,19 @@ reason of a potential failure.
 
 	got := []int{1, 3, 5, 8, 8, 1, 2}
 
-	ok := t.SuperSetOf(got, []interface{}{1, 2, 3},
+	ok := t.SuperSetOf(got, []any{1, 2, 3},
 		"checks the items are present, in any order and ignoring duplicates")
 	fmt.Println(ok)
 
-	ok = t.SuperSetOf(got, []interface{}{td.Gt(5), td.Lte(2)},
+	ok = t.SuperSetOf(got, []any{td.Gt(5), td.Lte(2)},
 		"checks at least 2 items of %v match ignoring duplicates", got)
 	fmt.Println(ok)
 
-	// When expected is already a non-[]interface{} slice, it cannot be
+	// When expected is already a non-[]any slice, it cannot be
 	// flattened directly using expected... without copying it to a new
-	// []interface{} slice, then use td.Flatten!
+	// []any slice, then use td.Flatten!
 	expected := []int{1, 2, 3}
-	ok = t.SuperSetOf(got, []interface{}{td.Flatten(expected)},
+	ok = t.SuperSetOf(got, []any{td.Flatten(expected)},
 		"checks the expected items are present, in any order and ignoring duplicates")
 	fmt.Println(ok)
 

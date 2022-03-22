@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Isa(model interface{}) TestDeep
+func Isa(model any) TestDeep
 ```
 
 [`Isa`]({{< ref "Isa" >}}) operator checks the data type or whether data implements an
@@ -107,7 +107,7 @@ it implements [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) or not).
 ## CmpIsa shortcut
 
 ```go
-func CmpIsa(t TestingT, got, model interface{}, args ...interface{}) bool
+func CmpIsa(t TestingT, got, model any, args ...any) bool
 ```
 
 CmpIsa is a shortcut for:
@@ -119,6 +119,8 @@ td.Cmp(t, got, td.Isa(model), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -196,7 +198,7 @@ reason of a potential failure.
 ## T.Isa shortcut
 
 ```go
-func (t *T) Isa(got, model interface{}, args ...interface{}) bool
+func (t *T) Isa(got, model any, args ...any) bool
 ```
 
 [`Isa`]({{< ref "Isa" >}}) is a shortcut for:

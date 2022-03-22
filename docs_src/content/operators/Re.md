@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Re(reg interface{}, capture ...interface{}) TestDeep
+func Re(reg any, capture ...any) TestDeep
 ```
 
 [`Re`]({{< ref "Re" >}}) operator allows to apply a regexp on a `string` (or convertible),
@@ -157,7 +157,7 @@ td.Cmp(t, "John Doe",
 ## CmpRe shortcut
 
 ```go
-func CmpRe(t TestingT, got, reg , capture interface{}, args ...interface{}) bool
+func CmpRe(t TestingT, got, reg , capture any, args ...any) bool
 ```
 
 CmpRe is a shortcut for:
@@ -173,6 +173,8 @@ See above for details.
 original [`Re()`]({{< ref "Re" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -311,7 +313,7 @@ reason of a potential failure.
 ## T.Re shortcut
 
 ```go
-func (t *T) Re(got, reg , capture interface{}, args ...interface{}) bool
+func (t *T) Re(got, reg , capture any, args ...any) bool
 ```
 
 [`Re`]({{< ref "Re" >}}) is a shortcut for:

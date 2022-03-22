@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func ReAll(reg, capture interface{}) TestDeep
+func ReAll(reg, capture any) TestDeep
 ```
 
 [`ReAll`]({{< ref "ReAll" >}}) operator allows to successively apply a regexp on a `string`
@@ -128,7 +128,7 @@ td.Cmp(t, "John Doe",
 ## CmpReAll shortcut
 
 ```go
-func CmpReAll(t TestingT, got, reg , capture interface{}, args ...interface{}) bool
+func CmpReAll(t TestingT, got, reg , capture any, args ...any) bool
 ```
 
 CmpReAll is a shortcut for:
@@ -140,6 +140,8 @@ td.Cmp(t, got, td.ReAll(reg, capture), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -246,7 +248,7 @@ reason of a potential failure.
 ## T.ReAll shortcut
 
 ```go
-func (t *T) ReAll(got, reg , capture interface{}, args ...interface{}) bool
+func (t *T) ReAll(got, reg , capture any, args ...any) bool
 ```
 
 [`ReAll`]({{< ref "ReAll" >}}) is a shortcut for:

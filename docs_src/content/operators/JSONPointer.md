@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func JSONPointer(pointer string, expectedValue interface{}) TestDeep
+func JSONPointer(pointer string, expectedValue any) TestDeep
 ```
 
 JSONPointer is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the JSON
@@ -42,9 +42,9 @@ td.Cmp(t, got, td.JSONPointer("/zzz", td.Between(40, 45)))
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
 as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
-`string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
+`string`, `[]any`, `map[string]any` or simply `nil`).
 
-Note that as any [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
+Note that as `any` [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
 [`JSON`]({{< ref "JSON" >}}) operator works out of the box:
 
 ```go
@@ -106,8 +106,8 @@ guessed from a [`JSON`]({{< ref "JSON" >}}) pointer.
    "m~n":  8
 }`)
 
-	expected := map[string]interface{}{
-		"foo": []interface{}{"bar", "baz"},
+	expected := map[string]any{
+		"foo": []any{"bar", "baz"},
 		"":    0,
 		"a/b": 1,
 		"c%d": 2,
@@ -121,7 +121,7 @@ guessed from a [`JSON`]({{< ref "JSON" >}}) pointer.
 	ok := td.Cmp(t, got, td.JSONPointer("", expected))
 	fmt.Println("Empty JSON pointer means all:", ok)
 
-	ok = td.Cmp(t, got, td.JSONPointer(`/foo`, []interface{}{"bar", "baz"}))
+	ok = td.Cmp(t, got, td.JSONPointer(`/foo`, []any{"bar", "baz"}))
 	fmt.Println("Extract `foo` key:", ok)
 
 	ok = td.Cmp(t, got, td.JSONPointer(`/foo/0`, "bar"))
@@ -276,7 +276,7 @@ guessed from a [`JSON`]({{< ref "JSON" >}}) pointer.
 ## CmpJSONPointer shortcut
 
 ```go
-func CmpJSONPointer(t TestingT, got interface{}, pointer string, expectedValue interface{}, args ...interface{}) bool
+func CmpJSONPointer(t TestingT, got any, pointer string, expectedValue any, args ...any) bool
 ```
 
 CmpJSONPointer is a shortcut for:
@@ -288,6 +288,8 @@ td.Cmp(t, got, td.JSONPointer(pointer, expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -318,8 +320,8 @@ reason of a potential failure.
    "m~n":  8
 }`)
 
-	expected := map[string]interface{}{
-		"foo": []interface{}{"bar", "baz"},
+	expected := map[string]any{
+		"foo": []any{"bar", "baz"},
 		"":    0,
 		"a/b": 1,
 		"c%d": 2,
@@ -333,7 +335,7 @@ reason of a potential failure.
 	ok := td.CmpJSONPointer(t, got, "", expected)
 	fmt.Println("Empty JSON pointer means all:", ok)
 
-	ok = td.CmpJSONPointer(t, got, `/foo`, []interface{}{"bar", "baz"})
+	ok = td.CmpJSONPointer(t, got, `/foo`, []any{"bar", "baz"})
 	fmt.Println("Extract `foo` key:", ok)
 
 	ok = td.CmpJSONPointer(t, got, `/foo/0`, "bar")
@@ -486,7 +488,7 @@ reason of a potential failure.
 ## T.JSONPointer shortcut
 
 ```go
-func (t *T) JSONPointer(got interface{}, pointer string, expectedValue interface{}, args ...interface{}) bool
+func (t *T) JSONPointer(got any, pointer string, expectedValue any, args ...any) bool
 ```
 
 JSONPointer is a shortcut for:
@@ -528,8 +530,8 @@ reason of a potential failure.
    "m~n":  8
 }`)
 
-	expected := map[string]interface{}{
-		"foo": []interface{}{"bar", "baz"},
+	expected := map[string]any{
+		"foo": []any{"bar", "baz"},
 		"":    0,
 		"a/b": 1,
 		"c%d": 2,
@@ -543,7 +545,7 @@ reason of a potential failure.
 	ok := t.JSONPointer(got, "", expected)
 	fmt.Println("Empty JSON pointer means all:", ok)
 
-	ok = t.JSONPointer(got, `/foo`, []interface{}{"bar", "baz"})
+	ok = t.JSONPointer(got, `/foo`, []any{"bar", "baz"})
 	fmt.Println("Extract `foo` key:", ok)
 
 	ok = t.JSONPointer(got, `/foo/0`, "bar")

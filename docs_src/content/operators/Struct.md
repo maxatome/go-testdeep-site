@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func Struct(model interface{}, expectedFields ...StructFields) TestDeep
+func Struct(model any, expectedFields ...StructFields) TestDeep
 ```
 
 [`Struct`]({{< ref "Struct" >}}) operator compares the contents of a struct or a pointer on a
-struct against the non-zero values of *model* (if any) and the
+struct against the non-zero values of *model* (if `any`) and the
 values of *expectedFields*. See [`SStruct`]({{< ref "SStruct" >}}) to compares against zero
 fields without specifying them in *expectedFields*.
 
@@ -294,7 +294,7 @@ succeed. Non-expected fields are ignored.
 ## CmpStruct shortcut
 
 ```go
-func CmpStruct(t TestingT, got, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func CmpStruct(t TestingT, got, model any, expectedFields StructFields, args ...any) bool
 ```
 
 CmpStruct is a shortcut for:
@@ -310,6 +310,8 @@ See above for details.
 original [`Struct()`]({{< ref "Struct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -467,7 +469,7 @@ reason of a potential failure.
 ## T.Struct shortcut
 
 ```go
-func (t *T) Struct(got, model interface{}, expectedFields StructFields, args ...interface{}) bool
+func (t *T) Struct(got, model any, expectedFields StructFields, args ...any) bool
 ```
 
 [`Struct`]({{< ref "Struct" >}}) is a shortcut for:

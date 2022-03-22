@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func N(num interface{}, tolerance ...interface{}) TestDeep
+func N(num any, tolerance ...any) TestDeep
 ```
 
 [`N`]({{< ref "N" >}}) operator compares a numeric data against *num* ± *tolerance*. If
@@ -40,7 +40,7 @@ td.Cmp(t, 12.2, td.N(12., 0.1)) // fails
 ## CmpN shortcut
 
 ```go
-func CmpN(t TestingT, got, num , tolerance interface{}, args ...interface{}) bool
+func CmpN(t TestingT, got, num , tolerance any, args ...any) bool
 ```
 
 CmpN is a shortcut for:
@@ -56,6 +56,8 @@ See above for details.
 original [`N()`]({{< ref "N" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -85,7 +87,7 @@ reason of a potential failure.
 ## T.N shortcut
 
 ```go
-func (t *T) N(got, num , tolerance interface{}, args ...interface{}) bool
+func (t *T) N(got, num , tolerance any, args ...any) bool
 ```
 
 [`N`]({{< ref "N" >}}) is a shortcut for:

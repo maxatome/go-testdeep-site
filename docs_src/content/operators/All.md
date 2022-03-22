@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func All(expectedValues ...interface{}) TestDeep
+func All(expectedValues ...any) TestDeep
 ```
 
 [`All`]({{< ref "All" >}}) operator compares data against several expected values. During
@@ -76,7 +76,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("o/b"), td.Re(`^fo`), td.Re(`ar$`)})
 	ok = td.Cmp(t,
 		got,
@@ -93,7 +93,7 @@ are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
 ## CmpAll shortcut
 
 ```go
-func CmpAll(t TestingT, got interface{}, expectedValues []interface{}, args ...interface{}) bool
+func CmpAll(t TestingT, got any, expectedValues []any, args ...any) bool
 ```
 
 CmpAll is a shortcut for:
@@ -105,6 +105,8 @@ td.Cmp(t, got, td.All(expectedValues...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -125,21 +127,21 @@ reason of a potential failure.
 
 	// Checks got string against:
 	//   "o/b" regexp *AND* "bar" suffix *AND* exact "foo/bar" string
-	ok := td.CmpAll(t, got, []interface{}{td.Re("o/b"), td.HasSuffix("bar"), "foo/bar"},
+	ok := td.CmpAll(t, got, []any{td.Re("o/b"), td.HasSuffix("bar"), "foo/bar"},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// Checks got string against:
 	//   "o/b" regexp *AND* "bar" suffix *AND* exact "fooX/Ybar" string
-	ok = td.CmpAll(t, got, []interface{}{td.Re("o/b"), td.HasSuffix("bar"), "fooX/Ybar"},
+	ok = td.CmpAll(t, got, []any{td.Re("o/b"), td.HasSuffix("bar"), "fooX/Ybar"},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("o/b"), td.Re(`^fo`), td.Re(`ar$`)})
-	ok = td.CmpAll(t, got, []interface{}{td.HasPrefix("foo"), regOps, td.HasSuffix("bar")},
+	ok = td.CmpAll(t, got, []any{td.HasPrefix("foo"), regOps, td.HasSuffix("bar")},
 		"checks all operators against value %s", got)
 	fmt.Println(ok)
 
@@ -152,7 +154,7 @@ reason of a potential failure.
 ## T.All shortcut
 
 ```go
-func (t *T) All(got interface{}, expectedValues []interface{}, args ...interface{}) bool
+func (t *T) All(got any, expectedValues []any, args ...any) bool
 ```
 
 [`All`]({{< ref "All" >}}) is a shortcut for:
@@ -184,21 +186,21 @@ reason of a potential failure.
 
 	// Checks got string against:
 	//   "o/b" regexp *AND* "bar" suffix *AND* exact "foo/bar" string
-	ok := t.All(got, []interface{}{td.Re("o/b"), td.HasSuffix("bar"), "foo/bar"},
+	ok := t.All(got, []any{td.Re("o/b"), td.HasSuffix("bar"), "foo/bar"},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// Checks got string against:
 	//   "o/b" regexp *AND* "bar" suffix *AND* exact "fooX/Ybar" string
-	ok = t.All(got, []interface{}{td.Re("o/b"), td.HasSuffix("bar"), "fooX/Ybar"},
+	ok = t.All(got, []any{td.Re("o/b"), td.HasSuffix("bar"), "fooX/Ybar"},
 		"checks value %s", got)
 	fmt.Println(ok)
 
 	// When some operators or values have to be reused and mixed between
 	// several calls, Flatten can be used to avoid boring and
-	// inefficient []interface{} copies:
+	// inefficient []any copies:
 	regOps := td.Flatten([]td.TestDeep{td.Re("o/b"), td.Re(`^fo`), td.Re(`ar$`)})
-	ok = t.All(got, []interface{}{td.HasPrefix("foo"), regOps, td.HasSuffix("bar")},
+	ok = t.All(got, []any{td.HasPrefix("foo"), regOps, td.HasSuffix("bar")},
 		"checks all operators against value %s", got)
 	fmt.Println(ok)
 

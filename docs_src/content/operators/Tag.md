@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Tag(tag string, expectedValue interface{}) TestDeep
+func Tag(tag string, expectedValue any) TestDeep
 ```
 
 [`Tag`]({{< ref "Tag" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It only allows to name *expectedValue*,

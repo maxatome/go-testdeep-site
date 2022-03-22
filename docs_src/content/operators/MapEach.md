@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func MapEach(expectedValue interface{}) TestDeep
+func MapEach(expectedValue any) TestDeep
 ```
 
 [`MapEach`]({{< ref "MapEach" >}}) operator has to be applied on maps. It compares each value
@@ -58,7 +58,7 @@ td.Cmp(t, got, td.MapEach(td.Len(3))) // succeeds as values are 3 chars long
 ## CmpMapEach shortcut
 
 ```go
-func CmpMapEach(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
+func CmpMapEach(t TestingT, got, expectedValue any, args ...any) bool
 ```
 
 CmpMapEach is a shortcut for:
@@ -70,6 +70,8 @@ td.Cmp(t, got, td.MapEach(expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -119,7 +121,7 @@ reason of a potential failure.
 ## T.MapEach shortcut
 
 ```go
-func (t *T) MapEach(got, expectedValue interface{}, args ...interface{}) bool
+func (t *T) MapEach(got, expectedValue any, args ...any) bool
 ```
 
 [`MapEach`]({{< ref "MapEach" >}}) is a shortcut for:

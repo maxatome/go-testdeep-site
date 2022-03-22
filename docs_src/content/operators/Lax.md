@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Lax(expectedValue interface{}) TestDeep
+func Lax(expectedValue any) TestDeep
 ```
 
 [`Lax`]({{< ref "Lax" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}), it temporarily enables the BeLax config
@@ -67,7 +67,7 @@ operator]({{< ref "operators" >}}). In this case, it delegates [`TypeBehind()`](
 ## CmpLax shortcut
 
 ```go
-func CmpLax(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
+func CmpLax(t TestingT, got, expectedValue any, args ...any) bool
 ```
 
 CmpLax is a shortcut for:
@@ -79,6 +79,8 @@ td.Cmp(t, got, td.Lax(expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -121,7 +123,7 @@ reason of a potential failure.
 ## T.CmpLax shortcut
 
 ```go
-func (t *T) CmpLax(got, expectedValue interface{}, args ...interface{}) bool
+func (t *T) CmpLax(got, expectedValue any, args ...any) bool
 ```
 
 CmpLax is a shortcut for:

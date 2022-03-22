@@ -86,7 +86,7 @@ td.Cmp(t, &AnyStruct{}, td.Ptr(td.Zero())) // is true
 ## CmpZero shortcut
 
 ```go
-func CmpZero(t TestingT, got interface{}, args ...interface{}) bool
+func CmpZero(t TestingT, got any, args ...any) bool
 ```
 
 CmpZero is a shortcut for:
@@ -98,6 +98,8 @@ td.Cmp(t, got, td.Zero(), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -168,7 +170,7 @@ reason of a potential failure.
 ## T.Zero shortcut
 
 ```go
-func (t *T) Zero(got interface{}, args ...interface{}) bool
+func (t *T) Zero(got any, args ...any) bool
 ```
 
 [`Zero`]({{< ref "Zero" >}}) is a shortcut for:

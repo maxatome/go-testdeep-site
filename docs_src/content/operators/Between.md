@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func Between(from, to interface{}, bounds ...BoundsKind) TestDeep
+func Between(from, to any, bounds ...BoundsKind) TestDeep
 ```
 
 [`Between`]({{< ref "Between" >}}) operator checks that data is between *from* and
-*to*. *from* and *to* can be any numeric, `string`, [`time.Time`](https://pkg.go.dev/time/#Time) (or
+*to*. *from* and *to* can be `any` numeric, `string`, [`time.Time`](https://pkg.go.dev/time/#Time) (or
 assignable) value or implement at least one of the two following
 methods:
 ```go
@@ -148,7 +148,7 @@ tc.Cmp(t,                                       // succeeds
 ## CmpBetween shortcut
 
 ```go
-func CmpBetween(t TestingT, got, from , to interface{}, bounds BoundsKind, args ...interface{}) bool
+func CmpBetween(t TestingT, got, from , to any, bounds BoundsKind, args ...any) bool
 ```
 
 CmpBetween is a shortcut for:
@@ -164,6 +164,8 @@ td.[`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKi
 original [`Between()`]({{< ref "Between" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -279,7 +281,7 @@ reason of a potential failure.
 ## T.Between shortcut
 
 ```go
-func (t *T) Between(got, from , to interface{}, bounds BoundsKind, args ...interface{}) bool
+func (t *T) Between(got, from , to any, bounds BoundsKind, args ...any) bool
 ```
 
 [`Between`]({{< ref "Between" >}}) is a shortcut for:

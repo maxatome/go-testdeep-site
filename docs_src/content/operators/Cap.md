@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Cap(expectedCap interface{}) TestDeep
+func Cap(expectedCap any) TestDeep
 ```
 
 [`Cap`]({{< ref "Cap" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes data, applies `cap()` function
@@ -71,7 +71,7 @@ td.Cmp(t, gotSlice, td.Cap(td.Between(3, 4)))
 ## CmpCap shortcut
 
 ```go
-func CmpCap(t TestingT, got, expectedCap interface{}, args ...interface{}) bool
+func CmpCap(t TestingT, got, expectedCap any, args ...any) bool
 ```
 
 CmpCap is a shortcut for:
@@ -83,6 +83,8 @@ td.Cmp(t, got, td.Cap(expectedCap), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -139,7 +141,7 @@ reason of a potential failure.
 ## T.Cap shortcut
 
 ```go
-func (t *T) Cap(got, expectedCap interface{}, args ...interface{}) bool
+func (t *T) Cap(got, expectedCap any, args ...any) bool
 ```
 
 [`Cap`]({{< ref "Cap" >}}) is a shortcut for:

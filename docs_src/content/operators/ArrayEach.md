@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func ArrayEach(expectedValue interface{}) TestDeep
+func ArrayEach(expectedValue any) TestDeep
 ```
 
 [`ArrayEach`]({{< ref "ArrayEach" >}}) operator has to be applied on arrays or slices or on
@@ -106,7 +106,7 @@ td.Cmp(t, got, td.ArrayEach(
 ## CmpArrayEach shortcut
 
 ```go
-func CmpArrayEach(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
+func CmpArrayEach(t TestingT, got, expectedValue any, args ...any) bool
 ```
 
 CmpArrayEach is a shortcut for:
@@ -118,6 +118,8 @@ td.Cmp(t, got, td.ArrayEach(expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -200,7 +202,7 @@ reason of a potential failure.
 ## T.ArrayEach shortcut
 
 ```go
-func (t *T) ArrayEach(got, expectedValue interface{}, args ...interface{}) bool
+func (t *T) ArrayEach(got, expectedValue any, args ...any) bool
 ```
 
 [`ArrayEach`]({{< ref "ArrayEach" >}}) is a shortcut for:

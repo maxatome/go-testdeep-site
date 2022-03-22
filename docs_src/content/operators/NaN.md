@@ -66,7 +66,7 @@ td.Cmp(t, 4.2, td.NaN()) // fails
 ## CmpNaN shortcut
 
 ```go
-func CmpNaN(t TestingT, got interface{}, args ...interface{}) bool
+func CmpNaN(t TestingT, got any, args ...any) bool
 ```
 
 CmpNaN is a shortcut for:
@@ -78,6 +78,8 @@ td.Cmp(t, got, td.NaN(), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -137,7 +139,7 @@ reason of a potential failure.
 ## T.NaN shortcut
 
 ```go
-func (t *T) NaN(got interface{}, args ...interface{}) bool
+func (t *T) NaN(got any, args ...any) bool
 ```
 
 [`NaN`]({{< ref "NaN" >}}) is a shortcut for:

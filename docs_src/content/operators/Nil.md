@@ -66,7 +66,7 @@ td.Cmp(t, got, nil) // succeeds
 ## CmpNil shortcut
 
 ```go
-func CmpNil(t TestingT, got interface{}, args ...interface{}) bool
+func CmpNil(t TestingT, got any, args ...any) bool
 ```
 
 CmpNil is a shortcut for:
@@ -78,6 +78,8 @@ td.Cmp(t, got, td.Nil(), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -125,7 +127,7 @@ reason of a potential failure.
 ## T.Nil shortcut
 
 ```go
-func (t *T) Nil(got interface{}, args ...interface{}) bool
+func (t *T) Nil(got any, args ...any) bool
 ```
 
 [`Nil`]({{< ref "Nil" >}}) is a shortcut for:

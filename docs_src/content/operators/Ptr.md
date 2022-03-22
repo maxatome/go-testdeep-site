@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Ptr(val interface{}) TestDeep
+func Ptr(val any) TestDeep
 ```
 
 [`Ptr`]({{< ref "Ptr" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the address of data and
@@ -54,7 +54,7 @@ pointer on the returned value (if non-`nil` of course).
 ## CmpPtr shortcut
 
 ```go
-func CmpPtr(t TestingT, got, val interface{}, args ...interface{}) bool
+func CmpPtr(t TestingT, got, val any, args ...any) bool
 ```
 
 CmpPtr is a shortcut for:
@@ -66,6 +66,8 @@ td.Cmp(t, got, td.Ptr(val), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -98,7 +100,7 @@ reason of a potential failure.
 ## T.Ptr shortcut
 
 ```go
-func (t *T) Ptr(got, val interface{}, args ...interface{}) bool
+func (t *T) Ptr(got, val any, args ...any) bool
 ```
 
 [`Ptr`]({{< ref "Ptr" >}}) is a shortcut for:

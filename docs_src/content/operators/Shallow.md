@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Shallow(expectedPtr interface{}) TestDeep
+func Shallow(expectedPtr any) TestDeep
 ```
 
 [`Shallow`]({{< ref "Shallow" >}}) operator compares pointers only, not their contents. It
@@ -110,7 +110,7 @@ td.Cmp(t, &a, td.Shallow(&b)) // succeeds as both slices point to the same area,
 ## CmpShallow shortcut
 
 ```go
-func CmpShallow(t TestingT, got, expectedPtr interface{}, args ...interface{}) bool
+func CmpShallow(t TestingT, got, expectedPtr any, args ...any) bool
 ```
 
 CmpShallow is a shortcut for:
@@ -122,6 +122,8 @@ td.Cmp(t, got, td.Shallow(expectedPtr), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -197,7 +199,7 @@ reason of a potential failure.
 ## T.Shallow shortcut
 
 ```go
-func (t *T) Shallow(got, expectedPtr interface{}, args ...interface{}) bool
+func (t *T) Shallow(got, expectedPtr any, args ...any) bool
 ```
 
 [`Shallow`]({{< ref "Shallow" >}}) is a shortcut for:

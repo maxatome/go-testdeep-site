@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Contains(expectedValue interface{}) TestDeep
+func Contains(expectedValue any) TestDeep
 ```
 
 [`Contains`]({{< ref "Contains" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) to check if something is contained
@@ -260,7 +260,7 @@ td.Cmp(t, hash, td.Contains(td.Nil()))    // succeeds
 ## CmpContains shortcut
 
 ```go
-func CmpContains(t TestingT, got, expectedValue interface{}, args ...interface{}) bool
+func CmpContains(t TestingT, got, expectedValue any, args ...any) bool
 ```
 
 CmpContains is a shortcut for:
@@ -272,6 +272,8 @@ td.Cmp(t, got, td.Contains(expectedValue), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -430,7 +432,7 @@ reason of a potential failure.
 ## T.Contains shortcut
 
 ```go
-func (t *T) Contains(got, expectedValue interface{}, args ...interface{}) bool
+func (t *T) Contains(got, expectedValue any, args ...any) bool
 ```
 
 [`Contains`]({{< ref "Contains" >}}) is a shortcut for:

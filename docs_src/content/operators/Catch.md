@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Catch(target, expectedValue interface{}) TestDeep
+func Catch(target, expectedValue any) TestDeep
 ```
 
 [`Catch`]({{< ref "Catch" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It allows to copy data in *target* on

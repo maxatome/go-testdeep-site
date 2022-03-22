@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func JSON(expectedJSON interface{}, params ...interface{}) TestDeep
+func JSON(expectedJSON any, params ...any) TestDeep
 ```
 
 [`JSON`]({{< ref "JSON" >}}) operator allows to compare the JSON representation of data
@@ -19,7 +19,7 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 
 *expectedJSON* JSON value can contain placeholders. The *params*
-are for any placeholder parameters in *expectedJSON*. *params* can
+are for `any` placeholder parameters in *expectedJSON*. *params* can
 contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. A placeholder can
 be numeric like `$2` or named like `$name` and always references an
 item in *params*.
@@ -59,14 +59,14 @@ things like:
 ```go
 td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, []int{1, 2, 3, 4}))
 td.Cmp(t, gotValue,
-  td.JSON(`{"foo":$1}`, []interface{}{1, 2, td.Between(2, 4), 4}))
+  td.JSON(`{"foo":$1}`, []any{1, 2, td.Between(2, 4), 4}))
 td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, td.Between(27, 32)))
 ```
 
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
 as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
-`string`, `[]interface{}`, `map[string]interface{}` or simply `nil`).
+`string`, `[]any`, `map[string]any` or simply `nil`).
 
 Note *expectedJSON* can be a `[]byte`, JSON filename or [`io.Reader`](https://pkg.go.dev/io/#Reader):
 
@@ -129,7 +129,7 @@ Other [`JSON`]({{< ref "JSON" >}}) divergences:
 
 
 Most operators can be directly embedded in [`JSON`]({{< ref "JSON" >}}) without requiring
-any placeholder.
+`any` placeholder.
 
 ```go
 td.Cmp(t, gotValue,
@@ -144,7 +144,7 @@ td.Cmp(t, gotValue,
 }`))
 ```
 
-Placeholders can be used anywhere, even in operators parameters as in:
+Placeholders can be used `any`where, even in operators parameters as in:
 
 ```go
 td.Cmp(t, gotValue, td.JSON(`{"fullname": HasPrefix($1)}`, "Zip"))
@@ -203,7 +203,7 @@ The allowed shortcut operators follow:
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of the *expectedJSON*
 [`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed. So it can be `bool`, `string`, `float64`,
-`[]interface{}`, `map[string]interface{}` or `interface{}` in case
+`[]any`, `map[string]any` or `any` in case
 *expectedJSON* is "null".
 
 
@@ -444,7 +444,7 @@ The allowed shortcut operators follow:
 ## CmpJSON shortcut
 
 ```go
-func CmpJSON(t TestingT, got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func CmpJSON(t TestingT, got, expectedJSON any, params []any, args ...any) bool
 ```
 
 CmpJSON is a shortcut for:
@@ -456,6 +456,8 @@ td.Cmp(t, got, td.JSON(expectedJSON, params...), args...)
 See above for details.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -538,29 +540,29 @@ reason of a potential failure.
 		Age:      42,
 	}
 
-	ok := td.CmpJSON(t, got, `{"age": $1, "fullname": $2}`, []interface{}{42, "Bob Foobar"})
+	ok := td.CmpJSON(t, got, `{"age": $1, "fullname": $2}`, []any{42, "Bob Foobar"})
 	fmt.Println("check got with numeric placeholders without operators:", ok)
 
-	ok = td.CmpJSON(t, got, `{"age": $1, "fullname": $2}`, []interface{}{td.Between(40, 45), td.HasSuffix("Foobar")})
+	ok = td.CmpJSON(t, got, `{"age": $1, "fullname": $2}`, []any{td.Between(40, 45), td.HasSuffix("Foobar")})
 	fmt.Println("check got with numeric placeholders:", ok)
 
-	ok = td.CmpJSON(t, got, `{"age": "$1", "fullname": "$2"}`, []interface{}{td.Between(40, 45), td.HasSuffix("Foobar")})
+	ok = td.CmpJSON(t, got, `{"age": "$1", "fullname": "$2"}`, []any{td.Between(40, 45), td.HasSuffix("Foobar")})
 	fmt.Println("check got with double-quoted numeric placeholders:", ok)
 
-	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
+	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name}`, []any{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
 	got.Children = []*Person{
 		{Fullname: "Alice", Age: 28},
 		{Fullname: "Brian", Age: 22},
 	}
-	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name, "children": $children}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
+	ok = td.CmpJSON(t, got, `{"age": $age, "fullname": $name, "children": $children}`, []any{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
 		&Person{Fullname: "Brian", Age: 22},
 		&Person{Fullname: "Alice", Age: 28},
 	))})
 	fmt.Println("check got w/named placeholders, and children w/go structs:", ok)
 
-	ok = td.CmpJSON(t, got, `{"age": Between($1, $2), "fullname": HasSuffix($suffix), "children": Len(2)}`, []interface{}{40, 45, td.Tag("suffix", "Foobar")})
+	ok = td.CmpJSON(t, got, `{"age": Between($1, $2), "fullname": HasSuffix($suffix), "children": Len(2)}`, []any{40, 45, td.Tag("suffix", "Foobar")})
 	fmt.Println("check got w/num & named placeholders:", ok)
 
 	// Output:
@@ -616,7 +618,7 @@ reason of a potential failure.
     HasPrefix($4),
     HasSuffix("bar")  // ← comma is optional here
   )
-}`, []interface{}{40, 42, td.BoundsOutIn, "Bob"})
+}`, []any{40, 42, td.BoundsOutIn, "Bob"})
 	fmt.Println("check got with complex operators, w/placeholder args:", ok)
 
 	// Output:
@@ -657,7 +659,7 @@ reason of a potential failure.
 	}
 
 	// OK let's test with this file
-	ok := td.CmpJSON(t, got, filename, []interface{}{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
+	ok := td.CmpJSON(t, got, filename, []any{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
 	fmt.Println("Full match from file name:", ok)
 
 	// When the file is already open
@@ -665,7 +667,7 @@ reason of a potential failure.
 	if err != nil {
 		t.Fatal(err)
 	}
-	ok = td.CmpJSON(t, got, file, []interface{}{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
+	ok = td.CmpJSON(t, got, file, []any{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
 	fmt.Println("Full match from io.Reader:", ok)
 
 	// Output:
@@ -676,7 +678,7 @@ reason of a potential failure.
 ## T.JSON shortcut
 
 ```go
-func (t *T) JSON(got, expectedJSON interface{}, params []interface{}, args ...interface{}) bool
+func (t *T) JSON(got, expectedJSON any, params []any, args ...any) bool
 ```
 
 [`JSON`]({{< ref "JSON" >}}) is a shortcut for:
@@ -770,29 +772,29 @@ reason of a potential failure.
 		Age:      42,
 	}
 
-	ok := t.JSON(got, `{"age": $1, "fullname": $2}`, []interface{}{42, "Bob Foobar"})
+	ok := t.JSON(got, `{"age": $1, "fullname": $2}`, []any{42, "Bob Foobar"})
 	fmt.Println("check got with numeric placeholders without operators:", ok)
 
-	ok = t.JSON(got, `{"age": $1, "fullname": $2}`, []interface{}{td.Between(40, 45), td.HasSuffix("Foobar")})
+	ok = t.JSON(got, `{"age": $1, "fullname": $2}`, []any{td.Between(40, 45), td.HasSuffix("Foobar")})
 	fmt.Println("check got with numeric placeholders:", ok)
 
-	ok = t.JSON(got, `{"age": "$1", "fullname": "$2"}`, []interface{}{td.Between(40, 45), td.HasSuffix("Foobar")})
+	ok = t.JSON(got, `{"age": "$1", "fullname": "$2"}`, []any{td.Between(40, 45), td.HasSuffix("Foobar")})
 	fmt.Println("check got with double-quoted numeric placeholders:", ok)
 
-	ok = t.JSON(got, `{"age": $age, "fullname": $name}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
+	ok = t.JSON(got, `{"age": $age, "fullname": $name}`, []any{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar"))})
 	fmt.Println("check got with named placeholders:", ok)
 
 	got.Children = []*Person{
 		{Fullname: "Alice", Age: 28},
 		{Fullname: "Brian", Age: 22},
 	}
-	ok = t.JSON(got, `{"age": $age, "fullname": $name, "children": $children}`, []interface{}{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
+	ok = t.JSON(got, `{"age": $age, "fullname": $name, "children": $children}`, []any{td.Tag("age", td.Between(40, 45)), td.Tag("name", td.HasSuffix("Foobar")), td.Tag("children", td.Bag(
 		&Person{Fullname: "Brian", Age: 22},
 		&Person{Fullname: "Alice", Age: 28},
 	))})
 	fmt.Println("check got w/named placeholders, and children w/go structs:", ok)
 
-	ok = t.JSON(got, `{"age": Between($1, $2), "fullname": HasSuffix($suffix), "children": Len(2)}`, []interface{}{40, 45, td.Tag("suffix", "Foobar")})
+	ok = t.JSON(got, `{"age": Between($1, $2), "fullname": HasSuffix($suffix), "children": Len(2)}`, []any{40, 45, td.Tag("suffix", "Foobar")})
 	fmt.Println("check got w/num & named placeholders:", ok)
 
 	// Output:
@@ -848,7 +850,7 @@ reason of a potential failure.
     HasPrefix($4),
     HasSuffix("bar")  // ← comma is optional here
   )
-}`, []interface{}{40, 42, td.BoundsOutIn, "Bob"})
+}`, []any{40, 42, td.BoundsOutIn, "Bob"})
 	fmt.Println("check got with complex operators, w/placeholder args:", ok)
 
 	// Output:
@@ -889,7 +891,7 @@ reason of a potential failure.
 	}
 
 	// OK let's test with this file
-	ok := t.JSON(got, filename, []interface{}{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
+	ok := t.JSON(got, filename, []any{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
 	fmt.Println("Full match from file name:", ok)
 
 	// When the file is already open
@@ -897,7 +899,7 @@ reason of a potential failure.
 	if err != nil {
 		t.Fatal(err)
 	}
-	ok = t.JSON(got, file, []interface{}{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
+	ok = t.JSON(got, file, []any{td.Tag("name", td.HasPrefix("Bob")), td.Tag("age", td.Between(40, 45)), td.Tag("gender", td.Re(`^(male|female)\z`))})
 	fmt.Println("Full match from io.Reader:", ok)
 
 	// Output:

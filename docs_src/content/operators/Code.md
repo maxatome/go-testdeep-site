@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Code(fn interface{}) TestDeep
+func Code(fn any) TestDeep
 ```
 
 [`Code`]({{< ref "Code" >}}) operator allows to check data using a custom function. So
@@ -53,21 +53,92 @@ td.Cmp(t, gotJsonRawMesg,
   }))
 ```
 
-This operator allows to handle any specific comparison not handled
+This operator allows to handle `any` specific comparison not handled
 by standard operators.
 
-It is not recommended to call Cmp (or any other Cmp*
+It is not recommended to call Cmp (or `any` other Cmp*
 functions or *T methods) inside the body of *fn*, because of
 confusion produced by output in case of failure. When the data
 needs to be transformed before being compared again, [`Smuggle`]({{< ref "Smuggle" >}})
 operator should be used instead.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of only parameter of *fn*.
+But in some cases it can be better to handle yourself the
+comparison than to chain [TestDeep operators]({{< ref "operators" >}}). In this case, *fn* can
+be a function receiving one or two *T as first parameters and
+returning no values.
+
+When *fn* expects one *T parameter, is it directly derived from the
+testing.TB instance passed originally to Cmp (or its derivatives)
+using NewT():
+
+```go
+td.Cmp(t, httpRequest, td.Code(func(t *td.T, r *http.Request) {
+  token, err := DecodeToken(r.Header.Get("X-Token-1"))
+  if t.CmpNoError(err) {
+    t.True(token.OK())
+  }
+}))
+```
+
+When *fn* expects two *T parameters, they are directly derived from
+the testing.TB instance passed originally to Cmp (or its derivatives)
+using AssertRequire():
+
+```go
+td.Cmp(t, httpRequest, td.Code(func(assert, require *td.T, r *http.Request) {
+  token, err := DecodeToken(r.Header.Get("X-Token-1"))
+  require.CmpNoError(err)
+  assert.True(token.OK())
+}))
+```
+
+Note that these forms do not work when there is no initial testing.TB
+instance, like when using EqDeeplyError() or EqDeeply() functions,
+or when the [`Code`]({{< ref "Code" >}}) operator is called behind the following operators,
+as they just check if a match occurs without raising an [`error`](https://pkg.go.dev/builtin/#error): [`Any`]({{< ref "Any" >}}),
+[`Bag`]({{< ref "Bag" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}),
+[`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
+
+RootName is inherited but not the current path, but it can be
+recovered if needed:
+
+```go
+got := map[string]int{"foo": 123}
+td.NewT(t).
+  RootName("PIPO").
+  Cmp(got, td.Map(map[string]int{}, td.MapEntries{
+    "foo": td.Code(func(t *td.T, n int) {
+      t.Cmp(n, 124)                                   // inherit only RootName
+      t.RootName(t.Config.OriginalPath()).Cmp(n, 125) // recover current path
+      t.RootName("").Cmp(n, 126)                      // undo RootName inheritance
+    }),
+  }))
+```
+
+produces the following errors:
+
+```
+--- FAIL: TestCodeCustom (0.00s)
+    td_code_test.go:339: Failed test
+        PIPO: values differ             ← inherit only RootName
+               got: 123
+          expected: 124
+    td_code_test.go:338: Failed test
+        PIPO["foo"]: values differ      ← recover current path
+               got: 123
+          expected: 125
+    td_code_test.go:342: Failed test
+        DATA: values differ             ← undo RootName inheritance
+               got: 123
+          expected: 126
+```
+
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of last parameter of *fn*.
 
 
 > See also [<i class='fas fa-book'></i> Code godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Code).
 
-### Example
+### Examples
 
 {{%expand "Base example" %}}```go
 	t := &testing.T{}
@@ -121,10 +192,31 @@ operator should be used instead.
 	// true
 
 ```{{% /expand%}}
+{{%expand "Custom example" %}}```go
+	t := &testing.T{}
+
+	got := 123
+
+	ok := td.Cmp(t, got, td.Code(func(t *td.T, num int) {
+		t.Cmp(num, 123)
+	}))
+	fmt.Println("with one *td.T:", ok)
+
+	ok = td.Cmp(t, got, td.Code(func(assert, require *td.T, num int) {
+		assert.Cmp(num, 123)
+		require.Cmp(num, 123)
+	}))
+	fmt.Println("with assert & require *td.T:", ok)
+
+	// Output:
+	// with one *td.T: true
+	// with assert & require *td.T: true
+
+```{{% /expand%}}
 ## CmpCode shortcut
 
 ```go
-func CmpCode(t TestingT, got, fn interface{}, args ...interface{}) bool
+func CmpCode(t TestingT, got, fn any, args ...any) bool
 ```
 
 CmpCode is a shortcut for:
@@ -137,6 +229,8 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
+If "t" is a *T then its Config is inherited.
+
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
@@ -147,7 +241,7 @@ reason of a potential failure.
 
 > See also [<i class='fas fa-book'></i> CmpCode godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpCode).
 
-### Example
+### Examples
 
 {{%expand "Base example" %}}```go
 	t := &testing.T{}
@@ -198,10 +292,31 @@ reason of a potential failure.
 	// true
 
 ```{{% /expand%}}
+{{%expand "Custom example" %}}```go
+	t := &testing.T{}
+
+	got := 123
+
+	ok := td.CmpCode(t, got, func(t *td.T, num int) {
+		t.Cmp(num, 123)
+	})
+	fmt.Println("with one *td.T:", ok)
+
+	ok = td.CmpCode(t, got, func(assert, require *td.T, num int) {
+		assert.Cmp(num, 123)
+		require.Cmp(num, 123)
+	})
+	fmt.Println("with assert & require *td.T:", ok)
+
+	// Output:
+	// with one *td.T: true
+	// with assert & require *td.T: true
+
+```{{% /expand%}}
 ## T.Code shortcut
 
 ```go
-func (t *T) Code(got, fn interface{}, args ...interface{}) bool
+func (t *T) Code(got, fn any, args ...any) bool
 ```
 
 [`Code`]({{< ref "Code" >}}) is a shortcut for:
@@ -224,7 +339,7 @@ reason of a potential failure.
 
 > See also [<i class='fas fa-book'></i> T.Code godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Code).
 
-### Example
+### Examples
 
 {{%expand "Base example" %}}```go
 	t := td.NewT(&testing.T{})
@@ -273,5 +388,26 @@ reason of a potential failure.
 	// true
 	// true
 	// true
+
+```{{% /expand%}}
+{{%expand "Custom example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	got := 123
+
+	ok := t.Code(got, func(t *td.T, num int) {
+		t.Cmp(num, 123)
+	})
+	fmt.Println("with one *td.T:", ok)
+
+	ok = t.Code(got, func(assert, require *td.T, num int) {
+		assert.Cmp(num, 123)
+		require.Cmp(num, 123)
+	})
+	fmt.Println("with assert & require *td.T:", ok)
+
+	// Output:
+	// with one *td.T: true
+	// with assert & require *td.T: true
 
 ```{{% /expand%}}

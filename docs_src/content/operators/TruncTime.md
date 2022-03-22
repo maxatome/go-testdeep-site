@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func TruncTime(expectedTime interface{}, trunc ...time.Duration) TestDeep
+func TruncTime(expectedTime any, trunc ...time.Duration) TestDeep
 ```
 
 [`TruncTime`]({{< ref "TruncTime" >}}) operator compares [`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) values after
@@ -77,7 +77,7 @@ td.Cmp(t, gotDate, td.TruncTime(expected, time.Second)) // succeeds
 ## CmpTruncTime shortcut
 
 ```go
-func CmpTruncTime(t TestingT, got, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
+func CmpTruncTime(t TestingT, got, expectedTime any, trunc time.Duration, args ...any) bool
 ```
 
 CmpTruncTime is a shortcut for:
@@ -93,6 +93,8 @@ See above for details.
 original [`TruncTime()`]({{< ref "TruncTime" >}}) call.
 
 Returns true if the test is OK, false if it fails.
+
+If "t" is a *T then its Config is inherited.
 
 *args...* are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If `len(args) > 1` and
@@ -146,7 +148,7 @@ reason of a potential failure.
 ## T.TruncTime shortcut
 
 ```go
-func (t *T) TruncTime(got, expectedTime interface{}, trunc time.Duration, args ...interface{}) bool
+func (t *T) TruncTime(got, expectedTime any, trunc time.Duration, args ...any) bool
 ```
 
 [`TruncTime`]({{< ref "TruncTime" >}}) is a shortcut for:
