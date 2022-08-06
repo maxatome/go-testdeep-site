@@ -7,7 +7,7 @@ weight: 10
 func Smuggle(fn, expectedValue any) TestDeep
 ```
 
-[`Smuggle`]({{< ref "Smuggle" >}}) operator allows to change data contents or mutate it into
+Smuggle operator allows to change data contents or mutate it into
 another type before stepping down in favor of generic comparison
 process. Of course it is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). So *fn* is a function
 that must take one parameter whose type must be convertible to the
@@ -29,7 +29,7 @@ td.Cmp(t, "0028",
 )
 ```
 
-or using an other [TestDeep operator]({{< ref "operators" >}}), here [`Between(28, 30)`]({{< ref "Between" >}}):
+or using an other [TestDeep operator]({{< ref "operators" >}}), here [`Between`]({{< ref "Between" >}})(28, 30):
 
 ```go
 td.Cmp(t, "0029",
@@ -68,7 +68,7 @@ td.Cmp(t, "0029",
 ```
 
 Instead of returning (X, `bool`) or (X, `bool`, `string`), *fn* can
-return (X, [`error`](https://pkg.go.dev/builtin/#error)). When a problem occurs, the returned [`error`](https://pkg.go.dev/builtin/#error) is
+return (X, [`error`](https://pkg.go.dev/builtin#error)). When a problem occurs, the returned [`error`](https://pkg.go.dev/builtin#error) is
 non-`nil`, as in:
 
 ```go
@@ -112,13 +112,13 @@ td.Cmp(t, time.Date(2015, time.May, 1, 1, 2, 3, 0, time.UTC),
 ```
 
 then the data location forwarded to next test will be something like
-"DATA.MyTimeField.Year". The "."  between the current path (here
+"DATA.MyTimeField.Year". The "." between the current path (here
 "DATA.MyTimeField") and the returned Name "Year" is automatically
 added when Name starts with a Letter.
 
-Note that [`SmuggledGot`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SmuggledGot) and [`SmuggledGot`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SmuggledGot) returns are treated equally,
-and they are only used when *fn* has only one returned value or
-when the second boolean returned value is true.
+Note that [`SmuggledGot`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SmuggledGot) and [`*SmuggledGot`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SmuggledGot) returns are treated
+equally, and they are only used when *fn* has only one returned value
+or when the second boolean returned value is true.
 
 Of course, all cases can go together:
 
@@ -158,7 +158,7 @@ td.Cmp(t, "2020-01-25 12:13:14",
 )
 ```
 
-[`Smuggle`]({{< ref "Smuggle" >}}) can also be used to access a struct field embedded in
+Smuggle can also be used to access a struct field embedded in
 several struct layers.
 
 ```go
@@ -175,7 +175,7 @@ td.Cmp(t, got,
 ```
 
 As brought up above, a fields-path can be passed as *fn* value
-instead of a function pointer. Using this feature, the Cmp
+instead of a function pointer. Using this feature, the [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp)
 call in the above example can be rewritten as follows:
 
 ```go
@@ -183,7 +183,7 @@ call in the above example can be rewritten as follows:
 td.Cmp(t, got, td.Smuggle("B.As[foo].Num", 12))
 ```
 
-Contrary to JSONPointer operator, private fields can be
+Contrary to [`JSONPointer`]({{< ref "JSONPointer" >}}) operator, private fields can be
 followed. Arrays, slices and maps work using the index/key inside
 square brackets (e.g. [12] or [foo]). Maps work only for simple key
 types (`string` or numbers), without "" when using strings
@@ -210,8 +210,8 @@ td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
 td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 ```
 
-converts on the fly a `string` to a json.RawMessage so [`JSON`]({{< ref "JSON" >}}) operator
-can parse it as [`JSON`]({{< ref "JSON" >}}). This is mostly a shortcut for:
+converts on the fly a `string` to a [json.RawMessage](https://pkg.go.dev/encoding/json#RawMessage) so [`JSON`]({{< ref "JSON" >}}) operator
+can parse it as JSON. This is mostly a shortcut for:
 
 ```go
 td.Cmp(t, `{"foo":1}`, td.Smuggle(
@@ -220,7 +220,7 @@ td.Cmp(t, `{"foo":1}`, td.Smuggle(
 ```
 
 except that for strings and slices of bytes (like here), it accepts
-[`io.Reader`](https://pkg.go.dev/io/#Reader) interface too:
+[`io.Reader`](https://pkg.go.dev/io#Reader) interface too:
 
 ```go
 var body io.Reader
@@ -230,22 +230,25 @@ td.Cmp(t, body, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
 td.Cmp(t, body, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 ```
 
-This last example allows to easily inject body content into [`JSON`]({{< ref "JSON" >}})
+This last example allows to easily inject body content into JSON
 operator.
 
-The difference between [`Smuggle`]({{< ref "Smuggle" >}}) and [`Code`]({{< ref "Code" >}}) operators is that [`Code`]({{< ref "Code" >}}) is
-used to do a final comparison while [`Smuggle`]({{< ref "Smuggle" >}}) transforms the data and
-then steps down in favor of generic comparison process. Moreover,
-the type accepted as input for the function is more lax to
-facilitate the writing of tests (e.g. the function can accept a
-`float64` and the got value be an `int`). See examples. On the other
-hand, the output type is strict and must match exactly the expected
-value type. The fields-path `string` *fn* shortcut and the cast
-feature are not available with [`Code`]({{< ref "Code" >}}) operator.
+The difference between Smuggle and [`Code`]({{< ref "Code" >}}) operators is that [`Code`]({{< ref "Code" >}})
+is used to do a final comparison while Smuggle transforms the data
+and then steps down in favor of generic comparison
+process. Moreover, the type accepted as input for the function is
+more lax to facilitate the writing of tests (e.g. the function can
+accept a `float64` and the got value be an `int`). See examples. On the
+other hand, the output type is strict and must match exactly the
+expected value type. The fields-path `string` *fn* shortcut and the
+cast feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of only parameter of
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of only parameter of
 *fn*. For the case where *fn* is a fields-path, it is always
 `any`, as the type can not be known in advance.
+
+> See also [`Code`]({{< ref "Code" >}}) and [`JSONPointer`]({{< ref "JSONPointer" >}}).
+
 
 
 > See also [<i class='fas fa-book'></i> Smuggle godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Smuggle).
@@ -535,13 +538,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -792,7 +795,7 @@ reason of a potential failure.
 func (t *T) Smuggle(got, fn , expectedValue any, args ...any) bool
 ```
 
-[`Smuggle`]({{< ref "Smuggle" >}}) is a shortcut for:
+Smuggle is a shortcut for:
 
 ```go
 t.Cmp(got, td.Smuggle(fn, expectedValue), args...)
@@ -803,10 +806,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

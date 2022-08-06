@@ -7,13 +7,15 @@ weight: 10
 func NaN() TestDeep
 ```
 
-[`NaN`]({{< ref "NaN" >}}) operator checks that data is a float and is not-a-number.
+NaN operator checks that data is a float and is not-a-number.
 
 ```go
 got := math.NaN()
 td.Cmp(t, got, td.NaN()) // succeeds
 td.Cmp(t, 4.2, td.NaN()) // fails
 ```
+
+> See also [`NotNaN`]({{< ref "NotNaN" >}}).
 
 
 > See also [<i class='fas fa-book'></i> NaN godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NaN).
@@ -79,13 +81,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -142,7 +144,7 @@ reason of a potential failure.
 func (t *T) NaN(got any, args ...any) bool
 ```
 
-[`NaN`]({{< ref "NaN" >}}) is a shortcut for:
+NaN is a shortcut for:
 
 ```go
 t.Cmp(got, td.NaN(), args...)
@@ -153,10 +155,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

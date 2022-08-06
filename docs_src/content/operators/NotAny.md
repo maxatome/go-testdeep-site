@@ -7,8 +7,8 @@ weight: 10
 func NotAny(notExpectedItems ...any) TestDeep
 ```
 
-[`NotAny`]({{< ref "NotAny" >}}) operator checks that the contents of an array or a slice (or
-a pointer on array/slice) does not contain `any` of *notExpectedItems*.
+NotAny operator checks that the contents of an array or a slice (or
+a pointer on array/slice) does not contain any of "*notExpectedItems*".
 
 ```go
 td.Cmp(t, []int{1}, td.NotAny(1, 2, 3)) // fails
@@ -36,12 +36,14 @@ td.Cmp(t, []int{4, 4, 42, 8},
 // = td.Cmp(t, []int{4, 4, 42, 8}, td.NotAny(2, 1, 3, 5, 8))
 ```
 
-Beware that [`NotAny(…)`]({{< ref "NotAny" >}}) is not equivalent to [`Not(Any(…)`]({{< ref "Not" >}})) but is like
-[`Not(SuperSet(…)`]({{< ref "Not" >}})).
+Beware that NotAny(…) is not equivalent to Not(Any(…)) but is like
+Not(SuperSet(…)).
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect/#Type) if all items
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
+
+> See also [`Set`]({{< ref "Set" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
 
 
 > See also [<i class='fas fa-book'></i> NotAny godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NotAny).
@@ -91,13 +93,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -138,7 +140,7 @@ reason of a potential failure.
 func (t *T) NotAny(got any, notExpectedItems []any, args ...any) bool
 ```
 
-[`NotAny`]({{< ref "NotAny" >}}) is a shortcut for:
+NotAny is a shortcut for:
 
 ```go
 t.Cmp(got, td.NotAny(notExpectedItems...), args...)
@@ -149,10 +151,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

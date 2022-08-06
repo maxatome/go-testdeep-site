@@ -7,8 +7,8 @@ weight: 10
 func Contains(expectedValue any) TestDeep
 ```
 
-[`Contains`]({{< ref "Contains" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) to check if something is contained
-in another thing. [`Contains`]({{< ref "Contains" >}}) has to be applied on arrays, slices, maps or
+Contains is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) to check if something is contained
+in another thing. Contains has to be applied on arrays, slices, maps or
 strings. It tries to be as smarter as possible.
 
 If *expectedValue* is a [TestDeep operator]({{< ref "operators" >}}), each item of data
@@ -29,7 +29,7 @@ td.Cmp(t, list, td.Contains([]int{34, 28}))      // succeeds
 ```
 
 If data is an array or a map, each value is compared to
-*expectedValue*. [`Map`]({{< ref "Map" >}}) keys are not checked: see [`ContainsKey`]({{< ref "ContainsKey" >}}) to check
+*expectedValue*. Map keys are not checked: see [`ContainsKey`]({{< ref "ContainsKey" >}}) to check
 map keys existence.
 
 ```go
@@ -45,8 +45,8 @@ td.Cmp(t, array, td.Contains(35))                 // fails
 ```
 
 If data is a `string` (or convertible), `[]byte` (or convertible),
-[`error`](https://pkg.go.dev/builtin/#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) interface ([`error`](https://pkg.go.dev/builtin/#error) interface is tested before
-[`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer)), *expectedValue* can be a `string`, a `[]byte`, a `rune` or
+[`error`](https://pkg.go.dev/builtin#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) interface ([`error`](https://pkg.go.dev/builtin#error) interface is tested before
+[`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer)), *expectedValue* can be a `string`, a `[]byte`, a `rune` or
 a `byte`. In this case, it tests if the got `string` contains this
 expected `string`, `[]byte`, `rune` or `byte`.
 
@@ -76,16 +76,16 @@ Pitfall: if you want to check if 2 words are contained in got, don't do:
 td.Cmp(t, "foobar", td.Contains(td.All("foo", "bar"))) // Bad!
 ```
 
-as [TestDeep operator]({{< ref "operators" >}}) [`All`]({{< ref "All" >}}) in [`Contains`]({{< ref "Contains" >}}) operates on each `rune`, so it
+as [TestDeep operator]({{< ref "operators" >}}) [`All`]({{< ref "All" >}}) in Contains operates on each `rune`, so it
 does not work as expected, but do::
 
 ```go
 td.Cmp(t, "foobar", td.All(td.Contains("foo"), td.Contains("bar")))
 ```
 
-When [`Contains(nil)`]({{< ref "Contains" >}}) is used, `nil` is automatically converted to a
+When Contains(`nil`) is used, `nil` is automatically converted to a
 typed `nil` on the fly to avoid confusion (if the array/slice/map
-item type allows it of course.) So all following Cmp calls
+item type allows it of course.) So all following [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) calls
 are equivalent (except the `(*byte)(nil)` one):
 
 ```go
@@ -106,6 +106,8 @@ td.Cmp(t, hash, td.Contains(nil))         // succeeds → (*int)(nil)
 td.Cmp(t, hash, td.Contains((*int)(nil))) // succeeds
 td.Cmp(t, hash, td.Contains(td.Nil()))    // succeeds
 ```
+
+> See also [`ContainsKey`]({{< ref "ContainsKey" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Contains godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Contains).
@@ -273,13 +275,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -435,7 +437,7 @@ reason of a potential failure.
 func (t *T) Contains(got, expectedValue any, args ...any) bool
 ```
 
-[`Contains`]({{< ref "Contains" >}}) is a shortcut for:
+Contains is a shortcut for:
 
 ```go
 t.Cmp(got, td.Contains(expectedValue), args...)
@@ -446,10 +448,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

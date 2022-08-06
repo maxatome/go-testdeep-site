@@ -7,17 +7,16 @@ weight: 10
 func N(num any, tolerance ...any) TestDeep
 ```
 
-[`N`]({{< ref "N" >}}) operator compares a numeric data against *num* ± *tolerance*. If
+N operator compares a numeric data against *num* ± *tolerance*. If
 *tolerance* is missing, it defaults to 0. *num* and *tolerance*
-must be the same type as the compared value, except if BeLax config
-flag is true.
+must be the same type as the compared value, except if [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) is true.
 
 ```go
 td.Cmp(t, 12.2, td.N(12., 0.3)) // succeeds
 td.Cmp(t, 12.2, td.N(12., 0.1)) // fails
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *num*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *num*.
 
 
 > See also [<i class='fas fa-book'></i> N godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#N).
@@ -51,19 +50,19 @@ td.Cmp(t, got, td.N(num, tolerance), args...)
 
 See above for details.
 
-[`N()`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
+[`N`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`N()`]({{< ref "N" >}}) call.
+original [`N`]({{< ref "N" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -90,7 +89,7 @@ reason of a potential failure.
 func (t *T) N(got, num , tolerance any, args ...any) bool
 ```
 
-[`N`]({{< ref "N" >}}) is a shortcut for:
+N is a shortcut for:
 
 ```go
 t.Cmp(got, td.N(num, tolerance), args...)
@@ -98,17 +97,17 @@ t.Cmp(got, td.N(num, tolerance), args...)
 
 See above for details.
 
-[`N()`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
+[`N`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`N()`]({{< ref "N" >}}) call.
+original [`N`]({{< ref "N" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

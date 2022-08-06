@@ -7,7 +7,7 @@ weight: 10
 func All(expectedValues ...any) TestDeep
 ```
 
-[`All`]({{< ref "All" >}}) operator compares data against several expected values. During
+All operator compares data against several expected values. During
 a match, all of them have to match to succeed. Consider it
 as a "AND" logical operator.
 
@@ -30,7 +30,7 @@ td.Cmp(t, "foobar", td.All(
 )) // succeeds
 ```
 
-One can do the same with [`All`]({{< ref "All" >}}) operator itself:
+One can do the same with All operator itself:
 
 ```go
 stringOps := td.All(td.HasPrefix("fo"), td.HasSuffix("ar"))
@@ -40,13 +40,15 @@ td.Cmp(t, "foobar", td.All(
 )) // succeeds
 ```
 
-but if an [`error`](https://pkg.go.dev/builtin/#error) occurs in the nested [`All`]({{< ref "All" >}}), the report is a bit more
-complex to read due to the nested level. [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) does not create a
-new level, its slice is just flattened in the [`All`]({{< ref "All" >}}) parameters.
+but if an [`error`](https://pkg.go.dev/builtin#error) occurs in the nested All, the report is a bit more
+complex to read due to the nested level. [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten) does not create
+a new level, its slice is just flattened in the All parameters.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect/#Type) if all items
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
+
+> See also [`Any`]({{< ref "Any" >}}) and [`None`]({{< ref "None" >}}).
 
 
 > See also [<i class='fas fa-book'></i> All godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#All).
@@ -106,13 +108,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -157,7 +159,7 @@ reason of a potential failure.
 func (t *T) All(got any, expectedValues []any, args ...any) bool
 ```
 
-[`All`]({{< ref "All" >}}) is a shortcut for:
+All is a shortcut for:
 
 ```go
 t.Cmp(got, td.All(expectedValues...), args...)
@@ -168,10 +170,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

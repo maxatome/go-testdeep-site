@@ -7,19 +7,19 @@ weight: 10
 func JSON(expectedJSON any, params ...any) TestDeep
 ```
 
-[`JSON`]({{< ref "JSON" >}}) operator allows to compare the JSON representation of data
+JSON operator allows to compare the JSON representation of data
 against *expectedJSON*. *expectedJSON* can be a:
 
 - `string` containing JSON data like `{"fullname":"Bob","age":42}`
 - `string` containing a JSON filename, ending with ".json" (its
-  content is [`ioutil.ReadFile`](https://pkg.go.dev/ioutil/#ReadFile) before unmarshaling)
+  content is [`ioutil.ReadFile`](https://pkg.go.dev/io/ioutil#ReadFile) before unmarshaling)
 - `[]byte` containing JSON data
-- [`io.Reader`](https://pkg.go.dev/io/#Reader) stream containing JSON data (is [`ioutil.ReadAll`](https://pkg.go.dev/ioutil/#ReadAll) before
-  unmarshaling)
+- [`io.Reader`](https://pkg.go.dev/io#Reader) stream containing JSON data (is [`ioutil.ReadAll`](https://pkg.go.dev/io/ioutil#ReadAll)
+  before unmarshaling)
 
 
 *expectedJSON* JSON value can contain placeholders. The *params*
-are for `any` placeholder parameters in *expectedJSON*. *params* can
+are for any placeholder parameters in *expectedJSON*. *params* can
 contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. A placeholder can
 be numeric like `$2` or named like `$name` and always references an
 item in *params*.
@@ -51,7 +51,7 @@ problem). It is just a matter of taste, double-quoting placeholders
 can be preferred when the JSON data has to conform to the JSON
 specification, like when used in a ".json" file.
 
-[`JSON`]({{< ref "JSON" >}}) does its best to convert back the [`JSON`]({{< ref "JSON" >}}) corresponding to a
+JSON does its best to convert back the JSON corresponding to a
 placeholder to the type of the placeholder or, if the placeholder
 is an operator, to the type behind the operator. Allowing to do
 things like:
@@ -65,10 +65,10 @@ td.Cmp(t, gotValue, td.JSON(`{"foo":$1}`, td.Between(27, 32)))
 
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
-as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+as is, in its freshly unmarshaled JSON form (so as `bool`, `float64`,
 `string`, `[]any`, `map[string]any` or simply `nil`).
 
-Note *expectedJSON* can be a `[]byte`, JSON filename or [`io.Reader`](https://pkg.go.dev/io/#Reader):
+Note *expectedJSON* can be a `[]byte`, a JSON filename or a [`io.Reader`](https://pkg.go.dev/io#Reader):
 
 ```go
 td.Cmp(t, gotValue, td.JSON("file.json", td.Between(12, 34)))
@@ -78,7 +78,7 @@ td.Cmp(t, gotValue, td.JSON(osFile, td.Between(12, 34)))
 
 A JSON filename ends with ".json".
 
-To avoid a legit "$" `string` prefix causes a bad placeholder [`error`](https://pkg.go.dev/builtin/#error),
+To avoid a legit "$" `string` prefix causes a bad placeholder [`error`](https://pkg.go.dev/builtin#error),
 just double it to escape it. Note it is only needed when the "$" is
 the first character of a `string`:
 
@@ -92,7 +92,7 @@ td.Cmp(t, gotValue,
 For the "details" key, the raw value "`$info`" is expected, no
 placeholders are involved here.
 
-Note that [`Lax`]({{< ref "Lax" >}}) mode is automatically enabled by [`JSON`]({{< ref "JSON" >}}) operator to
+Note that [`Lax`]({{< ref "Lax" >}}) mode is automatically enabled by JSON operator to
 simplify numeric tests.
 
 Comments can be embedded in JSON data:
@@ -121,15 +121,15 @@ Comments, like in go, have 2 forms. To quote the Go language specification:
   with the first subsequent character sequence */.
 
 
-Other [`JSON`]({{< ref "JSON" >}}) divergences:
+Other JSON divergences:
 
 - ',' can precede a '}' or a ']' (as in go);
 - int_lit & float_lit numbers as defined in go spec are accepted;
 - numbers can be prefixed by '+'.
 
 
-Most operators can be directly embedded in [`JSON`]({{< ref "JSON" >}}) without requiring
-`any` placeholder.
+Most operators can be directly embedded in JSON without requiring
+any placeholder.
 
 ```go
 td.Cmp(t, gotValue,
@@ -154,20 +154,22 @@ A few notes about operators embedding:
 
 - [`SubMapOf`]({{< ref "SubMapOf" >}}) and [`SuperMapOf`]({{< ref "SuperMapOf" >}}) take only one parameter, a JSON object;
 - the optional 3rd parameter of [`Between`]({{< ref "Between" >}}) has to be specified as a `string`
-  and can be: "[]" or "[`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)" (default), "[[" or "[`BoundsInOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)",
-  "]]" or "[`BoundsOutIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)", "][" or "[`BoundsOutOut`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsKind)";
-- not all operators are embeddable only the following are;
-- [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`Gt`]({{< ref "Gt" >}}),
-  [`Gte`]({{< ref "Gte" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Ignore`]({{< ref "Ignore" >}}), JSONPointer, [`Keys`]({{< ref "Keys" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}),
-  [`MapEach`]({{< ref "MapEach" >}}), [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}), [`NotNil`]({{< ref "NotNil" >}}),
-  [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubMapOf`]({{< ref "SubMapOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}),
-  [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}), [`Values`]({{< ref "Values" >}}) and [`Zero`]({{< ref "Zero" >}}).
+  and can be: "[]" or "BoundsInIn" (default), "[[" or "BoundsInOut",
+  "]]" or "BoundsOutIn", "][" or "BoundsOutOut";
+- not all operators are embeddable only the following are:
+  [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}),
+  [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`Gt`]({{< ref "Gt" >}}), [`Gte`]({{< ref "Gte" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}),
+  [`Ignore`]({{< ref "Ignore" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}), [`Keys`]({{< ref "Keys" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}), [`MapEach`]({{< ref "MapEach" >}}),
+  [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}),
+  [`NotNil`]({{< ref "NotNil" >}}), [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}),
+  [`SubMapOf`]({{< ref "SubMapOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}), [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}),
+  [`Values`]({{< ref "Values" >}}) and [`Zero`]({{< ref "Zero" >}}).
 
 
 Operators taking no parameters can also be directly embedded in
 JSON data using `$^OperatorName` or "`$^OperatorName`" notation. They
 are named shortcut operators (they predate the above operators embedding
-but they subsist for compatibility):
+but they still subsist for compatibility):
 
 ```go
 td.Cmp(t, gotValue, td.JSON(`{"id": $1}`, td.NotZero()))
@@ -201,10 +203,11 @@ The allowed shortcut operators follow:
 - [`Zero`]({{< ref "Zero" >}})     → `$^Zero`
 
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of the *expectedJSON*
-[`json.Unmarshal`](https://pkg.go.dev/json/#Unmarshal)'ed. So it can be `bool`, `string`, `float64`,
-`[]any`, `map[string]any` or `any` in case
-*expectedJSON* is "null".
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of the *expectedJSON*
+once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
+`map[string]any` or `any` in case *expectedJSON* is "null".
+
+> See also [`JSONPointer`]({{< ref "JSONPointer" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}) and [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}).
 
 
 > See also [<i class='fas fa-book'></i> JSON godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#JSON).
@@ -457,13 +460,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -681,7 +684,7 @@ reason of a potential failure.
 func (t *T) JSON(got, expectedJSON any, params []any, args ...any) bool
 ```
 
-[`JSON`]({{< ref "JSON" >}}) is a shortcut for:
+JSON is a shortcut for:
 
 ```go
 t.Cmp(got, td.JSON(expectedJSON, params...), args...)
@@ -692,10 +695,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

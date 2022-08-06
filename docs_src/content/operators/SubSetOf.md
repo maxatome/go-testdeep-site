@@ -7,7 +7,7 @@ weight: 10
 func SubSetOf(expectedItems ...any) TestDeep
 ```
 
-[`SubSetOf`]({{< ref "SubSetOf" >}}) operator compares the contents of an array or a slice (or a
+SubSetOf operator compares the contents of an array or a slice (or a
 pointer on array/slice) ignoring duplicates and without taking care
 of the order of items.
 
@@ -41,9 +41,11 @@ td.Cmp(t, []int{1, 5, 1, 3, 3},
 // = td.Cmp(t, []int{1, 5, 1, 3, 3}, td.SubSetOf(2, 1, 3, 5, 8))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect/#Type) if all items
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
+
+> See also [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
 
 
 > See also [<i class='fas fa-book'></i> SubSetOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SubSetOf).
@@ -96,13 +98,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -146,7 +148,7 @@ reason of a potential failure.
 func (t *T) SubSetOf(got any, expectedItems []any, args ...any) bool
 ```
 
-[`SubSetOf`]({{< ref "SubSetOf" >}}) is a shortcut for:
+SubSetOf is a shortcut for:
 
 ```go
 t.Cmp(got, td.SubSetOf(expectedItems...), args...)
@@ -157,10 +159,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

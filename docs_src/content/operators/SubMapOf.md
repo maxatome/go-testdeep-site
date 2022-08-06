@@ -7,13 +7,13 @@ weight: 10
 func SubMapOf(model any, expectedEntries MapEntries) TestDeep
 ```
 
-[`SubMapOf`]({{< ref "SubMapOf" >}}) operator compares the contents of a map against the non-zero
+SubMapOf operator compares the contents of a map against the non-zero
 values of *model* (if `any`) and the values of *expectedEntries*.
 
 *model* must be the same type as compared data.
 
 *expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operator]({{< ref "operators" >}}) are involved.
+no [TestDeep operators]({{< ref "operators" >}}) are involved.
 
 During a match, each map entry should be matched by an expected
 entry to succeed. But some expected entries can be missing from the
@@ -44,7 +44,9 @@ td.Cmp(t, got, td.SubMapOf(
 ) // fails, extra {"foo": "test"} in got
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *model*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+
+> See also [`Map`]({{< ref "Map" >}}) and [`SuperMapOf`]({{< ref "SuperMapOf" >}}).
 
 
 > See also [<i class='fas fa-book'></i> SubMapOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SubMapOf).
@@ -103,13 +105,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -156,7 +158,7 @@ reason of a potential failure.
 func (t *T) SubMapOf(got, model any, expectedEntries MapEntries, args ...any) bool
 ```
 
-[`SubMapOf`]({{< ref "SubMapOf" >}}) is a shortcut for:
+SubMapOf is a shortcut for:
 
 ```go
 t.Cmp(got, td.SubMapOf(model, expectedEntries), args...)
@@ -167,10 +169,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

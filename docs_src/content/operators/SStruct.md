@@ -7,7 +7,7 @@ weight: 10
 func SStruct(model any, expectedFields ...StructFields) TestDeep
 ```
 
-[`SStruct`]({{< ref "SStruct" >}}) operator (aka strict-[`Struct`]({{< ref "Struct" >}})) compares the contents of a
+SStruct operator (aka strict-[`Struct`]({{< ref "Struct" >}})) compares the contents of a
 struct or a pointer on a struct against values of *model* (if `any`)
 and the values of *expectedFields*. The zero values are compared
 too even if they are omitted from *expectedFields*: that is the
@@ -37,10 +37,10 @@ td.Cmp(t, got, td.SStruct(
 )
 ```
 
-It is an [`error`](https://pkg.go.dev/builtin/#error) to set a non-zero field in *model* AND to set the
-same field in *expectedFields*, as in such cases the [`SStruct`]({{< ref "SStruct" >}})
+It is an [`error`](https://pkg.go.dev/builtin#error) to set a non-zero field in *model* AND to set the
+same field in *expectedFields*, as in such cases the SStruct
 operator does not know if the user wants to override the non-zero
-*model* field value or if it is an [`error`](https://pkg.go.dev/builtin/#error). To explicitly override a
+*model* field value or if it is an [`error`](https://pkg.go.dev/builtin#error). To explicitly override a
 non-zero *model* in *expectedFields*, just prefix its name with a
 ">" (followed by some optional spaces), as in:
 
@@ -95,7 +95,7 @@ td.Cmp(t, got, td.SStruct(
 
 This way, "*At" shell pattern is always used before "^[a-z]"
 regexp, so if a field "createdAt" exists it is tested against
-[`time.Now`](https://pkg.go.dev/time/#Now)() and never against [`NotNil`]({{< ref "NotNil" >}}). A pattern without a
+time.Now() and never against [`NotNil`]({{< ref "NotNil" >}}). A pattern without a
 prefix number is the same as specifying "0" as prefix.
 
 To make it clearer, some spaces can be added, as well as bigger
@@ -134,7 +134,9 @@ td.Cmp(t, got, td.SStruct(
 During a match, all expected and zero fields must be found to
 succeed.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *model*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+
+> See also [`SStruct`]({{< ref "SStruct" >}}).
 
 
 > See also [<i class='fas fa-book'></i> SStruct godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SStruct).
@@ -315,19 +317,19 @@ td.Cmp(t, got, td.SStruct(model, expectedFields), args...)
 
 See above for details.
 
-[`SStruct()`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
+[`SStruct`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`SStruct()`]({{< ref "SStruct" >}}) call.
+original [`SStruct`]({{< ref "SStruct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -491,7 +493,7 @@ reason of a potential failure.
 func (t *T) SStruct(got, model any, expectedFields StructFields, args ...any) bool
 ```
 
-[`SStruct`]({{< ref "SStruct" >}}) is a shortcut for:
+SStruct is a shortcut for:
 
 ```go
 t.Cmp(got, td.SStruct(model, expectedFields), args...)
@@ -499,17 +501,17 @@ t.Cmp(got, td.SStruct(model, expectedFields), args...)
 
 See above for details.
 
-[`SStruct()`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
+[`SStruct`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`SStruct()`]({{< ref "SStruct" >}}) call.
+original [`SStruct`]({{< ref "SStruct" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

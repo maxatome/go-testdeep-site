@@ -7,10 +7,10 @@ weight: 10
 func Ignore() TestDeep
 ```
 
-[`Ignore`]({{< ref "Ignore" >}}) operator is always true, whatever data is. It is useful when
+Ignore operator is always true, whatever data is. It is useful when
 comparing a slice with [`Slice`]({{< ref "Slice" >}}) and wanting to ignore some indexes,
-for example. Or comparing a struct with [`SStruct`]({{< ref "SStruct" >}}) and wanting to
-ignore some fields:
+for example (if you don't want to use [`SuperSliceOf`]({{< ref "SuperSliceOf" >}})). Or comparing
+a struct with [`SStruct`]({{< ref "SStruct" >}}) and wanting to ignore some fields:
 
 ```go
 td.Cmp(t, got, td.SStruct(

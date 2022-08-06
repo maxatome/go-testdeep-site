@@ -7,7 +7,7 @@ weight: 10
 func Bag(expectedItems ...any) TestDeep
 ```
 
-[`Bag`]({{< ref "Bag" >}}) operator compares the contents of an array or a slice (or a
+Bag operator compares the contents of an array or a slice (or a
 pointer on array/slice) without taking care of the order of items.
 
 During a match, each expected item should match in the compared
@@ -43,9 +43,11 @@ td.Cmp(t, []int{1, 5, 1, 8, 42, 3, 3},
 // = td.Cmp(t, []int{1, 5, 1, 8, 42, 3, 3}, td.Bag(5, 1, 1, 3, 8, 42, 3))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect/#Type) if all items
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa()`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from Isa()) and they are equal.
+
+> See also [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}) and [`Set`]({{< ref "Set" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Bag godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Bag).
@@ -112,13 +114,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -176,7 +178,7 @@ reason of a potential failure.
 func (t *T) Bag(got any, expectedItems []any, args ...any) bool
 ```
 
-[`Bag`]({{< ref "Bag" >}}) is a shortcut for:
+Bag is a shortcut for:
 
 ```go
 t.Cmp(got, td.Bag(expectedItems...), args...)
@@ -187,10 +189,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
