@@ -98,8 +98,8 @@ weight: 1
 [`tdsuite`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite
 [`tdutil`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil
 
-[`BeLax` config flag]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig
-[`error`]: https://pkg.go.dev/builtin/#error
+[`BeLax` config flag]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax
+[`error`]: https://pkg.go.dev/builtin#error
 
 
 [`fmt.Stringer`]: https://pkg.go.dev/fmt/#Stringer

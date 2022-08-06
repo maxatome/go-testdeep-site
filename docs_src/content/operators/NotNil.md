@@ -7,7 +7,7 @@ weight: 10
 func NotNil() TestDeep
 ```
 
-[`NotNil`]({{< ref "NotNil" >}}) operator checks that data is not `nil` (or is a non-`nil`
+NotNil operator checks that data is not `nil` (or is a non-`nil`
 interface, containing a non-`nil` pointer.)
 
 ```go
@@ -24,6 +24,8 @@ var got fmt.Stringer = (*bytes.Buffer)(nil)
 td.Cmp(t, got, td.NotNil()) // fails
 td.Cmp(t, got, td.Not(nil)) // succeeds, as the interface is not nil
 ```
+
+> See also [`Nil`]({{< ref "Nil" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}) and [`NotZero`]({{< ref "NotZero" >}}).
 
 
 > See also [<i class='fas fa-book'></i> NotNil godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NotNil).
@@ -77,13 +79,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -128,7 +130,7 @@ reason of a potential failure.
 func (t *T) NotNil(got any, args ...any) bool
 ```
 
-[`NotNil`]({{< ref "NotNil" >}}) is a shortcut for:
+NotNil is a shortcut for:
 
 ```go
 t.Cmp(got, td.NotNil(), args...)
@@ -139,10 +141,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

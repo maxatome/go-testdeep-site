@@ -7,12 +7,12 @@ weight: 10
 func Re(reg any, capture ...any) TestDeep
 ```
 
-[`Re`]({{< ref "Re" >}}) operator allows to apply a regexp on a `string` (or convertible),
-`[]byte`, [`error`](https://pkg.go.dev/builtin/#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) interface ([`error`](https://pkg.go.dev/builtin/#error) interface is tested
-before [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer).)
+Re operator allows to apply a regexp on a `string` (or convertible),
+`[]byte`, [`error`](https://pkg.go.dev/builtin#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) interface ([`error`](https://pkg.go.dev/builtin#error) interface is tested
+before [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer).)
 
 *reg* is the regexp. It can be a `string` that is automatically
-compiled using [`regexp.MustCompile`](https://pkg.go.dev/regexp/#MustCompile), or a [`*regexp.Regexp`](https://pkg.go.dev/regexp/#Regexp).
+compiled using [`regexp.Compile`](https://pkg.go.dev/regexp#Compile), or a [`*regexp.Regexp`](https://pkg.go.dev/regexp#Regexp).
 
 Optional *capture* parameter can be used to match the contents of
 regexp groups. Groups are presented as a `[]string` or `[][]byte`
@@ -26,6 +26,8 @@ td.Cmp(t, "John Doe",
 td.Cmp(t, "John Doe",
   td.Re(`^(\w+) (\w+)`, td.Bag("Doe", "John"))) // succeeds
 ```
+
+> See also [`ReAll`]({{< ref "ReAll" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Re godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Re).
@@ -168,19 +170,19 @@ td.Cmp(t, got, td.Re(reg, capture), args...)
 
 See above for details.
 
-[`Re()`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
+[`Re`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Re()`]({{< ref "Re" >}}) call.
+original [`Re`]({{< ref "Re" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -316,7 +318,7 @@ reason of a potential failure.
 func (t *T) Re(got, reg , capture any, args ...any) bool
 ```
 
-[`Re`]({{< ref "Re" >}}) is a shortcut for:
+Re is a shortcut for:
 
 ```go
 t.Cmp(got, td.Re(reg, capture), args...)
@@ -324,17 +326,17 @@ t.Cmp(got, td.Re(reg, capture), args...)
 
 See above for details.
 
-[`Re()`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
+[`Re`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Re()`]({{< ref "Re" >}}) call.
+original [`Re`]({{< ref "Re" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

@@ -7,13 +7,13 @@ weight: 10
 func ReAll(reg, capture any) TestDeep
 ```
 
-[`ReAll`]({{< ref "ReAll" >}}) operator allows to successively apply a regexp on a `string`
-(or convertible), `[]byte`, [`error`](https://pkg.go.dev/builtin/#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) interface ([`error`](https://pkg.go.dev/builtin/#error)
-interface is tested before [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer)) and to match its groups
+ReAll operator allows to successively apply a regexp on a `string`
+(or convertible), `[]byte`, [`error`](https://pkg.go.dev/builtin#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) interface ([`error`](https://pkg.go.dev/builtin#error)
+interface is tested before [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer)) and to match its groups
 contents.
 
 *reg* is the regexp. It can be a `string` that is automatically
-compiled using [`regexp.MustCompile`](https://pkg.go.dev/regexp/#MustCompile), or a [`*regexp.Regexp`](https://pkg.go.dev/regexp/#Regexp).
+compiled using [`regexp.Compile`](https://pkg.go.dev/regexp#Compile), or a [`*regexp.Regexp`](https://pkg.go.dev/regexp#Regexp).
 
 *capture* is used to match the contents of regexp groups. Groups
 are presented as a `[]string` or `[][]byte` depending the original
@@ -25,6 +25,8 @@ td.Cmp(t, "John Doe",
 td.Cmp(t, "John Doe",
   td.ReAll(`(\w+)(?: |\z)`, td.Bag("Doe", "John"))) // succeeds
 ```
+
+> See also [`Re`]({{< ref "Re" >}}).
 
 
 > See also [<i class='fas fa-book'></i> ReAll godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ReAll).
@@ -141,13 +143,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -251,7 +253,7 @@ reason of a potential failure.
 func (t *T) ReAll(got, reg , capture any, args ...any) bool
 ```
 
-[`ReAll`]({{< ref "ReAll" >}}) is a shortcut for:
+ReAll is a shortcut for:
 
 ```go
 t.Cmp(got, td.ReAll(reg, capture), args...)
@@ -262,10 +264,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

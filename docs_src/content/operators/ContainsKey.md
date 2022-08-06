@@ -7,7 +7,7 @@ weight: 10
 func ContainsKey(expectedValue any) TestDeep
 ```
 
-[`ContainsKey`]({{< ref "ContainsKey" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) and works on maps only. It
+ContainsKey is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) and works on maps only. It
 compares each key of map against *expectedValue*.
 
 ```go
@@ -21,9 +21,9 @@ td.Cmp(t, hash, td.ContainsKey(42))                 // succeeds
 td.Cmp(t, hash, td.ContainsKey(td.Between(40, 45))) // succeeds
 ```
 
-When [`ContainsKey(nil)`]({{< ref "ContainsKey" >}}) is used, `nil` is automatically converted to a
+When ContainsKey(`nil`) is used, `nil` is automatically converted to a
 typed `nil` on the fly to avoid confusion (if the map key type allows
-it of course.) So all following Cmp calls are equivalent
+it of course.) So all following [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) calls are equivalent
 (except the `(*byte)(nil)` one):
 
 ```go
@@ -35,6 +35,8 @@ td.Cmp(t, hnum, td.ContainsKey(td.Nil()))    // succeeds
 // But...
 td.Cmp(t, hnum, td.ContainsKey((*byte)(nil))) // fails: (*byte)(nil) ≠ (*int)(nil)
 ```
+
+> See also [`Contains`]({{< ref "Contains" >}}).
 
 
 > See also [<i class='fas fa-book'></i> ContainsKey godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContainsKey).
@@ -105,13 +107,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -168,7 +170,7 @@ reason of a potential failure.
 func (t *T) ContainsKey(got, expectedValue any, args ...any) bool
 ```
 
-[`ContainsKey`]({{< ref "ContainsKey" >}}) is a shortcut for:
+ContainsKey is a shortcut for:
 
 ```go
 t.Cmp(got, td.ContainsKey(expectedValue), args...)
@@ -179,10 +181,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

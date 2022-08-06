@@ -7,10 +7,9 @@ weight: 10
 func Lax(expectedValue any) TestDeep
 ```
 
-[`Lax`]({{< ref "Lax" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}), it temporarily enables the BeLax config
-flag before letting the comparison process continue its course.
+Lax is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}), it temporarily enables the [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) before letting the comparison process continue its course.
 
-It is more commonly used as CmpLax function than as an operator. It
+It is more commonly used as [`CmpLax`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpLax) function than as an operator. It
 could be used when, for example, an operator is constructed once
 but applied to different, but compatible types as in:
 
@@ -22,14 +21,15 @@ td.Cmp(t, intValue, bw)           // no need to be lax here: same int types
 td.Cmp(t, floatValue, td.Lax(bw)) // be lax please, as float64 ≠ int
 ```
 
-Note that in the latter case, CmpLax() could be used as well:
+Note that in the latter case, [`CmpLax`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpLax) could be used as well:
+
 ```go
 td.CmpLax(t, floatValue, bw)
 ```
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the greatest convertible or more common
-[`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *expectedValue* if it is a base type (`bool`, `int*`,
-`uint*`, `float*`, `complex*`, `string`), the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of
+[`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue* if it is a base type (`bool`, `int*`,
+`uint*`, `float*`, `complex*`, `string`), the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of
 *expectedValue* otherwise, except if *expectedValue* is a [TestDeep
 operator]({{< ref "operators" >}}). In this case, it delegates [`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator.
 
@@ -80,13 +80,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -137,10 +137,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

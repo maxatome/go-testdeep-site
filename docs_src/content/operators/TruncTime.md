@@ -7,15 +7,15 @@ weight: 10
 func TruncTime(expectedTime any, trunc ...time.Duration) TestDeep
 ```
 
-[`TruncTime`]({{< ref "TruncTime" >}}) operator compares [`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) values after
-truncating them to the optional *trunc* duration. See [`time.Truncate`](https://pkg.go.dev/time/#Truncate)
-for details about the truncation.
+TruncTime operator compares [`time.Time`](https://pkg.go.dev/time#Time) (or assignable) values
+after truncating them to the optional *trunc* duration. See
+[`time.Time.Truncate`](https://pkg.go.dev/time#Time.Truncate) for details about the truncation.
 
 If *trunc* is missing, it defaults to 0.
 
-During comparison, location does not matter as [`time.Equal`](https://pkg.go.dev/time/#Equal) method is
-used behind the scenes: a time instant in two different locations
-is the same time instant.
+During comparison, location does not matter as [`time.Time.Equal`](https://pkg.go.dev/time#Time.Equal)
+method is used behind the scenes: a time instant in two different
+locations is the same time instant.
 
 Whatever the *trunc* value is, the monotonic clock is stripped
 before the comparison against *expectedTime*.
@@ -30,7 +30,7 @@ td.Cmp(t, gotDate, td.TruncTime(expected))              // fails, ns differ
 td.Cmp(t, gotDate, td.TruncTime(expected, time.Second)) // succeeds
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *expectedTime*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedTime*.
 
 
 > See also [<i class='fas fa-book'></i> TruncTime godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#TruncTime).
@@ -88,19 +88,19 @@ td.Cmp(t, got, td.TruncTime(expectedTime, trunc), args...)
 
 See above for details.
 
-[`TruncTime()`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
+[`TruncTime`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`TruncTime()`]({{< ref "TruncTime" >}}) call.
+original [`TruncTime`]({{< ref "TruncTime" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -151,7 +151,7 @@ reason of a potential failure.
 func (t *T) TruncTime(got, expectedTime any, trunc time.Duration, args ...any) bool
 ```
 
-[`TruncTime`]({{< ref "TruncTime" >}}) is a shortcut for:
+TruncTime is a shortcut for:
 
 ```go
 t.Cmp(got, td.TruncTime(expectedTime, trunc), args...)
@@ -159,17 +159,17 @@ t.Cmp(got, td.TruncTime(expectedTime, trunc), args...)
 
 See above for details.
 
-[`TruncTime()`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
+[`TruncTime`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`TruncTime()`]({{< ref "TruncTime" >}}) call.
+original [`TruncTime`]({{< ref "TruncTime" >}}) call.
 
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

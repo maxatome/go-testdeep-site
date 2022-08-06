@@ -7,10 +7,10 @@ weight: 10
 func Not(notExpected any) TestDeep
 ```
 
-[`Not`]({{< ref "Not" >}}) operator compares data against the not expected value. During a
+Not operator compares data against the not expected value. During a
 match, it must not match to succeed.
 
-[`Not`]({{< ref "Not" >}}) is the same operator as [`None()`]({{< ref "None" >}}) with only one argument. It is
+Not is the same operator as [`None`]({{< ref "None" >}}) with only one argument. It is
 provided as a more readable function when only one argument is
 needed.
 
@@ -18,6 +18,8 @@ needed.
 td.Cmp(t, 12, td.Not(10)) // succeeds
 td.Cmp(t, 12, td.Not(12)) // fails
 ```
+
+> See also [`None`]({{< ref "None" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Not godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Not).
@@ -63,13 +65,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -106,7 +108,7 @@ reason of a potential failure.
 func (t *T) Not(got, notExpected any, args ...any) bool
 ```
 
-[`Not`]({{< ref "Not" >}}) is a shortcut for:
+Not is a shortcut for:
 
 ```go
 t.Cmp(got, td.Not(notExpected), args...)
@@ -117,10 +119,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

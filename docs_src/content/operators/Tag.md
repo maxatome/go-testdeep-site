@@ -7,10 +7,10 @@ weight: 10
 func Tag(tag string, expectedValue any) TestDeep
 ```
 
-[`Tag`]({{< ref "Tag" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It only allows to name *expectedValue*,
+Tag is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It only allows to name *expectedValue*,
 which can be an operator or a value. The data is then compared
-against *expectedValue* as if [`Tag`]({{< ref "Tag" >}}) was never called. It is only
-useful as [`JSON`]({{< ref "JSON" >}}) operator parameter, to name placeholders. See [`JSON`]({{< ref "JSON" >}})
+against *expectedValue* as if Tag was never called. It is only useful
+as [`JSON`]({{< ref "JSON" >}}) operator parameter, to name placeholders. See [`JSON`]({{< ref "JSON" >}})
 operator for more details.
 
 ```go

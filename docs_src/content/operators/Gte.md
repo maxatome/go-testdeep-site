@@ -7,17 +7,18 @@ weight: 10
 func Gte(minExpectedValue any) TestDeep
 ```
 
-[`Gte`]({{< ref "Gte" >}}) operator checks that data is greater or equal than
-*minExpectedValue*. *minExpectedValue* can be `any` numeric, `string`,
-[`time.Time`](https://pkg.go.dev/time/#Time) (or assignable) value or implements at least one of the
+Gte operator checks that data is greater or equal than
+*minExpectedValue*. *minExpectedValue* can be any numeric, `string`,
+[`time.Time`](https://pkg.go.dev/time#Time) (or assignable) value or implements at least one of the
 two following methods:
+
 ```go
 func (a T) Less(b T) bool   // returns true if a < b
 func (a T) Compare(b T) int // returns -1 if a < b, 1 if a > b, 0 if a == b
 ```
 
 *minExpectedValue* must be the same type as the compared value,
-except if BeLax config flag is true.
+except if [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) is true.
 
 ```go
 td.Cmp(t, 17, td.Gte(17))
@@ -25,7 +26,7 @@ before := time.Now()
 td.Cmp(t, time.Now(), td.Gte(before))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *minExpectedValue*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *minExpectedValue*.
 
 
 > See also [<i class='fas fa-book'></i> Gte godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Gte).
@@ -88,13 +89,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -148,7 +149,7 @@ reason of a potential failure.
 func (t *T) Gte(got, minExpectedValue any, args ...any) bool
 ```
 
-[`Gte`]({{< ref "Gte" >}}) is a shortcut for:
+Gte is a shortcut for:
 
 ```go
 t.Cmp(got, td.Gte(minExpectedValue), args...)
@@ -159,10 +160,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

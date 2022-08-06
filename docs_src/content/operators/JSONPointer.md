@@ -4,17 +4,17 @@ weight: 10
 ---
 
 ```go
-func JSONPointer(pointer string, expectedValue any) TestDeep
+func JSONPointer(ptr string, expectedValue any) TestDeep
 ```
 
 JSONPointer is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the JSON
-representation of data, gets the value corresponding to the [`JSON`]({{< ref "JSON" >}})
-pointer *pointer* (as RFC 6901 specifies it) and compares it to
+representation of data, gets the value corresponding to the JSON
+pointer *ptr* (as [RFC 6901](https://tools.ietf.org/html/rfc6901) specifies it) and compares it to
 *expectedValue*.
 
 [`Lax`]({{< ref "Lax" >}}) mode is automatically enabled to simplify numeric tests.
 
-JSONPointer does its best to convert back the [`JSON`]({{< ref "JSON" >}}) pointed data to
+JSONPointer does its best to convert back the JSON pointed data to
 the type of *expectedValue* or to the type behind the
 *expectedValue* operator, if it is an operator. Allowing to do
 things like:
@@ -41,7 +41,7 @@ td.Cmp(t, got, td.JSONPointer("/zzz", td.Between(40, 45)))
 
 Of course, it does this conversion only if the expected type can be
 guessed. In the case the conversion cannot occur, data is compared
-as is, in its freshly unmarshaled [`JSON`]({{< ref "JSON" >}}) form (so as `bool`, `float64`,
+as is, in its freshly unmarshaled JSON form (so as `bool`, `float64`,
 `string`, `[]any`, `map[string]any` or simply `nil`).
 
 Note that as `any` [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
@@ -53,7 +53,7 @@ td.Cmp(t, got, td.JSONPointer("/foo/bar", td.JSON(`{"zip": true}`)))
 ```
 
 It can be used with structs lacking json tags. In this case, fields
-names have to be used in [`JSON`]({{< ref "JSON" >}}) pointer:
+names have to be used in JSON pointer:
 
 ```go
 type Item struct {
@@ -68,7 +68,7 @@ td.Cmp(t, got, td.JSONPointer("/Next/Next", Item{Val: 3}))
 Contrary to [`Smuggle`]({{< ref "Smuggle" >}}) operator and its fields-path feature, only
 public fields can be followed, as private ones are never (un)marshaled.
 
-There is no JSONHas nor JSONHasnt operators to only check a [`JSON`]({{< ref "JSON" >}})
+There is no JSONHas nor JSONHasnt operators to only check a JSON
 pointer exists or not, but they can easily be emulated:
 
 ```go
@@ -82,7 +82,10 @@ JSONHasnt := func(pointer string) td.TestDeep {
 ```
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method always returns `nil` as the expected type cannot be
-guessed from a [`JSON`]({{< ref "JSON" >}}) pointer.
+guessed from a JSON pointer.
+
+> See also [`JSON`]({{< ref "JSON" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}), [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) and [`Smuggle`]({{< ref "Smuggle" >}}).
+
 
 
 > See also [<i class='fas fa-book'></i> JSONPointer godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#JSONPointer).
@@ -276,26 +279,26 @@ guessed from a [`JSON`]({{< ref "JSON" >}}) pointer.
 ## CmpJSONPointer shortcut
 
 ```go
-func CmpJSONPointer(t TestingT, got any, pointer string, expectedValue any, args ...any) bool
+func CmpJSONPointer(t TestingT, got any, ptr string, expectedValue any, args ...any) bool
 ```
 
 CmpJSONPointer is a shortcut for:
 
 ```go
-td.Cmp(t, got, td.JSONPointer(pointer, expectedValue), args...)
+td.Cmp(t, got, td.JSONPointer(ptr, expectedValue), args...)
 ```
 
 See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -488,13 +491,13 @@ reason of a potential failure.
 ## T.JSONPointer shortcut
 
 ```go
-func (t *T) JSONPointer(got any, pointer string, expectedValue any, args ...any) bool
+func (t *T) JSONPointer(got any, ptr string, expectedValue any, args ...any) bool
 ```
 
 JSONPointer is a shortcut for:
 
 ```go
-t.Cmp(got, td.JSONPointer(pointer, expectedValue), args...)
+t.Cmp(got, td.JSONPointer(ptr, expectedValue), args...)
 ```
 
 See above for details.
@@ -502,10 +505,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

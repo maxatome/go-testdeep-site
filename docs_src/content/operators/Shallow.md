@@ -7,7 +7,7 @@ weight: 10
 func Shallow(expectedPtr any) TestDeep
 ```
 
-[`Shallow`]({{< ref "Shallow" >}}) operator compares pointers only, not their contents. It
+Shallow operator compares pointers only, not their contents. It
 applies on channels, functions (with some restrictions), maps,
 pointers, slices and strings.
 
@@ -25,7 +25,7 @@ a, b := back[:6], back[6:]
 td.Cmp(t, &a, td.Shallow(&b)) // fails
 ```
 
-Be careful for slices and strings! [`Shallow`]({{< ref "Shallow" >}}) can succeed but the
+Be careful for slices and strings! Shallow can succeed but the
 slices/strings not be identical because of their different
 lengths. For example:
 
@@ -42,6 +42,8 @@ a := []int{1, 2, 3, 4, 5, 6}
 b := a[:2]                    // aka []int{1, 2}
 td.Cmp(t, &a, td.Shallow(&b)) // succeeds as both slices point to the same area, even if len() differ
 ```
+
+> See also [`Ptr`]({{< ref "Ptr" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Shallow godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Shallow).
@@ -123,13 +125,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -202,7 +204,7 @@ reason of a potential failure.
 func (t *T) Shallow(got, expectedPtr any, args ...any) bool
 ```
 
-[`Shallow`]({{< ref "Shallow" >}}) is a shortcut for:
+Shallow is a shortcut for:
 
 ```go
 t.Cmp(got, td.Shallow(expectedPtr), args...)
@@ -213,10 +215,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

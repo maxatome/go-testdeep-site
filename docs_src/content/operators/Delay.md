@@ -7,7 +7,7 @@ weight: 10
 func Delay(delayed func() TestDeep) TestDeep
 ```
 
-[`Delay`]({{< ref "Delay" >}}) operator allows to delay the construction of an operator to
+Delay operator allows to delay the construction of an operator to
 the time it is used for the first time. Most of the time, it is
 used with helpers. See the example for a very simple use case.
 

@@ -7,7 +7,7 @@ weight: 10
 func Code(fn any) TestDeep
 ```
 
-[`Code`]({{< ref "Code" >}}) operator allows to check data using a custom function. So
+Code operator allows to check data using a custom function. So
 *fn* is a function that must take one parameter whose type must be
 the same as the type of the compared value.
 
@@ -35,8 +35,8 @@ td.Cmp(t, gotTime,
   }))
 ```
 
-or a single [`error`](https://pkg.go.dev/builtin/#error) value. If the returned [`error`](https://pkg.go.dev/builtin/#error) is `nil`, the test
-succeeded, else the [`error`](https://pkg.go.dev/builtin/#error) contains the reason of failure:
+or a single [`error`](https://pkg.go.dev/builtin#error) value. If the returned [`error`](https://pkg.go.dev/builtin#error) is `nil`, the test
+succeeded, else the [`error`](https://pkg.go.dev/builtin#error) contains the reason of failure:
 
 ```go
 td.Cmp(t, gotJsonRawMesg,
@@ -56,20 +56,20 @@ td.Cmp(t, gotJsonRawMesg,
 This operator allows to handle `any` specific comparison not handled
 by standard operators.
 
-It is not recommended to call Cmp (or `any` other Cmp*
-functions or *T methods) inside the body of *fn*, because of
+It is not recommended to call [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) (or `any` other Cmp*
+functions or [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) methods) inside the body of *fn*, because of
 confusion produced by output in case of failure. When the data
 needs to be transformed before being compared again, [`Smuggle`]({{< ref "Smuggle" >}})
 operator should be used instead.
 
 But in some cases it can be better to handle yourself the
 comparison than to chain [TestDeep operators]({{< ref "operators" >}}). In this case, *fn* can
-be a function receiving one or two *T as first parameters and
+be a function receiving one or two [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) as first parameters and
 returning no values.
 
-When *fn* expects one *T parameter, is it directly derived from the
-testing.TB instance passed originally to Cmp (or its derivatives)
-using NewT():
+When *fn* expects one [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) parameter, it is directly derived from the
+[`testing.TB`](https://pkg.go.dev/testing#TB) instance passed originally to [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) (or its derivatives)
+using [`NewT`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT):
 
 ```go
 td.Cmp(t, httpRequest, td.Code(func(t *td.T, r *http.Request) {
@@ -80,9 +80,9 @@ td.Cmp(t, httpRequest, td.Code(func(t *td.T, r *http.Request) {
 }))
 ```
 
-When *fn* expects two *T parameters, they are directly derived from
-the testing.TB instance passed originally to Cmp (or its derivatives)
-using AssertRequire():
+When *fn* expects two [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) parameters, they are directly derived from
+the [`testing.TB`](https://pkg.go.dev/testing#TB) instance passed originally to [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) (or its derivatives)
+using [`AssertRequire`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire):
 
 ```go
 td.Cmp(t, httpRequest, td.Code(func(assert, require *td.T, r *http.Request) {
@@ -92,12 +92,13 @@ td.Cmp(t, httpRequest, td.Code(func(assert, require *td.T, r *http.Request) {
 }))
 ```
 
-Note that these forms do not work when there is no initial testing.TB
-instance, like when using EqDeeplyError() or EqDeeply() functions,
-or when the [`Code`]({{< ref "Code" >}}) operator is called behind the following operators,
-as they just check if a match occurs without raising an [`error`](https://pkg.go.dev/builtin/#error): [`Any`]({{< ref "Any" >}}),
-[`Bag`]({{< ref "Bag" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}),
-[`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
+Note that these forms do not work when there is no initial
+[`testing.TB`](https://pkg.go.dev/testing#TB) instance, like when using [`EqDeeplyError`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#EqDeeplyError) or
+[`EqDeeply`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#EqDeeply) functions, or when the Code operator is called behind
+the following operators, as they just check if a match occurs
+without raising an [`error`](https://pkg.go.dev/builtin#error): [`Any`]({{< ref "Any" >}}), [`Bag`]({{< ref "Bag" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}),
+[`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}),
+[`SuperBagOf`]({{< ref "SuperBagOf" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
 
 RootName is inherited but not the current path, but it can be
 recovered if needed:
@@ -133,7 +134,7 @@ produces the following errors:
           expected: 126
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of last parameter of *fn*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of last parameter of *fn*.
 
 
 > See also [<i class='fas fa-book'></i> Code godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Code).
@@ -229,13 +230,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -319,7 +320,7 @@ reason of a potential failure.
 func (t *T) Code(got, fn any, args ...any) bool
 ```
 
-[`Code`]({{< ref "Code" >}}) is a shortcut for:
+Code is a shortcut for:
 
 ```go
 t.Cmp(got, td.Code(fn), args...)
@@ -330,10 +331,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

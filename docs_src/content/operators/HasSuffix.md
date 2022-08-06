@@ -7,9 +7,9 @@ weight: 10
 func HasSuffix(expected string) TestDeep
 ```
 
-[`HasSuffix`]({{< ref "HasSuffix" >}}) operator allows to compare the suffix of a `string` (or
-convertible), `[]byte` (or convertible), [`error`](https://pkg.go.dev/builtin/#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer)
-interface ([`error`](https://pkg.go.dev/builtin/#error) interface is tested before [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer)).
+HasSuffix operator allows to compare the suffix of a `string` (or
+convertible), `[]byte` (or convertible), [`error`](https://pkg.go.dev/builtin#error) or [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer)
+interface ([`error`](https://pkg.go.dev/builtin#error) interface is tested before [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer)).
 
 ```go
 td.Cmp(t, []byte("foobar"), td.HasSuffix("bar")) // succeeds
@@ -23,6 +23,8 @@ td.Cmp(t, err, td.HasSuffix("!")) // succeeds
 bstr := bytes.NewBufferString("fmt.Stringer!")
 td.Cmp(t, bstr, td.HasSuffix("!")) // succeeds
 ```
+
+> See also [`Contains`]({{< ref "Contains" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}) and [`String`]({{< ref "String" >}}).
 
 
 > See also [<i class='fas fa-book'></i> HasSuffix godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#HasSuffix).
@@ -86,13 +88,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -147,7 +149,7 @@ reason of a potential failure.
 func (t *T) HasSuffix(got any, expected string, args ...any) bool
 ```
 
-[`HasSuffix`]({{< ref "HasSuffix" >}}) is a shortcut for:
+HasSuffix is a shortcut for:
 
 ```go
 t.Cmp(got, td.HasSuffix(expected), args...)
@@ -158,10 +160,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

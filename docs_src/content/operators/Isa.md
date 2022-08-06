@@ -7,7 +7,7 @@ weight: 10
 func Isa(model any) TestDeep
 ```
 
-[`Isa`]({{< ref "Isa" >}}) operator checks the data type or whether data implements an
+Isa operator checks the data type or whether data implements an
 interface or not.
 
 Typical type checks:
@@ -25,18 +25,18 @@ fmt.Stringer(nil)
 ```
 
 is not an interface, but just `nil`… To bypass this golang
-limitation, [`Isa`]({{< ref "Isa" >}}) accepts pointers on interfaces. So checking that
-data implements [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) interface should be written as:
+limitation, Isa accepts pointers on interfaces. So checking that
+data implements [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) interface should be written as:
 
 ```go
 td.Cmp(t, bytes.Buffer{}, td.Isa((*fmt.Stringer)(nil))) // succeeds
 ```
 
 Of course, in the latter case, if checked data type is
-[`*fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer), [`Isa`]({{< ref "Isa" >}}) will match too (in fact before checking whether
-it implements [`fmt.Stringer`](https://pkg.go.dev/fmt/#Stringer) or not).
+[`*fmt.Stringer`](https://pkg.go.dev/fmt#Stringer), Isa will match too (in fact before checking whether
+it implements [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) or not).
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect/#Type) of *model*.
+[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
 
 > See also [<i class='fas fa-book'></i> Isa godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Isa).
@@ -120,13 +120,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -201,7 +201,7 @@ reason of a potential failure.
 func (t *T) Isa(got, model any, args ...any) bool
 ```
 
-[`Isa`]({{< ref "Isa" >}}) is a shortcut for:
+Isa is a shortcut for:
 
 ```go
 t.Cmp(got, td.Isa(model), args...)
@@ -212,10 +212,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 

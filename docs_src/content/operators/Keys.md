@@ -7,7 +7,7 @@ weight: 10
 func Keys(val any) TestDeep
 ```
 
-[`Keys`]({{< ref "Keys" >}}) is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes a map and compares its
+Keys is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes a map and compares its
 ordered keys to *val*.
 
 *val* can be a slice of items of the same type as the map keys:
@@ -25,6 +25,8 @@ an unsorted manner:
 got := map[string]bool{"c": true, "a": false, "b": true}
 td.Cmp(t, got, td.Keys(td.Bag("c", "a", "b"))) // succeeds
 ```
+
+> See also [`Values`]({{< ref "Values" >}}) and [`ContainsKey`]({{< ref "ContainsKey" >}}).
 
 
 > See also [<i class='fas fa-book'></i> Keys godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Keys).
@@ -75,13 +77,13 @@ See above for details.
 
 Returns true if the test is OK, false if it fails.
 
-If "t" is a *T then its Config is inherited.
+If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
@@ -123,7 +125,7 @@ reason of a potential failure.
 func (t *T) Keys(got, val any, args ...any) bool
 ```
 
-[`Keys`]({{< ref "Keys" >}}) is a shortcut for:
+Keys is a shortcut for:
 
 ```go
 t.Cmp(got, td.Keys(val), args...)
@@ -134,10 +136,10 @@ See above for details.
 Returns true if the test is OK, false if it fails.
 
 *args...* are optional and allow to name the test. This name is
-used in case of failure to qualify the test. If `len(args) > 1` and
+used in case of failure to qualify the test. If `len(args) > 1` and
 the first item of *args* is a `string` and contains a '%' `rune` then
-[`fmt.Fprintf`](https://pkg.go.dev/fmt/#Fprintf) is used to compose the name, else *args* are passed to
-[`fmt.Fprint`](https://pkg.go.dev/fmt/#Fprint). Do not forget it is the name of the test, not the
+[`fmt.Fprintf`](https://pkg.go.dev/fmt#Fprintf) is used to compose the name, else *args* are passed to
+[`fmt.Fprint`](https://pkg.go.dev/fmt#Fprint). Do not forget it is the name of the test, not the
 reason of a potential failure.
 
 
