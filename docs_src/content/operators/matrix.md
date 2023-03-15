@@ -25,68 +25,73 @@ weight: 1
 | [`ContainsKey`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | [`ContainsKey`] |
 | [`Delay`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Delay`] |
 | [`Empty`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✗ | ptr on array/slice/map/string | ✓ | ✓ | ✗ | [`Empty`] |
+| [`ErrorIs`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | [`error`] | ✗ | ✗ | [`ErrorIs`] |
+| [`First`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`First`] |
+| [`Grep`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Grep`] |
 | [`Gt`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Gt`] |
 | [`Gte`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Gte`] |
 | [`HasPrefix`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`HasPrefix`] |
 | [`HasSuffix`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`HasSuffix`] |
-| [`Ignore`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Ignore`] |
-| [`Isa`] | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Isa`] |
-| [`JSON`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | [`JSON`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`Ignore`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Ignore`] |
+| [`Isa`] | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Isa`] |
+| [`JSON`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | [`JSON`] |
 | [`JSONPointer`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | [`JSONPointer`] |
 | [`Keys`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | [`Keys`] |
+| [`Last`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Last`] |
 | [`Lax`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Lax`] |
 | [`Len`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✗ | [`Len`] |
 | [`Lt`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Lt`] |
 | [`Lte`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Lte`] |
+
+| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
+| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Map`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`Map`] |
 | [`MapEach`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`MapEach`] |
 | [`N`] | ✗ | ✗ | ✗ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`N`] |
 | [`NaN`] | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`NaN`] |
-
-| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
-| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Nil`] | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | [`Nil`] |
 | [`None`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`None`] |
 | [`Not`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Not`] |
 | [`NotAny`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`NotAny`] |
 | [`NotEmpty`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✗ | ptr on array/slice/map/string | ✓ | ✓ | ✗ | [`NotEmpty`] |
 | [`NotNaN`] | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`NotNaN`] |
+
+| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
+| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`NotNil`] | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | [`NotNil`] |
 | [`NotZero`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`NotZero`] |
 | [`PPtr`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | [`PPtr`] |
 | [`Ptr`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | [`Ptr`] |
-
-| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
-| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Re`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`Re`] |
 | [`ReAll`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`ReAll`] |
+| [`Recv`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ptr on chan | ✓ | ✓ | ✗ | [`Recv`] |
 | [`Set`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Set`] |
 | [`Shallow`] | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | [`Shallow`] |
 | [`Slice`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ptr on slice | ✓ | ✗ | ✗ | [`Slice`] |
+
+| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
+| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Smuggle`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Smuggle`] |
 | [`SStruct`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ptr on struct | ✓ | ✗ | ✗ | [`SStruct`] |
 | [`String`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`String`] |
 | [`Struct`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ptr on struct | ✓ | ✗ | ✗ | [`Struct`] |
 | [`SubBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubBagOf`] |
-
-| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
-| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`SubJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SubJSONOf`] |
 | [`SubMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SubMapOf`] |
 | [`SubSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubSetOf`] |
 | [`SuperBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperBagOf`] |
 | [`SuperJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SuperJSONOf`] |
+
+| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
+| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`SuperMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SuperMapOf`] |
 | [`SuperSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSetOf`] |
 | [`SuperSliceOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSliceOf`] |
 | [`Tag`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Tag`] |
 | [`TruncTime`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | [`time.Time`] | todo | ✓ | ✗ | ✗ | [`TruncTime`] |
-
-| Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
-| ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Values`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ | ✗ | [`Values`] |
 | [`Zero`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Zero`] |
 
@@ -118,6 +123,9 @@ weight: 1
 [`ContainsKey`]: {{< ref "ContainsKey" >}}
 [`Delay`]: {{< ref "Delay" >}}
 [`Empty`]: {{< ref "Empty" >}}
+[`ErrorIs`]: {{< ref "ErrorIs" >}}
+[`First`]: {{< ref "First" >}}
+[`Grep`]: {{< ref "Grep" >}}
 [`Gt`]: {{< ref "Gt" >}}
 [`Gte`]: {{< ref "Gte" >}}
 [`HasPrefix`]: {{< ref "HasPrefix" >}}
@@ -127,6 +135,7 @@ weight: 1
 [`JSON`]: {{< ref "JSON" >}}
 [`JSONPointer`]: {{< ref "JSONPointer" >}}
 [`Keys`]: {{< ref "Keys" >}}
+[`Last`]: {{< ref "Last" >}}
 [`Lax`]: {{< ref "Lax" >}}
 [`Len`]: {{< ref "Len" >}}
 [`Lt`]: {{< ref "Lt" >}}
@@ -147,6 +156,7 @@ weight: 1
 [`Ptr`]: {{< ref "Ptr" >}}
 [`Re`]: {{< ref "Re" >}}
 [`ReAll`]: {{< ref "ReAll" >}}
+[`Recv`]: {{< ref "Recv" >}}
 [`Set`]: {{< ref "Set" >}}
 [`Shallow`]: {{< ref "Shallow" >}}
 [`Slice`]: {{< ref "Slice" >}}
@@ -179,6 +189,9 @@ weight: 1
 [`CmpContains`]: {{< ref "Contains#cmpcontains-shortcut" >}}
 [`CmpContainsKey`]: {{< ref "ContainsKey#cmpcontainskey-shortcut" >}}
 [`CmpEmpty`]: {{< ref "Empty#cmpempty-shortcut" >}}
+[`CmpErrorIs`]: {{< ref "ErrorIs#cmperroris-shortcut" >}}
+[`CmpFirst`]: {{< ref "First#cmpfirst-shortcut" >}}
+[`CmpGrep`]: {{< ref "Grep#cmpgrep-shortcut" >}}
 [`CmpGt`]: {{< ref "Gt#cmpgt-shortcut" >}}
 [`CmpGte`]: {{< ref "Gte#cmpgte-shortcut" >}}
 [`CmpHasPrefix`]: {{< ref "HasPrefix#cmphasprefix-shortcut" >}}
@@ -187,6 +200,7 @@ weight: 1
 [`CmpJSON`]: {{< ref "JSON#cmpjson-shortcut" >}}
 [`CmpJSONPointer`]: {{< ref "JSONPointer#cmpjsonpointer-shortcut" >}}
 [`CmpKeys`]: {{< ref "Keys#cmpkeys-shortcut" >}}
+[`CmpLast`]: {{< ref "Last#cmplast-shortcut" >}}
 [`CmpLax`]: {{< ref "Lax#cmplax-shortcut" >}}
 [`CmpLen`]: {{< ref "Len#cmplen-shortcut" >}}
 [`CmpLt`]: {{< ref "Lt#cmplt-shortcut" >}}
@@ -207,6 +221,7 @@ weight: 1
 [`CmpPtr`]: {{< ref "Ptr#cmpptr-shortcut" >}}
 [`CmpRe`]: {{< ref "Re#cmpre-shortcut" >}}
 [`CmpReAll`]: {{< ref "ReAll#cmpreall-shortcut" >}}
+[`CmpRecv`]: {{< ref "Recv#cmprecv-shortcut" >}}
 [`CmpSet`]: {{< ref "Set#cmpset-shortcut" >}}
 [`CmpShallow`]: {{< ref "Shallow#cmpshallow-shortcut" >}}
 [`CmpSlice`]: {{< ref "Slice#cmpslice-shortcut" >}}
@@ -238,6 +253,9 @@ weight: 1
 [`T.Contains`]: {{< ref "Contains#tcontains-shortcut" >}}
 [`T.ContainsKey`]: {{< ref "ContainsKey#tcontainskey-shortcut" >}}
 [`T.Empty`]: {{< ref "Empty#tempty-shortcut" >}}
+[`T.CmpErrorIs`]: {{< ref "ErrorIs#tcmperroris-shortcut" >}}
+[`T.First`]: {{< ref "First#tfirst-shortcut" >}}
+[`T.Grep`]: {{< ref "Grep#tgrep-shortcut" >}}
 [`T.Gt`]: {{< ref "Gt#tgt-shortcut" >}}
 [`T.Gte`]: {{< ref "Gte#tgte-shortcut" >}}
 [`T.HasPrefix`]: {{< ref "HasPrefix#thasprefix-shortcut" >}}
@@ -246,6 +264,7 @@ weight: 1
 [`T.JSON`]: {{< ref "JSON#tjson-shortcut" >}}
 [`T.JSONPointer`]: {{< ref "JSONPointer#tjsonpointer-shortcut" >}}
 [`T.Keys`]: {{< ref "Keys#tkeys-shortcut" >}}
+[`T.Last`]: {{< ref "Last#tlast-shortcut" >}}
 [`T.CmpLax`]: {{< ref "Lax#tcmplax-shortcut" >}}
 [`T.Len`]: {{< ref "Len#tlen-shortcut" >}}
 [`T.Lt`]: {{< ref "Lt#tlt-shortcut" >}}
@@ -266,6 +285,7 @@ weight: 1
 [`T.Ptr`]: {{< ref "Ptr#tptr-shortcut" >}}
 [`T.Re`]: {{< ref "Re#tre-shortcut" >}}
 [`T.ReAll`]: {{< ref "ReAll#treall-shortcut" >}}
+[`T.Recv`]: {{< ref "Recv#trecv-shortcut" >}}
 [`T.Set`]: {{< ref "Set#tset-shortcut" >}}
 [`T.Shallow`]: {{< ref "Shallow#tshallow-shortcut" >}}
 [`T.Slice`]: {{< ref "Slice#tslice-shortcut" >}}
@@ -469,10 +489,13 @@ Operators likely to succeed for each go type:
 - [`Contains`]
 - [`Delay`]
 - [`Empty`]
+- [`First`]
+- [`Grep`]
 - [`Ignore`]
 - [`Isa`]
 - [`JSON`]
 - [`JSONPointer`]
+- [`Last`]
 - [`Lax`]
 - [`Len`]
 - [`None`]
@@ -504,12 +527,15 @@ Operators likely to succeed for each go type:
 - [`Contains`]
 - [`Delay`]
 - [`Empty`]
+- [`First`]
+- [`Grep`]
 - [`HasPrefix`] only `[]byte`
 - [`HasSuffix`] only `[]byte`
 - [`Ignore`]
 - [`Isa`]
 - [`JSON`]
 - [`JSONPointer`]
+- [`Last`]
 - [`Lax`]
 - [`Len`]
 - [`Nil`]
@@ -610,6 +636,7 @@ listed below:
 
 <!-- go-if-matrix:begin -->
 - [`Contains`] → [`fmt.Stringer`]/[`error`]
+- [`ErrorIs`][`error`]
 - [`HasPrefix`] → [`fmt.Stringer`]/[`error`]
 - [`HasSuffix`] → [`fmt.Stringer`]/[`error`]
 - [`Re`] → [`fmt.Stringer`]/[`error`]
@@ -629,10 +656,13 @@ listed below:
 - [`Code`]
 - [`Delay`]
 - [`Empty`] only ptr on array/slice/map/string
+- [`First`] only ptr on array/slice
+- [`Grep`] only ptr on array/slice
 - [`Ignore`]
 - [`Isa`]
 - [`JSON`]
 - [`JSONPointer`]
+- [`Last`] only ptr on array/slice
 - [`Lax`]
 - [`Map`] only ptr on map
 - [`MapEach`] only ptr on map
@@ -645,6 +675,7 @@ listed below:
 - [`NotZero`]
 - [`PPtr`]
 - [`Ptr`]
+- [`Recv`] only ptr on chan
 - [`SStruct`] only ptr on struct
 - [`Set`] only ptr on array/slice
 - [`Shallow`]
@@ -684,6 +715,7 @@ listed below:
 - [`NotEmpty`]
 - [`NotNil`]
 - [`NotZero`]
+- [`Recv`]
 - [`Shallow`]
 - [`Smuggle`]
 - [`Tag`]

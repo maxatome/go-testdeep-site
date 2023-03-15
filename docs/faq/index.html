@@ -2,20 +2,20 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.101.0">
+<meta name=generator content="Hugo 0.111.3">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>FAQ :: go-testdeep</title><link href=/css/nucleus.css?1659898297 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1659898297 rel=stylesheet>
-<link href=/css/hybrid.css?1659898297 rel=stylesheet>
-<link href=/css/featherlight.min.css?1659898297 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1659898297 rel=stylesheet>
-<link href=/css/auto-complete.css?1659898297 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1659898297 rel=stylesheet>
-<link href=/css/theme.css?1659898297 rel=stylesheet>
-<link href=/css/hugo-theme.css?1659898297 rel=stylesheet>
-<link href=/css/theme-green.css?1659898297 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1659898297></script>
+<title>FAQ :: go-testdeep</title><link href=/css/nucleus.css?1678884514 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1678884514 rel=stylesheet>
+<link href=/css/hybrid.css?1678884514 rel=stylesheet>
+<link href=/css/featherlight.min.css?1678884514 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1678884514 rel=stylesheet>
+<link href=/css/auto-complete.css?1678884514 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1678884514 rel=stylesheet>
+<link href=/css/theme.css?1678884514 rel=stylesheet>
+<link href=/css/hugo-theme.css?1678884514 rel=stylesheet>
+<link href=/css/theme-green.css?1678884514 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1678884514></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style></head><body data-url=/faq/>
 <nav id=sidebar>
@@ -26,10 +26,10 @@
 <label for=search-by><i class="fas fa-search"></i></label>
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
-</div><script type=text/javascript src=/js/lunr.min.js?1659898297></script>
-<script type=text/javascript src=/js/auto-complete.js?1659898297></script>
+</div><script type=text/javascript src=/js/lunr.min.js?1678884514></script>
+<script type=text/javascript src=/js/auto-complete.js?1678884514></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1659898297></script>
+<script type=text/javascript src=/js/search.js?1678884514></script>
 </div><div class=highlightable>
 <ul class=topics>
 <li data-nav-id=/introduction/ title=Introduction class=dd-item>
@@ -139,6 +139,18 @@ Delay
 <a href=/operators/empty/>
 Empty
 </a>
+</li><li data-nav-id=/operators/erroris/ title=ErrorIs class=dd-item>
+<a href=/operators/erroris/>
+ErrorIs
+</a>
+</li><li data-nav-id=/operators/first/ title=First class=dd-item>
+<a href=/operators/first/>
+First
+</a>
+</li><li data-nav-id=/operators/grep/ title=Grep class=dd-item>
+<a href=/operators/grep/>
+Grep
+</a>
 </li><li data-nav-id=/operators/gt/ title=Gt class=dd-item>
 <a href=/operators/gt/>
 Gt
@@ -174,6 +186,10 @@ JSONPointer
 </li><li data-nav-id=/operators/keys/ title=Keys class=dd-item>
 <a href=/operators/keys/>
 Keys
+</a>
+</li><li data-nav-id=/operators/last/ title=Last class=dd-item>
+<a href=/operators/last/>
+Last
 </a>
 </li><li data-nav-id=/operators/lax/ title=Lax class=dd-item>
 <a href=/operators/lax/>
@@ -254,6 +270,10 @@ Re
 </li><li data-nav-id=/operators/reall/ title=ReAll class=dd-item>
 <a href=/operators/reall/>
 ReAll
+</a>
+</li><li data-nav-id=/operators/recv/ title=Recv class=dd-item>
+<a href=/operators/recv/>
+Recv
 </a>
 </li><li data-nav-id=/operators/set/ title=Set class=dd-item>
 <a href=/operators/set/>
@@ -538,10 +558,10 @@ method as in:
 </span></span><span style=display:flex><span>  Age:  age, <span style=color:#999;font-style:italic>// ← OK
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>})
 </span></span></code></pre></div></li></ul><h2 id=how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</h2><p>The <a href=/operators/smuggle/><code>Smuggle</code></a> operator is done for that,
-here with the help of <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>ReadAll</code></a>.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
+here with the help of <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code></a>.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;net/http&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io/ioutil&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
@@ -551,13 +571,13 @@ here with the help of <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>Re
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>var</span> resp *http.Response = <span style=color:#447fcf>GetResponse</span>()
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body,
-</span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Smuggle</span>(ioutil.ReadAll, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>&#34;Expected Response!&#34;</span>)))
+</span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Smuggle</span>(io.ReadAll, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>&#34;Expected Response!&#34;</span>)))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</h2><p>No problem, <a href=https://golang.org/pkg/io/ioutil/#ReadAll><code>ReadAll</code></a> the
-body by yourself and cast returned <code>[]byte</code> contents to <code>string</code>,
-still using <a href=/operators/smuggle/><code>Smuggle</code></a> operator:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
+</span></span></code></pre></div><h2 id=ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</h2><p>No problem, <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code></a> the body (still
+using <a href=/operators/smuggle/><code>Smuggle</code></a> operator), then ask
+go-testdeep to compare it against a string using
+<a href=/operators/string/><code>String</code></a> operator:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io/ioutil&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;net/http&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
 </span></span><span style=display:flex><span>
@@ -568,14 +588,10 @@ still using <a href=/operators/smuggle/><code>Smuggle</code></a> operator:</p><d
 </span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Expect this response sends &#34;Expected Response!&#34;
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>var</span> resp *http.Response = <span style=color:#447fcf>GetResponse</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader to a string
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#6ab825;font-weight:700>func</span>(body io.Reader) (<span style=color:#6ab825;font-weight:700>string</span>, <span style=color:#6ab825;font-weight:700>error</span>) {
-</span></span><span style=display:flex><span>      b, err := ioutil.<span style=color:#447fcf>ReadAll</span>(body)
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#24909d>string</span>(b), err
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    <span style=color:#ed9d13>&#34;Expected Response!&#34;</span>))
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body,
+</span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Smuggle</span>(io.ReadAll, td.<span style=color:#447fcf>String</span>(<span style=color:#ed9d13>&#34;Expected Response!&#34;</span>)))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</h2><p>No problem, <a href=https://golang.org/pkg/encoding/json/#Decoder>JSON decode</a>
+</span></span></code></pre></div><h2 id=ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</h2><p>No problem, <a href=https://pkg.go.dev/encoding/json#Decoder>JSON decode</a>
 while reading the body:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
@@ -934,7 +950,7 @@ without), for a <code>POST</code> example:</p><div class=highlight><pre tabindex
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;created_at&#34;: &#34;$createdAt&#34;,
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>,
 </span></span><span style=display:flex><span>      td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;id&#34;</span>, td.<span style=color:#447fcf>Catch</span>(&amp;id, td.<span style=color:#447fcf>NotZero</span>())),        <span style=color:#999;font-style:italic>// ← ④
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;created_at&#34;</span>, td.<span style=color:#447fcf>All</span>(                      <span style=color:#999;font-style:italic>// ← ⑤
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;createdAt&#34;</span>, td.<span style=color:#447fcf>All</span>(                       <span style=color:#999;font-style:italic>// ← ⑤
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Z&#34;</span>),                              <span style=color:#999;font-style:italic>// ← ⑥
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(s <span style=color:#6ab825;font-weight:700>string</span>) (time.Time, <span style=color:#6ab825;font-weight:700>error</span>) {  <span style=color:#999;font-style:italic>// ← ⑦
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>          <span style=color:#6ab825;font-weight:700>return</span> time.<span style=color:#447fcf>Parse</span>(time.RFC3339Nano, s)
@@ -1077,23 +1093,23 @@ in alphabetical order;</li><li><input disabled type=checkbox> should this operat
 <a href=https://github.com/maxatome/go-testdeep/blob/master/td/td_json.go><code>td/td_json.go</code></a>
 with a possible alternative text to help the user,</li><li>If yes, does <code>FooBar</code> needs specific handling as <a href=/operators/n/><code>N</code></a> or
 <a href=/operators/between/><code>Between</code></a> does for example?</li></ul></li><li><input disabled type=checkbox> automatically generate <code>CmpFooBar</code> & <code>T.FooBar</code> (+ examples) code:
-<code>./tools/gen_funcs.pl</code></li><li><input disabled type=checkbox> do not forget to run tests: <code>go test ./...</code></li><li><input disabled type=checkbox> run <code>golangci-lint</code> as in <a href=https://github.com/maxatome/go-testdeep/blob/master/.travis.yml><code>.travis.yml</code></a>;</li></ul><p>Each time you change <code>example_test.go</code>, re-run <code>./tools/gen_funcs.pl</code>
+<code>./tools/gen_funcs.pl</code></li><li><input disabled type=checkbox> do not forget to run tests: <code>go test ./...</code></li><li><input disabled type=checkbox> run <code>golangci-lint</code> as in <a href=https://github.com/maxatome/go-testdeep/blob/master/.github/workflows/ci.yml><code>.github/workflows/ci.yml</code></a>;</li></ul><p>Each time you change <code>example_test.go</code>, re-run <code>./tools/gen_funcs.pl</code>
 to update corresponding <code>CmpFooBar</code> & <code>T.FooBar</code> examples.</p><p>Test coverage must be 100%.</p><footer class=footline>
 </footer></div></div><div id=navigation>
 <a class="nav nav-prev" href=/helpers/ title=Helpers> <i class="fa fa-chevron-left"></i></a>
 <a class="nav nav-next" href=/introduction/ title=Introduction style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1659898297></script>
-<script src=/js/jquery.sticky.js?1659898297></script>
-<script src=/js/featherlight.min.js?1659898297></script>
-<script src=/js/highlight.pack.js?1659898297></script>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1678884514></script>
+<script src=/js/jquery.sticky.js?1678884514></script>
+<script src=/js/featherlight.min.js?1678884514></script>
+<script src=/js/highlight.pack.js?1678884514></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1659898297></script>
-<script src=/js/learn.js?1659898297></script>
-<script src=/js/hugo-learn.js?1659898297></script>
-<link href=/mermaid/mermaid.css?1659898297 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1659898297></script>
+<script src=/js/modernizr.custom-3.6.0.js?1678884514></script>
+<script src=/js/learn.js?1678884514></script>
+<script src=/js/hugo-learn.js?1678884514></script>
+<link href=/mermaid/mermaid.css?1678884514 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1678884514></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body></html>

@@ -2,20 +2,20 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.101.0">
+<meta name=generator content="Hugo 0.111.3">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>SStruct :: go-testdeep</title><link href=/css/nucleus.css?1659898297 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1659898297 rel=stylesheet>
-<link href=/css/hybrid.css?1659898297 rel=stylesheet>
-<link href=/css/featherlight.min.css?1659898297 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1659898297 rel=stylesheet>
-<link href=/css/auto-complete.css?1659898297 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1659898297 rel=stylesheet>
-<link href=/css/theme.css?1659898297 rel=stylesheet>
-<link href=/css/hugo-theme.css?1659898297 rel=stylesheet>
-<link href=/css/theme-green.css?1659898297 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1659898297></script>
+<title>SStruct :: go-testdeep</title><link href=/css/nucleus.css?1678884514 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1678884514 rel=stylesheet>
+<link href=/css/hybrid.css?1678884514 rel=stylesheet>
+<link href=/css/featherlight.min.css?1678884514 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1678884514 rel=stylesheet>
+<link href=/css/auto-complete.css?1678884514 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1678884514 rel=stylesheet>
+<link href=/css/theme.css?1678884514 rel=stylesheet>
+<link href=/css/hugo-theme.css?1678884514 rel=stylesheet>
+<link href=/css/theme-green.css?1678884514 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1678884514></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style></head><body data-url=/operators/sstruct/>
 <nav id=sidebar>
@@ -26,10 +26,10 @@
 <label for=search-by><i class="fas fa-search"></i></label>
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
-</div><script type=text/javascript src=/js/lunr.min.js?1659898297></script>
-<script type=text/javascript src=/js/auto-complete.js?1659898297></script>
+</div><script type=text/javascript src=/js/lunr.min.js?1678884514></script>
+<script type=text/javascript src=/js/auto-complete.js?1678884514></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1659898297></script>
+<script type=text/javascript src=/js/search.js?1678884514></script>
 </div><div class=highlightable>
 <ul class=topics>
 <li data-nav-id=/introduction/ title=Introduction class=dd-item>
@@ -140,6 +140,18 @@ Delay
 <a href=/operators/empty/>
 Empty
 </a>
+</li><li data-nav-id=/operators/erroris/ title=ErrorIs class=dd-item>
+<a href=/operators/erroris/>
+ErrorIs
+</a>
+</li><li data-nav-id=/operators/first/ title=First class=dd-item>
+<a href=/operators/first/>
+First
+</a>
+</li><li data-nav-id=/operators/grep/ title=Grep class=dd-item>
+<a href=/operators/grep/>
+Grep
+</a>
 </li><li data-nav-id=/operators/gt/ title=Gt class=dd-item>
 <a href=/operators/gt/>
 Gt
@@ -175,6 +187,10 @@ JSONPointer
 </li><li data-nav-id=/operators/keys/ title=Keys class=dd-item>
 <a href=/operators/keys/>
 Keys
+</a>
+</li><li data-nav-id=/operators/last/ title=Last class=dd-item>
+<a href=/operators/last/>
+Last
 </a>
 </li><li data-nav-id=/operators/lax/ title=Lax class=dd-item>
 <a href=/operators/lax/>
@@ -255,6 +271,10 @@ Re
 </li><li data-nav-id=/operators/reall/ title=ReAll class=dd-item>
 <a href=/operators/reall/>
 ReAll
+</a>
+</li><li data-nav-id=/operators/recv/ title=Recv class=dd-item>
+<a href=/operators/recv/>
+Recv
 </a>
 </li><li data-nav-id=/operators/set/ title=Set class=dd-item>
 <a href=/operators/set/>
@@ -628,7 +648,7 @@ Patterns example
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>SStruct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
 </span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
 </span></span><span style=display:flex><span>			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
@@ -638,7 +658,7 @@ Patterns example
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>SStruct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
 </span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
 </span></span><span style=display:flex><span>			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
@@ -800,23 +820,21 @@ Patterns example
 </span></span><span style=display:flex><span>		secret:    <span style=color:#ed9d13>&#34;5ecr3T&#34;</span>,
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		}),
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpSStruct</span>(t, got, Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	},
 </span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;mix shell &amp; regexp patterns&#34;</span>)
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		}),
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSStruct</span>(t, got, Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	},
 </span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;ordered patterns&#34;</span>)
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Ordered patterns match only remaining fields:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
@@ -973,23 +991,21 @@ Patterns example
 </span></span><span style=display:flex><span>		secret:    <span style=color:#ed9d13>&#34;5ecr3T&#34;</span>,
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Cmp</span>(got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		}),
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>SStruct</span>(got, Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`DeletedAt`</span>: <span style=color:#6ab825;font-weight:700>nil</span>,
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`=  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`=~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`!  [A-Z]*`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	},
 </span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;mix shell &amp; regexp patterns&#34;</span>)
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Patterns match only remaining fields:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Cmp</span>(got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Struct</span>(Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
-</span></span><span style=display:flex><span>			<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>			<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		}),
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>SStruct</span>(got, Person{Lastname: <span style=color:#ed9d13>&#34;Foo&#34;</span>}, td.StructFields{
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`DeletedAt`</span>:   <span style=color:#6ab825;font-weight:700>nil</span>,
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`1 =  *name`</span>:  td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^(?i)max`</span>),  <span style=color:#999;font-style:italic>// shell pattern, matches all names except Lastname as in model
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`2 =~ At\z`</span>:   td.<span style=color:#447fcf>Lte</span>(time.<span style=color:#447fcf>Now</span>()), <span style=color:#999;font-style:italic>// regexp, matches CreatedAt &amp; UpdatedAt
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		<span style=color:#ed9d13>`3 !~ ^[A-Z]`</span>: td.<span style=color:#447fcf>Ignore</span>(),        <span style=color:#999;font-style:italic>// private fields
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	},
 </span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;ordered patterns&#34;</span>)
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Ordered patterns match only remaining fields:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
@@ -1001,17 +1017,17 @@ Patterns example
 <a class="nav nav-prev" href=/operators/smuggle/ title=Smuggle> <i class="fa fa-chevron-left"></i></a>
 <a class="nav nav-next" href=/operators/string/ title=String style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1659898297></script>
-<script src=/js/jquery.sticky.js?1659898297></script>
-<script src=/js/featherlight.min.js?1659898297></script>
-<script src=/js/highlight.pack.js?1659898297></script>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1678884514></script>
+<script src=/js/jquery.sticky.js?1678884514></script>
+<script src=/js/featherlight.min.js?1678884514></script>
+<script src=/js/highlight.pack.js?1678884514></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1659898297></script>
-<script src=/js/learn.js?1659898297></script>
-<script src=/js/hugo-learn.js?1659898297></script>
-<link href=/mermaid/mermaid.css?1659898297 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1659898297></script>
+<script src=/js/modernizr.custom-3.6.0.js?1678884514></script>
+<script src=/js/learn.js?1678884514></script>
+<script src=/js/hugo-learn.js?1678884514></script>
+<link href=/mermaid/mermaid.css?1678884514 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1678884514></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body></html>

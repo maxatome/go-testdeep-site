@@ -12,9 +12,9 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 - `string` containing JSON data like `{"fullname":"Bob","age":42}`
 - `string` containing a JSON filename, ending with ".json" (its
-  content is [`ioutil.ReadFile`](https://pkg.go.dev/io/ioutil#ReadFile) before unmarshaling)
+  content is [`os.ReadFile`](https://pkg.go.dev/os#ReadFile) before unmarshaling)
 - `[]byte` containing JSON data
-- [`io.Reader`](https://pkg.go.dev/io#Reader) stream containing JSON data (is [`ioutil.ReadAll`](https://pkg.go.dev/io/ioutil#ReadAll)
+- [`io.Reader`](https://pkg.go.dev/io#Reader) stream containing JSON data (is [`io.ReadAll`](https://pkg.go.dev/io#ReadAll)
   before unmarshaling)
 
 
@@ -124,12 +124,15 @@ Comments, like in go, have 2 forms. To quote the Go language specification:
 Other JSON divergences:
 
 - ',' can precede a '}' or a ']' (as in go);
+- strings can contain non-escaped \n, \r and \t;
+- raw strings are accepted (r{raw}, r!raw!, …), see below;
 - int_lit & float_lit numbers as defined in go spec are accepted;
 - numbers can be prefixed by '+'.
 
 
 Most operators can be directly embedded in JSON without requiring
-any placeholder.
+any placeholder. If an operators does not take `any` parameter, the
+parenthesis can be omitted.
 
 ```go
 td.Cmp(t, gotValue,
@@ -138,7 +141,7 @@ td.Cmp(t, gotValue,
   "fullname": HasPrefix("Foo"),
   "age":      Between(41, 43),
   "details":  SuperMapOf({
-    "address": NotEmpty(),
+    "address": NotEmpty, // () are optional when no parameters
     "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
   })
 }`))
@@ -156,52 +159,92 @@ A few notes about operators embedding:
 - the optional 3rd parameter of [`Between`]({{< ref "Between" >}}) has to be specified as a `string`
   and can be: "[]" or "BoundsInIn" (default), "[[" or "BoundsInOut",
   "]]" or "BoundsOutIn", "][" or "BoundsOutOut";
-- not all operators are embeddable only the following are:
-  [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}),
-  [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`Gt`]({{< ref "Gt" >}}), [`Gte`]({{< ref "Gte" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}),
-  [`Ignore`]({{< ref "Ignore" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}), [`Keys`]({{< ref "Keys" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}), [`MapEach`]({{< ref "MapEach" >}}),
-  [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}), [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}),
-  [`NotNil`]({{< ref "NotNil" >}}), [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}),
-  [`SubMapOf`]({{< ref "SubMapOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}), [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}),
-  [`Values`]({{< ref "Values" >}}) and [`Zero`]({{< ref "Zero" >}}).
+- not all operators are embeddable only the following are: [`All`]({{< ref "All" >}}),
+  [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}),
+  [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`First`]({{< ref "First" >}}), [`Grep`]({{< ref "Grep" >}}), [`Gt`]({{< ref "Gt" >}}), [`Gte`]({{< ref "Gte" >}}),
+  [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Ignore`]({{< ref "Ignore" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}), [`Keys`]({{< ref "Keys" >}}),
+  [`Last`]({{< ref "Last" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}), [`MapEach`]({{< ref "MapEach" >}}), [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}),
+  [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}), [`NotNil`]({{< ref "NotNil" >}}),
+  [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubMapOf`]({{< ref "SubMapOf" >}}),
+  [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}), [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}), [`Values`]({{< ref "Values" >}})
+  and [`Zero`]({{< ref "Zero" >}}).
 
 
-Operators taking no parameters can also be directly embedded in
-JSON data using `$^OperatorName` or "`$^OperatorName`" notation. They
-are named shortcut operators (they predate the above operators embedding
-but they still subsist for compatibility):
+It is also possible to embed operators in JSON strings. This way,
+the JSON specification can be fulfilled. To avoid collision with
+possible strings, just prefix the first operator name with
+"$^". The previous example becomes:
+
+```go
+td.Cmp(t, gotValue,
+  td.JSON(`
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    \"address\": NotEmpty, // () are optional when no parameters
+    \"car\":     Any(\"Peugeot\", \"Tesla\", \"Jeep\") // any of these
+  })"
+}`))
+```
+
+As you can see, in this case, strings in strings have to be
+escaped. Fortunately, newlines are accepted, but unfortunately they
+are forbidden by JSON specification. To avoid too much escaping,
+raw strings are accepted. A raw `string` is a "r" followed by a
+delimiter, the corresponding delimiter closes the `string`. The
+following raw strings are all the same as "foo\\bar(\"zip\")!":
+
+- r'foo\bar"zip"!'
+- r,foo\bar"zip"!,
+- r%foo\bar"zip"!%
+- r(foo\bar("zip")!)
+- r{foo\bar("zip")!}
+- r[foo\bar("zip")!]
+- r<foo\bar("zip")!>
+
+
+So non-bracketing delimiters use the same character before and
+after, but the 4 sorts of ASCII brackets (round, angle, square,
+curly) all nest: r[x[y]z] equals "x[y]z". The end delimiter cannot
+be escaped.
+
+With raw strings, the previous example becomes:
+
+```go
+td.Cmp(t, gotValue,
+  td.JSON(`
+{
+  "fullname": "$^HasPrefix(r<Foo>)",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    r<address>: NotEmpty, // () are optional when no parameters
+    r<car>:     Any(r<Peugeot>, r<Tesla>, r<Jeep>) // any of these
+  })"
+}`))
+```
+
+Note that raw strings are accepted `any`where, not only in original
+JSON strings.
+
+To be complete, $^ can prefix an operator even outside a
+`string`. This is accepted for compatibility purpose as the first
+operator embedding feature used this way to embed some operators.
+
+So the following calls are all equivalent:
 
 ```go
 td.Cmp(t, gotValue, td.JSON(`{"id": $1}`, td.NotZero()))
-```
-
-can be written as:
-
-```go
+td.Cmp(t, gotValue, td.JSON(`{"id": NotZero}`))
+td.Cmp(t, gotValue, td.JSON(`{"id": NotZero()}`))
 td.Cmp(t, gotValue, td.JSON(`{"id": $^NotZero}`))
-```
-
-or
-
-```go
+td.Cmp(t, gotValue, td.JSON(`{"id": $^NotZero()}`))
 td.Cmp(t, gotValue, td.JSON(`{"id": "$^NotZero"}`))
+td.Cmp(t, gotValue, td.JSON(`{"id": "$^NotZero()"}`))
 ```
 
 As for placeholders, there is no differences between `$^NotZero` and
 "`$^NotZero`".
-
-The allowed shortcut operators follow:
-
-- [`Empty`]({{< ref "Empty" >}})    → `$^Empty`
-- [`Ignore`]({{< ref "Ignore" >}})   → `$^Ignore`
-- [`NaN`]({{< ref "NaN" >}})      → `$^NaN`
-- [`Nil`]({{< ref "Nil" >}})      → `$^Nil`
-- [`NotEmpty`]({{< ref "NotEmpty" >}}) → `$^NotEmpty`
-- [`NotNaN`]({{< ref "NotNaN" >}})   → `$^NotNaN`
-- [`NotNil`]({{< ref "NotNil" >}})   → `$^NotNil`
-- [`NotZero`]({{< ref "NotZero" >}})  → `$^NotZero`
-- [`Zero`]({{< ref "Zero" >}})     → `$^Zero`
-
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of the *expectedJSON*
 once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
@@ -390,6 +433,79 @@ once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
 	// check got with complex operators, w/placeholder args: true
 
 ```{{% /expand%}}
+{{%expand "RawStrings example" %}}```go
+	t := &testing.T{}
+
+	type details struct {
+		Address string `json:"address"`
+		Car     string `json:"car"`
+	}
+
+	got := &struct {
+		Fullname string  `json:"fullname"`
+		Age      int     `json:"age"`
+		Details  details `json:"details"`
+	}{
+		Fullname: "Foo Bar",
+		Age:      42,
+		Details: details{
+			Address: "something",
+			Car:     "Peugeot",
+		},
+	}
+
+	ok := td.Cmp(t, got,
+		td.JSON(`
+{
+  "fullname": HasPrefix("Foo"),
+  "age":      Between(41, 43),
+  "details":  SuperMapOf({
+    "address": NotEmpty, // () are optional when no parameters
+    "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
+  })
+}`))
+	fmt.Println("Original:", ok)
+
+	ok = td.Cmp(t, got,
+		td.JSON(`
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({\n\"address\": NotEmpty,\n\"car\": Any(\"Peugeot\", \"Tesla\", \"Jeep\")\n})"
+}`))
+	fmt.Println("JSON compliant:", ok)
+
+	ok = td.Cmp(t, got,
+		td.JSON(`
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    \"address\": NotEmpty, // () are optional when no parameters
+    \"car\":     Any(\"Peugeot\", \"Tesla\", \"Jeep\") // any of these
+  })"
+}`))
+	fmt.Println("JSON multilines strings:", ok)
+
+	ok = td.Cmp(t, got,
+		td.JSON(`
+{
+  "fullname": "$^HasPrefix(r<Foo>)",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    r<address>: NotEmpty, // () are optional when no parameters
+    r<car>:     Any(r<Peugeot>, r<Tesla>, r<Jeep>) // any of these
+  })"
+}`))
+	fmt.Println("Raw strings:", ok)
+
+	// Output:
+	// Original: true
+	// JSON compliant: true
+	// JSON multilines strings: true
+	// Raw strings: true
+
+```{{% /expand%}}
 {{%expand "File example" %}}```go
 	t := &testing.T{}
 
@@ -403,14 +519,14 @@ once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
 		Gender:   "male",
 	}
 
-	tmpDir, err := ioutil.TempDir("", "")
+	tmpDir, err := os.MkdirTemp("", "")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tmpDir) // clean up
 
 	filename := tmpDir + "/test.json"
-	if err = ioutil.WriteFile(filename, []byte(`
+	if err = os.WriteFile(filename, []byte(`
 {
   "fullname": "$name",
   "age":      "$age",
@@ -632,6 +748,75 @@ reason of a potential failure.
 	// check got with complex operators, w/placeholder args: true
 
 ```{{% /expand%}}
+{{%expand "RawStrings example" %}}```go
+	t := &testing.T{}
+
+	type details struct {
+		Address string `json:"address"`
+		Car     string `json:"car"`
+	}
+
+	got := &struct {
+		Fullname string  `json:"fullname"`
+		Age      int     `json:"age"`
+		Details  details `json:"details"`
+	}{
+		Fullname: "Foo Bar",
+		Age:      42,
+		Details: details{
+			Address: "something",
+			Car:     "Peugeot",
+		},
+	}
+
+	ok := td.CmpJSON(t, got, `
+{
+  "fullname": HasPrefix("Foo"),
+  "age":      Between(41, 43),
+  "details":  SuperMapOf({
+    "address": NotEmpty, // () are optional when no parameters
+    "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
+  })
+}`, nil)
+	fmt.Println("Original:", ok)
+
+	ok = td.CmpJSON(t, got, `
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({\n\"address\": NotEmpty,\n\"car\": Any(\"Peugeot\", \"Tesla\", \"Jeep\")\n})"
+}`, nil)
+	fmt.Println("JSON compliant:", ok)
+
+	ok = td.CmpJSON(t, got, `
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    \"address\": NotEmpty, // () are optional when no parameters
+    \"car\":     Any(\"Peugeot\", \"Tesla\", \"Jeep\") // any of these
+  })"
+}`, nil)
+	fmt.Println("JSON multilines strings:", ok)
+
+	ok = td.CmpJSON(t, got, `
+{
+  "fullname": "$^HasPrefix(r<Foo>)",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    r<address>: NotEmpty, // () are optional when no parameters
+    r<car>:     Any(r<Peugeot>, r<Tesla>, r<Jeep>) // any of these
+  })"
+}`, nil)
+	fmt.Println("Raw strings:", ok)
+
+	// Output:
+	// Original: true
+	// JSON compliant: true
+	// JSON multilines strings: true
+	// Raw strings: true
+
+```{{% /expand%}}
 {{%expand "File example" %}}```go
 	t := &testing.T{}
 
@@ -645,14 +830,14 @@ reason of a potential failure.
 		Gender:   "male",
 	}
 
-	tmpDir, err := ioutil.TempDir("", "")
+	tmpDir, err := os.MkdirTemp("", "")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tmpDir) // clean up
 
 	filename := tmpDir + "/test.json"
-	if err = ioutil.WriteFile(filename, []byte(`
+	if err = os.WriteFile(filename, []byte(`
 {
   "fullname": "$name",
   "age":      "$age",
@@ -864,6 +1049,75 @@ reason of a potential failure.
 	// check got with complex operators, w/placeholder args: true
 
 ```{{% /expand%}}
+{{%expand "RawStrings example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	type details struct {
+		Address string `json:"address"`
+		Car     string `json:"car"`
+	}
+
+	got := &struct {
+		Fullname string  `json:"fullname"`
+		Age      int     `json:"age"`
+		Details  details `json:"details"`
+	}{
+		Fullname: "Foo Bar",
+		Age:      42,
+		Details: details{
+			Address: "something",
+			Car:     "Peugeot",
+		},
+	}
+
+	ok := t.JSON(got, `
+{
+  "fullname": HasPrefix("Foo"),
+  "age":      Between(41, 43),
+  "details":  SuperMapOf({
+    "address": NotEmpty, // () are optional when no parameters
+    "car":     Any("Peugeot", "Tesla", "Jeep") // any of these
+  })
+}`, nil)
+	fmt.Println("Original:", ok)
+
+	ok = t.JSON(got, `
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({\n\"address\": NotEmpty,\n\"car\": Any(\"Peugeot\", \"Tesla\", \"Jeep\")\n})"
+}`, nil)
+	fmt.Println("JSON compliant:", ok)
+
+	ok = t.JSON(got, `
+{
+  "fullname": "$^HasPrefix(\"Foo\")",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    \"address\": NotEmpty, // () are optional when no parameters
+    \"car\":     Any(\"Peugeot\", \"Tesla\", \"Jeep\") // any of these
+  })"
+}`, nil)
+	fmt.Println("JSON multilines strings:", ok)
+
+	ok = t.JSON(got, `
+{
+  "fullname": "$^HasPrefix(r<Foo>)",
+  "age":      "$^Between(41, 43)",
+  "details":  "$^SuperMapOf({
+    r<address>: NotEmpty, // () are optional when no parameters
+    r<car>:     Any(r<Peugeot>, r<Tesla>, r<Jeep>) // any of these
+  })"
+}`, nil)
+	fmt.Println("Raw strings:", ok)
+
+	// Output:
+	// Original: true
+	// JSON compliant: true
+	// JSON multilines strings: true
+	// Raw strings: true
+
+```{{% /expand%}}
 {{%expand "File example" %}}```go
 	t := td.NewT(&testing.T{})
 
@@ -877,14 +1131,14 @@ reason of a potential failure.
 		Gender:   "male",
 	}
 
-	tmpDir, err := ioutil.TempDir("", "")
+	tmpDir, err := os.MkdirTemp("", "")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tmpDir) // clean up
 
 	filename := tmpDir + "/test.json"
-	if err = ioutil.WriteFile(filename, []byte(`
+	if err = os.WriteFile(filename, []byte(`
 {
   "fullname": "$name",
   "age":      "$age",

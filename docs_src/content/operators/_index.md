@@ -46,6 +46,15 @@ weight = 15
 [`Empty`]({{< ref "Empty" >}})
 : checks that an array, a channel, a map, a slice or a string is empty
 
+[`ErrorIs`]({{< ref "ErrorIs" >}})
+: checks the data is an [`error`] and matches a wrapped [`error`]
+
+[`First`]({{< ref "First" >}})
+: find the first matching item of a slice or an array then compare its content
+
+[`Grep`]({{< ref "Grep" >}})
+: reduces a slice or an array before comparing its content
+
 [`Gt`]({{< ref "Gt" >}})
 : checks that a number, string or [`time.Time`] is greater than a value
 
@@ -72,6 +81,9 @@ weight = 15
 
 [`Keys`]({{< ref "Keys" >}})
 : checks keys of a map
+
+[`Last`]({{< ref "Last" >}})
+: find the last matching item of a slice or an array then compare its content
 
 [`Lax`]({{< ref "Lax" >}})
 : temporarily enables [`BeLax` config flag]
@@ -132,6 +144,9 @@ weight = 15
 
 [`ReAll`]({{< ref "ReAll" >}})
 : allows to successively apply a regexp on a string (or convertible), `[]byte`, [`error`] or [`fmt.Stringer`] interfaces, and even test the captured groups
+
+[`Recv`]({{< ref "Recv" >}})
+: checks the value read from a channel
 
 [`Set`]({{< ref "Set" >}})
 : compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items
@@ -216,11 +231,20 @@ The following operators are smuggler ones:
 [`ContainsKey`]({{< ref "ContainsKey" >}})
 : checks that a map contains a key
 
+[`First`]({{< ref "First" >}})
+: find the first matching item of a slice or an array then compare its content
+
+[`Grep`]({{< ref "Grep" >}})
+: reduces a slice or an array before comparing its content
+
 [`JSONPointer`]({{< ref "JSONPointer" >}})
 : compares against JSON representation using a JSON pointer
 
 [`Keys`]({{< ref "Keys" >}})
 : checks keys of a map
+
+[`Last`]({{< ref "Last" >}})
+: find the last matching item of a slice or an array then compare its content
 
 [`Lax`]({{< ref "Lax" >}})
 : temporarily enables [`BeLax` config flag]
@@ -233,6 +257,9 @@ The following operators are smuggler ones:
 
 [`Ptr`]({{< ref "Ptr" >}})
 : allows to easily test a pointer value
+
+[`Recv`]({{< ref "Recv" >}})
+: checks the value read from a channel
 
 [`Smuggle`]({{< ref "Smuggle" >}})
 : changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process
@@ -271,6 +298,9 @@ The following operators are smuggler ones:
 [`ContainsKey`]: {{< ref "ContainsKey" >}}
 [`Delay`]: {{< ref "Delay" >}}
 [`Empty`]: {{< ref "Empty" >}}
+[`ErrorIs`]: {{< ref "ErrorIs" >}}
+[`First`]: {{< ref "First" >}}
+[`Grep`]: {{< ref "Grep" >}}
 [`Gt`]: {{< ref "Gt" >}}
 [`Gte`]: {{< ref "Gte" >}}
 [`HasPrefix`]: {{< ref "HasPrefix" >}}
@@ -280,6 +310,7 @@ The following operators are smuggler ones:
 [`JSON`]: {{< ref "JSON" >}}
 [`JSONPointer`]: {{< ref "JSONPointer" >}}
 [`Keys`]: {{< ref "Keys" >}}
+[`Last`]: {{< ref "Last" >}}
 [`Lax`]: {{< ref "Lax" >}}
 [`Len`]: {{< ref "Len" >}}
 [`Lt`]: {{< ref "Lt" >}}
@@ -300,6 +331,7 @@ The following operators are smuggler ones:
 [`Ptr`]: {{< ref "Ptr" >}}
 [`Re`]: {{< ref "Re" >}}
 [`ReAll`]: {{< ref "ReAll" >}}
+[`Recv`]: {{< ref "Recv" >}}
 [`Set`]: {{< ref "Set" >}}
 [`Shallow`]: {{< ref "Shallow" >}}
 [`Slice`]: {{< ref "Slice" >}}
@@ -332,6 +364,9 @@ The following operators are smuggler ones:
 [`CmpContains`]: {{< ref "Contains#cmpcontains-shortcut" >}}
 [`CmpContainsKey`]: {{< ref "ContainsKey#cmpcontainskey-shortcut" >}}
 [`CmpEmpty`]: {{< ref "Empty#cmpempty-shortcut" >}}
+[`CmpErrorIs`]: {{< ref "ErrorIs#cmperroris-shortcut" >}}
+[`CmpFirst`]: {{< ref "First#cmpfirst-shortcut" >}}
+[`CmpGrep`]: {{< ref "Grep#cmpgrep-shortcut" >}}
 [`CmpGt`]: {{< ref "Gt#cmpgt-shortcut" >}}
 [`CmpGte`]: {{< ref "Gte#cmpgte-shortcut" >}}
 [`CmpHasPrefix`]: {{< ref "HasPrefix#cmphasprefix-shortcut" >}}
@@ -340,6 +375,7 @@ The following operators are smuggler ones:
 [`CmpJSON`]: {{< ref "JSON#cmpjson-shortcut" >}}
 [`CmpJSONPointer`]: {{< ref "JSONPointer#cmpjsonpointer-shortcut" >}}
 [`CmpKeys`]: {{< ref "Keys#cmpkeys-shortcut" >}}
+[`CmpLast`]: {{< ref "Last#cmplast-shortcut" >}}
 [`CmpLax`]: {{< ref "Lax#cmplax-shortcut" >}}
 [`CmpLen`]: {{< ref "Len#cmplen-shortcut" >}}
 [`CmpLt`]: {{< ref "Lt#cmplt-shortcut" >}}
@@ -360,6 +396,7 @@ The following operators are smuggler ones:
 [`CmpPtr`]: {{< ref "Ptr#cmpptr-shortcut" >}}
 [`CmpRe`]: {{< ref "Re#cmpre-shortcut" >}}
 [`CmpReAll`]: {{< ref "ReAll#cmpreall-shortcut" >}}
+[`CmpRecv`]: {{< ref "Recv#cmprecv-shortcut" >}}
 [`CmpSet`]: {{< ref "Set#cmpset-shortcut" >}}
 [`CmpShallow`]: {{< ref "Shallow#cmpshallow-shortcut" >}}
 [`CmpSlice`]: {{< ref "Slice#cmpslice-shortcut" >}}
@@ -391,6 +428,9 @@ The following operators are smuggler ones:
 [`T.Contains`]: {{< ref "Contains#tcontains-shortcut" >}}
 [`T.ContainsKey`]: {{< ref "ContainsKey#tcontainskey-shortcut" >}}
 [`T.Empty`]: {{< ref "Empty#tempty-shortcut" >}}
+[`T.CmpErrorIs`]: {{< ref "ErrorIs#tcmperroris-shortcut" >}}
+[`T.First`]: {{< ref "First#tfirst-shortcut" >}}
+[`T.Grep`]: {{< ref "Grep#tgrep-shortcut" >}}
 [`T.Gt`]: {{< ref "Gt#tgt-shortcut" >}}
 [`T.Gte`]: {{< ref "Gte#tgte-shortcut" >}}
 [`T.HasPrefix`]: {{< ref "HasPrefix#thasprefix-shortcut" >}}
@@ -399,6 +439,7 @@ The following operators are smuggler ones:
 [`T.JSON`]: {{< ref "JSON#tjson-shortcut" >}}
 [`T.JSONPointer`]: {{< ref "JSONPointer#tjsonpointer-shortcut" >}}
 [`T.Keys`]: {{< ref "Keys#tkeys-shortcut" >}}
+[`T.Last`]: {{< ref "Last#tlast-shortcut" >}}
 [`T.CmpLax`]: {{< ref "Lax#tcmplax-shortcut" >}}
 [`T.Len`]: {{< ref "Len#tlen-shortcut" >}}
 [`T.Lt`]: {{< ref "Lt#tlt-shortcut" >}}
@@ -419,6 +460,7 @@ The following operators are smuggler ones:
 [`T.Ptr`]: {{< ref "Ptr#tptr-shortcut" >}}
 [`T.Re`]: {{< ref "Re#tre-shortcut" >}}
 [`T.ReAll`]: {{< ref "ReAll#treall-shortcut" >}}
+[`T.Recv`]: {{< ref "Recv#trecv-shortcut" >}}
 [`T.Set`]: {{< ref "Set#tset-shortcut" >}}
 [`T.Shallow`]: {{< ref "Shallow#tshallow-shortcut" >}}
 [`T.Slice`]: {{< ref "Slice#tslice-shortcut" >}}

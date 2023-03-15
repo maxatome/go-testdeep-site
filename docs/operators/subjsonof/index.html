@@ -2,20 +2,20 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.101.0">
+<meta name=generator content="Hugo 0.111.3">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>SubJSONOf :: go-testdeep</title><link href=/css/nucleus.css?1659898297 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1659898297 rel=stylesheet>
-<link href=/css/hybrid.css?1659898297 rel=stylesheet>
-<link href=/css/featherlight.min.css?1659898297 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1659898297 rel=stylesheet>
-<link href=/css/auto-complete.css?1659898297 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1659898297 rel=stylesheet>
-<link href=/css/theme.css?1659898297 rel=stylesheet>
-<link href=/css/hugo-theme.css?1659898297 rel=stylesheet>
-<link href=/css/theme-green.css?1659898297 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1659898297></script>
+<title>SubJSONOf :: go-testdeep</title><link href=/css/nucleus.css?1678884514 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1678884514 rel=stylesheet>
+<link href=/css/hybrid.css?1678884514 rel=stylesheet>
+<link href=/css/featherlight.min.css?1678884514 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1678884514 rel=stylesheet>
+<link href=/css/auto-complete.css?1678884514 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1678884514 rel=stylesheet>
+<link href=/css/theme.css?1678884514 rel=stylesheet>
+<link href=/css/hugo-theme.css?1678884514 rel=stylesheet>
+<link href=/css/theme-green.css?1678884514 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1678884514></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style></head><body data-url=/operators/subjsonof/>
 <nav id=sidebar>
@@ -26,10 +26,10 @@
 <label for=search-by><i class="fas fa-search"></i></label>
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
-</div><script type=text/javascript src=/js/lunr.min.js?1659898297></script>
-<script type=text/javascript src=/js/auto-complete.js?1659898297></script>
+</div><script type=text/javascript src=/js/lunr.min.js?1678884514></script>
+<script type=text/javascript src=/js/auto-complete.js?1678884514></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1659898297></script>
+<script type=text/javascript src=/js/search.js?1678884514></script>
 </div><div class=highlightable>
 <ul class=topics>
 <li data-nav-id=/introduction/ title=Introduction class=dd-item>
@@ -140,6 +140,18 @@ Delay
 <a href=/operators/empty/>
 Empty
 </a>
+</li><li data-nav-id=/operators/erroris/ title=ErrorIs class=dd-item>
+<a href=/operators/erroris/>
+ErrorIs
+</a>
+</li><li data-nav-id=/operators/first/ title=First class=dd-item>
+<a href=/operators/first/>
+First
+</a>
+</li><li data-nav-id=/operators/grep/ title=Grep class=dd-item>
+<a href=/operators/grep/>
+Grep
+</a>
 </li><li data-nav-id=/operators/gt/ title=Gt class=dd-item>
 <a href=/operators/gt/>
 Gt
@@ -175,6 +187,10 @@ JSONPointer
 </li><li data-nav-id=/operators/keys/ title=Keys class=dd-item>
 <a href=/operators/keys/>
 Keys
+</a>
+</li><li data-nav-id=/operators/last/ title=Last class=dd-item>
+<a href=/operators/last/>
+Last
 </a>
 </li><li data-nav-id=/operators/lax/ title=Lax class=dd-item>
 <a href=/operators/lax/>
@@ -255,6 +271,10 @@ Re
 </li><li data-nav-id=/operators/reall/ title=ReAll class=dd-item>
 <a href=/operators/reall/>
 ReAll
+</a>
+</li><li data-nav-id=/operators/recv/ title=Recv class=dd-item>
+<a href=/operators/recv/>
+Recv
 </a>
 </li><li data-nav-id=/operators/set/ title=Set class=dd-item>
 <a href=/operators/set/>
@@ -392,7 +412,7 @@ SubJSONOf
 data against <em>expectedJSON</em>. Unlike <a href=/operators/json/><code>JSON</code></a> operator, marshaled data
 must be a JSON object/map (aka {…}). <em>expectedJSON</em> can be a:</p><ul>
 <li><code>string</code> containing JSON data like <code>{"fullname":"Bob","age":42}</code></li><li><code>string</code> containing a JSON filename, ending with &ldquo;.json&rdquo; (its
-content is <a href=https://pkg.go.dev/io/ioutil#ReadFile><code>ioutil.ReadFile</code></a> before unmarshaling)</li><li><code>[]byte</code> containing JSON data</li><li><a href=https://pkg.go.dev/io#Reader><code>io.Reader</code></a> stream containing JSON data (is <a href=https://pkg.go.dev/io/ioutil#ReadAll><code>ioutil.ReadAll</code></a> before
+content is <a href=https://pkg.go.dev/os#ReadFile><code>os.ReadFile</code></a> before unmarshaling)</li><li><code>[]byte</code> containing JSON data</li><li><a href=https://pkg.go.dev/io#Reader><code>io.Reader</code></a> stream containing JSON data (is <a href=https://pkg.go.dev/io#ReadAll><code>io.ReadAll</code></a> before
 unmarshaling)</li></ul><p>JSON data contained in <em>expectedJSON</em> must be a JSON object/map
 (aka {…}) too. During a match, each expected entry should match in
 the compared map. But some expected entries can be missing from the
@@ -465,14 +485,15 @@ simplify numeric tests.</p><p>Comments can be embedded in JSON data:</p><div cla
 <li>line comments start with the character sequence // and stop at the
 end of the line.</li><li>multi-lines comments start with the character sequence /* and stop
 with the first subsequent character sequence */.</li></ul><p>Other JSON divergences:</p><ul>
-<li>&lsquo;,&rsquo; can precede a &lsquo;}&rsquo; or a &lsquo;]&rsquo; (as in go);</li><li>int_lit & float_lit numbers as defined in go spec are accepted;</li><li>numbers can be prefixed by &lsquo;+&rsquo;.</li></ul><p>Most operators can be directly embedded in SubJSONOf without requiring
-any placeholder.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+<li>&lsquo;,&rsquo; can precede a &lsquo;}&rsquo; or a &lsquo;]&rsquo; (as in go);</li><li>strings can contain non-escaped \n, \r and \t;</li><li>raw strings are accepted (r{raw}, r!raw!, …), see below;</li><li>int_lit & float_lit numbers as defined in go spec are accepted;</li><li>numbers can be prefixed by &lsquo;+&rsquo;.</li></ul><p>Most operators can be directly embedded in SubJSONOf without requiring
+any placeholder. If an operators does not take <code>any</code> parameter, the
+parenthesis can be omitted.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
 </span></span><span style=display:flex><span>  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: HasPrefix(&#34;Foo&#34;),
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      Between(41, 43),
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;details&#34;:  SuperMapOf({
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    &#34;address&#34;: NotEmpty(),
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    &#34;address&#34;: NotEmpty, // () are optional when no parameters
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>    &#34;car&#34;:     Any(&#34;Peugeot&#34;, &#34;Tesla&#34;, &#34;Jeep&#34;) // any of these
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  })
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>))
@@ -481,22 +502,58 @@ any placeholder.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;bac
 </span></span></code></pre></div><p>A few notes about operators embedding:</p><ul>
 <li><a href=/operators/submapof/><code>SubMapOf</code></a> and <a href=/operators/supermapof/><code>SuperMapOf</code></a> take only one parameter, a JSON object;</li><li>the optional 3rd parameter of <a href=/operators/between/><code>Between</code></a> has to be specified as a <code>string</code>
 and can be: &ldquo;[]&rdquo; or &ldquo;BoundsInIn&rdquo; (default), &ldquo;[[&rdquo; or &ldquo;BoundsInOut&rdquo;,
-&ldquo;]]&rdquo; or &ldquo;BoundsOutIn&rdquo;, &ldquo;][&rdquo; or &ldquo;BoundsOutOut&rdquo;;</li><li>not all operators are embeddable only the following are:
-<a href=/operators/all/><code>All</code></a>, <a href=/operators/any/><code>Any</code></a>, <a href=/operators/arrayeach/><code>ArrayEach</code></a>, <a href=/operators/bag/><code>Bag</code></a>, <a href=/operators/between/><code>Between</code></a>, <a href=/operators/contains/><code>Contains</code></a>,
-<a href=/operators/containskey/><code>ContainsKey</code></a>, <a href=/operators/empty/><code>Empty</code></a>, <a href=/operators/gt/><code>Gt</code></a>, <a href=/operators/gte/><code>Gte</code></a>, <a href=/operators/hasprefix/><code>HasPrefix</code></a>, <a href=/operators/hassuffix/><code>HasSuffix</code></a>,
-<a href=/operators/ignore/><code>Ignore</code></a>, <a href=/operators/jsonpointer/><code>JSONPointer</code></a>, <a href=/operators/keys/><code>Keys</code></a>, <a href=/operators/len/><code>Len</code></a>, <a href=/operators/lt/><code>Lt</code></a>, <a href=/operators/lte/><code>Lte</code></a>, <a href=/operators/mapeach/><code>MapEach</code></a>,
-<a href=/operators/n/><code>N</code></a>, <a href=/operators/nan/><code>NaN</code></a>, <a href=/operators/nil/><code>Nil</code></a>, <a href=/operators/none/><code>None</code></a>, <a href=/operators/not/><code>Not</code></a>, <a href=/operators/notany/><code>NotAny</code></a>, <a href=/operators/notempty/><code>NotEmpty</code></a>, <a href=/operators/notnan/><code>NotNaN</code></a>,
-<a href=/operators/notnil/><code>NotNil</code></a>, <a href=/operators/notzero/><code>NotZero</code></a>, <a href=/operators/re/><code>Re</code></a>, <a href=/operators/reall/><code>ReAll</code></a>, <a href=/operators/set/><code>Set</code></a>, <a href=/operators/subbagof/><code>SubBagOf</code></a>,
-<a href=/operators/submapof/><code>SubMapOf</code></a>, <a href=/operators/subsetof/><code>SubSetOf</code></a>, <a href=/operators/superbagof/><code>SuperBagOf</code></a>, <a href=/operators/supermapof/><code>SuperMapOf</code></a>, <a href=/operators/supersetof/><code>SuperSetOf</code></a>,
-<a href=/operators/values/><code>Values</code></a> and <a href=/operators/zero/><code>Zero</code></a>.</li></ul><p>Operators taking no parameters can also be directly embedded in
-JSON data using <code>$^OperatorName</code> or &ldquo;<code>$^OperatorName</code>&rdquo; notation. They
-are named shortcut operators (they predate the above operators embedding
-but they subsist for compatibility):</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1, &#34;bar&#34;: 42}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
-</span></span></code></pre></div><p>can be written as:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero, &#34;bar&#34;: 42}`</span>))
-</span></span></code></pre></div><p>or</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;, &#34;bar&#34;: 42}`</span>))
+&ldquo;]]&rdquo; or &ldquo;BoundsOutIn&rdquo;, &ldquo;][&rdquo; or &ldquo;BoundsOutOut&rdquo;;</li><li>not all operators are embeddable only the following are: <a href=/operators/all/><code>All</code></a>,
+<a href=/operators/any/><code>Any</code></a>, <a href=/operators/arrayeach/><code>ArrayEach</code></a>, <a href=/operators/bag/><code>Bag</code></a>, <a href=/operators/between/><code>Between</code></a>, <a href=/operators/contains/><code>Contains</code></a>,
+<a href=/operators/containskey/><code>ContainsKey</code></a>, <a href=/operators/empty/><code>Empty</code></a>, <a href=/operators/first/><code>First</code></a>, <a href=/operators/grep/><code>Grep</code></a>, <a href=/operators/gt/><code>Gt</code></a>, <a href=/operators/gte/><code>Gte</code></a>,
+<a href=/operators/hasprefix/><code>HasPrefix</code></a>, <a href=/operators/hassuffix/><code>HasSuffix</code></a>, <a href=/operators/ignore/><code>Ignore</code></a>, <a href=/operators/jsonpointer/><code>JSONPointer</code></a>, <a href=/operators/keys/><code>Keys</code></a>,
+<a href=/operators/last/><code>Last</code></a>, <a href=/operators/len/><code>Len</code></a>, <a href=/operators/lt/><code>Lt</code></a>, <a href=/operators/lte/><code>Lte</code></a>, <a href=/operators/mapeach/><code>MapEach</code></a>, <a href=/operators/n/><code>N</code></a>, <a href=/operators/nan/><code>NaN</code></a>, <a href=/operators/nil/><code>Nil</code></a>,
+<a href=/operators/none/><code>None</code></a>, <a href=/operators/not/><code>Not</code></a>, <a href=/operators/notany/><code>NotAny</code></a>, <a href=/operators/notempty/><code>NotEmpty</code></a>, <a href=/operators/notnan/><code>NotNaN</code></a>, <a href=/operators/notnil/><code>NotNil</code></a>,
+<a href=/operators/notzero/><code>NotZero</code></a>, <a href=/operators/re/><code>Re</code></a>, <a href=/operators/reall/><code>ReAll</code></a>, <a href=/operators/set/><code>Set</code></a>, <a href=/operators/subbagof/><code>SubBagOf</code></a>, <a href=/operators/submapof/><code>SubMapOf</code></a>,
+<a href=/operators/subsetof/><code>SubSetOf</code></a>, <a href=/operators/superbagof/><code>SuperBagOf</code></a>, <a href=/operators/supermapof/><code>SuperMapOf</code></a>, <a href=/operators/supersetof/><code>SuperSetOf</code></a>, <a href=/operators/values/><code>Values</code></a>
+and <a href=/operators/zero/><code>Zero</code></a>.</li></ul><p>It is also possible to embed operators in JSON strings. This way,
+the JSON specification can be fulfilled. To avoid collision with
+possible strings, just prefix the first operator name with
+&ldquo;$^&rdquo;. The previous example becomes:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: &#34;$^HasPrefix(\&#34;Foo\&#34;)&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      &#34;$^Between(41, 43)&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;details&#34;:  &#34;$^SuperMapOf({
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    \&#34;address\&#34;: NotEmpty, // () are optional when no parameters
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    \&#34;car\&#34;:     Any(\&#34;Peugeot\&#34;, \&#34;Tesla\&#34;, \&#34;Jeep\&#34;) // any of these
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  })&#34;
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>))
+</span></span></code></pre></div><p>As you can see, in this case, strings in strings have to be
+escaped. Fortunately, newlines are accepted, but unfortunately they
+are forbidden by JSON specification. To avoid too much escaping,
+raw strings are accepted. A raw <code>string</code> is a &ldquo;r&rdquo; followed by a
+delimiter, the corresponding delimiter closes the <code>string</code>. The
+following raw strings are all the same as &ldquo;foo\bar("zip")!&rdquo;:</p><ul>
+<li>r&rsquo;foo\bar"zip"!&rsquo;</li><li>r,foo\bar"zip"!,</li><li>r%foo\bar"zip"!%</li><li>r(foo\bar(&ldquo;zip&rdquo;)!)</li><li>r{foo\bar(&ldquo;zip&rdquo;)!}</li><li>r[foo\bar(&ldquo;zip&rdquo;)!]</li><li>r&lt;foo\bar(&ldquo;zip&rdquo;)!></li></ul><p>So non-bracketing delimiters use the same character before and
+after, but the 4 sorts of ASCII brackets (round, angle, square,
+curly) all nest: r[x[y]z] equals &ldquo;x[y]z&rdquo;. The end delimiter cannot
+be escaped.</p><p>With raw strings, the previous example becomes:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue,
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: &#34;$^HasPrefix(r&lt;Foo&gt;)&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      &#34;$^Between(41, 43)&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;details&#34;:  &#34;$^SuperMapOf({
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    r&lt;address&gt;: NotEmpty, // () are optional when no parameters
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    r&lt;car&gt;:     Any(r&lt;Peugeot&gt;, r&lt;Tesla&gt;, r&lt;Jeep&gt;) // any of these
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  })&#34;
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>))
+</span></span></code></pre></div><p>Note that raw strings are accepted <code>any</code>where, not only in original
+JSON strings.</p><p>To be complete, $^ can prefix an operator even outside a
+<code>string</code>. This is accepted for compatibility purpose as the first
+operator embedding feature used this way to embed some operators.</p><p>So the following calls are all equivalent:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $1}`</span>, td.<span style=color:#447fcf>NotZero</span>()))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: NotZero}`</span>))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: NotZero()}`</span>))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero}`</span>))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: $^NotZero()}`</span>))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero&#34;}`</span>))
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotValue, td.<span style=color:#447fcf>SubJSONOf</span>(<span style=color:#ed9d13>`{&#34;id&#34;: &#34;$^NotZero()&#34;}`</span>))
 </span></span></code></pre></div><p>As for placeholders, there is no differences between <code>$^NotZero</code> and
-&ldquo;<code>$^NotZero</code>&rdquo;.</p><p>The allowed shortcut operators follow:</p><ul>
-<li><a href=/operators/empty/><code>Empty</code></a> → <code>$^Empty</code></li><li><a href=/operators/ignore/><code>Ignore</code></a> → <code>$^Ignore</code></li><li><a href=/operators/nan/><code>NaN</code></a> → <code>$^NaN</code></li><li><a href=/operators/nil/><code>Nil</code></a> → <code>$^Nil</code></li><li><a href=/operators/notempty/><code>NotEmpty</code></a> → <code>$^NotEmpty</code></li><li><a href=/operators/notnan/><code>NotNaN</code></a> → <code>$^NotNaN</code></li><li><a href=/operators/notnil/><code>NotNil</code></a> → <code>$^NotNil</code></li><li><a href=/operators/notzero/><code>NotZero</code></a> → <code>$^NotZero</code></li><li><a href=/operators/zero/><code>Zero</code></a> → <code>$^Zero</code></li></ul><p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <code>map[string]any</code> type.</p><blockquote>
+&ldquo;<code>$^NotZero</code>&rdquo;.</p><p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <code>map[string]any</code> type.</p><blockquote>
 <p>See also <a href=/operators/json/><code>JSON</code></a>, <a href=/operators/jsonpointer/><code>JSONPointer</code></a> and <a href=/operators/superjsonof/><code>SuperJSONOf</code></a>.</p></blockquote><blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SubJSONOf> SubJSONOf godoc</a>.</p></blockquote><h3 id=examples>Examples</h3><p>
 <div class=expand>
@@ -614,14 +671,14 @@ File example
 </span></span><span style=display:flex><span>		Gender:   <span style=color:#ed9d13>&#34;male&#34;</span>,
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	tmpDir, err := ioutil.<span style=color:#447fcf>TempDir</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>	tmpDir, err := os.<span style=color:#447fcf>MkdirTemp</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
 </span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Fatal</span>(err)
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>defer</span> os.<span style=color:#447fcf>RemoveAll</span>(tmpDir) <span style=color:#999;font-style:italic>// clean up
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
 </span></span><span style=display:flex><span>	filename := tmpDir + <span style=color:#ed9d13>&#34;/test.json&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = ioutil.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = os.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: &#34;$name&#34;,
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      &#34;$age&#34;,
@@ -766,14 +823,14 @@ File example
 </span></span><span style=display:flex><span>		Gender:   <span style=color:#ed9d13>&#34;male&#34;</span>,
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	tmpDir, err := ioutil.<span style=color:#447fcf>TempDir</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>	tmpDir, err := os.<span style=color:#447fcf>MkdirTemp</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
 </span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Fatal</span>(err)
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>defer</span> os.<span style=color:#447fcf>RemoveAll</span>(tmpDir) <span style=color:#999;font-style:italic>// clean up
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
 </span></span><span style=display:flex><span>	filename := tmpDir + <span style=color:#ed9d13>&#34;/test.json&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = ioutil.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = os.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: &#34;$name&#34;,
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      &#34;$age&#34;,
@@ -910,14 +967,14 @@ File example
 </span></span><span style=display:flex><span>		Gender:   <span style=color:#ed9d13>&#34;male&#34;</span>,
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	tmpDir, err := ioutil.<span style=color:#447fcf>TempDir</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>	tmpDir, err := os.<span style=color:#447fcf>MkdirTemp</span>(<span style=color:#ed9d13>&#34;&#34;</span>, <span style=color:#ed9d13>&#34;&#34;</span>)
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
 </span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Fatal</span>(err)
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>defer</span> os.<span style=color:#447fcf>RemoveAll</span>(tmpDir) <span style=color:#999;font-style:italic>// clean up
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
 </span></span><span style=display:flex><span>	filename := tmpDir + <span style=color:#ed9d13>&#34;/test.json&#34;</span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = ioutil.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>if</span> err = os.<span style=color:#447fcf>WriteFile</span>(filename, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>`
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;fullname&#34;: &#34;$name&#34;,
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:      &#34;$age&#34;,
@@ -950,17 +1007,17 @@ File example
 <a class="nav nav-prev" href=/operators/subbagof/ title=SubBagOf> <i class="fa fa-chevron-left"></i></a>
 <a class="nav nav-next" href=/operators/submapof/ title=SubMapOf style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.min.js?1659898297></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1659898297></script>
-<script src=/js/jquery.sticky.js?1659898297></script>
-<script src=/js/featherlight.min.js?1659898297></script>
-<script src=/js/highlight.pack.js?1659898297></script>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1678884514></script>
+<script src=/js/jquery.sticky.js?1678884514></script>
+<script src=/js/featherlight.min.js?1678884514></script>
+<script src=/js/highlight.pack.js?1678884514></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1659898297></script>
-<script src=/js/learn.js?1659898297></script>
-<script src=/js/hugo-learn.js?1659898297></script>
-<link href=/mermaid/mermaid.css?1659898297 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1659898297></script>
+<script src=/js/modernizr.custom-3.6.0.js?1678884514></script>
+<script src=/js/learn.js?1678884514></script>
+<script src=/js/hugo-learn.js?1678884514></script>
+<link href=/mermaid/mermaid.css?1678884514 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1678884514></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body></html>
