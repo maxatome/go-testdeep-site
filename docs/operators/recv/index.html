@@ -1,0 +1,1016 @@
+<!doctype html><html lang=en class="js csstransforms3d">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=generator content="Hugo 0.111.3">
+<meta name=description content>
+<link rel=icon href=/images/favicon.png type=image/png>
+<title>Recv :: go-testdeep</title><link href=/css/nucleus.css?1678884514 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1678884514 rel=stylesheet>
+<link href=/css/hybrid.css?1678884514 rel=stylesheet>
+<link href=/css/featherlight.min.css?1678884514 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1678884514 rel=stylesheet>
+<link href=/css/auto-complete.css?1678884514 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1678884514 rel=stylesheet>
+<link href=/css/theme.css?1678884514 rel=stylesheet>
+<link href=/css/hugo-theme.css?1678884514 rel=stylesheet>
+<link href=/css/theme-green.css?1678884514 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1678884514></script>
+<style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<style type=text/css>#body-inner pre{white-space:pre}</style></head><body data-url=/operators/recv/>
+<nav id=sidebar>
+<div id=header-wrapper>
+<div id=header>
+<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
+</div><div class=searchbox>
+<label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span>
+</div><script type=text/javascript src=/js/lunr.min.js?1678884514></script>
+<script type=text/javascript src=/js/auto-complete.js?1678884514></script>
+<script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
+<script type=text/javascript src=/js/search.js?1678884514></script>
+</div><div class=highlightable>
+<ul class=topics>
+<li data-nav-id=/introduction/ title=Introduction class=dd-item>
+<a href=/introduction/>
+Introduction
+</a>
+</li><li data-nav-id=/example/ title=Tutorial class=dd-item>
+<a href=/example/>
+Tutorial
+</a>
+<ul>
+<li data-nav-id=/example/using-testing/ title="Using testing package" class=dd-item>
+<a href=/example/using-testing/>
+Using testing package
+</a>
+</li><li data-nav-id=/example/basic-testdeep/ title="Basic go-testdeep approach" class=dd-item>
+<a href=/example/basic-testdeep/>
+Basic go-testdeep approach
+</a>
+</li><li data-nav-id=/example/advanced-testdeep/ title="Advanced go-testdeep technique" class=dd-item>
+<a href=/example/advanced-testdeep/>
+Advanced go-testdeep technique
+</a>
+</li><li data-nav-id=/example/td-cmp-shortcuts/ title="go-testdeep Cmp shortcuts" class=dd-item>
+<a href=/example/td-cmp-shortcuts/>
+go-testdeep Cmp shortcuts
+</a>
+</li><li data-nav-id=/example/td-t/ title="td.T type" class=dd-item>
+<a href=/example/td-t/>
+td.T type
+</a>
+</li><li data-nav-id=/example/anchoring/ title="Using anchoring" class=dd-item>
+<a href=/example/anchoring/>
+Using anchoring
+</a>
+</li><li data-nav-id=/example/using-json/ title="Using JSON" class=dd-item>
+<a href=/example/using-json/>
+Using JSON
+</a>
+</li></ul></li><li data-nav-id=/functions/ title=Functions class=dd-item>
+<a href=/functions/>
+Functions
+</a>
+<ul>
+<li data-nav-id=/functions/td-t/ title=td.T class=dd-item>
+<a href=/functions/td-t/>
+td.T
+</a>
+</li></ul></li><li data-nav-id=/operators/ title=Operators class="dd-item
+parent">
+<a href=/operators/>
+Operators
+</a>
+<ul>
+<li data-nav-id=/operators/matrix/ title="Operators matrices" class=dd-item>
+<a href=/operators/matrix/>
+Operators matrices
+</a>
+</li><li data-nav-id=/operators/all/ title=All class=dd-item>
+<a href=/operators/all/>
+All
+</a>
+</li><li data-nav-id=/operators/any/ title=Any class=dd-item>
+<a href=/operators/any/>
+Any
+</a>
+</li><li data-nav-id=/operators/array/ title=Array class=dd-item>
+<a href=/operators/array/>
+Array
+</a>
+</li><li data-nav-id=/operators/arrayeach/ title=ArrayEach class=dd-item>
+<a href=/operators/arrayeach/>
+ArrayEach
+</a>
+</li><li data-nav-id=/operators/bag/ title=Bag class=dd-item>
+<a href=/operators/bag/>
+Bag
+</a>
+</li><li data-nav-id=/operators/between/ title=Between class=dd-item>
+<a href=/operators/between/>
+Between
+</a>
+</li><li data-nav-id=/operators/cap/ title=Cap class=dd-item>
+<a href=/operators/cap/>
+Cap
+</a>
+</li><li data-nav-id=/operators/catch/ title=Catch class=dd-item>
+<a href=/operators/catch/>
+Catch
+</a>
+</li><li data-nav-id=/operators/code/ title=Code class=dd-item>
+<a href=/operators/code/>
+Code
+</a>
+</li><li data-nav-id=/operators/contains/ title=Contains class=dd-item>
+<a href=/operators/contains/>
+Contains
+</a>
+</li><li data-nav-id=/operators/containskey/ title=ContainsKey class=dd-item>
+<a href=/operators/containskey/>
+ContainsKey
+</a>
+</li><li data-nav-id=/operators/delay/ title=Delay class=dd-item>
+<a href=/operators/delay/>
+Delay
+</a>
+</li><li data-nav-id=/operators/empty/ title=Empty class=dd-item>
+<a href=/operators/empty/>
+Empty
+</a>
+</li><li data-nav-id=/operators/erroris/ title=ErrorIs class=dd-item>
+<a href=/operators/erroris/>
+ErrorIs
+</a>
+</li><li data-nav-id=/operators/first/ title=First class=dd-item>
+<a href=/operators/first/>
+First
+</a>
+</li><li data-nav-id=/operators/grep/ title=Grep class=dd-item>
+<a href=/operators/grep/>
+Grep
+</a>
+</li><li data-nav-id=/operators/gt/ title=Gt class=dd-item>
+<a href=/operators/gt/>
+Gt
+</a>
+</li><li data-nav-id=/operators/gte/ title=Gte class=dd-item>
+<a href=/operators/gte/>
+Gte
+</a>
+</li><li data-nav-id=/operators/hasprefix/ title=HasPrefix class=dd-item>
+<a href=/operators/hasprefix/>
+HasPrefix
+</a>
+</li><li data-nav-id=/operators/hassuffix/ title=HasSuffix class=dd-item>
+<a href=/operators/hassuffix/>
+HasSuffix
+</a>
+</li><li data-nav-id=/operators/ignore/ title=Ignore class=dd-item>
+<a href=/operators/ignore/>
+Ignore
+</a>
+</li><li data-nav-id=/operators/isa/ title=Isa class=dd-item>
+<a href=/operators/isa/>
+Isa
+</a>
+</li><li data-nav-id=/operators/json/ title=JSON class=dd-item>
+<a href=/operators/json/>
+JSON
+</a>
+</li><li data-nav-id=/operators/jsonpointer/ title=JSONPointer class=dd-item>
+<a href=/operators/jsonpointer/>
+JSONPointer
+</a>
+</li><li data-nav-id=/operators/keys/ title=Keys class=dd-item>
+<a href=/operators/keys/>
+Keys
+</a>
+</li><li data-nav-id=/operators/last/ title=Last class=dd-item>
+<a href=/operators/last/>
+Last
+</a>
+</li><li data-nav-id=/operators/lax/ title=Lax class=dd-item>
+<a href=/operators/lax/>
+Lax
+</a>
+</li><li data-nav-id=/operators/len/ title=Len class=dd-item>
+<a href=/operators/len/>
+Len
+</a>
+</li><li data-nav-id=/operators/lt/ title=Lt class=dd-item>
+<a href=/operators/lt/>
+Lt
+</a>
+</li><li data-nav-id=/operators/lte/ title=Lte class=dd-item>
+<a href=/operators/lte/>
+Lte
+</a>
+</li><li data-nav-id=/operators/map/ title=Map class=dd-item>
+<a href=/operators/map/>
+Map
+</a>
+</li><li data-nav-id=/operators/mapeach/ title=MapEach class=dd-item>
+<a href=/operators/mapeach/>
+MapEach
+</a>
+</li><li data-nav-id=/operators/n/ title=N class=dd-item>
+<a href=/operators/n/>
+N
+</a>
+</li><li data-nav-id=/operators/nan/ title=NaN class=dd-item>
+<a href=/operators/nan/>
+NaN
+</a>
+</li><li data-nav-id=/operators/nil/ title=Nil class=dd-item>
+<a href=/operators/nil/>
+Nil
+</a>
+</li><li data-nav-id=/operators/none/ title=None class=dd-item>
+<a href=/operators/none/>
+None
+</a>
+</li><li data-nav-id=/operators/not/ title=Not class=dd-item>
+<a href=/operators/not/>
+Not
+</a>
+</li><li data-nav-id=/operators/notany/ title=NotAny class=dd-item>
+<a href=/operators/notany/>
+NotAny
+</a>
+</li><li data-nav-id=/operators/notempty/ title=NotEmpty class=dd-item>
+<a href=/operators/notempty/>
+NotEmpty
+</a>
+</li><li data-nav-id=/operators/notnan/ title=NotNaN class=dd-item>
+<a href=/operators/notnan/>
+NotNaN
+</a>
+</li><li data-nav-id=/operators/notnil/ title=NotNil class=dd-item>
+<a href=/operators/notnil/>
+NotNil
+</a>
+</li><li data-nav-id=/operators/notzero/ title=NotZero class=dd-item>
+<a href=/operators/notzero/>
+NotZero
+</a>
+</li><li data-nav-id=/operators/pptr/ title=PPtr class=dd-item>
+<a href=/operators/pptr/>
+PPtr
+</a>
+</li><li data-nav-id=/operators/ptr/ title=Ptr class=dd-item>
+<a href=/operators/ptr/>
+Ptr
+</a>
+</li><li data-nav-id=/operators/re/ title=Re class=dd-item>
+<a href=/operators/re/>
+Re
+</a>
+</li><li data-nav-id=/operators/reall/ title=ReAll class=dd-item>
+<a href=/operators/reall/>
+ReAll
+</a>
+</li><li data-nav-id=/operators/recv/ title=Recv class="dd-item active">
+<a href=/operators/recv/>
+Recv
+</a>
+</li><li data-nav-id=/operators/set/ title=Set class=dd-item>
+<a href=/operators/set/>
+Set
+</a>
+</li><li data-nav-id=/operators/shallow/ title=Shallow class=dd-item>
+<a href=/operators/shallow/>
+Shallow
+</a>
+</li><li data-nav-id=/operators/slice/ title=Slice class=dd-item>
+<a href=/operators/slice/>
+Slice
+</a>
+</li><li data-nav-id=/operators/smuggle/ title=Smuggle class=dd-item>
+<a href=/operators/smuggle/>
+Smuggle
+</a>
+</li><li data-nav-id=/operators/sstruct/ title=SStruct class=dd-item>
+<a href=/operators/sstruct/>
+SStruct
+</a>
+</li><li data-nav-id=/operators/string/ title=String class=dd-item>
+<a href=/operators/string/>
+String
+</a>
+</li><li data-nav-id=/operators/struct/ title=Struct class=dd-item>
+<a href=/operators/struct/>
+Struct
+</a>
+</li><li data-nav-id=/operators/subbagof/ title=SubBagOf class=dd-item>
+<a href=/operators/subbagof/>
+SubBagOf
+</a>
+</li><li data-nav-id=/operators/subjsonof/ title=SubJSONOf class=dd-item>
+<a href=/operators/subjsonof/>
+SubJSONOf
+</a>
+</li><li data-nav-id=/operators/submapof/ title=SubMapOf class=dd-item>
+<a href=/operators/submapof/>
+SubMapOf
+</a>
+</li><li data-nav-id=/operators/subsetof/ title=SubSetOf class=dd-item>
+<a href=/operators/subsetof/>
+SubSetOf
+</a>
+</li><li data-nav-id=/operators/superbagof/ title=SuperBagOf class=dd-item>
+<a href=/operators/superbagof/>
+SuperBagOf
+</a>
+</li><li data-nav-id=/operators/superjsonof/ title=SuperJSONOf class=dd-item>
+<a href=/operators/superjsonof/>
+SuperJSONOf
+</a>
+</li><li data-nav-id=/operators/supermapof/ title=SuperMapOf class=dd-item>
+<a href=/operators/supermapof/>
+SuperMapOf
+</a>
+</li><li data-nav-id=/operators/supersetof/ title=SuperSetOf class=dd-item>
+<a href=/operators/supersetof/>
+SuperSetOf
+</a>
+</li><li data-nav-id=/operators/supersliceof/ title=SuperSliceOf class=dd-item>
+<a href=/operators/supersliceof/>
+SuperSliceOf
+</a>
+</li><li data-nav-id=/operators/tag/ title=Tag class=dd-item>
+<a href=/operators/tag/>
+Tag
+</a>
+</li><li data-nav-id=/operators/trunctime/ title=TruncTime class=dd-item>
+<a href=/operators/trunctime/>
+TruncTime
+</a>
+</li><li data-nav-id=/operators/values/ title=Values class=dd-item>
+<a href=/operators/values/>
+Values
+</a>
+</li><li data-nav-id=/operators/zero/ title=Zero class=dd-item>
+<a href=/operators/zero/>
+Zero
+</a>
+</li></ul></li><li data-nav-id=/helpers/ title=Helpers class=dd-item>
+<a href=/helpers/>
+Helpers
+</a>
+</li><li data-nav-id=/faq/ title=FAQ class=dd-item>
+<a href=/faq/>
+FAQ
+</a>
+</li></ul><section id=shortcuts>
+<h3>More</h3><ul>
+<li>
+<a class=padding href=https://go-testdeep.zetta.rocks/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a>
+</li><li>
+<a class=padding href=https://github.com/maxatome/go-testdeep><i class='fab fa-github'></i>&nbsp;Github repo</a>
+</li><li>
+<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><i class='fas fa-book'></i>&nbsp;godoc</a>
+</li><li>
+<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a>
+</li><li>
+<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a>
+</li><li>
+<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a>
+</li></ul></section><section id=footer>
+<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p></section></div></nav><section id=body>
+<div id=overlay></div><div class="padding highlightable">
+<div>
+<div id=top-bar>
+<div id=breadcrumbs itemscope itemtype=http://schema.org/BreadcrumbList>
+<span id=sidebar-toggle-span>
+<a href=# id=sidebar-toggle data-sidebar-toggle>
+<i class="fas fa-bars"></i>
+</a>
+</span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links>
+<span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/> <span itemprop=name>go-testdeep</span><meta itemprop=position content="1"></a></span> > <span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/operators/> <span itemprop=name>Operators</span><meta itemprop=position content="2"></a></span> > Recv
+</span>
+</div><div class=progress>
+<div class=wrapper>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#examples>Examples</a></li></ul></li><li><a href=#cmprecv-shortcut>CmpRecv shortcut</a>
+<ul>
+<li><a href=#examples-1>Examples</a></li></ul></li><li><a href=#trecv-shortcut>T.Recv shortcut</a>
+<ul>
+<li><a href=#examples-2>Examples</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags>
+</div><div id=body-inner>
+<h1>
+Recv
+</h1><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Recv</span>(expectedValue any, timeout ...time.Duration) TestDeep
+</span></span></code></pre></div><p>Recv is a <a href=/operators/#smuggler-operators>smuggler operator</a>. It reads from a channel or a pointer
+to a channel and compares the read value to <em>expectedValue</em>.</p><p><em>expectedValue</em> can be <code>any</code> value including a <a href=/operators/>TestDeep operator</a>. It
+can also be <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#RecvNothing><code>RecvNothing</code></a> to test nothing can be read from the
+channel or <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#RecvClosed><code>RecvClosed</code></a> to check the channel is closed.</p><p>If <em>timeout</em> is passed it should be only one item. It means: try to
+read the channel during this duration to get a value before giving
+up. If <em>timeout</em> is missing or ≤ 0, it defaults to 0 meaning Recv
+does not wait for a value but gives up instantly if no value is
+available on the channel.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>ch := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>6</span>)
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing)) <span style=color:#999;font-style:italic>// succeeds
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>))             <span style=color:#999;font-style:italic>// fails, nothing to receive
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// recv(DATA): values differ
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>//      got: nothing received on channel
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// expected: 42
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>42</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing)) <span style=color:#999;font-style:italic>// fails, 42 received instead
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// recv(DATA): values differ
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>//      got: 42
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// expected: nothing received on channel
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>)) <span style=color:#999;font-style:italic>// fails, nothing to receive anymore
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// recv(DATA): values differ
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>//      got: nothing received on channel
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// expected: 42
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>666</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>600</span>, <span style=color:#3677a9>700</span>))) <span style=color:#999;font-style:italic>// succeeds
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#24909d>close</span>(ch)
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing)) <span style=color:#999;font-style:italic>// fails as channel is closed
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// recv(DATA): values differ
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>//      got: channel is closed
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// expected: nothing received on channel
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvClosed)) <span style=color:#999;font-style:italic>// succeeds
+</span></span></span></code></pre></div><p>Note that for convenience Recv accepts pointer on channel:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>ch := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>6</span>)
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>42</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, &amp;ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>)) <span style=color:#999;font-style:italic>// succeeds
+</span></span></span></code></pre></div><p>Each time Recv is called, it tries to consume one item from the
+channel, immediately or, if given, before <em>timeout</em> duration. To
+consume several items in a same <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call, one can use <a href=/operators/all/><code>All</code></a>
+operator as in:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>ch := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>6</span>)
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>ch &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span><span style=color:#24909d>close</span>(ch)
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>All</span>( <span style=color:#999;font-style:italic>// succeeds
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>1</span>),
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>3</span>),
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>))
+</span></span></code></pre></div><p>To check nothing can be received during 100ms on channel ch (if
+something is received before, including a close, it fails):</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing, <span style=color:#3677a9>100</span>*time.Millisecond))
+</span></span></code></pre></div><p>note that in case of success, the above <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call always lasts 100ms.</p><p>To check 42 can be received from channel ch during the next 100ms
+(if nothing is received during these 100ms or something different
+from 42, including a close, it fails):</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>, <span style=color:#3677a9>100</span>*time.Millisecond))
+</span></span></code></pre></div><p>note that in case of success, the above <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call lasts less than 100ms.</p><p>A <code>nil</code> channel is not handled specifically, so it “is never ready
+for communication” as specification says:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>var</span> ch <span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing)) <span style=color:#999;font-style:italic>// always succeeds
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>))             <span style=color:#999;font-style:italic>// or any other value, always fails
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvClosed))  <span style=color:#999;font-style:italic>// always fails
+</span></span></span></code></pre></div><p>so to check if a channel is not <code>nil</code> before reading from it, one can
+either do:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>NotNil</span>(),
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>),
+</span></span><span style=display:flex><span>))
+</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// or
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#6ab825;font-weight:700>if</span> td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>NotNil</span>()) {
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>))
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><a href=/operators/#typebehind-method><code>TypeBehind</code></a> method returns the <a href=https://pkg.go.dev/reflect#Type><code>reflect.Type</code></a> of <em>expectedValue</em>,
+except if <em>expectedValue</em> is a <a href=/operators/>TestDeep operator</a>. In this case, it
+delegates <a href=/operators/#typebehind-method><code>TypeBehind()</code></a> to the operator.</p><blockquote>
+<p>See also <a href=/operators/cap/><code>Cap</code></a> and <a href=/operators/len/><code>Len</code></a>.</p></blockquote><blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Recv> Recv godoc</a>.</p></blockquote><h3 id=examples>Examples</h3><p>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Basic example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>1</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+ChannelPointer example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, &amp;got, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>1</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, &amp;got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+WithTimeout example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	tick := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>struct</span>{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>go</span> <span style=color:#6ab825;font-weight:700>func</span>() {
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>0</span>, <span style=color:#3677a9>150</span>*time.Millisecond))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① receive 0 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>150</span>*time.Millisecond))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② receive 1 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(td.RecvClosed, <span style=color:#3677a9>150</span>*time.Millisecond))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ check closed w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① receive 0 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② receive 1 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ check closed w/150ms timeout: true
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+NilChannel example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>var</span> ch <span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvNothing))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>42</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;something to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, ch, td.<span style=color:#447fcf>Recv</span>(td.RecvClosed))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is a nil channel closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive from nil channel: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// something to receive from nil channel: false
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// is a nil channel closed: false
+</span></span></span></code></pre></div></div></div></p><h2 id=cmprecv-shortcut>CmpRecv shortcut</h2><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpRecv</span>(t TestingT, got, expectedValue any, timeout time.Duration, args ...any) <span style=color:#6ab825;font-weight:700>bool</span>
+</span></span></code></pre></div><p>CmpRecv is a shortcut for:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Recv</span>(expectedValue, timeout), args...)
+</span></span></code></pre></div><p>See above for details.</p><p><a href=/operators/recv/><code>Recv</code></a> optional parameter <em>timeout</em> is here mandatory.
+0 value should be passed to mimic its absence in
+original <a href=/operators/recv/><code>Recv</code></a> call.</p><p>Returns true if the test is OK, false if it fails.</p><p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*T</code></a> then its Config field is inherited.</p><p><em>args&mldr;</em> are optional and allow to name the test. This name is
+used in case of failure to qualify the test. If <code>len(args) > 1</code> and
+the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
+<a href=https://pkg.go.dev/fmt#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+reason of a potential failure.</p><blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpRecv> CmpRecv godoc</a>.</p></blockquote><h3 id=examples-1>Examples</h3><p>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Basic example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+ChannelPointer example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, &amp;got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, &amp;got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+WithTimeout example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	tick := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>struct</span>{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>go</span> <span style=color:#6ab825;font-weight:700>func</span>() {
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① receive 0 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② receive 1 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, got, td.RecvClosed, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ check closed w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① receive 0 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② receive 1 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ check closed w/150ms timeout: true
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+NilChannel example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>var</span> ch <span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpRecv</span>(t, ch, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, ch, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;something to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpRecv</span>(t, ch, td.RecvClosed, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is a nil channel closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive from nil channel: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// something to receive from nil channel: false
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// is a nil channel closed: false
+</span></span></span></code></pre></div></div></div></p><h2 id=trecv-shortcut>T.Recv shortcut</h2><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Recv</span>(got, expectedValue any, timeout time.Duration, args ...any) <span style=color:#6ab825;font-weight:700>bool</span>
+</span></span></code></pre></div><p>Recv is a shortcut for:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Recv</span>(expectedValue, timeout), args...)
+</span></span></code></pre></div><p>See above for details.</p><p><a href=/operators/recv/><code>Recv</code></a> optional parameter <em>timeout</em> is here mandatory.
+0 value should be passed to mimic its absence in
+original <a href=/operators/recv/><code>Recv</code></a> call.</p><p>Returns true if the test is OK, false if it fails.</p><p><em>args&mldr;</em> are optional and allow to name the test. This name is
+used in case of failure to qualify the test. If <code>len(args) > 1</code> and
+the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
+<a href=https://pkg.go.dev/fmt#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+reason of a potential failure.</p><blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Recv> T.Recv godoc</a>.</p></blockquote><h3 id=examples-2>Examples</h3><p>
+<div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+Basic example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+ChannelPointer example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>3</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>2</span>
+</span></span><span style=display:flex><span>	got &lt;- <span style=color:#3677a9>3</span>
+</span></span><span style=display:flex><span>	<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(&amp;got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;1st receive is 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Cmp</span>(&amp;got, td.<span style=color:#447fcf>All</span>(
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(<span style=color:#3677a9>2</span>),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>)),
+</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Recv</span>(td.RecvClosed),
+</span></span><span style=display:flex><span>	))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;next receives are 2, 3 then closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// 1st receive is 1: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// next receives are 2, 3 then closed: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive: false
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+WithTimeout example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>, <span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	tick := <span style=color:#24909d>make</span>(<span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>struct</span>{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>go</span> <span style=color:#6ab825;font-weight:700>func</span>() {
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		got &lt;- <span style=color:#3677a9>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>		&lt;-tick
+</span></span><span style=display:flex><span>		time.<span style=color:#447fcf>Sleep</span>(<span style=color:#3677a9>100</span> * time.Millisecond)
+</span></span><span style=display:flex><span>		<span style=color:#24909d>close</span>(got)
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① receive 0 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;① RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② receive 1 w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;② RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	tick &lt;- <span style=color:#6ab825;font-weight:700>struct</span>{}{}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ RecvNothing:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(got, td.RecvClosed, <span style=color:#3677a9>150</span>*time.Millisecond)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;③ check closed w/150ms timeout:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① receive 0 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ① RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② receive 1 w/150ms timeout: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ② RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ RecvNothing: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ③ check closed w/150ms timeout: true
+</span></span></span></code></pre></div></div></div><div class=expand>
+<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
+<i style=font-size:x-small class="fas fa-chevron-right"></i>
+<span>
+NilChannel example
+</span>
+</div><div class=expand-content style=display:none>
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>var</span> ch <span style=color:#6ab825;font-weight:700>chan</span> <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Recv</span>(ch, td.RecvNothing, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;nothing to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(ch, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;something to receive from nil channel:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Recv</span>(ch, td.RecvClosed, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is a nil channel closed:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// nothing to receive from nil channel: true
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// something to receive from nil channel: false
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// is a nil channel closed: false
+</span></span></span></code></pre></div></div></div></p><footer class=footline>
+</footer></div></div><div id=navigation>
+<a class="nav nav-prev" href=/operators/reall/ title=ReAll> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=/operators/set/ title=Set style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+</div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.min.js?1678884514></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1678884514></script>
+<script src=/js/jquery.sticky.js?1678884514></script>
+<script src=/js/featherlight.min.js?1678884514></script>
+<script src=/js/highlight.pack.js?1678884514></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script src=/js/modernizr.custom-3.6.0.js?1678884514></script>
+<script src=/js/learn.js?1678884514></script>
+<script src=/js/hugo-learn.js?1678884514></script>
+<link href=/mermaid/mermaid.css?1678884514 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1678884514></script>
+<script>mermaid.initialize({startOnLoad:!0})</script>
+</body></html>
