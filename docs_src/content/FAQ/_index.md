@@ -249,13 +249,13 @@ Some rules have to be kept in mind:
 ## How to test `io.Reader` contents, like `net/http.Response.Body` for example?
 
 The [`Smuggle`]({{< ref "Smuggle" >}}) operator is done for that,
-here with the help of [`ReadAll`](https://golang.org/pkg/io/ioutil/#ReadAll).
+here with the help of [`ReadAll`](https://pkg.go.dev/io#ReadAll).
 
 ```golang
 import (
+  "io"
   "net/http"
   "testing"
-  "io/ioutil"
 
   "github.com/maxatome/go-testdeep/td"
 )
@@ -265,21 +265,21 @@ func TestResponseBody(t *testing.T) {
   var resp *http.Response = GetResponse()
 
   td.Cmp(t, resp.Body,
-    td.Smuggle(ioutil.ReadAll, []byte("Expected Response!")))
+    td.Smuggle(io.ReadAll, []byte("Expected Response!")))
 }
 ```
 
 
 ## OK, but I prefer comparing `string`s instead of `byte`s
 
-No problem, [`ReadAll`](https://golang.org/pkg/io/ioutil/#ReadAll) the
-body by yourself and cast returned `[]byte` contents to `string`,
-still using [`Smuggle`]({{< ref "Smuggle" >}}) operator:
+No problem, [`ReadAll`](https://pkg.go.dev/io#ReadAll) the body (still
+using [`Smuggle`]({{< ref "Smuggle" >}}) operator), then ask
+go-testdeep to compare it against a string using
+[`String`]({{< ref "String" >}}) operator:
 
 ```golang
 import (
   "io"
-  "io/ioutil"
   "net/http"
   "testing"
 
@@ -290,12 +290,8 @@ func TestResponseBody(t *testing.T) {
   // Expect this response sends "Expected Response!"
   var resp *http.Response = GetResponse()
 
-  td.Cmp(t, resp.Body, td.Smuggle( // ← transform a io.Reader to a string
-    func(body io.Reader) (string, error) {
-      b, err := ioutil.ReadAll(body)
-      return string(b), err
-    },
-    "Expected Response!"))
+  td.Cmp(t, resp.Body,
+    td.Smuggle(io.ReadAll, td.String("Expected Response!")))
 }
 
 ```
@@ -303,7 +299,7 @@ func TestResponseBody(t *testing.T) {
 
 ## OK, but my response is in fact a JSON marshaled struct of my own
 
-No problem, [JSON decode](https://golang.org/pkg/encoding/json/#Decoder)
+No problem, [JSON decode](https://pkg.go.dev/encoding/json#Decoder)
 while reading the body:
 
 ```golang
@@ -804,7 +800,7 @@ func TestMyGinGonicApi(t *testing.T) {
   "created_at": "$createdAt",
 }`,
       td.Tag("id", td.Catch(&id, td.NotZero())),        // ← ④
-      td.Tag("created_at", td.All(                      // ← ⑤
+      td.Tag("createdAt", td.All(                       // ← ⑤
         td.HasSuffix("Z"),                              // ← ⑥
         td.Smuggle(func(s string) (time.Time, error) {  // ← ⑦
           return time.Parse(time.RFC3339Nano, s)
@@ -1101,7 +1097,7 @@ You want to add a new `FooBar` operator.
 - [ ] automatically generate `CmpFooBar` & `T.FooBar` (+ examples) code:
   `./tools/gen_funcs.pl`
 - [ ] do not forget to run tests: `go test ./...`
-- [ ] run `golangci-lint` as in [`.travis.yml`](https://github.com/maxatome/go-testdeep/blob/master/.travis.yml);
+- [ ] run `golangci-lint` as in [`.github/workflows/ci.yml`](https://github.com/maxatome/go-testdeep/blob/master/.github/workflows/ci.yml);
 
 Each time you change `example_test.go`, re-run `./tools/gen_funcs.pl`
 to update corresponding `CmpFooBar` & `T.FooBar` examples.
