@@ -84,7 +84,7 @@ JSONHasnt := func(pointer string) td.TestDeep {
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method always returns `nil` as the expected type cannot be
 guessed from a JSON pointer.
 
-> See also [`JSON`]({{< ref "JSON" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}), [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) and [`Smuggle`]({{< ref "Smuggle" >}}).
+> See also [`JSON`]({{< ref "JSON" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}), [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}), [`Smuggle`]({{< ref "Smuggle" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 

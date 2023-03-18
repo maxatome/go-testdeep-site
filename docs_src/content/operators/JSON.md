@@ -14,6 +14,7 @@ against *expectedJSON*. *expectedJSON* can be a:
 - `string` containing a JSON filename, ending with ".json" (its
   content is [`os.ReadFile`](https://pkg.go.dev/os#ReadFile) before unmarshaling)
 - `[]byte` containing JSON data
+- [`encoding/json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage) containing JSON data
 - [`io.Reader`](https://pkg.go.dev/io#Reader) stream containing JSON data (is [`io.ReadAll`](https://pkg.go.dev/io#ReadAll)
   before unmarshaling)
 
@@ -68,7 +69,8 @@ guessed. In the case the conversion cannot occur, data is compared
 as is, in its freshly unmarshaled JSON form (so as `bool`, `float64`,
 `string`, `[]any`, `map[string]any` or simply `nil`).
 
-Note *expectedJSON* can be a `[]byte`, a JSON filename or a [`io.Reader`](https://pkg.go.dev/io#Reader):
+Note *expectedJSON* can be a `[]byte`, an [`encoding/json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage), a
+JSON filename or a [`io.Reader`](https://pkg.go.dev/io#Reader):
 
 ```go
 td.Cmp(t, gotValue, td.JSON("file.json", td.Between(12, 34)))
@@ -245,6 +247,21 @@ td.Cmp(t, gotValue, td.JSON(`{"id": "$^NotZero()"}`))
 
 As for placeholders, there is no differences between `$^NotZero` and
 "`$^NotZero`".
+
+Tip: when an [`io.Reader`](https://pkg.go.dev/io#Reader) is expected to contain JSON data, it
+cannot be tested directly, but using the [`Smuggle`]({{< ref "Smuggle" >}}) operator simply
+solves the problem:
+
+```go
+var body io.Reader
+// …
+td.Cmp(t, body, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
+// or equally
+td.Cmp(t, body, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
+```
+
+[`Smuggle`]({{< ref "Smuggle" >}}) reads from body into an [`encoding/json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage) then
+this buffer is unmarshaled by JSON operator before the comparison.
 
 [`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of the *expectedJSON*
 once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,

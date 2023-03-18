@@ -41,7 +41,7 @@ td.Cmp(t, got, td.Grep(td.Gt(0), td.Nil()))     // succeeds
 td.Cmp(t, got, td.Grep(td.Gt(0), []int{}))      // fails
 ```
 
-> See also [`First`]({{< ref "First" >}}) and [`Last`]({{< ref "Last" >}}).
+> See also [`First`]({{< ref "First" >}}), [`Last`]({{< ref "Last" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 > See also [<i class='fas fa-book'></i> Grep godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Grep).

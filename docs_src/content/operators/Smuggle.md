@@ -247,7 +247,7 @@ cast feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 *fn*. For the case where *fn* is a fields-path, it is always
 `any`, as the type can not be known in advance.
 
-> See also [`Code`]({{< ref "Code" >}}) and [`JSONPointer`]({{< ref "JSONPointer" >}}).
+> See also [`Code`]({{< ref "Code" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 
