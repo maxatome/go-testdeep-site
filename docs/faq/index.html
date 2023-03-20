@@ -2,20 +2,20 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.110.0">
+<meta name=generator content="Hugo 0.111.3">
 <meta name=description content>
 <link rel=icon href=/images/favicon.png type=image/png>
-<title>FAQ :: go-testdeep</title><link href=/css/nucleus.css?1679243909 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1679243909 rel=stylesheet>
-<link href=/css/hybrid.css?1679243909 rel=stylesheet>
-<link href=/css/featherlight.min.css?1679243909 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1679243909 rel=stylesheet>
-<link href=/css/auto-complete.css?1679243909 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1679243909 rel=stylesheet>
-<link href=/css/theme.css?1679243909 rel=stylesheet>
-<link href=/css/hugo-theme.css?1679243909 rel=stylesheet>
-<link href=/css/theme-green.css?1679243909 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1679243909></script>
+<title>FAQ :: go-testdeep</title><link href=/css/nucleus.css?1679305267 rel=stylesheet>
+<link href=/css/fontawesome-all.min.css?1679305267 rel=stylesheet>
+<link href=/css/hybrid.css?1679305267 rel=stylesheet>
+<link href=/css/featherlight.min.css?1679305267 rel=stylesheet>
+<link href=/css/perfect-scrollbar.min.css?1679305267 rel=stylesheet>
+<link href=/css/auto-complete.css?1679305267 rel=stylesheet>
+<link href=/css/atom-one-dark-reasonable.css?1679305267 rel=stylesheet>
+<link href=/css/theme.css?1679305267 rel=stylesheet>
+<link href=/css/hugo-theme.css?1679305267 rel=stylesheet>
+<link href=/css/theme-green.css?1679305267 rel=stylesheet>
+<script src=/js/jquery-3.3.1.min.js?1679305267></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}</style></head><body data-url=/faq/>
 <nav id=sidebar>
@@ -26,10 +26,10 @@
 <label for=search-by><i class="fas fa-search"></i></label>
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
-</div><script type=text/javascript src=/js/lunr.min.js?1679243909></script>
-<script type=text/javascript src=/js/auto-complete.js?1679243909></script>
+</div><script type=text/javascript src=/js/lunr.min.js?1679305267></script>
+<script type=text/javascript src=/js/auto-complete.js?1679305267></script>
 <script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1679243909></script>
+<script type=text/javascript src=/js/search.js?1679305267></script>
 </div><div class=highlightable>
 <ul class=topics>
 <li data-nav-id=/introduction/ title=Introduction class=dd-item>
@@ -397,7 +397,7 @@ FAQ
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#how-to-mix-strict-requirements-and-simple-assertions>How to mix strict requirements and simple assertions?</a></li><li><a href=#why-nil-is-handled-so-specifically>Why <code>nil</code> is handled so specifically?</a></li><li><a href=#how-does-operator-anchoring-work>How does operator anchoring work?</a></li><li><a href=#how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</a></li><li><a href=#ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</a></li><li><a href=#ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</a></li><li><a href=#ok-but-you-are-funny-this-response-sends-a-new-created-object-so-i-dont-know-the-id-in-advance>OK, but you are funny, this response sends a new created object, so I don&rsquo;t know the ID in advance!</a></li><li><a href=#what-about-testing-the-response-using-my-api>What about testing the response using my API?</a></li><li><a href=#arf-i-use-gin-gonic-and-so-no-nethttp-handlers>Arf, I use Gin Gonic, and so no <code>net/http</code> handlers</a></li><li><a href=#fine-the-request-succeeds-and-the-id-is-not-0-but-what-is-the-id-real-value>Fine, the request succeeds and the ID is not 0, but what is the ID real value?</a></li><li><a href=#and-what-about-other-http-frameworks>And what about other HTTP frameworks?</a>
+<li><a href=#how-to-mix-strict-requirements-and-simple-assertions>How to mix strict requirements and simple assertions?</a></li><li><a href=#why-nil-is-handled-so-specifically>Why <code>nil</code> is handled so specifically?</a></li><li><a href=#how-does-operator-anchoring-work>How does operator anchoring work?</a></li><li><a href=#how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</a></li><li><a href=#ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</a></li><li><a href=#ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</a></li><li><a href=#so-i-always-need-to-manually-unmarshal-in-a-struct>So I always need to manually unmarshal in a struct?</a></li><li><a href=#ok-but-you-are-funny-this-response-sends-a-new-created-object-so-i-dont-know-the-id-in-advance>OK, but you are funny, this response sends a new created object, so I don&rsquo;t know the ID in advance!</a></li><li><a href=#what-about-testing-the-response-using-my-api>What about testing the response using my API?</a></li><li><a href=#arf-i-use-gin-gonic-and-so-no-nethttp-handlers>Arf, I use Gin Gonic, and so no <code>net/http</code> handlers</a></li><li><a href=#fine-the-request-succeeds-and-the-id-is-not-0-but-what-is-the-id-real-value>Fine, the request succeeds and the ID is not 0, but what is the ID real value?</a></li><li><a href=#and-what-about-other-http-frameworks>And what about other HTTP frameworks?</a>
 <ul>
 <li><a href=#beego>Beego</a></li><li><a href=#echo>echo</a></li><li><a href=#gin>Gin</a></li><li><a href=#gorillamux>gorilla/mux</a></li><li><a href=#go-swagger>go-swagger</a></li><li><a href=#httprouter>HttpRouter</a></li><li><a href=#pat>pat</a></li><li><a href=#another-web-framework-not-listed-here>Another web framework not listed here?</a></li></ul></li><li><a href=#ok-but-how-to-be-sure-the-response-content-is-well-jsonified>OK, but how to be sure the response content is well JSONified?</a></li><li><a href=#my-api-use-xml-not-json>My API use XML not JSON!</a></li><li><a href=#should-i-import-githubcommaxatomego-testdeep-or-githubcommaxatomego-testdeeptd>Should I import <code>github.com/maxatome/go-testdeep</code> or <code>github.com/maxatome/go-testdeep/td</code>?</a></li><li><a href=#what-does-the-error-undefined-testdeepdefaultcontextconfig-mean>What does the error <code>undefined: testdeep.DefaultContextConfig</code> mean?</a></li><li><a href=#go-testdeep-dumps-only-10-errors-how-to-have-more-or-less>go-testdeep dumps only 10 errors, how to have more (or less)?</a></li><li><a href=#how-do-i-change-these-crappy-colors>How do I change these crappy colors?</a>
 <ul>
@@ -477,17 +477,17 @@ or nil direcly in expected parameter of <a href=https://pkg.go.dev/github.com/ma
 </span></span><span style=display:flex><span>  Age  <span style=color:#6ab825;font-weight:700>uint8</span>
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>For the <code>Person</code> returned by <code>GetPerson()</code>, we expect that:</p><ul>
-<li><code>ID</code> field should be ≠ 0;</li><li><code>Name</code> field should always be &ldquo;Bob&rdquo;;</li><li><code>Age</code> field should be ≥ 40 and ≤ 45.</li></ul><p>Without operator anchoring:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
-</span></span><span style=display:flex><span>  t := td.<span style=color:#447fcf>NewT</span>(tt)
+<li><code>ID</code> field should be ≠ 0;</li><li><code>Name</code> field should always be &ldquo;Bob&rdquo;;</li><li><code>Age</code> field should be ≥ 40 and ≤ 45.</li></ul><p>Without operator anchoring:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(t *testing.T) {
+</span></span><span style=display:flex><span>  assert := td.<span style=color:#447fcf>Assert</span>(t)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(),               <span style=color:#999;font-style:italic>// ← ①
+</span></span><span style=display:flex><span>  assert.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(),          <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    td.<span style=color:#447fcf>Struct</span>(Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>}, <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      td.StructFields{             <span style=color:#999;font-style:italic>// ← ③
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;ID&#34;</span>:  td.<span style=color:#447fcf>NotZero</span>(),       <span style=color:#999;font-style:italic>// ← ④
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        <span style=color:#ed9d13>&#34;Age&#34;</span>: td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>)), <span style=color:#999;font-style:italic>// ← ⑤
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      }))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/7BgtkcxxGHy>Try it in playground 🔗</a></p><ol>
 <li><code>GetPerson()</code> returns a <code>Person</code>;</li><li>as some fields of the returned <code>Person</code> are not exactly known in
 advance, we use the <a href=/operators/struct/><code>Struct</code></a> operator as
 expected parameter. It allows to match exactly some fields, and use
@@ -497,67 +497,106 @@ is a map allowing to use <a href=/operators/>TestDeep operators</a>
 for any field;</li><li><code>ID</code> field should be ≠ 0. See <a href=/operators/notzero/><code>NotZero</code></a>
 operator for details;</li><li><code>Age</code> field should be ≥ 40 and ≤ 45. See <a href=/operators/between/><code>Between</code></a>
 operator for details.</li></ol><p>With operator anchoring, the use of <a href=/operators/struct/><code>Struct</code></a>
-operator is no longer needed:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(tt *testing.T) {
-</span></span><span style=display:flex><span>  t := td.<span style=color:#447fcf>NewT</span>(tt)
+operator is no longer needed:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestPerson</span>(t *testing.T) {
+</span></span><span style=display:flex><span>  assert := td.<span style=color:#447fcf>Assert</span>(t)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(), <span style=color:#999;font-style:italic>// ← ①
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    Person{          <span style=color:#999;font-style:italic>// ← ②
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,   <span style=color:#999;font-style:italic>// ← ③
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      ID:   t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>int64</span>), <span style=color:#999;font-style:italic>// ← ④
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Age:  t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))).(<span style=color:#6ab825;font-weight:700>uint8</span>), <span style=color:#999;font-style:italic>// ← ⑤
+</span></span><span style=display:flex><span>  assert.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(), <span style=color:#999;font-style:italic>// ← ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    Person{               <span style=color:#999;font-style:italic>// ← ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,        <span style=color:#999;font-style:italic>// ← ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      ID:   assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>int64</span>), <span style=color:#999;font-style:italic>// ← ④
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Age:  assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))).(<span style=color:#6ab825;font-weight:700>uint8</span>), <span style=color:#999;font-style:italic>// ← ⑤
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    })
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Or using generics from go1.18
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  assert.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(), <span style=color:#999;font-style:italic>// ← ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    Person{               <span style=color:#999;font-style:italic>// ← ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,        <span style=color:#999;font-style:italic>// ← ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      ID:   td.A[<span style=color:#6ab825;font-weight:700>int64</span>](assert, td.<span style=color:#447fcf>NotZero</span>()), <span style=color:#999;font-style:italic>// ← ④
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	  Age:  td.A[<span style=color:#6ab825;font-weight:700>uint8</span>](assert, td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))), <span style=color:#999;font-style:italic>// ← ⑤
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  })
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/9GYegW4j69a>Try it in playground 🔗</a></p><ol>
 <li><code>GetPerson()</code> still returns a <code>Person</code>;</li><li>expected parameter is directly a <code>Person</code>. No operator needed here;</li><li><code>Name</code> field should always be &ldquo;Bob&rdquo;, no change here;</li><li><code>ID</code> field should be ≠ 0: anchor the <a href=/operators/notzero/><code>NotZero</code></a>
-operator using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method. Break this line down:
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>t.<span style=color:#447fcf>A</span>(            <span style=color:#999;font-style:italic>// ← ①
+operator:
+<ul>
+<li>using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method. Break this line down:
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>assert.<span style=color:#447fcf>A</span>(       <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>),     <span style=color:#999;font-style:italic>// ← ③
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>).(<span style=color:#6ab825;font-weight:700>int64</span>)       <span style=color:#999;font-style:italic>// ← ④
 </span></span></span></code></pre></div><ol>
 <li>the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method is the key of the anchoring system. It saves
-the operator globally, so it can be retrieved during the
-comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call,</li><li>the operator we want to anchor,</li><li>this optional parameter is needed to tell <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> that the returned
+the operator in <code>assert</code> instance, so it can be
+retrieved during the comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call on <code>assert</code>,</li><li>the operator we want to anchor,</li><li>this optional parameter is needed to tell <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> that the returned
 value must be a <code>int64</code>. Sometimes, this type can be deduced
 from the operator, but as <a href=/operators/notzero/><code>NotZero</code></a> can
 handle any kind of number, it is not the case here. So we have
 to pass it,</li><li>as <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method returns an <code>any</code>, we need to assert the
-<code>int64</code> type to bypass the golang static typing system,</li></ol></li><li><code>Age </code>field should be ≥ 40 and ≤ 45: anchor the
-<a href=/operators/between/><code>Between</code></a> operator using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a>
-method. Break this line down:
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>t.<span style=color:#447fcf>A</span>(                                <span style=color:#999;font-style:italic>// ← ①
+<code>int64</code> type to bypass the golang static typing system,</li></ol></li><li>using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+generic function. Break this line down:
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>td.A[           <span style=color:#999;font-style:italic>// ← ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>int64</span>,        <span style=color:#999;font-style:italic>// ← ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>](
+</span></span><span style=display:flex><span>  assert,       <span style=color:#999;font-style:italic>// ← ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#999;font-style:italic>// ← ④
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>)
+</span></span></code></pre></div><ol>
+<li>the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+function is the key of the anchoring system. It saves the
+operator in <code>assert</code> instance, so it can be retrieved
+during the comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call on <code>assert</code>,</li><li>the type <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> function will return,</li><li>instance in which the operator is anchored,</li><li>the operator we want to anchor,</li></ol></li></ul></li><li><code>Age </code>field should be ≥ 40 and ≤ 45: anchor the
+<a href=/operators/between/><code>Between</code></a> operator:
+<ul>
+<li>using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method. Break this line down:
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>assert.<span style=color:#447fcf>A</span>(                           <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>)), <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>).(<span style=color:#6ab825;font-weight:700>uint8</span>)                           <span style=color:#999;font-style:italic>// ← ③
 </span></span></span></code></pre></div><ol>
-<li>the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method saves the operator globally, so it can be
-retrieved during the comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call,</li><li>the operator we want to anchor. As <a href=/operators/between/><code>Between</code></a>
+<li>the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method saves the operator in <code>assert</code>, so it can be
+retrieved during the comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call on <code>assert</code>,</li><li>the operator we want to anchor. As <a href=/operators/between/><code>Between</code></a>
 knows the type of its operands (here <code>uint8</code>), there is no need
 to tell <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> the returned type must be <code>uint8</code>. It can be deduced
 from <a href=/operators/between/><code>Between</code></a>,</li><li>as <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method returns an <code>any</code>, we need to assert the
-<code>uint8</code> type to bypass the golang static typing system.</li></ol></li></ol><p>Note the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method is a shortcut of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor><code>Anchor</code></a> method.</p><p>Some rules have to be kept in mind:</p><ul>
+<code>uint8</code> type to bypass the golang static typing system.</li></ol></li><li>using the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+generic function. Break this line down:
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.A[     <span style=color:#999;font-style:italic>// ← ①
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>uint8</span>,  <span style=color:#999;font-style:italic>// ← ②
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>](
+</span></span><span style=display:flex><span>  assert, <span style=color:#999;font-style:italic>// ← ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>)), <span style=color:#999;font-style:italic>// ← ④
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>)
+</span></span></code></pre></div><ol>
+<li>the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+function saves the operator in <code>assert</code>, so it can be retrieved
+during the comparison of the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call on <code>assert</code>,</li><li>the type <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+function will return,</li><li>instance in which the operator is anchored,</li><li>the operator we want to anchor,</li></ol></li></ul></li></ol><p>Note the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> method is a shortcut of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor><code>Anchor</code></a> method, as well as
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A><code>A</code></a>
+function is a shortcut of
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor><code>Anchor</code></a>
+function.</p><p>Some rules have to be kept in mind:</p><ul>
 <li>never cast a value returned by <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A><code>A</code></a> or <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor><code>Anchor</code></a> methods:
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)         <span style=color:#999;font-style:italic>// OK
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#24909d>uint16</span>(t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)) <span style=color:#999;font-style:italic>// Not OK!
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint16</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>uint16</span>)      <span style=color:#999;font-style:italic>// OK
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>assert := td.<span style=color:#447fcf>Assert</span>(t) <span style=color:#999;font-style:italic>// t is a *testing.T
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)         <span style=color:#999;font-style:italic>// OK
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#24909d>uint16</span>(assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint</span>(<span style=color:#3677a9>8</span>)).(<span style=color:#6ab825;font-weight:700>uint8</span>)) <span style=color:#999;font-style:italic>// Not OK!
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint16</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>uint16</span>)      <span style=color:#999;font-style:italic>// OK
 </span></span></span></code></pre></div></li><li>anchored operators disappear once the next <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> call done. To
 share them between <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp><code>Cmp</code></a> calls, use the <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist><code>SetAnchorsPersist</code></a>
 method as in:
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>t := td.<span style=color:#447fcf>NewT</span>(tt) <span style=color:#999;font-style:italic>// tt is a *testing.T
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>age := t.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))).(<span style=color:#6ab825;font-weight:700>uint8</span>)
+<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>assert := td.<span style=color:#447fcf>Assert</span>(t) <span style=color:#999;font-style:italic>// t is a *testing.T
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>age := assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#24909d>uint8</span>(<span style=color:#3677a9>40</span>), <span style=color:#24909d>uint8</span>(<span style=color:#3677a9>45</span>))).(<span style=color:#6ab825;font-weight:700>uint8</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>t.<span style=color:#447fcf>SetAnchorsPersist</span>(<span style=color:#6ab825;font-weight:700>true</span>) <span style=color:#999;font-style:italic>// ← Don&#39;t reset anchors after next Cmp() call
+</span></span><span style=display:flex><span>assert.<span style=color:#447fcf>SetAnchorsPersist</span>(<span style=color:#6ab825;font-weight:700>true</span>) <span style=color:#999;font-style:italic>// ← Don&#39;t reset anchors after next Cmp() call
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
-</span></span><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(<span style=color:#3677a9>1</span>), Person{
+</span></span><span style=display:flex><span>assert.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(<span style=color:#3677a9>1</span>), Person{
 </span></span><span style=display:flex><span>  Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,
 </span></span><span style=display:flex><span>  Age:  age,
 </span></span><span style=display:flex><span>})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(<span style=color:#3677a9>2</span>), Person{
+</span></span><span style=display:flex><span>assert.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>GetPerson</span>(<span style=color:#3677a9>2</span>), Person{
 </span></span><span style=display:flex><span>  Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,
 </span></span><span style=display:flex><span>  Age:  age, <span style=color:#999;font-style:italic>// ← OK
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>})
-</span></span></code></pre></div></li></ul><h2 id=how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</h2><p>The <a href=/operators/smuggle/><code>Smuggle</code></a> operator is done for that,
+</span></span></code></pre></div><a href=https://go.dev/play/p/10XnvLS1Z_B>Try it in playground 🔗</a></li></ul><h2 id=how-to-test-ioreader-contents-like-nethttpresponsebody-for-example>How to test <code>io.Reader</code> contents, like <code>net/http.Response.Body</code> for example?</h2><p>The <a href=/operators/smuggle/><code>Smuggle</code></a> operator is done for that,
 here with the help of <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code></a>.</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;net/http&#34;</span>
@@ -573,7 +612,7 @@ here with the help of <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code>
 </span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body,
 </span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Smuggle</span>(io.ReadAll, []<span style=color:#24909d>byte</span>(<span style=color:#ed9d13>&#34;Expected Response!&#34;</span>)))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</h2><p>No problem, <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code></a> the body (still
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/wLFr4F9klC5>Try it in playground 🔗</a></p><h2 id=ok-but-i-prefer-comparing-strings-instead-of-bytes>OK, but I prefer comparing <code>string</code>s instead of <code>byte</code>s</h2><p>No problem, <a href=https://pkg.go.dev/io#ReadAll><code>ReadAll</code></a> the body (still
 using <a href=/operators/smuggle/><code>Smuggle</code></a> operator), then ask
 go-testdeep to compare it against a string using
 <a href=/operators/string/><code>String</code></a> operator:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
@@ -591,7 +630,7 @@ go-testdeep to compare it against a string using
 </span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body,
 </span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Smuggle</span>(io.ReadAll, td.<span style=color:#447fcf>String</span>(<span style=color:#ed9d13>&#34;Expected Response!&#34;</span>)))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</h2><p>No problem, <a href=https://pkg.go.dev/encoding/json#Decoder>JSON decode</a>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/xZcStO_5SYb>Try it in playground 🔗</a></p><h2 id=ok-but-my-response-is-in-fact-a-json-marshaled-struct-of-my-own>OK, but my response is in fact a JSON marshaled struct of my own</h2><p>No problem, <a href=https://pkg.go.dev/encoding/json#Decoder>JSON decode</a>
 while reading the body:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
@@ -613,8 +652,8 @@ while reading the body:</p><div class=highlight><pre tabindex=0 style=color:#d0d
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#6ab825;font-weight:700>func</span>(body io.Reader) (*Person, <span style=color:#6ab825;font-weight:700>error</span>) {
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>var</span> s Person
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> &amp;s, json.<span style=color:#447fcf>NewDecoder</span>(body).<span style=color:#447fcf>Decode</span>(&amp;s)
+</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>var</span> p Person
+</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> &amp;p, json.<span style=color:#447fcf>NewDecoder</span>(body).<span style=color:#447fcf>Decode</span>(&amp;p)
 </span></span><span style=display:flex><span>    },
 </span></span><span style=display:flex><span>    &amp;Person{ <span style=color:#999;font-style:italic>// ← check Person content
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      ID:   <span style=color:#3677a9>42</span>,
@@ -622,7 +661,32 @@ while reading the body:</p><div class=highlight><pre tabindex=0 style=color:#d0d
 </span></span><span style=display:flex><span>      Age:  <span style=color:#3677a9>28</span>,
 </span></span><span style=display:flex><span>    }))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=ok-but-you-are-funny-this-response-sends-a-new-created-object-so-i-dont-know-the-id-in-advance>OK, but you are funny, this response sends a new created object, so I don&rsquo;t know the ID in advance!</h2><p>No problem, use <a href=/operators/struct/><code>Struct</code></a> operator to test
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/EowLgGUbSeB>Try it in playground 🔗</a></p><h2 id=so-i-always-need-to-manually-unmarshal-in-a-struct>So I always need to manually unmarshal in a struct?</h2><p>It is up to you! Using <a href=/operators/json/><code>JSON</code></a> operator for
+example, you can test any JSON content. The first step is to read all
+the body (which is an <a href=https://pkg.go.dev/io#Reader><code>io.Reader</code></a>) into
+a <a href=https://pkg.go.dev/encoding/json#RawMessage><code>json.RawMessage</code></a>
+thanks to the <a href=/operators/smuggle/><code>Smuggle</code></a> operator special cast
+feature, then ask <a href=/operators/json/><code>JSON</code></a> operator to do the
+comparison:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;net/http&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestResponseBody</span>(t *testing.T) {
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Expect this response sends `{&#34;ID&#34;:42,&#34;Name&#34;:&#34;Bob&#34;,&#34;Age&#34;:28}`
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  <span style=color:#6ab825;font-weight:700>var</span> resp *http.Response = <span style=color:#447fcf>GetResponse</span>()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>      &#34;ID&#34;:   42,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>      &#34;Name&#34;: &#34;Bob&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>      &#34;Age&#34;:  28
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    }`</span>)))
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/0GqxLiKtSm4>Try it in playground 🔗</a></p><h2 id=ok-but-you-are-funny-this-response-sends-a-new-created-object-so-i-dont-know-the-id-in-advance>OK, but you are funny, this response sends a new created object, so I don&rsquo;t know the ID in advance!</h2><p>No problem, use <a href=/operators/struct/><code>Struct</code></a> operator to test
 that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code> field):</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;io&#34;</span>
@@ -646,7 +710,8 @@ that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>  y2019, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2019-01-01T00:00:00Z&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Using Struct operator
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#6ab825;font-weight:700>func</span>(body io.Reader) (*Person, <span style=color:#6ab825;font-weight:700>error</span>) {
 </span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>var</span> s Person
 </span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> &amp;s, json.<span style=color:#447fcf>NewDecoder</span>(body).<span style=color:#447fcf>Decode</span>(&amp;s)
@@ -659,8 +724,10 @@ that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code>
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Gte</span>(y2019), <span style=color:#999;font-style:italic>// check CreatedAt ≥ 2019/01/01
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    })))
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  tt := td.<span style=color:#447fcf>newT</span>(t)
-</span></span><span style=display:flex><span>  tt.<span style=color:#447fcf>Cmp</span>(resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Using anchoring feature
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  resp = <span style=color:#447fcf>GetResponse</span>()
+</span></span><span style=display:flex><span>  assert := td.<span style=color:#447fcf>Assert</span>(t)
+</span></span><span style=display:flex><span>  assert.<span style=color:#447fcf>Cmp</span>(resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#6ab825;font-weight:700>func</span>(body io.Reader) (*Person, <span style=color:#6ab825;font-weight:700>error</span>) {
 </span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>var</span> s Person
 </span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> &amp;s, json.<span style=color:#447fcf>NewDecoder</span>(body).<span style=color:#447fcf>Decode</span>(&amp;s)
@@ -668,11 +735,35 @@ that <code>ID</code> field is non-zero (as a bonus, add a <code>CreatedAt</code>
 </span></span><span style=display:flex><span>    &amp;Person{ <span style=color:#999;font-style:italic>// ← check Person content
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Name:      <span style=color:#ed9d13>&#34;Bob&#34;</span>,
 </span></span><span style=display:flex><span>      Age:       <span style=color:#3677a9>28</span>,
-</span></span><span style=display:flex><span>      ID:        tt.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>uint64</span>), <span style=color:#999;font-style:italic>// check ID ≠ 0
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      CreatedAt: tt.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Gte</span>(y2019)).(time.Time),        <span style=color:#999;font-style:italic>// check CreatedAt ≥ 2019/01/01
+</span></span><span style=display:flex><span>      ID:        assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>NotZero</span>(), <span style=color:#24909d>uint64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>uint64</span>), <span style=color:#999;font-style:italic>// check ID ≠ 0
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      CreatedAt: assert.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Gte</span>(y2019)).(time.Time),        <span style=color:#999;font-style:italic>// check CreatedAt ≥ 2019/01/01
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    }))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Using anchoring feature with generics
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  resp = <span style=color:#447fcf>GetResponse</span>()
+</span></span><span style=display:flex><span>  assert.<span style=color:#447fcf>Cmp</span>(resp.Body, td.<span style=color:#447fcf>Smuggle</span>( <span style=color:#999;font-style:italic>// ← transform a io.Reader in *Person
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#6ab825;font-weight:700>func</span>(body io.Reader) (*Person, <span style=color:#6ab825;font-weight:700>error</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>var</span> s Person
+</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> &amp;s, json.<span style=color:#447fcf>NewDecoder</span>(body).<span style=color:#447fcf>Decode</span>(&amp;s)
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    &amp;Person{ <span style=color:#999;font-style:italic>// ← check Person content
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      Name:      <span style=color:#ed9d13>&#34;Bob&#34;</span>,
+</span></span><span style=display:flex><span>      Age:       <span style=color:#3677a9>28</span>,
+</span></span><span style=display:flex><span>      ID:        td.A[<span style=color:#6ab825;font-weight:700>uint64</span>](assert, td.<span style=color:#447fcf>NotZero</span>()),     <span style=color:#999;font-style:italic>// check ID ≠ 0
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      CreatedAt: td.A[time.Time](assert, td.<span style=color:#447fcf>Gte</span>(y2019)), <span style=color:#999;font-style:italic>// check CreatedAt ≥ 2019/01/01
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    }))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// Using JSON operator
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>  resp = <span style=color:#447fcf>GetResponse</span>()
+</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, resp.Body, td.<span style=color:#447fcf>Smuggle</span>(json.RawMessage{}, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>	  &#34;ID&#34;:        NotZero,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>      &#34;Name&#34;:      &#34;Bob&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>      &#34;Age&#34;:       28,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>	  &#34;CreatedAt&#34;: Gte($1)
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    }`</span>, y2019)))
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h2 id=what-about-testing-the-response-using-my-api>What about testing the response using my API?</h2><p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/WPPhyhSIJvN>Try it in playground 🔗</a></p><h2 id=what-about-testing-the-response-using-my-api>What about testing the response using my API?</h2><p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>
 is done for that!</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;encoding/json&#34;</span>
 </span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;net/http&#34;</span>
@@ -723,11 +814,11 @@ is done for that!</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;ba
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyApi</span>(t *testing.T) {
 </span></span><span style=display:flex><span>  myAPI := <span style=color:#447fcf>MyAPI</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  y2019, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2019-01-01T00:00:00Z&#34;</span>)
+</span></span><span style=display:flex><span>  y2008, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2008-01-01T00:00:00Z&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
+</span></span><span style=display:flex><span>  ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
-</span></span><span style=display:flex><span>  testAPI.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
+</span></span><span style=display:flex><span>  ta.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;Testing GET /json&#34;</span>).
 </span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpStatus</span>(http.StatusOK).       <span style=color:#999;font-style:italic>// ← ③
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>SStruct</span>(&amp;Person{ <span style=color:#999;font-style:italic>// ← ④
@@ -735,14 +826,14 @@ is done for that!</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;ba
 </span></span><span style=display:flex><span>      Age:  <span style=color:#3677a9>28</span>,
 </span></span><span style=display:flex><span>    }, td.StructFields{
 </span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;ID&#34;</span>:        td.<span style=color:#447fcf>NotZero</span>(),    <span style=color:#999;font-style:italic>// ← ⑤
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Gte</span>(y2019),   <span style=color:#999;font-style:italic>// ← ⑥
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Gte</span>(y2008),   <span style=color:#999;font-style:italic>// ← ⑥
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    }))
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// testAPI can be used to test another route…
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// ta can be used to test another route…
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>}
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/z0M4hyVArfl>Try it in playground 🔗</a></p><ol>
 <li>the API handler ready to be tested;</li><li>the GET request;</li><li>the expected HTTP status should be <code>http.StatusOK</code>;</li><li>the expected body should match the <a href=/operators/sstruct/><code>SStruct</code></a>
-operator;</li><li>check the <code>ID</code> field is <a href=/operators/notzero/><code>NotZero</code></a>;</li><li>check the <code>CreatedAt</code> field is greater or equal than <code>y2019</code> variable
+operator;</li><li>check the <code>ID</code> field is <a href=/operators/notzero/><code>NotZero</code></a>;</li><li>check the <code>CreatedAt</code> field is greater or equal than <code>y2008</code> variable
 (set just before <code>tdhttp.NewTestAPI</code> call).</li></ol><p>If you prefer to do one function call instead of chaining methods as
 above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse>CmpJSONResponse</a>.</p><h2 id=arf-i-use-gin-gonic-and-so-no-nethttp-handlers>Arf, I use Gin Gonic, and so no <code>net/http</code> handlers</h2><p>It is exactly the same as for <code>net/http</code> handlers as <a href=https://pkg.go.dev/github.com/gin-gonic/gin#Engine.ServeHTTP><code>*gin.Engine</code>
 implements <code>http.Handler</code>
@@ -785,11 +876,11 @@ So keep using
 </span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyGinGonicApi</span>(t *testing.T) {
 </span></span><span style=display:flex><span>  myAPI := <span style=color:#447fcf>MyGinGonicAPI</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  y2019, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2019-01-01T00:00:00Z&#34;</span>)
+</span></span><span style=display:flex><span>  y2008, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2008-01-01T00:00:00Z&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
+</span></span><span style=display:flex><span>  ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
-</span></span><span style=display:flex><span>  testAPI.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
+</span></span><span style=display:flex><span>  ta.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;Testing GET /json&#34;</span>).
 </span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpStatus</span>(http.StatusOK).       <span style=color:#999;font-style:italic>// ← ③
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>SStruct</span>(&amp;Person{ <span style=color:#999;font-style:italic>// ← ④
@@ -797,14 +888,14 @@ So keep using
 </span></span><span style=display:flex><span>      Age:  <span style=color:#3677a9>28</span>,
 </span></span><span style=display:flex><span>    }, td.StructFields{
 </span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;ID&#34;</span>:        td.<span style=color:#447fcf>NotZero</span>(),    <span style=color:#999;font-style:italic>// ← ⑤
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Gte</span>(y2019),   <span style=color:#999;font-style:italic>// ← ⑥
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Gte</span>(y2008),   <span style=color:#999;font-style:italic>// ← ⑥
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    }))
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// testAPI can be used to test another route…
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// ta can be used to test another route…
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>}
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/ANMggEBqxJ8>Try it in playground 🔗</a></p><ol>
 <li>the API handler ready to be tested;</li><li>the GET request;</li><li>the expected HTTP status should be <code>http.StatusOK</code>;</li><li>the expected body should match the <a href=/operators/sstruct/><code>SStruct</code></a>
-operator;</li><li>check the <code>ID</code> field is <a href=/operators/notzero/><code>NotZero</code></a>;</li><li>check the <code>CreatedAt</code> field is greater or equal than <code>y2019</code> variable
+operator;</li><li>check the <code>ID</code> field is <a href=/operators/notzero/><code>NotZero</code></a>;</li><li>check the <code>CreatedAt</code> field is greater or equal than <code>y2008</code> variable
 (set just before <code>tdhttp.NewTestAPI</code> call).</li></ol><p>If you prefer to do one function call instead of chaining methods as
 above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse>CmpJSONResponse</a>.</p><h2 id=fine-the-request-succeeds-and-the-id-is-not-0-but-what-is-the-id-real-value>Fine, the request succeeds and the ID is not 0, but what is the ID real value?</h2><p>Stay with <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>!</p><p>In fact you can <a href=/operators/catch/><code>Catch</code></a> the <code>ID</code> before comparing
 it to 0 (as well as <code>CreatedAt</code> in fact). Try:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyGinGonicApi</span>(t *testing.T) {
@@ -813,11 +904,11 @@ it to 0 (as well as <code>CreatedAt</code> in fact). Try:</p><div class=highligh
 </span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> id <span style=color:#6ab825;font-weight:700>uint64</span>
 </span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> createdAt time.Time
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  y2019, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2019-01-01T00:00:00Z&#34;</span>)
+</span></span><span style=display:flex><span>  y2008, _ := time.<span style=color:#447fcf>Parse</span>(time.RFC3339, <span style=color:#ed9d13>&#34;2008-01-01T00:00:00Z&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
+</span></span><span style=display:flex><span>  ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
-</span></span><span style=display:flex><span>  testAPI.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
+</span></span><span style=display:flex><span>  ta.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;/json&#34;</span>).             <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;Testing GET /json&#34;</span>).
 </span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpStatus</span>(http.StatusOK).       <span style=color:#999;font-style:italic>// ← ③
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>SStruct</span>(&amp;Person{ <span style=color:#999;font-style:italic>// ← ④
@@ -825,19 +916,19 @@ it to 0 (as well as <code>CreatedAt</code> in fact). Try:</p><div class=highligh
 </span></span><span style=display:flex><span>      Age:  <span style=color:#3677a9>28</span>,
 </span></span><span style=display:flex><span>    }, td.StructFields{
 </span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;ID&#34;</span>:        td.<span style=color:#447fcf>Catch</span>(&amp;id, td.<span style=color:#447fcf>NotZero</span>()),         <span style=color:#999;font-style:italic>// ← ⑤
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Catch</span>(&amp;createdAt, td.<span style=color:#447fcf>Gte</span>(y2019)), <span style=color:#999;font-style:italic>// ← ⑥
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Catch</span>(&amp;createdAt, td.<span style=color:#447fcf>Gte</span>(y2008)), <span style=color:#999;font-style:italic>// ← ⑥
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    }))
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> !testAPI.<span style=color:#447fcf>Failed</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> !ta.<span style=color:#447fcf>Failed</span>() {
 </span></span><span style=display:flex><span>    t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;The ID is %d and was created at %s&#34;</span>, id, createdAt)
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// testAPI can be used to test another route…
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// ta can be used to test another route…
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>}
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><p><a href=https://go.dev/play/p/UwNRIWAtstf>Try it in playground 🔗</a></p><ol>
 <li>the API handler ready to be tested;</li><li>the GET request;</li><li>the expected HTTP status should be <code>http.StatusOK</code>;</li><li>the expected body should match the <a href=/operators/sstruct/><code>SStruct</code></a>
 operator;</li><li><a href=/operators/catch/><code>Catch</code></a> the <code>ID</code> field: put it in <code>id</code>
 variable and check it is <a href=/operators/notzero/><code>NotZero</code></a>;</li><li><a href=/operators/catch/><code>Catch</code></a> the <code>CreatedAt</code> field: put it in <code>createdAt</code>
-variable and check it is greater or equal than <code>y2019</code> variable
+variable and check it is greater or equal than <code>y2008</code> variable
 (set just before <code>tdhttp.NewTestAPI</code> call).</li></ol><p>If you prefer to do one function call instead of chaining methods as
 above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse>CmpJSONResponse</a>.</p><h2 id=and-what-about-other-http-frameworks>And what about other HTTP frameworks?</h2><p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI()</code></a>
 function needs a <a href=https://pkg.go.dev/net/http#Handler><code>http.Handler</code></a>
@@ -848,10 +939,10 @@ variable is a
 instance containing a <code>Handlers</code> field whose
 <a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister><code>*ControllerRegister</code></a>
 type implements
-<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP><code>http.Handler</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, web.BeeApp.Handlers)
+<a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP><code>http.Handler</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, web.BeeApp.Handlers)
 </span></span></code></pre></div><p>In multi instances mode, each instance is a
 <a href=https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer><code>*web.HttpServer</code></a>
-so the same rule applies for each instance to test:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, instance.Handlers)
+so the same rule applies for each instance to test:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, instance.Handlers)
 </span></span></code></pre></div><h3 id=echo>echo</h3><p><a href=https://echo.labstack.com/>home</a> / <a href=https://github.com/labstack/echo>sources</a></p><p>Starting v3.0.0,
 <a href=https://pkg.go.dev/github.com/labstack/echo/v4#New><code>echo.New()</code></a>
 returns a <a href=https://pkg.go.dev/github.com/labstack/echo/v4#Echo><code>*echo.Echo</code></a>
@@ -861,7 +952,7 @@ interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>e := echo.<span style=color:#447fcf>New</span>()
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// Add routes to e
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
-</span></span><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, e) <span style=color:#999;font-style:italic>// e implements http.Handler
+</span></span><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, e) <span style=color:#999;font-style:italic>// e implements http.Handler
 </span></span></span></code></pre></div><h3 id=gin>Gin</h3><p><a href=https://gin-gonic.com/>home</a> / <a href=https://github.com/gin-gonic/gin>sources</a></p><p><a href=https://pkg.go.dev/github.com/gin-gonic/gin#Default><code>gin.Default()</code></a>
 and <a href=https://pkg.go.dev/github.com/gin-gonic/gin#New><code>gin.New()</code></a>
 return both a
@@ -872,7 +963,7 @@ interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>engine := gin.<span style=color:#447fcf>Default</span>()
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// Add routes to engine
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
-</span></span><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, engine) <span style=color:#999;font-style:italic>// engine implements http.Handler
+</span></span><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, engine) <span style=color:#999;font-style:italic>// engine implements http.Handler
 </span></span></span></code></pre></div><h3 id=gorillamux>gorilla/mux</h3><p><a href=https://www.gorillatoolkit.org/>home</a> / <a href=https://github.com/gorilla/mux>sources</a></p><p><a href=https://pkg.go.dev/github.com/gorilla/mux#NewRouter><code>mux.NewRouter()</code></a>
 returns a <a href=https://pkg.go.dev/github.com/gorilla/mux#Router><code>*mux.Router</code></a>
 instance that implements
@@ -881,7 +972,7 @@ interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>r := mux.<span style=color:#447fcf>NewRouter</span>()
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// Add routes to r
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
-</span></span><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
+</span></span><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
 </span></span></span></code></pre></div><h3 id=go-swagger>go-swagger</h3><p><a href=https://goswagger.io/>home</a> / <a href=https://github.com/go-swagger/go-swagger>sources</a></p><p>2 cases here, the default generation and the Stratoscale template:</p><ul>
 <li>default generation requires some tricks to retrieve the
 <a href=https://pkg.go.dev/net/http#Handler><code>http.Handler</code></a> instance:
@@ -891,7 +982,7 @@ interface, so this instance can be fed as is to
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>server := restapi.<span style=color:#447fcf>NewServer</span>(api)
 </span></span><span style=display:flex><span>server.<span style=color:#447fcf>ConfigureAPI</span>()
 </span></span><span style=display:flex><span>hdl := server.<span style=color:#447fcf>GetHandler</span>() <span style=color:#999;font-style:italic>// returns an http.Handler instance
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
 </span></span></code></pre></div></li><li>with Stratoscale template, it is simpler:
 <div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>hdl, _, err := restapi.<span style=color:#447fcf>HandlerAPI</span>(restapi.Config{
 </span></span><span style=display:flex><span>  Tag1API:  Tag1{},
@@ -899,7 +990,7 @@ interface, so this instance can be fed as is to
 </span></span><span style=display:flex><span>})
 </span></span><span style=display:flex><span>td.<span style=color:#447fcf>Require</span>(t).<span style=color:#447fcf>CmpNoError</span>(err, <span style=color:#ed9d13>&#34;API correctly set up&#34;</span>)
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// hdl is an http.Handler instance
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, hdl)
 </span></span></code></pre></div></li></ul><h3 id=httprouter>HttpRouter</h3><p><a href=https://github.com/julienschmidt/httprouter>home / sources</a></p><p><a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#New><code>httprouter.New()</code></a>
 returns a
 <a href=https://pkg.go.dev/github.com/julienschmidt/httprouter#Router><code>*httprouter.Router</code></a>
@@ -909,7 +1000,7 @@ interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>r := httprouter.<span style=color:#447fcf>New</span>()
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// Add routes to r
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
-</span></span><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
+</span></span><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, r) <span style=color:#999;font-style:italic>// r implements http.Handler
 </span></span></span></code></pre></div><h3 id=pat>pat</h3><p><a href=https://github.com/gorilla/pat>home / sources</a></p><p><a href=https://pkg.go.dev/github.com/gorilla/pat#New><code>pat.New()</code></a>
 returns a <a href=https://pkg.go.dev/github.com/gorilla/pat#Router><code>*pat.Router</code></a>
 instance that implements
@@ -918,7 +1009,7 @@ interface, so this instance can be fed as is to
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#NewTestAPI><code>tdhttp.NewTestAPI</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-golang data-lang=golang><span style=display:flex><span>router := pat.<span style=color:#447fcf>New</span>()
 </span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// Add routes to router
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span><span style=color:#a61717;background-color:#e3d2d2>…</span>
-</span></span><span style=display:flex><span>testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, router) <span style=color:#999;font-style:italic>// router implements http.Handler
+</span></span><span style=display:flex><span>ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, router) <span style=color:#999;font-style:italic>// router implements http.Handler
 </span></span></span></code></pre></div><h3 id=another-web-framework-not-listed-here>Another web framework not listed here?</h3><p><a href=https://github.com/maxatome/go-testdeep-site/issues>File an issue</a>
 or <a href=https://github.com/maxatome/go-testdeep-site/pulls>open a PR</a> to
 fix this!</p><h2 id=ok-but-how-to-be-sure-the-response-content-is-well-jsonified>OK, but how to be sure the response content is well JSONified?</h2><p>Again, <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code> helper</a>
@@ -937,12 +1028,12 @@ without), for a <code>POST</code> example:</p><div class=highlight><pre tabindex
 </span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> id <span style=color:#6ab825;font-weight:700>uint64</span>
 </span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> createdAt time.Time
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
+</span></span><span style=display:flex><span>  ta := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>
-</span></span><span style=display:flex><span>  testAPI.<span style=color:#447fcf>PostJSON</span>(<span style=color:#ed9d13>&#34;/person&#34;</span>, Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>}), <span style=color:#999;font-style:italic>// ← ②
+</span></span><span style=display:flex><span>  ta.<span style=color:#447fcf>PostJSON</span>(<span style=color:#ed9d13>&#34;/person&#34;</span>, Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>}), <span style=color:#999;font-style:italic>// ← ②
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;Create a new Person&#34;</span>).
-</span></span><span style=display:flex><span>	<span style=color:#447fcf>CmpStatus</span>(http.StatusCreated). <span style=color:#999;font-style:italic>// ← ③
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
+</span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpStatus</span>(http.StatusCreated). <span style=color:#999;font-style:italic>// ← ③
+</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>    <span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;id&#34;:         $id,
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;name&#34;:       &#34;Bob&#34;,
@@ -954,14 +1045,14 @@ without), for a <code>POST</code> example:</p><div class=highlight><pre tabindex
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Z&#34;</span>),                              <span style=color:#999;font-style:italic>// ← ⑥
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>        td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(s <span style=color:#6ab825;font-weight:700>string</span>) (time.Time, <span style=color:#6ab825;font-weight:700>error</span>) {  <span style=color:#999;font-style:italic>// ← ⑦
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>          <span style=color:#6ab825;font-weight:700>return</span> time.<span style=color:#447fcf>Parse</span>(time.RFC3339Nano, s)
-</span></span><span style=display:flex><span>        }, td.<span style=color:#447fcf>Catch</span>(&amp;createdAt, td.<span style=color:#447fcf>Gte</span>(testAPI.<span style=color:#447fcf>SentAt</span>()))), <span style=color:#999;font-style:italic>// ← ⑧
+</span></span><span style=display:flex><span>        }, td.<span style=color:#447fcf>Catch</span>(&amp;createdAt, td.<span style=color:#447fcf>Gte</span>(ta.<span style=color:#447fcf>SentAt</span>()))), <span style=color:#999;font-style:italic>// ← ⑧
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>      )),
 </span></span><span style=display:flex><span>    ))
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> !testAPI.<span style=color:#447fcf>Failed</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> !ta.<span style=color:#447fcf>Failed</span>() {
 </span></span><span style=display:flex><span>    t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;The new Person ID is %d and was created at %s&#34;</span>, id, createdAt)
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// testAPI can be used to test another route…
+</span></span><span style=display:flex><span>  <span style=color:#999;font-style:italic>// ta can be used to test another route…
 </span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>}
 </span></span></code></pre></div><ol>
 <li>the API handler ready to be tested;</li><li>the POST request with automatic JSON marshalling;</li><li>the expected HTTP status should be <code>http.StatusCreated</code>
@@ -974,7 +1065,7 @@ operator. It combines several operators like a AND;</li><li>check that <code>$cr
 date, we require it in UTC time zone;</li><li>convert <code>$createdAt</code> date into a <code>time.Time</code> using a custom
 function thanks to the <a href=/operators/smuggle/><code>Smuggle</code></a> operator;</li><li>then <a href=/operators/catch/><code>Catch</code></a> the resulting value: put it in
 <code>createdAt</code> variable and check it is greater or equal than
-<code>testAPI.SentAt()</code> (the time just before the request is handled).</li></ol><p>If you prefer to do one function call instead of chaining methods as
+<code>ta.SentAt()</code> (the time just before the request is handled).</li></ol><p>If you prefer to do one function call instead of chaining methods as
 above, you can try <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse>CmpJSONResponse</a>.</p><h2 id=my-api-use-xml-not-json>My API use XML not JSON!</h2><p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><code>tdhttp</code>
 helper</a>
 provides the same functions and methods for XML it does for JSON.</p><p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp>RTFM</a>
@@ -1099,17 +1190,17 @@ to update corresponding <code>CmpFooBar</code> & <code>T.FooBar</code> examples.
 <a class="nav nav-prev" href=/helpers/ title=Helpers> <i class="fa fa-chevron-left"></i></a>
 <a class="nav nav-next" href=/introduction/ title=Introduction style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1679243909></script>
-<script src=/js/perfect-scrollbar.min.js?1679243909></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1679243909></script>
-<script src=/js/jquery.sticky.js?1679243909></script>
-<script src=/js/featherlight.min.js?1679243909></script>
-<script src=/js/highlight.pack.js?1679243909></script>
+<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1679305267></script>
+<script src=/js/perfect-scrollbar.min.js?1679305267></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1679305267></script>
+<script src=/js/jquery.sticky.js?1679305267></script>
+<script src=/js/featherlight.min.js?1679305267></script>
+<script src=/js/highlight.pack.js?1679305267></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1679243909></script>
-<script src=/js/learn.js?1679243909></script>
-<script src=/js/hugo-learn.js?1679243909></script>
-<link href=/mermaid/mermaid.css?1679243909 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1679243909></script>
+<script src=/js/modernizr.custom-3.6.0.js?1679305267></script>
+<script src=/js/learn.js?1679305267></script>
+<script src=/js/hugo-learn.js?1679305267></script>
+<link href=/mermaid/mermaid.css?1679305267 rel=stylesheet>
+<script src=/mermaid/mermaid.js?1679305267></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body></html>
