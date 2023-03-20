@@ -134,10 +134,10 @@ For the `Person` returned by `GetPerson()`, we expect that:
 Without operator anchoring:
 
 ```golang
-func TestPerson(tt *testing.T) {
-  t := td.NewT(tt)
+func TestPerson(t *testing.T) {
+  assert := td.Assert(t)
 
-  t.Cmp(GetPerson(),               // ← ①
+  assert.Cmp(GetPerson(),          // ← ①
     td.Struct(Person{Name: "Bob"}, // ← ②
       td.StructFields{             // ← ③
         "ID":  td.NotZero(),       // ← ④
@@ -145,6 +145,7 @@ func TestPerson(tt *testing.T) {
       }))
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/7BgtkcxxGHy)
 
 1. `GetPerson()` returns a `Person`;
 2. as some fields of the returned `Person` are not exactly known in
@@ -164,86 +165,135 @@ With operator anchoring, the use of [`Struct`]({{< ref "Struct" >}})
 operator is no longer needed:
 
 ```golang
-func TestPerson(tt *testing.T) {
-  t := td.NewT(tt)
+func TestPerson(t *testing.T) {
+  assert := td.Assert(t)
 
-  t.Cmp(GetPerson(), // ← ①
-    Person{          // ← ②
-      Name: "Bob",   // ← ③
-      ID:   t.A(td.NotZero(), int64(0)).(int64), // ← ④
-      Age:  t.A(td.Between(uint8(40), uint8(45))).(uint8), // ← ⑤
+  assert.Cmp(GetPerson(), // ← ①
+    Person{               // ← ②
+      Name: "Bob",        // ← ③
+      ID:   assert.A(td.NotZero(), int64(0)).(int64), // ← ④
+      Age:  assert.A(td.Between(uint8(40), uint8(45))).(uint8), // ← ⑤
     })
+
+  // Or using generics from go1.18
+  assert.Cmp(GetPerson(), // ← ①
+    Person{               // ← ②
+      Name: "Bob",        // ← ③
+      ID:   td.A[int64](assert, td.NotZero()), // ← ④
+	  Age:  td.A[uint8](assert, td.Between(uint8(40), uint8(45))), // ← ⑤
+  })
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/9GYegW4j69a)
 
 1. `GetPerson()` still returns a `Person`;
 2. expected parameter is directly a `Person`. No operator needed here;
 3. `Name` field should always be "Bob", no change here;
 4. `ID` field should be ≠ 0: anchor the [`NotZero`]({{< ref "NotZero" >}})
-   operator using the [`A`] method. Break this line down:
-   ```golang
-   t.A(            // ← ①
-     td.NotZero(), // ← ②
-     int64(0),     // ← ③
-   ).(int64)       // ← ④
-   ```
-   1. the [`A`] method is the key of the anchoring system. It saves
-      the operator globally, so it can be retrieved during the
-      comparison of the next [`Cmp`] call,
-   2. the operator we want to anchor,
-   3. this optional parameter is needed to tell [`A`] that the returned
-      value must be a `int64`. Sometimes, this type can be deduced
-      from the operator, but as [`NotZero`]({{< ref "NotZero" >}}) can
-      handle any kind of number, it is not the case here. So we have
-      to pass it,
-   4. as [`A`] method returns an `any`, we need to assert the
-      `int64` type to bypass the golang static typing system,
+   operator:
+   - using the [`A`] method. Break this line down:
+     ```golang
+     assert.A(       // ← ①
+       td.NotZero(), // ← ②
+       int64(0),     // ← ③
+     ).(int64)       // ← ④
+     ```
+     1. the [`A`] method is the key of the anchoring system. It saves
+        the operator in `assert` instance, so it can be
+        retrieved during the comparison of the next [`Cmp`] call on `assert`,
+     2. the operator we want to anchor,
+     3. this optional parameter is needed to tell [`A`] that the returned
+        value must be a `int64`. Sometimes, this type can be deduced
+        from the operator, but as [`NotZero`]({{< ref "NotZero" >}}) can
+        handle any kind of number, it is not the case here. So we have
+        to pass it,
+     4. as [`A`] method returns an `any`, we need to assert the
+        `int64` type to bypass the golang static typing system,
+   - using the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+     generic function. Break this line down:
+     ```golang
+	 td.A[           // ← ①
+	   int64,        // ← ②
+     ](
+	   assert,       // ← ③
+	   td.NotZero(), // ← ④
+     )
+	 ```
+	 1. the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+	    function is the key of the anchoring system. It saves the
+	    operator in `assert` instance, so it can be retrieved
+	    during the comparison of the next [`Cmp`] call on `assert`,
+	 2. the type [`A`] function will return,
+	 3. instance in which the operator is anchored,
+	 4. the operator we want to anchor,
 5. `Age `field should be ≥ 40 and ≤ 45: anchor the
-   [`Between`]({{< ref "between" >}}) operator using the [`A`]
-   method. Break this line down:
-   ```golang
-   t.A(                                // ← ①
-     td.Between(uint8(40), uint8(45)), // ← ②
-   ).(uint8)                           // ← ③
-   ```
-   1. the [`A`] method saves the operator globally, so it can be
-      retrieved during the comparison of the next [`Cmp`] call,
-   2. the operator we want to anchor. As [`Between`]({{< ref "between" >}})
-      knows the type of its operands (here `uint8`), there is no need
-      to tell [`A`] the returned type must be `uint8`. It can be deduced
-      from [`Between`]({{< ref "between" >}}),
-   3. as [`A`] method returns an `any`, we need to assert the
-      `uint8` type to bypass the golang static typing system.
+   [`Between`]({{< ref "between" >}}) operator:
+   - using the [`A`] method. Break this line down:
+     ```golang
+     assert.A(                           // ← ①
+       td.Between(uint8(40), uint8(45)), // ← ②
+     ).(uint8)                           // ← ③
+     ```
+     1. the [`A`] method saves the operator in `assert`, so it can be
+        retrieved during the comparison of the next [`Cmp`] call on `assert`,
+     2. the operator we want to anchor. As [`Between`]({{< ref "between" >}})
+        knows the type of its operands (here `uint8`), there is no need
+        to tell [`A`] the returned type must be `uint8`. It can be deduced
+        from [`Between`]({{< ref "between" >}}),
+     3. as [`A`] method returns an `any`, we need to assert the
+        `uint8` type to bypass the golang static typing system.
+   - using the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+	 generic function. Break this line down:
+     ```go
+	 td.A[     // ← ①
+	   uint8,  // ← ②
+     ](
+	   assert, // ← ③
+	   td.Between(uint8(40), uint8(45)), // ← ④
+     )
+	 ```
+	 1. the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+	    function saves the operator in `assert`, so it can be retrieved
+	    during the comparison of the next [`Cmp`] call on `assert`,
+	 2. the type [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+        function will return,
+	 3. instance in which the operator is anchored,
+	 4. the operator we want to anchor,
 
-Note the [`A`] method is a shortcut of [`Anchor`] method.
+Note the [`A`] method is a shortcut of [`Anchor`] method, as well as
+[`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+function is a shortcut of
+[`Anchor`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor)
+function.
 
 Some rules have to be kept in mind:
 - never cast a value returned by [`A`] or [`Anchor`] methods:
   ```golang
-  t := td.NewT(tt) // tt is a *testing.T
-  t.A(td.NotZero(), uint(8)).(uint8)         // OK
-  uint16(t.A(td.NotZero(), uint(8)).(uint8)) // Not OK!
-  t.A(td.NotZero(), uint16(0)).(uint16)      // OK
+  assert := td.Assert(t) // t is a *testing.T
+  assert.A(td.NotZero(), uint(8)).(uint8)         // OK
+  uint16(assert.A(td.NotZero(), uint(8)).(uint8)) // Not OK!
+  assert.A(td.NotZero(), uint16(0)).(uint16)      // OK
   ```
 - anchored operators disappear once the next [`Cmp`] call done. To
   share them between [`Cmp`] calls, use the [`SetAnchorsPersist`]
   method as in:
   ```golang
-  t := td.NewT(tt) // tt is a *testing.T
-  age := t.A(td.Between(uint8(40), uint8(45))).(uint8)
+  assert := td.Assert(t) // t is a *testing.T
+  age := assert.A(td.Between(uint8(40), uint8(45))).(uint8)
 
-  t.SetAnchorsPersist(true) // ← Don't reset anchors after next Cmp() call
+  assert.SetAnchorsPersist(true) // ← Don't reset anchors after next Cmp() call
 
-  t.Cmp(GetPerson(1), Person{
+  assert.Cmp(GetPerson(1), Person{
     Name: "Bob",
     Age:  age,
   })
 
-  t.Cmp(GetPerson(2), Person{
+  assert.Cmp(GetPerson(2), Person{
     Name: "Bob",
     Age:  age, // ← OK
   })
   ```
+  [Try it in playground 🔗](https://go.dev/play/p/10XnvLS1Z_B)
 
 
 ## How to test `io.Reader` contents, like `net/http.Response.Body` for example?
@@ -268,6 +318,7 @@ func TestResponseBody(t *testing.T) {
     td.Smuggle(io.ReadAll, []byte("Expected Response!")))
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/wLFr4F9klC5)
 
 
 ## OK, but I prefer comparing `string`s instead of `byte`s
@@ -293,8 +344,8 @@ func TestResponseBody(t *testing.T) {
   td.Cmp(t, resp.Body,
     td.Smuggle(io.ReadAll, td.String("Expected Response!")))
 }
-
 ```
+[Try it in playground 🔗](https://go.dev/play/p/xZcStO_5SYb)
 
 
 ## OK, but my response is in fact a JSON marshaled struct of my own
@@ -324,8 +375,8 @@ func TestResponseBody(t *testing.T) {
 
   td.Cmp(t, resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
     func(body io.Reader) (*Person, error) {
-      var s Person
-      return &s, json.NewDecoder(body).Decode(&s)
+      var p Person
+      return &p, json.NewDecoder(body).Decode(&p)
     },
     &Person{ // ← check Person content
       ID:   42,
@@ -334,6 +385,41 @@ func TestResponseBody(t *testing.T) {
     }))
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/EowLgGUbSeB)
+
+
+## So I always need to manually unmarshal in a struct?
+
+It is up to you! Using [`JSON`]({{< ref "JSON" >}}) operator for
+example, you can test any JSON content. The first step is to read all
+the body (which is an [`io.Reader`](https://pkg.go.dev/io#Reader)) into
+a [`json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage)
+thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator special cast
+feature, then ask [`JSON`]({{< ref "JSON" >}}) operator to do the
+comparison:
+
+```golang
+import (
+  "encoding/json"
+  "net/http"
+  "testing"
+
+  "github.com/maxatome/go-testdeep/td"
+)
+
+func TestResponseBody(t *testing.T) {
+  // Expect this response sends `{"ID":42,"Name":"Bob","Age":28}`
+  var resp *http.Response = GetResponse()
+
+  td.Cmp(t, resp.Body, td.Smuggle(json.RawMessage{}, td.JSON(`
+    {
+      "ID":   42,
+      "Name": "Bob",
+      "Age":  28
+    }`)))
+}
+```
+[Try it in playground 🔗](https://go.dev/play/p/0GqxLiKtSm4)
 
 
 ## OK, but you are funny, this response sends a new created object, so I don't know the ID in advance!
@@ -365,6 +451,7 @@ func TestResponseBody(t *testing.T) {
 
   y2019, _ := time.Parse(time.RFC3339, "2019-01-01T00:00:00Z")
 
+  // Using Struct operator
   td.Cmp(t, resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
     func(body io.Reader) (*Person, error) {
       var s Person
@@ -378,8 +465,10 @@ func TestResponseBody(t *testing.T) {
       "CreatedAt": td.Gte(y2019), // check CreatedAt ≥ 2019/01/01
     })))
 
-  tt := td.newT(t)
-  tt.Cmp(resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
+  // Using anchoring feature
+  resp = GetResponse()
+  assert := td.Assert(t)
+  assert.Cmp(resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
     func(body io.Reader) (*Person, error) {
       var s Person
       return &s, json.NewDecoder(body).Decode(&s)
@@ -387,11 +476,36 @@ func TestResponseBody(t *testing.T) {
     &Person{ // ← check Person content
       Name:      "Bob",
       Age:       28,
-      ID:        tt.A(td.NotZero(), uint64(0)).(uint64), // check ID ≠ 0
-      CreatedAt: tt.A(td.Gte(y2019)).(time.Time),        // check CreatedAt ≥ 2019/01/01
+      ID:        assert.A(td.NotZero(), uint64(0)).(uint64), // check ID ≠ 0
+      CreatedAt: assert.A(td.Gte(y2019)).(time.Time),        // check CreatedAt ≥ 2019/01/01
     }))
+
+  // Using anchoring feature with generics
+  resp = GetResponse()
+  assert.Cmp(resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
+    func(body io.Reader) (*Person, error) {
+      var s Person
+      return &s, json.NewDecoder(body).Decode(&s)
+    },
+    &Person{ // ← check Person content
+      Name:      "Bob",
+      Age:       28,
+      ID:        td.A[uint64](assert, td.NotZero()),     // check ID ≠ 0
+      CreatedAt: td.A[time.Time](assert, td.Gte(y2019)), // check CreatedAt ≥ 2019/01/01
+    }))
+
+  // Using JSON operator
+  resp = GetResponse()
+  td.Cmp(t, resp.Body, td.Smuggle(json.RawMessage{}, td.JSON(`
+    {
+	  "ID":        NotZero,
+      "Name":      "Bob",
+      "Age":       28,
+	  "CreatedAt": Gte($1)
+    }`, y2019)))
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/WPPhyhSIJvN)
 
 
 ## What about testing the response using my API?
@@ -450,11 +564,11 @@ func MyAPI() *http.ServeMux {
 func TestMyApi(t *testing.T) {
   myAPI := MyAPI()
 
-  y2019, _ := time.Parse(time.RFC3339, "2019-01-01T00:00:00Z")
+  y2008, _ := time.Parse(time.RFC3339, "2008-01-01T00:00:00Z")
 
-  testAPI := tdhttp.NewTestAPI(t, myAPI) // ← ①
+  ta := tdhttp.NewTestAPI(t, myAPI) // ← ①
 
-  testAPI.Get("/json").             // ← ②
+  ta.Get("/json").             // ← ②
     Name("Testing GET /json").
     CmpStatus(http.StatusOK).       // ← ③
     CmpJSONBody(td.SStruct(&Person{ // ← ④
@@ -462,12 +576,13 @@ func TestMyApi(t *testing.T) {
       Age:  28,
     }, td.StructFields{
       "ID":        td.NotZero(),    // ← ⑤
-      "CreatedAt": td.Gte(y2019),   // ← ⑥
+      "CreatedAt": td.Gte(y2008),   // ← ⑥
     }))
 
-  // testAPI can be used to test another route…
+  // ta can be used to test another route…
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/z0M4hyVArfl)
 
 1. the API handler ready to be tested;
 1. the GET request;
@@ -475,7 +590,7 @@ func TestMyApi(t *testing.T) {
 1. the expected body should match the [`SStruct`]({{< ref "SStruct" >}})
    operator;
 1. check the `ID` field is [`NotZero`]({{< ref "NotZero" >}});
-1. check the `CreatedAt` field is greater or equal than `y2019` variable
+1. check the `CreatedAt` field is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
 If you prefer to do one function call instead of chaining methods as
@@ -528,11 +643,11 @@ func MyGinGonicAPI() *gin.Engine {
 func TestMyGinGonicApi(t *testing.T) {
   myAPI := MyGinGonicAPI()
 
-  y2019, _ := time.Parse(time.RFC3339, "2019-01-01T00:00:00Z")
+  y2008, _ := time.Parse(time.RFC3339, "2008-01-01T00:00:00Z")
 
-  testAPI := tdhttp.NewTestAPI(t, myAPI) // ← ①
+  ta := tdhttp.NewTestAPI(t, myAPI) // ← ①
 
-  testAPI.Get("/json").             // ← ②
+  ta.Get("/json").             // ← ②
     Name("Testing GET /json").
     CmpStatus(http.StatusOK).       // ← ③
     CmpJSONBody(td.SStruct(&Person{ // ← ④
@@ -540,12 +655,13 @@ func TestMyGinGonicApi(t *testing.T) {
       Age:  28,
     }, td.StructFields{
       "ID":        td.NotZero(),    // ← ⑤
-      "CreatedAt": td.Gte(y2019),   // ← ⑥
+      "CreatedAt": td.Gte(y2008),   // ← ⑥
     }))
 
-  // testAPI can be used to test another route…
+  // ta can be used to test another route…
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/ANMggEBqxJ8)
 
 1. the API handler ready to be tested;
 1. the GET request;
@@ -553,7 +669,7 @@ func TestMyGinGonicApi(t *testing.T) {
 1. the expected body should match the [`SStruct`]({{< ref "SStruct" >}})
    operator;
 1. check the `ID` field is [`NotZero`]({{< ref "NotZero" >}});
-1. check the `CreatedAt` field is greater or equal than `y2019` variable
+1. check the `CreatedAt` field is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
 If you prefer to do one function call instead of chaining methods as
@@ -574,11 +690,11 @@ func TestMyGinGonicApi(t *testing.T) {
   var id uint64
   var createdAt time.Time
 
-  y2019, _ := time.Parse(time.RFC3339, "2019-01-01T00:00:00Z")
+  y2008, _ := time.Parse(time.RFC3339, "2008-01-01T00:00:00Z")
 
-  testAPI := tdhttp.NewTestAPI(t, myAPI) // ← ①
+  ta := tdhttp.NewTestAPI(t, myAPI) // ← ①
 
-  testAPI.Get("/json").             // ← ②
+  ta.Get("/json").             // ← ②
     Name("Testing GET /json").
     CmpStatus(http.StatusOK).       // ← ③
     CmpJSONBody(td.SStruct(&Person{ // ← ④
@@ -586,15 +702,16 @@ func TestMyGinGonicApi(t *testing.T) {
       Age:  28,
     }, td.StructFields{
       "ID":        td.Catch(&id, td.NotZero()),         // ← ⑤
-      "CreatedAt": td.Catch(&createdAt, td.Gte(y2019)), // ← ⑥
+      "CreatedAt": td.Catch(&createdAt, td.Gte(y2008)), // ← ⑥
     }))
-  if !testAPI.Failed() {
+  if !ta.Failed() {
     t.Logf("The ID is %d and was created at %s", id, createdAt)
   }
 
-  // testAPI can be used to test another route…
+  // ta can be used to test another route…
 }
 ```
+[Try it in playground 🔗](https://go.dev/play/p/UwNRIWAtstf)
 
 1. the API handler ready to be tested;
 1. the GET request;
@@ -604,7 +721,7 @@ func TestMyGinGonicApi(t *testing.T) {
 1. [`Catch`]({{< ref "Catch" >}}) the `ID` field: put it in `id`
    variable and check it is [`NotZero`]({{< ref "NotZero" >}});
 1. [`Catch`]({{< ref "Catch" >}}) the `CreatedAt` field: put it in `createdAt`
-   variable and check it is greater or equal than `y2019` variable
+   variable and check it is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
 If you prefer to do one function call instead of chaining methods as
@@ -632,13 +749,13 @@ instance containing a `Handlers` field whose
 type implements
 [`http.Handler`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#ControllerRegister.ServeHTTP):
 ```golang
-testAPI := tdhttp.NewTestAPI(t, web.BeeApp.Handlers)
+ta := tdhttp.NewTestAPI(t, web.BeeApp.Handlers)
 ```
 In multi instances mode, each instance is a
 [`*web.HttpServer`](https://pkg.go.dev/github.com/beego/beego/v2/server/web#HttpServer)
 so the same rule applies for each instance to test:
 ```golang
-testAPI := tdhttp.NewTestAPI(t, instance.Handlers)
+ta := tdhttp.NewTestAPI(t, instance.Handlers)
 ```
 
 ### echo
@@ -656,7 +773,7 @@ interface, so this instance can be fed as is to
 e := echo.New()
 // Add routes to e
 …
-testAPI := tdhttp.NewTestAPI(t, e) // e implements http.Handler
+ta := tdhttp.NewTestAPI(t, e) // e implements http.Handler
 ```
 
 ### Gin
@@ -675,7 +792,7 @@ interface, so this instance can be fed as is to
 engine := gin.Default()
 // Add routes to engine
 …
-testAPI := tdhttp.NewTestAPI(t, engine) // engine implements http.Handler
+ta := tdhttp.NewTestAPI(t, engine) // engine implements http.Handler
 ```
 
 ### gorilla/mux
@@ -692,7 +809,7 @@ interface, so this instance can be fed as is to
 r := mux.NewRouter()
 // Add routes to r
 …
-testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
+ta := tdhttp.NewTestAPI(t, r) // r implements http.Handler
 ```
 
 ### go-swagger
@@ -709,7 +826,7 @@ testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
   server := restapi.NewServer(api)
   server.ConfigureAPI()
   hdl := server.GetHandler() // returns an http.Handler instance
-  testAPI := tdhttp.NewTestAPI(t, hdl)
+  ta := tdhttp.NewTestAPI(t, hdl)
   ```
 - with Stratoscale template, it is simpler:
   ```golang
@@ -719,7 +836,7 @@ testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
   })
   td.Require(t).CmpNoError(err, "API correctly set up")
   // hdl is an http.Handler instance
-  testAPI := tdhttp.NewTestAPI(t, hdl)
+  ta := tdhttp.NewTestAPI(t, hdl)
   ```
 
 ### HttpRouter
@@ -737,7 +854,7 @@ interface, so this instance can be fed as is to
 r := httprouter.New()
 // Add routes to r
 …
-testAPI := tdhttp.NewTestAPI(t, r) // r implements http.Handler
+ta := tdhttp.NewTestAPI(t, r) // r implements http.Handler
 ```
 
 ### pat
@@ -754,7 +871,7 @@ interface, so this instance can be fed as is to
 router := pat.New()
 // Add routes to router
 …
-testAPI := tdhttp.NewTestAPI(t, router) // router implements http.Handler
+ta := tdhttp.NewTestAPI(t, router) // router implements http.Handler
 ```
 
 ### Another web framework not listed here?
@@ -787,12 +904,12 @@ func TestMyGinGonicApi(t *testing.T) {
   var id uint64
   var createdAt time.Time
 
-  testAPI := tdhttp.NewTestAPI(t, myAPI) // ← ①
+  ta := tdhttp.NewTestAPI(t, myAPI) // ← ①
 
-  testAPI.PostJSON("/person", Person{Name: "Bob", Age: 42}), // ← ②
+  ta.PostJSON("/person", Person{Name: "Bob", Age: 42}), // ← ②
     Name("Create a new Person").
-	CmpStatus(http.StatusCreated). // ← ③
-	CmpJSONBody(td.JSON(`
+    CmpStatus(http.StatusCreated). // ← ③
+    CmpJSONBody(td.JSON(`
 {
   "id":         $id,
   "name":       "Bob",
@@ -804,14 +921,14 @@ func TestMyGinGonicApi(t *testing.T) {
         td.HasSuffix("Z"),                              // ← ⑥
         td.Smuggle(func(s string) (time.Time, error) {  // ← ⑦
           return time.Parse(time.RFC3339Nano, s)
-        }, td.Catch(&createdAt, td.Gte(testAPI.SentAt()))), // ← ⑧
+        }, td.Catch(&createdAt, td.Gte(ta.SentAt()))), // ← ⑧
       )),
     ))
-  if !testAPI.Failed() {
+  if !ta.Failed() {
     t.Logf("The new Person ID is %d and was created at %s", id, createdAt)
   }
 
-  // testAPI can be used to test another route…
+  // ta can be used to test another route…
 }
 ```
 
@@ -832,7 +949,7 @@ func TestMyGinGonicApi(t *testing.T) {
    function thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator;
 1. then [`Catch`]({{< ref "Catch" >}}) the resulting value: put it in
    `createdAt` variable and check it is greater or equal than
-   `testAPI.SentAt()` (the time just before the request is handled).
+   `ta.SentAt()` (the time just before the request is handled).
 
 If you prefer to do one function call instead of chaining methods as
 above, you can try [CmpJSONResponse](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse).
