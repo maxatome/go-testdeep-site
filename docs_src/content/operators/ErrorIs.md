@@ -4,11 +4,11 @@ weight: 10
 ---
 
 ```go
-func ErrorIs(expected error) TestDeep
+func ErrorIs(expectedError any) TestDeep
 ```
 
-ErrorIs operator reports whether `any` [`error`](https://pkg.go.dev/builtin#error) in an [`error`](https://pkg.go.dev/builtin#error)'s chain
-matches *expected*.
+ErrorIs is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It reports whether `any` [`error`](https://pkg.go.dev/builtin#error) in an
+[`error`](https://pkg.go.dev/builtin#error)'s chain matches *expectedError*.
 
 ```go
 _, err := os.Open("/unknown/file")
@@ -22,12 +22,22 @@ err := fmt.Errorf("failure4: %w", err3)
 td.Cmp(t, err, td.ErrorIs(err))  // succeeds
 td.Cmp(t, err, td.ErrorIs(err1)) // succeeds
 td.Cmp(t, err1, td.ErrorIs(err)) // fails
+
+var cerr myError
+td.Cmp(t, err, td.ErrorIs(td.Catch(&cerr, td.String("my error..."))))
+
+td.Cmp(t, err, td.ErrorIs(td.All(
+  td.Isa(myError{}),
+  td.String("my error..."),
+)))
 ```
 
-Behind the scene it uses [`errors.Is`](https://pkg.go.dev/errors#Is) function.
+Behind the scene it uses [`errors.Is`](https://pkg.go.dev/errors#Is) function if *expectedError* is
+an [error] and [`errors.As`](https://pkg.go.dev/errors#As) function if *expectedError* is a
+[TestDeep operator]({{< ref "operators" >}}).
 
-Note that like [`errors.Is`](https://pkg.go.dev/errors#Is), *expected* can be `nil`: in this case the
-comparison succeeds when got is `nil` too.
+Note that like [`errors.Is`](https://pkg.go.dev/errors#Is), *expectedError* can be `nil`: in this case
+the comparison succeeds only when got is `nil` too.
 
 > See also [`CmpError`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpError) and [`CmpNoError`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNoError).
 
@@ -62,13 +72,13 @@ comparison succeeds when got is `nil` too.
 ## CmpErrorIs shortcut
 
 ```go
-func CmpErrorIs(t TestingT, got any, expected error, args ...any) bool
+func CmpErrorIs(t TestingT, got, expectedError any, args ...any) bool
 ```
 
 CmpErrorIs is a shortcut for:
 
 ```go
-td.Cmp(t, got, td.ErrorIs(expected), args...)
+td.Cmp(t, got, td.ErrorIs(expectedError), args...)
 ```
 
 See above for details.
@@ -115,13 +125,13 @@ reason of a potential failure.
 ## T.CmpErrorIs shortcut
 
 ```go
-func (t *T) CmpErrorIs(got any, expected error, args ...any) bool
+func (t *T) CmpErrorIs(got, expectedError any, args ...any) bool
 ```
 
 CmpErrorIs is a shortcut for:
 
 ```go
-t.Cmp(got, td.ErrorIs(expected), args...)
+t.Cmp(got, td.ErrorIs(expectedError), args...)
 ```
 
 See above for details.

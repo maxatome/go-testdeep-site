@@ -13,7 +13,10 @@ and the values of *expectedFields*. The zero values are compared
 too even if they are omitted from *expectedFields*: that is the
 difference with [`Struct`]({{< ref "Struct" >}}) operator.
 
-*model* must be the same type as compared data.
+*model* must be the same type as compared data. If the expected type
+is private or anonymous, *model* can be `nil`. In this case it is
+considered lazy and determined each time the operator is involved
+in a match, see below.
 
 *expectedFields* can be omitted, if no [TestDeep operators]({{< ref "operators" >}}) are
 involved. If *expectedFields* contains more than one item, all
@@ -129,6 +132,25 @@ td.Cmp(t, got, td.SStruct(
     "5 =~ .":                  td.NotNil(), // matches all remaining fields (same as "5 = *")
   }),
 )
+```
+
+If the expected type is private to the current package, it cannot
+be passed as *model*. To overcome this limitation, *model* can be `nil`,
+it is then considered as lazy. This way, the *model* is automatically
+set during each match to the same type (still requiring struct or
+struct pointer) of the compared data. Similarly, testing an
+anonymous struct can be boring as all fields have to be re-declared
+to define *model*. A `nil` *model* avoids that:
+
+```go
+got := struct {
+  name string
+  age  int
+}{"Bob", 42}
+td.Cmp(t, got, td.SStruct(nil, td.StructFields{
+  "name": "Bob",
+  "age":  td.Between(40, 42),
+}))
 ```
 
 During a match, all expected and zero fields must be found to
@@ -301,6 +323,34 @@ succeed.
 	// Output:
 	// Patterns match only remaining fields: true
 	// Ordered patterns match only remaining fields: true
+
+```{{% /expand%}}
+{{%expand "Lazy_model example" %}}```go
+	t := &testing.T{}
+
+	got := struct {
+		name string
+		age  int
+	}{
+		name: "Foobar",
+		age:  42,
+	}
+
+	ok := td.Cmp(t, got, td.SStruct(nil, td.StructFields{
+		"name": "Foobar",
+		"age":  td.Between(40, 45),
+	}))
+	fmt.Println("Lazy model:", ok)
+
+	ok = td.Cmp(t, got, td.SStruct(nil, td.StructFields{
+		"name": "Foobar",
+		"zip":  666,
+	}))
+	fmt.Println("Lazy model with unknown field:", ok)
+
+	// Output:
+	// Lazy model: true
+	// Lazy model with unknown field: false
 
 ```{{% /expand%}}
 ## CmpSStruct shortcut
@@ -485,6 +535,34 @@ reason of a potential failure.
 	// Ordered patterns match only remaining fields: true
 
 ```{{% /expand%}}
+{{%expand "Lazy_model example" %}}```go
+	t := &testing.T{}
+
+	got := struct {
+		name string
+		age  int
+	}{
+		name: "Foobar",
+		age:  42,
+	}
+
+	ok := td.CmpSStruct(t, got, nil, td.StructFields{
+		"name": "Foobar",
+		"age":  td.Between(40, 45),
+	})
+	fmt.Println("Lazy model:", ok)
+
+	ok = td.CmpSStruct(t, got, nil, td.StructFields{
+		"name": "Foobar",
+		"zip":  666,
+	})
+	fmt.Println("Lazy model with unknown field:", ok)
+
+	// Output:
+	// Lazy model: true
+	// Lazy model with unknown field: false
+
+```{{% /expand%}}
 ## T.SStruct shortcut
 
 ```go
@@ -663,5 +741,33 @@ reason of a potential failure.
 	// Output:
 	// Patterns match only remaining fields: true
 	// Ordered patterns match only remaining fields: true
+
+```{{% /expand%}}
+{{%expand "Lazy_model example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	got := struct {
+		name string
+		age  int
+	}{
+		name: "Foobar",
+		age:  42,
+	}
+
+	ok := t.SStruct(got, nil, td.StructFields{
+		"name": "Foobar",
+		"age":  td.Between(40, 45),
+	})
+	fmt.Println("Lazy model:", ok)
+
+	ok = t.SStruct(got, nil, td.StructFields{
+		"name": "Foobar",
+		"zip":  666,
+	})
+	fmt.Println("Lazy model with unknown field:", ok)
+
+	// Output:
+	// Lazy model: true
+	// Lazy model with unknown field: false
 
 ```{{% /expand%}}

@@ -59,7 +59,7 @@ td.Cmp(t, got, td.SuperMapOf(
 
 	ok := td.Cmp(t, got,
 		td.SuperMapOf(map[string]int{"bar": 42}, td.MapEntries{"foo": td.Lt(15)}),
-		"checks map %v contains at leat all expected keys/values", got)
+		"checks map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	// Output:
@@ -75,12 +75,12 @@ td.Cmp(t, got, td.SuperMapOf(
 
 	ok := td.Cmp(t, got,
 		td.SuperMapOf(MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)}),
-		"checks typed map %v contains at leat all expected keys/values", got)
+		"checks typed map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	ok = td.Cmp(t, &got,
 		td.SuperMapOf(&MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)}),
-		"checks pointed typed map %v contains at leat all expected keys/values",
+		"checks pointed typed map %v contains at least all expected keys/values",
 		got)
 	fmt.Println(ok)
 
@@ -125,7 +125,7 @@ reason of a potential failure.
 	got := map[string]int{"foo": 12, "bar": 42, "zip": 89}
 
 	ok := td.CmpSuperMapOf(t, got, map[string]int{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks map %v contains at leat all expected keys/values", got)
+		"checks map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	// Output:
@@ -140,11 +140,11 @@ reason of a potential failure.
 	got := MyMap{"foo": 12, "bar": 42, "zip": 89}
 
 	ok := td.CmpSuperMapOf(t, got, MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks typed map %v contains at leat all expected keys/values", got)
+		"checks typed map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	ok = td.CmpSuperMapOf(t, &got, &MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks pointed typed map %v contains at leat all expected keys/values",
+		"checks pointed typed map %v contains at least all expected keys/values",
 		got)
 	fmt.Println(ok)
 
@@ -187,7 +187,7 @@ reason of a potential failure.
 	got := map[string]int{"foo": 12, "bar": 42, "zip": 89}
 
 	ok := t.SuperMapOf(got, map[string]int{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks map %v contains at leat all expected keys/values", got)
+		"checks map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	// Output:
@@ -202,11 +202,11 @@ reason of a potential failure.
 	got := MyMap{"foo": 12, "bar": 42, "zip": 89}
 
 	ok := t.SuperMapOf(got, MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks typed map %v contains at leat all expected keys/values", got)
+		"checks typed map %v contains at least all expected keys/values", got)
 	fmt.Println(ok)
 
 	ok = t.SuperMapOf(&got, &MyMap{"bar": 42}, td.MapEntries{"foo": td.Lt(15)},
-		"checks pointed typed map %v contains at leat all expected keys/values",
+		"checks pointed typed map %v contains at least all expected keys/values",
 		got)
 	fmt.Println(ok)
 

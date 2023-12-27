@@ -231,6 +231,9 @@ The following operators are smuggler ones:
 [`ContainsKey`]({{< ref "ContainsKey" >}})
 : checks that a map contains a key
 
+[`ErrorIs`]({{< ref "ErrorIs" >}})
+: checks the data is an [`error`] and matches a wrapped [`error`]
+
 [`First`]({{< ref "First" >}})
 : find the first matching item of a slice or an array then compare its content
 
