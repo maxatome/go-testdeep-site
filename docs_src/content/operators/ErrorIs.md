@@ -33,8 +33,8 @@ td.Cmp(t, err, td.ErrorIs(td.All(
 ```
 
 Behind the scene it uses [`errors.Is`](https://pkg.go.dev/errors#Is) function if *expectedError* is
-an [error] and [`errors.As`](https://pkg.go.dev/errors#As) function if *expectedError* is a
-[TestDeep operator]({{< ref "operators" >}}).
+an [`error`](https://pkg.go.dev/builtin#error) and [`errors.As`](https://pkg.go.dev/errors#As) function if *expectedError* is a [TestDeep
+operator]({{< ref "operators" >}}).
 
 Note that like [`errors.Is`](https://pkg.go.dev/errors#Is), *expectedError* can be `nil`: in this case
 the comparison succeeds only when got is `nil` too.
