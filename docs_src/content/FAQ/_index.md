@@ -955,7 +955,7 @@ If you prefer to do one function call instead of chaining methods as
 above, you can try [CmpJSONResponse](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#CmpJSONResponse).
 
 
-## My API use XML not JSON!
+## My API uses XML not JSON!
 
 [`tdhttp`
 helper](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
@@ -967,6 +967,30 @@ provides the same functions and methods for XML it does for JSON.
 Note that the [`JSON`]({{< ref "JSON" >}}) operator have not its `XML`
 counterpart yet.
 But [PRs are welcome](https://github.com/maxatome/go-testdeep/pulls)!
+
+
+## How to assert for an UUIDv7?
+
+Combining [`Smuggle`]({{< ref "Smuggle" >}}) and [`Code`]({{< ref "Code" >}}),
+you can easily write a custom operator:
+
+```golang
+// Uses uuid from github.com/gofrs/uuid/v5
+func isUUIDv7() td.TestDeep {
+  return td.Smuggle(uuid.FromString, td.Code(func(u uuid.UUID) error {
+    if u.Version() != uuid.V7 {
+      return fmt.Errorf("UUID v%x instead of v7", u.Version())
+    }
+    return nil
+  }))
+}
+```
+
+that you can then use, for example in a [`JSON`]({{< ref "JSON" >}}) match:
+
+```golang
+td.Cmp(t, jsonData, td.JSON(`{"id": $1}`, isUUIDv7()))
+```
 
 
 ## Should I import `github.com/maxatome/go-testdeep` or `github.com/maxatome/go-testdeep/td`?
