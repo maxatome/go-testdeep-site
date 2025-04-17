@@ -1,509 +1,59 @@
-<!doctype html><html lang=en class="js csstransforms3d">
+<!doctype html><html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
 <head>
 <meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=generator content="Hugo 0.120.3">
-<meta name=description content>
-<link rel=icon href=/images/favicon.png type=image/png>
+<meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
+<meta name=generator content="Hugo 0.145.0">
+<meta name=generator content="Relearn 7.6.1">
+<meta name=description content="func First(filter, expectedValue any) TestDeep First is a smuggler operator. It takes an array, a slice or a pointer on array/slice. For each item it applies filter, a TestDeep operator or a function returning a bool. It takes the first item for which the filter matched and compares it to expectedValue. The filter matches when it is a:
+TestDeep operator and it matches for the item; function receiving the item and it returns true. expectedValue can of course be a TestDeep operator.">
+<meta name=author content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="First :: go-testdeep">
+<meta name=twitter:description content="func First(filter, expectedValue any) TestDeep First is a smuggler operator. It takes an array, a slice or a pointer on array/slice. For each item it applies filter, a TestDeep operator or a function returning a bool. It takes the first item for which the filter matched and compares it to expectedValue. The filter matches when it is a:
+TestDeep operator and it matches for the item; function receiving the item and it returns true. expectedValue can of course be a TestDeep operator.">
+<meta property="og:url" content="https://go-testdeep.zetta.rocks/operators/first/index.html">
+<meta property="og:site_name" content="go-testdeep">
+<meta property="og:title" content="First :: go-testdeep">
+<meta property="og:description" content="func First(filter, expectedValue any) TestDeep First is a smuggler operator. It takes an array, a slice or a pointer on array/slice. For each item it applies filter, a TestDeep operator or a function returning a bool. It takes the first item for which the filter matched and compares it to expectedValue. The filter matches when it is a:
+TestDeep operator and it matches for the item; function receiving the item and it returns true. expectedValue can of course be a TestDeep operator.">
+<meta property="og:locale" content="en_us">
+<meta property="og:type" content="article">
+<meta property="article:section" content="Operators">
+<meta property="article:modified_time" content="2025-04-17T20:24:54+02:00">
+<meta itemprop=name content="First :: go-testdeep">
+<meta itemprop=description content="func First(filter, expectedValue any) TestDeep First is a smuggler operator. It takes an array, a slice or a pointer on array/slice. For each item it applies filter, a TestDeep operator or a function returning a bool. It takes the first item for which the filter matched and compares it to expectedValue. The filter matches when it is a:
+TestDeep operator and it matches for the item; function receiving the item and it returns true. expectedValue can of course be a TestDeep operator.">
+<meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
+<meta itemprop=wordCount content="1410">
 <title>First :: go-testdeep</title>
-<link href=/css/nucleus.css?1703700313 rel=stylesheet>
-<link href=/css/fontawesome-all.min.css?1703700313 rel=stylesheet>
-<link href=/css/hybrid.css?1703700313 rel=stylesheet>
-<link href=/css/featherlight.min.css?1703700313 rel=stylesheet>
-<link href=/css/perfect-scrollbar.min.css?1703700313 rel=stylesheet>
-<link href=/css/auto-complete.css?1703700313 rel=stylesheet>
-<link href=/css/atom-one-dark-reasonable.css?1703700313 rel=stylesheet>
-<link href=/css/theme.css?1703700313 rel=stylesheet>
-<link href=/css/hugo-theme.css?1703700313 rel=stylesheet>
-<link href=/css/theme-green.css?1703700313 rel=stylesheet>
-<script src=/js/jquery-3.3.1.min.js?1703700313></script>
-<style>:root #header+#content>#left>#rlblock_left{display:none!important}:not(pre)>code+span.copy-to-clipboard{display:none}</style>
-<meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
-<style type=text/css>#body-inner pre{white-space:pre}</style>
+<link href=/images/favicon.png?1744914389 rel=icon type=image/png>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1744914389 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1744914389 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1744914389 rel=stylesheet>
+<link href=/css/theme.min.css?1744914389 rel=stylesheet>
+<link href=/css/format-html.min.css?1744914389 rel=stylesheet id=R-format-style>
+<link href=/css/auto-complete/auto-complete.min.css?1744914389 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1744914389 defer></script>
+<script src=/js/lunr/lunr.min.js?1744914389 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1744914389 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1744914389 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1744914389 defer></script>
+<script src=/js/search.min.js?1744914389 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/first/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1744914389",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
-<body data-url=/operators/first/>
-<nav id=sidebar>
-<div id=header-wrapper>
-<div id=header>
-<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
+<body class="mobile-support html" data-url=/operators/first/index.html>
+<div id=R-body class=default-animation>
+<div id=R-body-overlay></div>
+<nav id=R-topbar>
+<div class=topbar-wrapper>
+<div class=topbar-sidebar-divider></div>
+<div class="topbar-area topbar-area-start" data-area=start>
+<div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button>
 </div>
-<div class=searchbox>
-<label for=search-by><i class="fas fa-search"></i></label>
-<input data-search-input id=search-by type=search placeholder=Search...>
-<span data-search-clear><i class="fas fa-times"></i></span>
-</div>
-<script type=text/javascript src=/js/lunr.min.js?1703700313></script>
-<script type=text/javascript src=/js/auto-complete.js?1703700313></script>
-<script type=text/javascript>var baseurl="https://go-testdeep.zetta.rocks/"</script>
-<script type=text/javascript src=/js/search.js?1703700313></script>
-</div>
-<div class=highlightable>
-<ul class=topics>
-<li data-nav-id=/introduction/ title=Introduction class=dd-item>
-<a href=/introduction/>
-Introduction
-</a>
-</li>
-<li data-nav-id=/example/ title=Tutorial class=dd-item>
-<a href=/example/>
-Tutorial
-</a>
-<ul>
-<li data-nav-id=/example/using-testing/ title="Using testing package" class=dd-item>
-<a href=/example/using-testing/>
-Using testing package
-</a>
-</li>
-<li data-nav-id=/example/basic-testdeep/ title="Basic go-testdeep approach" class=dd-item>
-<a href=/example/basic-testdeep/>
-Basic go-testdeep approach
-</a>
-</li>
-<li data-nav-id=/example/advanced-testdeep/ title="Advanced go-testdeep technique" class=dd-item>
-<a href=/example/advanced-testdeep/>
-Advanced go-testdeep technique
-</a>
-</li>
-<li data-nav-id=/example/td-cmp-shortcuts/ title="go-testdeep Cmp shortcuts" class=dd-item>
-<a href=/example/td-cmp-shortcuts/>
-go-testdeep Cmp shortcuts
-</a>
-</li>
-<li data-nav-id=/example/td-t/ title="td.T type" class=dd-item>
-<a href=/example/td-t/>
-td.T type
-</a>
-</li>
-<li data-nav-id=/example/anchoring/ title="Using anchoring" class=dd-item>
-<a href=/example/anchoring/>
-Using anchoring
-</a>
-</li>
-<li data-nav-id=/example/using-json/ title="Using JSON" class=dd-item>
-<a href=/example/using-json/>
-Using JSON
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/functions/ title=Functions class=dd-item>
-<a href=/functions/>
-Functions
-</a>
-<ul>
-<li data-nav-id=/functions/td-t/ title=td.T class=dd-item>
-<a href=/functions/td-t/>
-td.T
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/operators/ title=Operators class="dd-item
-parent">
-<a href=/operators/>
-Operators
-</a>
-<ul>
-<li data-nav-id=/operators/matrix/ title="Operators matrices" class=dd-item>
-<a href=/operators/matrix/>
-Operators matrices
-</a>
-</li>
-<li data-nav-id=/operators/all/ title=All class=dd-item>
-<a href=/operators/all/>
-All
-</a>
-</li>
-<li data-nav-id=/operators/any/ title=Any class=dd-item>
-<a href=/operators/any/>
-Any
-</a>
-</li>
-<li data-nav-id=/operators/array/ title=Array class=dd-item>
-<a href=/operators/array/>
-Array
-</a>
-</li>
-<li data-nav-id=/operators/arrayeach/ title=ArrayEach class=dd-item>
-<a href=/operators/arrayeach/>
-ArrayEach
-</a>
-</li>
-<li data-nav-id=/operators/bag/ title=Bag class=dd-item>
-<a href=/operators/bag/>
-Bag
-</a>
-</li>
-<li data-nav-id=/operators/between/ title=Between class=dd-item>
-<a href=/operators/between/>
-Between
-</a>
-</li>
-<li data-nav-id=/operators/cap/ title=Cap class=dd-item>
-<a href=/operators/cap/>
-Cap
-</a>
-</li>
-<li data-nav-id=/operators/catch/ title=Catch class=dd-item>
-<a href=/operators/catch/>
-Catch
-</a>
-</li>
-<li data-nav-id=/operators/code/ title=Code class=dd-item>
-<a href=/operators/code/>
-Code
-</a>
-</li>
-<li data-nav-id=/operators/contains/ title=Contains class=dd-item>
-<a href=/operators/contains/>
-Contains
-</a>
-</li>
-<li data-nav-id=/operators/containskey/ title=ContainsKey class=dd-item>
-<a href=/operators/containskey/>
-ContainsKey
-</a>
-</li>
-<li data-nav-id=/operators/delay/ title=Delay class=dd-item>
-<a href=/operators/delay/>
-Delay
-</a>
-</li>
-<li data-nav-id=/operators/empty/ title=Empty class=dd-item>
-<a href=/operators/empty/>
-Empty
-</a>
-</li>
-<li data-nav-id=/operators/erroris/ title=ErrorIs class=dd-item>
-<a href=/operators/erroris/>
-ErrorIs
-</a>
-</li>
-<li data-nav-id=/operators/first/ title=First class="dd-item active">
-<a href=/operators/first/>
-First
-</a>
-</li>
-<li data-nav-id=/operators/grep/ title=Grep class=dd-item>
-<a href=/operators/grep/>
-Grep
-</a>
-</li>
-<li data-nav-id=/operators/gt/ title=Gt class=dd-item>
-<a href=/operators/gt/>
-Gt
-</a>
-</li>
-<li data-nav-id=/operators/gte/ title=Gte class=dd-item>
-<a href=/operators/gte/>
-Gte
-</a>
-</li>
-<li data-nav-id=/operators/hasprefix/ title=HasPrefix class=dd-item>
-<a href=/operators/hasprefix/>
-HasPrefix
-</a>
-</li>
-<li data-nav-id=/operators/hassuffix/ title=HasSuffix class=dd-item>
-<a href=/operators/hassuffix/>
-HasSuffix
-</a>
-</li>
-<li data-nav-id=/operators/ignore/ title=Ignore class=dd-item>
-<a href=/operators/ignore/>
-Ignore
-</a>
-</li>
-<li data-nav-id=/operators/isa/ title=Isa class=dd-item>
-<a href=/operators/isa/>
-Isa
-</a>
-</li>
-<li data-nav-id=/operators/json/ title=JSON class=dd-item>
-<a href=/operators/json/>
-JSON
-</a>
-</li>
-<li data-nav-id=/operators/jsonpointer/ title=JSONPointer class=dd-item>
-<a href=/operators/jsonpointer/>
-JSONPointer
-</a>
-</li>
-<li data-nav-id=/operators/keys/ title=Keys class=dd-item>
-<a href=/operators/keys/>
-Keys
-</a>
-</li>
-<li data-nav-id=/operators/last/ title=Last class=dd-item>
-<a href=/operators/last/>
-Last
-</a>
-</li>
-<li data-nav-id=/operators/lax/ title=Lax class=dd-item>
-<a href=/operators/lax/>
-Lax
-</a>
-</li>
-<li data-nav-id=/operators/len/ title=Len class=dd-item>
-<a href=/operators/len/>
-Len
-</a>
-</li>
-<li data-nav-id=/operators/lt/ title=Lt class=dd-item>
-<a href=/operators/lt/>
-Lt
-</a>
-</li>
-<li data-nav-id=/operators/lte/ title=Lte class=dd-item>
-<a href=/operators/lte/>
-Lte
-</a>
-</li>
-<li data-nav-id=/operators/map/ title=Map class=dd-item>
-<a href=/operators/map/>
-Map
-</a>
-</li>
-<li data-nav-id=/operators/mapeach/ title=MapEach class=dd-item>
-<a href=/operators/mapeach/>
-MapEach
-</a>
-</li>
-<li data-nav-id=/operators/n/ title=N class=dd-item>
-<a href=/operators/n/>
-N
-</a>
-</li>
-<li data-nav-id=/operators/nan/ title=NaN class=dd-item>
-<a href=/operators/nan/>
-NaN
-</a>
-</li>
-<li data-nav-id=/operators/nil/ title=Nil class=dd-item>
-<a href=/operators/nil/>
-Nil
-</a>
-</li>
-<li data-nav-id=/operators/none/ title=None class=dd-item>
-<a href=/operators/none/>
-None
-</a>
-</li>
-<li data-nav-id=/operators/not/ title=Not class=dd-item>
-<a href=/operators/not/>
-Not
-</a>
-</li>
-<li data-nav-id=/operators/notany/ title=NotAny class=dd-item>
-<a href=/operators/notany/>
-NotAny
-</a>
-</li>
-<li data-nav-id=/operators/notempty/ title=NotEmpty class=dd-item>
-<a href=/operators/notempty/>
-NotEmpty
-</a>
-</li>
-<li data-nav-id=/operators/notnan/ title=NotNaN class=dd-item>
-<a href=/operators/notnan/>
-NotNaN
-</a>
-</li>
-<li data-nav-id=/operators/notnil/ title=NotNil class=dd-item>
-<a href=/operators/notnil/>
-NotNil
-</a>
-</li>
-<li data-nav-id=/operators/notzero/ title=NotZero class=dd-item>
-<a href=/operators/notzero/>
-NotZero
-</a>
-</li>
-<li data-nav-id=/operators/pptr/ title=PPtr class=dd-item>
-<a href=/operators/pptr/>
-PPtr
-</a>
-</li>
-<li data-nav-id=/operators/ptr/ title=Ptr class=dd-item>
-<a href=/operators/ptr/>
-Ptr
-</a>
-</li>
-<li data-nav-id=/operators/re/ title=Re class=dd-item>
-<a href=/operators/re/>
-Re
-</a>
-</li>
-<li data-nav-id=/operators/reall/ title=ReAll class=dd-item>
-<a href=/operators/reall/>
-ReAll
-</a>
-</li>
-<li data-nav-id=/operators/recv/ title=Recv class=dd-item>
-<a href=/operators/recv/>
-Recv
-</a>
-</li>
-<li data-nav-id=/operators/set/ title=Set class=dd-item>
-<a href=/operators/set/>
-Set
-</a>
-</li>
-<li data-nav-id=/operators/shallow/ title=Shallow class=dd-item>
-<a href=/operators/shallow/>
-Shallow
-</a>
-</li>
-<li data-nav-id=/operators/slice/ title=Slice class=dd-item>
-<a href=/operators/slice/>
-Slice
-</a>
-</li>
-<li data-nav-id=/operators/smuggle/ title=Smuggle class=dd-item>
-<a href=/operators/smuggle/>
-Smuggle
-</a>
-</li>
-<li data-nav-id=/operators/sstruct/ title=SStruct class=dd-item>
-<a href=/operators/sstruct/>
-SStruct
-</a>
-</li>
-<li data-nav-id=/operators/string/ title=String class=dd-item>
-<a href=/operators/string/>
-String
-</a>
-</li>
-<li data-nav-id=/operators/struct/ title=Struct class=dd-item>
-<a href=/operators/struct/>
-Struct
-</a>
-</li>
-<li data-nav-id=/operators/subbagof/ title=SubBagOf class=dd-item>
-<a href=/operators/subbagof/>
-SubBagOf
-</a>
-</li>
-<li data-nav-id=/operators/subjsonof/ title=SubJSONOf class=dd-item>
-<a href=/operators/subjsonof/>
-SubJSONOf
-</a>
-</li>
-<li data-nav-id=/operators/submapof/ title=SubMapOf class=dd-item>
-<a href=/operators/submapof/>
-SubMapOf
-</a>
-</li>
-<li data-nav-id=/operators/subsetof/ title=SubSetOf class=dd-item>
-<a href=/operators/subsetof/>
-SubSetOf
-</a>
-</li>
-<li data-nav-id=/operators/superbagof/ title=SuperBagOf class=dd-item>
-<a href=/operators/superbagof/>
-SuperBagOf
-</a>
-</li>
-<li data-nav-id=/operators/superjsonof/ title=SuperJSONOf class=dd-item>
-<a href=/operators/superjsonof/>
-SuperJSONOf
-</a>
-</li>
-<li data-nav-id=/operators/supermapof/ title=SuperMapOf class=dd-item>
-<a href=/operators/supermapof/>
-SuperMapOf
-</a>
-</li>
-<li data-nav-id=/operators/supersetof/ title=SuperSetOf class=dd-item>
-<a href=/operators/supersetof/>
-SuperSetOf
-</a>
-</li>
-<li data-nav-id=/operators/supersliceof/ title=SuperSliceOf class=dd-item>
-<a href=/operators/supersliceof/>
-SuperSliceOf
-</a>
-</li>
-<li data-nav-id=/operators/tag/ title=Tag class=dd-item>
-<a href=/operators/tag/>
-Tag
-</a>
-</li>
-<li data-nav-id=/operators/trunctime/ title=TruncTime class=dd-item>
-<a href=/operators/trunctime/>
-TruncTime
-</a>
-</li>
-<li data-nav-id=/operators/values/ title=Values class=dd-item>
-<a href=/operators/values/>
-Values
-</a>
-</li>
-<li data-nav-id=/operators/zero/ title=Zero class=dd-item>
-<a href=/operators/zero/>
-Zero
-</a>
-</li>
-</ul>
-</li>
-<li data-nav-id=/helpers/ title=Helpers class=dd-item>
-<a href=/helpers/>
-Helpers
-</a>
-</li>
-<li data-nav-id=/faq/ title=FAQ class=dd-item>
-<a href=/faq/>
-FAQ
-</a>
-</li>
-</ul>
-<section id=shortcuts>
-<h3>More</h3>
-<ul>
-<li>
-<a class=padding href=https://go-testdeep.zetta.rocks/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a>
-</li>
-<li>
-<a class=padding href=https://github.com/maxatome/go-testdeep><i class='fab fa-github'></i>&nbsp;Github repo</a>
-</li>
-<li>
-<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><i class='fas fa-book'></i>&nbsp;godoc</a>
-</li>
-<li>
-<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a>
-</li>
-<li>
-<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a>
-</li>
-<li>
-<a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a>
-</li>
-</ul>
-</section>
-<section id=footer>
-<p>Built with <a href=https://github.com/matcornic/hugo-theme-learn><i class="fas fa-heart"></i></a> from <a href=https://getgrav.org>Grav</a> and <a href=https://gohugo.io/>Hugo</a></p>
-</section>
-</div>
-</nav>
-<section id=body>
-<div id=overlay></div>
-<div class="padding highlightable">
-<div>
-<div id=top-bar>
-<div id=breadcrumbs itemscope itemtype=http://schema.org/BreadcrumbList>
-<span id=sidebar-toggle-span>
-<a href=# id=sidebar-toggle data-sidebar-toggle>
-<i class="fas fa-bars"></i>
-</a>
-</span>
-<span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>
-<span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/> <span itemprop=name>go-testdeep</span><meta itemprop=position content="1"></a></span> > <span itemscope itemprop=itemListElement itemtype=http://schema.org/ListItem><a itemprop=item href=/operators/> <span itemprop=name>Operators</span><meta itemprop=position content="2"></a></span> > First
-</span>
-</div>
-<div class=progress>
-<div class=wrapper>
-<nav id=TableOfContents>
+<div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button>
+<div class=topbar-content>
+<div class=topbar-content-wrapper>
+<nav class=TableOfContents>
 <ul>
 <li>
 <ul>
@@ -526,50 +76,68 @@ FAQ
 </div>
 </div>
 </div>
-<div id=head-tags>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>First</span><meta itemprop=position content="3"></li>
+</ol>
+<div class="topbar-area topbar-area-end" data-area=end>
+<div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/erroris/index.html title="ErrorIs (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
 </div>
-<div id=body-inner>
-<h1>
-First
-</h1>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>First</span>(filter, expectedValue any) TestDeep
-</span></span></code></pre></div><p>First is a <a href=/operators/#smuggler-operators>smuggler operator</a>. It takes an array, a slice or a
+<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/grep/index.html title="Grep (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+</div>
+<div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
+<div class=topbar-content>
+<div class=topbar-content-wrapper>
+<div class="topbar-area topbar-area-more" data-area=more>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div id=R-main-overlay></div>
+<main id=R-body-inner class="highlightable operators" tabindex=-1>
+<div class=flex-block-wrapper>
+<article class=default>
+<header class=headline>
+</header>
+<h1 id=first>First</h1>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>First</span>(filter, expectedValue <span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<p>First is a <a href=https://go-testdeep.zetta.rocks/operators/#smuggler-operators rel=external target=_blank>smuggler operator</a>. It takes an array, a slice or a
 pointer on array/slice. For each item it applies <em>filter</em>, a
-<a href=/operators/>TestDeep operator</a> or a function returning a <code>bool</code>. It takes the
+<a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operator</a> or a function returning a <code>bool</code>. It takes the
 first item for which the <em>filter</em> matched and compares it to
 <em>expectedValue</em>. The <em>filter</em> matches when it is a:</p>
 <ul>
-<li><a href=/operators/>TestDeep operator</a> and it matches for the item;</li>
+<li><a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operator</a> and it matches for the item;</li>
 <li>function receiving the item and it returns true.</li>
 </ul>
-<p><em>expectedValue</em> can of course be a <a href=/operators/>TestDeep operator</a>.</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), <span style=color:#3677a9>1</span>))                                    <span style=color:#999;font-style:italic>// succeeds
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(<span style=color:#6ab825;font-weight:700>func</span>(x <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> { <span style=color:#6ab825;font-weight:700>return</span> x%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span> }, -<span style=color:#3677a9>2</span>))       <span style=color:#999;font-style:italic>// succeeds
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(<span style=color:#6ab825;font-weight:700>func</span>(x <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> { <span style=color:#6ab825;font-weight:700>return</span> x%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span> }, td.<span style=color:#447fcf>Lt</span>(<span style=color:#3677a9>0</span>))) <span style=color:#999;font-style:italic>// succeeds
-</span></span></span></code></pre></div><p>If the input is empty (and/or <code>nil</code> for a slice), an &ldquo;item not found&rdquo;
-<a href=https://pkg.go.dev/builtin#error><code>error</code></a> is raised before comparing to <em>expectedValue</em>.</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>var</span> got []<span style=color:#6ab825;font-weight:700>int</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))      <span style=color:#999;font-style:italic>// fails
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))  <span style=color:#999;font-style:italic>// fails
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>td.<span style=color:#447fcf>Cmp</span>(t, [<span style=color:#3677a9>0</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))) <span style=color:#999;font-style:italic>// fails
-</span></span></span></code></pre></div><blockquote>
-<p>See also <a href=/operators/last/><code>Last</code></a> and <a href=/operators/grep/><code>Grep</code></a>.</p>
-</blockquote>
+<p><em>expectedValue</em> can of course be a <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operator</a>.</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), <span style=color:#3677a9>1</span>))                                    <span style=color:#999;font-style:italic>// succeeds</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(<span style=color:#6ab825;font-weight:700>func</span>(x <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> { <span style=color:#6ab825;font-weight:700>return</span> x%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span> }, -<span style=color:#3677a9>2</span>))       <span style=color:#999;font-style:italic>// succeeds</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(<span style=color:#6ab825;font-weight:700>func</span>(x <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> { <span style=color:#6ab825;font-weight:700>return</span> x%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span> }, td.<span style=color:#447fcf>Lt</span>(<span style=color:#3677a9>0</span>))) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<p>If the input is empty (and/or <code>nil</code> for a slice), an &ldquo;item not found&rdquo;
+<a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> is raised before comparing to <em>expectedValue</em>.</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>var</span> got []<span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))      <span style=color:#999;font-style:italic>// fails</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))  <span style=color:#999;font-style:italic>// fails</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, [<span style=color:#3677a9>0</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))) <span style=color:#999;font-style:italic>// fails</span></span></span></code></pre></div>
 <blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#First> First godoc</a>.</p>
-</blockquote>
+<p>See also <a href=https://go-testdeep.zetta.rocks/operators/last/ rel=external target=_blank><code>Last</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/grep/ rel=external target=_blank><code>Grep</code></a>.</p></blockquote>
+<blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#First rel=external target=_blank> First godoc</a>.</p></blockquote>
 <h3 id=examples>Examples</h3>
 <p>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Classic example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
 </span></span><span style=display:flex><span>
@@ -587,23 +155,20 @@ Classic example
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(isEven, td.<span style=color:#447fcf>Code</span>(isEven)))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first even number is well even:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first positive number is 1: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is -2: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is well even: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first positive number is 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is -2: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is well even: true</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Empty example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, ([]<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in nil slice:&#34;</span>, ok)
@@ -617,23 +182,20 @@ Empty example
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, [<span style=color:#3677a9>0</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>First</span>(td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>)))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in empty array:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in nil slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty array: false
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in nil slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty array: false</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Struct example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
 </span></span><span style=display:flex><span>		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -666,31 +228,28 @@ Struct example
 </span></span><span style=display:flex><span>		td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/fullname&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>))))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first person.Age &gt; 30 → Bob, using JSONPointer:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Json example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]any{
+</span></span><span style=display:flex><span>	got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>any</span>{
 </span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;values&#34;</span>: []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>4</span>},
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{&#34;values&#34;: First(Gt(2), 3)}`</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first number &gt; 2:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got = <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]any{
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;persons&#34;</span>: []<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]any{
+</span></span><span style=display:flex><span>	got = <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>any</span>{
+</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;persons&#34;</span>: []<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>any</span>{
 </span></span><span style=display:flex><span>			{<span style=color:#ed9d13>&#34;id&#34;</span>: <span style=color:#3677a9>1</span>, <span style=color:#ed9d13>&#34;name&#34;</span>: <span style=color:#ed9d13>&#34;Joe&#34;</span>},
 </span></span><span style=display:flex><span>			{<span style=color:#ed9d13>&#34;id&#34;</span>: <span style=color:#3677a9>2</span>, <span style=color:#ed9d13>&#34;name&#34;</span>: <span style=color:#ed9d13>&#34;Bob&#34;</span>},
 </span></span><span style=display:flex><span>			{<span style=color:#ed9d13>&#34;id&#34;</span>: <span style=color:#3677a9>3</span>, <span style=color:#ed9d13>&#34;name&#34;</span>: <span style=color:#ed9d13>&#34;Alice&#34;</span>},
@@ -710,40 +269,36 @@ Json example
 </span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`ID of &#34;Brian&#34; is 4:`</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first number &gt; 2: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// is &#34;Brian&#34; content OK: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// ID of &#34;Brian&#34; is 4: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first number &gt; 2: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is &#34;Brian&#34; content OK: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// ID of &#34;Brian&#34; is 4: true</span></span></span></code></pre></div>
 </div>
-</div></p>
+</details></p>
 <h2 id=cmpfirst-shortcut>CmpFirst shortcut</h2>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpFirst</span>(t TestingT, got, filter , expectedValue any, args ...any) <span style=color:#6ab825;font-weight:700>bool</span>
-</span></span></code></pre></div><p>CmpFirst is a shortcut for:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(filter, expectedValue), args...)
-</span></span></code></pre></div><p>See above for details.</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpFirst</span>(t TestingT, got, filter , expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<p>CmpFirst is a shortcut for:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>First</span>(filter, expectedValue), args...)</span></span></code></pre></div>
+<p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
-<p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*T</code></a> then its Config field is inherited.</p>
+<p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If <code>len(args) > 1</code> and
 the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
-<a href=https://pkg.go.dev/fmt#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
-<a href=https://pkg.go.dev/fmt#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+<a href=https://pkg.go.dev/fmt#Fprintf rel=external target=_blank><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint rel=external target=_blank><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
 reason of a potential failure.</p>
 <blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFirst> CmpFirst godoc</a>.</p>
-</blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFirst rel=external target=_blank> CmpFirst godoc</a>.</p></blockquote>
 <h3 id=examples-1>Examples</h3>
 <p>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Classic example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
 </span></span><span style=display:flex><span>
@@ -761,23 +316,20 @@ Classic example
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpFirst</span>(t, got, isEven, td.<span style=color:#447fcf>Code</span>(isEven))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first even number is well even:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first positive number is 1: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is -2: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is well even: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first positive number is 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is -2: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is well even: true</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Empty example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpFirst</span>(t, ([]<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in nil slice:&#34;</span>, ok)
@@ -791,23 +343,20 @@ Empty example
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpFirst</span>(t, [<span style=color:#3677a9>0</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in empty array:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in nil slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty array: false
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in nil slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty array: false</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Struct example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
 </span></span><span style=display:flex><span>		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -834,39 +383,35 @@ Struct example
 </span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpFirst</span>(t, got, td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/age&#34;</span>, td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>30</span>)), td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/fullname&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>)))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first person.Age &gt; 30 → Bob, using JSONPointer:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true</span></span></span></code></pre></div>
 </div>
-</div></p>
+</details></p>
 <h2 id=tfirst-shortcut>T.First shortcut</h2>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>First</span>(got, filter , expectedValue any, args ...any) <span style=color:#6ab825;font-weight:700>bool</span>
-</span></span></code></pre></div><p>First is a shortcut for:</p>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>First</span>(filter, expectedValue), args...)
-</span></span></code></pre></div><p>See above for details.</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>First</span>(got, filter , expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<p>First is a shortcut for:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>First</span>(filter, expectedValue), args...)</span></span></code></pre></div>
+<p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If <code>len(args) > 1</code> and
 the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
-<a href=https://pkg.go.dev/fmt#Fprintf><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
-<a href=https://pkg.go.dev/fmt#Fprint><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+<a href=https://pkg.go.dev/fmt#Fprintf rel=external target=_blank><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint rel=external target=_blank><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
 reason of a potential failure.</p>
 <blockquote>
-<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.First> T.First godoc</a>.</p>
-</blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.First rel=external target=_blank> T.First godoc</a>.</p></blockquote>
 <h3 id=examples-2>Examples</h3>
 <p>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Classic example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
 </span></span><span style=display:flex><span>
@@ -884,23 +429,20 @@ Classic example
 </span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>First</span>(got, isEven, td.<span style=color:#447fcf>Code</span>(isEven))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first even number is well even:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first positive number is 1: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is -2: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first even number is well even: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first positive number is 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is -2: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is &lt; 0: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first even number is well even: true</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Empty example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>First</span>(([]<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in nil slice:&#34;</span>, ok)
@@ -914,23 +456,20 @@ Empty example
 </span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>First</span>([<span style=color:#3677a9>0</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>), td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>0</span>))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first in empty array:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in nil slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first in empty array: false
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in nil slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty pointed slice: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first in empty array: false</span></span></span></code></pre></div>
 </div>
-</div>
-<div class=expand>
-<div class=expand-label style=cursor:pointer onclick='$h=$(this),$h.next("div").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("div").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'>
-<i style=font-size:x-small class="fas fa-chevron-right"></i>
-<span>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
 Struct example
-</span>
-</div>
-<div class=expand-content style=display:none>
-<div class=highlight><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
 </span></span><span style=display:flex><span>		Fullname <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;fullname&#34;`</span>
@@ -957,37 +496,155 @@ Struct example
 </span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>First</span>(got, td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/age&#34;</span>, td.<span style=color:#447fcf>Gt</span>(<span style=color:#3677a9>30</span>)), td.<span style=color:#447fcf>JSONPointer</span>(<span style=color:#ed9d13>&#34;/fullname&#34;</span>, td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>)))
 </span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;first person.Age &gt; 30 → Bob, using JSONPointer:&#34;</span>, ok)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true
-</span></span></span><span style=display:flex><span><span style=color:#999;font-style:italic></span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true
-</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSON: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// first person.Age &gt; 30 → Bob, using JSONPointer: true</span></span></span></code></pre></div>
 </div>
-</div></p>
+</details></p>
 <footer class=footline>
 </footer>
+</article>
+</div>
+</main>
+</div>
+<aside id=R-sidebar class=default-animation>
+<div id=R-header-topbar class=default-animation></div>
+<div id=R-header-wrapper class=default-animation>
+<div id=R-header class=default-animation>
+<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
+</div>
+<search><form action=/search/index.html method=get>
+<div class="searchbox default-animation">
+<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+<label class=a11y-only for=R-search-by>Search</label>
+<input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
+<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+</div>
+</form></search>
+</div>
+<div id=R-homelinks class=default-animation>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-homelinks">
+<ul class="space collapsible-menu">
+</ul>
+</div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+<ul>
+</ul>
+</div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
 </div>
 </div>
-<div id=navigation>
-<a class="nav nav-prev" href=/operators/erroris/ title=ErrorIs> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=/operators/grep/ title=Grep style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<div id=R-content-wrapper class=highlightable>
+<div class="R-sidebarmenu R-shortcutmenu-main">
+<ul class="enlarge morespace collapsible-menu">
+<li data-nav-id=/introduction/index.html><a class=padding href=/introduction/index.html>Introduction</a></li>
+<li data-nav-id=/example/index.html><a class=padding href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
+<li data-nav-id=/functions/index.html><a class=padding href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
+<li class=parent data-nav-id=/operators/index.html><a class=padding href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu>
+<li data-nav-id=/operators/matrix/index.html><a class=padding href=/operators/matrix/index.html>Operators matrices</a></li>
+<li data-nav-id=/operators/all/index.html><a class=padding href=/operators/all/index.html>All</a></li>
+<li data-nav-id=/operators/any/index.html><a class=padding href=/operators/any/index.html>Any</a></li>
+<li data-nav-id=/operators/array/index.html><a class=padding href=/operators/array/index.html>Array</a></li>
+<li data-nav-id=/operators/arrayeach/index.html><a class=padding href=/operators/arrayeach/index.html>ArrayEach</a></li>
+<li data-nav-id=/operators/bag/index.html><a class=padding href=/operators/bag/index.html>Bag</a></li>
+<li data-nav-id=/operators/between/index.html><a class=padding href=/operators/between/index.html>Between</a></li>
+<li data-nav-id=/operators/cap/index.html><a class=padding href=/operators/cap/index.html>Cap</a></li>
+<li data-nav-id=/operators/catch/index.html><a class=padding href=/operators/catch/index.html>Catch</a></li>
+<li data-nav-id=/operators/code/index.html><a class=padding href=/operators/code/index.html>Code</a></li>
+<li data-nav-id=/operators/contains/index.html><a class=padding href=/operators/contains/index.html>Contains</a></li>
+<li data-nav-id=/operators/containskey/index.html><a class=padding href=/operators/containskey/index.html>ContainsKey</a></li>
+<li data-nav-id=/operators/delay/index.html><a class=padding href=/operators/delay/index.html>Delay</a></li>
+<li data-nav-id=/operators/empty/index.html><a class=padding href=/operators/empty/index.html>Empty</a></li>
+<li data-nav-id=/operators/erroris/index.html><a class=padding href=/operators/erroris/index.html>ErrorIs</a></li>
+<li class=active data-nav-id=/operators/first/index.html><a class=padding href=/operators/first/index.html>First</a></li>
+<li data-nav-id=/operators/grep/index.html><a class=padding href=/operators/grep/index.html>Grep</a></li>
+<li data-nav-id=/operators/gt/index.html><a class=padding href=/operators/gt/index.html>Gt</a></li>
+<li data-nav-id=/operators/gte/index.html><a class=padding href=/operators/gte/index.html>Gte</a></li>
+<li data-nav-id=/operators/hasprefix/index.html><a class=padding href=/operators/hasprefix/index.html>HasPrefix</a></li>
+<li data-nav-id=/operators/hassuffix/index.html><a class=padding href=/operators/hassuffix/index.html>HasSuffix</a></li>
+<li data-nav-id=/operators/ignore/index.html><a class=padding href=/operators/ignore/index.html>Ignore</a></li>
+<li data-nav-id=/operators/isa/index.html><a class=padding href=/operators/isa/index.html>Isa</a></li>
+<li data-nav-id=/operators/json/index.html><a class=padding href=/operators/json/index.html>JSON</a></li>
+<li data-nav-id=/operators/jsonpointer/index.html><a class=padding href=/operators/jsonpointer/index.html>JSONPointer</a></li>
+<li data-nav-id=/operators/keys/index.html><a class=padding href=/operators/keys/index.html>Keys</a></li>
+<li data-nav-id=/operators/last/index.html><a class=padding href=/operators/last/index.html>Last</a></li>
+<li data-nav-id=/operators/lax/index.html><a class=padding href=/operators/lax/index.html>Lax</a></li>
+<li data-nav-id=/operators/len/index.html><a class=padding href=/operators/len/index.html>Len</a></li>
+<li data-nav-id=/operators/lt/index.html><a class=padding href=/operators/lt/index.html>Lt</a></li>
+<li data-nav-id=/operators/lte/index.html><a class=padding href=/operators/lte/index.html>Lte</a></li>
+<li data-nav-id=/operators/map/index.html><a class=padding href=/operators/map/index.html>Map</a></li>
+<li data-nav-id=/operators/mapeach/index.html><a class=padding href=/operators/mapeach/index.html>MapEach</a></li>
+<li data-nav-id=/operators/n/index.html><a class=padding href=/operators/n/index.html>N</a></li>
+<li data-nav-id=/operators/nan/index.html><a class=padding href=/operators/nan/index.html>NaN</a></li>
+<li data-nav-id=/operators/nil/index.html><a class=padding href=/operators/nil/index.html>Nil</a></li>
+<li data-nav-id=/operators/none/index.html><a class=padding href=/operators/none/index.html>None</a></li>
+<li data-nav-id=/operators/not/index.html><a class=padding href=/operators/not/index.html>Not</a></li>
+<li data-nav-id=/operators/notany/index.html><a class=padding href=/operators/notany/index.html>NotAny</a></li>
+<li data-nav-id=/operators/notempty/index.html><a class=padding href=/operators/notempty/index.html>NotEmpty</a></li>
+<li data-nav-id=/operators/notnan/index.html><a class=padding href=/operators/notnan/index.html>NotNaN</a></li>
+<li data-nav-id=/operators/notnil/index.html><a class=padding href=/operators/notnil/index.html>NotNil</a></li>
+<li data-nav-id=/operators/notzero/index.html><a class=padding href=/operators/notzero/index.html>NotZero</a></li>
+<li data-nav-id=/operators/pptr/index.html><a class=padding href=/operators/pptr/index.html>PPtr</a></li>
+<li data-nav-id=/operators/ptr/index.html><a class=padding href=/operators/ptr/index.html>Ptr</a></li>
+<li data-nav-id=/operators/re/index.html><a class=padding href=/operators/re/index.html>Re</a></li>
+<li data-nav-id=/operators/reall/index.html><a class=padding href=/operators/reall/index.html>ReAll</a></li>
+<li data-nav-id=/operators/recv/index.html><a class=padding href=/operators/recv/index.html>Recv</a></li>
+<li data-nav-id=/operators/set/index.html><a class=padding href=/operators/set/index.html>Set</a></li>
+<li data-nav-id=/operators/shallow/index.html><a class=padding href=/operators/shallow/index.html>Shallow</a></li>
+<li data-nav-id=/operators/slice/index.html><a class=padding href=/operators/slice/index.html>Slice</a></li>
+<li data-nav-id=/operators/smuggle/index.html><a class=padding href=/operators/smuggle/index.html>Smuggle</a></li>
+<li data-nav-id=/operators/sstruct/index.html><a class=padding href=/operators/sstruct/index.html>SStruct</a></li>
+<li data-nav-id=/operators/string/index.html><a class=padding href=/operators/string/index.html>String</a></li>
+<li data-nav-id=/operators/struct/index.html><a class=padding href=/operators/struct/index.html>Struct</a></li>
+<li data-nav-id=/operators/subbagof/index.html><a class=padding href=/operators/subbagof/index.html>SubBagOf</a></li>
+<li data-nav-id=/operators/subjsonof/index.html><a class=padding href=/operators/subjsonof/index.html>SubJSONOf</a></li>
+<li data-nav-id=/operators/submapof/index.html><a class=padding href=/operators/submapof/index.html>SubMapOf</a></li>
+<li data-nav-id=/operators/subsetof/index.html><a class=padding href=/operators/subsetof/index.html>SubSetOf</a></li>
+<li data-nav-id=/operators/superbagof/index.html><a class=padding href=/operators/superbagof/index.html>SuperBagOf</a></li>
+<li data-nav-id=/operators/superjsonof/index.html><a class=padding href=/operators/superjsonof/index.html>SuperJSONOf</a></li>
+<li data-nav-id=/operators/supermapof/index.html><a class=padding href=/operators/supermapof/index.html>SuperMapOf</a></li>
+<li data-nav-id=/operators/supersetof/index.html><a class=padding href=/operators/supersetof/index.html>SuperSetOf</a></li>
+<li data-nav-id=/operators/supersliceof/index.html><a class=padding href=/operators/supersliceof/index.html>SuperSliceOf</a></li>
+<li data-nav-id=/operators/tag/index.html><a class=padding href=/operators/tag/index.html>Tag</a></li>
+<li data-nav-id=/operators/trunctime/index.html><a class=padding href=/operators/trunctime/index.html>TruncTime</a></li>
+<li data-nav-id=/operators/values/index.html><a class=padding href=/operators/values/index.html>Values</a></li>
+<li data-nav-id=/operators/zero/index.html><a class=padding href=/operators/zero/index.html>Zero</a></li></ul></li>
+<li data-nav-id=/helpers/index.html><a class=padding href=/helpers/index.html>Helpers</a></li>
+<li data-nav-id=/faq/index.html><a class=padding href=/faq/index.html>FAQ</a></li>
+</ul>
 </div>
-</section>
-<div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
-<div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
+<div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+<div class="nav-title padding">More</div>
+<ul class="space collapsible-menu">
+<li data-nav-id=/prez><a class=padding href=/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a></li>
+<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
+</ul>
 </div>
-<script src=/js/clipboard.min.js?1703700313></script>
-<script src=/js/perfect-scrollbar.min.js?1703700313></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1703700313></script>
-<script src=/js/jquery.sticky.js?1703700313></script>
-<script src=/js/featherlight.min.js?1703700313></script>
-<script src=/js/highlight.pack.js?1703700313></script>
-<script>hljs.initHighlightingOnLoad()</script>
-<script src=/js/modernizr.custom-3.6.0.js?1703700313></script>
-<script src=/js/learn.js?1703700313></script>
-<script src=/js/hugo-learn.js?1703700313></script>
-<link href=/mermaid/mermaid.css?1703700313 rel=stylesheet>
-<script src=/mermaid/mermaid.js?1703700313></script>
-<script>mermaid.initialize({startOnLoad:!0})</script>
+<div id=R-footer-margin></div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+<ul>
+</ul>
+</div>
+<div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
+</div>
+</aside>
+<script src=/js/clipboard/clipboard.min.js?1744914389 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1744914389 defer></script>
+<script src=/js/theme.min.js?1744914389 defer></script>
 </body>
 </html>
