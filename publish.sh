@@ -1,5 +1,13 @@
 #!/bin/sh -e
 
+dir=$(dirname "$0")
+
+cd "$dir"
+find docs -not -path docs \
+          -not -path docs/CNAME \
+          -not -path docs/.nojekyll \
+          -delete
+
 cd docs_src
 hugo -d ../docs --minify
 
