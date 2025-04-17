@@ -26,7 +26,7 @@ before := time.Now()
 td.Cmp(t, time.Now(), td.Gte(before))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *minExpectedValue*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *minExpectedValue*.
 
 
 > See also [<i class='fas fa-book'></i> Gte godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Gte).

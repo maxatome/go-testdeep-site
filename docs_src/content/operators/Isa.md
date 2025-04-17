@@ -36,7 +36,7 @@ Of course, in the latter case, if checked data type is
 [`*fmt.Stringer`](https://pkg.go.dev/fmt#Stringer), Isa will match too (in fact before checking whether
 it implements [`fmt.Stringer`](https://pkg.go.dev/fmt#Stringer) or not).
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
 
 > See also [<i class='fas fa-book'></i> Isa godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Isa).

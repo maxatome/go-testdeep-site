@@ -24,7 +24,7 @@ bstr := bytes.NewBufferString("fmt.Stringer!")
 td.Cmp(t, bstr, td.HasSuffix("!")) // succeeds
 ```
 
-> See also [`Contains`]({{< ref "Contains" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}) and [`String`]({{< ref "String" >}}).
+> See also [`Contains`]({{% ref "Contains" %}}), [`HasPrefix`]({{% ref "HasPrefix" %}}), [`Re`]({{% ref "Re" %}}), [`ReAll`]({{% ref "ReAll" %}}) and [`String`]({{% ref "String" %}}).
 
 
 > See also [<i class='fas fa-book'></i> HasSuffix godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#HasSuffix).

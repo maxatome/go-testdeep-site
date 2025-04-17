@@ -13,7 +13,7 @@ values of *model* (if `any`) and the values of *expectedEntries*.
 *model* must be the same type as compared data.
 
 *expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{< ref "operators" >}}) are involved.
+no [TestDeep operators]({{% ref "operators" %}}) are involved.
 
 During a match, each expected entry should match in the compared
 map. But some entries in the compared map may not be expected.
@@ -43,9 +43,9 @@ td.Cmp(t, got, td.SuperMapOf(
 ) // fails, missing {"biz": …} in got
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
-> See also [`SuperMapOf`]({{< ref "SuperMapOf" >}}) and [`SubMapOf`]({{< ref "SubMapOf" >}}).
+> See also [`SuperMapOf`]({{% ref "SuperMapOf" %}}) and [`SubMapOf`]({{% ref "SubMapOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> SuperMapOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SuperMapOf).

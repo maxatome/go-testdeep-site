@@ -7,23 +7,23 @@ weight: 10
 func SStruct(model any, expectedFields ...StructFields) TestDeep
 ```
 
-SStruct operator (aka strict-[`Struct`]({{< ref "Struct" >}})) compares the contents of a
+SStruct operator (aka strict-[`Struct`]({{% ref "Struct" %}})) compares the contents of a
 struct or a pointer on a struct against values of *model* (if `any`)
 and the values of *expectedFields*. The zero values are compared
 too even if they are omitted from *expectedFields*: that is the
-difference with [`Struct`]({{< ref "Struct" >}}) operator.
+difference with [`Struct`]({{% ref "Struct" %}}) operator.
 
 *model* must be the same type as compared data. If the expected type
 is private or anonymous, *model* can be `nil`. In this case it is
 considered lazy and determined each time the operator is involved
 in a match, see below.
 
-*expectedFields* can be omitted, if no [TestDeep operators]({{< ref "operators" >}}) are
+*expectedFields* can be omitted, if no [TestDeep operators]({{% ref "operators" %}}) are
 involved. If *expectedFields* contains more than one item, all
 items are merged before their use, from left to right.
 
 To ignore a field, one has to specify it in *expectedFields* and
-use the [`Ignore`]({{< ref "Ignore" >}}) operator.
+use the [`Ignore`]({{% ref "Ignore" %}}) operator.
 
 ```go
 td.Cmp(t, got, td.SStruct(
@@ -98,7 +98,7 @@ td.Cmp(t, got, td.SStruct(
 
 This way, "*At" shell pattern is always used before "^[a-z]"
 regexp, so if a field "createdAt" exists it is tested against
-time.Now() and never against [`NotNil`]({{< ref "NotNil" >}}). A pattern without a
+time.Now() and never against [`NotNil`]({{% ref "NotNil" %}}). A pattern without a
 prefix number is the same as specifying "0" as prefix.
 
 To make it clearer, some spaces can be added, as well as bigger
@@ -156,9 +156,9 @@ td.Cmp(t, got, td.SStruct(nil, td.StructFields{
 During a match, all expected and zero fields must be found to
 succeed.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
-> See also [`SStruct`]({{< ref "SStruct" >}}).
+> See also [`SStruct`]({{% ref "SStruct" %}}).
 
 
 > See also [<i class='fas fa-book'></i> SStruct godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SStruct).
@@ -367,9 +367,9 @@ td.Cmp(t, got, td.SStruct(model, expectedFields), args...)
 
 See above for details.
 
-[`SStruct`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
+[`SStruct`]({{% ref "SStruct" %}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`SStruct`]({{< ref "SStruct" >}}) call.
+original [`SStruct`]({{% ref "SStruct" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -577,9 +577,9 @@ t.Cmp(got, td.SStruct(model, expectedFields), args...)
 
 See above for details.
 
-[`SStruct`]({{< ref "SStruct" >}}) optional parameter *expectedFields* is here mandatory.
+[`SStruct`]({{% ref "SStruct" %}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`SStruct`]({{< ref "SStruct" >}}) call.
+original [`SStruct`]({{% ref "SStruct" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

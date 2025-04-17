@@ -20,7 +20,7 @@ func TestMyFunc(t *testing.T) {
 ```
 
 To a bit more complex one, allowing flexible comparisons using
-[TestDeep operators]({{< ref "operators" >}}):
+[TestDeep operators]({{% ref "operators" %}}):
 
 ```go
 import (
@@ -59,7 +59,7 @@ func TestMyFunc(tt *testing.T) {
 ```
 
 To most complex one, allowing to easily test HTTP API routes, using
-flexible [operators]({{< ref "operators" >}}) and the
+flexible [operators]({{% ref "operators" %}}) and the
 [`tdhttp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
 helper:
 
@@ -114,19 +114,19 @@ func TestMyApi(t *testing.T) {
 1. the POST request with automatic JSON marshalling;
 1. the expected response HTTP status should be `http.StatusCreated`
    and the line just below, the body should match the
-   [`JSON`]({{< ref "JSON" >}}) operator;
+   [`JSON`]({{% ref "JSON" %}}) operator;
 1. some operators can be embedded, like [`Between`] here;
-1. for the `$id` placeholder, [`Catch`]({{< ref "Catch" >}}) its
+1. for the `$id` placeholder, [`Catch`]({{% ref "Catch" %}}) its
    value: put it in `id` variable and check it is
-   [`NotZero`]({{< ref "NotZero" >}});
-1. for the `$createdAt` placeholder, use the [`All`]({{< ref "All" >}})
+   [`NotZero`]({{% ref "NotZero" %}});
+1. for the `$createdAt` placeholder, use the [`All`]({{% ref "All" %}})
    operator. It combines several operators like a AND;
 1. check that `$createdAt` date ends with "Z" using
-   [`HasSuffix`]({{< ref "HasSuffix" >}}). As we expect a RFC3339
+   [`HasSuffix`]({{% ref "HasSuffix" %}}). As we expect a RFC3339
    date, we require it in UTC time zone;
 1. convert `$createdAt` date into a `time.Time` using a custom
-   function thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator;
-1. then [`Catch`]({{< ref "Catch" >}}) the resulting value: put it in
+   function thanks to the [`Smuggle`]({{% ref "Smuggle" %}}) operator;
+1. then [`Catch`]({{% ref "Catch" %}}) the resulting value: put it in
    `createdAt` variable and check it is greater or equal than
    `testAPI.SentAt()` (the time just before the request is handled) and lesser
    or equal than `time.Now()`.
@@ -156,6 +156,6 @@ The purpose of go-testdeep, via
 and its
 [helpers](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers),
 is to do its best to introduce this missing flexibility using
-["operators"]({{< ref "operators" >}}), when the expected value (or
+["operators"]({{% ref "operators" %}}), when the expected value (or
 one of its component) cannot be matched exactly, mixed with some
-useful [comparison functions]({{< ref "functions" >}}).
+useful [comparison functions]({{% ref "functions" %}}).

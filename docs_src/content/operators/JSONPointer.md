@@ -7,12 +7,12 @@ weight: 10
 func JSONPointer(ptr string, expectedValue any) TestDeep
 ```
 
-JSONPointer is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the JSON
+JSONPointer is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes the JSON
 representation of data, gets the value corresponding to the JSON
 pointer *ptr* (as [RFC 6901](https://tools.ietf.org/html/rfc6901) specifies it) and compares it to
 *expectedValue*.
 
-[`Lax`]({{< ref "Lax" >}}) mode is automatically enabled to simplify numeric tests.
+[`Lax`]({{% ref "Lax" %}}) mode is automatically enabled to simplify numeric tests.
 
 JSONPointer does its best to convert back the JSON pointed data to
 the type of *expectedValue* or to the type behind the
@@ -44,8 +44,8 @@ guessed. In the case the conversion cannot occur, data is compared
 as is, in its freshly unmarshaled JSON form (so as `bool`, `float64`,
 `string`, `[]any`, `map[string]any` or simply `nil`).
 
-Note that as `any` [TestDeep operator]({{< ref "operators" >}}) can be used as *expectedValue*,
-[`JSON`]({{< ref "JSON" >}}) operator works out of the box:
+Note that as `any` [TestDeep operator]({{% ref "operators" %}}) can be used as *expectedValue*,
+[`JSON`]({{% ref "JSON" %}}) operator works out of the box:
 
 ```go
 got := json.RawMessage(`{"foo":{"bar": {"zip": true}}}`)
@@ -65,7 +65,7 @@ got := Item{Val: 1, Next: &Item{Val: 2, Next: &Item{Val: 3}}}
 td.Cmp(t, got, td.JSONPointer("/Next/Next", Item{Val: 3}))
 ```
 
-Contrary to [`Smuggle`]({{< ref "Smuggle" >}}) operator and its fields-path feature, only
+Contrary to [`Smuggle`]({{% ref "Smuggle" %}}) operator and its fields-path feature, only
 public fields can be followed, as private ones are never (un)marshaled.
 
 There is no JSONHas nor JSONHasnt operators to only check a JSON
@@ -81,10 +81,10 @@ JSONHasnt := func(pointer string) td.TestDeep {
 }
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method always returns `nil` as the expected type cannot be
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method always returns `nil` as the expected type cannot be
 guessed from a JSON pointer.
 
-> See also [`JSON`]({{< ref "JSON" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}), [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}), [`Smuggle`]({{< ref "Smuggle" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
+> See also [`JSON`]({{% ref "JSON" %}}), [`SubJSONOf`]({{% ref "SubJSONOf" %}}), [`SuperJSONOf`]({{% ref "SuperJSONOf" %}}), [`Smuggle`]({{% ref "Smuggle" %}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 

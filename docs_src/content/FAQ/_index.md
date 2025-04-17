@@ -149,19 +149,19 @@ func TestPerson(t *testing.T) {
 
 1. `GetPerson()` returns a `Person`;
 2. as some fields of the returned `Person` are not exactly known in
-   advance, we use the [`Struct`]({{< ref "Struct" >}}) operator as
+   advance, we use the [`Struct`]({{% ref "Struct" %}}) operator as
    expected parameter. It allows to match exactly some fields, and use
-   [TestDeep operators]({{< ref "operators" >}}) on others. Here we
+   [TestDeep operators]({{% ref "operators" %}}) on others. Here we
    know that `Name` field should always be "Bob";
 3. [`StructFields`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#StructFields)
-   is a map allowing to use [TestDeep operators]({{< ref "operators" >}})
+   is a map allowing to use [TestDeep operators]({{% ref "operators" %}})
    for any field;
-4. `ID` field should be ≠ 0. See [`NotZero`]({{< ref "NotZero" >}})
+4. `ID` field should be ≠ 0. See [`NotZero`]({{% ref "NotZero" %}})
    operator for details;
-5. `Age` field should be ≥ 40 and ≤ 45. See [`Between`]({{< ref "between" >}})
+5. `Age` field should be ≥ 40 and ≤ 45. See [`Between`]({{% ref "between" %}})
    operator for details.
 
-With operator anchoring, the use of [`Struct`]({{< ref "Struct" >}})
+With operator anchoring, the use of [`Struct`]({{% ref "Struct" %}})
 operator is no longer needed:
 
 ```golang
@@ -189,7 +189,7 @@ func TestPerson(t *testing.T) {
 1. `GetPerson()` still returns a `Person`;
 2. expected parameter is directly a `Person`. No operator needed here;
 3. `Name` field should always be "Bob", no change here;
-4. `ID` field should be ≠ 0: anchor the [`NotZero`]({{< ref "NotZero" >}})
+4. `ID` field should be ≠ 0: anchor the [`NotZero`]({{% ref "NotZero" %}})
    operator:
    - using the [`A`] method. Break this line down:
      ```golang
@@ -204,7 +204,7 @@ func TestPerson(t *testing.T) {
      2. the operator we want to anchor,
      3. this optional parameter is needed to tell [`A`] that the returned
         value must be a `int64`. Sometimes, this type can be deduced
-        from the operator, but as [`NotZero`]({{< ref "NotZero" >}}) can
+        from the operator, but as [`NotZero`]({{% ref "NotZero" %}}) can
         handle any kind of number, it is not the case here. So we have
         to pass it,
      4. as [`A`] method returns an `any`, we need to assert the
@@ -227,7 +227,7 @@ func TestPerson(t *testing.T) {
 	 3. instance in which the operator is anchored,
 	 4. the operator we want to anchor,
 5. `Age `field should be ≥ 40 and ≤ 45: anchor the
-   [`Between`]({{< ref "between" >}}) operator:
+   [`Between`]({{% ref "between" %}}) operator:
    - using the [`A`] method. Break this line down:
      ```golang
      assert.A(                           // ← ①
@@ -236,10 +236,10 @@ func TestPerson(t *testing.T) {
      ```
      1. the [`A`] method saves the operator in `assert`, so it can be
         retrieved during the comparison of the next [`Cmp`] call on `assert`,
-     2. the operator we want to anchor. As [`Between`]({{< ref "between" >}})
+     2. the operator we want to anchor. As [`Between`]({{% ref "between" %}})
         knows the type of its operands (here `uint8`), there is no need
         to tell [`A`] the returned type must be `uint8`. It can be deduced
-        from [`Between`]({{< ref "between" >}}),
+        from [`Between`]({{% ref "between" %}}),
      3. as [`A`] method returns an `any`, we need to assert the
         `uint8` type to bypass the golang static typing system.
    - using the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
@@ -298,7 +298,7 @@ Some rules have to be kept in mind:
 
 ## How to test `io.Reader` contents, like `net/http.Response.Body` for example?
 
-The [`Smuggle`]({{< ref "Smuggle" >}}) operator is done for that,
+The [`Smuggle`]({{% ref "Smuggle" %}}) operator is done for that,
 here with the help of [`ReadAll`](https://pkg.go.dev/io#ReadAll).
 
 ```golang
@@ -324,9 +324,9 @@ func TestResponseBody(t *testing.T) {
 ## OK, but I prefer comparing `string`s instead of `byte`s
 
 No problem, [`ReadAll`](https://pkg.go.dev/io#ReadAll) the body (still
-using [`Smuggle`]({{< ref "Smuggle" >}}) operator), then ask
+using [`Smuggle`]({{% ref "Smuggle" %}}) operator), then ask
 go-testdeep to compare it against a string using
-[`String`]({{< ref "String" >}}) operator:
+[`String`]({{% ref "String" %}}) operator:
 
 ```golang
 import (
@@ -390,12 +390,12 @@ func TestResponseBody(t *testing.T) {
 
 ## So I always need to manually unmarshal in a struct?
 
-It is up to you! Using [`JSON`]({{< ref "JSON" >}}) operator for
+It is up to you! Using [`JSON`]({{% ref "JSON" %}}) operator for
 example, you can test any JSON content. The first step is to read all
 the body (which is an [`io.Reader`](https://pkg.go.dev/io#Reader)) into
 a [`json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage)
-thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator special cast
-feature, then ask [`JSON`]({{< ref "JSON" >}}) operator to do the
+thanks to the [`Smuggle`]({{% ref "Smuggle" %}}) operator special cast
+feature, then ask [`JSON`]({{% ref "JSON" %}}) operator to do the
 comparison:
 
 ```golang
@@ -424,7 +424,7 @@ func TestResponseBody(t *testing.T) {
 
 ## OK, but you are funny, this response sends a new created object, so I don't know the ID in advance!
 
-No problem, use [`Struct`]({{< ref "Struct" >}}) operator to test
+No problem, use [`Struct`]({{% ref "Struct" %}}) operator to test
 that `ID` field is non-zero (as a bonus, add a `CreatedAt` field):
 
 ```golang
@@ -587,9 +587,9 @@ func TestMyApi(t *testing.T) {
 1. the API handler ready to be tested;
 1. the GET request;
 1. the expected HTTP status should be `http.StatusOK`;
-1. the expected body should match the [`SStruct`]({{< ref "SStruct" >}})
+1. the expected body should match the [`SStruct`]({{% ref "SStruct" %}})
    operator;
-1. check the `ID` field is [`NotZero`]({{< ref "NotZero" >}});
+1. check the `ID` field is [`NotZero`]({{% ref "NotZero" %}});
 1. check the `CreatedAt` field is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
@@ -666,9 +666,9 @@ func TestMyGinGonicApi(t *testing.T) {
 1. the API handler ready to be tested;
 1. the GET request;
 1. the expected HTTP status should be `http.StatusOK`;
-1. the expected body should match the [`SStruct`]({{< ref "SStruct" >}})
+1. the expected body should match the [`SStruct`]({{% ref "SStruct" %}})
    operator;
-1. check the `ID` field is [`NotZero`]({{< ref "NotZero" >}});
+1. check the `ID` field is [`NotZero`]({{% ref "NotZero" %}});
 1. check the `CreatedAt` field is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
@@ -680,7 +680,7 @@ above, you can try [CmpJSONResponse](https://pkg.go.dev/github.com/maxatome/go-t
 
 Stay with [`tdhttp` helper](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)!
 
-In fact you can [`Catch`]({{< ref "Catch" >}}) the `ID` before comparing
+In fact you can [`Catch`]({{% ref "Catch" %}}) the `ID` before comparing
 it to 0 (as well as `CreatedAt` in fact). Try:
 
 ```go
@@ -716,11 +716,11 @@ func TestMyGinGonicApi(t *testing.T) {
 1. the API handler ready to be tested;
 1. the GET request;
 1. the expected HTTP status should be `http.StatusOK`;
-1. the expected body should match the [`SStruct`]({{< ref "SStruct" >}})
+1. the expected body should match the [`SStruct`]({{% ref "SStruct" %}})
    operator;
-1. [`Catch`]({{< ref "Catch" >}}) the `ID` field: put it in `id`
-   variable and check it is [`NotZero`]({{< ref "NotZero" >}});
-1. [`Catch`]({{< ref "Catch" >}}) the `CreatedAt` field: put it in `createdAt`
+1. [`Catch`]({{% ref "Catch" %}}) the `ID` field: put it in `id`
+   variable and check it is [`NotZero`]({{% ref "NotZero" %}});
+1. [`Catch`]({{% ref "Catch" %}}) the `CreatedAt` field: put it in `createdAt`
    variable and check it is greater or equal than `y2008` variable
    (set just before `tdhttp.NewTestAPI` call).
 
@@ -886,8 +886,8 @@ fix this!
 Again, [`tdhttp` helper](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
 is your friend!
 
-With the help of [`JSON`]({{< ref "JSON" >}}) operator of course! See
-it below, used with [`Catch`]({{< ref "Catch" >}}) (note it can be used
+With the help of [`JSON`]({{% ref "JSON" %}}) operator of course! See
+it below, used with [`Catch`]({{% ref "Catch" %}}) (note it can be used
 without), for a `POST` example:
 
 ```golang
@@ -936,18 +936,18 @@ func TestMyGinGonicApi(t *testing.T) {
 1. the POST request with automatic JSON marshalling;
 1. the expected HTTP status should be `http.StatusCreated`
    and the line just below, the body should match the
-   [`JSON`]({{< ref "JSON" >}}) operator;
-1. for the `$id` placeholder, [`Catch`]({{< ref "Catch" >}}) its
+   [`JSON`]({{% ref "JSON" %}}) operator;
+1. for the `$id` placeholder, [`Catch`]({{% ref "Catch" %}}) its
    value: put it in `id` variable and check it is
-   [`NotZero`]({{< ref "NotZero" >}});
-1. for the `$createdAt` placeholder, use the [`All`]({{< ref "All" >}})
+   [`NotZero`]({{% ref "NotZero" %}});
+1. for the `$createdAt` placeholder, use the [`All`]({{% ref "All" %}})
    operator. It combines several operators like a AND;
 1. check that `$createdAt` date ends with "Z" using
-   [`HasSuffix`]({{< ref "HasSuffix" >}}). As we expect a RFC3339
+   [`HasSuffix`]({{% ref "HasSuffix" %}}). As we expect a RFC3339
    date, we require it in UTC time zone;
 1. convert `$createdAt` date into a `time.Time` using a custom
-   function thanks to the [`Smuggle`]({{< ref "Smuggle" >}}) operator;
-1. then [`Catch`]({{< ref "Catch" >}}) the resulting value: put it in
+   function thanks to the [`Smuggle`]({{% ref "Smuggle" %}}) operator;
+1. then [`Catch`]({{% ref "Catch" %}}) the resulting value: put it in
    `createdAt` variable and check it is greater or equal than
    `ta.SentAt()` (the time just before the request is handled).
 
@@ -964,14 +964,14 @@ provides the same functions and methods for XML it does for JSON.
 [RTFM](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp)
 :)
 
-Note that the [`JSON`]({{< ref "JSON" >}}) operator have not its `XML`
+Note that the [`JSON`]({{% ref "JSON" %}}) operator have not its `XML`
 counterpart yet.
 But [PRs are welcome](https://github.com/maxatome/go-testdeep/pulls)!
 
 
 ## How to assert for an UUIDv7?
 
-Combining [`Smuggle`]({{< ref "Smuggle" >}}) and [`Code`]({{< ref "Code" >}}),
+Combining [`Smuggle`]({{% ref "Smuggle" %}}) and [`Code`]({{% ref "Code" %}}),
 you can easily write a custom operator:
 
 ```golang
@@ -986,7 +986,7 @@ func isUUIDv7() td.TestDeep {
 }
 ```
 
-that you can then use, for example in a [`JSON`]({{< ref "JSON" >}}) match:
+that you can then use, for example in a [`JSON`]({{% ref "JSON" %}}) match:
 
 ```golang
 td.Cmp(t, jsonData, td.JSON(`{"id": $1}`, isUUIDv7()))
@@ -1169,9 +1169,9 @@ sequences](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors).
 
 ## The `X` testing framework allows to test/do `Y` while go-testdeep not
 
-The [`Code`]({{< ref "Code" >}}) and [`Smuggle`]({{< ref "Smuggle" >}})
+The [`Code`]({{% ref "Code" %}}) and [`Smuggle`]({{% ref "Smuggle" %}})
 operators should allow to cover all cases not handled by [other
-operators]({{< ref "operators" >}}).
+operators]({{% ref "operators" %}}).
 
 If you think this missing feature deserves a specific operator,
 because it is frequently or widely used, file an issue and let's
@@ -1180,12 +1180,12 @@ discuss about it.
 We plan to add a new `github.com/maxatome/go-testdeep/helpers/tdcombo`
 helper package, bringing together all what we can call
 combo-operators. Combo-operators are operators using any number of
-[already existing operators]({{< ref "operators" >}}).
+[already existing operators]({{% ref "operators" %}}).
 
 As an example of such combo-operators, the following one. It allows to
 check that a string contains a RFC3339 formatted time, in UTC time
 zone ("Z" suffix) and then to compare it as a `time.Time` against
-`expectedValue` (which can be another [operator]({{< ref "operators" >}})
+`expectedValue` (which can be another [operator]({{% ref "operators" %}})
 or, of course, a `time.Time` value).
 
 ```golang
@@ -1227,14 +1227,14 @@ You want to add a new `FooBar` operator.
 - [ ] add operator tests in `td_foo_bar_test.go` file;
 - [ ] in `example_test.go` file, add examples function(s) `ExampleFooBar*`
   in alphabetical order;
-- [ ] should this operator be available in [`JSON`]({{< ref "JSON" >}}),
-  [`SubJSONOf`]({{< ref "SubJSONOf" >}}) and
-  [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) operators?
+- [ ] should this operator be available in [`JSON`]({{% ref "JSON" %}}),
+  [`SubJSONOf`]({{% ref "SubJSONOf" %}}) and
+  [`SuperJSONOf`]({{% ref "SuperJSONOf" %}}) operators?
   - If no, add `FooBar` to the `forbiddenOpsInJSON` map in
     [`td/td_json.go`](https://github.com/maxatome/go-testdeep/blob/master/td/td_json.go)
     with a possible alternative text to help the user,
-  - If yes, does `FooBar` needs specific handling as [`N`]({{< ref "N" >}}) or
-    [`Between`]({{< ref "Between" >}}) does for example?
+  - If yes, does `FooBar` needs specific handling as [`N`]({{% ref "N" %}}) or
+    [`Between`]({{% ref "Between" %}}) does for example?
 - [ ] automatically generate `CmpFooBar` & `T.FooBar` (+ examples) code:
   `./tools/gen_funcs.pl`
 - [ ] do not forget to run tests: `go test ./...`

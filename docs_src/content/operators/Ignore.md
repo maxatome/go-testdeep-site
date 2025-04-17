@@ -8,9 +8,9 @@ func Ignore() TestDeep
 ```
 
 Ignore operator is always true, whatever data is. It is useful when
-comparing a slice with [`Slice`]({{< ref "Slice" >}}) and wanting to ignore some indexes,
-for example (if you don't want to use [`SuperSliceOf`]({{< ref "SuperSliceOf" >}})). Or comparing
-a struct with [`SStruct`]({{< ref "SStruct" >}}) and wanting to ignore some fields:
+comparing a slice with [`Slice`]({{% ref "Slice" %}}) and wanting to ignore some indexes,
+for example (if you don't want to use [`SuperSliceOf`]({{% ref "SuperSliceOf" %}})). Or comparing
+a struct with [`SStruct`]({{% ref "SStruct" %}}) and wanting to ignore some fields:
 
 ```go
 td.Cmp(t, got, td.SStruct(

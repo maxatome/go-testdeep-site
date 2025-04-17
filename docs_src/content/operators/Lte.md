@@ -26,7 +26,7 @@ before := time.Now()
 td.Cmp(t, before, td.Lt(time.Now()))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *maxExpectedValue*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *maxExpectedValue*.
 
 
 > See also [<i class='fas fa-book'></i> Lte godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Lte).

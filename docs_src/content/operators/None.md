@@ -24,7 +24,7 @@ even := td.Flatten([]int{2, 4, 6, 8, 10, 12, 14})
 td.Cmp(t, 9, td.None(prime, even)) // succeeds
 ```
 
-> See also [`All`]({{< ref "All" >}}), [`Any`]({{< ref "Any" >}}) and [`Not`]({{< ref "Not" >}}).
+> See also [`All`]({{% ref "All" %}}), [`Any`]({{% ref "Any" %}}) and [`Not`]({{% ref "Not" %}}).
 
 
 > See also [<i class='fas fa-book'></i> None godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#None).

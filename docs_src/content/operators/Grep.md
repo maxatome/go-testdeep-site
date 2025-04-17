@@ -7,17 +7,17 @@ weight: 10
 func Grep(filter, expectedValue any) TestDeep
 ```
 
-Grep is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes an array, a slice or a
+Grep is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes an array, a slice or a
 pointer on array/slice. For each item it applies *filter*, a
-[TestDeep operator]({{< ref "operators" >}}) or a function returning a `bool`, and produces a
+[TestDeep operator]({{% ref "operators" %}}) or a function returning a `bool`, and produces a
 slice consisting of those items for which the *filter* matched and
 compares it to *expectedValue*. The *filter* matches when it is a:
 
-- [TestDeep operator]({{< ref "operators" >}}) and it matches for the item;
+- [TestDeep operator]({{% ref "operators" %}}) and it matches for the item;
 - function receiving the item and it returns true.
 
 
-*expectedValue* can be a [TestDeep operator]({{< ref "operators" >}}) or a slice (but never an
+*expectedValue* can be a [TestDeep operator]({{% ref "operators" %}}) or a slice (but never an
 array nor a pointer on a slice/array nor `any` other kind).
 
 ```go
@@ -41,7 +41,7 @@ td.Cmp(t, got, td.Grep(td.Gt(0), td.Nil()))     // succeeds
 td.Cmp(t, got, td.Grep(td.Gt(0), []int{}))      // fails
 ```
 
-> See also [`First`]({{< ref "First" >}}), [`Last`]({{< ref "Last" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
+> See also [`First`]({{% ref "First" %}}), [`Last`]({{% ref "Last" %}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 > See also [<i class='fas fa-book'></i> Grep godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Grep).

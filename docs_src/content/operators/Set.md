@@ -42,11 +42,11 @@ td.Cmp(t, []int{1, 5, 1, 2, 8, 3, 3},
 // = td.Cmp(t, []int{1, 5, 1, 2, 8, 3, 3}, td.Set(2, 1, 3, 5, 8))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from [`Isa`]({{% ref "Isa" %}})) and they are equal.
 
-> See also [`NotAny`]({{< ref "NotAny" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}) and [`Bag`]({{< ref "Bag" >}}).
+> See also [`NotAny`]({{% ref "NotAny" %}}), [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperSetOf`]({{% ref "SuperSetOf" %}}) and [`Bag`]({{% ref "Bag" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Set godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Set).
@@ -68,7 +68,7 @@ are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several Set entries
 	ok = td.Cmp(t, got, td.Set(td.Between(1, 4), 3, td.Between(2, 10)),
 		"checks all items are present, in any order")
@@ -134,7 +134,7 @@ reason of a potential failure.
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several Set entries
 	ok = td.CmpSet(t, got, []any{td.Between(1, 4), 3, td.Between(2, 10)},
 		"checks all items are present, in any order")
@@ -198,7 +198,7 @@ reason of a potential failure.
 		"checks all items are present, in any order")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several Set entries
 	ok = t.Set(got, []any{td.Between(1, 4), 3, td.Between(2, 10)},
 		"checks all items are present, in any order")

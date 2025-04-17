@@ -23,10 +23,10 @@ func TestMyFunc(t *testing.T) {
 - [`func CmpError(t TestingT, got error, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpError)
 - [`func CmpFalse(t TestingT, got any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpFalse)
 - [`func CmpLax(t TestingT, got, expected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpLax)
-  (in fact the shortcut of [`Lax` operator]({{< ref "operators/Lax" >}}))
+  (in fact the shortcut of [`Lax` operator]({{% ref "operators/Lax" %}}))
 - [`func CmpNoError(t TestingT, got error, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNoError)
 - [`func CmpNot(t TestingT, got, notExpected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNot)
-  (in fact the shortcut of [`Not` operator]({{< ref "operators/Not" >}}))
+  (in fact the shortcut of [`Not` operator]({{% ref "operators/Not" %}}))
 - [`func CmpNotPanic(t TestingT, fn func(), args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpNotPanic)
 - [`func CmpPanic(t TestingT, fn func(), expectedPanic any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpPanic)
 - [`func CmpTrue(t TestingT, got any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpTrue)
@@ -55,12 +55,12 @@ func TestMyFunc(t *testing.T) {
 
 For each of these functions, it is always a shortcut on
 [`Cmp()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) and
-the correponding [Testdeep operator]({{< ref "operators" >}}):
+the correponding [Testdeep operator]({{% ref "operators" %}}):
 
 ```
 CmpHasPrefix(t, got, expected, …) ⇒ Cmp(t, got, HasPrefix(expected), …)
-   ^-------^                                    ^-------^
-       +--------------------------------------------+
+   ^-------^                                     ^-------^
+       +---------------------------------------------+
 ```
 Each shortcut method is described in the corresponding operator
-page. See [operators list]({{< ref "operators" >}}).
+page. See [operators list]({{% ref "operators" %}}).

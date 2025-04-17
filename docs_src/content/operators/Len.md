@@ -7,7 +7,7 @@ weight: 10
 func Len(expectedLen any) TestDeep
 ```
 
-Len is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes data, applies `len()` function
+Len is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes data, applies `len()` function
 on it and compares its result to *expectedLen*. Of course, the
 compared value must be an array, a channel, a map, a slice or a
 `string`.
@@ -24,7 +24,7 @@ as well as an other operator:
 td.Cmp(t, gotSlice, td.Len(td.Between(3, 4)))
 ```
 
-> See also [`Cap`]({{< ref "Cap" >}}).
+> See also [`Cap`]({{% ref "Cap" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Len godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Len).

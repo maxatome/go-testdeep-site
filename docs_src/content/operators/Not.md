@@ -10,7 +10,7 @@ func Not(notExpected any) TestDeep
 Not operator compares data against the not expected value. During a
 match, it must not match to succeed.
 
-Not is the same operator as [`None`]({{< ref "None" >}}) with only one argument. It is
+Not is the same operator as [`None`]({{% ref "None" %}}) with only one argument. It is
 provided as a more readable function when only one argument is
 needed.
 
@@ -19,7 +19,7 @@ td.Cmp(t, 12, td.Not(10)) // succeeds
 td.Cmp(t, 12, td.Not(12)) // fails
 ```
 
-> See also [`None`]({{< ref "None" >}}).
+> See also [`None`]({{% ref "None" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Not godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Not).

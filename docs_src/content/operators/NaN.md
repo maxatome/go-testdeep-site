@@ -15,7 +15,7 @@ td.Cmp(t, got, td.NaN()) // succeeds
 td.Cmp(t, 4.2, td.NaN()) // fails
 ```
 
-> See also [`NotNaN`]({{< ref "NotNaN" >}}).
+> See also [`NotNaN`]({{% ref "NotNaN" %}}).
 
 
 > See also [<i class='fas fa-book'></i> NaN godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NaN).
@@ -61,6 +61,7 @@ td.Cmp(t, 4.2, td.NaN()) // fails
 
 	fmt.Println("float64(12) is not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is not-a-number: true
 	// float64(12) is not-a-number: false
 
@@ -134,6 +135,7 @@ reason of a potential failure.
 
 	fmt.Println("float64(12) is not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is not-a-number: true
 	// float64(12) is not-a-number: false
 
@@ -205,6 +207,7 @@ reason of a potential failure.
 
 	fmt.Println("float64(12) is not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is not-a-number: true
 	// float64(12) is not-a-number: false
 

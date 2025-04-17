@@ -41,11 +41,11 @@ td.Cmp(t, []int{1, 5, 1, 3, 3},
 // = td.Cmp(t, []int{1, 5, 1, 3, 3}, td.SubSetOf(2, 1, 3, 5, 8))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
-are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
+are found (mostly issued from [`Isa`]({{% ref "Isa" %}})) and they are equal.
 
-> See also [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
+> See also [`NotAny`]({{% ref "NotAny" %}}), [`Set`]({{% ref "Set" %}}) and [`SuperSetOf`]({{% ref "SuperSetOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> SubSetOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SubSetOf).
@@ -62,7 +62,7 @@ are found (mostly issued from [`Isa`]({{< ref "Isa" >}})) and they are equal.
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several SubSetOf entries
 	ok = td.Cmp(t, got, td.SubSetOf(td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)),
 		"checks at least all items are present, in any order, ignoring duplicates")
@@ -122,7 +122,7 @@ reason of a potential failure.
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several SubSetOf entries
 	ok = td.CmpSubSetOf(t, got, []any{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
 		"checks at least all items are present, in any order, ignoring duplicates")
@@ -180,7 +180,7 @@ reason of a potential failure.
 		"checks at least all items are present, in any order, ignoring duplicates")
 	fmt.Println(ok)
 
-	// Tries its best to not raise an error when a value can be matched
+	// Tries its best not to raise an error when a value can be matched
 	// by several SubSetOf entries
 	ok = t.SubSetOf(got, []any{td.Between(1, 4), 3, td.Between(2, 10), td.Gt(100)},
 		"checks at least all items are present, in any order, ignoring duplicates")

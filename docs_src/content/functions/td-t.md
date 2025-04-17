@@ -63,13 +63,13 @@ func TestMyFunc(tt *testing.T) {
 - [`func (t *T) Cmp(got, expected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp)
 - [`func (t *T) CmpError(got error, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpError)
 - [`func (t *T) CmpLax(got, expected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpLax)
-  (in fact the shortcut of [`Lax` operator]({{< ref "operators/Lax" >}}))
+  (in fact the shortcut of [`Lax` operator]({{% ref "operators/Lax" %}}))
 - [`func (t *T) CmpNoError(got error, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNoError)
 - [`func (t *T) CmpNotPanic(fn func(), args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNotPanic)
 - [`func (t *T) CmpPanic(fn func(), expected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpPanic)
 - [`func (t *T) False(got any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False)
 - [`func (t *T) Not(got, notExpected any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not)
-  (in fact the shortcut of [`Not` operator]({{< ref "operators/Not" >}}))
+  (in fact the shortcut of [`Not` operator]({{% ref "operators/Not" %}}))
 - [`func (t *T) Run(name string, f func(t *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run)
 - [`func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire)
 - [`func (t *T) True(got any, args ...any) bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True)
@@ -88,6 +88,11 @@ but it is still available for backward compatibility purpose.
 - [`func (t *T) DoAnchorsPersist() bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.DoAnchorsPersist)
 - [`func (t *T) ResetAnchors()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.ResetAnchors)
 - [`func (t *T) SetAnchorsPersist(persist bool)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist)
+
+Thanks to generics, one can also use:
+
+- [`func A[X any](t *T, operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+- [`func Anchor[X any](t *T, operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor)
 
 
 ### Shortcut methods of [`*td.T`]
@@ -108,7 +113,7 @@ func TestMyFunc(tt *testing.T) {
 
 For each of these methods, it is always a shortcut on
 [`T.Cmp()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp) and
-the correponding [Testdeep operator]({{< ref "operators" >}}):
+the correponding [Testdeep operator]({{% ref "operators" %}}):
 
 ```
 T.HasPrefix(got, expected, …) ⇒ T.Cmp(t, got, HasPrefix(expected), …)
@@ -116,11 +121,11 @@ T.HasPrefix(got, expected, …) ⇒ T.Cmp(t, got, HasPrefix(expected), …)
       +-------------------------------------------+
 ```
 
-Excluding [`Lax` operator]({{< ref "operators/Lax" >}}) for which the
-shortcut method stays [`CmpLax`]({{< ref "operators/Lax#cmplax-shortcut" >}}).
+Excluding [`Lax` operator]({{% ref "operators/Lax" %}}) for which the
+shortcut method stays [`CmpLax`]({{% ref "operators/Lax#cmplax-shortcut" %}}).
 
 Each shortcut method is described in the corresponding operator
-page. See [operators list]({{< ref "operators" >}}).
+page. See [operators list]({{% ref "operators" %}}).
 
 
 ### Comparison hooks

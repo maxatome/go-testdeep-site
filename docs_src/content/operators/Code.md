@@ -59,11 +59,11 @@ by standard operators.
 It is not recommended to call [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) (or `any` other Cmp*
 functions or [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) methods) inside the body of *fn*, because of
 confusion produced by output in case of failure. When the data
-needs to be transformed before being compared again, [`Smuggle`]({{< ref "Smuggle" >}})
+needs to be transformed before being compared again, [`Smuggle`]({{% ref "Smuggle" %}})
 operator should be used instead.
 
 But in some cases it can be better to handle yourself the
-comparison than to chain [TestDeep operators]({{< ref "operators" >}}). In this case, *fn* can
+comparison than to chain [TestDeep operators]({{% ref "operators" %}}). In this case, *fn* can
 be a function receiving one or two [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) as first parameters and
 returning no values.
 
@@ -96,9 +96,9 @@ Note that these forms do not work when there is no initial
 [`testing.TB`](https://pkg.go.dev/testing#TB) instance, like when using [`EqDeeplyError`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#EqDeeplyError) or
 [`EqDeeply`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#EqDeeply) functions, or when the Code operator is called behind
 the following operators, as they just check if a match occurs
-without raising an [`error`](https://pkg.go.dev/builtin#error): [`Any`]({{< ref "Any" >}}), [`Bag`]({{< ref "Bag" >}}), [`Contains`]({{< ref "Contains" >}}), [`ContainsKey`]({{< ref "ContainsKey" >}}),
-[`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubSetOf`]({{< ref "SubSetOf" >}}),
-[`SuperBagOf`]({{< ref "SuperBagOf" >}}) and [`SuperSetOf`]({{< ref "SuperSetOf" >}}).
+without raising an [`error`](https://pkg.go.dev/builtin#error): [`Any`]({{% ref "Any" %}}), [`Bag`]({{% ref "Bag" %}}), [`Contains`]({{% ref "Contains" %}}), [`ContainsKey`]({{% ref "ContainsKey" %}}),
+[`None`]({{% ref "None" %}}), [`Not`]({{% ref "Not" %}}), [`NotAny`]({{% ref "NotAny" %}}), [`Set`]({{% ref "Set" %}}), [`SubBagOf`]({{% ref "SubBagOf" %}}), [`SubSetOf`]({{% ref "SubSetOf" %}}),
+[`SuperBagOf`]({{% ref "SuperBagOf" %}}) and [`SuperSetOf`]({{% ref "SuperSetOf" %}}).
 
 RootName is inherited but not the current path, but it can be
 recovered if needed:
@@ -134,7 +134,7 @@ produces the following errors:
           expected: 126
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of last parameter of *fn*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of last parameter of *fn*.
 
 
 > See also [<i class='fas fa-book'></i> Code godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Code).

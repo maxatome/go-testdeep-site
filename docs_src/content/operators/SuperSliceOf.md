@@ -16,13 +16,13 @@ value check is needed, this zero value has to be set in
 *expectedEntries*, except if it is a zero-value in *model*. At the
 end, only entries present in *expectedEntries* and non-zero ones
 present in *model* are checked. To check all entries of an array
-see [`Array`]({{< ref "Array" >}}) operator. To check all entries of a slice see [`Slice`]({{< ref "Slice" >}})
+see [`Array`]({{% ref "Array" %}}) operator. To check all entries of a slice see [`Slice`]({{% ref "Slice" %}})
 operator.
 
 *model* must be the same type as compared data.
 
 *expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{< ref "operators" >}}) are involved.
+no [TestDeep operators]({{% ref "operators" %}}) are involved.
 
 Works with slices:
 
@@ -42,7 +42,7 @@ td.Cmp(t, got, td.SuperSliceOf([5]int{12}, td.ArrayEntries{2: 17}))             
 td.Cmp(t, &got, td.SuperSliceOf(&[5]int{0, 14}, td.ArrayEntries{2: td.Gt(16)})) // succeeds
 ```
 
-> See also [`Array`]({{< ref "Array" >}}) and [`Slice`]({{< ref "Slice" >}}).
+> See also [`Array`]({{% ref "Array" %}}) and [`Slice`]({{% ref "Slice" %}}).
 
 
 > See also [<i class='fas fa-book'></i> SuperSliceOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SuperSliceOf).

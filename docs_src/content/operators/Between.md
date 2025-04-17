@@ -40,7 +40,7 @@ tc.Cmp(t,                                       // succeeds
   td.Between(netip.MustParse("127.0.0.0"), netip.MustParse("127.255.255.255")))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *from*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *from*.
 
 
 > See also [<i class='fas fa-book'></i> Between godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Between).
@@ -160,9 +160,9 @@ td.Cmp(t, got, td.Between(from, to, bounds), args...)
 
 See above for details.
 
-[`Between`]({{< ref "Between" >}}) optional parameter *bounds* is here mandatory.
+[`Between`]({{% ref "Between" %}}) optional parameter *bounds* is here mandatory.
 [`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsInIn) value should be passed *to* mimic its absence in
-original [`Between`]({{< ref "Between" >}}) call.
+original [`Between`]({{% ref "Between" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -293,9 +293,9 @@ t.Cmp(got, td.Between(from, to, bounds), args...)
 
 See above for details.
 
-[`Between`]({{< ref "Between" >}}) optional parameter *bounds* is here mandatory.
+[`Between`]({{% ref "Between" %}}) optional parameter *bounds* is here mandatory.
 [`BoundsInIn`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsInIn) value should be passed *to* mimic its absence in
-original [`Between`]({{< ref "Between" >}}) call.
+original [`Between`]({{% ref "Between" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

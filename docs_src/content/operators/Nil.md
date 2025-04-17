@@ -27,7 +27,7 @@ got = nil
 td.Cmp(t, got, nil) // succeeds
 ```
 
-> See also [`Empty`]({{< ref "Empty" >}}), [`NotNil`]({{< ref "NotNil" >}}) and [`Zero`]({{< ref "Zero" >}}).
+> See also [`Empty`]({{% ref "Empty" %}}), [`NotNil`]({{% ref "NotNil" %}}) and [`Zero`]({{% ref "Zero" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Nil godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Nil).

@@ -16,7 +16,7 @@ td.Cmp(t, 4.2, td.NotNaN()) // succeeds
 td.Cmp(t, 4, td.NotNaN())   // fails, as 4 is not a float
 ```
 
-> See also [`NaN`]({{< ref "NaN" >}}).
+> See also [`NaN`]({{% ref "NaN" %}}).
 
 
 > See also [<i class='fas fa-book'></i> NotNaN godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NotNaN).
@@ -51,17 +51,18 @@ td.Cmp(t, 4, td.NotNaN())   // fails, as 4 is not a float
 	got := math.NaN()
 
 	ok := td.Cmp(t, got, td.NotNaN(),
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("math.NaN() is not-a-number:", ok)
+	fmt.Println("math.NaN() is NOT not-a-number:", ok)
 
 	got = 12
 
 	ok = td.Cmp(t, got, td.NotNaN(),
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("float64(12) is not-a-number:", ok)
+	fmt.Println("float64(12) is NOT not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is NOT not-a-number: false
 	// float64(12) is NOT not-a-number: true
 
@@ -124,17 +125,18 @@ reason of a potential failure.
 	got := math.NaN()
 
 	ok := td.CmpNotNaN(t, got,
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("math.NaN() is not-a-number:", ok)
+	fmt.Println("math.NaN() is NOT not-a-number:", ok)
 
 	got = 12
 
 	ok = td.CmpNotNaN(t, got,
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("float64(12) is not-a-number:", ok)
+	fmt.Println("float64(12) is NOT not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is NOT not-a-number: false
 	// float64(12) is NOT not-a-number: true
 
@@ -195,17 +197,18 @@ reason of a potential failure.
 	got := math.NaN()
 
 	ok := t.NotNaN(got,
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("math.NaN() is not-a-number:", ok)
+	fmt.Println("math.NaN() is NOT not-a-number:", ok)
 
 	got = 12
 
 	ok = t.NotNaN(got,
-		"checks %v is not-a-number", got)
+		"checks %v is NOT not-a-number", got)
 
-	fmt.Println("float64(12) is not-a-number:", ok)
+	fmt.Println("float64(12) is NOT not-a-number:", ok)
 
+	// Output:
 	// math.NaN() is NOT not-a-number: false
 	// float64(12) is NOT not-a-number: true
 

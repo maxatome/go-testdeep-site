@@ -9,7 +9,7 @@ func Struct(model any, expectedFields ...StructFields) TestDeep
 
 Struct operator compares the contents of a struct or a pointer on a
 struct against the non-zero values of *model* (if `any`) and the
-values of *expectedFields*. See [`SStruct`]({{< ref "SStruct" >}}) to compares against zero
+values of *expectedFields*. See [`SStruct`]({{% ref "SStruct" %}}) to compares against zero
 fields without specifying them in *expectedFields*.
 
 *model* must be the same type as compared data. If the expected type
@@ -18,7 +18,7 @@ considered lazy and determined each time the operator is involved
 in a match, see below.
 
 *expectedFields* can be omitted, if no zero entries are expected
-and no [TestDeep operators]({{< ref "operators" >}}) are involved. If *expectedFields*
+and no [TestDeep operators]({{% ref "operators" %}}) are involved. If *expectedFields*
 contains more than one item, all items are merged before their use,
 from left to right.
 
@@ -95,7 +95,7 @@ td.Cmp(t, got, td.Struct(
 
 This way, "*At" shell pattern is always used before "^[a-z]"
 regexp, so if a field "createdAt" exists it is tested against
-time.Now() and never against [`NotNil`]({{< ref "NotNil" >}}). A pattern without a
+time.Now() and never against [`NotNil`]({{% ref "NotNil" %}}). A pattern without a
 prefix number is the same as specifying "0" as prefix.
 
 To make it clearer, some spaces can be added, as well as bigger
@@ -151,9 +151,9 @@ During a match, all expected fields must be found to
 succeed. Non-expected fields (and so zero *model* fields) are
 ignored.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
-> See also [`SStruct`]({{< ref "SStruct" >}}).
+> See also [`SStruct`]({{% ref "SStruct" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Struct godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Struct).
@@ -355,9 +355,9 @@ td.Cmp(t, got, td.Struct(model, expectedFields), args...)
 
 See above for details.
 
-[`Struct`]({{< ref "Struct" >}}) optional parameter *expectedFields* is here mandatory.
+[`Struct`]({{% ref "Struct" %}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Struct`]({{< ref "Struct" >}}) call.
+original [`Struct`]({{% ref "Struct" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -558,9 +558,9 @@ t.Cmp(got, td.Struct(model, expectedFields), args...)
 
 See above for details.
 
-[`Struct`]({{< ref "Struct" >}}) optional parameter *expectedFields* is here mandatory.
+[`Struct`]({{% ref "Struct" %}}) optional parameter *expectedFields* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Struct`]({{< ref "Struct" >}}) call.
+original [`Struct`]({{% ref "Struct" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

@@ -24,7 +24,7 @@ td.Cmp(t, &AnyStruct{}, td.NotZero())         // is true, coz pointer ≠ nil
 td.Cmp(t, &AnyStruct{}, td.Ptr(td.NotZero())) // is false
 ```
 
-> See also [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNil`]({{< ref "NotNil" >}}) and [`Zero`]({{< ref "Zero" >}}).
+> See also [`NotEmpty`]({{% ref "NotEmpty" %}}), [`NotNil`]({{% ref "NotNil" %}}) and [`Zero`]({{% ref "Zero" %}}).
 
 
 > See also [<i class='fas fa-book'></i> NotZero godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NotZero).

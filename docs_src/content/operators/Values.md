@@ -7,7 +7,7 @@ weight: 10
 func Values(val any) TestDeep
 ```
 
-Values is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes a map and compares its
+Values is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes a map and compares its
 ordered values to *val*.
 
 *val* can be a slice of items of the same type as the map values:
@@ -18,7 +18,7 @@ td.Cmp(t, got, td.Values([]string{"a", "b", "c"})) // succeeds, values sorted
 td.Cmp(t, got, td.Values([]string{"c", "a", "b"})) // fails as not sorted
 ```
 
-as well as an other operator as [`Bag`]({{< ref "Bag" >}}), for example, to test values in
+as well as an other operator as [`Bag`]({{% ref "Bag" %}}), for example, to test values in
 an unsorted manner:
 
 ```go
@@ -26,7 +26,7 @@ got := map[int]string{3: "c", 1: "a", 2: "b"}
 td.Cmp(t, got, td.Values(td.Bag("c", "a", "b"))) // succeeds
 ```
 
-> See also [`Keys`]({{< ref "Keys" >}}).
+> See also [`Keys`]({{% ref "Keys" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Values godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Values).

@@ -7,7 +7,7 @@ weight: 10
 func Keys(val any) TestDeep
 ```
 
-Keys is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes a map and compares its
+Keys is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes a map and compares its
 ordered keys to *val*.
 
 *val* can be a slice of items of the same type as the map keys:
@@ -18,7 +18,7 @@ td.Cmp(t, got, td.Keys([]string{"a", "b", "c"})) // succeeds, keys sorted
 td.Cmp(t, got, td.Keys([]string{"c", "a", "b"})) // fails as not sorted
 ```
 
-as well as an other operator as [`Bag`]({{< ref "Bag" >}}), for example, to test keys in
+as well as an other operator as [`Bag`]({{% ref "Bag" %}}), for example, to test keys in
 an unsorted manner:
 
 ```go
@@ -26,7 +26,7 @@ got := map[string]bool{"c": true, "a": false, "b": true}
 td.Cmp(t, got, td.Keys(td.Bag("c", "a", "b"))) // succeeds
 ```
 
-> See also [`Values`]({{< ref "Values" >}}) and [`ContainsKey`]({{< ref "ContainsKey" >}}).
+> See also [`Values`]({{% ref "Values" %}}) and [`ContainsKey`]({{% ref "ContainsKey" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Keys godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Keys).

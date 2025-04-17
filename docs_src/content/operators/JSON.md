@@ -21,12 +21,12 @@ against *expectedJSON*. *expectedJSON* can be a:
 
 *expectedJSON* JSON value can contain placeholders. The *params*
 are for any placeholder parameters in *expectedJSON*. *params* can
-contain [TestDeep operators]({{< ref "operators" >}}) as well as raw values. A placeholder can
+contain [TestDeep operators]({{% ref "operators" %}}) as well as raw values. A placeholder can
 be numeric like `$2` or named like `$name` and always references an
 item in *params*.
 
 Numeric placeholders reference the n'th "operators" item (starting
-at 1). Named placeholders are used with [`Tag`]({{< ref "Tag" >}}) operator as follows:
+at 1). Named placeholders are used with [`Tag`]({{% ref "Tag" %}}) operator as follows:
 
 ```go
 td.Cmp(t, gotValue,
@@ -94,7 +94,7 @@ td.Cmp(t, gotValue,
 For the "details" key, the raw value "`$info`" is expected, no
 placeholders are involved here.
 
-Note that [`Lax`]({{< ref "Lax" >}}) mode is automatically enabled by JSON operator to
+Note that [`Lax`]({{% ref "Lax" %}}) mode is automatically enabled by JSON operator to
 simplify numeric tests.
 
 Comments can be embedded in JSON data:
@@ -157,19 +157,19 @@ td.Cmp(t, gotValue, td.JSON(`{"fullname": HasPrefix($1)}`, "Zip"))
 
 A few notes about operators embedding:
 
-- [`SubMapOf`]({{< ref "SubMapOf" >}}) and [`SuperMapOf`]({{< ref "SuperMapOf" >}}) take only one parameter, a JSON object;
-- the optional 3rd parameter of [`Between`]({{< ref "Between" >}}) has to be specified as a `string`
+- [`SubMapOf`]({{% ref "SubMapOf" %}}) and [`SuperMapOf`]({{% ref "SuperMapOf" %}}) take only one parameter, a JSON object;
+- the optional 3rd parameter of [`Between`]({{% ref "Between" %}}) has to be specified as a `string`
   and can be: "[]" or "BoundsInIn" (default), "[[" or "BoundsInOut",
   "]]" or "BoundsOutIn", "][" or "BoundsOutOut";
-- not all operators are embeddable only the following are: [`All`]({{< ref "All" >}}),
-  [`Any`]({{< ref "Any" >}}), [`ArrayEach`]({{< ref "ArrayEach" >}}), [`Bag`]({{< ref "Bag" >}}), [`Between`]({{< ref "Between" >}}), [`Contains`]({{< ref "Contains" >}}),
-  [`ContainsKey`]({{< ref "ContainsKey" >}}), [`Empty`]({{< ref "Empty" >}}), [`First`]({{< ref "First" >}}), [`Grep`]({{< ref "Grep" >}}), [`Gt`]({{< ref "Gt" >}}), [`Gte`]({{< ref "Gte" >}}),
-  [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Ignore`]({{< ref "Ignore" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}), [`Keys`]({{< ref "Keys" >}}),
-  [`Last`]({{< ref "Last" >}}), [`Len`]({{< ref "Len" >}}), [`Lt`]({{< ref "Lt" >}}), [`Lte`]({{< ref "Lte" >}}), [`MapEach`]({{< ref "MapEach" >}}), [`N`]({{< ref "N" >}}), [`NaN`]({{< ref "NaN" >}}), [`Nil`]({{< ref "Nil" >}}),
-  [`None`]({{< ref "None" >}}), [`Not`]({{< ref "Not" >}}), [`NotAny`]({{< ref "NotAny" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}), [`NotNaN`]({{< ref "NotNaN" >}}), [`NotNil`]({{< ref "NotNil" >}}),
-  [`NotZero`]({{< ref "NotZero" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}), [`Set`]({{< ref "Set" >}}), [`SubBagOf`]({{< ref "SubBagOf" >}}), [`SubMapOf`]({{< ref "SubMapOf" >}}),
-  [`SubSetOf`]({{< ref "SubSetOf" >}}), [`SuperBagOf`]({{< ref "SuperBagOf" >}}), [`SuperMapOf`]({{< ref "SuperMapOf" >}}), [`SuperSetOf`]({{< ref "SuperSetOf" >}}), [`Values`]({{< ref "Values" >}})
-  and [`Zero`]({{< ref "Zero" >}}).
+- not all operators are embeddable only the following are: [`All`]({{% ref "All" %}}),
+  [`Any`]({{% ref "Any" %}}), [`ArrayEach`]({{% ref "ArrayEach" %}}), [`Bag`]({{% ref "Bag" %}}), [`Between`]({{% ref "Between" %}}), [`Contains`]({{% ref "Contains" %}}),
+  [`ContainsKey`]({{% ref "ContainsKey" %}}), [`Empty`]({{% ref "Empty" %}}), [`First`]({{% ref "First" %}}), [`Grep`]({{% ref "Grep" %}}), [`Gt`]({{% ref "Gt" %}}), [`Gte`]({{% ref "Gte" %}}),
+  [`HasPrefix`]({{% ref "HasPrefix" %}}), [`HasSuffix`]({{% ref "HasSuffix" %}}), [`Ignore`]({{% ref "Ignore" %}}), [`JSONPointer`]({{% ref "JSONPointer" %}}), [`Keys`]({{% ref "Keys" %}}),
+  [`Last`]({{% ref "Last" %}}), [`Len`]({{% ref "Len" %}}), [`Lt`]({{% ref "Lt" %}}), [`Lte`]({{% ref "Lte" %}}), [`MapEach`]({{% ref "MapEach" %}}), [`N`]({{% ref "N" %}}), [`NaN`]({{% ref "NaN" %}}), [`Nil`]({{% ref "Nil" %}}),
+  [`None`]({{% ref "None" %}}), [`Not`]({{% ref "Not" %}}), [`NotAny`]({{% ref "NotAny" %}}), [`NotEmpty`]({{% ref "NotEmpty" %}}), [`NotNaN`]({{% ref "NotNaN" %}}), [`NotNil`]({{% ref "NotNil" %}}),
+  [`NotZero`]({{% ref "NotZero" %}}), [`Re`]({{% ref "Re" %}}), [`ReAll`]({{% ref "ReAll" %}}), [`Set`]({{% ref "Set" %}}), [`SubBagOf`]({{% ref "SubBagOf" %}}), [`SubMapOf`]({{% ref "SubMapOf" %}}),
+  [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperBagOf`]({{% ref "SuperBagOf" %}}), [`SuperMapOf`]({{% ref "SuperMapOf" %}}), [`SuperSetOf`]({{% ref "SuperSetOf" %}}), [`Values`]({{% ref "Values" %}})
+  and [`Zero`]({{% ref "Zero" %}}).
 
 
 It is also possible to embed operators in JSON strings. This way,
@@ -249,7 +249,7 @@ As for placeholders, there is no differences between `$^NotZero` and
 "`$^NotZero`".
 
 Tip: when an [`io.Reader`](https://pkg.go.dev/io#Reader) is expected to contain JSON data, it
-cannot be tested directly, but using the [`Smuggle`]({{< ref "Smuggle" >}}) operator simply
+cannot be tested directly, but using the [`Smuggle`]({{% ref "Smuggle" %}}) operator simply
 solves the problem:
 
 ```go
@@ -260,14 +260,14 @@ td.Cmp(t, body, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
 td.Cmp(t, body, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 ```
 
-[`Smuggle`]({{< ref "Smuggle" >}}) reads from body into an [`encoding/json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage) then
+[`Smuggle`]({{% ref "Smuggle" %}}) reads from body into an [`encoding/json.RawMessage`](https://pkg.go.dev/encoding/json#RawMessage) then
 this buffer is unmarshaled by JSON operator before the comparison.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of the *expectedJSON*
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of the *expectedJSON*
 once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
 `map[string]any` or `any` in case *expectedJSON* is "null".
 
-> See also [`JSONPointer`]({{< ref "JSONPointer" >}}), [`SubJSONOf`]({{< ref "SubJSONOf" >}}) and [`SuperJSONOf`]({{< ref "SuperJSONOf" >}}).
+> See also [`JSONPointer`]({{% ref "JSONPointer" %}}), [`SubJSONOf`]({{% ref "SubJSONOf" %}}) and [`SuperJSONOf`]({{% ref "SuperJSONOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> JSON godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#JSON).
@@ -540,7 +540,7 @@ once JSON unmarshaled. So it can be `bool`, `string`, `float64`, `[]any`,
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(tmpDir) // clean up
+	defer os.RemoveAll(tmpDir) //nolint: errcheck // clean up
 
 	filename := tmpDir + "/test.json"
 	if err = os.WriteFile(filename, []byte(`
@@ -851,7 +851,7 @@ reason of a potential failure.
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(tmpDir) // clean up
+	defer os.RemoveAll(tmpDir) //nolint: errcheck // clean up
 
 	filename := tmpDir + "/test.json"
 	if err = os.WriteFile(filename, []byte(`
@@ -1152,7 +1152,7 @@ reason of a potential failure.
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(tmpDir) // clean up
+	defer os.RemoveAll(tmpDir) //nolint: errcheck // clean up
 
 	filename := tmpDir + "/test.json"
 	if err = os.WriteFile(filename, []byte(`

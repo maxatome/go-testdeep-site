@@ -40,11 +40,11 @@ td.Cmp(t, []int{1, 5, 1, 8, 42, 3, 3, 6},
 // = td.Cmp(t, []int{1, 5, 1, 8, 42, 3, 3, 6}, td.SuperBagOf(5, 1, 1, 3, 8, 42))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method can return a non-`nil` [`reflect.Type`](https://pkg.go.dev/reflect#Type) if all items
 known non-interface types are equal, or if only interface types
 are found (mostly issued from Isa()) and they are equal.
 
-> See also [`Bag`]({{< ref "Bag" >}}) and [`SubBagOf`]({{< ref "SubBagOf" >}}).
+> See also [`Bag`]({{% ref "Bag" %}}) and [`SubBagOf`]({{% ref "SubBagOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> SuperBagOf godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#SuperBagOf).

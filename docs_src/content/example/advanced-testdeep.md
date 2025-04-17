@@ -27,16 +27,15 @@ func TestCreateRecord(t *testing.T) {
         &Record{
           Name: "Bob",
           Age:  23,
-        },
-        nil),
+        }),
       "Newly created record")
   }
 }
 ```
 
-Test in in playground: https://play.golang.org/p/-HdKRKY7Kbk
+Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
 
-The [`Struct`]({{< ref "operators/Struct" >}}) operator, used here,
+The [`Struct`]({{% ref "operators/Struct" %}}) operator, used here,
 ignores zero fields in its model parameter.
 
 But it is better to check all fields:
@@ -71,15 +70,15 @@ func TestCreateRecord(t *testing.T) {
 
 Test it in playground: https://play.golang.org/p/PGyi0d3ZXMa
 
-See the use of the [`Struct`]({{< ref "operators/Struct" >}})
+See the use of the [`Struct`]({{% ref "operators/Struct" %}})
 operator. It is needed here to overcome the go static typing system
-and so use other [go-testdeep operators]({{< ref "operators" >}})
-for some fields, here [`NotZero`]({{< ref "operators/NotZero" >}}) for
-`Id` and [`Between`]({{< ref "operators/Between" >}}) for `CreatedAt`.
+and so use other [go-testdeep operators]({{% ref "operators" %}})
+for some fields, here [`NotZero`]({{% ref "operators/NotZero" %}}) for
+`Id` and [`Between`]({{% ref "operators/Between" %}}) for `CreatedAt`.
 
 Not only structs can be compared. A lot of operators can be
 found to cover most (all?) needed tests. See the
-[operators list]({{< ref "operators" >}}).
+[operators list]({{% ref "operators" %}}).
 
 Say `CreateRecord()` does not set correctly `CreatedAt` field, then:
 ```sh

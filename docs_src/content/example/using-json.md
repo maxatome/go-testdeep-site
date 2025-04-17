@@ -4,10 +4,10 @@ weight = 70
 +++
 
 JSON is a first class citizen in go-testdeep world thanks to its
-specific operators: [`JSON`]({{< ref "JSON" >}}),
-[`SubJSONOf`]({{< ref "SubJSONOf" >}}),
-[`SuperJSONOf`]({{< ref "SuperJSONOf" >}}) and
-[`JSONPointer`]({{< ref "JSONPointer" >}}).
+specific operators: [`JSON`]({{% ref "JSON" %}}),
+[`SubJSONOf`]({{% ref "SubJSONOf" %}}),
+[`SuperJSONOf`]({{% ref "SuperJSONOf" %}}) and
+[`JSONPointer`]({{% ref "JSONPointer" %}}).
 
 ```go
 import (

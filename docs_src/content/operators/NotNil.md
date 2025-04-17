@@ -25,7 +25,7 @@ td.Cmp(t, got, td.NotNil()) // fails
 td.Cmp(t, got, td.Not(nil)) // succeeds, as the interface is not nil
 ```
 
-> See also [`Nil`]({{< ref "Nil" >}}), [`NotEmpty`]({{< ref "NotEmpty" >}}) and [`NotZero`]({{< ref "NotZero" >}}).
+> See also [`Nil`]({{% ref "Nil" %}}), [`NotEmpty`]({{% ref "NotEmpty" %}}) and [`NotZero`]({{% ref "NotZero" %}}).
 
 
 > See also [<i class='fas fa-book'></i> NotNil godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NotNil).

@@ -14,12 +14,12 @@ if the same entry is present in *expectedEntries*, otherwise they
 are taken into account. An entry cannot be present in both *model*
 and *expectedEntries*, except if it is a zero-value in *model*. At
 the end, all entries are checked. To check only some entries of an
-array, see [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}) operator.
+array, see [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) operator.
 
 *model* must be the same type as compared data.
 
 *expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{< ref "operators" >}}) are involved.
+no [TestDeep operators]({{% ref "operators" %}}) are involved.
 
 ```go
 got := [3]int{12, 14, 17}
@@ -28,9 +28,9 @@ td.Cmp(t, &got,
   td.Array(&[3]int{0, 14}, td.ArrayEntries{0: td.Gt(10), 2: td.Gt(15)})) // succeeds
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
-> See also [`Slice`]({{< ref "Slice" >}}) and [`SuperSliceOf`]({{< ref "SuperSliceOf" >}}).
+> See also [`Slice`]({{% ref "Slice" %}}) and [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Array godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Array).

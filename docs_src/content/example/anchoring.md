@@ -4,8 +4,8 @@ weight = 60
 +++
 
 Operators can also directly be anchored in litterals, still using the
-[`td.T` type]({{< ref "functions/td-t" >}}), avoiding the use of the
-[`Struct`]({{< ref "Struct" >}}) operator:
+[`td.T` type]({{% ref "functions/td-t" %}}), avoiding the use of the
+[`Struct`]({{% ref "Struct" %}}) operator:
 
 ```go
 import (
@@ -47,4 +47,16 @@ is also a synonym for Anchor.
 ```go
           Id:        t.A(td.NotZero(), uint64(0)).(uint64),
           CreatedAt: t.A(td.Between(before, time.Now())).(time.Time),
+```
+
+Thanks to generics, this can also be written as:
+
+```go
+          Id:        td.Anchor[uint64](t, td.NotZero()),
+          CreatedAt: td.Anchor[time.Time](t, td.Between(before, time.Now())),
+```
+or
+```go
+          Id:        td.A[uint64](t, td.NotZero()),
+          CreatedAt: td.A[time.Time](t, td.Between(before, time.Now())),
 ```

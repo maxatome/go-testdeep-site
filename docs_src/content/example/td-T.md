@@ -4,7 +4,7 @@ weight = 50
 +++
 
 [`testing.T`](https://golang.org/pkg/testing/#T) can also be
-encapsulated in [`td.T` type]({{< ref "functions/td-t" >}}),
+encapsulated in [`td.T` type]({{% ref "functions/td-t" %}}),
 simplifying again the test:
 
 ```go

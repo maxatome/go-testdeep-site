@@ -4,7 +4,7 @@ weight = 20
 +++
 
 [`td` package](https://pkg.go.dev/github.com/maxatome/go-testdeep/td),
-via its [`Cmp*`]({{< ref "functions" >}}) functions, handles the tests
+via its [`Cmp*`]({{% ref "functions" %}}) functions, handles the tests
 and all the error message boiler plate. Let's do it:
 
 ```go
@@ -31,9 +31,9 @@ func TestCreateRecord(t *testing.T) {
 Test it in playground: https://play.golang.org/p/bfe-aj_gx8Q
 
 As we cannot guess the `Id` field value before its creation, we use the
-[`NotZero`]({{< ref "operators/NotZero" >}}) operator to check it is
+[`NotZero`]({{% ref "operators/NotZero" %}}) operator to check it is
 set by  `CreateRecord()` call. The same is true for the creation date
-field `CreatedAt`. Thanks to the [`Between`]({{< ref "operators/Between" >}})
+field `CreatedAt`. Thanks to the [`Between`]({{% ref "operators/Between" %}})
 operator we can check it is set with a value included between
 the date before `CreateRecord()` call and the date just after.
 

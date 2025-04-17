@@ -7,7 +7,7 @@ weight: 10
 func Cap(expectedCap any) TestDeep
 ```
 
-Cap is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes data, applies `cap()` function
+Cap is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes data, applies `cap()` function
 on it and compares its result to *expectedCap*. Of course, the
 compared value must be an array, a channel or a slice.
 
@@ -23,7 +23,7 @@ as well as an other operator:
 td.Cmp(t, gotSlice, td.Cap(td.Between(3, 4)))
 ```
 
-> See also [`Len`]({{< ref "Len" >}}).
+> See also [`Len`]({{% ref "Len" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Cap godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cap).

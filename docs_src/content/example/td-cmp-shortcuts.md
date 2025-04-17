@@ -5,9 +5,9 @@ weight = 40
 
 The [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp)
 function is the keystone of this package, but to make the writing of
-tests even easier, the family of [`Cmp*`]({{< ref "functions" >}})
+tests even easier, the family of [`Cmp*`]({{% ref "functions" %}})
 functions are provided and act as shortcuts. Using
-[`CmpStruct`]({{< ref "operators/Struct#cmpstruct-shortcut" >}})
+[`CmpStruct`]({{% ref "operators/Struct#cmpstruct-shortcut" %}})
 function, the previous example can be written as:
 
 ```go

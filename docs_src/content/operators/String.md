@@ -19,7 +19,7 @@ bstr := bytes.NewBufferString("fmt.Stringer!")
 td.Cmp(t, bstr, td.String("fmt.Stringer!")) // succeeds
 ```
 
-> See also [`Contains`]({{< ref "Contains" >}}), [`HasPrefix`]({{< ref "HasPrefix" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Re`]({{< ref "Re" >}}) and [`ReAll`]({{< ref "ReAll" >}}).
+> See also [`Contains`]({{% ref "Contains" %}}), [`HasPrefix`]({{% ref "HasPrefix" %}}), [`HasSuffix`]({{% ref "HasSuffix" %}}), [`Re`]({{% ref "Re" %}}) and [`ReAll`]({{% ref "ReAll" %}}).
 
 
 > See also [<i class='fas fa-book'></i> String godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#String).

@@ -7,12 +7,12 @@ weight: 10
 func Catch(target, expectedValue any) TestDeep
 ```
 
-Catch is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It allows to copy data in *target* on
+Catch is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It allows to copy data in *target* on
 the fly before comparing it as usual against *expectedValue*.
 
 *target* must be a non-`nil` pointer and data should be assignable to
-its pointed type. If [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) is true or called under [`Lax`]({{< ref "Lax" >}})
-(and so [`JSON`]({{< ref "JSON" >}})) operator, data should be convertible to its pointer
+its pointed type. If [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) is true or called under [`Lax`]({{% ref "Lax" %}})
+(and so [`JSON`]({{% ref "JSON" %}})) operator, data should be convertible to its pointer
 type.
 
 ```go
@@ -23,7 +23,7 @@ if td.Cmp(t, CreateRecord("test"),
 }
 ```
 
-It is really useful when used with [`JSON`]({{< ref "JSON" >}}) operator and/or [tdhttp](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp) helper.
+It is really useful when used with [`JSON`]({{% ref "JSON" %}}) operator and/or [tdhttp](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp) helper.
 
 ```go
 var id int64
@@ -36,7 +36,7 @@ if !ta.Failed() {
 }
 ```
 
-If you need to only catch data without comparing it, use [`Ignore`]({{< ref "Ignore" >}})
+If you need to only catch data without comparing it, use [`Ignore`]({{% ref "Ignore" %}})
 operator as *expectedValue* as in:
 
 ```go
@@ -47,9 +47,9 @@ if td.Cmp(t, CreateRecord("test"),
 }
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue*,
-except if *expectedValue* is a [TestDeep operator]({{< ref "operators" >}}). In this case, it
-delegates [`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator, but if `nil` is returned by
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue*,
+except if *expectedValue* is a [TestDeep operator]({{% ref "operators" %}}). In this case, it
+delegates [`TypeBehind()`]({{% ref "operators#typebehind-method" %}}) to the operator, but if `nil` is returned by
 this call, the dereferenced [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *target* is returned.
 
 

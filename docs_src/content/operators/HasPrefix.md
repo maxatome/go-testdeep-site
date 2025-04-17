@@ -24,7 +24,7 @@ bstr := bytes.NewBufferString("fmt.Stringer!")
 td.Cmp(t, bstr, td.HasPrefix("fmt")) // succeeds
 ```
 
-> See also [`Contains`]({{< ref "Contains" >}}), [`HasSuffix`]({{< ref "HasSuffix" >}}), [`Re`]({{< ref "Re" >}}), [`ReAll`]({{< ref "ReAll" >}}) and [`String`]({{< ref "String" >}}).
+> See also [`Contains`]({{% ref "Contains" %}}), [`HasSuffix`]({{% ref "HasSuffix" %}}), [`Re`]({{% ref "Re" %}}), [`ReAll`]({{% ref "ReAll" %}}) and [`String`]({{% ref "String" %}}).
 
 
 > See also [<i class='fas fa-book'></i> HasPrefix godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#HasPrefix).

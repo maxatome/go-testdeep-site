@@ -43,7 +43,7 @@ b := a[:2]                    // aka []int{1, 2}
 td.Cmp(t, &a, td.Shallow(&b)) // succeeds as both slices point to the same area, even if len() differ
 ```
 
-> See also [`Ptr`]({{< ref "Ptr" >}}).
+> See also [`Ptr`]({{% ref "Ptr" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Shallow godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Shallow).

@@ -1,20 +1,24 @@
 baseURL = "https://go-testdeep.zetta.rocks/"
 languageCode = "en-us"
 title = "go-testdeep"
-theme = "hugo-theme-learn"
+theme = "hugo-theme-relearn"
 
 enableGitInfo = true
 
 PygmentsCodeFences = true
 PygmentsStyle = "native"
 
+ignoreLogs = ['warning-goldmark-raw-html', 'warning-partial-superfluous-prefix']
+
 # For search functionality
 [outputs]
-home = [ "HTML", "RSS", "JSON"]
+home = ["html", "rss"]
 
 [params]
-  themeVariant = "green"
-  disableInlineCopyToClipBoard = true
+disableLandingPageButton = true
+disableInlineCopyToClipBoard = true
+themeVariant = "green"
+hideAuthorName = true
 
 [minify.tdewolff.html]
 keepWhitespace=true

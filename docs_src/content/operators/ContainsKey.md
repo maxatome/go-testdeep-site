@@ -7,7 +7,7 @@ weight: 10
 func ContainsKey(expectedValue any) TestDeep
 ```
 
-ContainsKey is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) and works on maps only. It
+ContainsKey is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}) and works on maps only. It
 compares each key of map against *expectedValue*.
 
 ```go
@@ -36,7 +36,7 @@ td.Cmp(t, hnum, td.ContainsKey(td.Nil()))    // succeeds
 td.Cmp(t, hnum, td.ContainsKey((*byte)(nil))) // fails: (*byte)(nil) ≠ (*int)(nil)
 ```
 
-> See also [`Contains`]({{< ref "Contains" >}}).
+> See also [`Contains`]({{% ref "Contains" %}}).
 
 
 > See also [<i class='fas fa-book'></i> ContainsKey godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContainsKey).

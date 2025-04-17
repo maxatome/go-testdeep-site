@@ -30,7 +30,7 @@ td.Cmp(t, gotDate, td.TruncTime(expected))              // fails, ns differ
 td.Cmp(t, gotDate, td.TruncTime(expected, time.Second)) // succeeds
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedTime*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedTime*.
 
 
 > See also [<i class='fas fa-book'></i> TruncTime godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#TruncTime).
@@ -88,9 +88,9 @@ td.Cmp(t, got, td.TruncTime(expectedTime, trunc), args...)
 
 See above for details.
 
-[`TruncTime`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
+[`TruncTime`]({{% ref "TruncTime" %}}) optional parameter *trunc* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`TruncTime`]({{< ref "TruncTime" >}}) call.
+original [`TruncTime`]({{% ref "TruncTime" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -159,9 +159,9 @@ t.Cmp(got, td.TruncTime(expectedTime, trunc), args...)
 
 See above for details.
 
-[`TruncTime`]({{< ref "TruncTime" >}}) optional parameter *trunc* is here mandatory.
+[`TruncTime`]({{% ref "TruncTime" %}}) optional parameter *trunc* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`TruncTime`]({{< ref "TruncTime" >}}) call.
+original [`TruncTime`]({{% ref "TruncTime" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

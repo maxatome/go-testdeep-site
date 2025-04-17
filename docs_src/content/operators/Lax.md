@@ -7,7 +7,7 @@ weight: 10
 func Lax(expectedValue any) TestDeep
 ```
 
-Lax is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}), it temporarily enables the [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) before letting the comparison process continue its course.
+Lax is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}), it temporarily enables the [`BeLax` config flag](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax) before letting the comparison process continue its course.
 
 It is more commonly used as [`CmpLax`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpLax) function than as an operator. It
 could be used when, for example, an operator is constructed once
@@ -27,11 +27,11 @@ Note that in the latter case, [`CmpLax`](https://pkg.go.dev/github.com/maxatome/
 td.CmpLax(t, floatValue, bw)
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the greatest convertible or more common
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the greatest convertible or more common
 [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue* if it is a base type (`bool`, `int*`,
 `uint*`, `float*`, `complex*`, `string`), the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of
 *expectedValue* otherwise, except if *expectedValue* is a [TestDeep
-operator]({{< ref "operators" >}}). In this case, it delegates [`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator.
+operator]({{% ref "operators" %}}). In this case, it delegates [`TypeBehind()`]({{% ref "operators#typebehind-method" %}}) to the operator.
 
 
 > See also [<i class='fas fa-book'></i> Lax godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Lax).

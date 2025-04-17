@@ -9,7 +9,7 @@ func Smuggle(fn, expectedValue any) TestDeep
 
 Smuggle operator allows to change data contents or mutate it into
 another type before stepping down in favor of generic comparison
-process. Of course it is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). So *fn* is a function
+process. Of course it is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). So *fn* is a function
 that must take one parameter whose type must be convertible to the
 type of the compared value.
 
@@ -29,7 +29,7 @@ td.Cmp(t, "0028",
 )
 ```
 
-or using an other [TestDeep operator]({{< ref "operators" >}}), here [`Between`]({{< ref "Between" >}})(28, 30):
+or using an other [TestDeep operator]({{% ref "operators" %}}), here [`Between`]({{% ref "Between" %}})(28, 30):
 
 ```go
 td.Cmp(t, "0029",
@@ -163,6 +163,7 @@ several struct layers.
 
 ```go
 type A struct{ Num int }
+// func (a *A) String() string { return fmt.Sprintf("Num is %d", a.Num) }
 type B struct{ As map[string]*A }
 type C struct{ B B }
 got := C{B: B{As: map[string]*A{"foo": {Num: 12}}}}
@@ -183,15 +184,34 @@ call in the above example can be rewritten as follows:
 td.Cmp(t, got, td.Smuggle("B.As[foo].Num", 12))
 ```
 
-Contrary to [`JSONPointer`]({{< ref "JSONPointer" >}}) operator, private fields can be
-followed. Arrays, slices and maps work using the index/key inside
-square brackets (e.g. [12] or [foo]). Maps work only for simple key
-types (`string` or numbers), without "" when using strings
-(e.g. [foo]).
+In addition, simple public methods can also be called like in:
+
+```go
+td.Cmp(t, got, td.Smuggle("B.As[foo].String()", "Num is 12"))
+```
+
+Allowed methods must not take `any` parameter and must return one
+value or a value and an [`error`](https://pkg.go.dev/builtin#error). For the latter case, if the method
+returns a non-`nil` [`error`](https://pkg.go.dev/builtin#error), the comparison fails. The comparison also
+fails if a panic occurs or if a method cannot be called. No private
+fields should be traversed before calling the method. For fun,
+consider a more complex example involving [`reflect`](https://pkg.go.dev/reflect) and chaining
+method calls:
+
+```go
+got := reflect.Valueof(&C{B: B{As: map[string]*A{"foo": {Num: 12}}}})
+td.Cmp(t, got, td.Smuggle("Elem().Interface().B.As[foo].String()", "Num is 12"))
+```
+
+Contrary to [`JSONPointer`]({{% ref "JSONPointer" %}}) operator, private fields can be followed
+and public methods on public fields can be called. Arrays, slices
+and maps work using the index/key inside square brackets (e.g. [12]
+or [foo]). Maps work only for simple key types (`string` or numbers),
+without "" when using strings (e.g. [foo]).
 
 Behind the scenes, a temporary function is automatically created to
-achieve the same goal, but add some checks against `nil` values and
-auto-dereference interfaces and pointers, even on several levels,
+achieve the same goal, but adds some checks against `nil` values and
+auto-dereferences interfaces and pointers, even on several levels,
 like in:
 
 ```go
@@ -210,7 +230,7 @@ td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
 td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 ```
 
-converts on the fly a `string` to a [json.RawMessage](https://pkg.go.dev/encoding/json#RawMessage) so [`JSON`]({{< ref "JSON" >}}) operator
+converts on the fly a `string` to a [json.RawMessage](https://pkg.go.dev/encoding/json#RawMessage) so [`JSON`]({{% ref "JSON" %}}) operator
 can parse it as JSON. This is mostly a shortcut for:
 
 ```go
@@ -233,7 +253,7 @@ td.Cmp(t, body, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 This last example allows to easily inject body content into JSON
 operator.
 
-The difference between Smuggle and [`Code`]({{< ref "Code" >}}) operators is that [`Code`]({{< ref "Code" >}})
+The difference between Smuggle and [`Code`]({{% ref "Code" %}}) operators is that [`Code`]({{% ref "Code" %}})
 is used to do a final comparison while Smuggle transforms the data
 and then steps down in favor of generic comparison
 process. Moreover, the type accepted as input for the function is
@@ -241,13 +261,13 @@ more lax to facilitate the writing of tests (e.g. the function can
 accept a `float64` and the got value be an `int`). See examples. On the
 other hand, the output type is strict and must match exactly the
 expected value type. The fields-path `string` *fn* shortcut and the
-cast feature are not available with [`Code`]({{< ref "Code" >}}) operator.
+cast feature are not available with [`Code`]({{% ref "Code" %}}) operator.
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of only parameter of
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of only parameter of
 *fn*. For the case where *fn* is a fields-path, it is always
 `any`, as the type can not be known in advance.
 
-> See also [`Code`]({{< ref "Code" >}}), [`JSONPointer`]({{< ref "JSONPointer" >}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
+> See also [`Code`]({{% ref "Code" %}}), [`JSONPointer`]({{% ref "JSONPointer" %}}) and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten).
 
 
 
@@ -484,12 +504,12 @@ cast feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 	// Want to check whether Num is between 100 and 200?
 	ok := td.Cmp(t, got,
 		td.Smuggle(
-			func(t *Transaction) (int, error) {
-				if t.Request.Body == nil ||
-					t.Request.Body.Value == nil {
+			func(tr *Transaction) (int, error) {
+				if tr.Body == nil ||
+					tr.Body.Value == nil {
 					return 0, errors.New("Request.Body or Request.Body.Value is nil")
 				}
-				if v, ok := t.Request.Body.Value.(*ValueNum); ok && v != nil {
+				if v, ok := tr.Body.Value.(*ValueNum); ok && v != nil {
 					return v.Num, nil
 				}
 				return 0, errors.New("Request.Body.Value isn't *ValueNum or nil")
@@ -507,7 +527,7 @@ cast feature are not available with [`Code`]({{< ref "Code" >}}) operator.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]any{
+	got.Body.Value = map[string]any{
 		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},
@@ -752,12 +772,12 @@ reason of a potential failure.
 	}
 
 	// Want to check whether Num is between 100 and 200?
-	ok := td.CmpSmuggle(t, got, func(t *Transaction) (int, error) {
-		if t.Request.Body == nil ||
-			t.Request.Body.Value == nil {
+	ok := td.CmpSmuggle(t, got, func(tr *Transaction) (int, error) {
+		if tr.Body == nil ||
+			tr.Body.Value == nil {
 			return 0, errors.New("Request.Body or Request.Body.Value is nil")
 		}
-		if v, ok := t.Request.Body.Value.(*ValueNum); ok && v != nil {
+		if v, ok := tr.Body.Value.(*ValueNum); ok && v != nil {
 			return v.Num, nil
 		}
 		return 0, errors.New("Request.Body.Value isn't *ValueNum or nil")
@@ -774,7 +794,7 @@ reason of a potential failure.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]any{
+	got.Body.Value = map[string]any{
 		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},
@@ -1017,12 +1037,12 @@ reason of a potential failure.
 	}
 
 	// Want to check whether Num is between 100 and 200?
-	ok := t.Smuggle(got, func(t *Transaction) (int, error) {
-		if t.Request.Body == nil ||
-			t.Request.Body.Value == nil {
+	ok := t.Smuggle(got, func(tr *Transaction) (int, error) {
+		if tr.Body == nil ||
+			tr.Body.Value == nil {
 			return 0, errors.New("Request.Body or Request.Body.Value is nil")
 		}
-		if v, ok := t.Request.Body.Value.(*ValueNum); ok && v != nil {
+		if v, ok := tr.Body.Value.(*ValueNum); ok && v != nil {
 			return v.Num, nil
 		}
 		return 0, errors.New("Request.Body.Value isn't *ValueNum or nil")
@@ -1039,7 +1059,7 @@ reason of a potential failure.
 	fmt.Println("check Num using an other fields-path:", ok)
 
 	// Note that maps and array/slices are supported
-	got.Request.Body.Value = map[string]any{
+	got.Body.Value = map[string]any{
 		"foo": []any{
 			3: map[int]string{666: "bar"},
 		},

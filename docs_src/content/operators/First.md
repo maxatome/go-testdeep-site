@@ -7,17 +7,17 @@ weight: 10
 func First(filter, expectedValue any) TestDeep
 ```
 
-First is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes an array, a slice or a
+First is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes an array, a slice or a
 pointer on array/slice. For each item it applies *filter*, a
-[TestDeep operator]({{< ref "operators" >}}) or a function returning a `bool`. It takes the
+[TestDeep operator]({{% ref "operators" %}}) or a function returning a `bool`. It takes the
 first item for which the *filter* matched and compares it to
 *expectedValue*. The *filter* matches when it is a:
 
-- [TestDeep operator]({{< ref "operators" >}}) and it matches for the item;
+- [TestDeep operator]({{% ref "operators" %}}) and it matches for the item;
 - function receiving the item and it returns true.
 
 
-*expectedValue* can of course be a [TestDeep operator]({{< ref "operators" >}}).
+*expectedValue* can of course be a [TestDeep operator]({{% ref "operators" %}}).
 
 ```go
 got := []int{-3, -2, -1, 0, 1, 2, 3}
@@ -36,7 +36,7 @@ td.Cmp(t, []int{}, td.First(td.Gt(0), td.Gt(0)))  // fails
 td.Cmp(t, [0]int{}, td.First(td.Gt(0), td.Gt(0))) // fails
 ```
 
-> See also [`Last`]({{< ref "Last" >}}) and [`Grep`]({{< ref "Grep" >}}).
+> See also [`Last`]({{% ref "Last" %}}) and [`Grep`]({{% ref "Grep" %}}).
 
 
 > See also [<i class='fas fa-book'></i> First godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#First).

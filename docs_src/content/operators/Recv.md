@@ -7,10 +7,10 @@ weight: 10
 func Recv(expectedValue any, timeout ...time.Duration) TestDeep
 ```
 
-Recv is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It reads from a channel or a pointer
+Recv is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It reads from a channel or a pointer
 to a channel and compares the read value to *expectedValue*.
 
-*expectedValue* can be `any` value including a [TestDeep operator]({{< ref "operators" >}}). It
+*expectedValue* can be `any` value including a [TestDeep operator]({{% ref "operators" %}}). It
 can also be [`RecvNothing`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#RecvNothing) to test nothing can be read from the
 channel or [`RecvClosed`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#RecvClosed) to check the channel is closed.
 
@@ -61,7 +61,7 @@ td.Cmp(t, &ch, td.Recv(42)) // succeeds
 
 Each time Recv is called, it tries to consume one item from the
 channel, immediately or, if given, before *timeout* duration. To
-consume several items in a same [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) call, one can use [`All`]({{< ref "All" >}})
+consume several items in a same [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) call, one can use [`All`]({{% ref "All" %}})
 operator as in:
 
 ```go
@@ -121,11 +121,11 @@ if td.Cmp(t, ch, td.NotNil()) {
 }
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue*,
-except if *expectedValue* is a [TestDeep operator]({{< ref "operators" >}}). In this case, it
-delegates [`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *expectedValue*,
+except if *expectedValue* is a [TestDeep operator]({{% ref "operators" %}}). In this case, it
+delegates [`TypeBehind()`]({{% ref "operators#typebehind-method" %}}) to the operator.
 
-> See also [`Cap`]({{< ref "Cap" >}}) and [`Len`]({{< ref "Len" >}}).
+> See also [`Cap`]({{% ref "Cap" %}}) and [`Len`]({{% ref "Len" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Recv godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Recv).
@@ -293,9 +293,9 @@ td.Cmp(t, got, td.Recv(expectedValue, timeout), args...)
 
 See above for details.
 
-[`Recv`]({{< ref "Recv" >}}) optional parameter *timeout* is here mandatory.
+[`Recv`]({{% ref "Recv" %}}) optional parameter *timeout* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`Recv`]({{< ref "Recv" >}}) call.
+original [`Recv`]({{% ref "Recv" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -474,9 +474,9 @@ t.Cmp(got, td.Recv(expectedValue, timeout), args...)
 
 See above for details.
 
-[`Recv`]({{< ref "Recv" >}}) optional parameter *timeout* is here mandatory.
+[`Recv`]({{% ref "Recv" %}}) optional parameter *timeout* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`Recv`]({{< ref "Recv" >}}) call.
+original [`Recv`]({{% ref "Recv" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

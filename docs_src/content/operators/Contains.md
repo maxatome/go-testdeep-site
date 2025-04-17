@@ -7,13 +7,13 @@ weight: 10
 func Contains(expectedValue any) TestDeep
 ```
 
-Contains is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}) to check if something is contained
+Contains is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}) to check if something is contained
 in another thing. Contains has to be applied on arrays, slices, maps or
 strings. It tries to be as smarter as possible.
 
-If *expectedValue* is a [TestDeep operator]({{< ref "operators" >}}), each item of data
+If *expectedValue* is a [TestDeep operator]({{% ref "operators" %}}), each item of data
 array/slice/map/`string` (`rune` for strings) is compared to it. The
-use of a [TestDeep operator]({{< ref "operators" >}}) as *expectedValue* works only in this
+use of a [TestDeep operator]({{% ref "operators" %}}) as *expectedValue* works only in this
 way: item per item.
 
 If data is a slice, and *expectedValue* has the same type, then
@@ -29,7 +29,7 @@ td.Cmp(t, list, td.Contains([]int{34, 28}))      // succeeds
 ```
 
 If data is an array or a map, each value is compared to
-*expectedValue*. Map keys are not checked: see [`ContainsKey`]({{< ref "ContainsKey" >}}) to check
+*expectedValue*. Map keys are not checked: see [`ContainsKey`]({{% ref "ContainsKey" %}}) to check
 map keys existence.
 
 ```go
@@ -76,7 +76,7 @@ Pitfall: if you want to check if 2 words are contained in got, don't do:
 td.Cmp(t, "foobar", td.Contains(td.All("foo", "bar"))) // Bad!
 ```
 
-as [TestDeep operator]({{< ref "operators" >}}) [`All`]({{< ref "All" >}}) in Contains operates on each `rune`, so it
+as [TestDeep operator]({{% ref "operators" %}}) [`All`]({{% ref "All" %}}) in Contains operates on each `rune`, so it
 does not work as expected, but do::
 
 ```go
@@ -107,7 +107,7 @@ td.Cmp(t, hash, td.Contains((*int)(nil))) // succeeds
 td.Cmp(t, hash, td.Contains(td.Nil()))    // succeeds
 ```
 
-> See also [`ContainsKey`]({{< ref "ContainsKey" >}}).
+> See also [`ContainsKey`]({{% ref "ContainsKey" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Contains godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Contains).

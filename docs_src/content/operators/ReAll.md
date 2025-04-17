@@ -26,7 +26,7 @@ td.Cmp(t, "John Doe",
   td.ReAll(`(\w+)(?: |\z)`, td.Bag("Doe", "John"))) // succeeds
 ```
 
-> See also [`Re`]({{< ref "Re" >}}).
+> See also [`Re`]({{% ref "Re" %}}).
 
 
 > See also [<i class='fas fa-book'></i> ReAll godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ReAll).

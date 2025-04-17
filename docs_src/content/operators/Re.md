@@ -27,7 +27,7 @@ td.Cmp(t, "John Doe",
   td.Re(`^(\w+) (\w+)`, td.Bag("Doe", "John"))) // succeeds
 ```
 
-> See also [`ReAll`]({{< ref "ReAll" >}}).
+> See also [`ReAll`]({{% ref "ReAll" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Re godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Re).
@@ -170,9 +170,9 @@ td.Cmp(t, got, td.Re(reg, capture), args...)
 
 See above for details.
 
-[`Re`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
+[`Re`]({{% ref "Re" %}}) optional parameter *capture* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Re`]({{< ref "Re" >}}) call.
+original [`Re`]({{% ref "Re" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -326,9 +326,9 @@ t.Cmp(got, td.Re(reg, capture), args...)
 
 See above for details.
 
-[`Re`]({{< ref "Re" >}}) optional parameter *capture* is here mandatory.
+[`Re`]({{% ref "Re" %}}) optional parameter *capture* is here mandatory.
 `nil` value should be passed to mimic its absence in
-original [`Re`]({{< ref "Re" >}}) call.
+original [`Re`]({{% ref "Re" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

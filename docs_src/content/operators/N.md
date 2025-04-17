@@ -16,7 +16,7 @@ td.Cmp(t, 12.2, td.N(12., 0.3)) // succeeds
 td.Cmp(t, 12.2, td.N(12., 0.1)) // fails
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *num*.
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *num*.
 
 
 > See also [<i class='fas fa-book'></i> N godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#N).
@@ -50,9 +50,9 @@ td.Cmp(t, got, td.N(num, tolerance), args...)
 
 See above for details.
 
-[`N`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
+[`N`]({{% ref "N" %}}) optional parameter *tolerance* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`N`]({{< ref "N" >}}) call.
+original [`N`]({{% ref "N" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
@@ -97,9 +97,9 @@ t.Cmp(got, td.N(num, tolerance), args...)
 
 See above for details.
 
-[`N`]({{< ref "N" >}}) optional parameter *tolerance* is here mandatory.
+[`N`]({{% ref "N" %}}) optional parameter *tolerance* is here mandatory.
 0 value should be passed to mimic its absence in
-original [`N`]({{< ref "N" >}}) call.
+original [`N`]({{% ref "N" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

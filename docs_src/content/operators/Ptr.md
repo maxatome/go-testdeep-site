@@ -7,7 +7,7 @@ weight: 10
 func Ptr(val any) TestDeep
 ```
 
-Ptr is a [smuggler operator]({{< ref "operators#smuggler-operators" >}}). It takes the address of data and
+Ptr is a [smuggler operator]({{% ref "operators#smuggler-operators" %}}). It takes the address of data and
 compares it to *val*.
 
 *val* depends on data type. For example, if the compared data is an
@@ -25,12 +25,12 @@ num := 3
 td.Cmp(t, &num, td.Ptr(td.Between(3, 4)))
 ```
 
-[`TypeBehind`]({{< ref "operators#typebehind-method" >}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of a pointer on *val*,
-except if *val* is a [TestDeep operator]({{< ref "operators" >}}). In this case, it delegates
-[`TypeBehind()`]({{< ref "operators#typebehind-method" >}}) to the operator and returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of a
+[`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of a pointer on *val*,
+except if *val* is a [TestDeep operator]({{% ref "operators" %}}). In this case, it delegates
+[`TypeBehind()`]({{% ref "operators#typebehind-method" %}}) to the operator and returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of a
 pointer on the returned value (if non-`nil` of course).
 
-> See also [`PPtr`]({{< ref "PPtr" >}}) and [`Shallow`]({{< ref "Shallow" >}}).
+> See also [`PPtr`]({{% ref "PPtr" %}}) and [`Shallow`]({{% ref "Shallow" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Ptr godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Ptr).
