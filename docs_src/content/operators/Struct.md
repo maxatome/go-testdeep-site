@@ -60,7 +60,7 @@ td.Cmp(t, got, td.Struct(
 
 *expectedFields* can also contain regexps or shell patterns to
 match multiple fields not explicitly listed in *model* and in
-*expectedFields*. Regexps are prefixed by "=~" or "!~" to
+*expectedFields*. Regexps are prefixed by "=\~" or "!\~" to
 respectively match or don't-match. Shell patterns are prefixed by "="
 or "!" to respectively match or don't-match.
 
