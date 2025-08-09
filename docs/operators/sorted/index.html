@@ -1,0 +1,643 @@
+<!doctype html><html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
+<meta name=generator content="Hugo 0.145.0">
+<meta name=generator content="Relearn 7.6.1">
+<meta name=description content="func Sorted(how ...any) TestDeep Sorted operator checks that data is an array, a slice or a pointer on array/slice, and it is well sorted as how tells it should be.
+how… can be:
+empty to check a generic ascending order; nil or a float64/int >= 0 to check a generic ascending order; a float64/int < 0 to check a generic descending order; strings specifying fields-paths (each optionally prefixed by “+” or “-” for respectively checking an ascending or a descending order, defaulting to ascending one); a function matching func(a, b T) bool signature and returning true if a is before b. A fields-path, also used by Smuggle and Sort operators, allows to access nested structs fields and maps & slices items. See Smuggle for details on fields-path possibilities.">
+<meta name=author content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Sorted :: go-testdeep">
+<meta name=twitter:description content="func Sorted(how ...any) TestDeep Sorted operator checks that data is an array, a slice or a pointer on array/slice, and it is well sorted as how tells it should be.
+how… can be:
+empty to check a generic ascending order; nil or a float64/int >= 0 to check a generic ascending order; a float64/int < 0 to check a generic descending order; strings specifying fields-paths (each optionally prefixed by “+” or “-” for respectively checking an ascending or a descending order, defaulting to ascending one); a function matching func(a, b T) bool signature and returning true if a is before b. A fields-path, also used by Smuggle and Sort operators, allows to access nested structs fields and maps & slices items. See Smuggle for details on fields-path possibilities.">
+<meta property="og:url" content="https://go-testdeep.zetta.rocks/operators/sorted/index.html">
+<meta property="og:site_name" content="go-testdeep">
+<meta property="og:title" content="Sorted :: go-testdeep">
+<meta property="og:description" content="func Sorted(how ...any) TestDeep Sorted operator checks that data is an array, a slice or a pointer on array/slice, and it is well sorted as how tells it should be.
+how… can be:
+empty to check a generic ascending order; nil or a float64/int >= 0 to check a generic ascending order; a float64/int < 0 to check a generic descending order; strings specifying fields-paths (each optionally prefixed by “+” or “-” for respectively checking an ascending or a descending order, defaulting to ascending one); a function matching func(a, b T) bool signature and returning true if a is before b. A fields-path, also used by Smuggle and Sort operators, allows to access nested structs fields and maps & slices items. See Smuggle for details on fields-path possibilities.">
+<meta property="og:locale" content="en_us">
+<meta property="og:type" content="article">
+<meta property="article:section" content="Operators">
+<meta itemprop=name content="Sorted :: go-testdeep">
+<meta itemprop=description content="func Sorted(how ...any) TestDeep Sorted operator checks that data is an array, a slice or a pointer on array/slice, and it is well sorted as how tells it should be.
+how… can be:
+empty to check a generic ascending order; nil or a float64/int >= 0 to check a generic ascending order; a float64/int < 0 to check a generic descending order; strings specifying fields-paths (each optionally prefixed by “+” or “-” for respectively checking an ascending or a descending order, defaulting to ascending one); a function matching func(a, b T) bool signature and returning true if a is before b. A fields-path, also used by Smuggle and Sort operators, allows to access nested structs fields and maps & slices items. See Smuggle for details on fields-path possibilities.">
+<meta itemprop=wordCount content="1639">
+<title>Sorted :: go-testdeep</title>
+<link href=/images/favicon.png?1754768597 rel=icon type=image/png>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1754768597 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1754768597 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1754768597 rel=stylesheet>
+<link href=/css/theme.min.css?1754768597 rel=stylesheet>
+<link href=/css/format-html.min.css?1754768597 rel=stylesheet id=R-format-style>
+<link href=/css/auto-complete/auto-complete.min.css?1754768597 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1754768597 defer></script>
+<script src=/js/search.min.js?1754768597 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/sorted/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1754768597",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
+</head>
+<body class="mobile-support html" data-url=/operators/sorted/index.html>
+<div id=R-body class=default-animation>
+<div id=R-body-overlay></div>
+<nav id=R-topbar>
+<div class=topbar-wrapper>
+<div class=topbar-sidebar-divider></div>
+<div class="topbar-area topbar-area-start" data-area=start>
+<div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button>
+</div>
+<div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button>
+<div class=topbar-content>
+<div class=topbar-content-wrapper>
+<nav class=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#examples>Examples</a></li>
+</ul>
+</li>
+<li><a href=#cmpsorted-shortcut>CmpSorted shortcut</a>
+<ul>
+<li><a href=#examples-1>Examples</a></li>
+</ul>
+</li>
+<li><a href=#tsorted-shortcut>T.Sorted shortcut</a>
+<ul>
+<li><a href=#examples-2>Examples</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
+<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Sorted</span><meta itemprop=position content="3"></li>
+</ol>
+<div class="topbar-area topbar-area-end" data-area=end>
+<div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/sort/index.html title="Sort (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+</div>
+<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/sstruct/index.html title="SStruct (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+</div>
+<div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
+<div class=topbar-content>
+<div class=topbar-content-wrapper>
+<div class="topbar-area topbar-area-more" data-area=more>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div id=R-main-overlay></div>
+<main id=R-body-inner class="highlightable operators" tabindex=-1>
+<div class=flex-block-wrapper>
+<article class=default>
+<header class=headline>
+</header>
+<h1 id=sorted>Sorted</h1>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Sorted</span>(how ...<span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<p>Sorted operator checks that data is an array, a slice or a pointer
+on array/slice, and it is well sorted as <em>how</em> tells it should be.</p>
+<p><em>how</em>&mldr; can be:</p>
+<ul>
+<li>empty to check a generic ascending order;</li>
+<li><code>nil</code> or a <code>float64</code>/<code>int</code> >= 0 to check a generic ascending order;</li>
+<li>a <code>float64</code>/<code>int</code> &lt; 0 to check a generic descending order;</li>
+<li>strings specifying fields-paths (each optionally prefixed by &ldquo;+&rdquo;
+or &ldquo;-&rdquo; for respectively checking an ascending or a descending order,
+defaulting to ascending one);</li>
+<li>a function matching func(a, b T) <code>bool</code> signature and returning
+true if a is before b.</li>
+</ul>
+<p>A fields-path, also used by <a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a> operators,
+allows to access nested structs fields and maps & slices items. See
+<a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a> for details on fields-path possibilities.</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
+</span></span><span style=display:flex><span>p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
+</span></span><span style=display:flex><span>p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
+</span></span><span style=display:flex><span>p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
+</span></span><span style=display:flex><span>got := []A{p34, p23, p12}
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>&#34;-props[priority]&#34;</span>)) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<p><em>how</em> can be a <code>float64</code> to allow Sort to be used in expected JSON of
+<a href=https://go-testdeep.zetta.rocks/operators/json/ rel=external target=_blank><code>JSON</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/subjsonof/ rel=external target=_blank><code>SubJSONOf</code></a> & <a href=https://go-testdeep.zetta.rocks/operators/superjsonof/ rel=external target=_blank><code>SuperJSONOf</code></a> operators:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>][]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;labels&#34;</span>: {<span style=color:#ed9d13>&#34;a&#34;</span>, <span style=color:#ed9d13>&#34;b&#34;</span>, <span style=color:#ed9d13>&#34;c&#34;</span>}}
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{ &#34;labels&#34;: Sorted }`</span>)) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<p>or using fields-path feature:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+</span></span><span style=display:flex><span>  Name <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
+</span></span><span style=display:flex><span>  Age  <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>got := <span style=color:#6ab825;font-weight:700>struct</span> {
+</span></span><span style=display:flex><span>  People []Person <span style=color:#ed9d13>`json:&#34;people&#34;`</span>
+</span></span><span style=display:flex><span>}{
+</span></span><span style=display:flex><span>  People: []Person{
+</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Marcel&#34;</span>, <span style=color:#3677a9>25</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Brian&#34;</span>, <span style=color:#3677a9>22</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Alice&#34;</span>, <span style=color:#3677a9>20</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>19</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Stephen&#34;</span>, <span style=color:#3677a9>19</span>},
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// sorted by age desc, then by name asc</span>
+</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{ &#34;people&#34;: Sorted(&#34;-age&#34;, &#34;name&#34;) }`</span>)) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<blockquote>
+<p>See also <a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a>.</p></blockquote>
+<blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Sorted rel=external target=_blank> Sorted godoc</a>.</p></blockquote>
+<h3 id=examples>Examples</h3>
+<p>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Basic example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>())
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (default):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#3677a9>1</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (1):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#3677a9>0</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (0):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#6ab825;font-weight:700>nil</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (nil):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(-<span style=color:#3677a9>1</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>}
+</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(evenHigher))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (default): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (1): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (0): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (nil): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is desc order: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is even higher order: true</span></span></span></code></pre></div>
+</div>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Fields_path example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
+</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
+</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
+</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
+</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []Person{alice, bob, brian, marcel, stephen}
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>&#34;Name&#34;</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{stephen, marcel, brian, bob, alice}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>&#34;-Name&#34;</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, bob, stephen}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, stephen, bob}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 2:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
+</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
+</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
+</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
+</span></span><span style=display:flex><span>	got2 := []A{p34, p23, p12}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got2, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>`-props[priority]`</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got2, td.<span style=color:#447fcf>Sorted</span>(<span style=color:#ed9d13>`props.priority`</span>))
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 2: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority asc: false</span></span></span></code></pre></div>
+</div>
+</details></p>
+<h2 id=cmpsorted-shortcut>CmpSorted shortcut</h2>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSorted</span>(t TestingT, got, how <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<p>CmpSorted is a shortcut for:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sorted</span>(how), args...)</span></span></code></pre></div>
+<p>See above for details.</p>
+<p><a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a> optional parameter <em>how</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a> call.</p>
+<p>Returns true if the test is OK, false if it fails.</p>
+<p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
+<p><em>args&mldr;</em> are optional and allow to name the test. This name is
+used in case of failure to qualify the test. If <code>len(args) > 1</code> and
+the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
+<a href=https://pkg.go.dev/fmt#Fprintf rel=external target=_blank><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint rel=external target=_blank><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+reason of a potential failure.</p>
+<blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#CmpSorted rel=external target=_blank> CmpSorted godoc</a>.</p></blockquote>
+<h3 id=examples-1>Examples</h3>
+<p>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Basic example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#6ab825;font-weight:700>nil</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (default):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (1):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (0):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#6ab825;font-weight:700>nil</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (nil):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, -<span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>}
+</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, evenHigher)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (default): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (1): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (0): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (nil): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is desc order: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is even higher order: true</span></span></span></code></pre></div>
+</div>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Fields_path example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
+</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
+</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
+</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
+</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []Person{alice, bob, brian, marcel, stephen}
+</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#ed9d13>&#34;Name&#34;</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{stephen, marcel, brian, bob, alice}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, <span style=color:#ed9d13>&#34;-Name&#34;</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, bob, stephen}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>})
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, stephen, bob}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>})
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 2:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
+</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
+</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
+</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
+</span></span><span style=display:flex><span>	got2 := []A{p34, p23, p12}
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got2, <span style=color:#ed9d13>`-props[priority]`</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSorted</span>(t, got2, <span style=color:#ed9d13>`props.priority`</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 2: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority asc: false</span></span></span></code></pre></div>
+</div>
+</details></p>
+<h2 id=tsorted-shortcut>T.Sorted shortcut</h2>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Sorted</span>(got, how <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<p>Sorted is a shortcut for:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Sorted</span>(how), args...)</span></span></code></pre></div>
+<p>See above for details.</p>
+<p><a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a> optional parameter <em>how</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a> call.</p>
+<p>Returns true if the test is OK, false if it fails.</p>
+<p><em>args&mldr;</em> are optional and allow to name the test. This name is
+used in case of failure to qualify the test. If <code>len(args) > 1</code> and
+the first item of <em>args</em> is a <code>string</code> and contains a &lsquo;%&rsquo; <code>rune</code> then
+<a href=https://pkg.go.dev/fmt#Fprintf rel=external target=_blank><code>fmt.Fprintf</code></a> is used to compose the name, else <em>args</em> are passed to
+<a href=https://pkg.go.dev/fmt#Fprint rel=external target=_blank><code>fmt.Fprint</code></a>. Do not forget it is the name of the test, not the
+reason of a potential failure.</p>
+<blockquote>
+<p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Sorted rel=external target=_blank> T.Sorted godoc</a>.</p></blockquote>
+<h3 id=examples-2>Examples</h3>
+<p>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Basic example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#6ab825;font-weight:700>nil</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (default):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (1):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#3677a9>0</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (0):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#6ab825;font-weight:700>nil</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is asc order (nil):&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, -<span style=color:#3677a9>1</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>}
+</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, evenHigher)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (default): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (1): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (0): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is asc order (nil): true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is desc order: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is even higher order: true</span></span></span></code></pre></div>
+</div>
+</details>
+<details class="box cstyle notices transparent expand">
+<summary class=box-label>
+<i class="expander-icon fa-fw fas fa-chevron-right"></i>
+Fields_path example
+</summary>
+<div class=box-content>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
+</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
+</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
+</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
+</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
+</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got := []Person{alice, bob, brian, marcel, stephen}
+</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#ed9d13>&#34;Name&#34;</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{stephen, marcel, brian, bob, alice}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, <span style=color:#ed9d13>&#34;-Name&#34;</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, bob, stephen}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>})
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	got = []Person{marcel, brian, alice, stephen, bob}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>})
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by age desc, then by name asc 2:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
+</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
+</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
+</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
+</span></span><span style=display:flex><span>	got2 := []A{p34, p23, p12}
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got2, <span style=color:#ed9d13>`-props[priority]`</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sorted</span>(got2, <span style=color:#ed9d13>`props.priority`</span>)
+</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;is sorted by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by age desc, then by name asc 2: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// is sorted by priority asc: false</span></span></span></code></pre></div>
+</div>
+</details></p>
+<footer class=footline>
+</footer>
+</article>
+</div>
+</main>
+</div>
+<aside id=R-sidebar class=default-animation>
+<div id=R-header-topbar class=default-animation></div>
+<div id=R-header-wrapper class=default-animation>
+<div id=R-header class=default-animation>
+<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
+</div>
+<search><form action=/search/index.html method=get>
+<div class="searchbox default-animation">
+<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+<label class=a11y-only for=R-search-by>Search</label>
+<input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
+<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+</div>
+</form></search>
+</div>
+<div id=R-homelinks class=default-animation>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-homelinks">
+<ul class="space collapsible-menu">
+</ul>
+</div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+<ul>
+</ul>
+</div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+</div>
+<div id=R-content-wrapper class=highlightable>
+<div class="R-sidebarmenu R-shortcutmenu-main">
+<ul class="enlarge morespace collapsible-menu">
+<li data-nav-id=/introduction/index.html><a class=padding href=/introduction/index.html>Introduction</a></li>
+<li data-nav-id=/example/index.html><a class=padding href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
+<li data-nav-id=/functions/index.html><a class=padding href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
+<li class=parent data-nav-id=/operators/index.html><a class=padding href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu>
+<li data-nav-id=/operators/matrix/index.html><a class=padding href=/operators/matrix/index.html>Operators matrices</a></li>
+<li data-nav-id=/operators/all/index.html><a class=padding href=/operators/all/index.html>All</a></li>
+<li data-nav-id=/operators/any/index.html><a class=padding href=/operators/any/index.html>Any</a></li>
+<li data-nav-id=/operators/array/index.html><a class=padding href=/operators/array/index.html>Array</a></li>
+<li data-nav-id=/operators/arrayeach/index.html><a class=padding href=/operators/arrayeach/index.html>ArrayEach</a></li>
+<li data-nav-id=/operators/bag/index.html><a class=padding href=/operators/bag/index.html>Bag</a></li>
+<li data-nav-id=/operators/between/index.html><a class=padding href=/operators/between/index.html>Between</a></li>
+<li data-nav-id=/operators/cap/index.html><a class=padding href=/operators/cap/index.html>Cap</a></li>
+<li data-nav-id=/operators/catch/index.html><a class=padding href=/operators/catch/index.html>Catch</a></li>
+<li data-nav-id=/operators/code/index.html><a class=padding href=/operators/code/index.html>Code</a></li>
+<li data-nav-id=/operators/contains/index.html><a class=padding href=/operators/contains/index.html>Contains</a></li>
+<li data-nav-id=/operators/containskey/index.html><a class=padding href=/operators/containskey/index.html>ContainsKey</a></li>
+<li data-nav-id=/operators/delay/index.html><a class=padding href=/operators/delay/index.html>Delay</a></li>
+<li data-nav-id=/operators/empty/index.html><a class=padding href=/operators/empty/index.html>Empty</a></li>
+<li data-nav-id=/operators/erroris/index.html><a class=padding href=/operators/erroris/index.html>ErrorIs</a></li>
+<li data-nav-id=/operators/first/index.html><a class=padding href=/operators/first/index.html>First</a></li>
+<li data-nav-id=/operators/grep/index.html><a class=padding href=/operators/grep/index.html>Grep</a></li>
+<li data-nav-id=/operators/gt/index.html><a class=padding href=/operators/gt/index.html>Gt</a></li>
+<li data-nav-id=/operators/gte/index.html><a class=padding href=/operators/gte/index.html>Gte</a></li>
+<li data-nav-id=/operators/hasprefix/index.html><a class=padding href=/operators/hasprefix/index.html>HasPrefix</a></li>
+<li data-nav-id=/operators/hassuffix/index.html><a class=padding href=/operators/hassuffix/index.html>HasSuffix</a></li>
+<li data-nav-id=/operators/ignore/index.html><a class=padding href=/operators/ignore/index.html>Ignore</a></li>
+<li data-nav-id=/operators/isa/index.html><a class=padding href=/operators/isa/index.html>Isa</a></li>
+<li data-nav-id=/operators/json/index.html><a class=padding href=/operators/json/index.html>JSON</a></li>
+<li data-nav-id=/operators/jsonpointer/index.html><a class=padding href=/operators/jsonpointer/index.html>JSONPointer</a></li>
+<li data-nav-id=/operators/keys/index.html><a class=padding href=/operators/keys/index.html>Keys</a></li>
+<li data-nav-id=/operators/last/index.html><a class=padding href=/operators/last/index.html>Last</a></li>
+<li data-nav-id=/operators/lax/index.html><a class=padding href=/operators/lax/index.html>Lax</a></li>
+<li data-nav-id=/operators/len/index.html><a class=padding href=/operators/len/index.html>Len</a></li>
+<li data-nav-id=/operators/lt/index.html><a class=padding href=/operators/lt/index.html>Lt</a></li>
+<li data-nav-id=/operators/lte/index.html><a class=padding href=/operators/lte/index.html>Lte</a></li>
+<li data-nav-id=/operators/map/index.html><a class=padding href=/operators/map/index.html>Map</a></li>
+<li data-nav-id=/operators/mapeach/index.html><a class=padding href=/operators/mapeach/index.html>MapEach</a></li>
+<li data-nav-id=/operators/n/index.html><a class=padding href=/operators/n/index.html>N</a></li>
+<li data-nav-id=/operators/nan/index.html><a class=padding href=/operators/nan/index.html>NaN</a></li>
+<li data-nav-id=/operators/nil/index.html><a class=padding href=/operators/nil/index.html>Nil</a></li>
+<li data-nav-id=/operators/none/index.html><a class=padding href=/operators/none/index.html>None</a></li>
+<li data-nav-id=/operators/not/index.html><a class=padding href=/operators/not/index.html>Not</a></li>
+<li data-nav-id=/operators/notany/index.html><a class=padding href=/operators/notany/index.html>NotAny</a></li>
+<li data-nav-id=/operators/notempty/index.html><a class=padding href=/operators/notempty/index.html>NotEmpty</a></li>
+<li data-nav-id=/operators/notnan/index.html><a class=padding href=/operators/notnan/index.html>NotNaN</a></li>
+<li data-nav-id=/operators/notnil/index.html><a class=padding href=/operators/notnil/index.html>NotNil</a></li>
+<li data-nav-id=/operators/notzero/index.html><a class=padding href=/operators/notzero/index.html>NotZero</a></li>
+<li data-nav-id=/operators/pptr/index.html><a class=padding href=/operators/pptr/index.html>PPtr</a></li>
+<li data-nav-id=/operators/ptr/index.html><a class=padding href=/operators/ptr/index.html>Ptr</a></li>
+<li data-nav-id=/operators/re/index.html><a class=padding href=/operators/re/index.html>Re</a></li>
+<li data-nav-id=/operators/reall/index.html><a class=padding href=/operators/reall/index.html>ReAll</a></li>
+<li data-nav-id=/operators/recv/index.html><a class=padding href=/operators/recv/index.html>Recv</a></li>
+<li data-nav-id=/operators/set/index.html><a class=padding href=/operators/set/index.html>Set</a></li>
+<li data-nav-id=/operators/shallow/index.html><a class=padding href=/operators/shallow/index.html>Shallow</a></li>
+<li data-nav-id=/operators/slice/index.html><a class=padding href=/operators/slice/index.html>Slice</a></li>
+<li data-nav-id=/operators/smuggle/index.html><a class=padding href=/operators/smuggle/index.html>Smuggle</a></li>
+<li data-nav-id=/operators/sort/index.html><a class=padding href=/operators/sort/index.html>Sort</a></li>
+<li class=active data-nav-id=/operators/sorted/index.html><a class=padding href=/operators/sorted/index.html>Sorted</a></li>
+<li data-nav-id=/operators/sstruct/index.html><a class=padding href=/operators/sstruct/index.html>SStruct</a></li>
+<li data-nav-id=/operators/string/index.html><a class=padding href=/operators/string/index.html>String</a></li>
+<li data-nav-id=/operators/struct/index.html><a class=padding href=/operators/struct/index.html>Struct</a></li>
+<li data-nav-id=/operators/subbagof/index.html><a class=padding href=/operators/subbagof/index.html>SubBagOf</a></li>
+<li data-nav-id=/operators/subjsonof/index.html><a class=padding href=/operators/subjsonof/index.html>SubJSONOf</a></li>
+<li data-nav-id=/operators/submapof/index.html><a class=padding href=/operators/submapof/index.html>SubMapOf</a></li>
+<li data-nav-id=/operators/subsetof/index.html><a class=padding href=/operators/subsetof/index.html>SubSetOf</a></li>
+<li data-nav-id=/operators/superbagof/index.html><a class=padding href=/operators/superbagof/index.html>SuperBagOf</a></li>
+<li data-nav-id=/operators/superjsonof/index.html><a class=padding href=/operators/superjsonof/index.html>SuperJSONOf</a></li>
+<li data-nav-id=/operators/supermapof/index.html><a class=padding href=/operators/supermapof/index.html>SuperMapOf</a></li>
+<li data-nav-id=/operators/supersetof/index.html><a class=padding href=/operators/supersetof/index.html>SuperSetOf</a></li>
+<li data-nav-id=/operators/supersliceof/index.html><a class=padding href=/operators/supersliceof/index.html>SuperSliceOf</a></li>
+<li data-nav-id=/operators/tag/index.html><a class=padding href=/operators/tag/index.html>Tag</a></li>
+<li data-nav-id=/operators/trunctime/index.html><a class=padding href=/operators/trunctime/index.html>TruncTime</a></li>
+<li data-nav-id=/operators/values/index.html><a class=padding href=/operators/values/index.html>Values</a></li>
+<li data-nav-id=/operators/zero/index.html><a class=padding href=/operators/zero/index.html>Zero</a></li></ul></li>
+<li data-nav-id=/helpers/index.html><a class=padding href=/helpers/index.html>Helpers</a></li>
+<li data-nav-id=/faq/index.html><a class=padding href=/faq/index.html>FAQ</a></li>
+</ul>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+<div class="nav-title padding">More</div>
+<ul class="space collapsible-menu">
+<li data-nav-id=/prez><a class=padding href=/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a></li>
+<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
+</ul>
+</div>
+<div id=R-footer-margin></div>
+<div class="R-menu-divider default-animation">
+<hr class=padding>
+</div>
+<div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+<ul>
+</ul>
+</div>
+<div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
+</div>
+</aside>
+<script src=/js/clipboard/clipboard.min.js?1754768597 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1754768597 defer></script>
+<script src=/js/theme.min.js?1754768597 defer></script>
+</body>
+</html>

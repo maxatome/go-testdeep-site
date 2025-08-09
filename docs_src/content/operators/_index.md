@@ -160,6 +160,12 @@ weight = 15
 [`Smuggle`]({{% ref "Smuggle" %}})
 : changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process
 
+[`Sort`]({{% ref "Sort" %}})
+: sorts a slice or an array before comparing its content
+
+[`Sorted`]({{% ref "Sorted" %}})
+: checks a slice or an array is sorted
+
 [`SStruct`]({{% ref "SStruct" %}})
 : strictly compares the contents of a struct or a pointer on a struct
 
@@ -267,6 +273,9 @@ The following operators are smuggler ones:
 [`Smuggle`]({{% ref "Smuggle" %}})
 : changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process
 
+[`Sort`]({{% ref "Sort" %}})
+: sorts a slice or an array before comparing its content
+
 [`Tag`]({{% ref "Tag" %}})
 : names an operator or a value. Only useful as a parameter of JSON operator, to name placeholders
 
@@ -339,6 +348,8 @@ The following operators are smuggler ones:
 [`Shallow`]: {{% ref "Shallow" %}}
 [`Slice`]: {{% ref "Slice" %}}
 [`Smuggle`]: {{% ref "Smuggle" %}}
+[`Sort`]: {{% ref "Sort" %}}
+[`Sorted`]: {{% ref "Sorted" %}}
 [`SStruct`]: {{% ref "SStruct" %}}
 [`String`]: {{% ref "String" %}}
 [`Struct`]: {{% ref "Struct" %}}
@@ -404,6 +415,8 @@ The following operators are smuggler ones:
 [`CmpShallow`]: {{% ref "Shallow#cmpshallow-shortcut" %}}
 [`CmpSlice`]: {{% ref "Slice#cmpslice-shortcut" %}}
 [`CmpSmuggle`]: {{% ref "Smuggle#cmpsmuggle-shortcut" %}}
+[`CmpSort`]: {{% ref "Sort#cmpsort-shortcut" %}}
+[`CmpSorted`]: {{% ref "Sorted#cmpsorted-shortcut" %}}
 [`CmpSStruct`]: {{% ref "SStruct#cmpsstruct-shortcut" %}}
 [`CmpString`]: {{% ref "String#cmpstring-shortcut" %}}
 [`CmpStruct`]: {{% ref "Struct#cmpstruct-shortcut" %}}
@@ -468,6 +481,8 @@ The following operators are smuggler ones:
 [`T.Shallow`]: {{% ref "Shallow#tshallow-shortcut" %}}
 [`T.Slice`]: {{% ref "Slice#tslice-shortcut" %}}
 [`T.Smuggle`]: {{% ref "Smuggle#tsmuggle-shortcut" %}}
+[`T.Sort`]: {{% ref "Sort#tsort-shortcut" %}}
+[`T.Sorted`]: {{% ref "Sorted#tsorted-shortcut" %}}
 [`T.SStruct`]: {{% ref "SStruct#tsstruct-shortcut" %}}
 [`T.String`]: {{% ref "String#tstring-shortcut" %}}
 [`T.Struct`]: {{% ref "Struct#tstruct-shortcut" %}}

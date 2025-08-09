@@ -24,21 +24,21 @@ As convenient shortcuts, fn can be a string specifying a fields-path through str
 <meta itemprop=description content="func Smuggle(fn, expectedValue any) TestDeep Smuggle operator allows to change data contents or mutate it into another type before stepping down in favor of generic comparison process. Of course it is a smuggler operator. So fn is a function that must take one parameter whose type must be convertible to the type of the compared value.
 As convenient shortcuts, fn can be a string specifying a fields-path through structs, maps & slices, or any other type, in this case a simple cast is done (see below for details).">
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
-<meta itemprop=wordCount content="3991">
+<meta itemprop=wordCount content="4014">
 <title>Smuggle :: go-testdeep</title>
-<link href=/images/favicon.png?1744923393 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1744923393 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1744923393 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1744923393 rel=stylesheet>
-<link href=/css/theme.min.css?1744923393 rel=stylesheet>
-<link href=/css/format-html.min.css?1744923393 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1744923393 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1744923393 defer></script>
-<script src=/js/lunr/lunr.min.js?1744923393 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1744923393 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1744923393 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1744923393 defer></script>
-<script src=/js/search.min.js?1744923393 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/smuggle/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1744923393",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1754768597 rel=icon type=image/png>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1754768597 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1754768597 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1754768597 rel=stylesheet>
+<link href=/css/theme.min.css?1754768597 rel=stylesheet>
+<link href=/css/format-html.min.css?1754768597 rel=stylesheet id=R-format-style>
+<link href=/css/auto-complete/auto-complete.min.css?1754768597 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1754768597 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1754768597 defer></script>
+<script src=/js/search.min.js?1754768597 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/smuggle/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1754768597",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/smuggle/index.html>
@@ -84,7 +84,7 @@ As convenient shortcuts, fn can be a string specifying a fields-path through str
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/slice/index.html title="Slice (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
 </div>
-<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/sstruct/index.html title="SStruct (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/sort/index.html title="Sort (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
 </div>
 <div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
 <div class=topbar-content>
@@ -230,6 +230,9 @@ instead of a function pointer. Using this feature, the <a href=https://pkg.go.de
 call in the above example can be rewritten as follows:</p>
 <div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#999;font-style:italic>// Tests that got.B.As[&#34;foo&#34;].Num is 12</span>
 </span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.As[foo].Num&#34;</span>, <span style=color:#3677a9>12</span>))</span></span></code></pre></div>
+<p>For convenience, if a map[<code>string</code>]… is addressed, it can be done
+like a struct field as &ldquo;foo&rdquo; key in:</p>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.As.foo.Num&#34;</span>, <span style=color:#3677a9>12</span>))</span></span></code></pre></div>
 <p>In addition, simple public methods can also be called like in:</p>
 <div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#ed9d13>&#34;B.As[foo].String()&#34;</span>, <span style=color:#ed9d13>&#34;Num is 12&#34;</span>))</span></span></code></pre></div>
 <p>Allowed methods must not take <code>any</code> parameter and must return one
@@ -1269,6 +1272,8 @@ Field_path example
 <li data-nav-id=/operators/shallow/index.html><a class=padding href=/operators/shallow/index.html>Shallow</a></li>
 <li data-nav-id=/operators/slice/index.html><a class=padding href=/operators/slice/index.html>Slice</a></li>
 <li class=active data-nav-id=/operators/smuggle/index.html><a class=padding href=/operators/smuggle/index.html>Smuggle</a></li>
+<li data-nav-id=/operators/sort/index.html><a class=padding href=/operators/sort/index.html>Sort</a></li>
+<li data-nav-id=/operators/sorted/index.html><a class=padding href=/operators/sorted/index.html>Sorted</a></li>
 <li data-nav-id=/operators/sstruct/index.html><a class=padding href=/operators/sstruct/index.html>SStruct</a></li>
 <li data-nav-id=/operators/string/index.html><a class=padding href=/operators/string/index.html>String</a></li>
 <li data-nav-id=/operators/struct/index.html><a class=padding href=/operators/struct/index.html>Struct</a></li>
@@ -1311,8 +1316,8 @@ Field_path example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1744923393 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1744923393 defer></script>
-<script src=/js/theme.min.js?1744923393 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1754768597 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1754768597 defer></script>
+<script src=/js/theme.min.js?1754768597 defer></script>
 </body>
 </html>

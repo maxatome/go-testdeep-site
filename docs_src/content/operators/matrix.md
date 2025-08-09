@@ -75,6 +75,8 @@ weight: 1
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
 | [`Smuggle`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Smuggle`] |
+| [`Sort`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Sort`] |
+| [`Sorted`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Sorted`] |
 | [`SStruct`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ptr on struct | ✓ | ✗ | ✗ | [`SStruct`] |
 | [`String`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | `[]byte` | ✗ | ✗ | ✗ | ✓ + [`fmt.Stringer`]/[`error`] | ✗ | ✗ | [`String`] |
 | [`Struct`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ptr on struct | ✓ | ✗ | ✗ | [`Struct`] |
@@ -82,11 +84,11 @@ weight: 1
 | [`SubJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SubJSONOf`] |
 | [`SubMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SubMapOf`] |
 | [`SubSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubSetOf`] |
-| [`SuperBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperBagOf`] |
-| [`SuperJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SuperJSONOf`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`SuperBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperBagOf`] |
+| [`SuperJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SuperJSONOf`] |
 | [`SuperMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SuperMapOf`] |
 | [`SuperSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSetOf`] |
 | [`SuperSliceOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperSliceOf`] |
@@ -161,6 +163,8 @@ weight: 1
 [`Shallow`]: {{% ref "Shallow" %}}
 [`Slice`]: {{% ref "Slice" %}}
 [`Smuggle`]: {{% ref "Smuggle" %}}
+[`Sort`]: {{% ref "Sort" %}}
+[`Sorted`]: {{% ref "Sorted" %}}
 [`SStruct`]: {{% ref "SStruct" %}}
 [`String`]: {{% ref "String" %}}
 [`Struct`]: {{% ref "Struct" %}}
@@ -226,6 +230,8 @@ weight: 1
 [`CmpShallow`]: {{% ref "Shallow#cmpshallow-shortcut" %}}
 [`CmpSlice`]: {{% ref "Slice#cmpslice-shortcut" %}}
 [`CmpSmuggle`]: {{% ref "Smuggle#cmpsmuggle-shortcut" %}}
+[`CmpSort`]: {{% ref "Sort#cmpsort-shortcut" %}}
+[`CmpSorted`]: {{% ref "Sorted#cmpsorted-shortcut" %}}
 [`CmpSStruct`]: {{% ref "SStruct#cmpsstruct-shortcut" %}}
 [`CmpString`]: {{% ref "String#cmpstring-shortcut" %}}
 [`CmpStruct`]: {{% ref "Struct#cmpstruct-shortcut" %}}
@@ -290,6 +296,8 @@ weight: 1
 [`T.Shallow`]: {{% ref "Shallow#tshallow-shortcut" %}}
 [`T.Slice`]: {{% ref "Slice#tslice-shortcut" %}}
 [`T.Smuggle`]: {{% ref "Smuggle#tsmuggle-shortcut" %}}
+[`T.Sort`]: {{% ref "Sort#tsort-shortcut" %}}
+[`T.Sorted`]: {{% ref "Sorted#tsorted-shortcut" %}}
 [`T.SStruct`]: {{% ref "SStruct#tsstruct-shortcut" %}}
 [`T.String`]: {{% ref "String#tstring-shortcut" %}}
 [`T.Struct`]: {{% ref "Struct#tstruct-shortcut" %}}
@@ -505,6 +513,8 @@ Operators likely to succeed for each go type:
 - [`NotZero`]
 - [`Set`]
 - [`Smuggle`]
+- [`Sort`]
+- [`Sorted`]
 - [`SubBagOf`]
 - [`SubSetOf`]
 - [`SuperBagOf`]
@@ -551,6 +561,8 @@ Operators likely to succeed for each go type:
 - [`Shallow`]
 - [`Slice`]
 - [`Smuggle`]
+- [`Sort`]
+- [`Sorted`]
 - [`String`] only `[]byte`
 - [`SubBagOf`]
 - [`SubSetOf`]
@@ -681,6 +693,8 @@ listed below:
 - [`Shallow`]
 - [`Slice`] only ptr on slice
 - [`Smuggle`]
+- [`Sort`] only ptr on array/slice
+- [`Sorted`] only ptr on array/slice
 - [`Struct`] only ptr on struct
 - [`SubBagOf`] only ptr on array/slice
 - [`SubJSONOf`] only ptr on map/struct

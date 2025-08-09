@@ -184,6 +184,13 @@ call in the above example can be rewritten as follows:
 td.Cmp(t, got, td.Smuggle("B.As[foo].Num", 12))
 ```
 
+For convenience, if a map[`string`]… is addressed, it can be done
+like a struct field as "foo" key in:
+
+```go
+td.Cmp(t, got, td.Smuggle("B.As.foo.Num", 12))
+```
+
 In addition, simple public methods can also be called like in:
 
 ```go
