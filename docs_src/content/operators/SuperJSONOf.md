@@ -190,9 +190,9 @@ A few notes about operators embedding:
   [`HasPrefix`]({{% ref "HasPrefix" %}}), [`HasSuffix`]({{% ref "HasSuffix" %}}), [`Ignore`]({{% ref "Ignore" %}}), [`JSONPointer`]({{% ref "JSONPointer" %}}), [`Keys`]({{% ref "Keys" %}}),
   [`Last`]({{% ref "Last" %}}), [`Len`]({{% ref "Len" %}}), [`Lt`]({{% ref "Lt" %}}), [`Lte`]({{% ref "Lte" %}}), [`MapEach`]({{% ref "MapEach" %}}), [`N`]({{% ref "N" %}}), [`NaN`]({{% ref "NaN" %}}), [`Nil`]({{% ref "Nil" %}}),
   [`None`]({{% ref "None" %}}), [`Not`]({{% ref "Not" %}}), [`NotAny`]({{% ref "NotAny" %}}), [`NotEmpty`]({{% ref "NotEmpty" %}}), [`NotNaN`]({{% ref "NotNaN" %}}), [`NotNil`]({{% ref "NotNil" %}}),
-  [`NotZero`]({{% ref "NotZero" %}}), [`Re`]({{% ref "Re" %}}), [`ReAll`]({{% ref "ReAll" %}}), [`Set`]({{% ref "Set" %}}), [`SubBagOf`]({{% ref "SubBagOf" %}}), [`SubMapOf`]({{% ref "SubMapOf" %}}),
-  [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperBagOf`]({{% ref "SuperBagOf" %}}), [`SuperMapOf`]({{% ref "SuperMapOf" %}}), [`SuperSetOf`]({{% ref "SuperSetOf" %}}), [`Values`]({{% ref "Values" %}})
-  and [`Zero`]({{% ref "Zero" %}}).
+  [`NotZero`]({{% ref "NotZero" %}}), [`Re`]({{% ref "Re" %}}), [`ReAll`]({{% ref "ReAll" %}}), [`Set`]({{% ref "Set" %}}), [`Sort`]({{% ref "Sort" %}}), [`Sorted`]({{% ref "Sorted" %}}), [`SubBagOf`]({{% ref "SubBagOf" %}}),
+  [`SubMapOf`]({{% ref "SubMapOf" %}}), [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperBagOf`]({{% ref "SuperBagOf" %}}), [`SuperMapOf`]({{% ref "SuperMapOf" %}}),
+  [`SuperSetOf`]({{% ref "SuperSetOf" %}}), [`Values`]({{% ref "Values" %}}) and [`Zero`]({{% ref "Zero" %}}).
 
 
 It is also possible to embed operators in JSON strings. This way,

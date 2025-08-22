@@ -47,7 +47,7 @@ td.Cmp(t, []int{1, 5, 1, 8, 42, 3, 3},
 known non-interface types are equal, or if only interface types
 are found (mostly issued from Isa()) and they are equal.
 
-> See also [`SubBagOf`]({{% ref "SubBagOf" %}}), [`SuperBagOf`]({{% ref "SuperBagOf" %}}) and [`Set`]({{% ref "Set" %}}).
+> See also [`SubBagOf`]({{% ref "SubBagOf" %}}), [`SuperBagOf`]({{% ref "SuperBagOf" %}}), [`Set`]({{% ref "Set" %}}) and [`Sort`]({{% ref "Sort" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Bag godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Bag).
