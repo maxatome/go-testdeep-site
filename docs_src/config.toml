@@ -20,6 +20,9 @@ disableInlineCopyToClipBoard = true
 themeVariant = "green"
 hideAuthorName = true
 
+[params.imageEffects]
+lightbox = false
+
 [minify.tdewolff.html]
 keepWhitespace=true
 

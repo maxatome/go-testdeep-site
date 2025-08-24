@@ -10,13 +10,11 @@ and its
 allows [golang](https://golang.org/) extremely flexible deep
 comparison. It is built for testing.
 
-{{% display-inline %}}
-[![GoLines](https://img.shields.io/badge/42317-lines_of_go-brightgreen)](https://github.com/maxatome/go-testdeep)
-[![Coverage Status](https://coveralls.io/repos/github/maxatome/go-testdeep/badge.svg?branch=master)](https://coveralls.io/github/maxatome/go-testdeep?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/maxatome/go-testdeep)](https://goreportcard.com/report/github.com/maxatome/go-testdeep)
-[![Releases](https://img.shields.io/badge/%23%20releases-27-blueviolet)](https://github.com/maxatome/go-testdeep/releases)
-[![Version](https://img.shields.io/github/tag/maxatome/go-testdeep.svg)](https://github.com/maxatome/go-testdeep/releases)
-{{% /display-inline %}}
+[![GoLines](https://img.shields.io/badge/43971-lines_of_go-brightgreen?classes=inline)](https://github.com/maxatome/go-testdeep)
+[![Coverage Status](https://coveralls.io/repos/github/maxatome/go-testdeep/badge.svg?branch=master&classes=inline)](https://coveralls.io/github/maxatome/go-testdeep?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/maxatome/go-testdeep?classes=inline)](https://goreportcard.com/report/github.com/maxatome/go-testdeep)
+[![Releases](https://img.shields.io/badge/%23%20releases-27-blueviolet?classes=inline)](https://github.com/maxatome/go-testdeep/releases)
+[![Version](https://img.shields.io/github/tag/maxatome/go-testdeep.svg?classes=inline)](https://github.com/maxatome/go-testdeep/releases)
 
 ![logo](images/logo.png)
 
