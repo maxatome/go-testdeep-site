@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content="func Between(from, to any, bounds ...BoundsKind) TestDeep Between operator checks that data is between from and to. from and to can be any numeric, string, time.Time (or assignable) value or implement at least one of the two following methods:
 func (a T) Less(b T) bool // returns true if a < b func (a T) Compare(b T) int // returns -1 if a < b, 1 if a > b, 0 if a == b from and to must be the same type as the compared value, except if BeLax config flag is true. time.Duration type is accepted as to when from is time.Time or convertible. bounds allows to specify whether bounds are included or not:">
 <meta name=author content>
@@ -26,19 +26,22 @@ func (a T) Less(b T) bool // returns true if a < b func (a T) Compare(b T) int /
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="1454">
 <title>Between :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/between/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/between/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/between/index.html>
@@ -76,10 +79,7 @@ func (a T) Less(b T) bool // returns true if a < b func (a T) Compare(b T) int /
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Between</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Between</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/bag/index.html title="Bag (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -104,13 +104,13 @@ func (a T) Less(b T) bool // returns true if a < b func (a T) Compare(b T) int /
 <header class=headline>
 </header>
 <h1 id=between>Between</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Between</span>(from, to <span style=color:#6ab825;font-weight:700>any</span>, bounds ...BoundsKind) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>from</span>, <span style=color:#a6e22e>to</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>bounds</span> <span style=color:#f92672>...</span><span style=color:#a6e22e>BoundsKind</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>Between operator checks that data is between <em>from</em> and
 <em>to</em>. <em>from</em> and <em>to</em> can be any numeric, <code>string</code>, <a href=https://pkg.go.dev/time#Time rel=external target=_blank><code>time.Time</code></a> (or
 assignable) value or implement at least one of the two following
 methods:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (a T) <span style=color:#447fcf>Less</span>(b T) <span style=color:#6ab825;font-weight:700>bool</span>   <span style=color:#999;font-style:italic>// returns true if a &lt; b</span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (a T) <span style=color:#447fcf>Compare</span>(b T) <span style=color:#6ab825;font-weight:700>int</span> <span style=color:#999;font-style:italic>// returns -1 if a &lt; b, 1 if a &gt; b, 0 if a == b</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>a</span> <span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>Less</span>(<span style=color:#a6e22e>b</span> <span style=color:#a6e22e>T</span>) <span style=color:#66d9ef>bool</span>   <span style=color:#75715e>// returns true if a &lt; b</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>a</span> <span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>Compare</span>(<span style=color:#a6e22e>b</span> <span style=color:#a6e22e>T</span>) <span style=color:#66d9ef>int</span> <span style=color:#75715e>// returns -1 if a &lt; b, 1 if a &gt; b, 0 if a == b</span></span></span></code></pre></div>
 <p><em>from</em> and <em>to</em> must be the same type as the compared value, except
 if <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax rel=external target=_blank><code>BeLax</code> config flag</a> is true. <a href=https://pkg.go.dev/time#Duration rel=external target=_blank><code>time.Duration</code></a> type is accepted as
 <em>to</em> when <em>from</em> is <a href=https://pkg.go.dev/time#Time rel=external target=_blank><code>time.Time</code></a> or convertible. <em>bounds</em> allows <em>to</em>
@@ -122,13 +122,13 @@ specify whether <em>bounds</em> are included or not:</p>
 <li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsOutOut rel=external target=_blank><code>BoundsOutOut</code></a>: between <em>from</em> and <em>to</em> both excluded</li>
 </ul>
 <p>If <em>bounds</em> is missing, it defaults <em>to</em> <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsInIn rel=external target=_blank><code>BoundsInIn</code></a>.</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>tc.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>17</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>17</span>, <span style=color:#3677a9>20</span>))               <span style=color:#999;font-style:italic>// succeeds, BoundsInIn by default</span>
-</span></span><span style=display:flex><span>tc.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>17</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>10</span>, <span style=color:#3677a9>17</span>, BoundsInOut))  <span style=color:#999;font-style:italic>// fails</span>
-</span></span><span style=display:flex><span>tc.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>17</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>10</span>, <span style=color:#3677a9>17</span>, BoundsOutIn))  <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>tc.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#3677a9>17</span>, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>17</span>, <span style=color:#3677a9>20</span>, BoundsOutOut)) <span style=color:#999;font-style:italic>// fails</span>
-</span></span><span style=display:flex><span>tc.<span style=color:#447fcf>Cmp</span>(t,                                       <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>  netip.<span style=color:#447fcf>MustParse</span>(<span style=color:#ed9d13>&#34;127.0.0.1&#34;</span>),
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Between</span>(netip.<span style=color:#447fcf>MustParse</span>(<span style=color:#ed9d13>&#34;127.0.0.0&#34;</span>), netip.<span style=color:#447fcf>MustParse</span>(<span style=color:#ed9d13>&#34;127.255.255.255&#34;</span>)))</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>tc</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>17</span>, <span style=color:#ae81ff>20</span>))               <span style=color:#75715e>// succeeds, BoundsInIn by default</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>tc</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>BoundsInOut</span>))  <span style=color:#75715e>// fails</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>tc</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>BoundsOutIn</span>))  <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>tc</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#ae81ff>17</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>17</span>, <span style=color:#ae81ff>20</span>, <span style=color:#a6e22e>BoundsOutOut</span>)) <span style=color:#75715e>// fails</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>tc</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>,                                       <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>netip</span>.<span style=color:#a6e22e>MustParse</span>(<span style=color:#e6db74>&#34;127.0.0.1&#34;</span>),
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>netip</span>.<span style=color:#a6e22e>MustParse</span>(<span style=color:#e6db74>&#34;127.0.0.0&#34;</span>), <span style=color:#a6e22e>netip</span>.<span style=color:#a6e22e>MustParse</span>(<span style=color:#e6db74>&#34;127.255.255.255&#34;</span>)))</span></span></code></pre></div>
 <p><a href=https://go-testdeep.zetta.rocks/operators/#typebehind-method rel=external target=_blank><code>TypeBehind</code></a> method returns the <a href=https://pkg.go.dev/reflect#Type rel=external target=_blank><code>reflect.Type</code></a> of <em>from</em>.</p>
 <blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Between rel=external target=_blank> Between godoc</a>.</p></blockquote>
@@ -140,37 +140,37 @@ specify whether <em>bounds</em> are included or not:</p>
 Int example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>156</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>156</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInIn),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInOut),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutIn),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutOut),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -179,37 +179,37 @@ Int example
 String example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;abc&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;abc&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInIn),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInOut),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutIn),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(<span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutOut),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -218,40 +218,40 @@ String example
 Time example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	before := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	occurredAt := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	after := time.<span style=color:#447fcf>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>occurredAt</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>after</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, occurredAt, td.<span style=color:#447fcf>Between</span>(before, after))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;It occurred between before and after:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after)))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>MyTime</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>after</span>)))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Same for convertible MyTime type:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(before, after))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;MyTime vs time.Time:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, occurredAt, td.<span style=color:#447fcf>Between</span>(before, <span style=color:#3677a9>10</span>*time.Second))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>before</span>, <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using a time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), td.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// It occurred between before and after: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same for convertible MyTime type: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// MyTime vs time.Time: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using a time.Duration as TO: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=cmpbetween-shortcut>CmpBetween shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpBetween</span>(t TestingT, got, from , to <span style=color:#6ab825;font-weight:700>any</span>, bounds BoundsKind, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>from</span> , <span style=color:#a6e22e>to</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>bounds</span> <span style=color:#a6e22e>BoundsKind</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpBetween is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Between</span>(from, to, bounds), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>from</span>, <span style=color:#a6e22e>to</span>, <span style=color:#a6e22e>bounds</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p><a href=https://go-testdeep.zetta.rocks/operators/between/ rel=external target=_blank><code>Between</code></a> optional parameter <em>bounds</em> is here mandatory.
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsInIn rel=external target=_blank><code>BoundsInIn</code></a> value should be passed <em>to</em> mimic its absence in
@@ -274,37 +274,37 @@ reason of a potential failure.</p>
 Int example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>156</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>156</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -313,37 +313,37 @@ Int example
 String example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;abc&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;abc&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -352,40 +352,40 @@ String example
 Time example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	before := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	occurredAt := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	after := time.<span style=color:#447fcf>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>occurredAt</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>after</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpBetween</span>(t, occurredAt, before, after, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;It occurred between before and after:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after), td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>MyTime</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>after</span>), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Same for convertible MyTime type:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), before, after, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;MyTime vs time.Time:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, occurredAt, before, <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>before</span>, <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using a time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpBetween</span>(t, <span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpBetween</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// It occurred between before and after: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same for convertible MyTime type: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// MyTime vs time.Time: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using a time.Duration as TO: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=tbetween-shortcut>T.Between shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Between</span>(got, from , to <span style=color:#6ab825;font-weight:700>any</span>, bounds BoundsKind, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>from</span> , <span style=color:#a6e22e>to</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>bounds</span> <span style=color:#a6e22e>BoundsKind</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>Between is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Between</span>(from, to, bounds), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>from</span>, <span style=color:#a6e22e>to</span>, <span style=color:#a6e22e>bounds</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p><a href=https://go-testdeep.zetta.rocks/operators/between/ rel=external target=_blank><code>Between</code></a> optional parameter <em>bounds</em> is here mandatory.
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#BoundsInIn rel=external target=_blank><code>BoundsInIn</code></a> value should be passed <em>to</em> mimic its absence in
@@ -407,37 +407,37 @@ reason of a potential failure.</p>
 Int example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>156</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>156</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Between</span>(got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsInOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in [154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in [154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156]&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156]&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#3677a9>154</span>, <span style=color:#3677a9>156</span>, td.BoundsOutOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v is in ]154 .. 156[&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>154</span>, <span style=color:#ae81ff>156</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v is in ]154 .. 156[&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -446,37 +446,37 @@ Int example
 String example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;abc&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;abc&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Between</span>(got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// BoundsInIn is implicit</span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// BoundsInIn is implicit</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsInOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in [&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutIn,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutIn</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;]`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(got, <span style=color:#ed9d13>&#34;aaa&#34;</span>, <span style=color:#ed9d13>&#34;abc&#34;</span>, td.BoundsOutOut,
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;aaa&#34;</span>, <span style=color:#e6db74>&#34;abc&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsOutOut</span>,
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`checks &#34;%v&#34; is in ]&#34;aaa&#34; .. &#34;abc&#34;[`</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -485,34 +485,34 @@ String example
 Time example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	before := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	occurredAt := time.<span style=color:#447fcf>Now</span>()
-</span></span><span style=display:flex><span>	after := time.<span style=color:#447fcf>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>occurredAt</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>after</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Between</span>(occurredAt, before, after, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;It occurred between before and after:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;It occurred between before and after:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> MyTime time.Time
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#447fcf>MyTime</span>(after), td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Same for convertible MyTime type:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>MyTime</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>after</span>), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Same for convertible MyTime type:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), before, after, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;MyTime vs time.Time:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>after</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;MyTime vs time.Time:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(occurredAt, before, <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using a time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>occurredAt</span>, <span style=color:#a6e22e>before</span>, <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using a time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyTime</span>(occurredAt), <span style=color:#447fcf>MyTime</span>(before), <span style=color:#3677a9>10</span>*time.Second, td.BoundsInIn)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>occurredAt</span>), <span style=color:#a6e22e>MyTime</span>(<span style=color:#a6e22e>before</span>), <span style=color:#ae81ff>10</span><span style=color:#f92672>*</span><span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;Using MyTime as FROM and time.Duration as TO:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// It occurred between before and after: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same for convertible MyTime type: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// MyTime vs time.Time: false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using a time.Duration as TO: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// It occurred between before and after: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same for convertible MyTime type: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// MyTime vs time.Time: false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using a time.Duration as TO: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Using MyTime as FROM and time.Duration as TO: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <footer class=footline>
@@ -658,8 +658,8 @@ Time example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='Synopsis Make golang tests easy, from simplest usage:
 import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(t *testing.T) { td.Cmp(t, MyFunc(), &amp;Info{Name: "Alice", Age: 42}) } To a bit more complex one, allowing flexible comparisons using TestDeep operators:
 import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(t *testing.T) { td.Cmp(t, MyFunc(), td.Struct( &amp;Info{Name: "Alice"}, td.StructFields{ "Age": td.Between(40, 45), }, )) } Or anchoring operators directly in literals, as in:
@@ -33,19 +33,22 @@ import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *te
 <meta itemprop=wordCount content="510">
 <title>Introduction :: go-testdeep</title>
 <link href=/introduction/index.xml rel=alternate type=application/rss+xml title="Introduction :: go-testdeep">
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/introduction/index.html",window.relearn.relBasePath="..",window.relearn.relBaseUri="..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/introduction/index.html",window.relearn.relBasePath="..",window.relearn.relBaseUri="..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/introduction/index.html>
@@ -74,9 +77,7 @@ import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *te
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Introduction</span><meta itemprop=position content="2"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Introduction</span><meta itemprop=position content="2"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/index.html title="go-testdeep (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -103,92 +104,92 @@ import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *te
 <h1 id=introduction>Introduction</h1>
 <h2 id=synopsis>Synopsis</h2>
 <p>Make golang tests easy, from simplest usage:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyFunc</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyFunc</span>(), &amp;Info{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>42</span>})
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyFunc</span>(), <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Info</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>42</span>})
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>To a bit more complex one, allowing flexible comparisons using
 <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operators</a>:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyFunc</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Cmp</span>(t, <span style=color:#447fcf>MyFunc</span>(), td.<span style=color:#447fcf>Struct</span>(
-</span></span><span style=display:flex><span>    &amp;Info{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>},
-</span></span><span style=display:flex><span>    td.StructFields{
-</span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;Age&#34;</span>: td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>),
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>MyFunc</span>(), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Struct</span>(
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Info</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>},
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>StructFields</span>{
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Age&#34;</span>: <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>45</span>),
 </span></span><span style=display:flex><span>    },
 </span></span><span style=display:flex><span>  ))
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>Or anchoring operators directly in literals, as in:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyFunc</span>(tt *testing.T) {
-</span></span><span style=display:flex><span>  t := td.<span style=color:#447fcf>NewT</span>(tt)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>MyFunc</span>(), &amp;Info{
-</span></span><span style=display:flex><span>    Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>,
-</span></span><span style=display:flex><span>    Age:  t.<span style=color:#447fcf>Anchor</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>)).(<span style=color:#6ab825;font-weight:700>int</span>),
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>MyFunc</span>(), <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Info</span>{
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Age</span>:  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Anchor</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>45</span>)).(<span style=color:#66d9ef>int</span>),
 </span></span><span style=display:flex><span>  })
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>To most complex one, allowing to easily test HTTP API routes, using
 flexible <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>operators</a> and the
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><code>tdhttp</code></a>
 helper:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;time&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;time&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/helpers/tdhttp&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/helpers/tdhttp&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>  ID        <span style=color:#6ab825;font-weight:700>uint64</span>    <span style=color:#ed9d13>`json:&#34;id&#34;`</span>
-</span></span><span style=display:flex><span>  Name      <span style=color:#6ab825;font-weight:700>string</span>    <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
-</span></span><span style=display:flex><span>  Age       <span style=color:#6ab825;font-weight:700>int</span>       <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
-</span></span><span style=display:flex><span>  CreatedAt time.Time <span style=color:#ed9d13>`json:&#34;created_at&#34;`</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>ID</span>        <span style=color:#66d9ef>uint64</span>    <span style=color:#e6db74>`json:&#34;id&#34;`</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Name</span>      <span style=color:#66d9ef>string</span>    <span style=color:#e6db74>`json:&#34;name&#34;`</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Age</span>       <span style=color:#66d9ef>int</span>       <span style=color:#e6db74>`json:&#34;age&#34;`</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>CreatedAt</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span> <span style=color:#e6db74>`json:&#34;created_at&#34;`</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestMyApi</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> id <span style=color:#6ab825;font-weight:700>uint64</span>
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>var</span> createdAt time.Time
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyApi</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>id</span> <span style=color:#66d9ef>uint64</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>createdAt</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI := tdhttp.<span style=color:#447fcf>NewTestAPI</span>(t, myAPI) <span style=color:#999;font-style:italic>// ← ①</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>testAPI</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>tdhttp</span>.<span style=color:#a6e22e>NewTestAPI</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>myAPI</span>) <span style=color:#75715e>// ← ①</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  testAPI.<span style=color:#447fcf>PostJSON</span>(<span style=color:#ed9d13>&#34;/person&#34;</span>, Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>42</span>}). <span style=color:#999;font-style:italic>// ← ②</span>
-</span></span><span style=display:flex><span>    <span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;Create a new Person&#34;</span>).
-</span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpStatus</span>(http.StatusCreated). <span style=color:#999;font-style:italic>// ← ③</span>
-</span></span><span style=display:flex><span>    <span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>// Note that comments are allowed
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;id&#34;:         $id,             // set by the API/DB
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;name&#34;:       &#34;Alice&#34;,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:        Between(40, 45), // ← ④
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;created_at&#34;: &#34;$createdAt&#34;,    // set by the API/DB
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>,
-</span></span><span style=display:flex><span>      td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;id&#34;</span>, td.<span style=color:#447fcf>Catch</span>(&amp;id, td.<span style=color:#447fcf>NotZero</span>())),        <span style=color:#999;font-style:italic>// ← ⑤</span>
-</span></span><span style=display:flex><span>      td.<span style=color:#447fcf>Tag</span>(<span style=color:#ed9d13>&#34;createdAt&#34;</span>, td.<span style=color:#447fcf>All</span>(                       <span style=color:#999;font-style:italic>// ← ⑥</span>
-</span></span><span style=display:flex><span>        td.<span style=color:#447fcf>HasSuffix</span>(<span style=color:#ed9d13>&#34;Z&#34;</span>),                              <span style=color:#999;font-style:italic>// ← ⑦</span>
-</span></span><span style=display:flex><span>        td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(s <span style=color:#6ab825;font-weight:700>string</span>) (time.Time, <span style=color:#6ab825;font-weight:700>error</span>) {  <span style=color:#999;font-style:italic>// ← ⑧</span>
-</span></span><span style=display:flex><span>          <span style=color:#6ab825;font-weight:700>return</span> time.<span style=color:#447fcf>Parse</span>(time.RFC3339Nano, s)
-</span></span><span style=display:flex><span>        }, td.<span style=color:#447fcf>Catch</span>(&amp;createdAt, td.<span style=color:#447fcf>Between</span>(testAPI.<span style=color:#447fcf>SentAt</span>(), time.<span style=color:#447fcf>Now</span>()))), <span style=color:#999;font-style:italic>// ← ⑨</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>testAPI</span>.<span style=color:#a6e22e>PostJSON</span>(<span style=color:#e6db74>&#34;/person&#34;</span>, <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>42</span>}). <span style=color:#75715e>// ← ②</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>Name</span>(<span style=color:#e6db74>&#34;Create a new Person&#34;</span>).
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>CmpStatus</span>(<span style=color:#a6e22e>http</span>.<span style=color:#a6e22e>StatusCreated</span>). <span style=color:#75715e>// ← ③</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>CmpJSONBody</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>JSON</span>(<span style=color:#e6db74>`
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>// Note that comments are allowed
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;id&#34;:         $id,             // set by the API/DB
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;name&#34;:       &#34;Alice&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;age&#34;:        Between(40, 45), // ← ④
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;created_at&#34;: &#34;$createdAt&#34;,    // set by the API/DB
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}`</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Tag</span>(<span style=color:#e6db74>&#34;id&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Catch</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>id</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotZero</span>())),        <span style=color:#75715e>// ← ⑤</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Tag</span>(<span style=color:#e6db74>&#34;createdAt&#34;</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>All</span>(                       <span style=color:#75715e>// ← ⑥</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>HasSuffix</span>(<span style=color:#e6db74>&#34;Z&#34;</span>),                              <span style=color:#75715e>// ← ⑦</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Smuggle</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>s</span> <span style=color:#66d9ef>string</span>) (<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>, <span style=color:#66d9ef>error</span>) {  <span style=color:#75715e>// ← ⑧</span>
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Parse</span>(<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>RFC3339Nano</span>, <span style=color:#a6e22e>s</span>)
+</span></span><span style=display:flex><span>        }, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Catch</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>createdAt</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>testAPI</span>.<span style=color:#a6e22e>SentAt</span>(), <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()))), <span style=color:#75715e>// ← ⑨</span>
 </span></span><span style=display:flex><span>      )),
 </span></span><span style=display:flex><span>    ))
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> !testAPI.<span style=color:#447fcf>Failed</span>() {
-</span></span><span style=display:flex><span>    t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;The new Person ID is %d and was created at %s&#34;</span>, id, createdAt)
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> !<span style=color:#a6e22e>testAPI</span>.<span style=color:#a6e22e>Failed</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Logf</span>(<span style=color:#e6db74>&#34;The new Person ID is %d and was created at %s&#34;</span>, <span style=color:#a6e22e>id</span>, <span style=color:#a6e22e>createdAt</span>)
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <ol>
@@ -214,8 +215,7 @@ function thanks to the <a href=https://go-testdeep.zetta.rocks/operators/smuggle
 or equal than <code>time.Now()</code>.</li>
 </ol>
 <h4 id=error-output>Example of produced error in case of mismatch</h4>
-<p><a href=#R-image-8e61a20c64f5d2d87381f64c6bc859b0 class=lightbox-link><img alt="error output" class="lazy lightbox figure-image" loading=lazy src=/images/colored-output.svg style=height:auto;width:auto></a>
-<a href=javascript:history.back(); class=lightbox-back id=R-image-8e61a20c64f5d2d87381f64c6bc859b0><img alt="error output" class="lazy lightbox lightbox-image" loading=lazy src=/images/colored-output.svg></a></p>
+<p><img alt="error output" class="lazy figure-image" loading=lazy src=/images/colored-output.svg style=height:auto;width:auto></p>
 <h2 id=description>Description</h2>
 <p>go-testdeep is historically a go rewrite and adaptation of wonderful
 <a href=https://metacpan.org/pod/Test::Deep rel=external target=_blank>Test::Deep perl</a>.</p>
@@ -307,8 +307,8 @@ useful <a href=https://go-testdeep.zetta.rocks/functions/ rel=external target=_b
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

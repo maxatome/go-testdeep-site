@@ -2,23 +2,26 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='Of course we can test struct fields one by one, but with go-testdeep and the [td package], the whole struct can be compared with one Cmp call.
 We can choose to ignore the non-guessable fields set by CreateRecord():
-import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf'>
+import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
+The Struct operator, used here, ignores zero fields in its model parameter.'>
 <meta name=author content>
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Advanced go-testdeep technique :: go-testdeep">
 <meta name=twitter:description content='Of course we can test struct fields one by one, but with go-testdeep and the [td package], the whole struct can be compared with one Cmp call.
 We can choose to ignore the non-guessable fields set by CreateRecord():
-import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf'>
+import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
+The Struct operator, used here, ignores zero fields in its model parameter.'>
 <meta property="og:url" content="https://go-testdeep.zetta.rocks/example/advanced-testdeep/index.html">
 <meta property="og:site_name" content="go-testdeep">
 <meta property="og:title" content="Advanced go-testdeep technique :: go-testdeep">
 <meta property="og:description" content='Of course we can test struct fields one by one, but with go-testdeep and the [td package], the whole struct can be compared with one Cmp call.
 We can choose to ignore the non-guessable fields set by CreateRecord():
-import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf'>
+import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
+The Struct operator, used here, ignores zero fields in its model parameter.'>
 <meta property="og:locale" content="en_us">
 <meta property="og:type" content="article">
 <meta property="article:section" content="Tutorial">
@@ -26,23 +29,27 @@ import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreate
 <meta itemprop=name content="Advanced go-testdeep technique :: go-testdeep">
 <meta itemprop=description content='Of course we can test struct fields one by one, but with go-testdeep and the [td package], the whole struct can be compared with one Cmp call.
 We can choose to ignore the non-guessable fields set by CreateRecord():
-import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf'>
+import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { record, err := CreateRecord("Bob", 23) if td.CmpNoError(t, err) { td.Cmp(t, record, td.Struct( &amp;Record{ Name: "Bob", Age: 23, }), "Newly created record") } } Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
+The Struct operator, used here, ignores zero fields in its model parameter.'>
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="248">
 <title>Advanced go-testdeep technique :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/advanced-testdeep/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/advanced-testdeep/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/example/advanced-testdeep/index.html>
@@ -61,10 +68,7 @@ import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreate
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/example/index.html><span itemprop=name>Tutorial</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Advanced go-testdeep technique</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/example/index.html><span itemprop=name>Tutorial</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Advanced go-testdeep technique</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/example/basic-testdeep/index.html title="Basic go-testdeep approach (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -94,53 +98,53 @@ and the [<code>td</code> package], the whole struct can be compared with one
 <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external target=_blank><code>Cmp</code></a> call.</p>
 <p>We can choose to ignore the non-guessable fields set by
 <code>CreateRecord()</code>:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;time&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;time&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestCreateRecord</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  record, err := <span style=color:#447fcf>CreateRecord</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>23</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestCreateRecord</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>record</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>CreateRecord</span>(<span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#ae81ff>23</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> td.<span style=color:#447fcf>CmpNoError</span>(t, err) {
-</span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Cmp</span>(t, record,
-</span></span><span style=display:flex><span>      td.<span style=color:#447fcf>Struct</span>(
-</span></span><span style=display:flex><span>        &amp;Record{
-</span></span><span style=display:flex><span>          Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,
-</span></span><span style=display:flex><span>          Age:  <span style=color:#3677a9>23</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpNoError</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>record</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Struct</span>(
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Record</span>{
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>,
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Age</span>:  <span style=color:#ae81ff>23</span>,
 </span></span><span style=display:flex><span>        }),
-</span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;Newly created record&#34;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Newly created record&#34;</span>)
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>Test in in playground: <a href=https://go.dev/play/p/X9mYj9UxgSf rel=external target=_blank>https://go.dev/play/p/X9mYj9UxgSf</a></p>
 <p>The <a href=https://go-testdeep.zetta.rocks/operators/struct/ rel=external target=_blank><code>Struct</code></a> operator, used here,
 ignores zero fields in its model parameter.</p>
 <p>But it is better to check all fields:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;time&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;time&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestCreateRecord</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  before := time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Truncate</span>(time.Second)
-</span></span><span style=display:flex><span>  record, err := <span style=color:#447fcf>CreateRecord</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>23</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestCreateRecord</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>().<span style=color:#a6e22e>Truncate</span>(<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>record</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>CreateRecord</span>(<span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#ae81ff>23</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> td.<span style=color:#447fcf>CmpNoError</span>(t, err) {
-</span></span><span style=display:flex><span>    td.<span style=color:#447fcf>Cmp</span>(t, record,
-</span></span><span style=display:flex><span>      td.<span style=color:#447fcf>Struct</span>(
-</span></span><span style=display:flex><span>        &amp;Record{
-</span></span><span style=display:flex><span>          Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>,
-</span></span><span style=display:flex><span>          Age:  <span style=color:#3677a9>23</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpNoError</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>record</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Struct</span>(
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Record</span>{
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>,
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>Age</span>:  <span style=color:#ae81ff>23</span>,
 </span></span><span style=display:flex><span>        },
-</span></span><span style=display:flex><span>        td.StructFields{
-</span></span><span style=display:flex><span>          <span style=color:#ed9d13>&#34;Id&#34;</span>:        td.<span style=color:#447fcf>NotZero</span>(),
-</span></span><span style=display:flex><span>          <span style=color:#ed9d13>&#34;CreatedAt&#34;</span>: td.<span style=color:#447fcf>Between</span>(before, time.<span style=color:#447fcf>Now</span>()),
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>StructFields</span>{
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Id&#34;</span>:        <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotZero</span>(),
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;CreatedAt&#34;</span>: <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()),
 </span></span><span style=display:flex><span>        }),
-</span></span><span style=display:flex><span>      <span style=color:#ed9d13>&#34;Newly created record&#34;</span>)
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Newly created record&#34;</span>)
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>Test it in playground: <a href=https://play.golang.org/p/PGyi0d3ZXMa rel=external target=_blank>https://play.golang.org/p/PGyi0d3ZXMa</a></p>
@@ -153,18 +157,15 @@ for some fields, here <a href=https://go-testdeep.zetta.rocks/operators/notzero/
 found to cover most (all?) needed tests. See the
 <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>operators list</a>.</p>
 <p>Say <code>CreateRecord()</code> does not set correctly <code>CreatedAt</code> field, then:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>go <span style=color:#24909d>test</span> -run=TestCreateRecord</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>go test -run<span style=color:#f92672>=</span>TestCreateRecord</span></span></code></pre></div>
 <p>outputs for last <code>td.Cmp</code> call:</p>
-<p><a href=#R-image-3cc4fcc3659ceec8b079ec25175cb35f class=lightbox-link><img alt="error output" class="lazy lightbox figure-image" loading=lazy src=/images/colored-newly1.svg style=height:auto;width:auto></a>
-<a href=javascript:history.back(); class=lightbox-back id=R-image-3cc4fcc3659ceec8b079ec25175cb35f><img alt="error output" class="lazy lightbox lightbox-image" loading=lazy src=/images/colored-newly1.svg></a></p>
+<p><img alt="error output" class="lazy figure-image" loading=lazy src=/images/colored-newly1.svg style=height:auto;width:auto></p>
 <p>If <code>CreateRecord()</code> had not set correctly <code>Id</code> field, output would have
 been:</p>
-<p><a href=#R-image-87c971f63e5dc2f868b89e2f1b486df9 class=lightbox-link><img alt="error output" class="lazy lightbox figure-image" loading=lazy src=/images/colored-newly2.svg style=height:auto;width:auto></a>
-<a href=javascript:history.back(); class=lightbox-back id=R-image-87c971f63e5dc2f868b89e2f1b486df9><img alt="error output" class="lazy lightbox lightbox-image" loading=lazy src=/images/colored-newly2.svg></a></p>
+<p><img alt="error output" class="lazy figure-image" loading=lazy src=/images/colored-newly2.svg style=height:auto;width:auto></p>
 <p>If <code>CreateRecord()</code> had set <code>Name</code> field to &ldquo;Alice&rdquo; value instead of
 expected &ldquo;Bob&rdquo;, output would have been:</p>
-<p><a href=#R-image-90b0f41facaecca027bbea5759a855f4 class=lightbox-link><img alt="error output" class="lazy lightbox figure-image" loading=lazy src=/images/colored-newly3.svg style=height:auto;width:auto></a>
-<a href=javascript:history.back(); class=lightbox-back id=R-image-90b0f41facaecca027bbea5759a855f4><img alt="error output" class="lazy lightbox lightbox-image" loading=lazy src=/images/colored-newly3.svg></a></p>
+<p><img alt="error output" class="lazy figure-image" loading=lazy src=/images/colored-newly3.svg style=height:auto;width:auto></p>
 <footer class=footline>
 </footer>
 </article>
@@ -245,8 +246,8 @@ expected &ldquo;Bob&rdquo;, output would have been:</p>
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='func ContainsKey(expectedValue any) TestDeep ContainsKey is a smuggler operator and works on maps only. It compares each key of map against expectedValue.
 hash := map[string]int{"foo": 12, "bar": 34, "zip": 28} td.Cmp(t, hash, td.ContainsKey("foo")) // succeeds td.Cmp(t, hash, td.ContainsKey(td.HasPrefix("z"))) // succeeds td.Cmp(t, hash, td.ContainsKey(td.HasPrefix("x"))) // fails hnum := map[int]string{1: "foo", 42: "bar"} td.Cmp(t, hash, td.ContainsKey(42)) // succeeds td.Cmp(t, hash, td.ContainsKey(td.Between(40, 45))) // succeeds When ContainsKey(nil) is used, nil is automatically converted to a typed nil on the fly to avoid confusion (if the map key type allows it of course.) So all following Cmp calls are equivalent (except the (*byte)(nil) one):'>
 <meta name=author content>
@@ -26,19 +26,22 @@ hash := map[string]int{"foo": 12, "bar": 34, "zip": 28} td.Cmp(t, hash, td.Conta
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="931">
 <title>ContainsKey :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/containskey/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/containskey/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/containskey/index.html>
@@ -76,10 +79,7 @@ hash := map[string]int{"foo": 12, "bar": 34, "zip": 28} td.Cmp(t, hash, td.Conta
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>ContainsKey</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>ContainsKey</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/contains/index.html title="Contains (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -104,28 +104,28 @@ hash := map[string]int{"foo": 12, "bar": 34, "zip": 28} td.Cmp(t, hash, td.Conta
 <header class=headline>
 </header>
 <h1 id=containskey>ContainsKey</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>ContainsKey</span>(expectedValue <span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>ContainsKey is a <a href=https://go-testdeep.zetta.rocks/operators/#smuggler-operators rel=external target=_blank>smuggler operator</a> and works on maps only. It
 compares each key of map against <em>expectedValue</em>.</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>hash := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>12</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>34</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>28</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>))             <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;z&#34;</span>))) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>HasPrefix</span>(<span style=color:#ed9d13>&#34;x&#34;</span>))) <span style=color:#999;font-style:italic>// fails</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>hash</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#ae81ff>12</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>34</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>28</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hash</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#e6db74>&#34;foo&#34;</span>))             <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hash</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>HasPrefix</span>(<span style=color:#e6db74>&#34;z&#34;</span>))) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hash</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>HasPrefix</span>(<span style=color:#e6db74>&#34;x&#34;</span>))) <span style=color:#75715e>// fails</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>hnum := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#3677a9>1</span>: <span style=color:#ed9d13>&#34;foo&#34;</span>, <span style=color:#3677a9>42</span>: <span style=color:#ed9d13>&#34;bar&#34;</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#3677a9>42</span>))                 <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hash, td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>45</span>))) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>hnum</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>string</span>{<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#34;foo&#34;</span>, <span style=color:#ae81ff>42</span>: <span style=color:#e6db74>&#34;bar&#34;</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hash</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#ae81ff>42</span>))                 <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hash</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>45</span>))) <span style=color:#75715e>// succeeds</span></span></span></code></pre></div>
 <p>When ContainsKey(<code>nil</code>) is used, <code>nil</code> is automatically converted to a
 typed <code>nil</code> on the fly to avoid confusion (if the map key type allows
 it of course.) So all following <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external target=_blank><code>Cmp</code></a> calls are equivalent
 (except the <code>(*byte)(nil)</code> one):</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>num := <span style=color:#3677a9>123</span>
-</span></span><span style=display:flex><span>hnum := <span style=color:#6ab825;font-weight:700>map</span>[*<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{&amp;num: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#6ab825;font-weight:700>nil</span>: <span style=color:#6ab825;font-weight:700>true</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hnum, td.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#6ab825;font-weight:700>nil</span>))         <span style=color:#999;font-style:italic>// succeeds → (*int)(nil)</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hnum, td.<span style=color:#447fcf>ContainsKey</span>((*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hnum, td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>Nil</span>()))    <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// But...</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, hnum, td.<span style=color:#447fcf>ContainsKey</span>((*<span style=color:#6ab825;font-weight:700>byte</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))) <span style=color:#999;font-style:italic>// fails: (*byte)(nil) ≠ (*int)(nil)</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>hnum</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>num</span>: <span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>nil</span>: <span style=color:#66d9ef>true</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hnum</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#66d9ef>nil</span>))         <span style=color:#75715e>// succeeds → (*int)(nil)</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hnum</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>((<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>)(<span style=color:#66d9ef>nil</span>))) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hnum</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Nil</span>()))    <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// But...</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>hnum</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>((<span style=color:#f92672>*</span><span style=color:#66d9ef>byte</span>)(<span style=color:#66d9ef>nil</span>))) <span style=color:#75715e>// fails: (*byte)(nil) ≠ (*int)(nil)</span></span></span></code></pre></div>
 <blockquote>
 <p>See also <a href=https://go-testdeep.zetta.rocks/operators/contains/ rel=external target=_blank><code>Contains</code></a>.</p></blockquote>
 <blockquote>
@@ -138,26 +138,26 @@ it of course.) So all following <a href=https://pkg.go.dev/github.com/maxatome/g
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t,
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, td.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#ed9d13>&#34;foo&#34;</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34;:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>,
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#e6db74>&#34;foo&#34;</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34;:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t,
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{<span style=color:#3677a9>12</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>24</span>: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#3677a9>42</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>51</span>: <span style=color:#6ab825;font-weight:700>false</span>},
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>)))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>,
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#ae81ff>12</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>24</span>: <span style=color:#66d9ef>false</span>, <span style=color:#ae81ff>42</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>51</span>: <span style=color:#66d9ef>false</span>},
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>50</span>)))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t,
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;FOO&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>},
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>Smuggle</span>(strings.ToLower, <span style=color:#ed9d13>&#34;foo&#34;</span>)))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34; without taking case into account:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>,
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;FOO&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>},
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Smuggle</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>ToLower</span>, <span style=color:#e6db74>&#34;foo&#34;</span>)))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34; without taking case into account:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34;: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains at least a key in [40 .. 50]: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34;: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains at least a key in [40 .. 50]: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -166,34 +166,34 @@ Base example
 Nil example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	num := <span style=color:#3677a9>1234</span>
-</span></span><span style=display:flex><span>	got := <span style=color:#6ab825;font-weight:700>map</span>[*<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{&amp;num: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#6ab825;font-weight:700>nil</span>: <span style=color:#6ab825;font-weight:700>true</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>1234</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>num</span>: <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>nil</span>: <span style=color:#66d9ef>true</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#6ab825;font-weight:700>nil</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains untyped nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains untyped nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ContainsKey</span>((*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>)))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *int nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>((<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>)(<span style=color:#66d9ef>nil</span>)))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *int nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ContainsKey</span>(td.<span style=color:#447fcf>Nil</span>()))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains Nil() key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Nil</span>()))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains Nil() key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ContainsKey</span>((*<span style=color:#6ab825;font-weight:700>byte</span>)(<span style=color:#6ab825;font-weight:700>nil</span>)))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *byte nil key:&#34;</span>, ok) <span style=color:#999;font-style:italic>// types differ: *byte ≠ *int</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>((<span style=color:#f92672>*</span><span style=color:#66d9ef>byte</span>)(<span style=color:#66d9ef>nil</span>)))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *byte nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>) <span style=color:#75715e>// types differ: *byte ≠ *int</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains untyped nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *int nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains Nil() key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *byte nil key: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains untyped nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *int nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains Nil() key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *byte nil key: false</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=cmpcontainskey-shortcut>CmpContainsKey shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpContainsKey</span>(t TestingT, got, expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpContainsKey is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ContainsKey</span>(expectedValue), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>expectedValue</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
@@ -213,21 +213,21 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpContainsKey</span>(t, <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, <span style=color:#ed9d13>&#34;foo&#34;</span>)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34;:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>}, <span style=color:#e6db74>&#34;foo&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34;:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpContainsKey</span>(t, <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{<span style=color:#3677a9>12</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>24</span>: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#3677a9>42</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>51</span>: <span style=color:#6ab825;font-weight:700>false</span>}, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#ae81ff>12</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>24</span>: <span style=color:#66d9ef>false</span>, <span style=color:#ae81ff>42</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>51</span>: <span style=color:#66d9ef>false</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>50</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpContainsKey</span>(t, <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;FOO&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, td.<span style=color:#447fcf>Smuggle</span>(strings.ToLower, <span style=color:#ed9d13>&#34;foo&#34;</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34; without taking case into account:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;FOO&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Smuggle</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>ToLower</span>, <span style=color:#e6db74>&#34;foo&#34;</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34; without taking case into account:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34;: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains at least a key in [40 .. 50]: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34;: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains at least a key in [40 .. 50]: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -236,34 +236,34 @@ Base example
 Nil example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	num := <span style=color:#3677a9>1234</span>
-</span></span><span style=display:flex><span>	got := <span style=color:#6ab825;font-weight:700>map</span>[*<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{&amp;num: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#6ab825;font-weight:700>nil</span>: <span style=color:#6ab825;font-weight:700>true</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>1234</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>num</span>: <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>nil</span>: <span style=color:#66d9ef>true</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpContainsKey</span>(t, got, <span style=color:#6ab825;font-weight:700>nil</span>)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains untyped nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>nil</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains untyped nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpContainsKey</span>(t, got, (*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *int nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, (<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>)(<span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *int nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpContainsKey</span>(t, got, td.<span style=color:#447fcf>Nil</span>())
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains Nil() key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Nil</span>())
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains Nil() key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpContainsKey</span>(t, got, (*<span style=color:#6ab825;font-weight:700>byte</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *byte nil key:&#34;</span>, ok) <span style=color:#999;font-style:italic>// types differ: *byte ≠ *int</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpContainsKey</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, (<span style=color:#f92672>*</span><span style=color:#66d9ef>byte</span>)(<span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *byte nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>) <span style=color:#75715e>// types differ: *byte ≠ *int</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains untyped nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *int nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains Nil() key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *byte nil key: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains untyped nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *int nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains Nil() key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *byte nil key: false</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=tcontainskey-shortcut>T.ContainsKey shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>ContainsKey</span>(got, expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>ContainsKey is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>ContainsKey</span>(expectedValue), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>expectedValue</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -282,21 +282,21 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, <span style=color:#ed9d13>&#34;foo&#34;</span>)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34;:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>}, <span style=color:#e6db74>&#34;foo&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34;:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{<span style=color:#3677a9>12</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>24</span>: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#3677a9>42</span>: <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#3677a9>51</span>: <span style=color:#6ab825;font-weight:700>false</span>}, td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>40</span>, <span style=color:#3677a9>50</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#ae81ff>12</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>24</span>: <span style=color:#66d9ef>false</span>, <span style=color:#ae81ff>42</span>: <span style=color:#66d9ef>true</span>, <span style=color:#ae81ff>51</span>: <span style=color:#66d9ef>false</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>50</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains at least a key in [40 .. 50]:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>ContainsKey</span>(<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;FOO&#34;</span>: <span style=color:#3677a9>11</span>, <span style=color:#ed9d13>&#34;bar&#34;</span>: <span style=color:#3677a9>22</span>, <span style=color:#ed9d13>&#34;zip&#34;</span>: <span style=color:#3677a9>33</span>}, td.<span style=color:#447fcf>Smuggle</span>(strings.ToLower, <span style=color:#ed9d13>&#34;foo&#34;</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>`map contains key &#34;foo&#34; without taking case into account:`</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;FOO&#34;</span>: <span style=color:#ae81ff>11</span>, <span style=color:#e6db74>&#34;bar&#34;</span>: <span style=color:#ae81ff>22</span>, <span style=color:#e6db74>&#34;zip&#34;</span>: <span style=color:#ae81ff>33</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Smuggle</span>(<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>ToLower</span>, <span style=color:#e6db74>&#34;foo&#34;</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>`map contains key &#34;foo&#34; without taking case into account:`</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34;: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains at least a key in [40 .. 50]: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34;: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains at least a key in [40 .. 50]: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains key &#34;foo&#34; without taking case into account: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -305,28 +305,28 @@ Base example
 Nil example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	num := <span style=color:#3677a9>1234</span>
-</span></span><span style=display:flex><span>	got := <span style=color:#6ab825;font-weight:700>map</span>[*<span style=color:#6ab825;font-weight:700>int</span>]<span style=color:#6ab825;font-weight:700>bool</span>{&amp;num: <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#6ab825;font-weight:700>nil</span>: <span style=color:#6ab825;font-weight:700>true</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>num</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>1234</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>]<span style=color:#66d9ef>bool</span>{<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>num</span>: <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>nil</span>: <span style=color:#66d9ef>true</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>ContainsKey</span>(got, <span style=color:#6ab825;font-weight:700>nil</span>)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains untyped nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>nil</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains untyped nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>ContainsKey</span>(got, (*<span style=color:#6ab825;font-weight:700>int</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *int nil key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>got</span>, (<span style=color:#f92672>*</span><span style=color:#66d9ef>int</span>)(<span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *int nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>ContainsKey</span>(got, td.<span style=color:#447fcf>Nil</span>())
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains Nil() key:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Nil</span>())
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains Nil() key:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>ContainsKey</span>(got, (*<span style=color:#6ab825;font-weight:700>byte</span>)(<span style=color:#6ab825;font-weight:700>nil</span>))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;map contains *byte nil key:&#34;</span>, ok) <span style=color:#999;font-style:italic>// types differ: *byte ≠ *int</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>ContainsKey</span>(<span style=color:#a6e22e>got</span>, (<span style=color:#f92672>*</span><span style=color:#66d9ef>byte</span>)(<span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;map contains *byte nil key:&#34;</span>, <span style=color:#a6e22e>ok</span>) <span style=color:#75715e>// types differ: *byte ≠ *int</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains untyped nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *int nil key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains Nil() key: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// map contains *byte nil key: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains untyped nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *int nil key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains Nil() key: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// map contains *byte nil key: false</span></span></span></code></pre></div>
 </div>
 </details></p>
 <footer class=footline>
@@ -472,8 +472,8 @@ Nil example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

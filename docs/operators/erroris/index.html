@@ -2,43 +2,50 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='func ErrorIs(expectedError any) TestDeep ErrorIs is a smuggler operator. It reports whether any error in an error’s chain matches expectedError.
-_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.'>
+_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.
+Note that like errors.Is, expectedError can be nil: in this case the comparison succeeds only when got is nil too.'>
 <meta name=author content>
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="ErrorIs :: go-testdeep">
 <meta name=twitter:description content='func ErrorIs(expectedError any) TestDeep ErrorIs is a smuggler operator. It reports whether any error in an error’s chain matches expectedError.
-_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.'>
+_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.
+Note that like errors.Is, expectedError can be nil: in this case the comparison succeeds only when got is nil too.'>
 <meta property="og:url" content="https://go-testdeep.zetta.rocks/operators/erroris/index.html">
 <meta property="og:site_name" content="go-testdeep">
 <meta property="og:title" content="ErrorIs :: go-testdeep">
 <meta property="og:description" content='func ErrorIs(expectedError any) TestDeep ErrorIs is a smuggler operator. It reports whether any error in an error’s chain matches expectedError.
-_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.'>
+_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.
+Note that like errors.Is, expectedError can be nil: in this case the comparison succeeds only when got is nil too.'>
 <meta property="og:locale" content="en_us">
 <meta property="og:type" content="article">
 <meta property="article:section" content="Operators">
 <meta property="article:modified_time" content="2025-04-17T20:24:54+02:00">
 <meta itemprop=name content="ErrorIs :: go-testdeep">
 <meta itemprop=description content='func ErrorIs(expectedError any) TestDeep ErrorIs is a smuggler operator. It reports whether any error in an error’s chain matches expectedError.
-_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.'>
+_, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cmp(t, err, td.ErrorIs(os.ErrNotExist)) // succeeds err1 := fmt.Errorf("failure1") err2 := fmt.Errorf("failure2: %w", err1) err3 := fmt.Errorf("failure3: %w", err2) err := fmt.Errorf("failure4: %w", err3) td.Cmp(t, err, td.ErrorIs(err)) // succeeds td.Cmp(t, err, td.ErrorIs(err1)) // succeeds td.Cmp(t, err1, td.ErrorIs(err)) // fails var cerr myError td.Cmp(t, err, td.ErrorIs(td.Catch(&amp;cerr, td.String("my error...")))) td.Cmp(t, err, td.ErrorIs(td.All( td.Isa(myError{}), td.String("my error..."), ))) Behind the scene it uses errors.Is function if expectedError is an error and errors.As function if expectedError is a TestDeep operator.
+Note that like errors.Is, expectedError can be nil: in this case the comparison succeeds only when got is nil too.'>
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="567">
 <title>ErrorIs :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/erroris/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/erroris/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/erroris/index.html>
@@ -76,10 +83,7 @@ _, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cm
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>ErrorIs</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>ErrorIs</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/empty/index.html title="Empty (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -104,27 +108,27 @@ _, err := os.Open("/unknown/file") td.Cmp(t, err, os.ErrNotExist) // fails td.Cm
 <header class=headline>
 </header>
 <h1 id=erroris>ErrorIs</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>ErrorIs</span>(expectedError <span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>expectedError</span> <span style=color:#66d9ef>any</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>ErrorIs is a <a href=https://go-testdeep.zetta.rocks/operators/#smuggler-operators rel=external target=_blank>smuggler operator</a>. It reports whether <code>any</code> <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> in an
 <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a>&rsquo;s chain matches <em>expectedError</em>.</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>_, err := os.<span style=color:#447fcf>Open</span>(<span style=color:#ed9d13>&#34;/unknown/file&#34;</span>)
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, os.ErrNotExist)             <span style=color:#999;font-style:italic>// fails</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(os.ErrNotExist)) <span style=color:#999;font-style:italic>// succeeds</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>Open</span>(<span style=color:#e6db74>&#34;/unknown/file&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>ErrNotExist</span>)             <span style=color:#75715e>// fails</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>ErrNotExist</span>)) <span style=color:#75715e>// succeeds</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>err1 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure1&#34;</span>)
-</span></span><span style=display:flex><span>err2 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure2: %w&#34;</span>, err1)
-</span></span><span style=display:flex><span>err3 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure3: %w&#34;</span>, err2)
-</span></span><span style=display:flex><span>err := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure4: %w&#34;</span>, err3)
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(err))  <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(err1)) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err1, td.<span style=color:#447fcf>ErrorIs</span>(err)) <span style=color:#999;font-style:italic>// fails</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>err1</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure1&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>err2</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure2: %w&#34;</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>err3</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure3: %w&#34;</span>, <span style=color:#a6e22e>err2</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure4: %w&#34;</span>, <span style=color:#a6e22e>err3</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err</span>))  <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err1</span>)) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err1</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err</span>)) <span style=color:#75715e>// fails</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>var</span> cerr myError
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(td.<span style=color:#447fcf>Catch</span>(&amp;cerr, td.<span style=color:#447fcf>String</span>(<span style=color:#ed9d13>&#34;my error...&#34;</span>))))
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>cerr</span> <span style=color:#a6e22e>myError</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Catch</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>cerr</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>String</span>(<span style=color:#e6db74>&#34;my error...&#34;</span>))))
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(td.<span style=color:#447fcf>All</span>(
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Isa</span>(myError{}),
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>String</span>(<span style=color:#ed9d13>&#34;my error...&#34;</span>),
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>All</span>(
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Isa</span>(<span style=color:#a6e22e>myError</span>{}),
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>String</span>(<span style=color:#e6db74>&#34;my error...&#34;</span>),
 </span></span><span style=display:flex><span>)))</span></span></code></pre></div>
 <p>Behind the scene it uses <a href=https://pkg.go.dev/errors#Is rel=external target=_blank><code>errors.Is</code></a> function if <em>expectedError</em> is
 an <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> and <a href=https://pkg.go.dev/errors#As rel=external target=_blank><code>errors.As</code></a> function if <em>expectedError</em> is a <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep
@@ -142,32 +146,32 @@ the comparison succeeds only when got is <code>nil</code> too.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	err1 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure1&#34;</span>)
-</span></span><span style=display:flex><span>	err2 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure2: %w&#34;</span>, err1)
-</span></span><span style=display:flex><span>	err3 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure3: %w&#34;</span>, err2)
-</span></span><span style=display:flex><span>	err := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure4: %w&#34;</span>, err3)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err1</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure1&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err2</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure2: %w&#34;</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err3</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure3: %w&#34;</span>, <span style=color:#a6e22e>err2</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure4: %w&#34;</span>, <span style=color:#a6e22e>err3</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(err))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is itself:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is itself:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, err, td.<span style=color:#447fcf>ErrorIs</span>(err1))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is also err1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err1</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is also err1:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, err1, td.<span style=color:#447fcf>ErrorIs</span>(err))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;err1 is err:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err1</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>err</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;err1 is err:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is itself: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is also err1: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// err1 is err: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is itself: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is also err1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// err1 is err: false</span></span></span></code></pre></div>
 </div>
 </details>
 <h2 id=cmperroris-shortcut>CmpErrorIs shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpErrorIs</span>(t TestingT, got, expectedError <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>expectedError</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpErrorIs is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>ErrorIs</span>(expectedError), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>expectedError</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
@@ -186,32 +190,32 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	err1 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure1&#34;</span>)
-</span></span><span style=display:flex><span>	err2 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure2: %w&#34;</span>, err1)
-</span></span><span style=display:flex><span>	err3 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure3: %w&#34;</span>, err2)
-</span></span><span style=display:flex><span>	err := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure4: %w&#34;</span>, err3)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err1</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure1&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err2</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure2: %w&#34;</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err3</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure3: %w&#34;</span>, <span style=color:#a6e22e>err2</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure4: %w&#34;</span>, <span style=color:#a6e22e>err3</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpErrorIs</span>(t, err, err)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is itself:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is itself:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpErrorIs</span>(t, err, err1)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is also err1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is also err1:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpErrorIs</span>(t, err1, err)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;err1 is err:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>err1</span>, <span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;err1 is err:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is itself: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is also err1: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// err1 is err: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is itself: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is also err1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// err1 is err: false</span></span></span></code></pre></div>
 </div>
 </details>
 <h2 id=tcmperroris-shortcut>T.CmpErrorIs shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>CmpErrorIs</span>(got, expectedError <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>expectedError</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpErrorIs is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>ErrorIs</span>(expectedError), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>ErrorIs</span>(<span style=color:#a6e22e>expectedError</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -229,26 +233,26 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	err1 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure1&#34;</span>)
-</span></span><span style=display:flex><span>	err2 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure2: %w&#34;</span>, err1)
-</span></span><span style=display:flex><span>	err3 := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure3: %w&#34;</span>, err2)
-</span></span><span style=display:flex><span>	err := fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;failure4: %w&#34;</span>, err3)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err1</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure1&#34;</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err2</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure2: %w&#34;</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err3</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure3: %w&#34;</span>, <span style=color:#a6e22e>err2</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;failure4: %w&#34;</span>, <span style=color:#a6e22e>err3</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>CmpErrorIs</span>(err, err)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is itself:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is itself:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>CmpErrorIs</span>(err, err1)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;error is also err1:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>err1</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;error is also err1:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>CmpErrorIs</span>(err1, err)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;err1 is err:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>CmpErrorIs</span>(<span style=color:#a6e22e>err1</span>, <span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;err1 is err:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is itself: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// error is also err1: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// err1 is err: false</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is itself: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// error is also err1: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// err1 is err: false</span></span></span></code></pre></div>
 </div>
 </details>
 <footer class=footline>
@@ -394,8 +398,8 @@ Base example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

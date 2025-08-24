@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content="func Code(fn any) TestDeep Code operator allows to check data using a custom function. So fn is a function that must take one parameter whose type must be the same as the type of the compared value.
 fn can return a single bool kind value, telling that yes or no the custom test is successful:
 td.Cmp(t, gotTime, td.Code(func(date time.Time) bool { return date.Year() == 2018 })) or two values (bool, string) kinds. The bool value has the same meaning as above, and the string value is used to describe the test when it fails:">
@@ -30,19 +30,22 @@ td.Cmp(t, gotTime, td.Code(func(date time.Time) bool { return date.Year() == 201
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="1490">
 <title>Code :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/code/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/code/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/code/index.html>
@@ -80,10 +83,7 @@ td.Cmp(t, gotTime, td.Code(func(date time.Time) bool { return date.Year() == 201
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Code</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Code</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/catch/index.html title="Catch (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -108,39 +108,39 @@ td.Cmp(t, gotTime, td.Code(func(date time.Time) bool { return date.Year() == 201
 <header class=headline>
 </header>
 <h1 id=code>Code</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Code</span>(fn <span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>fn</span> <span style=color:#66d9ef>any</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>Code operator allows to check data using a custom function. So
 <em>fn</em> is a function that must take one parameter whose type must be
 the same as the type of the compared value.</p>
 <p><em>fn</em> can return a single <code>bool</code> kind value, telling that yes or no
 the custom test is successful:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotTime,
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(date time.Time) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>return</span> date.<span style=color:#447fcf>Year</span>() == <span style=color:#3677a9>2018</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>gotTime</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>date</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>date</span>.<span style=color:#a6e22e>Year</span>() <span style=color:#f92672>==</span> <span style=color:#ae81ff>2018</span>
 </span></span><span style=display:flex><span>  }))</span></span></code></pre></div>
 <p>or two values (<code>bool</code>, <code>string</code>) kinds. The <code>bool</code> value has the same
 meaning as above, and the <code>string</code> value is used to describe the
 test when it fails:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotTime,
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(date time.Time) (<span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> date.<span style=color:#447fcf>Year</span>() == <span style=color:#3677a9>2018</span> {
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#ed9d13>&#34;&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>gotTime</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>date</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>) (<span style=color:#66d9ef>bool</span>, <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>date</span>.<span style=color:#a6e22e>Year</span>() <span style=color:#f92672>==</span> <span style=color:#ae81ff>2018</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>, <span style=color:#e6db74>&#34;&#34;</span>
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;year must be 2018&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;year must be 2018&#34;</span>
 </span></span><span style=display:flex><span>  }))</span></span></code></pre></div>
 <p>or a single <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> value. If the returned <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> is <code>nil</code>, the test
 succeeded, else the <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> contains the reason of failure:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, gotJsonRawMesg,
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(b json.RawMessage) <span style=color:#6ab825;font-weight:700>error</span> {
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>var</span> c <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>
-</span></span><span style=display:flex><span>    err := json.<span style=color:#447fcf>Unmarshal</span>(b, &amp;c)
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> err
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>gotJsonRawMesg</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>b</span> <span style=color:#a6e22e>json</span>.<span style=color:#a6e22e>RawMessage</span>) <span style=color:#66d9ef>error</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>c</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>json</span>.<span style=color:#a6e22e>Unmarshal</span>(<span style=color:#a6e22e>b</span>, <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>c</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span>
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> c[<span style=color:#ed9d13>&#34;test&#34;</span>] != <span style=color:#3677a9>42</span> {
-</span></span><span style=display:flex><span>      <span style=color:#6ab825;font-weight:700>return</span> fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>`key &#34;test&#34; does not match 42`</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>c</span>[<span style=color:#e6db74>&#34;test&#34;</span>] <span style=color:#f92672>!=</span> <span style=color:#ae81ff>42</span> {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>`key &#34;test&#34; does not match 42`</span>)
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>nil</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>nil</span>
 </span></span><span style=display:flex><span>  }))</span></span></code></pre></div>
 <p>This operator allows to handle <code>any</code> specific comparison not handled
 by standard operators.</p>
@@ -156,19 +156,19 @@ returning no values.</p>
 <p>When <em>fn</em> expects one <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> parameter, it is directly derived from the
 <a href=https://pkg.go.dev/testing#TB rel=external target=_blank><code>testing.TB</code></a> instance passed originally to <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external target=_blank><code>Cmp</code></a> (or its derivatives)
 using <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT rel=external target=_blank><code>NewT</code></a>:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, httpRequest, td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(t *td.T, r *http.Request) {
-</span></span><span style=display:flex><span>  token, err := <span style=color:#447fcf>DecodeToken</span>(r.Header.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;X-Token-1&#34;</span>))
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> t.<span style=color:#447fcf>CmpNoError</span>(err) {
-</span></span><span style=display:flex><span>    t.<span style=color:#447fcf>True</span>(token.<span style=color:#447fcf>OK</span>())
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>httpRequest</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>http</span>.<span style=color:#a6e22e>Request</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>token</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>DecodeToken</span>(<span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>Header</span>.<span style=color:#a6e22e>Get</span>(<span style=color:#e6db74>&#34;X-Token-1&#34;</span>))
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>CmpNoError</span>(<span style=color:#a6e22e>err</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>True</span>(<span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>OK</span>())
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}))</span></span></code></pre></div>
 <p>When <em>fn</em> expects two <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> parameters, they are directly derived from
 the <a href=https://pkg.go.dev/testing#TB rel=external target=_blank><code>testing.TB</code></a> instance passed originally to <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external target=_blank><code>Cmp</code></a> (or its derivatives)
 using <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire rel=external target=_blank><code>AssertRequire</code></a>:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, httpRequest, td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(assert, require *td.T, r *http.Request) {
-</span></span><span style=display:flex><span>  token, err := <span style=color:#447fcf>DecodeToken</span>(r.Header.<span style=color:#447fcf>Get</span>(<span style=color:#ed9d13>&#34;X-Token-1&#34;</span>))
-</span></span><span style=display:flex><span>  require.<span style=color:#447fcf>CmpNoError</span>(err)
-</span></span><span style=display:flex><span>  assert.<span style=color:#447fcf>True</span>(token.<span style=color:#447fcf>OK</span>())
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>httpRequest</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>assert</span>, <span style=color:#a6e22e>require</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>r</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>http</span>.<span style=color:#a6e22e>Request</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>token</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>DecodeToken</span>(<span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>Header</span>.<span style=color:#a6e22e>Get</span>(<span style=color:#e6db74>&#34;X-Token-1&#34;</span>))
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>require</span>.<span style=color:#a6e22e>CmpNoError</span>(<span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>True</span>(<span style=color:#a6e22e>token</span>.<span style=color:#a6e22e>OK</span>())
 </span></span><span style=display:flex><span>}))</span></span></code></pre></div>
 <p>Note that these forms do not work when there is no initial
 <a href=https://pkg.go.dev/testing#TB rel=external target=_blank><code>testing.TB</code></a> instance, like when using <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#EqDeeplyError rel=external target=_blank><code>EqDeeplyError</code></a> or
@@ -179,14 +179,14 @@ without raising an <a href=https://pkg.go.dev/builtin#error rel=external target=
 <a href=https://go-testdeep.zetta.rocks/operators/superbagof/ rel=external target=_blank><code>SuperBagOf</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/supersetof/ rel=external target=_blank><code>SuperSetOf</code></a>.</p>
 <p>RootName is inherited but not the current path, but it can be
 recovered if needed:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;foo&#34;</span>: <span style=color:#3677a9>123</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>NewT</span>(t).
-</span></span><span style=display:flex><span>  <span style=color:#447fcf>RootName</span>(<span style=color:#ed9d13>&#34;PIPO&#34;</span>).
-</span></span><span style=display:flex><span>  <span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Map</span>(<span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{}, td.MapEntries{
-</span></span><span style=display:flex><span>    <span style=color:#ed9d13>&#34;foo&#34;</span>: td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(t *td.T, n <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>Cmp</span>(n, <span style=color:#3677a9>124</span>)                                   <span style=color:#999;font-style:italic>// inherit only RootName</span>
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>RootName</span>(t.Config.<span style=color:#447fcf>OriginalPath</span>()).<span style=color:#447fcf>Cmp</span>(n, <span style=color:#3677a9>125</span>) <span style=color:#999;font-style:italic>// recover current path</span>
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>RootName</span>(<span style=color:#ed9d13>&#34;&#34;</span>).<span style=color:#447fcf>Cmp</span>(n, <span style=color:#3677a9>126</span>)                      <span style=color:#999;font-style:italic>// undo RootName inheritance</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#ae81ff>123</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>t</span>).
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>RootName</span>(<span style=color:#e6db74>&#34;PIPO&#34;</span>).
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Map</span>(<span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>MapEntries</span>{
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;foo&#34;</span>: <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>n</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>n</span>, <span style=color:#ae81ff>124</span>)                                   <span style=color:#75715e>// inherit only RootName</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>RootName</span>(<span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Config</span>.<span style=color:#a6e22e>OriginalPath</span>()).<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>n</span>, <span style=color:#ae81ff>125</span>) <span style=color:#75715e>// recover current path</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>RootName</span>(<span style=color:#e6db74>&#34;&#34;</span>).<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>n</span>, <span style=color:#ae81ff>126</span>)                      <span style=color:#75715e>// undo RootName inheritance</span>
 </span></span><span style=display:flex><span>    }),
 </span></span><span style=display:flex><span>  }))</span></span></code></pre></div>
 <p>produces the following errors:</p>
@@ -214,55 +214,55 @@ recovered if needed:</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;12&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;12&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>			n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> err == <span style=color:#6ab825;font-weight:700>nil</span> &amp;&amp; n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span>
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
-</span></span><span style=display:flex><span>			n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>				<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not a number&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) (<span style=color:#66d9ef>bool</span>, <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not a number&#34;</span>
 </span></span><span style=display:flex><span>			}
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>				<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#ed9d13>&#34;&#34;</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>, <span style=color:#e6db74>&#34;&#34;</span>
 </span></span><span style=display:flex><span>			}
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not in ]10 .. 100[&#34;</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not in ]10 .. 100[&#34;</span>
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason thanks to error</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>error</span> {
-</span></span><span style=display:flex><span>			n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>				<span style=color:#6ab825;font-weight:700>return</span> err
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason thanks to error</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>error</span> {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span>
 </span></span><span style=display:flex><span>			}
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>				<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>nil</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>nil</span>
 </span></span><span style=display:flex><span>			}
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;%d not in ]10 .. 100[&#34;</span>, n)
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;%d not in ]10 .. 100[&#34;</span>, <span style=color:#a6e22e>n</span>)
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -271,30 +271,30 @@ Base example
 Custom example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>123</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>123</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(t *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with one *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with one *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Code</span>(<span style=color:#6ab825;font-weight:700>func</span>(assert, require *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		assert.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
-</span></span><span style=display:flex><span>		require.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>assert</span>, <span style=color:#a6e22e>require</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>require</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with assert &amp; require *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with assert &amp; require *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with one *td.T: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with one *td.T: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=cmpcode-shortcut>CmpCode shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpCode</span>(t TestingT, got, fn <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>fn</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpCode is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Code</span>(fn), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>fn</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
@@ -314,52 +314,52 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;12&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;12&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpCode</span>(t, got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> err == <span style=color:#6ab825;font-weight:700>nil</span> &amp;&amp; n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span>
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpCode</span>(t, got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not a number&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) (<span style=color:#66d9ef>bool</span>, <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not a number&#34;</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#ed9d13>&#34;&#34;</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>, <span style=color:#e6db74>&#34;&#34;</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not in ]10 .. 100[&#34;</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not in ]10 .. 100[&#34;</span>
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason thanks to error</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpCode</span>(t, got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>error</span> {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> err
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason thanks to error</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>error</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>nil</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>nil</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;%d not in ]10 .. 100[&#34;</span>, n)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;%d not in ]10 .. 100[&#34;</span>, <span style=color:#a6e22e>n</span>)
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -368,30 +368,30 @@ Base example
 Custom example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>123</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>123</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpCode</span>(t, got, <span style=color:#6ab825;font-weight:700>func</span>(t *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with one *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with one *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpCode</span>(t, got, <span style=color:#6ab825;font-weight:700>func</span>(assert, require *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		assert.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
-</span></span><span style=display:flex><span>		require.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpCode</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>assert</span>, <span style=color:#a6e22e>require</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>require</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with assert &amp; require *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with assert &amp; require *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with one *td.T: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with one *td.T: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=tcode-shortcut>T.Code shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Code</span>(got, fn <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>fn</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>Code is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Code</span>(fn), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>fn</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -410,52 +410,52 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#ed9d13>&#34;12&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;12&#34;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Code</span>(got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> err == <span style=color:#6ab825;font-weight:700>nil</span> &amp;&amp; n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span>
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason</span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Code</span>(got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) (<span style=color:#6ab825;font-weight:700>bool</span>, <span style=color:#6ab825;font-weight:700>string</span>) {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not a number&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) (<span style=color:#66d9ef>bool</span>, <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not a number&#34;</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>true</span>, <span style=color:#ed9d13>&#34;&#34;</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>, <span style=color:#e6db74>&#34;&#34;</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>false</span>, <span style=color:#ed9d13>&#34;not in ]10 .. 100[&#34;</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;not in ]10 .. 100[&#34;</span>
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Same with failure reason thanks to error</span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Code</span>(got, <span style=color:#6ab825;font-weight:700>func</span>(num <span style=color:#6ab825;font-weight:700>string</span>) <span style=color:#6ab825;font-weight:700>error</span> {
-</span></span><span style=display:flex><span>		n, err := strconv.<span style=color:#447fcf>Atoi</span>(num)
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> err
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Same with failure reason thanks to error</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>num</span> <span style=color:#66d9ef>string</span>) <span style=color:#66d9ef>error</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>n</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>err</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> n &gt; <span style=color:#3677a9>10</span> &amp;&amp; n &lt; <span style=color:#3677a9>100</span> {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> <span style=color:#6ab825;font-weight:700>nil</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>n</span> &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>n</span> &lt; <span style=color:#ae81ff>100</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>nil</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> fmt.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;%d not in ]10 .. 100[&#34;</span>, n)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;%d not in ]10 .. 100[&#34;</span>, <span style=color:#a6e22e>n</span>)
 </span></span><span style=display:flex><span>	},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
-</span></span><span style=display:flex><span>		got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks string `%s` contains a number and this number is in ]10 .. 100[&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -464,24 +464,24 @@ Base example
 Custom example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := <span style=color:#3677a9>123</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>123</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Code</span>(got, <span style=color:#6ab825;font-weight:700>func</span>(t *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		t.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with one *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with one *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Code</span>(got, <span style=color:#6ab825;font-weight:700>func</span>(assert, require *td.T, num <span style=color:#6ab825;font-weight:700>int</span>) {
-</span></span><span style=display:flex><span>		assert.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
-</span></span><span style=display:flex><span>		require.<span style=color:#447fcf>Cmp</span>(num, <span style=color:#3677a9>123</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Code</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>assert</span>, <span style=color:#a6e22e>require</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>T</span>, <span style=color:#a6e22e>num</span> <span style=color:#66d9ef>int</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>assert</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>require</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>num</span>, <span style=color:#ae81ff>123</span>)
 </span></span><span style=display:flex><span>	})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;with assert &amp; require *td.T:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;with assert &amp; require *td.T:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with one *td.T: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with one *td.T: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// with assert &amp; require *td.T: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <footer class=footline>
@@ -627,8 +627,8 @@ Custom example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

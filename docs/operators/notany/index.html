@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='func NotAny(notExpectedItems ...any) TestDeep NotAny operator checks that the contents of an array or a slice (or a pointer on array/slice) does not contain any of “notExpectedItems”.
 td.Cmp(t, []int{1}, td.NotAny(1, 2, 3)) // fails td.Cmp(t, []int{5}, td.NotAny(1, 2, 3)) // succeeds // works with slices/arrays of any type td.Cmp(t, personSlice, td.NotAny( Person{Name: "Bob", Age: 32}, Person{Name: "Alice", Age: 26}, )) To flatten a non-[]any slice/array, use Flatten function and so avoid boring and inefficient copies:
 notExpected := []int{2, 1} td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(td.Flatten(notExpected))) // succeeds // = td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(2, 1)) notExp1 := []int{2, 1} notExp2 := []int{5, 8} td.Cmp(t, []int{4, 4, 42, 8}, td.NotAny(td.Flatten(notExp1), 3, td.Flatten(notExp2))) // succeeds // = td.Cmp(t, []int{4, 4, 42, 8}, td.NotAny(2, 1, 3, 5, 8)) Beware that NotAny(…) is not equivalent to Not(Any(…)) but is like Not(SuperSet(…)).'>
@@ -30,19 +30,22 @@ notExpected := []int{2, 1} td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(td.Flatten(not
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
 <meta itemprop=wordCount content="729">
 <title>NotAny :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/notany/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/notany/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/notany/index.html>
@@ -80,10 +83,7 @@ notExpected := []int{2, 1} td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(td.Flatten(not
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>NotAny</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>NotAny</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/not/index.html title="Not (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -108,28 +108,28 @@ notExpected := []int{2, 1} td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(td.Flatten(not
 <header class=headline>
 </header>
 <h1 id=notany>NotAny</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>NotAny</span>(notExpectedItems ...<span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>notExpectedItems</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>NotAny operator checks that the contents of an array or a slice (or
 a pointer on array/slice) does not contain any of &ldquo;<em>notExpectedItems</em>&rdquo;.</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>1</span>}, td.<span style=color:#447fcf>NotAny</span>(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>)) <span style=color:#999;font-style:italic>// fails</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>5</span>}, td.<span style=color:#447fcf>NotAny</span>(<span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>)) <span style=color:#999;font-style:italic>// succeeds</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>1</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)) <span style=color:#75715e>// fails</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>5</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>)) <span style=color:#75715e>// succeeds</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// works with slices/arrays of any type</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, personSlice, td.<span style=color:#447fcf>NotAny</span>(
-</span></span><span style=display:flex><span>  Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>32</span>},
-</span></span><span style=display:flex><span>  Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>26</span>},
+</span></span><span style=display:flex><span><span style=color:#75715e>// works with slices/arrays of any type</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>personSlice</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>32</span>},
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>26</span>},
 </span></span><span style=display:flex><span>))</span></span></code></pre></div>
 <p>To flatten a non-<code>[]any</code> slice/array, use <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten rel=external target=_blank><code>Flatten</code></a> function
 and so avoid boring and inefficient copies:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>notExpected := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>2</span>, <span style=color:#3677a9>1</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>4</span>, <span style=color:#3677a9>4</span>, <span style=color:#3677a9>3</span>, <span style=color:#3677a9>8</span>}, td.<span style=color:#447fcf>NotAny</span>(td.<span style=color:#447fcf>Flatten</span>(notExpected))) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// = td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(2, 1))</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>notExpected</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>8</span>}, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExpected</span>))) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// = td.Cmp(t, []int{4, 4, 3, 8}, td.NotAny(2, 1))</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>notExp1 := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>2</span>, <span style=color:#3677a9>1</span>}
-</span></span><span style=display:flex><span>notExp2 := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>5</span>, <span style=color:#3677a9>8</span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>4</span>, <span style=color:#3677a9>4</span>, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>8</span>},
-</span></span><span style=display:flex><span>  td.<span style=color:#447fcf>NotAny</span>(td.<span style=color:#447fcf>Flatten</span>(notExp1), <span style=color:#3677a9>3</span>, td.<span style=color:#447fcf>Flatten</span>(notExp2))) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span><span style=color:#999;font-style:italic>// = td.Cmp(t, []int{4, 4, 42, 8}, td.NotAny(2, 1, 3, 5, 8))</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>notExp1</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>notExp2</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>8</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>42</span>, <span style=color:#ae81ff>8</span>},
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExp1</span>), <span style=color:#ae81ff>3</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExp2</span>))) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// = td.Cmp(t, []int{4, 4, 42, 8}, td.NotAny(2, 1, 3, 5, 8))</span></span></span></code></pre></div>
 <p>Beware that NotAny(…) is not equivalent to Not(Any(…)) but is like
 Not(SuperSet(…)).</p>
 <p><a href=https://go-testdeep.zetta.rocks/operators/#typebehind-method rel=external target=_blank><code>TypeBehind</code></a> method can return a non-<code>nil</code> <a href=https://pkg.go.dev/reflect#Type rel=external target=_blank><code>reflect.Type</code></a> if all items
@@ -146,36 +146,36 @@ are found (mostly issued from <a href=https://go-testdeep.zetta.rocks/operators/
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>4</span>, <span style=color:#3677a9>5</span>, <span style=color:#3677a9>9</span>, <span style=color:#3677a9>42</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>42</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>NotAny</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>NotAny</span>(<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>43</span>),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>42</span>, <span style=color:#ae81ff>43</span>),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// When expected is already a non-[]any slice, it cannot be</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// flattened directly using notExpected... without copying it to a new</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// []any slice, then use td.Flatten!</span>
-</span></span><span style=display:flex><span>	notExpected := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>NotAny</span>(td.<span style=color:#447fcf>Flatten</span>(notExpected)),
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in notExpected&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// When expected is already a non-[]any slice, it cannot be</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// flattened directly using notExpected... without copying it to a new</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// []any slice, then use td.Flatten!</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>notExpected</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExpected</span>)),
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in notExpected&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <h2 id=cmpnotany-shortcut>CmpNotAny shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpNotAny</span>(t TestingT, got <span style=color:#6ab825;font-weight:700>any</span>, notExpectedItems []<span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpNotAny</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>notExpectedItems</span> []<span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpNotAny is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>NotAny</span>(notExpectedItems...), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>notExpectedItems</span><span style=color:#f92672>...</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
@@ -194,36 +194,36 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>4</span>, <span style=color:#3677a9>5</span>, <span style=color:#3677a9>9</span>, <span style=color:#3677a9>42</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>42</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpNotAny</span>(t, got, []<span style=color:#6ab825;font-weight:700>any</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpNotAny</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpNotAny</span>(t, got, []<span style=color:#6ab825;font-weight:700>any</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>43</span>},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpNotAny</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>42</span>, <span style=color:#ae81ff>43</span>},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// When expected is already a non-[]any slice, it cannot be</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// flattened directly using notExpected... without copying it to a new</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// []any slice, then use td.Flatten!</span>
-</span></span><span style=display:flex><span>	notExpected := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpNotAny</span>(t, got, []<span style=color:#6ab825;font-weight:700>any</span>{td.<span style=color:#447fcf>Flatten</span>(notExpected)},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in notExpected&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// When expected is already a non-[]any slice, it cannot be</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// flattened directly using notExpected... without copying it to a new</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// []any slice, then use td.Flatten!</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>notExpected</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpNotAny</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExpected</span>)},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in notExpected&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <h2 id=tnotany-shortcut>T.NotAny shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>NotAny</span>(got <span style=color:#6ab825;font-weight:700>any</span>, notExpectedItems []<span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>got</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>notExpectedItems</span> []<span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>NotAny is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>NotAny</span>(notExpectedItems...), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>notExpectedItems</span><span style=color:#f92672>...</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -241,30 +241,30 @@ reason of a potential failure.</p>
 Base example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>4</span>, <span style=color:#3677a9>5</span>, <span style=color:#3677a9>9</span>, <span style=color:#3677a9>42</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>9</span>, <span style=color:#ae81ff>42</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>NotAny</span>(got, []<span style=color:#6ab825;font-weight:700>any</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>NotAny</span>(got, []<span style=color:#6ab825;font-weight:700>any</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>42</span>, <span style=color:#3677a9>43</span>},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in NotAny()&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>42</span>, <span style=color:#ae81ff>43</span>},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in NotAny()&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// When expected is already a non-[]any slice, it cannot be</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// flattened directly using notExpected... without copying it to a new</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// []any slice, then use td.Flatten!</span>
-</span></span><span style=display:flex><span>	notExpected := []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>6</span>, <span style=color:#3677a9>8</span>, <span style=color:#3677a9>41</span>, <span style=color:#3677a9>43</span>}
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>NotAny</span>(got, []<span style=color:#6ab825;font-weight:700>any</span>{td.<span style=color:#447fcf>Flatten</span>(notExpected)},
-</span></span><span style=display:flex><span>		<span style=color:#ed9d13>&#34;checks %v contains no item listed in notExpected&#34;</span>, got)
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// When expected is already a non-[]any slice, it cannot be</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// flattened directly using notExpected... without copying it to a new</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// []any slice, then use td.Flatten!</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>notExpected</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>6</span>, <span style=color:#ae81ff>8</span>, <span style=color:#ae81ff>41</span>, <span style=color:#ae81ff>43</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>NotAny</span>(<span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>any</span>{<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Flatten</span>(<span style=color:#a6e22e>notExpected</span>)},
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;checks %v contains no item listed in notExpected&#34;</span>, <span style=color:#a6e22e>got</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// false</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// false</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// true</span></span></span></code></pre></div>
 </div>
 </details>
 <footer class=footline>
@@ -410,8 +410,8 @@ Base example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

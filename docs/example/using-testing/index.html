@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content='To check the freshly created record contents using standard testing package, we have to do something like that:
 import ( "testing" "time" ) func TestCreateRecord(t *testing.T) { before := time.Now().Truncate(time.Second) record, err := CreateRecord("Bob", 23) if err != nil { t.Errorf("An error occurred: %s", err) } else { expected := Record{Name: "Bob", Age: 23} if record.Id == 0 { t.Error("Id probably not initialized") } if record.Name != expected.Name { t.Errorf("Name field differs, got=%s, expected=%s", record.Name, expected.Name) } if record.Age != expected.Age { t.Errorf("Age field differs, got=%d, expected=%d", record.Age, expected.Age) } if before.After(record.CreatedAt) || time.Now().Before(record.CreatedAt) { t.Errorf("CreatedAt field not expected: %s", record.CreatedAt) } } } Test in in playground: https://play.golang.org/p/Qyc7L2z1Rf-'>
 <meta name=author content>
@@ -26,19 +26,22 @@ import ( "testing" "time" ) func TestCreateRecord(t *testing.T) { before := time
 <meta itemprop=dateModified content="2021-07-26T10:44:22+02:00">
 <meta itemprop=wordCount content="109">
 <title>Using testing package :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/using-testing/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/using-testing/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/example/using-testing/index.html>
@@ -57,10 +60,7 @@ import ( "testing" "time" ) func TestCreateRecord(t *testing.T) { before := time
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/example/index.html><span itemprop=name>Tutorial</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Using testing package</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/example/index.html><span itemprop=name>Tutorial</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Using testing package</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/example/index.html title="Tutorial (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -88,34 +88,34 @@ import ( "testing" "time" ) func TestCreateRecord(t *testing.T) { before := time
 <p>To check the freshly created record contents using standard
 <a href=https://golang.org/pkg/testing/ rel=external target=_blank><code>testing</code> package</a>, we have to do
 something like that:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#ed9d13>&#34;time&#34;</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;time&#34;</span>
 </span></span><span style=display:flex><span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>TestCreateRecord</span>(t *testing.T) {
-</span></span><span style=display:flex><span>  before := time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Truncate</span>(time.Second)
-</span></span><span style=display:flex><span>  record, err := <span style=color:#447fcf>CreateRecord</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>23</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestCreateRecord</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>().<span style=color:#a6e22e>Truncate</span>(<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>record</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>CreateRecord</span>(<span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#ae81ff>23</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#6ab825;font-weight:700>if</span> err != <span style=color:#6ab825;font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>    t.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;An error occurred: %s&#34;</span>, err)
-</span></span><span style=display:flex><span>  } <span style=color:#6ab825;font-weight:700>else</span> {
-</span></span><span style=display:flex><span>    expected := Record{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>23</span>}
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;An error occurred: %s&#34;</span>, <span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>  } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>expected</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Record</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>23</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> record.Id == <span style=color:#3677a9>0</span> {
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>Error</span>(<span style=color:#ed9d13>&#34;Id probably not initialized&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>Id</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#e6db74>&#34;Id probably not initialized&#34;</span>)
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> record.Name != expected.Name {
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;Name field differs, got=%s, expected=%s&#34;</span>,
-</span></span><span style=display:flex><span>        record.Name, expected.Name)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>Name</span> <span style=color:#f92672>!=</span> <span style=color:#a6e22e>expected</span>.<span style=color:#a6e22e>Name</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;Name field differs, got=%s, expected=%s&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>Name</span>, <span style=color:#a6e22e>expected</span>.<span style=color:#a6e22e>Name</span>)
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> record.Age != expected.Age {
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;Age field differs, got=%d, expected=%d&#34;</span>,
-</span></span><span style=display:flex><span>        record.Age, expected.Age)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>Age</span> <span style=color:#f92672>!=</span> <span style=color:#a6e22e>expected</span>.<span style=color:#a6e22e>Age</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;Age field differs, got=%d, expected=%d&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>Age</span>, <span style=color:#a6e22e>expected</span>.<span style=color:#a6e22e>Age</span>)
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#6ab825;font-weight:700>if</span> before.<span style=color:#447fcf>After</span>(record.CreatedAt) ||
-</span></span><span style=display:flex><span>      time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Before</span>(record.CreatedAt) {
-</span></span><span style=display:flex><span>      t.<span style=color:#447fcf>Errorf</span>(<span style=color:#ed9d13>&#34;CreatedAt field not expected: %s&#34;</span>, record.CreatedAt)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>before</span>.<span style=color:#a6e22e>After</span>(<span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>CreatedAt</span>) <span style=color:#f92672>||</span>
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>().<span style=color:#a6e22e>Before</span>(<span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>CreatedAt</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Errorf</span>(<span style=color:#e6db74>&#34;CreatedAt field not expected: %s&#34;</span>, <span style=color:#a6e22e>record</span>.<span style=color:#a6e22e>CreatedAt</span>)
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}</span></span></code></pre></div>
@@ -200,8 +200,8 @@ something like that:</p>
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>

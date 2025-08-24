@@ -2,8 +2,8 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.145.0">
-<meta name=generator content="Relearn 7.6.1">
+<meta name=generator content="Hugo 0.148.2">
+<meta name=generator content="Relearn 8.0.0">
 <meta name=description content="func Sort(how any, expectedValue any) TestDeep Sort is a smuggler operator. It takes an array, a slice or a pointer on array/slice, it sorts it using how and compares the sorted result to expectedValue. It can be seen as an alternative to Bag.
 how can be:
 nil or a float64/int >= 0 for a generic ascending order; a float64/int < 0 for a generic descending order; a string specifying a fields-path (optionally prefixed by “+” or “-” for respectively an ascending or a descending order, defaulting to ascending one); a []string containing a list of fields-paths (as above), second and next fields-paths are checked when the previous ones are equal; a function matching func(a, b T) bool signature and returning true if a is before b. A fields-path, also used by Smuggle and Sorted operators, allows to access nested structs fields and maps & slices items. See Smuggle for details on fields-path possibilities.">
@@ -30,19 +30,22 @@ nil or a float64/int >= 0 for a generic ascending order; a float64/int < 0 for a
 <meta itemprop=dateModified content="2025-08-09T21:46:03+02:00">
 <meta itemprop=wordCount content="1568">
 <title>Sort :: go-testdeep</title>
-<link href=/images/favicon.png?1755895133 rel=icon type=image/png>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1755895133 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1755895133 rel=stylesheet>
-<link href=/css/theme.min.css?1755895133 rel=stylesheet>
-<link href=/css/format-html.min.css?1755895133 rel=stylesheet id=R-format-style>
-<link href=/css/auto-complete/auto-complete.min.css?1755895133 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1755895133 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1755895133 defer></script>
-<script src=/js/search.min.js?1755895133 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/sort/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.contentLangs=["en"],window.relearn.index_js_url="/searchindex.en.js?1755895133",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant(),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
+<script src=/js/search-lunr.min.js?1756066640 defer></script>
+<script src=/js/search.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
+<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
+<link href=/css/theme.min.css?1756066640 rel=stylesheet>
+<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/sort/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
 <body class="mobile-support html" data-url=/operators/sort/index.html>
@@ -80,10 +83,7 @@ nil or a float64/int >= 0 for a generic ascending order; a float64/int < 0 for a
 </div>
 </div>
 </div>
-<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li>
-<li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Sort</span><meta itemprop=position content="3"></li>
+<ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/operators/index.html><span itemprop=name>Operators</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Sort</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
 <div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/smuggle/index.html title="Smuggle (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
@@ -108,7 +108,7 @@ nil or a float64/int >= 0 for a generic ascending order; a float64/int < 0 for a
 <header class=headline>
 </header>
 <h1 id=sort>Sort</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>Sort</span>(how <span style=color:#6ab825;font-weight:700>any</span>, expectedValue <span style=color:#6ab825;font-weight:700>any</span>) TestDeep</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>how</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>Sort is a <a href=https://go-testdeep.zetta.rocks/operators/#smuggler-operators rel=external target=_blank>smuggler operator</a>. It takes an array, a slice or a
 pointer on array/slice, it sorts it using <em>how</em> and compares the
 sorted result to <em>expectedValue</em>. It can be seen as an alternative to
@@ -128,50 +128,50 @@ true if a is before b.</li>
 <p>A fields-path, also used by <a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a> operators,
 allows to access nested structs fields and maps & slices items. See
 <a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a> for details on fields-path possibilities.</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
-</span></span><span style=display:flex><span>p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
-</span></span><span style=display:flex><span>p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
-</span></span><span style=display:flex><span>p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
-</span></span><span style=display:flex><span>got := []A{p23, p12, p34}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(<span style=color:#ed9d13>&#34;-props[priority]&#34;</span>, []A{p34, p23, p12})) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>A</span> <span style=color:#66d9ef>struct</span>{ <span style=color:#a6e22e>props</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span> }
+</span></span><span style=display:flex><span><span style=color:#a6e22e>p12</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>12</span>}}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>p23</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>23</span>}}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>p34</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>34</span>}}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p34</span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#e6db74>&#34;-props[priority]&#34;</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p34</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>})) <span style=color:#75715e>// succeeds</span></span></span></code></pre></div>
 <p><em>how</em> can be a <code>float64</code> to allow Sort to be used in expected JSON of
 <a href=https://go-testdeep.zetta.rocks/operators/json/ rel=external target=_blank><code>JSON</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/subjsonof/ rel=external target=_blank><code>SubJSONOf</code></a> & <a href=https://go-testdeep.zetta.rocks/operators/superjsonof/ rel=external target=_blank><code>SuperJSONOf</code></a> operators:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>got := <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>][]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;labels&#34;</span>: {<span style=color:#ed9d13>&#34;c&#34;</span>, <span style=color:#ed9d13>&#34;a&#34;</span>, <span style=color:#ed9d13>&#34;b&#34;</span>}}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{ &#34;labels&#34;: Sort(1, [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]) }`</span>)) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>][]<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;labels&#34;</span>: {<span style=color:#e6db74>&#34;c&#34;</span>, <span style=color:#e6db74>&#34;a&#34;</span>, <span style=color:#e6db74>&#34;b&#34;</span>}}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>JSON</span>(<span style=color:#e6db74>`{ &#34;labels&#34;: Sort(1, [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]) }`</span>)) <span style=color:#75715e>// succeeds</span></span></span></code></pre></div>
 <p>or using fields-path feature:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>  Name <span style=color:#6ab825;font-weight:700>string</span> <span style=color:#ed9d13>`json:&#34;name&#34;`</span>
-</span></span><span style=display:flex><span>  Age  <span style=color:#6ab825;font-weight:700>int</span>    <span style=color:#ed9d13>`json:&#34;age&#34;`</span>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Name</span> <span style=color:#66d9ef>string</span> <span style=color:#e6db74>`json:&#34;name&#34;`</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Age</span>  <span style=color:#66d9ef>int</span>    <span style=color:#e6db74>`json:&#34;age&#34;`</span>
 </span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>got := <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>  People []Person <span style=color:#ed9d13>`json:&#34;people&#34;`</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>People</span> []<span style=color:#a6e22e>Person</span> <span style=color:#e6db74>`json:&#34;people&#34;`</span>
 </span></span><span style=display:flex><span>}{
-</span></span><span style=display:flex><span>  People: []Person{
-</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Brian&#34;</span>, <span style=color:#3677a9>22</span>},
-</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Bob&#34;</span>, <span style=color:#3677a9>19</span>},
-</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Stephen&#34;</span>, <span style=color:#3677a9>19</span>},
-</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Alice&#34;</span>, <span style=color:#3677a9>20</span>},
-</span></span><span style=display:flex><span>    {<span style=color:#ed9d13>&#34;Marcel&#34;</span>, <span style=color:#3677a9>25</span>},
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>People</span>: []<span style=color:#a6e22e>Person</span>{
+</span></span><span style=display:flex><span>    {<span style=color:#e6db74>&#34;Brian&#34;</span>, <span style=color:#ae81ff>22</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#ae81ff>19</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#e6db74>&#34;Stephen&#34;</span>, <span style=color:#ae81ff>19</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#ae81ff>20</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#e6db74>&#34;Marcel&#34;</span>, <span style=color:#ae81ff>25</span>},
 </span></span><span style=display:flex><span>  },
 </span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;people&#34;: Sort(&#34;name&#34;, [ // sort by name ascending
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Alice&#34;,   &#34;age&#34;: 20},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Bob&#34;,     &#34;age&#34;: 19},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Brian&#34;,   &#34;age&#34;: 22},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Marcel&#34;,  &#34;age&#34;: 25},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Stephen&#34;, &#34;age&#34;: 19},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  ])
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>)) <span style=color:#999;font-style:italic>// succeeds</span>
-</span></span><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;people&#34;: Sort([ &#34;-age&#34;, &#34;name&#34; ], [ // sort by age desc, then by name asc
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Marcel&#34;,  &#34;age&#34;: 25},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Brian&#34;,   &#34;age&#34;: 22},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Alice&#34;,   &#34;age&#34;: 20},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Bob&#34;,     &#34;age&#34;: 19},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>    {&#34;name&#34;: &#34;Stephen&#34;, &#34;age&#34;: 19},
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  ])
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>)) <span style=color:#999;font-style:italic>// succeeds</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>JSON</span>(<span style=color:#e6db74>`{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;people&#34;: Sort(&#34;name&#34;, [ // sort by name ascending
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Alice&#34;,   &#34;age&#34;: 20},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Bob&#34;,     &#34;age&#34;: 19},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Brian&#34;,   &#34;age&#34;: 22},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Marcel&#34;,  &#34;age&#34;: 25},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Stephen&#34;, &#34;age&#34;: 19},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  ])
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}`</span>)) <span style=color:#75715e>// succeeds</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>JSON</span>(<span style=color:#e6db74>`{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;people&#34;: Sort([ &#34;-age&#34;, &#34;name&#34; ], [ // sort by age desc, then by name asc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Marcel&#34;,  &#34;age&#34;: 25},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Brian&#34;,   &#34;age&#34;: 22},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Alice&#34;,   &#34;age&#34;: 20},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Bob&#34;,     &#34;age&#34;: 19},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {&#34;name&#34;: &#34;Stephen&#34;, &#34;age&#34;: 19},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  ])
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}`</span>)) <span style=color:#75715e>// succeeds</span></span></span></code></pre></div>
 <blockquote>
 <p>See also <a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/bag/ rel=external target=_blank><code>Bag</code></a>.</p></blockquote>
 <blockquote>
@@ -184,39 +184,39 @@ allows to access nested structs fields and maps & slices items. See
 Basic example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic ascending order (≥0 or nil)</span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(<span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic ascending order (≥0 or nil)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(<span style=color:#3677a9>0</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#ae81ff>0</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(<span style=color:#6ab825;font-weight:700>nil</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#66d9ef>nil</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic descending order (&lt; 0)</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(-<span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, -<span style=color:#3677a9>1</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic descending order (&lt; 0)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;desc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>evenHigher</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>!=</span> (<span style=color:#a6e22e>b</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> &lt; <span style=color:#a6e22e>b</span>
 </span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(evenHigher, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>evenHigher</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;even higher order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// desc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// even higher order: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// desc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// even higher order: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -225,55 +225,55 @@ Basic example
 Fields_path example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
-</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Name</span> <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Age</span>  <span style=color:#66d9ef>int</span>
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
-</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
-</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
-</span></span><span style=display:flex><span>	got := []Person{brian, bob, stephen, alice, marcel}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>brian</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Brian&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>22</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>bob</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>stephen</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Stephen&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>alice</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>20</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>marcel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Marcel&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>25</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>marcel</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Sort</span>(<span style=color:#ed9d13>&#34;Name&#34;</span>, []Person{alice, bob, brian, marcel, stephen}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#e6db74>&#34;Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>stephen</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Sort</span>(<span style=color:#ed9d13>&#34;-Name&#34;</span>, []Person{stephen, marcel, brian, bob, alice}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#e6db74>&#34;-Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>alice</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got,
-</span></span><span style=display:flex><span>		td.<span style=color:#447fcf>Sort</span>([]<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>}, []Person{marcel, brian, alice, bob, stephen}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by age desc, then by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>([]<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;-Age&#34;</span>, <span style=color:#e6db74>&#34;Name&#34;</span>}, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by age desc, then by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
-</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
-</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
-</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
-</span></span><span style=display:flex><span>	got2 := []A{p23, p12, p34}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got2, td.<span style=color:#447fcf>Sort</span>(<span style=color:#ed9d13>`-props[priority]`</span>, []A{p34, p23, p12}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>A</span> <span style=color:#66d9ef>struct</span>{ <span style=color:#a6e22e>props</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span> }
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p12</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>12</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p23</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>23</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p34</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>34</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got2</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p34</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got2</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#e6db74>`-props[priority]`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p34</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>Cmp</span>(t, got2, td.<span style=color:#447fcf>Sort</span>(<span style=color:#ed9d13>`props.priority`</span>, []A{p12, p23, p34}))
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got2</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#e6db74>`props.priority`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p34</span>}))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by age desc, then by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority asc: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by age desc, then by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority asc: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=cmpsort-shortcut>CmpSort shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> <span style=color:#447fcf>CmpSort</span>(t TestingT, got, how , expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span> <span style=color:#a6e22e>TestingT</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>how</span> , <span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>CmpSort is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>td.<span style=color:#447fcf>Cmp</span>(t, got, td.<span style=color:#447fcf>Sort</span>(how, expectedValue), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>how</span>, <span style=color:#a6e22e>expectedValue</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
@@ -293,39 +293,39 @@ reason of a potential failure.</p>
 Basic example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic ascending order (≥0 or nil)</span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpSort</span>(t, got, <span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic ascending order (≥0 or nil)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, <span style=color:#3677a9>0</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>0</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, <span style=color:#6ab825;font-weight:700>nil</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>nil</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic descending order (&lt; 0)</span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, -<span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, -<span style=color:#3677a9>1</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic descending order (&lt; 0)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;desc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>evenHigher</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>!=</span> (<span style=color:#a6e22e>b</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> &lt; <span style=color:#a6e22e>b</span>
 </span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, evenHigher, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>evenHigher</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;even higher order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// desc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// even higher order: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// desc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// even higher order: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -334,52 +334,52 @@ Basic example
 Fields_path example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := &amp;testing.T{}
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
-</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Name</span> <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Age</span>  <span style=color:#66d9ef>int</span>
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
-</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
-</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
-</span></span><span style=display:flex><span>	got := []Person{brian, bob, stephen, alice, marcel}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>brian</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Brian&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>22</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>bob</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>stephen</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Stephen&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>alice</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>20</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>marcel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Marcel&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>25</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>marcel</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := td.<span style=color:#447fcf>CmpSort</span>(t, got, <span style=color:#ed9d13>&#34;Name&#34;</span>, []Person{alice, bob, brian, marcel, stephen})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>stephen</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, <span style=color:#ed9d13>&#34;-Name&#34;</span>, []Person{stephen, marcel, brian, bob, alice})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;-Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>alice</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>}, []Person{marcel, brian, alice, bob, stephen})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by age desc, then by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;-Age&#34;</span>, <span style=color:#e6db74>&#34;Name&#34;</span>}, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by age desc, then by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
-</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
-</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
-</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
-</span></span><span style=display:flex><span>	got2 := []A{p23, p12, p34}
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got2, <span style=color:#ed9d13>`-props[priority]`</span>, []A{p34, p23, p12})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>A</span> <span style=color:#66d9ef>struct</span>{ <span style=color:#a6e22e>props</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span> }
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p12</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>12</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p23</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>23</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p34</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>34</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got2</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p34</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got2</span>, <span style=color:#e6db74>`-props[priority]`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p34</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = td.<span style=color:#447fcf>CmpSort</span>(t, got2, <span style=color:#ed9d13>`props.priority`</span>, []A{p12, p23, p34})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpSort</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got2</span>, <span style=color:#e6db74>`props.priority`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p34</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by age desc, then by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority asc: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by age desc, then by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority asc: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <h2 id=tsort-shortcut>T.Sort shortcut</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span> (t *T) <span style=color:#447fcf>Sort</span>(got, how , expectedValue <span style=color:#6ab825;font-weight:700>any</span>, args ...<span style=color:#6ab825;font-weight:700>any</span>) <span style=color:#6ab825;font-weight:700>bool</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>T</span>) <span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>how</span> , <span style=color:#a6e22e>expectedValue</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>args</span> <span style=color:#f92672>...</span><span style=color:#66d9ef>any</span>) <span style=color:#66d9ef>bool</span></span></span></code></pre></div>
 <p>Sort is a shortcut for:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>t.<span style=color:#447fcf>Cmp</span>(got, td.<span style=color:#447fcf>Sort</span>(how, expectedValue), args...)</span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>how</span>, <span style=color:#a6e22e>expectedValue</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -398,39 +398,39 @@ reason of a potential failure.</p>
 Basic example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	got := []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic ascending order (≥0 or nil)</span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Sort</span>(got, <span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic ascending order (≥0 or nil)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, <span style=color:#3677a9>0</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#ae81ff>0</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, <span style=color:#6ab825;font-weight:700>nil</span>, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;asc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#66d9ef>nil</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;asc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Generic descending order (&lt; 0)</span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, -<span style=color:#3677a9>1</span>, []<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#3677a9>3</span>, <span style=color:#3677a9>2</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>0</span>, -<span style=color:#3677a9>1</span>, -<span style=color:#3677a9>2</span>, -<span style=color:#3677a9>3</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;desc order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Generic descending order (&lt; 0)</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;desc order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	evenHigher := <span style=color:#6ab825;font-weight:700>func</span>(a, b <span style=color:#6ab825;font-weight:700>int</span>) <span style=color:#6ab825;font-weight:700>bool</span> {
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>if</span> (a%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) != (b%<span style=color:#3677a9>2</span> == <span style=color:#3677a9>0</span>) {
-</span></span><span style=display:flex><span>			<span style=color:#6ab825;font-weight:700>return</span> a%<span style=color:#3677a9>2</span> != <span style=color:#3677a9>0</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>evenHigher</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>!=</span> (<span style=color:#a6e22e>b</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>
 </span></span><span style=display:flex><span>		}
-</span></span><span style=display:flex><span>		<span style=color:#6ab825;font-weight:700>return</span> a &lt; b
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> &lt; <span style=color:#a6e22e>b</span>
 </span></span><span style=display:flex><span>	}
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, evenHigher, []<span style=color:#6ab825;font-weight:700>int</span>{-<span style=color:#3677a9>3</span>, -<span style=color:#3677a9>1</span>, <span style=color:#3677a9>1</span>, <span style=color:#3677a9>3</span>, -<span style=color:#3677a9>2</span>, <span style=color:#3677a9>0</span>, <span style=color:#3677a9>2</span>})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;even higher order:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>evenHigher</span>, []<span style=color:#66d9ef>int</span>{<span style=color:#f92672>-</span><span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;even higher order:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// asc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// desc order: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// even higher order: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// asc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// desc order: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// even higher order: true</span></span></span></code></pre></div>
 </div>
 </details>
 <details class="box cstyle notices transparent expand">
@@ -439,46 +439,46 @@ Basic example
 Fields_path example
 </summary>
 <div class=box-content>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	t := td.<span style=color:#447fcf>NewT</span>(&amp;testing.T{})
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>	<span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#f92672>&amp;</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>{})
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> Person <span style=color:#6ab825;font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>		Name <span style=color:#6ab825;font-weight:700>string</span>
-</span></span><span style=display:flex><span>		Age  <span style=color:#6ab825;font-weight:700>int</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Person</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Name</span> <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>Age</span>  <span style=color:#66d9ef>int</span>
 </span></span><span style=display:flex><span>	}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	brian := Person{Name: <span style=color:#ed9d13>&#34;Brian&#34;</span>, Age: <span style=color:#3677a9>22</span>}
-</span></span><span style=display:flex><span>	bob := Person{Name: <span style=color:#ed9d13>&#34;Bob&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	stephen := Person{Name: <span style=color:#ed9d13>&#34;Stephen&#34;</span>, Age: <span style=color:#3677a9>19</span>}
-</span></span><span style=display:flex><span>	alice := Person{Name: <span style=color:#ed9d13>&#34;Alice&#34;</span>, Age: <span style=color:#3677a9>20</span>}
-</span></span><span style=display:flex><span>	marcel := Person{Name: <span style=color:#ed9d13>&#34;Marcel&#34;</span>, Age: <span style=color:#3677a9>25</span>}
-</span></span><span style=display:flex><span>	got := []Person{brian, bob, stephen, alice, marcel}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>brian</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Brian&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>22</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>bob</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>stephen</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Stephen&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>19</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>alice</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>20</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>marcel</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Marcel&#34;</span>, <span style=color:#a6e22e>Age</span>: <span style=color:#ae81ff>25</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>marcel</span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok := t.<span style=color:#447fcf>Sort</span>(got, <span style=color:#ed9d13>&#34;Name&#34;</span>, []Person{alice, bob, brian, marcel, stephen})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>stephen</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, <span style=color:#ed9d13>&#34;-Name&#34;</span>, []Person{stephen, marcel, brian, bob, alice})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by name desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, <span style=color:#e6db74>&#34;-Name&#34;</span>, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>stephen</span>, <span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>alice</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by name desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got, []<span style=color:#6ab825;font-weight:700>string</span>{<span style=color:#ed9d13>&#34;-Age&#34;</span>, <span style=color:#ed9d13>&#34;Name&#34;</span>}, []Person{marcel, brian, alice, bob, stephen})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by age desc, then by name asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got</span>, []<span style=color:#66d9ef>string</span>{<span style=color:#e6db74>&#34;-Age&#34;</span>, <span style=color:#e6db74>&#34;Name&#34;</span>}, []<span style=color:#a6e22e>Person</span>{<span style=color:#a6e22e>marcel</span>, <span style=color:#a6e22e>brian</span>, <span style=color:#a6e22e>alice</span>, <span style=color:#a6e22e>bob</span>, <span style=color:#a6e22e>stephen</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by age desc, then by name asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#6ab825;font-weight:700>type</span> A <span style=color:#6ab825;font-weight:700>struct</span>{ props <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span> }
-</span></span><span style=display:flex><span>	p12 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>12</span>}}
-</span></span><span style=display:flex><span>	p23 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>23</span>}}
-</span></span><span style=display:flex><span>	p34 := A{props: <span style=color:#6ab825;font-weight:700>map</span>[<span style=color:#6ab825;font-weight:700>string</span>]<span style=color:#6ab825;font-weight:700>int</span>{<span style=color:#ed9d13>&#34;priority&#34;</span>: <span style=color:#3677a9>34</span>}}
-</span></span><span style=display:flex><span>	got2 := []A{p23, p12, p34}
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got2, <span style=color:#ed9d13>`-props[priority]`</span>, []A{p34, p23, p12})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority desc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>A</span> <span style=color:#66d9ef>struct</span>{ <span style=color:#a6e22e>props</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span> }
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p12</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>12</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p23</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>23</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p34</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>props</span>: <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>int</span>{<span style=color:#e6db74>&#34;priority&#34;</span>: <span style=color:#ae81ff>34</span>}}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>got2</span> <span style=color:#f92672>:=</span> []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p34</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got2</span>, <span style=color:#e6db74>`-props[priority]`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p34</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p12</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority desc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	ok = t.<span style=color:#447fcf>Sort</span>(got2, <span style=color:#ed9d13>`props.priority`</span>, []A{p12, p23, p34})
-</span></span><span style=display:flex><span>	fmt.<span style=color:#447fcf>Println</span>(<span style=color:#ed9d13>&#34;by priority asc:&#34;</span>, ok)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>ok</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Sort</span>(<span style=color:#a6e22e>got2</span>, <span style=color:#e6db74>`props.priority`</span>, []<span style=color:#a6e22e>A</span>{<span style=color:#a6e22e>p12</span>, <span style=color:#a6e22e>p23</span>, <span style=color:#a6e22e>p34</span>})
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#e6db74>&#34;by priority asc:&#34;</span>, <span style=color:#a6e22e>ok</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// Output:</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by name desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by age desc, then by name asc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority desc: true</span>
-</span></span><span style=display:flex><span>	<span style=color:#999;font-style:italic>// by priority asc: true</span></span></span></code></pre></div>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Output:</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by name desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by age desc, then by name asc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority desc: true</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// by priority asc: true</span></span></span></code></pre></div>
 </div>
 </details></p>
 <footer class=footline>
@@ -624,8 +624,8 @@ Fields_path example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1755895133 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1755895133 defer></script>
-<script src=/js/theme.min.js?1755895133 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
+<script src=/js/theme.min.js?1756066640 defer></script>
 </body>
 </html>
