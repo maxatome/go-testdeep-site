@@ -1,13 +1,13 @@
 // cmp-funcs-begin OMIT
-        Cmp(t TestingT, got, expected interface{},            args ...interface{}) bool
-   CmpError(t TestingT, got error,                            args ...interface{}) bool
-   CmpFalse(t TestingT, got interface{},                      args ...interface{}) bool
-     CmpLax(t TestingT, got, expected interface{},            args ...interface{}) bool
- CmpNoError(t TestingT, got error,                            args ...interface{}) bool
-     CmpNot(t TestingT, got, notExpected interface{},         args ...interface{}) bool
-CmpNotPanic(t TestingT, fn func(),                            args ...interface{}) bool
-   CmpPanic(t TestingT, fn func(), expectedPanic interface{}, args ...interface{}) bool
-    CmpTrue(t TestingT, got interface{},                      args ...interface{}) bool
+        Cmp(t TestingT, got, expected any,            args ...any) bool
+   CmpError(t TestingT, got error,                    args ...any) bool
+   CmpFalse(t TestingT, got any,                      args ...any) bool
+     CmpLax(t TestingT, got, expected any,            args ...any) bool
+ CmpNoError(t TestingT, got error,                    args ...any) bool
+     CmpNot(t TestingT, got, notExpected any,         args ...any) bool
+CmpNotPanic(t TestingT, fn func(),                    args ...any) bool
+   CmpPanic(t TestingT, fn func(), expectedPanic any, args ...any) bool
+    CmpTrue(t TestingT, got any,                      args ...any) bool
 // cmp-funcs-end OMIT
 
 
@@ -17,7 +17,7 @@ td.Cmp(t, got, "Bob", `Hey! got has to be "Bob" here!`)
 
 
 // test-names-proto-begin OMIT
-func Cmp(t TestingT, got, expected interface{}, args ...interface{}) bool
+func Cmp(t TestingT, got, expected any, args ...any) bool
 // test-names-proto-end OMIT
 
 
@@ -52,17 +52,16 @@ td.Cmp(t, tags,    td.SuperMapOf(map[string]bool{"enabled": true, "shared": true
 
 
 // operators-all-begin OMIT
-All           Contains      Isa           MapEach       NotNil       Smuggle       SuperJSONOf
-Any           ContainsKey   JSON          N             NotZero      SStruct       SuperMapOf
-Array         Delay         JSONPointer   NaN           PPtr         String        SuperSetOf
-ArrayEach     Empty         Keys          Nil           Ptr          Struct        SuperSliceOf
-Bag           Gt            Lax           None          Re           SubBagOf      Tag
-Between       Gte           Len           Not           ReAll        SubJSONOf     TruncTime
-Cap           HasPrefix     Lt            NotAny        Set          SubMapOf      Values
-Catch         HasSuffix     Lte           NotEmpty      Shallow      SubSetOf      Zero
-Code          Ignore        Map           NotNaN        Slice        SuperBagOf
+All         Contains      HasPrefix     Len       Not        ReAll     String        SuperSetOf
+Any         ContainsKey   HasSuffix     Lt        NotAny     Recv      Struct        SuperSliceOf
+Array       Delay         Ignore        Lte       NotEmpty   SStruct   SubBagOf      Tag
+ArrayEach   Empty         Isa           Map       NotNaN     Set       SubJSONOf     TruncTime
+Bag         ErrorIs       JSON          MapEach   NotNil     Shallow   SubMapOf      Values
+Between     First         JSONPointer   N         NotZero    Slice     SubSetOf      Zero
+Cap         Grep          Keys          NaN       PPtr       Smuggle   SuperBagOf
+Catch       Gt            Last          Nil       Ptr        Sort      SuperJSONOf
+Code        Gte           Lax           None      Re         Sorted    SuperMapOf
 // operators-all-end OMIT
-
 
 // shortcuts-pattern-begin OMIT
 td.Cmp(t, got, td.HasPrefix(expectedPrefix), …) → td.CmpHasPrefix(t, got, expectedPrefix, …)
@@ -81,8 +80,11 @@ td.Cmp(t, got, td.Lax(expected))    → td.CmpLax(t, got, expected)
 
 
 // tdt-anchor-begin OMIT
-func (t *T)      A(operator TestDeep, model ...interface{}) interface{}
-func (t *T) Anchor(operator TestDeep, model ...interface{}) interface{}
+func (t *T)      A(operator TestDeep, model ...any) any
+func (t *T) Anchor(operator TestDeep, model ...any) any
+
+func      A[X any](t *T, operator TestDeep) X
+func Anchor[X any](t *T, operator TestDeep) X
 
 func (t *T) AnchorsPersistTemporarily() func()
 func (t *T) DoAnchorsPersist() bool
@@ -97,23 +99,23 @@ CmpNotZero(t, …) — CmpBetween(t, …) — CmpLen(t, …)
 
 
 // nested2-begin OMIT
-SStruct(model interface{}, expectedFields StructFields)
+SStruct(model any, expectedFields StructFields)
 // nested2-end OMIT
 
 
 // anat-anchor-begin OMIT
-func (t *T) A(operator TestDeep, model ...interface{}) interface{}
-                 │                └ mandatory if the type can not be guessed from the operator
-                 └ the operator to use
+func (t *T) A(operator TestDeep, model ...any) any // HL
+                ↳ operator to use  ↳ mandatory if the type can not be guessed from the operator
 
-// model is not needed when operator knows the type behind the operator
-assert.A(td.Between(40, 45)).(int)
+assert.A(td.Between(40, 45)).(int)         // model optional, when operator knows the type behind
+assert.A(td.NotZero(), int64(666)).(int64) // mandatory if type behind operator can't be guessed
+assert.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64) // for reflect lovers…
 
-// model is mandatory if the type behind the operator cannot be guessed
-assert.A(td.NotZero(), int64(666)).(int64)
+func A[X any](t *T, operator TestDeep) X // HL
+        ↳ expected type  ↳ operator to use
 
-// for reflect lovers, they can use the longer version
-assert.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64)
+td.A[int](assert, td.Between(40, 45))
+td.A[int64](assert, td.NotZero())
 // anat-anchor-end OMIT
 
 
@@ -126,32 +128,32 @@ func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() 
 
 
 // tdt1-configuring-begin OMIT
-func (t *T) BeLax(enable ...bool) *T                // enable/disable strict type comparison
-func (t *T) FailureIsFatal(enable ...bool) *T       // enable/disable failure "fatality"
-func (t *T) IgnoreUnexported(types ...interface{}) *T  // ignore unexported fields of some structs
-func (t *T) RootName(rootName string) *T            // change data root name, "DATA" by default
-func (t *T) UseEqual(types ...interface{}) *T       // delegate cmp to Equal() method if available
+func (t *T) BeLax(enable ...bool) *T           // enable/disable strict type comparison
+func (t *T) FailureIsFatal(enable ...bool) *T  // enable/disable failure "fatality"
+func (t *T) IgnoreUnexported(types ...any) *T  // ignore unexported fields of some structs
+func (t *T) RootName(rootName string) *T       // change data root name, "DATA" by default
+func (t *T) UseEqual(types ...any) *T          // delegate cmp to Equal() method if available
 // tdt1-configuring-end OMIT
 
 
 // tdt2-main-begin OMIT
-func (t *T)         Cmp(got, expected interface{},       args ...interface{}) bool
-func (t *T)    CmpError(got error,                       args ...interface{}) bool
-func (t *T)      CmpLax(got, expected interface{},       args ...interface{}) bool
-func (t *T)  CmpNoError(got error,                       args ...interface{}) bool
-func (t *T) CmpNotPanic(fn func(),                       args ...interface{}) bool
-func (t *T)    CmpPanic(fn func(), expected interface{}, args ...interface{}) bool
-func (t *T)       False(got interface{},                 args ...interface{}) bool
-func (t *T)         Not(got, notExpected interface{},    args ...interface{}) bool
-func (t *T)        True(got interface{},                 args ...interface{}) bool
+func (t *T)         Cmp(got, expected any,       args ...any) bool
+func (t *T)    CmpError(got error,               args ...any) bool
+func (t *T)      CmpLax(got, expected any,       args ...any) bool
+func (t *T)  CmpNoError(got error,               args ...any) bool
+func (t *T) CmpNotPanic(fn func(),               args ...any) bool
+func (t *T)    CmpPanic(fn func(), expected any, args ...any) bool
+func (t *T)       False(got any,                 args ...any) bool
+func (t *T)         Not(got, notExpected any,    args ...any) bool
+func (t *T)        True(got any,                 args ...any) bool
 
 func (t *T)              Run(name string, f func(t *T)) bool
 func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool
 // tdt2-main-end OMIT
 
 // tdt2-main2-begin OMIT
-func EqDeeply(got, expected interface{}) bool
-func EqDeeplyError(got, expected interface{}) error
+func EqDeeply(got, expected any) bool
+func EqDeeplyError(got, expected any) error
 // tdt2-main2-end OMIT
 
 
@@ -188,8 +190,8 @@ assert.Cmp("123", 123) // succeeds
 // tdt6-WithSmuggleHooks-end OMIT
 
 // smugglers-begin OMIT
-Cap           Contains      JSONPointer   Lax           PPtr          Smuggle       Values
-Catch         ContainsKey   Keys          Len           Ptr           Tag
+Cap     Contains      ErrorIs   Grep          Keys   Lax   PPtr   Recv      Sort   Values
+Catch   ContainsKey   First     JSONPointer   Last   Len   Ptr    Smuggle   Tag
 // smugglers-end OMIT
 
 // smugglers-example-begin OMIT
@@ -200,7 +202,7 @@ td.Cmp(t, ageStr,  td.Smuggle(strconv.Atoi, td.Catch(&age, td.Gt(18))))
 td.Cmp(t, body1,   td.Smuggle(json.RawMessage{}, td.JSON(`{"name": $br}`, td.Tag("br", "Brian"))))
 td.Cmp(t, body2,   td.Smuggle("Service.Owner.Children[0].Name", "Alice"))
 td.Cmp(t, body2,   td.JSONPointer("/service/owner/children/0/name", "Alice"))
-td.Cmp(t, headers, td.Keys(td.SuperSetOf("X-Ovh", "X-Remote-IP")))
+td.Cmp(t, headers, td.Keys(td.SuperSetOf("X-Ovh", "X-Remote-Ip")))
 td.Cmp(t, err,     td.Contains("integrity constraint"))
 td.Cmp(t, bytes,   td.Lax("pipo bingo!"))
 // smugglers-example-end OMIT

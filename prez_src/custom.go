@@ -34,24 +34,27 @@ func CheckDateGte(t time.Time, catch *time.Time) td.TestDeep {
 		}, op))
 }
 
-func TestCreateArticle(t *testing.T) {
-	type Article struct {
-		ID        int64     `json:"id"`
-		Code      string    `json:"code"`
-		CreatedAt time.Time `json:"created_at"`
-	}
+// TestCreateArticle-BEGIN OMIT
+type Article struct {
+	ID        int64     `json:"id"`
+	Code      string    `json:"code"`
+	CreatedAt time.Time `json:"created_at"`
+}
 
+func TestCreateArticle(t *testing.T) {
 	var createdAt time.Time
 	beforeCreation := time.Now()
 	td.Cmp(t, CreateArticle("Car"),
-		td.JSON(`{"id": NotZero(), "code": "Car", "created_at": $1}`,
-			CheckDateGte(beforeCreation, &createdAt)))
+		td.JSON(`{"id": NotZero, "code": "Car", "created_at": $1}`,
+			CheckDateGte(beforeCreation, &createdAt))) // HL
 
 	// If the test succeeds, then "created_at" value is well a RFC3339
 	// datetime in UTC timezone and its value is directly exploitable as
 	// time.Time thanks to createdAt variable
 	t.Logf("Article created at %s", createdAt)
 }
+
+// TestCreateArticle-END OMIT
 
 func TestCustom(t *testing.T) {
 	// Code-begin OMIT
@@ -63,8 +66,6 @@ func TestCustom(t *testing.T) {
 
 	// Smuggle-begin OMIT
 	td.Cmp(t, gotTime,
-		td.Smuggle(func(date time.Time) int { return date.Year() },
-			td.Between(2010, 2020)),
-	)
+		td.Smuggle(func(date time.Time) int { return date.Year() }, td.Between(2010, 2020)))
 	// Smuggle-end OMIT
 }

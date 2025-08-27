@@ -9,7 +9,7 @@ import (
 
 func TestPerson(t *testing.T) {
 	tdsuite.Run(t, &PersonSuite{ // entrypoint of the suite
-		db: InitDB(), // a DB handler probably used in each tests
+		db: InitDB(), // a DB handler probably used in each test
 	})
 }
 

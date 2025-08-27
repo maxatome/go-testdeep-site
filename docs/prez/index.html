@@ -40,7 +40,7 @@
   </p>
 
   <p>
-    2022-01-28
+    2025-08-27
   </p>
 
           </div>
@@ -133,7 +133,7 @@
         <h3>Why go-testdeep instead of an existing framework?</h3>
         <p>Custom comparison engine allowing the use of powerful operators</p>
 <p>Accurate and colored <a href="https://go-testdeep.zetta.rocks/introduction/#error-output" target="_blank" rel="noopener">error reports</a></p>
-<p><a href="https://go-testdeep.zetta.rocks/operators/" target="_blank" rel="noopener">62 operators</a> to match in
+<p><a href="https://go-testdeep.zetta.rocks/operators/" target="_blank" rel="noopener">69 operators</a> to match in
 all circumstances</p>
 <p>Fully <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td" target="_blank" rel="noopener">documented</a>
 with plenty examples</p>
@@ -141,15 +141,15 @@ with plenty examples</p>
 <p>Very few basic functions, all others are operators shortcuts <em>(args... allow to name tests)</em>:</p>
 
   <div class="code" >
-<pre><span num="2">        Cmp(t TestingT, got, expected interface{},            args ...interface{}) bool</span>
-<span num="3">   CmpError(t TestingT, got error,                            args ...interface{}) bool</span>
-<span num="4">   CmpFalse(t TestingT, got interface{},                      args ...interface{}) bool</span>
-<span num="5">     CmpLax(t TestingT, got, expected interface{},            args ...interface{}) bool</span>
-<span num="6"> CmpNoError(t TestingT, got error,                            args ...interface{}) bool</span>
-<span num="7">     CmpNot(t TestingT, got, notExpected interface{},         args ...interface{}) bool</span>
-<span num="8">CmpNotPanic(t TestingT, fn func(),                            args ...interface{}) bool</span>
-<span num="9">   CmpPanic(t TestingT, fn func(), expectedPanic interface{}, args ...interface{}) bool</span>
-<span num="10">    CmpTrue(t TestingT, got interface{},                      args ...interface{}) bool</span>
+<pre><span num="2">        Cmp(t TestingT, got, expected any,            args ...any) bool</span>
+<span num="3">   CmpError(t TestingT, got error,                    args ...any) bool</span>
+<span num="4">   CmpFalse(t TestingT, got any,                      args ...any) bool</span>
+<span num="5">     CmpLax(t TestingT, got, expected any,            args ...any) bool</span>
+<span num="6"> CmpNoError(t TestingT, got error,                    args ...any) bool</span>
+<span num="7">     CmpNot(t TestingT, got, notExpected any,         args ...any) bool</span>
+<span num="8">CmpNotPanic(t TestingT, fn func(),                    args ...any) bool</span>
+<span num="9">   CmpPanic(t TestingT, fn func(), expectedPanic any, args ...any) bool</span>
+<span num="10">    CmpTrue(t TestingT, got any,                      args ...any) bool</span>
 </pre>
 </div>
 
@@ -166,7 +166,7 @@ testable like never before</p>
 to be lax, to ignore struct unexported fields, to treat specifically some
 types, to display <em>N</em> errors before giving up</p>
 <p>Efficient <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten" target="_blank" rel="noopener">flattening</a>
-of <code>[]X</code> slices into <code>...interface{}</code> of variadic functions</p>
+of <code>[]X</code> slices into <code>...any</code> of variadic functions</p>
 <p>A function returning several values can be tested in one call, thanks to
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Tuple" target="_blank" rel="noopener">tuples</a></p>
 <p><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp" target="_blank" rel="noopener">tdhttp</a>
@@ -191,7 +191,7 @@ helper handles consistent and flexible suites of tests</p>
 <a href="https://golang.org/pkg/fmt/#Fprint" target="_blank" rel="noopener">fmt.Fprint</a> parameters in <code>args</code></p>
 
   <div class="code" >
-<pre><span num="20">func Cmp(t TestingT, got, expected interface{}, args ...interface{}) bool</span>
+<pre><span num="20">func Cmp(t TestingT, got, expected any, args ...any) bool</span>
 </pre>
 </div>
 <p>The doc says:</p>
@@ -237,7 +237,7 @@ several mismatches at the same time (up to 10 by default)</p>
       <span class="pagenumber">9</span>
       </article>
       <article >
-        <h3>62 operators to match in all circumstances</h3>
+        <h3>69 operators to match in all circumstances</h3>
         <p>Some examples, see the expected (3rd) parameter
 <a href="https://goplay.tools/snippet/qrWLPxbrSg7" target="_blank" rel="noopener">🔗</a></p>
 
@@ -256,15 +256,15 @@ several mismatches at the same time (up to 10 by default)</p>
 <p><a href="https://go-testdeep.zetta.rocks/operators/" target="_blank" rel="noopener">All operators</a> follow</p>
 
   <div class="code" >
-<pre><span num="55">All           Contains      Isa           MapEach       NotNil       Smuggle       SuperJSONOf</span>
-<span num="56">Any           ContainsKey   JSON          N             NotZero      SStruct       SuperMapOf</span>
-<span num="57">Array         Delay         JSONPointer   NaN           PPtr         String        SuperSetOf</span>
-<span num="58">ArrayEach     Empty         Keys          Nil           Ptr          Struct        SuperSliceOf</span>
-<span num="59">Bag           Gt            Lax           None          Re           SubBagOf      Tag</span>
-<span num="60">Between       Gte           Len           Not           ReAll        SubJSONOf     TruncTime</span>
-<span num="61">Cap           HasPrefix     Lt            NotAny        Set          SubMapOf      Values</span>
-<span num="62">Catch         HasSuffix     Lte           NotEmpty      Shallow      SubSetOf      Zero</span>
-<span num="63">Code          Ignore        Map           NotNaN        Slice        SuperBagOf</span>
+<pre><span num="55">All         Contains      HasPrefix     Len       Not        ReAll     String        SuperSetOf</span>
+<span num="56">Any         ContainsKey   HasSuffix     Lt        NotAny     Recv      Struct        SuperSliceOf</span>
+<span num="57">Array       Delay         Ignore        Lte       NotEmpty   SStruct   SubBagOf      Tag</span>
+<span num="58">ArrayEach   Empty         Isa           Map       NotNaN     Set       SubJSONOf     TruncTime</span>
+<span num="59">Bag         ErrorIs       JSON          MapEach   NotNil     Shallow   SubMapOf      Values</span>
+<span num="60">Between     First         JSONPointer   N         NotZero    Slice     SubSetOf      Zero</span>
+<span num="61">Cap         Grep          Keys          NaN       PPtr       Smuggle   SuperBagOf</span>
+<span num="62">Catch       Gt            Last          Nil       Ptr        Sort      SuperJSONOf</span>
+<span num="63">Code        Gte           Lax           None      Re         Sorted    SuperMapOf</span>
 </pre>
 </div>
 
@@ -275,11 +275,11 @@ several mismatches at the same time (up to 10 by default)</p>
         <p>Always the same pattern</p>
 
   <div class="code" >
-<pre><span num="68">td.Cmp(t, got, td.HasPrefix(expectedPrefix), …) → td.CmpHasPrefix(t, got, expectedPrefix, …)</span>
-<span num="69">td.Cmp(t, got, td.HasSuffix(expectedSuffix), …) → td.CmpHasSuffix(t, got, expectedSuffix, …)</span>
-<span num="70">                  ¯¯¯¯¯¯¯¯¯                             ¯¯¯¯¯¯¯¯¯</span>
-<span num="71">td.Cmp(t, got, td.NotEmpty(), …) → td.CmpNotEmpty(t, got, …)</span>
-<span num="72">                  ¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯</span>
+<pre><span num="67">td.Cmp(t, got, td.HasPrefix(expectedPrefix), …) → td.CmpHasPrefix(t, got, expectedPrefix, …)</span>
+<span num="68">td.Cmp(t, got, td.HasSuffix(expectedSuffix), …) → td.CmpHasSuffix(t, got, expectedSuffix, …)</span>
+<span num="69">                  ¯¯¯¯¯¯¯¯¯                             ¯¯¯¯¯¯¯¯¯</span>
+<span num="70">td.Cmp(t, got, td.NotEmpty(), …) → td.CmpNotEmpty(t, got, …)</span>
+<span num="71">                  ¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯</span>
 </pre>
 </div>
 <p>You just understood
@@ -289,9 +289,9 @@ and
 were in fact shortcuts :)</p>
 
   <div class="code" >
-<pre><span num="77">td.Cmp(t, got, td.Not(notExpected)) → td.CmpNot(t, got, notExpected)</span>
-<span num="78">td.Cmp(t, got, td.Lax(expected))    → td.CmpLax(t, got, expected)</span>
-<span num="79">                  ¯¯¯                       ¯¯¯</span>
+<pre><span num="76">td.Cmp(t, got, td.Not(notExpected)) → td.CmpNot(t, got, notExpected)</span>
+<span num="77">td.Cmp(t, got, td.Lax(expected))    → td.CmpLax(t, got, expected)</span>
+<span num="78">                  ¯¯¯                       ¯¯¯</span>
 </pre>
 </div>
 <p>Using a shortcut is not mandatory, it could just be more readable in some cases (or not)</p>
@@ -360,7 +360,7 @@ because having a shortcut in these cases is a nonsense</p>
 <a href="https://goplay.tools/snippet/UTUSegMNb53" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="95">CmpNotZero(t, …) — CmpBetween(t, …) — CmpLen(t, …)</span>
+<pre><span num="97">CmpNotZero(t, …) — CmpBetween(t, …) — CmpLen(t, …)</span>
 </pre>
 </div>
 
@@ -373,7 +373,7 @@ is the strict-<a href="https://go-testdeep.zetta.rocks/operators/struct/" target
 operator</p>
 
   <div class="code" >
-<pre><span num="100">SStruct(model interface{}, expectedFields StructFields)</span>
+<pre><span num="102">SStruct(model any, expectedFields StructFields)</span>
 </pre>
 </div>
 <p>Strict because omitted fields are checked against their zero value, instead of ignoring them
@@ -402,7 +402,7 @@ operator</p>
         <h3>Operators in nested structs/slices/maps — 3/4 using JSON operator</h3>
         <p><a href="https://go-testdeep.zetta.rocks/operators/json/" target="_blank" rel="noopener">JSON</a>
 allows to compare the JSON representation (comments are allowed!)
-<a href="https://goplay.tools/snippet/Kqr99mrB_jb" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/TnAa2903rWQ" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="48">    td.Cmp(t, GetPerson(&#34;Bob&#34;), td.JSON(`</span>
@@ -412,16 +412,16 @@ allows to compare the JSON representation (comments are allowed!)
 <span num="52">            &#34;age&#34;:  Between(40, 45),     // yes, most operators are embedable</span>
 <span num="53">            &#34;children&#34;: [</span>
 <span num="54">                {</span>
-<span num="55">                    &#34;id&#34;:       NotZero(),</span>
+<span num="55">                    &#34;id&#34;:       NotZero,</span>
 <span num="56">                    &#34;name&#34;:     &#34;Alice&#34;,</span>
 <span num="57">                    &#34;age&#34;:      20,</span>
-<span num="58">                    &#34;children&#34;: Empty(), /* null is &#34;empty&#34; */</span>
+<span num="58">                    &#34;children&#34;: Empty, /* null is &#34;empty&#34; */</span>
 <span num="59">                },</span>
 <span num="60">                {</span>
-<span num="61">                    &#34;id&#34;:       NotZero(),</span>
+<span num="61">                    &#34;id&#34;:       NotZero,</span>
 <span num="62">                    &#34;name&#34;:     &#34;Brian&#34;,</span>
 <span num="63">                    &#34;age&#34;:      18,</span>
-<span num="64">                    &#34;children&#34;: Nil(),</span>
+<span num="64">                    &#34;children&#34;: Nil,</span>
 <span num="65">                }</span>
 <span num="66">            ]</span>
 <span num="67">        }`,</span>
@@ -436,7 +436,7 @@ allows to compare the JSON representation (comments are allowed!)
         <h3>Operators in nested structs/slices/maps — 3/4 using JSON &#43; Bag ops</h3>
         <p><a href="https://go-testdeep.zetta.rocks/operators/json/" target="_blank" rel="noopener">JSON</a>
 allows to compare the JSON representation (comments are allowed!)
-<a href="https://goplay.tools/snippet/KCvXH3lLwiB" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/Z8W6Q7N2V1x" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="73">    td.Cmp(t, GetPerson(&#34;Bob&#34;), td.JSON(`</span>
@@ -446,16 +446,16 @@ allows to compare the JSON representation (comments are allowed!)
 <span num="77">            &#34;age&#34;:  Between(40, 45),     // yes, most operators are embedable</span>
 <span num="78">            &#34;children&#34;: Bag(             // ← Bag HERE</span>
 <span num="79">                {</span>
-<span num="80">                    &#34;id&#34;:       NotZero(),</span>
+<span num="80">                    &#34;id&#34;:       NotZero,</span>
 <span num="81">                    &#34;name&#34;:     &#34;Brian&#34;,</span>
 <span num="82">                    &#34;age&#34;:      18,</span>
-<span num="83">                    &#34;children&#34;: Nil(),</span>
+<span num="83">                    &#34;children&#34;: null,</span>
 <span num="84">                },</span>
 <span num="85">                {</span>
 <span num="86">                    &#34;id&#34;:       NotZero(),</span>
 <span num="87">                    &#34;name&#34;:     &#34;Alice&#34;,</span>
 <span num="88">                    &#34;age&#34;:      20,</span>
-<span num="89">                    &#34;children&#34;: Empty(), /* null is &#34;empty&#34; */</span>
+<span num="89">                    &#34;children&#34;: Empty, /* null is &#34;empty&#34; */</span>
 <span num="90">                },</span>
 <span num="91">            )</span>
 <span num="92">        }`,</span>
@@ -472,23 +472,23 @@ allows to compare the JSON representation (comments are allowed!)
 <p>To keep track of anchors, a
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T" target="_blank" rel="noopener">td.T</a>
 instance is needed
-<a href="https://goplay.tools/snippet/w8IwhKdhR8t" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/g507x9S9DW6" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="98">    assert := td.Assert(t)</span>
 <span num="99">    assert.Cmp(GetPerson(&#34;Bob&#34;),</span>
 <span num="100">        Person{</span>
-<span num="101">            <b>ID:   assert.A(td.Catch(&amp;bobID, td.NotZero())).(int64),</b></span>
+<span num="101">            <b>ID:   td.A[int64](assert, td.Catch(&amp;bobID, td.NotZero())),</b></span>
 <span num="102">            Name: &#34;Bob&#34;,</span>
-<span num="103">            <b>Age:  assert.A(td.Between(40, 45)).(int),</b></span>
+<span num="103">            <b>Age:  td.A[int](assert, td.Between(40, 45)),</b></span>
 <span num="104">            Children: []*Person{</span>
 <span num="105">                {</span>
-<span num="106">                    <b>ID:   assert.A(td.NotZero(), int64(0)).(int64),</b></span>
+<span num="106">                    <b>ID:   td.A[int64](assert, td.NotZero()),</b></span>
 <span num="107">                    Name: &#34;Alice&#34;,</span>
 <span num="108">                    Age:  20,</span>
 <span num="109">                },</span>
 <span num="110">                {</span>
-<span num="111">                    <b>ID:   assert.A(td.NotZero(), int64(0)).(int64),</b></span>
+<span num="111">                    <b>ID:   td.A[int64](assert, td.NotZero()),</b></span>
 <span num="112">                    Name: &#34;Brian&#34;,</span>
 <span num="113">                    Age:  18,</span>
 <span num="114">                },</span>
@@ -502,27 +502,29 @@ instance is needed
       <article >
         <h3>Anatomy of an anchor</h3>
         <p>Anchors are created using
-<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A" target="_blank" rel="noopener">A</a> (or its
-alias
+<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A" target="_blank" rel="noopener">A</a> (or
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor" target="_blank" rel="noopener">Anchor</a>)
 method of
-<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T" target="_blank" rel="noopener">*td.T</a></p>
-<p>It generates a specific value that can be retrieved during the
+<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T" target="_blank" rel="noopener">*td.T</a>
+or <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A" target="_blank" rel="noopener">td.A</a>
+(or <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor" target="_blank" rel="noopener">td.Anchor</a>)
+function</p>
+<p>They generate a specific value that can be retrieved during the
 comparison process</p>
 
   <div class="code" >
-<pre><span num="105">func (t *T) A(operator TestDeep, model ...interface{}) interface{}</span>
-<span num="106">                 │                └ mandatory if the type can not be guessed from the operator</span>
-<span num="107">                 └ the operator to use</span>
-<span num="108"></span>
-<span num="109">// model is not needed when operator knows the type behind the operator</span>
-<span num="110">assert.A(td.Between(40, 45)).(int)</span>
-<span num="111"></span>
-<span num="112">// model is mandatory if the type behind the operator cannot be guessed</span>
-<span num="113">assert.A(td.NotZero(), int64(666)).(int64)</span>
-<span num="114"></span>
-<span num="115">// for reflect lovers, they can use the longer version</span>
-<span num="116">assert.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64)</span>
+<pre><span num="107"><b>func (t *T) A(operator TestDeep, model ...any) any</b></span>
+<span num="108">                ↳ operator to use  ↳ mandatory if the type can not be guessed from the operator</span>
+<span num="109"></span>
+<span num="110">assert.A(td.Between(40, 45)).(int)         // model optional, when operator knows the type behind</span>
+<span num="111">assert.A(td.NotZero(), int64(666)).(int64) // mandatory if type behind operator can&#39;t be guessed</span>
+<span num="112">assert.A(td.NotZero(), reflect.TypeOf(int64(666))).(int64) // for reflect lovers…</span>
+<span num="113"></span>
+<span num="114"><b>func A[X any](t *T, operator TestDeep) X</b></span>
+<span num="115">        ↳ expected type  ↳ operator to use</span>
+<span num="116"></span>
+<span num="117">td.A[int](assert, td.Between(40, 45))</span>
+<span num="118">td.A[int64](assert, td.NotZero())</span>
 </pre>
 </div>
 <p>Conflicts are possible, so be careful with 8 and 16 bits types</p>
@@ -569,7 +571,7 @@ directly</p>
       <span class="pagenumber">19</span>
       </article>
       <article >
-        <h3>td.T — Introduction — 1/6</h3>
+        <h3>td.T — Introduction — 1/7</h3>
   <div class="code" >
 <pre><span num="3">type T struct {</span>
 <span num="4">    testing.TB               // implemented by *testing.T</span>
@@ -587,10 +589,10 @@ variable</p>
 <p>Construction:</p>
 
   <div class="code" >
-<pre><span num="121">func          NewT(t testing.TB, config ...ContextConfig) *T        // inherit properties from t</span>
-<span num="122">func        Assert(t testing.TB, config ...ContextConfig) *T        // test failures are not fatal</span>
-<span num="123">func       Require(t testing.TB, config ...ContextConfig) *T        // t.Fatal if a test fails</span>
-<span num="124">func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() &#43; Require()</span>
+<pre><span num="123">func          NewT(t testing.TB, config ...ContextConfig) *T        // inherit properties from t</span>
+<span num="124">func        Assert(t testing.TB, config ...ContextConfig) *T        // test failures are not fatal</span>
+<span num="125">func       Require(t testing.TB, config ...ContextConfig) *T        // t.Fatal if a test fails</span>
+<span num="126">func AssertRequire(t testing.TB, config ...ContextConfig) (*T, *T)  // Assert() &#43; Require()</span>
 </pre>
 </div>
 <p>Configuring
@@ -598,31 +600,31 @@ variable</p>
 instance (return a new instance):</p>
 
   <div class="code" >
-<pre><span num="129">func (t *T) BeLax(enable ...bool) *T                // enable/disable strict type comparison</span>
-<span num="130">func (t *T) FailureIsFatal(enable ...bool) *T       // enable/disable failure &#34;fatality&#34;</span>
-<span num="131">func (t *T) IgnoreUnexported(types ...interface{}) *T  // ignore unexported fields of some structs</span>
-<span num="132">func (t *T) RootName(rootName string) *T            // change data root name, &#34;DATA&#34; by default</span>
-<span num="133">func (t *T) UseEqual(types ...interface{}) *T       // delegate cmp to Equal() method if available</span>
+<pre><span num="131">func (t *T) BeLax(enable ...bool) *T           // enable/disable strict type comparison</span>
+<span num="132">func (t *T) FailureIsFatal(enable ...bool) *T  // enable/disable failure &#34;fatality&#34;</span>
+<span num="133">func (t *T) IgnoreUnexported(types ...any) *T  // ignore unexported fields of some structs</span>
+<span num="134">func (t *T) RootName(rootName string) *T       // change data root name, &#34;DATA&#34; by default</span>
+<span num="135">func (t *T) UseEqual(types ...any) *T          // delegate cmp to Equal() method if available</span>
 </pre>
 </div>
 
       <span class="pagenumber">20</span>
       </article>
       <article >
-        <h3>td.T — Main methods — 2/6</h3>
+        <h3>td.T — Main methods — 2/7</h3>
   <div class="code" >
-<pre><span num="138">func (t *T)         Cmp(got, expected interface{},       args ...interface{}) bool</span>
-<span num="139">func (t *T)    CmpError(got error,                       args ...interface{}) bool</span>
-<span num="140">func (t *T)      CmpLax(got, expected interface{},       args ...interface{}) bool</span>
-<span num="141">func (t *T)  CmpNoError(got error,                       args ...interface{}) bool</span>
-<span num="142">func (t *T) CmpNotPanic(fn func(),                       args ...interface{}) bool</span>
-<span num="143">func (t *T)    CmpPanic(fn func(), expected interface{}, args ...interface{}) bool</span>
-<span num="144">func (t *T)       False(got interface{},                 args ...interface{}) bool</span>
-<span num="145">func (t *T)         Not(got, notExpected interface{},    args ...interface{}) bool</span>
-<span num="146">func (t *T)        True(got interface{},                 args ...interface{}) bool</span>
-<span num="147"></span>
-<span num="148">func (t *T)              Run(name string, f func(t *T)) bool</span>
-<span num="149">func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool</span>
+<pre><span num="140">func (t *T)         Cmp(got, expected any,       args ...any) bool</span>
+<span num="141">func (t *T)    CmpError(got error,               args ...any) bool</span>
+<span num="142">func (t *T)      CmpLax(got, expected any,       args ...any) bool</span>
+<span num="143">func (t *T)  CmpNoError(got error,               args ...any) bool</span>
+<span num="144">func (t *T) CmpNotPanic(fn func(),               args ...any) bool</span>
+<span num="145">func (t *T)    CmpPanic(fn func(), expected any, args ...any) bool</span>
+<span num="146">func (t *T)       False(got any,                 args ...any) bool</span>
+<span num="147">func (t *T)         Not(got, notExpected any,    args ...any) bool</span>
+<span num="148">func (t *T)        True(got any,                 args ...any) bool</span>
+<span num="149"></span>
+<span num="150">func (t *T)              Run(name string, f func(t *T)) bool</span>
+<span num="151">func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool</span>
 </pre>
 </div>
 <p>In fact mostly the same as main functions, but:</p>
@@ -637,15 +639,15 @@ for details</p>
       <span class="pagenumber">21</span>
       </article>
       <article >
-        <h3>td.T — Shortcuts — 3/6</h3>
+        <h3>td.T — Shortcuts — 3/7</h3>
         <p>Shortcuts, as for td functions, follow always the same pattern:</p>
 
   <div class="code" >
-<pre><span num="159">t.Cmp(got, td.HasPrefix(expected), …) → t.HasPrefix(got, expected, …)</span>
-<span num="160">t.Cmp(got, td.HasSuffix(expected), …) → t.HasSuffix(got, expected, …)</span>
-<span num="161">              ¯¯¯¯¯¯¯¯¯                   ¯¯¯¯¯¯¯¯¯</span>
-<span num="162">t.Cmp(got, td.NotEmpty(), …) → t.NotEmpty(t, got, …)</span>
-<span num="163">              ¯¯¯¯¯¯¯¯           ¯¯¯¯¯¯¯¯</span>
+<pre><span num="161">t.Cmp(got, td.HasPrefix(expected), …) → t.HasPrefix(got, expected, …)</span>
+<span num="162">t.Cmp(got, td.HasSuffix(expected), …) → t.HasSuffix(got, expected, …)</span>
+<span num="163">              ¯¯¯¯¯¯¯¯¯                   ¯¯¯¯¯¯¯¯¯</span>
+<span num="164">t.Cmp(got, td.NotEmpty(), …) → t.NotEmpty(t, got, …)</span>
+<span num="165">              ¯¯¯¯¯¯¯¯           ¯¯¯¯¯¯¯¯</span>
 </pre>
 </div>
 <p>So yes,
@@ -653,8 +655,8 @@ for details</p>
 is in fact a shortcut:</p>
 
   <div class="code" >
-<pre><span num="167">t.Cmp(got, td.Not(notExpected)) → t.Not(got, notExpected)</span>
-<span num="168">              ¯¯¯                   ¯¯¯</span>
+<pre><span num="169">t.Cmp(got, td.Not(notExpected)) → t.Not(got, notExpected)</span>
+<span num="170">              ¯¯¯                   ¯¯¯</span>
 </pre>
 </div>
 <p>The only exception is
@@ -672,22 +674,29 @@ because having a shortcut in these cases is a nonsense</p>
       <span class="pagenumber">22</span>
       </article>
       <article >
-        <h3>td.T — Anchoring — 4/6</h3>
-        <p>Anchoring related methods:</p>
+        <h3>td.T — Anchoring — 4/7</h3>
+        <p>Anchoring related methods &amp; functions:</p>
 
   <div class="code" >
-<pre><span num="84">func (t *T)      A(operator TestDeep, model ...interface{}) interface{}</span>
-<span num="85">func (t *T) Anchor(operator TestDeep, model ...interface{}) interface{}</span>
-<span num="86"></span>
-<span num="87">func (t *T) AnchorsPersistTemporarily() func()</span>
-<span num="88">func (t *T) DoAnchorsPersist() bool</span>
-<span num="89">func (t *T) ResetAnchors()</span>
-<span num="90">func (t *T) SetAnchorsPersist(persist bool)</span>
+<pre><span num="83">func (t *T)      A(operator TestDeep, model ...any) any</span>
+<span num="84">func (t *T) Anchor(operator TestDeep, model ...any) any</span>
+<span num="85"></span>
+<span num="86">func      A[X any](t *T, operator TestDeep) X</span>
+<span num="87">func Anchor[X any](t *T, operator TestDeep) X</span>
+<span num="88"></span>
+<span num="89">func (t *T) AnchorsPersistTemporarily() func()</span>
+<span num="90">func (t *T) DoAnchorsPersist() bool</span>
+<span num="91">func (t *T) ResetAnchors()</span>
+<span num="92">func (t *T) SetAnchorsPersist(persist bool)</span>
 </pre>
 </div>
 <p><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A" target="_blank" rel="noopener">A</a> and
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor" target="_blank" rel="noopener">Anchor</a>
 allow both to anchor an operator, the first is just shorter to write</p>
+<p>The generic versions
+<a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A" target="_blank" rel="noopener">A</a>
+and <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor" target="_blank" rel="noopener">Anchor</a>
+are often shorter to write</p>
 <p>By default, anchoring is effective only for the next Cmp* call, but
 this can be overridden thanks to
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist" target="_blank" rel="noopener">SetAnchorsPersist</a>
@@ -698,7 +707,7 @@ and
       <span class="pagenumber">23</span>
       </article>
       <article >
-        <h3>td.T — Simple example — 5/6</h3>
+        <h3>td.T — Simple example — 5/7</h3>
         <p><a href="https://goplay.tools/snippet/dqRj7N_Yte6" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
@@ -717,10 +726,10 @@ and
 <span num="15"></span>
 <span num="16">    assert.RootName(&#34;PERSON&#34;).</span>
 <span num="17">        Cmp(person, &amp;Person{</span>
-<span num="18">            ID:       assert.A(td.NotZero(), int64(0)).(int64),</span>
+<span num="18">            <b>ID:       assert.A(td.NotZero(), int64(0)).(int64),</b></span>
 <span num="19">            Name:     &#34;Bob&#34;,</span>
-<span num="20">            Age:      assert.A(td.Between(40, 45)).(int),</span>
-<span num="21">            Children: assert.A(td.Len(2), ([]*Person)(nil)).([]*Person),</span>
+<span num="20">            <b>Age:      assert.A(td.Between(40, 45)).(int),</b></span>
+<span num="21">            <b>Children: assert.A(td.Len(2), ([]*Person)(nil)).([]*Person),</b></span>
 <span num="22">        })</span>
 <span num="23">}</span>
 </pre>
@@ -729,20 +738,51 @@ and
       <span class="pagenumber">24</span>
       </article>
       <article >
-        <h3>td.T — Advanced usage — 6/6</h3>
+        <h3>td.T — Simple example with generics — 6/7</h3>
+        <p><a href="https://goplay.tools/snippet/xYstCq593Ds" target="_blank" rel="noopener">🔗</a></p>
+
+  <div class="code" >
+<pre><span num="3">import (</span>
+<span num="4">    &#34;testing&#34;</span>
+<span num="5"></span>
+<span num="6">    &#34;github.com/maxatome/go-testdeep/td&#34;</span>
+<span num="7">)</span>
+<span num="8"></span>
+<span num="9">func TestExample(t *testing.T) {</span>
+<span num="10">    assert, require := td.AssertRequire(t)</span>
+<span num="11"></span>
+<span num="12">    person, err := GetPerson(&#34;Bob&#34;)</span>
+<span num="13"></span>
+<span num="14">    require.CmpNoError(err) // exits test if it fails</span>
+<span num="15"></span>
+<span num="16">    assert.RootName(&#34;PERSON&#34;).</span>
+<span num="17">        Cmp(person, &amp;Person{</span>
+<span num="18">            <b>ID:       td.A[int64](assert, td.NotZero()),</b></span>
+<span num="19">            Name:     &#34;Bob&#34;,</span>
+<span num="20">            <b>Age:      td.A[int](assert, td.Between(40, 45)),</b></span>
+<span num="21">            <b>Children: td.A[[]*Person](assert, td.Len(2)),</b></span>
+<span num="22">        })</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      <span class="pagenumber">25</span>
+      </article>
+      <article >
+        <h3>td.T — Advanced usage — 7/7</h3>
         <p><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks" target="_blank" rel="noopener">WithCmpHooks</a>
 allows to register comparison functions for some types
 <a href="https://goplay.tools/snippet/-NGjAMq5zbD" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="172">assert = assert.WithCmpHooks(</span>
-<span num="173">  func (got, expected reflect.Value) bool {</span>
-<span num="174">    return td.EqDeeply(got.Interface(), expected.Interface())</span>
-<span num="175">  },</span>
-<span num="176">  (time.Time).Equal, // bypasses the UseEqual flag</span>
-<span num="177">)</span>
-<span num="178">x := 123</span>
-<span num="179">assert.Cmp(reflect.ValueOf(x), reflect.ValueOf(123)) // succeeds</span>
+<pre><span num="174">assert = assert.WithCmpHooks(</span>
+<span num="175">  func (got, expected reflect.Value) bool {</span>
+<span num="176">    return td.EqDeeply(got.Interface(), expected.Interface())</span>
+<span num="177">  },</span>
+<span num="178">  (time.Time).Equal, // bypasses the UseEqual flag</span>
+<span num="179">)</span>
+<span num="180">x := 123</span>
+<span num="181">assert.Cmp(reflect.ValueOf(x), reflect.ValueOf(123)) // succeeds</span>
 </pre>
 </div>
 <p><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks" target="_blank" rel="noopener">WithSmuggleHooks</a>
@@ -750,21 +790,21 @@ allows to register functions to alter the data before comparing it
 <a href="https://goplay.tools/snippet/bp8J5X_2CtK" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="183">assert = assert.WithSmuggleHooks(</span>
-<span num="184">  func (got int) bool { return got != 0 }, // each int is changed to a bool</span>
-<span num="185">  strconv.Atoi,                            // each string is converted to an int</span>
-<span num="186">)</span>
-<span num="187">assert.Cmp(&#34;123&#34;, 123) // succeeds</span>
+<pre><span num="185">assert = assert.WithSmuggleHooks(</span>
+<span num="186">  func (got int) bool { return got != 0 }, // each int is changed to a bool</span>
+<span num="187">  strconv.Atoi,                            // each string is converted to an int</span>
+<span num="188">)</span>
+<span num="189">assert.Cmp(&#34;123&#34;, 123) // succeeds</span>
 </pre>
 </div>
 <p>Smuggle hooks are run just before Cmp hooks and are not run again for
 their returned value</p>
 
-      <span class="pagenumber">25</span>
+      <span class="pagenumber">26</span>
       </article>
       <article >
         <h3>Table driven tests — the heaven of go-testdeep operators</h3>
-        <p><a href="https://goplay.tools/snippet/ys8Hncyo7i7" target="_blank" rel="noopener">🔗</a></p>
+        <p><a href="https://goplay.tools/snippet/LepqVEN140Q" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="33">var personTests = []struct {</span>
@@ -772,7 +812,7 @@ their returned value</p>
 <span num="35">    expectedErr    td.TestDeep</span>
 <span num="36">    expectedPerson td.TestDeep</span>
 <span num="37">}{</span>
-<span num="38">    {&#34;Bob&#34;, nil, td.JSON(`{&#34;name&#34;:&#34;Bob&#34;,&#34;age&#34;:41,&#34;id&#34;:NotZero(),&#34;children&#34;:Len(2)}`)},</span>
+<span num="38">    {&#34;Bob&#34;, nil, td.JSON(`{&#34;name&#34;:&#34;Bob&#34;,&#34;age&#34;:41,&#34;id&#34;:NotZero,&#34;children&#34;:Len(2)}`)},</span>
 <span num="39">    {&#34;Marcel&#34;, td.String(&#34;User not found&#34;), td.Nil()},</span>
 <span num="40">    {&#34;Alice&#34;, nil, td.SStruct(&amp;Person{Name: &#34;Alice&#34;, Age: 20}, td.StructFields{&#34;ID&#34;: td.NotZero()})},</span>
 <span num="41">    {&#34;Brian&#34;, nil, td.SStruct(&amp;Person{Name: &#34;Brian&#34;, Age: 18}, td.StructFields{&#34;ID&#34;: td.NotZero()})},</span>
@@ -791,37 +831,38 @@ their returned value</p>
 </pre>
 </div>
 
-      <span class="pagenumber">26</span>
+      <span class="pagenumber">27</span>
       </article>
       <article >
         <h3>Operators types</h3>
         <p>There is two kinds of operators: classic ones and smuggler ones</p>
-<p>A <strong>smuggler operator</strong> is an operator able to transform the value (by
-changing its value or even its type) before comparing it</p>
+<p>A <a href="https://go-testdeep.zetta.rocks/operators/#smuggler-operators" target="_blank" rel="noopener"><strong>smuggler operator</strong></a>
+is an operator able to transform the value (by changing its value or
+even its type) before comparing it</p>
 <p>Smuggler operators follows:</p>
 
   <div class="code" >
-<pre><span num="191">Cap           Contains      JSONPointer   Lax           PPtr          Smuggle       Values</span>
-<span num="192">Catch         ContainsKey   Keys          Len           Ptr           Tag</span>
+<pre><span num="193">Cap     Contains      ErrorIs   Grep          Keys   Lax   PPtr   Recv      Sort   Values</span>
+<span num="194">Catch   ContainsKey   First     JSONPointer   Last   Len   Ptr    Smuggle   Tag</span>
 </pre>
 </div>
 <p>Some examples <a href="https://goplay.tools/snippet/OEFin92sp8I" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="196">td.Cmp(t, slice,   td.Len(td.Between(3, 4)))</span>
-<span num="197">td.Cmp(t, headers, td.ContainsKey(td.HasPrefix(&#34;X-Ovh&#34;)))</span>
-<span num="198">td.Cmp(t, &amp;age,    td.Ptr(td.Gt(18)))</span>
-<span num="199">td.Cmp(t, ageStr,  td.Smuggle(strconv.Atoi, td.Catch(&amp;age, td.Gt(18))))</span>
-<span num="200">td.Cmp(t, body1,   td.Smuggle(json.RawMessage{}, td.JSON(`{&#34;name&#34;: $br}`, td.Tag(&#34;br&#34;, &#34;Brian&#34;))))</span>
-<span num="201">td.Cmp(t, body2,   td.Smuggle(&#34;Service.Owner.Children[0].Name&#34;, &#34;Alice&#34;))</span>
-<span num="202">td.Cmp(t, body2,   td.JSONPointer(&#34;/service/owner/children/0/name&#34;, &#34;Alice&#34;))</span>
-<span num="203">td.Cmp(t, headers, td.Keys(td.SuperSetOf(&#34;X-Ovh&#34;, &#34;X-Remote-IP&#34;)))</span>
-<span num="204">td.Cmp(t, err,     td.Contains(&#34;integrity constraint&#34;))</span>
-<span num="205">td.Cmp(t, bytes,   td.Lax(&#34;pipo bingo!&#34;))</span>
+<pre><span num="198">td.Cmp(t, slice,   td.Len(td.Between(3, 4)))</span>
+<span num="199">td.Cmp(t, headers, td.ContainsKey(td.HasPrefix(&#34;X-Ovh&#34;)))</span>
+<span num="200">td.Cmp(t, &amp;age,    td.Ptr(td.Gt(18)))</span>
+<span num="201">td.Cmp(t, ageStr,  td.Smuggle(strconv.Atoi, td.Catch(&amp;age, td.Gt(18))))</span>
+<span num="202">td.Cmp(t, body1,   td.Smuggle(json.RawMessage{}, td.JSON(`{&#34;name&#34;: $br}`, td.Tag(&#34;br&#34;, &#34;Brian&#34;))))</span>
+<span num="203">td.Cmp(t, body2,   td.Smuggle(&#34;Service.Owner.Children[0].Name&#34;, &#34;Alice&#34;))</span>
+<span num="204">td.Cmp(t, body2,   td.JSONPointer(&#34;/service/owner/children/0/name&#34;, &#34;Alice&#34;))</span>
+<span num="205">td.Cmp(t, headers, td.Keys(td.SuperSetOf(&#34;X-Ovh&#34;, &#34;X-Remote-Ip&#34;)))</span>
+<span num="206">td.Cmp(t, err,     td.Contains(&#34;integrity constraint&#34;))</span>
+<span num="207">td.Cmp(t, bytes,   td.Lax(&#34;pipo bingo!&#34;))</span>
 </pre>
 </div>
 
-      <span class="pagenumber">27</span>
+      <span class="pagenumber">28</span>
       </article>
       <article >
         <h3>Custom operators — for beginners</h3>
@@ -834,26 +875,24 @@ is important</p>
 <a href="https://goplay.tools/snippet/i7eXzG1m0fi" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="58">    td.Cmp(t, gotTime,</span>
-<span num="59">        td.Code(func(date time.Time) bool {</span>
-<span num="60">            return date.Year() == 2018</span>
-<span num="61">        }))</span>
+<pre><span num="61">    td.Cmp(t, gotTime,</span>
+<span num="62">        td.Code(func(date time.Time) bool {</span>
+<span num="63">            return date.Year() == 2018</span>
+<span num="64">        }))</span>
 </pre>
 </div>
 <p>With <a href="https://go-testdeep.zetta.rocks/operators/smuggle/" target="_blank" rel="noopener">Smuggle</a>,
 you transform the value and delegate the test
-<a href="https://goplay.tools/snippet/0Re0iw5B3_0" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/kPvonEYKf8l" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="65">    td.Cmp(t, gotTime,</span>
-<span num="66">        td.Smuggle(func(date time.Time) int { return date.Year() },</span>
-<span num="67">            td.Between(2010, 2020)),</span>
-<span num="68">    )</span>
+<pre><span num="68">    td.Cmp(t, gotTime,</span>
+<span num="69">        td.Smuggle(func(date time.Time) int { return date.Year() }, td.Between(2010, 2020)))</span>
 </pre>
 </div>
 <p>Discover more features in each operator description</p>
 
-      <span class="pagenumber">28</span>
+      <span class="pagenumber">29</span>
       </article>
       <article >
         <h3>Custom operators — master class 1/2</h3>
@@ -884,37 +923,37 @@ truncated to milliseconds</p>
 <a href="https://golang.org/pkg/time/#Time" target="_blank" rel="noopener">time.Time</a>
 in <code>*catch</code></p>
 
-      <span class="pagenumber">29</span>
+      <span class="pagenumber">30</span>
       </article>
       <article >
         <h3>Custom operators — master class 2/2</h3>
         <p>This new operator is useful when used with
 <a href="https://go-testdeep.zetta.rocks/operators/json/" target="_blank" rel="noopener">JSON</a> operator
-<a href="https://goplay.tools/snippet/J22moEQ-qoZ" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/fgnmltcoQTe" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
-<pre><span num="37">func TestCreateArticle(t *testing.T) {</span>
-<span num="38">    type Article struct {</span>
-<span num="39">        ID        int64     `json:&#34;id&#34;`</span>
-<span num="40">        Code      string    `json:&#34;code&#34;`</span>
-<span num="41">        CreatedAt time.Time `json:&#34;created_at&#34;`</span>
-<span num="42">    }</span>
+<pre><span num="38">type Article struct {</span>
+<span num="39">    ID        int64     `json:&#34;id&#34;`</span>
+<span num="40">    Code      string    `json:&#34;code&#34;`</span>
+<span num="41">    CreatedAt time.Time `json:&#34;created_at&#34;`</span>
+<span num="42">}</span>
 <span num="43"></span>
-<span num="44">    var createdAt time.Time</span>
-<span num="45">    beforeCreation := time.Now()</span>
-<span num="46">    td.Cmp(t, CreateArticle(&#34;Car&#34;),</span>
-<span num="47">        td.JSON(`{&#34;id&#34;: NotZero(), &#34;code&#34;: &#34;Car&#34;, &#34;created_at&#34;: $1}`,</span>
-<span num="48">            CheckDateGte(beforeCreation, &amp;createdAt)))</span>
-<span num="49"></span>
-<span num="50">    // If the test succeeds, then &#34;created_at&#34; value is well a RFC3339</span>
-<span num="51">    // datetime in UTC timezone and its value is directly exploitable as</span>
-<span num="52">    // time.Time thanks to createdAt variable</span>
-<span num="53">    t.Logf(&#34;Article created at %s&#34;, createdAt)</span>
-<span num="54">}</span>
+<span num="44">func TestCreateArticle(t *testing.T) {</span>
+<span num="45">    var createdAt time.Time</span>
+<span num="46">    beforeCreation := time.Now()</span>
+<span num="47">    td.Cmp(t, CreateArticle(&#34;Car&#34;),</span>
+<span num="48">        td.JSON(`{&#34;id&#34;: NotZero, &#34;code&#34;: &#34;Car&#34;, &#34;created_at&#34;: $1}`,</span>
+<span num="49">            <b>CheckDateGte(beforeCreation, &amp;createdAt)))</b></span>
+<span num="50"></span>
+<span num="51">    // If the test succeeds, then &#34;created_at&#34; value is well a RFC3339</span>
+<span num="52">    // datetime in UTC timezone and its value is directly exploitable as</span>
+<span num="53">    // time.Time thanks to createdAt variable</span>
+<span num="54">    t.Logf(&#34;Article created at %s&#34;, createdAt)</span>
+<span num="55">}</span>
 </pre>
 </div>
 
-      <span class="pagenumber">30</span>
+      <span class="pagenumber">31</span>
       </article>
       <article >
         <h3>The tdhttp helper or how to easily test a http.Handler</h3>
@@ -948,11 +987,11 @@ and all these *#@!# operators, nothing is easier!
 </pre>
 </div>
 
-      <span class="pagenumber">31</span>
+      <span class="pagenumber">32</span>
       </article>
       <article >
         <h3>tdhttp for any framework</h3>
-        <p>myAPI is here a <a href="https://golang.org/pkg/net/http/#Handler" target="_blank" rel="noopener">http.Handler</a> ↴</p>
+        <p><code>myAPI</code> is here an <a href="https://golang.org/pkg/net/http/#Handler" target="_blank" rel="noopener">http.Handler</a> ↴</p>
 
   <div class="code" >
 <pre><span num="11">    ta := tdhttp.NewTestAPI(t, myAPI)</span>
@@ -972,7 +1011,7 @@ Check the
 of the <a href="https://go-testdeep.zetta.rocks/faq/" target="_blank" rel="noopener">FAQ</a></p>
 <p>You can now change your web framework and keep your test framework :)</p>
 
-      <span class="pagenumber">32</span>
+      <span class="pagenumber">33</span>
       </article>
       <article >
         <h3>tdhttp for any content</h3>
@@ -984,7 +1023,7 @@ fed by any already created
 <a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp#TestAPI.CmpCookies" target="_blank" rel="noopener">cookies</a></p>
 <p>Supports <code>string</code> and <code>[]byte</code> bodies so you can handle the encoding by yourself</p>
 <p>Operator anchoring works out of the box too
-<a href="https://goplay.tools/snippet/PyOE-OhJf9B" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/hyBG7R-RjKO" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="24">func TestMyApiAnchor(t *testing.T) {</span>
@@ -994,15 +1033,15 @@ fed by any already created
 <span num="28">    ta.Get(&#34;/person/Bob&#34;, &#34;Accept&#34;, &#34;application/json&#34;).</span>
 <span num="29">        CmpStatus(http.StatusOK).</span>
 <span num="30">        CmpJSONBody(Person{</span>
-<span num="31">            <b>ID:   ta.A(td.Catch(&amp;id, td.NotZero())).(int64),</b></span>
+<span num="31">            <b>ID:   ta.A(td.Catch(&amp;id, td.NotZero())).(int64), // TestAPI.A method</b></span>
 <span num="32">            Name: &#34;Bob&#34;,</span>
-<span num="33">            <b>Age:  ta.A(td.Between(25, 30)).(int),</b></span>
+<span num="33">            <b>Age:  td.A[int](ta.T(), td.Between(25, 30)), // td.A generic version</b></span>
 <span num="34">        })</span>
 <span num="35">}</span>
 </pre>
 </div>
 
-      <span class="pagenumber">33</span>
+      <span class="pagenumber">34</span>
       </article>
       <article >
         <h3>tdhttp with easy debug</h3>
@@ -1034,12 +1073,12 @@ of failure <a href="https://goplay.tools/snippet/LBNQ8E6EZNC" target="_blank" re
 </pre>
 </div>
 
-      <span class="pagenumber">34</span>
+      <span class="pagenumber">35</span>
       </article>
       <article >
         <h3>The tdsuite helper — Simple example — 1/3</h3>
         <p>Or tests suites with one hand tied behind your back
-<a href="https://goplay.tools/snippet/R1glx6Ja9AJ" target="_blank" rel="noopener">🔗</a></p>
+<a href="https://goplay.tools/snippet/Q2sOarlYGX6" target="_blank" rel="noopener">🔗</a></p>
 
   <div class="code" >
 <pre><span num="3">import (</span>
@@ -1051,7 +1090,7 @@ of failure <a href="https://goplay.tools/snippet/LBNQ8E6EZNC" target="_blank" re
 <span num="9"></span>
 <span num="10">func TestPerson(t *testing.T) {</span>
 <span num="11">    tdsuite.Run(t, &amp;PersonSuite{ // entrypoint of the suite</span>
-<span num="12">        db: InitDB(), // a DB handler probably used in each tests</span>
+<span num="12">        db: InitDB(), // a DB handler probably used in each test</span>
 <span num="13">    })</span>
 <span num="14">}</span>
 <span num="15"></span>
@@ -1067,7 +1106,7 @@ of failure <a href="https://goplay.tools/snippet/LBNQ8E6EZNC" target="_blank" re
 </pre>
 </div>
 
-      <span class="pagenumber">35</span>
+      <span class="pagenumber">36</span>
       </article>
       <article >
         <h3>tdsuite — All hooks — 2/3</h3>
@@ -1076,11 +1115,11 @@ of failure <a href="https://goplay.tools/snippet/LBNQ8E6EZNC" target="_blank" re
 <p>Several hooks can be implemented:</p>
 
   <div class="code" >
-<pre><span num="209">Setup(t *td.T) error</span>
-<span num="210">Destroy(t *td.T) error</span>
-<span num="211">PreTest(t *td.T, testName string) error</span>
-<span num="212">PostTest(t *td.T, testName string) error</span>
-<span num="213">BetweenTests(t *td.T, previousTestName, nextTestName string) error</span>
+<pre><span num="211">Setup(t *td.T) error</span>
+<span num="212">Destroy(t *td.T) error</span>
+<span num="213">PreTest(t *td.T, testName string) error</span>
+<span num="214">PostTest(t *td.T, testName string) error</span>
+<span num="215">BetweenTests(t *td.T, previousTestName, nextTestName string) error</span>
 </pre>
 </div>
 <p><a href="https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite#Setup" target="_blank" rel="noopener">Setup</a>
@@ -1096,7 +1135,7 @@ is called between 2 consecutive tests (after the PostTest call of
 previous test but before the PreTest call of next test)</p>
 <p>If a hook returns a non-nil error, the suite fails immediately</p>
 
-      <span class="pagenumber">36</span>
+      <span class="pagenumber">37</span>
       </article>
       <article >
         <h3>tdsuite — Composing suites — 3/3</h3>
@@ -1128,16 +1167,16 @@ previous test but before the PreTest call of next test)</p>
 </pre>
 </div>
 
-      <span class="pagenumber">37</span>
+      <span class="pagenumber">38</span>
       </article>
       <article class="background" style="background-image: url('../images/logo-rev.svg')">
         <h3>End</h3>
         <p>Some stats:</p>
 <ul>
-<li>+37k lines of go code</li>
-<li>99.855% code coverage</li>
+<li>+44k lines of go code</li>
+<li>99.92% code coverage</li>
 <li>go report A+</li>
-<li>24 releases since 2018</li>
+<li>27 releases since 2018</li>
 </ul>
 <p>Links:</p>
 <ul>
@@ -1149,7 +1188,7 @@ previous test but before the PreTest call of next test)</p>
 <li><a href="https://github.com/maxatome/go-testdeep" target="_blank" rel="noopener">Github</a> ← <em>don't forget to</em> ⭐ :)</li>
 </ul>
 
-      <span class="pagenumber">38</span>
+      <span class="pagenumber">39</span>
       </article>
 
       <article>
@@ -1160,7 +1199,7 @@ previous test but before the PreTest call of next test)</p>
   </p>
 
   <p>
-    2022-01-28
+    2025-08-27
   </p>
 <p class="link"><a href="https://go-testdeep.zetta.rocks/" target="_blank">https://go-testdeep.zetta.rocks/</a></p>
           </div>

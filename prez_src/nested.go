@@ -52,16 +52,16 @@ func Test(t *testing.T) {
 			"age":  Between(40, 45),     // yes, most operators are embedable
 			"children": [
 				{
-					"id":       NotZero(),
+					"id":       NotZero,
 					"name":     "Alice",
 					"age":      20,
-					"children": Empty(), /* null is "empty" */
+					"children": Empty, /* null is "empty" */
 				},
 				{
-					"id":       NotZero(),
+					"id":       NotZero,
 					"name":     "Brian",
 					"age":      18,
-					"children": Nil(),
+					"children": Nil,
 				}
 			]
 		}`,
@@ -77,16 +77,16 @@ func Test(t *testing.T) {
 			"age":  Between(40, 45),     // yes, most operators are embedable
 			"children": Bag(             // ← Bag HERE
 				{
-					"id":       NotZero(),
+					"id":       NotZero,
 					"name":     "Brian",
 					"age":      18,
-					"children": Nil(),
+					"children": null,
 				},
 				{
 					"id":       NotZero(),
 					"name":     "Alice",
 					"age":      20,
-					"children": Empty(), /* null is "empty" */
+					"children": Empty, /* null is "empty" */
 				},
 			)
 		}`,
@@ -98,17 +98,17 @@ func Test(t *testing.T) {
 	assert := td.Assert(t)
 	assert.Cmp(GetPerson("Bob"),
 		Person{
-			ID:   assert.A(td.Catch(&bobID, td.NotZero())).(int64), // HL
+			ID:   td.A[int64](assert, td.Catch(&bobID, td.NotZero())), // HL
 			Name: "Bob",
-			Age:  assert.A(td.Between(40, 45)).(int), // HL
+			Age:  td.A[int](assert, td.Between(40, 45)), // HL
 			Children: []*Person{
 				{
-					ID:   assert.A(td.NotZero(), int64(0)).(int64), // HL
+					ID:   td.A[int64](assert, td.NotZero()), // HL
 					Name: "Alice",
 					Age:  20,
 				},
 				{
-					ID:   assert.A(td.NotZero(), int64(0)).(int64), // HL
+					ID:   td.A[int64](assert, td.NotZero()), // HL
 					Name: "Brian",
 					Age:  18,
 				},

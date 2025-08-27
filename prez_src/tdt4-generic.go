@@ -15,9 +15,9 @@ func TestExample(t *testing.T) {
 
 	assert.RootName("PERSON").
 		Cmp(person, &Person{
-			ID:       assert.A(td.NotZero(), int64(0)).(int64), // HL
+			ID:       td.A[int64](assert, td.NotZero()), // HL
 			Name:     "Bob",
-			Age:      assert.A(td.Between(40, 45)).(int),                // HL
-			Children: assert.A(td.Len(2), ([]*Person)(nil)).([]*Person), // HL
+			Age:      td.A[int](assert, td.Between(40, 45)), // HL
+			Children: td.A[[]*Person](assert, td.Len(2)),    // HL
 		})
 }

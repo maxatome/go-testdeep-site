@@ -35,7 +35,7 @@ var personTests = []struct {
 	expectedErr    td.TestDeep
 	expectedPerson td.TestDeep
 }{
-	{"Bob", nil, td.JSON(`{"name":"Bob","age":41,"id":NotZero(),"children":Len(2)}`)},
+	{"Bob", nil, td.JSON(`{"name":"Bob","age":41,"id":NotZero,"children":Len(2)}`)},
 	{"Marcel", td.String("User not found"), td.Nil()},
 	{"Alice", nil, td.SStruct(&Person{Name: "Alice", Age: 20}, td.StructFields{"ID": td.NotZero()})},
 	{"Brian", nil, td.SStruct(&Person{Name: "Brian", Age: 18}, td.StructFields{"ID": td.NotZero()})},

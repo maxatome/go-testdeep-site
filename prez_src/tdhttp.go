@@ -28,9 +28,9 @@ func TestMyApiAnchor(t *testing.T) {
 	ta.Get("/person/Bob", "Accept", "application/json").
 		CmpStatus(http.StatusOK).
 		CmpJSONBody(Person{
-			ID:   ta.A(td.Catch(&id, td.NotZero())).(int64), // HL
+			ID:   ta.A(td.Catch(&id, td.NotZero())).(int64), // TestAPI.A method // HL
 			Name: "Bob",
-			Age:  ta.A(td.Between(25, 30)).(int), // HL
+			Age:  td.A[int](ta.T(), td.Between(25, 30)), // td.A generic version // HL
 		})
 }
 

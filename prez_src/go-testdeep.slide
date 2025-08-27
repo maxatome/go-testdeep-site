@@ -1,7 +1,7 @@
 # go-testdeep
 
 Maxime Soulé
-2022-01-28
+2025-08-27
 https://go-testdeep.zetta.rocks/
 
 
@@ -44,7 +44,7 @@ Custom comparison engine allowing the use of powerful operators
 
 Accurate and colored [error reports](https://go-testdeep.zetta.rocks/introduction/#error-output)
 
-[62 operators](https://go-testdeep.zetta.rocks/operators/) to match in
+[69 operators](https://go-testdeep.zetta.rocks/operators/) to match in
 all circumstances
 
 Fully [documented](https://pkg.go.dev/github.com/maxatome/go-testdeep/td)
@@ -72,7 +72,7 @@ to be lax, to ignore struct unexported fields, to treat specifically some
 types, to display _N_ errors before giving up
 
 Efficient [flattening](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten)
-of `[]X` slices into `...interface{}` of variadic functions
+of `[]X` slices into `...any` of variadic functions
 
 A function returning several values can be tested in one call, thanks to
 [tuples](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Tuple)
@@ -127,7 +127,7 @@ Reports are also very accurate and colorized, instead of awful diffs you see els
 .image colored-output.svg
 
 
-## 62 operators to match in all circumstances
+## 69 operators to match in all circumstances
 
 Some examples, see the expected (3rd) parameter
 [🔗](https://goplay.tools/snippet/qrWLPxbrSg7)
@@ -209,7 +209,7 @@ Strict because omitted fields are checked against their zero value, instead of i
 
 [JSON](https://go-testdeep.zetta.rocks/operators/json/)
 allows to compare the JSON representation (comments are allowed!)
-[🔗](https://goplay.tools/snippet/Kqr99mrB_jb)
+[🔗](https://goplay.tools/snippet/TnAa2903rWQ)
 
 .code nested.go /nested3-begin/,/nested3-end/
 
@@ -218,7 +218,7 @@ allows to compare the JSON representation (comments are allowed!)
 
 [JSON](https://go-testdeep.zetta.rocks/operators/json/)
 allows to compare the JSON representation (comments are allowed!)
-[🔗](https://goplay.tools/snippet/KCvXH3lLwiB)
+[🔗](https://goplay.tools/snippet/Z8W6Q7N2V1x)
 
 .code nested.go /nested3-bag-begin/,/nested3-bag-end/
 
@@ -230,7 +230,7 @@ Anchoring feature allows to put operators directly in literals
 To keep track of anchors, a
 [td.T](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T)
 instance is needed
-[🔗](https://goplay.tools/snippet/w8IwhKdhR8t)
+[🔗](https://goplay.tools/snippet/g507x9S9DW6)
 
 .code nested.go /nested4-begin/,/nested4-end/
 
@@ -238,13 +238,15 @@ instance is needed
 ## Anatomy of an anchor
 
 Anchors are created using
-[A](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A) (or its
-alias
+[A](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A) (or
 [Anchor](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor))
 method of
 [*td.T](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T)
+or [td.A](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+(or [td.Anchor](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor))
+function
 
-It generates a specific value that can be retrieved during the
+They generate a specific value that can be retrieved during the
 comparison process
 
 .code code.txt /anat-anchor-begin/,/anat-anchor-end/
@@ -278,7 +280,7 @@ instance provides some advantages over using td.Cmp* functions
 directly
 
 
-## td.T — Introduction — 1/6
+## td.T — Introduction — 1/7
 
 .code td_t.go /^type T /,/^}/
 
@@ -301,7 +303,7 @@ instance (return a new instance):
 .code code.txt /tdt1-configuring-begin/,/tdt1-configuring-end/
 
 
-## td.T — Main methods — 2/6
+## td.T — Main methods — 2/7
 
 .code code.txt /tdt2-main-begin/,/tdt2-main-end/
 
@@ -314,7 +316,7 @@ See [documentation](https://go-testdeep.zetta.rocks/functions/td-t/)
 for details
 
 
-## td.T — Shortcuts — 3/6
+## td.T — Shortcuts — 3/7
 
 Shortcuts, as for td functions, follow always the same pattern:
 
@@ -340,15 +342,20 @@ Same 4 operators without shortcut:
 because having a shortcut in these cases is a nonsense
 
 
-## td.T — Anchoring — 4/6
+## td.T — Anchoring — 4/7
 
-Anchoring related methods:
+Anchoring related methods & functions:
 
 .code code.txt /tdt-anchor-begin/,/tdt-anchor-end/
 
 [A](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A) and
 [Anchor](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor)
 allow both to anchor an operator, the first is just shorter to write
+
+The generic versions
+[A](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
+and [Anchor](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor)
+are often shorter to write
 
 By default, anchoring is effective only for the next Cmp* call, but
 this can be overridden thanks to
@@ -359,14 +366,21 @@ and
 Useful for helpers writers or table driven tests _afficionados_ :)
 
 
-## td.T — Simple example — 5/6
+## td.T — Simple example — 5/7
 
 [🔗](https://goplay.tools/snippet/dqRj7N_Yte6)
 
 .code tdt4.go /^import/,/^}/
 
 
-## td.T — Advanced usage — 6/6
+## td.T — Simple example with generics — 6/7
+
+[🔗](https://goplay.tools/snippet/xYstCq593Ds)
+
+.code tdt4-generic.go /^import/,/^}/
+
+
+## td.T — Advanced usage — 7/7
 
 [WithCmpHooks](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks)
 allows to register comparison functions for some types
@@ -385,7 +399,7 @@ their returned value
 
 ## Table driven tests — the heaven of go-testdeep operators
 
-[🔗](https://goplay.tools/snippet/ys8Hncyo7i7)
+[🔗](https://goplay.tools/snippet/LepqVEN140Q)
 
 .code example_test.go /^var personTests/,/end OMIT/
 
@@ -394,8 +408,9 @@ their returned value
 
 There is two kinds of operators: classic ones and smuggler ones
 
-A **smuggler operator** is an operator able to transform the value (by
-changing its value or even its type) before comparing it
+A [**smuggler operator**](https://go-testdeep.zetta.rocks/operators/#smuggler-operators)
+is an operator able to transform the value (by changing its value or
+even its type) before comparing it
 
 Smuggler operators follows:
 
@@ -422,7 +437,7 @@ With [Code](https://go-testdeep.zetta.rocks/operators/code/), you do the test
 
 With [Smuggle](https://go-testdeep.zetta.rocks/operators/smuggle/),
 you transform the value and delegate the test
-[🔗](https://goplay.tools/snippet/0Re0iw5B3_0)
+[🔗](https://goplay.tools/snippet/kPvonEYKf8l)
 
 .code custom.go /Smuggle-begin/,/Smuggle-end/
 
@@ -448,9 +463,9 @@ in `*catch`
 
 This new operator is useful when used with
 [JSON](https://go-testdeep.zetta.rocks/operators/json/) operator
-[🔗](https://goplay.tools/snippet/J22moEQ-qoZ)
+[🔗](https://goplay.tools/snippet/fgnmltcoQTe)
 
-.code custom.go /^func TestCreateArticle/,/^}/
+.code custom.go /TestCreateArticle-BEGIN/,/TestCreateArticle-END/
 
 
 ## The tdhttp helper or how to easily test a http.Handler
@@ -468,7 +483,7 @@ and all these *#@!# operators, nothing is easier!
 
 ## tdhttp for any framework
 
-myAPI is here a [http.Handler](https://golang.org/pkg/net/http/#Handler) ↴
+`myAPI` is here an [http.Handler](https://golang.org/pkg/net/http/#Handler) ↴
 
 .code tdhttp.go /ta := tdhttp.NewTestAPI/,/ta-end/
 
@@ -501,7 +516,7 @@ Supports out of the box `application/x-www-form-urlencoded`,
 Supports `string` and `[]byte` bodies so you can handle the encoding by yourself
 
 Operator anchoring works out of the box too
-[🔗](https://goplay.tools/snippet/PyOE-OhJf9B)
+[🔗](https://goplay.tools/snippet/hyBG7R-RjKO)
 
 .code tdhttp.go /TestMyApiAnchor/,/^}/
 
@@ -520,7 +535,7 @@ of failure [🔗](https://goplay.tools/snippet/LBNQ8E6EZNC)
 ## The tdsuite helper — Simple example — 1/3
 
 Or tests suites with one hand tied behind your back
-[🔗](https://goplay.tools/snippet/R1glx6Ja9AJ)
+[🔗](https://goplay.tools/snippet/Q2sOarlYGX6)
 
 .code tdsuite.go /^import/,/very-end/
 
@@ -562,10 +577,10 @@ If a hook returns a non-nil error, the suite fails immediately
 .background logo-rev.svg
 
 Some stats:
-- +37k lines of go code
-- 99.855% code coverage
+- +44k lines of go code
+- 99.92% code coverage
 - go report A+
-- 24 releases since 2018
+- 27 releases since 2018
 
 Links:
 - [Home page](https://go-testdeep.zetta.rocks/)
