@@ -53,7 +53,7 @@ td.Cmp(t, tags,    td.SuperMapOf(map[string]bool{"enabled": true, "shared": true
 
 // operators-all-begin OMIT
 All         Contains      HasPrefix     Len       None       Re        Sorted        SuperMapOf
-Any         ContainsKey   HasSuffix     Lt        Not        ReAll     String        SuperSetOf
+Any         ContainsKey   HasSuffix     List      Not        ReAll     String        SuperSetOf
 Array       Delay         Ignore        Lt        NotAny     Recv      Struct        SuperSliceOf
 ArrayEach   Empty         Isa           Lte       NotEmpty   SStruct   SubBagOf      Tag
 Bag         ErrorIs       JSON          Map       NotNaN     Set       SubJSONOf     TruncTime

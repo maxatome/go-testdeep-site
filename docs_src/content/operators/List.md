@@ -17,7 +17,7 @@ the type and allowing to easily use TestDeep operators:
 
 ```go
 td.Cmp(t, []int{1, 9, 5}, td.List(1, 9, 5))                              // succeeds
-td.Cmp(t, []int{1, 9, 5}, td.List(td.Gt(0), td.Between(8, 9), td.Lt(5))) //succeeds
+td.Cmp(t, []int{1, 9, 5}, td.List(td.Gt(0), td.Between(8, 9), td.Lt(5))) // succeeds
 td.Cmp(t, []int{1, 9, 5}, td.List(1, 9))                                 // fails, 5 is extra
 td.Cmp(t, []int{1, 9, 5}, td.List(1, 9, 5, 4))                           // fails, 4 is missing
 
