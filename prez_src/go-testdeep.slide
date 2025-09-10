@@ -1,7 +1,7 @@
 # go-testdeep
 
 Maxime Soulé
-2025-08-27
+2025-09-10
 https://go-testdeep.zetta.rocks/
 
 
@@ -44,7 +44,7 @@ Custom comparison engine allowing the use of powerful operators
 
 Accurate and colored [error reports](https://go-testdeep.zetta.rocks/introduction/#error-output)
 
-[69 operators](https://go-testdeep.zetta.rocks/operators/) to match in
+[70 operators](https://go-testdeep.zetta.rocks/operators/) to match in
 all circumstances
 
 Fully [documented](https://pkg.go.dev/github.com/maxatome/go-testdeep/td)
@@ -127,7 +127,7 @@ Reports are also very accurate and colorized, instead of awful diffs you see els
 .image colored-output.svg
 
 
-## 69 operators to match in all circumstances
+## 70 operators to match in all circumstances
 
 Some examples, see the expected (3rd) parameter
 [🔗](https://goplay.tools/snippet/qrWLPxbrSg7)

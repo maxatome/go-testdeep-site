@@ -57,7 +57,13 @@ url = "https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite"
 weight = 25
 
 [[menu.shortcuts]]
+name = "<i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest"
+identifier = "godoc-tdsuite"
+url = "https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest"
+weight = 30
+
+[[menu.shortcuts]]
 name = "<i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil"
 identifier = "godoc-tdutil"
 url = "https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil"
-weight = 30
+weight = 35

@@ -46,7 +46,7 @@ td.Cmp(t, []int{1, 5, 1, 2, 8, 3, 3},
 known non-interface types are equal, or if only interface types
 are found (mostly issued from [`Isa`]({{% ref "Isa" %}})) and they are equal.
 
-> See also [`NotAny`]({{% ref "NotAny" %}}), [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperSetOf`]({{% ref "SuperSetOf" %}}) and [`Bag`]({{% ref "Bag" %}}).
+> See also [`NotAny`]({{% ref "NotAny" %}}), [`SubSetOf`]({{% ref "SubSetOf" %}}), [`SuperSetOf`]({{% ref "SuperSetOf" %}}), [`Bag`]({{% ref "Bag" %}}) and [`List`]({{% ref "List" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Set godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Set).

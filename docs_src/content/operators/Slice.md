@@ -30,7 +30,7 @@ td.Cmp(t, &got,
 
 [`TypeBehind`]({{% ref "operators#typebehind-method" %}}) method returns the [`reflect.Type`](https://pkg.go.dev/reflect#Type) of *model*.
 
-> See also [`Array`]({{% ref "Array" %}}) and [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}).
+> See also [`Array`]({{% ref "Array" %}}), [`List`]({{% ref "List" %}}) and [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Slice godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Slice).

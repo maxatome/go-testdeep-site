@@ -43,11 +43,12 @@ weight: 1
 | [`Last`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Last`] |
 | [`Lax`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Lax`] |
 | [`Len`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✗ | [`Len`] |
+| [`List`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`List`] |
 | [`Lt`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Lt`] |
-| [`Lte`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Lte`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`Lte`] | ✗ | ✗ | ✓ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | [`time.Time`] | ✗ | ✓ | ✗ | ✗ | [`Lte`] |
 | [`Map`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`Map`] |
 | [`MapEach`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`MapEach`] |
 | [`N`] | ✗ | ✗ | ✗ | ✓ | ✓ | todo | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`N`] |
@@ -57,10 +58,10 @@ weight: 1
 | [`Not`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Not`] |
 | [`NotAny`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`NotAny`] |
 | [`NotEmpty`] | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✗ | ptr on array/slice/map/string | ✓ | ✓ | ✗ | [`NotEmpty`] |
-| [`NotNaN`] | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`NotNaN`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`NotNaN`] | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | [`NotNaN`] |
 | [`NotNil`] | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | [`NotNil`] |
 | [`NotZero`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`NotZero`] |
 | [`PPtr`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | [`PPtr`] |
@@ -70,10 +71,10 @@ weight: 1
 | [`Recv`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ptr on chan | ✓ | ✓ | ✗ | [`Recv`] |
 | [`Set`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Set`] |
 | [`Shallow`] | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | [`Shallow`] |
-| [`Slice`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ptr on slice | ✓ | ✗ | ✗ | [`Slice`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`Slice`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ✗ | ptr on slice | ✓ | ✗ | ✗ | [`Slice`] |
 | [`Smuggle`] | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | [`Smuggle`] |
 | [`Sort`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Sort`] |
 | [`Sorted`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`Sorted`] |
@@ -83,10 +84,10 @@ weight: 1
 | [`SubBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubBagOf`] |
 | [`SubJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SubJSONOf`] |
 | [`SubMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SubMapOf`] |
-| [`SubSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubSetOf`] |
 
 | Operator vs go type | nil | bool | string | {u,}int* | float* | complex* | array | slice | map | struct | pointer | interface¹ | chan | func | operator |
 | ------------------- | --- | ---- | ------ | -------- | ------ | -------- | ----- | ----- | --- | ------ | ------- | ---------- | ---- | ---- | -------- |
+| [`SubSetOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SubSetOf`] |
 | [`SuperBagOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✗ | ✗ | ptr on array/slice | ✓ | ✗ | ✗ | [`SuperBagOf`] |
 | [`SuperJSONOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ptr on map/struct | ✓ | ✗ | ✗ | [`SuperJSONOf`] |
 | [`SuperMapOf`] | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | ✗ | ptr on map | ✓ | ✗ | ✗ | [`SuperMapOf`] |
@@ -103,6 +104,7 @@ weight: 1
 
 [`tdhttp`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp
 [`tdsuite`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite
+[`tdsynctest`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest
 [`tdutil`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil
 
 [`BeLax` config flag]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax
@@ -140,6 +142,7 @@ weight: 1
 [`Last`]: {{% ref "Last" %}}
 [`Lax`]: {{% ref "Lax" %}}
 [`Len`]: {{% ref "Len" %}}
+[`List`]: {{% ref "List" %}}
 [`Lt`]: {{% ref "Lt" %}}
 [`Lte`]: {{% ref "Lte" %}}
 [`Map`]: {{% ref "Map" %}}
@@ -207,6 +210,7 @@ weight: 1
 [`CmpLast`]: {{% ref "Last#cmplast-shortcut" %}}
 [`CmpLax`]: {{% ref "Lax#cmplax-shortcut" %}}
 [`CmpLen`]: {{% ref "Len#cmplen-shortcut" %}}
+[`CmpList`]: {{% ref "List#cmplist-shortcut" %}}
 [`CmpLt`]: {{% ref "Lt#cmplt-shortcut" %}}
 [`CmpLte`]: {{% ref "Lte#cmplte-shortcut" %}}
 [`CmpMap`]: {{% ref "Map#cmpmap-shortcut" %}}
@@ -273,6 +277,7 @@ weight: 1
 [`T.Last`]: {{% ref "Last#tlast-shortcut" %}}
 [`T.CmpLax`]: {{% ref "Lax#tcmplax-shortcut" %}}
 [`T.Len`]: {{% ref "Len#tlen-shortcut" %}}
+[`T.List`]: {{% ref "List#tlist-shortcut" %}}
 [`T.Lt`]: {{% ref "Lt#tlt-shortcut" %}}
 [`T.Lte`]: {{% ref "Lte#tlte-shortcut" %}}
 [`T.Map`]: {{% ref "Map#tmap-shortcut" %}}
@@ -506,6 +511,7 @@ Operators likely to succeed for each go type:
 - [`Last`]
 - [`Lax`]
 - [`Len`]
+- [`List`]
 - [`None`]
 - [`Not`]
 - [`NotAny`]
@@ -548,6 +554,7 @@ Operators likely to succeed for each go type:
 - [`Last`]
 - [`Lax`]
 - [`Len`]
+- [`List`]
 - [`Nil`]
 - [`None`]
 - [`Not`]
@@ -676,6 +683,7 @@ listed below:
 - [`JSONPointer`]
 - [`Last`] only ptr on array/slice
 - [`Lax`]
+- [`List`] only ptr on array/slice
 - [`Map`] only ptr on map
 - [`MapEach`] only ptr on map
 - [`Nil`]

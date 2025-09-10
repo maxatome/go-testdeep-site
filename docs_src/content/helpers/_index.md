@@ -373,6 +373,13 @@ adds tests suite feature to go-testdeep in a non-intrusive way, but
 easily and powerfully.
 
 
+## `testing/synctest` helper aka `tdsynctest`
+
+The package
+[`tdsynctest`](https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest)
+allows to use [`testing/synctest`](https://pkg.go.dev/testing/synctest)
+on steroids thanks to go-testdeep.
+
 ## Helpers utils aka `tdutil`
 
 To write helpers, some commonly used functions are shared in

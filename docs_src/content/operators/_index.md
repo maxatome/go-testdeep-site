@@ -91,6 +91,9 @@ weight = 15
 [`Len`]({{% ref "Len" %}})
 : checks an array, slice, map, string or channel length
 
+[`List`]({{% ref "List" %}})
+: compares the contents of an array or a slice with taking care of the order of items
+
 [`Lt`]({{% ref "Lt" %}})
 : checks that a number, string or [`time.Time`] is lesser than a value
 
@@ -288,6 +291,7 @@ The following operators are smuggler ones:
 
 [`tdhttp`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp
 [`tdsuite`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite
+[`tdsynctest`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest
 [`tdutil`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil
 
 [`BeLax` config flag]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax
@@ -325,6 +329,7 @@ The following operators are smuggler ones:
 [`Last`]: {{% ref "Last" %}}
 [`Lax`]: {{% ref "Lax" %}}
 [`Len`]: {{% ref "Len" %}}
+[`List`]: {{% ref "List" %}}
 [`Lt`]: {{% ref "Lt" %}}
 [`Lte`]: {{% ref "Lte" %}}
 [`Map`]: {{% ref "Map" %}}
@@ -392,6 +397,7 @@ The following operators are smuggler ones:
 [`CmpLast`]: {{% ref "Last#cmplast-shortcut" %}}
 [`CmpLax`]: {{% ref "Lax#cmplax-shortcut" %}}
 [`CmpLen`]: {{% ref "Len#cmplen-shortcut" %}}
+[`CmpList`]: {{% ref "List#cmplist-shortcut" %}}
 [`CmpLt`]: {{% ref "Lt#cmplt-shortcut" %}}
 [`CmpLte`]: {{% ref "Lte#cmplte-shortcut" %}}
 [`CmpMap`]: {{% ref "Map#cmpmap-shortcut" %}}
@@ -458,6 +464,7 @@ The following operators are smuggler ones:
 [`T.Last`]: {{% ref "Last#tlast-shortcut" %}}
 [`T.CmpLax`]: {{% ref "Lax#tcmplax-shortcut" %}}
 [`T.Len`]: {{% ref "Len#tlen-shortcut" %}}
+[`T.List`]: {{% ref "List#tlist-shortcut" %}}
 [`T.Lt`]: {{% ref "Lt#tlt-shortcut" %}}
 [`T.Lte`]: {{% ref "Lte#tlte-shortcut" %}}
 [`T.Map`]: {{% ref "Map#tmap-shortcut" %}}
