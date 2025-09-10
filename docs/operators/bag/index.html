@@ -22,29 +22,29 @@ td.Cmp(t, []int{1, 1, 2}, td.Bag(1, 1, 2)) // succeeds td.Cmp(t, []int{1, 1, 2},
 <meta property="og:locale" content="en_us">
 <meta property="og:type" content="article">
 <meta property="article:section" content="Operators">
-<meta property="article:modified_time" content="2025-08-22T22:40:45+02:00">
+<meta property="article:modified_time" content="2025-09-10T22:26:43+02:00">
 <meta itemprop=name content="Bag :: go-testdeep">
 <meta itemprop=description content='func Bag(expectedItems ...any) TestDeep Bag operator compares the contents of an array or a slice (or a pointer on array/slice) without taking care of the order of items.
 During a match, each expected item should match in the compared array/slice, and each array/slice item should be matched by an expected item to succeed.
 td.Cmp(t, []int{1, 1, 2}, td.Bag(1, 1, 2)) // succeeds td.Cmp(t, []int{1, 1, 2}, td.Bag(1, 2, 1)) // succeeds td.Cmp(t, []int{1, 1, 2}, td.Bag(2, 1, 1)) // succeeds td.Cmp(t, []int{1, 1, 2}, td.Bag(1, 2)) // fails, one 1 is missing td.Cmp(t, []int{1, 1, 2}, td.Bag(1, 2, 1, 3)) // fails, 3 is missing // works with slices/arrays of any type td.Cmp(t, personSlice, td.Bag( Person{Name: "Bob", Age: 32}, Person{Name: "Alice", Age: 26}, )) To flatten a non-[]any slice/array, use Flatten function and so avoid boring and inefficient copies:'>
-<meta itemprop=dateModified content="2025-08-22T22:40:45+02:00">
-<meta itemprop=wordCount content="1084">
+<meta itemprop=dateModified content="2025-09-10T22:26:43+02:00">
+<meta itemprop=wordCount content="1085">
 <title>Bag :: go-testdeep</title>
-<link href=/images/favicon.png?1756066640 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1756066640 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1756066640 defer></script>
-<script src=/js/search-lunr.min.js?1756066640 defer></script>
-<script src=/js/search.min.js?1756066640 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1756066640"</script>
-<script src=/js/lunr/lunr.min.js?1756066640 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1756066640 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1756066640 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1756066640 defer></script>
+<link href=/images/favicon.png?1757536952 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1757536952 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1757536952 defer></script>
+<script src=/js/search-lunr.min.js?1757536952 defer></script>
+<script src=/js/search.min.js?1757536952 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1757536952"</script>
+<script src=/js/lunr/lunr.min.js?1757536952 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1757536952 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1757536952 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1757536952 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1756066640 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1756066640 rel=stylesheet>
-<link href=/css/theme.min.css?1756066640 rel=stylesheet>
-<link href=/css/format-html.min.css?1756066640 rel=stylesheet id=R-format-style>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1757536952 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1757536952 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1757536952 rel=stylesheet>
+<link href=/css/theme.min.css?1757536952 rel=stylesheet>
+<link href=/css/format-html.min.css?1757536952 rel=stylesheet id=R-format-style>
 <script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/bag/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
@@ -140,7 +140,7 @@ and so avoid boring and inefficient copies:</p>
 known non-interface types are equal, or if only interface types
 are found (mostly issued from Isa()) and they are equal.</p>
 <blockquote>
-<p>See also <a href=https://go-testdeep.zetta.rocks/operators/subbagof/ rel=external target=_blank><code>SubBagOf</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/superbagof/ rel=external target=_blank><code>SuperBagOf</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/set/ rel=external target=_blank><code>Set</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a>.</p></blockquote>
+<p>See also <a href=https://go-testdeep.zetta.rocks/operators/subbagof/ rel=external target=_blank><code>SubBagOf</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/superbagof/ rel=external target=_blank><code>SuperBagOf</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/set/ rel=external target=_blank><code>Set</code></a>, <a href=https://go-testdeep.zetta.rocks/operators/list/ rel=external target=_blank><code>List</code></a> and <a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a>.</p></blockquote>
 <blockquote>
 <p>See also <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Bag rel=external target=_blank> Bag godoc</a>.</p></blockquote>
 <h3 id=example>Example</h3>
@@ -398,6 +398,7 @@ Base example
 <li data-nav-id=/operators/last/index.html><a class=padding href=/operators/last/index.html>Last</a></li>
 <li data-nav-id=/operators/lax/index.html><a class=padding href=/operators/lax/index.html>Lax</a></li>
 <li data-nav-id=/operators/len/index.html><a class=padding href=/operators/len/index.html>Len</a></li>
+<li data-nav-id=/operators/list/index.html><a class=padding href=/operators/list/index.html>List</a></li>
 <li data-nav-id=/operators/lt/index.html><a class=padding href=/operators/lt/index.html>Lt</a></li>
 <li data-nav-id=/operators/lte/index.html><a class=padding href=/operators/lte/index.html>Lte</a></li>
 <li data-nav-id=/operators/map/index.html><a class=padding href=/operators/map/index.html>Map</a></li>
@@ -450,7 +451,7 @@ Base example
 <li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
 <li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
 <li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
 <li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
 </ul>
 </div>
@@ -465,8 +466,8 @@ Base example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1756066640 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1756066640 defer></script>
-<script src=/js/theme.min.js?1756066640 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1757536952 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1757536952 defer></script>
+<script src=/js/theme.min.js?1757536952 defer></script>
 </body>
 </html>
