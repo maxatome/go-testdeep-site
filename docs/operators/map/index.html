@@ -4,55 +4,51 @@
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
 <meta name=generator content="Hugo 0.148.2">
 <meta name=generator content="Relearn 8.0.0">
-<meta name=description content='func Map(model any, expectedEntries MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
+<meta name=description content="func Map(model any, expectedEntries ...MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
 model must be the same type as compared data.
-expectedEntries can be nil, if no zero entries are expected and no TestDeep operators are involved.
-During a match, all expected entries must be found and all data entries must be expected to succeed.
-got := map[string]string{ "foo": "test", "bar": "wizz", "zip": "buzz", } td.Cmp(t, got, td.Map( map[string]string{ "foo": "test", "bar": "wizz", }, td.MapEntries{ "zip": td.HasSuffix("zz"), }), ) // succeeds TypeBehind method returns the reflect.Type of model.'>
+expectedEntries can be omitted, if no TestDeep operators are involved. If expectedEntries contains more than one item, all items are merged before their use, from left to right.
+During a match, all expected entries must be found and all data entries must be expected to succeed.">
 <meta name=author content>
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Map :: go-testdeep">
-<meta name=twitter:description content='func Map(model any, expectedEntries MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
+<meta name=twitter:description content="func Map(model any, expectedEntries ...MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
 model must be the same type as compared data.
-expectedEntries can be nil, if no zero entries are expected and no TestDeep operators are involved.
-During a match, all expected entries must be found and all data entries must be expected to succeed.
-got := map[string]string{ "foo": "test", "bar": "wizz", "zip": "buzz", } td.Cmp(t, got, td.Map( map[string]string{ "foo": "test", "bar": "wizz", }, td.MapEntries{ "zip": td.HasSuffix("zz"), }), ) // succeeds TypeBehind method returns the reflect.Type of model.'>
+expectedEntries can be omitted, if no TestDeep operators are involved. If expectedEntries contains more than one item, all items are merged before their use, from left to right.
+During a match, all expected entries must be found and all data entries must be expected to succeed.">
 <meta property="og:url" content="https://go-testdeep.zetta.rocks/operators/map/index.html">
 <meta property="og:site_name" content="go-testdeep">
 <meta property="og:title" content="Map :: go-testdeep">
-<meta property="og:description" content='func Map(model any, expectedEntries MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
+<meta property="og:description" content="func Map(model any, expectedEntries ...MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
 model must be the same type as compared data.
-expectedEntries can be nil, if no zero entries are expected and no TestDeep operators are involved.
-During a match, all expected entries must be found and all data entries must be expected to succeed.
-got := map[string]string{ "foo": "test", "bar": "wizz", "zip": "buzz", } td.Cmp(t, got, td.Map( map[string]string{ "foo": "test", "bar": "wizz", }, td.MapEntries{ "zip": td.HasSuffix("zz"), }), ) // succeeds TypeBehind method returns the reflect.Type of model.'>
+expectedEntries can be omitted, if no TestDeep operators are involved. If expectedEntries contains more than one item, all items are merged before their use, from left to right.
+During a match, all expected entries must be found and all data entries must be expected to succeed.">
 <meta property="og:locale" content="en_us">
 <meta property="og:type" content="article">
 <meta property="article:section" content="Operators">
 <meta property="article:modified_time" content="2025-04-17T20:24:54+02:00">
 <meta itemprop=name content="Map :: go-testdeep">
-<meta itemprop=description content='func Map(model any, expectedEntries MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
+<meta itemprop=description content="func Map(model any, expectedEntries ...MapEntries) TestDeep Map operator compares the contents of a map against the non-zero values of model (if any) and the values of expectedEntries.
 model must be the same type as compared data.
-expectedEntries can be nil, if no zero entries are expected and no TestDeep operators are involved.
-During a match, all expected entries must be found and all data entries must be expected to succeed.
-got := map[string]string{ "foo": "test", "bar": "wizz", "zip": "buzz", } td.Cmp(t, got, td.Map( map[string]string{ "foo": "test", "bar": "wizz", }, td.MapEntries{ "zip": td.HasSuffix("zz"), }), ) // succeeds TypeBehind method returns the reflect.Type of model.'>
+expectedEntries can be omitted, if no TestDeep operators are involved. If expectedEntries contains more than one item, all items are merged before their use, from left to right.
+During a match, all expected entries must be found and all data entries must be expected to succeed.">
 <meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
-<meta itemprop=wordCount content="840">
+<meta itemprop=wordCount content="892">
 <title>Map :: go-testdeep</title>
-<link href=/images/favicon.png?1757537446 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1757537446 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1757537446 defer></script>
-<script src=/js/search-lunr.min.js?1757537446 defer></script>
-<script src=/js/search.min.js?1757537446 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1757537446"</script>
-<script src=/js/lunr/lunr.min.js?1757537446 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1757537446 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1757537446 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1757537446 defer></script>
+<link href=/images/favicon.png?1771448187 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1771448187 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1771448187 defer></script>
+<script src=/js/search-lunr.min.js?1771448187 defer></script>
+<script src=/js/search.min.js?1771448187 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1771448187"</script>
+<script src=/js/lunr/lunr.min.js?1771448187 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1771448187 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1771448187 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1771448187 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1757537446 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1757537446 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1757537446 rel=stylesheet>
-<link href=/css/theme.min.css?1757537446 rel=stylesheet>
-<link href=/css/format-html.min.css?1757537446 rel=stylesheet id=R-format-style>
+<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1771448187 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1771448187 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1771448187 rel=stylesheet>
+<link href=/css/theme.min.css?1771448187 rel=stylesheet>
+<link href=/css/format-html.min.css?1771448187 rel=stylesheet id=R-format-style>
 <script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/map/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
@@ -116,12 +112,13 @@ got := map[string]string{ "foo": "test", "bar": "wizz", "zip": "buzz", } td.Cmp(
 <header class=headline>
 </header>
 <h1 id=map>Map</h1>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Map</span>(<span style=color:#a6e22e>model</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>expectedEntries</span> <span style=color:#a6e22e>MapEntries</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>Map</span>(<span style=color:#a6e22e>model</span> <span style=color:#66d9ef>any</span>, <span style=color:#a6e22e>expectedEntries</span> <span style=color:#f92672>...</span><span style=color:#a6e22e>MapEntries</span>) <span style=color:#a6e22e>TestDeep</span></span></span></code></pre></div>
 <p>Map operator compares the contents of a map against the non-zero
 values of <em>model</em> (if <code>any</code>) and the values of <em>expectedEntries</em>.</p>
 <p><em>model</em> must be the same type as compared data.</p>
-<p><em>expectedEntries</em> can be <code>nil</code>, if no zero entries are expected and
-no <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operators</a> are involved.</p>
+<p><em>expectedEntries</em> can be omitted, if no <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>TestDeep operators</a> are
+involved. If <em>expectedEntries</em> contains more than one item, all items
+are merged before their use, from left to right.</p>
 <p>During a match, all expected entries must be found and all data
 entries must be expected to succeed.</p>
 <div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>got</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>map</span>[<span style=color:#66d9ef>string</span>]<span style=color:#66d9ef>string</span>{
@@ -223,6 +220,9 @@ TypedMap example
 <p>CmpMap is a shortcut for:</p>
 <div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Map</span>(<span style=color:#a6e22e>model</span>, <span style=color:#a6e22e>expectedEntries</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
+<p><a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external target=_blank><code>Map</code></a> optional parameter <em>expectedEntries</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external target=_blank><code>Map</code></a> call.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p>If <em>t</em> is a <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*T</code></a> then its Config field is inherited.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
@@ -303,6 +303,9 @@ TypedMap example
 <p>Map is a shortcut for:</p>
 <div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>got</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Map</span>(<span style=color:#a6e22e>model</span>, <span style=color:#a6e22e>expectedEntries</span>), <span style=color:#a6e22e>args</span><span style=color:#f92672>...</span>)</span></span></code></pre></div>
 <p>See above for details.</p>
+<p><a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external target=_blank><code>Map</code></a> optional parameter <em>expectedEntries</em> is here mandatory.
+<code>nil</code> value should be passed to mimic its absence in
+original <a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external target=_blank><code>Map</code></a> call.</p>
 <p>Returns true if the test is OK, false if it fails.</p>
 <p><em>args&mldr;</em> are optional and allow to name the test. This name is
 used in case of failure to qualify the test. If <code>len(args) > 1</code> and
@@ -521,8 +524,8 @@ TypedMap example
 <div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1757537446 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1757537446 defer></script>
-<script src=/js/theme.min.js?1757537446 defer></script>
+<script src=/js/clipboard/clipboard.min.js?1771448187 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1771448187 defer></script>
+<script src=/js/theme.min.js?1771448187 defer></script>
 </body>
 </html>

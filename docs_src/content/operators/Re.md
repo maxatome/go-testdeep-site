@@ -27,7 +27,23 @@ td.Cmp(t, "John Doe",
   td.Re(`^(\w+) (\w+)`, td.Bag("Doe", "John"))) // succeeds
 ```
 
-> See also [`ReAll`]({{% ref "ReAll" %}}).
+When matching many, many lines with a single regexp, it is
+sometimes difficult to see where the regexp failed in the input
+`string`. To avoid that, the regexp can be split by lines and so the
+failure is easier to locate, thanks to [`List`]({{% ref "List" %}}) operator and [`Flatten`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Flatten):
+
+```go
+td.Cmp(t,
+  strings.Split(got, "\n"),
+  td.List(td.Flatten(strings.Split(expectedRe, "\n"),
+    func(line string) any {
+      return `^` + td.Re(line) + `\z`
+    })))
+```
+
+> See also the multilines example.
+
+See also [`ReAll`]({{% ref "ReAll" %}}).
 
 
 > See also [<i class='fas fa-book'></i> Re godoc](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Re).
@@ -89,6 +105,48 @@ td.Cmp(t, "John Doe",
 	// Output:
 	// true
 	// false
+
+```{{% /expand%}}
+{{%expand "Multilines example" %}}```go
+	t := &testing.T{}
+
+	got := `multi
+lines
+probably
+more
+than 4
+`
+	expectedRe := `^multi
+lines?
+(probably|possibly)
+more
+than \d+
+\z`
+
+	ok := td.Cmp(t, got, td.Re(expectedRe))
+	fmt.Println("Raw multi-lines string matches:", ok)
+
+	// But for strings with many, many, many lines, when the regexp
+	// doesn't match, it is sometimes difficult to see where the regexp
+	// failed in the string. Here td.List & td.Flatten can help to apply
+	// regexp line per line (note expectedRe is not anchored anymore):
+	expectedRe = `multi
+lines?
+(probably|possibly)
+more
+than \d+
+`
+	ok = td.Cmp(t,
+		strings.Split(got, "\n"),
+		td.List(td.Flatten(strings.Split(expectedRe, "\n"),
+			func(line string) any {
+				return td.Re(`^` + line + `\z`)
+			})))
+	fmt.Println("All string lines match:", ok)
+
+	// Output:
+	// Raw multi-lines string matches: true
+	// All string lines match: true
 
 ```{{% /expand%}}
 {{%expand "Compiled example" %}}```go
@@ -247,6 +305,48 @@ reason of a potential failure.
 	// false
 
 ```{{% /expand%}}
+{{%expand "Multilines example" %}}```go
+	t := &testing.T{}
+
+	got := `multi
+lines
+probably
+more
+than 4
+`
+	expectedRe := `^multi
+lines?
+(probably|possibly)
+more
+than \d+
+\z`
+
+	ok := td.CmpRe(t, got, expectedRe, nil)
+	fmt.Println("Raw multi-lines string matches:", ok)
+
+	// But for strings with many, many, many lines, when the regexp
+	// doesn't match, it is sometimes difficult to see where the regexp
+	// failed in the string. Here td.List & td.Flatten can help to apply
+	// regexp line per line (note expectedRe is not anchored anymore):
+	expectedRe = `multi
+lines?
+(probably|possibly)
+more
+than \d+
+`
+	ok = td.Cmp(t,
+		strings.Split(got, "\n"),
+		td.List(td.Flatten(strings.Split(expectedRe, "\n"),
+			func(line string) any {
+				return td.Re(`^` + line + `\z`)
+			})))
+	fmt.Println("All string lines match:", ok)
+
+	// Output:
+	// Raw multi-lines string matches: true
+	// All string lines match: true
+
+```{{% /expand%}}
 {{%expand "Compiled example" %}}```go
 	t := &testing.T{}
 
@@ -399,6 +499,48 @@ reason of a potential failure.
 	// Output:
 	// true
 	// false
+
+```{{% /expand%}}
+{{%expand "Multilines example" %}}```go
+	t := td.NewT(&testing.T{})
+
+	got := `multi
+lines
+probably
+more
+than 4
+`
+	expectedRe := `^multi
+lines?
+(probably|possibly)
+more
+than \d+
+\z`
+
+	ok := t.Re(got, expectedRe, nil)
+	fmt.Println("Raw multi-lines string matches:", ok)
+
+	// But for strings with many, many, many lines, when the regexp
+	// doesn't match, it is sometimes difficult to see where the regexp
+	// failed in the string. Here td.List & td.Flatten can help to apply
+	// regexp line per line (note expectedRe is not anchored anymore):
+	expectedRe = `multi
+lines?
+(probably|possibly)
+more
+than \d+
+`
+	ok = t.Cmp(
+		strings.Split(got, "\n"),
+		td.List(td.Flatten(strings.Split(expectedRe, "\n"),
+			func(line string) any {
+				return td.Re(`^` + line + `\z`)
+			})))
+	fmt.Println("All string lines match:", ok)
+
+	// Output:
+	// Raw multi-lines string matches: true
+	// All string lines match: true
 
 ```{{% /expand%}}
 {{%expand "Compiled example" %}}```go

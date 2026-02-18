@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func SuperSliceOf(model any, expectedEntries ArrayEntries) TestDeep
+func SuperSliceOf(model any, expectedEntries ...ArrayEntries) TestDeep
 ```
 
 SuperSliceOf operator compares the contents of an array, a pointer
@@ -21,14 +21,16 @@ operator.
 
 *model* must be the same type as compared data.
 
-*expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{% ref "operators" %}}) are involved.
+*expectedEntries* can be omitted, if no zero entries are expected and
+no [TestDeep operators]({{% ref "operators" %}}) are involved. If *expectedEntries* contains
+more than one item, all items are merged before their use, from
+left to right.
 
 Works with slices:
 
 ```go
 got := []int{12, 14, 17}
-td.Cmp(t, got, td.SuperSliceOf([]int{12}, nil))                                // succeeds
+td.Cmp(t, got, td.SuperSliceOf([]int{12}))                                     // succeeds
 td.Cmp(t, got, td.SuperSliceOf([]int{12}, td.ArrayEntries{2: 17}))             // succeeds
 td.Cmp(t, &got, td.SuperSliceOf(&[]int{0, 14}, td.ArrayEntries{2: td.Gt(16)})) // succeeds
 ```
@@ -37,7 +39,7 @@ and arrays:
 
 ```go
 got := [5]int{12, 14, 17, 26, 56}
-td.Cmp(t, got, td.SuperSliceOf([5]int{12}, nil))                                // succeeds
+td.Cmp(t, got, td.SuperSliceOf([5]int{12}))                                     // succeeds
 td.Cmp(t, got, td.SuperSliceOf([5]int{12}, td.ArrayEntries{2: 17}))             // succeeds
 td.Cmp(t, &got, td.SuperSliceOf(&[5]int{0, 14}, td.ArrayEntries{2: td.Gt(16)})) // succeeds
 ```
@@ -195,6 +197,10 @@ td.Cmp(t, got, td.SuperSliceOf(model, expectedEntries), args...)
 
 See above for details.
 
+[`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) call.
+
 Returns true if the test is OK, false if it fails.
 
 If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
@@ -340,6 +346,10 @@ t.Cmp(got, td.SuperSliceOf(model, expectedEntries), args...)
 ```
 
 See above for details.
+
+[`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

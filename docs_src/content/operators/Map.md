@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Map(model any, expectedEntries MapEntries) TestDeep
+func Map(model any, expectedEntries ...MapEntries) TestDeep
 ```
 
 Map operator compares the contents of a map against the non-zero
@@ -12,8 +12,9 @@ values of *model* (if `any`) and the values of *expectedEntries*.
 
 *model* must be the same type as compared data.
 
-*expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{% ref "operators" %}}) are involved.
+*expectedEntries* can be omitted, if no [TestDeep operators]({{% ref "operators" %}}) are
+involved. If *expectedEntries* contains more than one item, all items
+are merged before their use, from left to right.
 
 During a match, all expected entries must be found and all data
 entries must be expected to succeed.
@@ -121,6 +122,10 @@ td.Cmp(t, got, td.Map(model, expectedEntries), args...)
 
 See above for details.
 
+[`Map`]({{% ref "Map" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Map`]({{% ref "Map" %}}) call.
+
 Returns true if the test is OK, false if it fails.
 
 If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
@@ -203,6 +208,10 @@ t.Cmp(got, td.Map(model, expectedEntries), args...)
 ```
 
 See above for details.
+
+[`Map`]({{% ref "Map" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Map`]({{% ref "Map" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 

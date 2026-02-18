@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Array(model any, expectedEntries ArrayEntries) TestDeep
+func Array(model any, expectedEntries ...ArrayEntries) TestDeep
 ```
 
 Array operator compares the contents of an array or a pointer on an
@@ -18,8 +18,10 @@ array, see [`SuperSliceOf`]({{% ref "SuperSliceOf" %}}) operator.
 
 *model* must be the same type as compared data.
 
-*expectedEntries* can be `nil`, if no zero entries are expected and
-no [TestDeep operators]({{% ref "operators" %}}) are involved.
+*expectedEntries* can be omitted, if no zero entries are expected and
+no [TestDeep operators]({{% ref "operators" %}}) are involved. If *expectedEntries* contains
+more than one item, all items are merged before their use, from
+left to right.
 
 ```go
 got := [3]int{12, 14, 17}
@@ -111,6 +113,10 @@ td.Cmp(t, got, td.Array(model, expectedEntries), args...)
 
 See above for details.
 
+[`Array`]({{% ref "Array" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Array`]({{% ref "Array" %}}) call.
+
 Returns true if the test is OK, false if it fails.
 
 If *t* is a [`*T`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T) then its Config field is inherited.
@@ -193,6 +199,10 @@ t.Cmp(got, td.Array(model, expectedEntries), args...)
 ```
 
 See above for details.
+
+[`Array`]({{% ref "Array" %}}) optional parameter *expectedEntries* is here mandatory.
+`nil` value should be passed to mimic its absence in
+original [`Array`]({{% ref "Array" %}}) call.
 
 Returns true if the test is OK, false if it fails.
 
