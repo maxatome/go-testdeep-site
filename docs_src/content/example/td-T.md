@@ -15,17 +15,29 @@ import (
   "github.com/maxatome/go-testdeep/td"
 )
 
-func TestCreateRecord(tt *testing.T) {
-  t := td.NewT(tt)
+func TestCreateRecord(t *testing.T) {
+  assert := td.Assert(t)
 
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if t.CmpNoError(err) {
-    t := t.RootName("RECORD") // Use RECORD instead of DATA in failure reports
+  assert = assert.RootName("RECORD") // Use RECORD instead of DATA in failure reports
 
-    // Using Struct shortcut method
-    t.Struct(record,
+  // Using Struct shortcut method
+  assert.Struct(record,
+    &Record{
+      Name: "Bob",
+      Age:  23,
+    },
+    td.StructFields{
+      "Id":        td.NotZero(),
+      "CreatedAt": td.Between(before, time.Now()),
+    },
+    "Newly created record")
+
+  // Or using Cmp method, it's a matter of taste
+  assert.Cmp(record,
+    td.Struct(
       &Record{
         Name: "Bob",
         Age:  23,
@@ -33,26 +45,12 @@ func TestCreateRecord(tt *testing.T) {
       td.StructFields{
         "Id":        td.NotZero(),
         "CreatedAt": td.Between(before, time.Now()),
-      },
-      "Newly created record")
-
-    // Or using Cmp method, it's a matter of taste
-    t.Cmp(record,
-      td.Struct(
-        &Record{
-          Name: "Bob",
-          Age:  23,
-        },
-        td.StructFields{
-          "Id":        td.NotZero(),
-          "CreatedAt": td.Between(before, time.Now()),
-        }),
-      "Newly created record")
-  }
+      }),
+    "Newly created record")
 }
 ```
 
-Test it in playground: https://play.golang.org/p/sH4PRrVjqFM
+Test it in playground: https://go.dev/play/p/r_5AQUHL3KF
 
 Note the use of
 [`RootName`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RootName)

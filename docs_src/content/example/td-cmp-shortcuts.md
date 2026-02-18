@@ -20,21 +20,19 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if td.CmpNoError(t, err) {
-    td.CmpStruct(t, record,
-      &Record{
-        Name: "Bob",
-        Age:  23,
-      },
-      td.StructFields{
-        "Id":        td.NotZero(),
-        "CreatedAt": td.Between(before, time.Now()),
-      },
-      "Newly created record")
-  }
+  td.CmpStruct(t, record,
+    &Record{
+      Name: "Bob",
+      Age:  23,
+    },
+    td.StructFields{
+      "Id":        td.NotZero(),
+      "CreatedAt": td.Between(before, time.Now()),
+    },
+    "Newly created record")
 }
 ```
 
-Test it in playground: https://play.golang.org/p/d2FxGASUa_B
+Test it in playground: https://go.dev/play/p/GS9G-g2ePr8

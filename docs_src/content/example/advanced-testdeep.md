@@ -19,21 +19,19 @@ import (
 )
 
 func TestCreateRecord(t *testing.T) {
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if td.CmpNoError(t, err) {
-    td.Cmp(t, record,
-      td.Struct(
-        &Record{
-          Name: "Bob",
-          Age:  23,
-        }),
-      "Newly created record")
-  }
+  td.Cmp(t, record,
+    td.Struct(
+      &Record{
+        Name: "Bob",
+        Age:  23,
+      }),
+    "Newly created record")
 }
 ```
 
-Test in in playground: https://go.dev/play/p/X9mYj9UxgSf
+Test in in playground: https://go.dev/play/p/Az7LdBavZCX
 
 The [`Struct`]({{% ref "operators/Struct" %}}) operator, used here,
 ignores zero fields in its model parameter.
@@ -50,25 +48,23 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if td.CmpNoError(t, err) {
-    td.Cmp(t, record,
-      td.Struct(
-        &Record{
-          Name: "Bob",
-          Age:  23,
-        },
-        td.StructFields{
-          "Id":        td.NotZero(),
-          "CreatedAt": td.Between(before, time.Now()),
-        }),
-      "Newly created record")
-  }
+  td.Cmp(t, record,
+    td.Struct(
+      &Record{
+        Name: "Bob",
+        Age:  23,
+      },
+      td.StructFields{
+        "Id":        td.NotZero(),
+        "CreatedAt": td.Between(before, time.Now()),
+      }),
+    "Newly created record")
 }
 ```
 
-Test it in playground: https://play.golang.org/p/PGyi0d3ZXMa
+Test it in playground: https://go.dev/play/p/aEzTd6qrmFb
 
 See the use of the [`Struct`]({{% ref "operators/Struct" %}})
 operator. It is needed here to overcome the go static typing system

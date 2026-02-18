@@ -17,18 +17,16 @@ import (
 
 func TestCreateRecord(t *testing.T) {
   before := time.Now().Truncate(time.Second)
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if td.CmpNoError(t, err) {
-    td.Cmp(t, record.Id, td.NotZero(), "Id initialized")
-    td.Cmp(t, record.Name, "Bob")
-    td.Cmp(t, record.Age, 23)
-    td.Cmp(t, record.CreatedAt, td.Between(before, time.Now()))
-  }
+  td.Cmp(t, record.Id, td.NotZero(), "Id initialized")
+  td.Cmp(t, record.Name, "Bob")
+  td.Cmp(t, record.Age, 23)
+  td.Cmp(t, record.CreatedAt, td.Between(before, time.Now()))
 }
 ```
 
-Test it in playground: https://play.golang.org/p/bfe-aj_gx8Q
+Test it in playground: https://go.dev/play/p/gl3kbTgAgwg
 
 As we cannot guess the `Id` field value before its creation, we use the
 [`NotZero`]({{% ref "operators/NotZero" %}}) operator to check it is
@@ -49,16 +47,14 @@ import (
 )
 
 func TestCreateRecord(t *testing.T) {
-  record, err := CreateRecord("Bob", 23)
+  record := td.Must(CreateRecord("Bob", 23))
 
-  if td.CmpNoError(t, err) {
-    td.Cmp(t, record, &Record{
-        Id:        1234,
-        Name:      "Bob",
-        Age:       23,
-        CreatedAt: time.Date(2019, time.May, 1, 12, 13, 14, 0, time.UTC),
-      })
-  }
+  td.Cmp(t, record, &Record{
+    Id:        1234,
+    Name:      "Bob",
+    Age:       23,
+    CreatedAt: time.Date(2019, time.May, 1, 12, 13, 14, 0, time.UTC),
+  })
 }
 ```
 
