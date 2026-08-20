@@ -19,11 +19,12 @@ against *expectedJSON*. *expectedJSON* can be a:
   before unmarshaling)
 
 
-*expectedJSON* JSON value can contain placeholders. The *params*
-are for any placeholder parameters in *expectedJSON*. *params* can
-contain [TestDeep operators]({{% ref "operators" %}}) as well as raw values. A placeholder can
-be numeric like `$2` or named like `$name` and always references an
-item in *params*.
+*expectedJSON* JSON value can contain placeholders. The *params* are
+for any placeholder parameters in *expectedJSON*. *params* can contain
+[TestDeep operators]({{% ref "operators" %}}) as well as raw values. A placeholder can be
+numeric like `$2` or named like `$name` and always references an item
+in *params*. *params* can also contains [encoding/json/v2.Options] when
+[encoding/json/v2] must be used, see jsonv2 example.
 
 Numeric placeholders reference the n'th "operators" item (starting
 at 1). Named placeholders are used with [`Tag`]({{% ref "Tag" %}}) operator as follows:
@@ -161,6 +162,10 @@ A few notes about operators embedding:
 - the optional 3rd parameter of [`Between`]({{% ref "Between" %}}) has to be specified as a `string`
   and can be: "[]" or "BoundsInIn" (default), "[[" or "BoundsInOut",
   "]]" or "BoundsOutIn", "][" or "BoundsOutOut";
+- the optional 3rd parameter of [`JSONPointer`]({{% ref "JSONPointer" %}}) (opts) is filled by all
+  [encoding/json/v2.Options] values found in *params*, so it uses the
+  same marshal/unmarshal semantics as JSON itself. If that's not
+  desirable, do not embed [`JSONPointer`]({{% ref "JSONPointer" %}}) and use a placeholder instead;
 - not all operators are embeddable only the following are: [`All`]({{% ref "All" %}}),
   [`Any`]({{% ref "Any" %}}), [`ArrayEach`]({{% ref "ArrayEach" %}}), [`Bag`]({{% ref "Bag" %}}), [`Between`]({{% ref "Between" %}}), [`Contains`]({{% ref "Contains" %}}),
   [`ContainsKey`]({{% ref "ContainsKey" %}}), [`Empty`]({{% ref "Empty" %}}), [`First`]({{% ref "First" %}}), [`Grep`]({{% ref "Grep" %}}), [`Gt`]({{% ref "Gt" %}}), [`Gte`]({{% ref "Gte" %}}),

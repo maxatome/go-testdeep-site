@@ -10,9 +10,8 @@ and its
 allows [golang](https://golang.org/) extremely flexible deep
 comparison. It is built for testing.
 
-[![GoLines](https://img.shields.io/badge/44738-lines_of_go-brightgreen?classes=inline)](https://github.com/maxatome/go-testdeep)
+[![GoLines](https://img.shields.io/badge/45326-lines_of_go-brightgreen?classes=inline)](https://github.com/maxatome/go-testdeep)
 [![Coverage Status](https://coveralls.io/repos/github/maxatome/go-testdeep/badge.svg?branch=master&classes=inline)](https://coveralls.io/github/maxatome/go-testdeep?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/maxatome/go-testdeep?classes=inline)](https://goreportcard.com/report/github.com/maxatome/go-testdeep)
 [![Releases](https://img.shields.io/badge/%23%20releases-27-blueviolet?classes=inline)](https://github.com/maxatome/go-testdeep/releases)
 [![Version](https://img.shields.io/github/tag/maxatome/go-testdeep.svg?classes=inline)](https://github.com/maxatome/go-testdeep/releases)
 

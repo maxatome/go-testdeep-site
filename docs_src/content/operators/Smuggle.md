@@ -4,7 +4,7 @@ weight: 10
 ---
 
 ```go
-func Smuggle(fn, expectedValue any) TestDeep
+func Smuggle(fn any, fnsThenExpectedValue ...any) TestDeep
 ```
 
 Smuggle operator allows to change data contents or mutate it into
@@ -17,8 +17,19 @@ As convenient shortcuts, *fn* can be a `string` specifying a
 fields-path through structs, maps & slices, or `any` other type, in
 this case a simple cast is done (see below for details).
 
-*fn* must return at least one value. These value will be compared as is
-to *expectedValue*, here integer 28:
+fnsThenExpectedValue must have a length of 1 or more items. Its
+last item corresponds to the *expectedValue*. The previous items, if
+`any`, are like *fn* and are used sequentially after *fn* allowing to
+implicitly chain Smuggle calls, so the following [`Cmp`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp) calls are
+strictly equivalent:
+
+```go
+td.Cmp(t, "+28", td.Smuggle(FN1, td.Smuggle(FN2, td.Smuggle(FN3, "28"))))
+td.Cmp(t, "+28", td.Smuggle(FN1, FN2, FN3, "28"))
+```
+
+Each *fn* must return at least one value. These value will be
+compared as is to *expectedValue*, here integer 28:
 
 ```go
 td.Cmp(t, "0028",
@@ -40,8 +51,8 @@ td.Cmp(t, "0029",
 )
 ```
 
-*fn* can return a second boolean value, used to tell that a problem
-occurred and so stop the comparison:
+Each *fn* can return a second boolean value, used to tell that a
+problem occurred and so stop the comparison:
 
 ```go
 td.Cmp(t, "0029",
@@ -52,8 +63,8 @@ td.Cmp(t, "0029",
 )
 ```
 
-*fn* can return a third `string` value which is used to describe the
-test when a problem occurred (false second boolean value):
+Each *fn* can return a third `string` value which is used to describe
+the test when a problem occurred (false second boolean value):
 
 ```go
 td.Cmp(t, "0029",
@@ -67,7 +78,7 @@ td.Cmp(t, "0029",
 )
 ```
 
-Instead of returning (X, `bool`) or (X, `bool`, `string`), *fn* can
+Instead of returning (X, `bool`) or (X, `bool`, `string`), each *fn* can
 return (X, [`error`](https://pkg.go.dev/builtin#error)). When a problem occurs, the returned [`error`](https://pkg.go.dev/builtin#error) is
 non-`nil`, as in:
 
@@ -237,8 +248,9 @@ td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage{}, td.JSON(`{"foo":1}`)))
 td.Cmp(t, `{"foo":1}`, td.Smuggle(json.RawMessage(nil), td.JSON(`{"foo":1}`)))
 ```
 
-converts on the fly a `string` to a [json.RawMessage](https://pkg.go.dev/encoding/json#RawMessage) so [`JSON`]({{% ref "JSON" %}}) operator
-can parse it as JSON. This is mostly a shortcut for:
+converts on the fly a `string` to a [json.RawMessage](https://pkg.go.dev/encoding/json#RawMessage) (alias to
+[jsontext.Value](https://pkg.go.dev/encoding/json/jsontext#Value) starting go1.27) so [`JSON`]({{% ref "JSON" %}}) operator can parse it
+as JSON. This is mostly a shortcut for:
 
 ```go
 td.Cmp(t, `{"foo":1}`, td.Smuggle(

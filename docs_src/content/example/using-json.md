@@ -21,7 +21,7 @@ func TestCreateRecord(t *testing.T) {
   assert := td.Assert(t)
 
   before := time.Now().Truncate(time.Second)
-  record := td.Must(CreateRecord("Bob", 23))
+  record := assert.Must(CreateRecord("Bob", 23))
 
   assert = assert.RootName("RECORD") // Use RECORD instead of DATA in failure reports
   assert.Cmp(record, td.JSON(`
@@ -36,4 +36,4 @@ func TestCreateRecord(t *testing.T) {
 }
 ```
 
-Test it in playground: https://go.dev/play/p/gRR9jGXGQip
+Test it in playground: https://go.dev/play/p/zZeIaeaN8d_m
