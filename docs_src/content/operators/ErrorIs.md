@@ -1,6 +1,7 @@
 ---
 title: "ErrorIs"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_error_is.go#L36"
 ---
 
 ```go

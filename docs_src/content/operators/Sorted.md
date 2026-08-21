@@ -1,6 +1,7 @@
 ---
 title: "Sorted"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_sort.go#L348"
 ---
 
 ```go

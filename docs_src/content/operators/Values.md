@@ -1,6 +1,7 @@
 ---
 title: "Values"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_keys_values.go#L110"
 ---
 
 ```go

@@ -169,117 +169,105 @@ func TestPerson(t *testing.T) {
   assert := td.Assert(t)
 
   assert.Cmp(GetPerson(), // ← ①
-    Person{               // ← ②
-      Name: "Bob",        // ← ③
-      ID:   assert.A(td.NotZero(), int64(0)).(int64), // ← ④
-      Age:  assert.A(td.Between(uint8(40), uint8(45))).(uint8), // ← ⑤
+    Person{ // ← ②
+      Name: "Bob", // ← ③
+      ID:   assert.AT[int64](td.NotZero()), // ← ④
+      Age:  assert.AT[uint8](td.Between(uint8(40), uint8(45))), // ← ⑤
     })
 
-  // Or using generics from go1.18
+  // Or before go1.27, using generics from go1.18
   assert.Cmp(GetPerson(), // ← ①
-    Person{               // ← ②
-      Name: "Bob",        // ← ③
+    Person{ // ← ②
+      Name: "Bob", // ← ③
       ID:   td.A[int64](assert, td.NotZero()), // ← ④
-	  Age:  td.A[uint8](assert, td.Between(uint8(40), uint8(45))), // ← ⑤
+      Age:  td.A[uint8](assert, td.Between(uint8(40), uint8(45))), // ← ⑤
   })
 }
 ```
-[Try it in playground 🔗](https://go.dev/play/p/9GYegW4j69a)
+[Try it in playground 🔗](https://go.dev/play/p/xkh2diMUAKN)
 
 1. `GetPerson()` still returns a `Person`;
 2. expected parameter is directly a `Person`. No operator needed here;
 3. `Name` field should always be "Bob", no change here;
 4. `ID` field should be ≠ 0: anchor the [`NotZero`]({{% ref "NotZero" %}})
    operator:
-   - using the [`A`] method. Break this line down:
+   - using the [`AT`] method. Break this line down:
      ```golang
-     assert.A(       // ← ①
-       td.NotZero(), // ← ②
-       int64(0),     // ← ③
-     ).(int64)       // ← ④
-     ```
-     1. the [`A`] method is the key of the anchoring system. It saves
-        the operator in `assert` instance, so it can be
-        retrieved during the comparison of the next [`Cmp`] call on `assert`,
-     2. the operator we want to anchor,
-     3. this optional parameter is needed to tell [`A`] that the returned
-        value must be a `int64`. Sometimes, this type can be deduced
-        from the operator, but as [`NotZero`]({{% ref "NotZero" %}}) can
-        handle any kind of number, it is not the case here. So we have
-        to pass it,
-     4. as [`A`] method returns an `any`, we need to assert the
-        `int64` type to bypass the golang static typing system,
-   - using the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-     generic function. Break this line down:
-     ```golang
-	 td.A[           // ← ①
-	   int64,        // ← ②
+     assert.AT[      // ← ①
+       int64,        // ← ②
      ](
-	   assert,       // ← ③
-	   td.NotZero(), // ← ④
+       td.NotZero(), // ← ③
      )
-	 ```
-	 1. the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-	    function is the key of the anchoring system. It saves the
-	    operator in `assert` instance, so it can be retrieved
-	    during the comparison of the next [`Cmp`] call on `assert`,
-	 2. the type [`A`] function will return,
-	 3. instance in which the operator is anchored,
-	 4. the operator we want to anchor,
+     ```
+     1. the [`AT`] method is the key of the anchoring system. It saves
+        the operator in `assert` instance, so it can be retrieved
+        during the comparison of the next [`Cmp`] call on `assert`,
+     2. the type [`AT`] function will return,
+     3. the operator we want to anchor, here [`NotZero`]({{% ref "NotZero" %}}),
+   - before go1.27, one can use the [`A`] generic function. Break this
+     line down:
+     ```golang
+     td.A[           // ← ①
+       int64,        // ← ②
+     ](
+       assert,       // ← ③
+       td.NotZero(), // ← ④
+     )
+     ```
+     1. the [`A`] function is the key of the anchoring system. It
+        saves the operator in `assert` instance, so it can be
+        retrieved during the comparison of the next [`Cmp`] call on
+        `assert`,
+     2. the type [`A`] function will return,
+     3. instance in which the operator is anchored,
+     4. the operator we want to anchor, here [`NotZero`]({{% ref "NotZero" %}}),
 5. `Age `field should be ≥ 40 and ≤ 45: anchor the
    [`Between`]({{% ref "between" %}}) operator:
-   - using the [`A`] method. Break this line down:
+   - using the [`AT`] method. Break this line down:
      ```golang
-     assert.A(                           // ← ①
-       td.Between(uint8(40), uint8(45)), // ← ②
-     ).(uint8)                           // ← ③
-     ```
-     1. the [`A`] method saves the operator in `assert`, so it can be
-        retrieved during the comparison of the next [`Cmp`] call on `assert`,
-     2. the operator we want to anchor. As [`Between`]({{% ref "between" %}})
-        knows the type of its operands (here `uint8`), there is no need
-        to tell [`A`] the returned type must be `uint8`. It can be deduced
-        from [`Between`]({{% ref "between" %}}),
-     3. as [`A`] method returns an `any`, we need to assert the
-        `uint8` type to bypass the golang static typing system.
-   - using the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-	 generic function. Break this line down:
-     ```go
-	 td.A[     // ← ①
-	   uint8,  // ← ②
+     assert.A[ // ← ①
+       uint8,  // ← ②
      ](
-	   assert, // ← ③
-	   td.Between(uint8(40), uint8(45)), // ← ④
+       td.Between(uint8(40), uint8(45)), // ← ③
      )
-	 ```
-	 1. the [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-	    function saves the operator in `assert`, so it can be retrieved
-	    during the comparison of the next [`Cmp`] call on `assert`,
-	 2. the type [`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-        function will return,
-	 3. instance in which the operator is anchored,
-	 4. the operator we want to anchor,
+     ```
+     1. the [`AT`] method saves the operator in `assert`, so it can be
+        retrieved during the comparison of the next [`Cmp`] call on `assert`,
+     2. the type [`A`] function will return,
+     3. the operator we want to anchor, here [`Between`]({{% ref "between" %}}),
+   - before go1.27, one can use the [`A`] generic function. Break this
+     line down:
+     ```go
+     td.A[     // ← ①
+       uint8,  // ← ②
+     ](
+       assert, // ← ③
+       td.Between(uint8(40), uint8(45)), // ← ④
+     )
+     ```
+     1. the [`A`] function saves the operator in `assert`, so it can
+        be retrieved during the comparison of the next [`Cmp`] call on
+        `assert`,
+     2. the type [`A`] function will return,
+     3. instance in which the operator is anchored,
+     4. the operator we want to anchor, here [`Between`]({{% ref "between" %}}).
 
-Note the [`A`] method is a shortcut of [`Anchor`] method, as well as
-[`A`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
-function is a shortcut of
-[`Anchor`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor)
-function.
+Note the [`AT`] method is a shortcut of [`AnchorT`] method, as well as
+[`A`] function is a shortcut of [`Anchor`] function.
 
 Some rules have to be kept in mind:
-- never cast a value returned by [`A`] or [`Anchor`] methods:
+- never cast a value returned by [`AT`] or [`AnchorT`] methods:
   ```golang
   assert := td.Assert(t) // t is a *testing.T
-  assert.A(td.NotZero(), uint(8)).(uint8)         // OK
-  uint16(assert.A(td.NotZero(), uint(8)).(uint8)) // Not OK!
-  assert.A(td.NotZero(), uint16(0)).(uint16)      // OK
+  assert.A[uint8](td.NotZero())         // OK
+  uint16(assert.A[uint8](td.NotZero())) // Not OK!
   ```
 - anchored operators disappear once the next [`Cmp`] call done. To
   share them between [`Cmp`] calls, use the [`SetAnchorsPersist`]
   method as in:
   ```golang
   assert := td.Assert(t) // t is a *testing.T
-  age := assert.A(td.Between(uint8(40), uint8(45))).(uint8)
+  age := assert.A[uint8](td.Between(uint8(40), uint8(45)))
 
   assert.SetAnchorsPersist(true) // ← Don't reset anchors after next Cmp() call
 
@@ -293,7 +281,11 @@ Some rules have to be kept in mind:
     Age:  age, // ← OK
   })
   ```
-  [Try it in playground 🔗](https://go.dev/play/p/10XnvLS1Z_B)
+  [Try it in playground 🔗](https://go.dev/play/p/_BUpJmpQ5zT)
+- some types cannot be anchored: `bool`, `struct` (unless
+  [`AddAnchorableStructType`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AddAnchorableStructType)
+  is explicitely used), functions, unsafe pointers and arrays. Note
+  that pointers on `bool`, `struct` or arrays are anchorable.
 
 
 ## How to test `io.Reader` contents, like `net/http.Response.Body` for example?
@@ -476,11 +468,11 @@ func TestResponseBody(t *testing.T) {
     &Person{ // ← check Person content
       Name:      "Bob",
       Age:       28,
-      ID:        assert.A(td.NotZero(), uint64(0)).(uint64), // check ID ≠ 0
-      CreatedAt: assert.A(td.Gte(y2019)).(time.Time),        // check CreatedAt ≥ 2019/01/01
+      ID:        assert.AT[uint64](td.NotZero()),     // check ID ≠ 0
+      CreatedAt: assert.AT[time.Time](td.Gte(y2019)), // check CreatedAt ≥ 2019/01/01
     }))
 
-  // Using anchoring feature with generics
+  // Before go1.27, using anchoring feature with go1.18 generics
   resp = GetResponse()
   assert.Cmp(resp.Body, td.Smuggle( // ← transform a io.Reader in *Person
     func(body io.Reader) (*Person, error) {
@@ -498,14 +490,14 @@ func TestResponseBody(t *testing.T) {
   resp = GetResponse()
   td.Cmp(t, resp.Body, td.Smuggle(json.RawMessage{}, td.JSON(`
     {
-	  "ID":        NotZero,
+      "ID":        NotZero,
       "Name":      "Bob",
       "Age":       28,
-	  "CreatedAt": Gte($1)
+      "CreatedAt": Gte($1)
     }`, y2019)))
 }
 ```
-[Try it in playground 🔗](https://go.dev/play/p/WPPhyhSIJvN)
+[Try it in playground 🔗](https://go.dev/play/p/Ft3kKfldwC2)
 
 
 ## What about testing the response using my API?
@@ -1248,6 +1240,9 @@ Test coverage must be 100%.
 
 [`Cmp`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp
 
-[`A`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A
-[`Anchor`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor
+[`AT`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AT
+[`AnchorT`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorT
 [`SetAnchorsPersist`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist
+
+[`A`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A
+[`Anchor`]: https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor

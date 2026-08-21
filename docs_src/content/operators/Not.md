@@ -1,6 +1,7 @@
 ---
 title: "Not"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_none.go#L48"
 ---
 
 ```go

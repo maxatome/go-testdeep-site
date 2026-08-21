@@ -1,6 +1,7 @@
 ---
 title: "Tag"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_tag.go#L27"
 ---
 
 ```go

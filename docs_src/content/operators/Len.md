@@ -1,6 +1,7 @@
 ---
 title: "Len"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_len_cap.go#L96"
 ---
 
 ```go

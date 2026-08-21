@@ -1,6 +1,7 @@
 ---
 title: "Slice"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_array.go#L155"
 ---
 
 ```go

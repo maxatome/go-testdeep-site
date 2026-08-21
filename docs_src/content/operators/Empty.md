@@ -1,6 +1,7 @@
 ---
 title: "Empty"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_empty.go#L28"
 ---
 
 ```go

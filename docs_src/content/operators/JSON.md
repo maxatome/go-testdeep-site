@@ -1,6 +1,7 @@
 ---
 title: "JSON"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_json.go#L478"
 ---
 
 ```go

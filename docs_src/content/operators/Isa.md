@@ -1,6 +1,7 @@
 ---
 title: "Isa"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_isa.go#L26"
 ---
 
 ```go

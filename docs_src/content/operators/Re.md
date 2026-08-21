@@ -1,6 +1,7 @@
 ---
 title: "Re"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_re.go#L78"
 ---
 
 ```go

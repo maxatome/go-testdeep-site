@@ -1,6 +1,7 @@
 ---
 title: "List"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_list.go#L47"
 ---
 
 ```go

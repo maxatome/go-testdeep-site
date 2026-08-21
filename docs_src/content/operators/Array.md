@@ -1,6 +1,7 @@
 ---
 title: "Array"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_array.go#L124"
 ---
 
 ```go

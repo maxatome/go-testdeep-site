@@ -1,6 +1,7 @@
 ---
 title: "SuperBagOf"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_bag.go#L102"
 ---
 
 ```go

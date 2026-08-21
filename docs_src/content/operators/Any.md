@@ -1,6 +1,7 @@
 ---
 title: "Any"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_any.go#L24"
 ---
 
 ```go

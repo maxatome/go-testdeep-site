@@ -1,6 +1,7 @@
 ---
 title: "Shallow"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_shallow.go#L34"
 ---
 
 ```go

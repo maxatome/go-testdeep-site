@@ -1,6 +1,7 @@
 ---
 title: "Catch"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_catch.go#L27"
 ---
 
 ```go

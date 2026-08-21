@@ -1,6 +1,7 @@
 ---
 title: "SubMapOf"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_map.go#L213"
 ---
 
 ```go

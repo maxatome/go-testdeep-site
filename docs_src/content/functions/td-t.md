@@ -82,17 +82,22 @@ but it is still available for backward compatibility purpose.
 
 ### Anchoring methods of [`*td.T`]
 
-- [`func (t *T) A(operator TestDeep, model ...any) any`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A)
-- [`func (t *T) Anchor(operator TestDeep, model ...any) any`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor)
+- [`func (t *T) AT[X any](operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AT)
+- [`func (t *T) AnchorT[X any](operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorT)
 - [`func (t *T) AnchorsPersistTemporarily() func()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorsPersistTemporarily)
 - [`func (t *T) DoAnchorsPersist() bool`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.DoAnchorsPersist)
 - [`func (t *T) ResetAnchors()`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.ResetAnchors)
 - [`func (t *T) SetAnchorsPersist(persist bool)`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist)
 
-Thanks to generics, one can also use:
+Using generics but before go1.27, one can also use:
 
 - [`func A[X any](t *T, operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A)
 - [`func Anchor[X any](t *T, operator TestDeep) X`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor)
+
+Before generics are available in go1.18, anchoring can be achieved using:
+
+- [`func (t *T) A(operator TestDeep, model ...any) any`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A)
+- [`func (t *T) Anchor(operator TestDeep, model ...any) any`](https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor)
 
 
 ### Shortcut methods of [`*td.T`]
@@ -137,7 +142,7 @@ func TestCmpHook(tt *testing.T) {
   // Test time.Time via its Equal() method instead of default
   // field/field (note it bypasses the UseEqual flag)
   t = t.WithCmpHooks((time.Time).Equal)
-  date, _ := time.Parse(time.RFC3339, "2020-09-08T22:13:54+02:00")
+  date := t.Must(time.Parse(time.RFC3339, "2020-09-08T22:13:54+02:00"))
   t.Cmp(date, date.UTC()) // succeeds
 
   // Each encountered string is converted to int

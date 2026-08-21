@@ -1,6 +1,7 @@
 ---
 title: "JSONPointer"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_json_pointer.go#L30"
 ---
 
 ```go

@@ -1,6 +1,7 @@
 ---
 title: "Smuggle"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_smuggle.go#L639"
 ---
 
 ```go

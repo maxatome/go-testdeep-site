@@ -1,6 +1,7 @@
 ---
 title: "NotNaN"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_nan.go#L73"
 ---
 
 ```go

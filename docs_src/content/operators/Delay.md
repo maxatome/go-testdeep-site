@@ -1,6 +1,7 @@
 ---
 title: "Delay"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_delay.go#L28"
 ---
 
 ```go

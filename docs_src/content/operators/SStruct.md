@@ -1,6 +1,7 @@
 ---
 title: "SStruct"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_struct.go#L580"
 ---
 
 ```go

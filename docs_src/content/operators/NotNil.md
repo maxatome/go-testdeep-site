@@ -1,6 +1,7 @@
 ---
 title: "NotNil"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_nil.go#L83"
 ---
 
 ```go

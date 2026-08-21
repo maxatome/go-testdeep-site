@@ -1,6 +1,7 @@
 ---
 title: "ArrayEach"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_array_each.go#L28"
 ---
 
 ```go

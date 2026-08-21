@@ -1,6 +1,7 @@
 ---
 title: "ContainsKey"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_contains_key.go#L27"
 ---
 
 ```go

@@ -1,6 +1,7 @@
 ---
 title: "Grep"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_grep.go#L172"
 ---
 
 ```go

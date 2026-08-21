@@ -1,6 +1,7 @@
 ---
 title: "Ptr"
 weight: 10
+editURL: "https://github.com/maxatome/go-testdeep/edit/master/td/td_ptr.go#L25"
 ---
 
 ```go
