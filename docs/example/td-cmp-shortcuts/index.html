@@ -1,9 +1,9 @@
-<!doctype html><html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
+<!doctype html><html id=R-html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.148.2">
-<meta name=generator content="Relearn 8.0.0">
+<meta name=generator content="Hugo 0.165.0">
+<meta name=generator content="Relearn 9.0.3">
 <meta name=description content='The Cmp function is the keystone of this package, but to make the writing of tests even easier, the family of Cmp* functions are provided and act as shortcuts. Using CmpStruct function, the previous example can be written as:
 import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreateRecord(t *testing.T) { before := time.Now().Truncate(time.Second) record := td.Must(CreateRecord("Bob", 23)) td.CmpStruct(t, record, &amp;Record{ Name: "Bob", Age: 23, }, td.StructFields{ "Id": td.NotZero(), "CreatedAt": td.Between(before, time.Now()), }, "Newly created record") } Test it in playground: https://go.dev/play/p/GS9G-g2ePr8'>
 <meta name=author content>
@@ -26,34 +26,36 @@ import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreate
 <meta itemprop=dateModified content="2026-02-18T22:48:31+01:00">
 <meta itemprop=wordCount content="80">
 <title>go-testdeep Cmp shortcuts :: go-testdeep</title>
-<link href=/images/favicon.png?1787215137 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1787215137 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1787215137 defer></script>
-<script src=/js/search-lunr.min.js?1787215137 defer></script>
-<script src=/js/search.min.js?1787215137 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787215137"</script>
-<script src=/js/lunr/lunr.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1787215137 defer></script>
+<link href=/images/favicon.png?1787336422 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1787336422 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1787336422 defer></script>
+<script src=/js/search-lunr.min.js?1787336422 defer></script>
+<script src=/js/search.min.js?1787336422 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787336422"</script>
+<script src=/js/lunr/lunr.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1787336422 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787215137 rel=stylesheet>
-<link href=/css/theme.min.css?1787215137 rel=stylesheet>
-<link href=/css/format-html.min.css?1787215137 rel=stylesheet id=R-format-style>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/td-cmp-shortcuts/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787336422 rel=stylesheet>
+<link href=/css/theme.min.css?1787336422 rel=stylesheet>
+<link href=/css/format-html.min.css?1787336422 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/example/td-cmp-shortcuts/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["green"],window.relearn.customvariantprefix="my-custom-",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant")??"";(!e||!e.startsWith(window.relearn.customvariantprefix)&&!window.relearn.themevariants.includes(e)||e.startsWith(window.relearn.customvariantprefix)&&!window.localStorage.getItem(window.relearn.absBaseUri+"/variantstylesheet-"+e))&&(e=window.relearn.themevariants[0],window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
-<body class="mobile-support html" data-url=/example/td-cmp-shortcuts/index.html>
+<body class="mobile-support html" data-origin=/example/td-cmp-shortcuts/index.html>
 <div id=R-body class=default-animation>
 <div id=R-body-overlay></div>
-<nav id=R-topbar>
-<div class=topbar-wrapper>
-<div class=topbar-sidebar-divider></div>
+<nav id=R-topbar class=default-animation>
+<div class="topbar-wrapper default-animation">
+<div class="topbar-sidebar-divider default-animation"></div>
 <div class="topbar-area topbar-area-start" data-area=start>
-<div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button>
+<div class="topbar-button topbar-button-sidebar default-animation" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></span>
 </div>
-<div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button>
+<div class="topbar-button topbar-button-toc default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-table-list"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 </div>
@@ -63,11 +65,17 @@ import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreate
 <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/example/index.html><span itemprop=name>Tutorial</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>go-testdeep Cmp shortcuts</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
-<div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/example/advanced-testdeep/index.html title="Advanced go-testdeep technique (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+<div class="topbar-button topbar-button-edit default-animation" data-content-empty=disable data-width-s=area-more data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=https://github.com/maxatome/go-testdeep-site/edit/master/docs_src/content/example/td-cmp-shortcuts.md rel=external title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/example/td-t/index.html title="td.T type (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+<div class="topbar-button topbar-button-prev default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/example/advanced-testdeep/index.html title="Advanced go-testdeep technique (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
+<div class="topbar-button topbar-button-next default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/example/td-t/index.html title="td.T type (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+</div>
+<div class="topbar-button topbar-button-more default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 <div class="topbar-area topbar-area-more" data-area=more>
@@ -85,35 +93,35 @@ import ( "testing" "time" "github.com/maxatome/go-testdeep/td" ) func TestCreate
 <header class=headline>
 </header>
 <h1 id=go-testdeep-cmp-shortcuts>go-testdeep Cmp shortcuts</h1>
-<p>The <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external target=_blank><code>Cmp</code></a>
+<p>The <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Cmp rel=external><code>Cmp</code></a>
 function is the keystone of this package, but to make the writing of
-tests even easier, the family of <a href=https://go-testdeep.zetta.rocks/functions/ rel=external target=_blank><code>Cmp*</code></a>
+tests even easier, the family of <a href=https://go-testdeep.zetta.rocks/functions/ rel=external><code>Cmp*</code></a>
 functions are provided and act as shortcuts. Using
-<a href=https://go-testdeep.zetta.rocks/operators/struct/#cmpstruct-shortcut rel=external target=_blank><code>CmpStruct</code></a>
+<a href=https://go-testdeep.zetta.rocks/operators/struct/#cmpstruct-shortcut rel=external><code>CmpStruct</code></a>
 function, the previous example can be written as:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;time&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
-</span></span><span style=display:flex><span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestCreateRecord</span>(<span style=color:#a6e22e>t</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>before</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>().<span style=color:#a6e22e>Truncate</span>(<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Second</span>)
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>record</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Must</span>(<span style=color:#a6e22e>CreateRecord</span>(<span style=color:#e6db74>&#34;Bob&#34;</span>, <span style=color:#ae81ff>23</span>))
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>CmpStruct</span>(<span style=color:#a6e22e>t</span>, <span style=color:#a6e22e>record</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Record</span>{
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Name</span>: <span style=color:#e6db74>&#34;Bob&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#a6e22e>Age</span>:  <span style=color:#ae81ff>23</span>,
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>StructFields</span>{
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Id&#34;</span>:        <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NotZero</span>(),
-</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;CreatedAt&#34;</span>: <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>before</span>, <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Now</span>()),
-</span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Newly created record&#34;</span>)
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
-<p>Test it in playground: <a href=https://go.dev/play/p/GS9G-g2ePr8 rel=external target=_blank>https://go.dev/play/p/GS9G-g2ePr8</a></p>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span><span style=color:#666> </span>(<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;testing&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;time&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestCreateRecord</span>(t<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>before<span style=color:#666> </span>:=<span style=color:#666> </span>time.<span style=color:#447fcf>Now</span>().<span style=color:#447fcf>Truncate</span>(time.Second)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>record<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>Must</span>(<span style=color:#447fcf>CreateRecord</span>(<span style=color:#ed9d13>&#34;Bob&#34;</span>,<span style=color:#666> </span><span style=color:#3677a9>23</span>))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>td.<span style=color:#447fcf>CmpStruct</span>(t,<span style=color:#666> </span>record,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>&amp;Record{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>      </span>Name:<span style=color:#666> </span><span style=color:#ed9d13>&#34;Bob&#34;</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>      </span>Age:<span style=color:#666>  </span><span style=color:#3677a9>23</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>},<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>td.StructFields{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>      </span><span style=color:#ed9d13>&#34;Id&#34;</span>:<span style=color:#666>        </span>td.<span style=color:#447fcf>NotZero</span>(),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>      </span><span style=color:#ed9d13>&#34;CreatedAt&#34;</span>:<span style=color:#666> </span>td.<span style=color:#447fcf>Between</span>(before,<span style=color:#666> </span>time.<span style=color:#447fcf>Now</span>()),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span>},<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#ed9d13>&#34;Newly created record&#34;</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
+<p>Test it in playground: <a href=https://go.dev/play/p/GS9G-g2ePr8 rel=external>https://go.dev/play/p/GS9G-g2ePr8</a></p>
 <footer class=footline>
 </footer>
 </article>
@@ -122,43 +130,40 @@ function, the previous example can be written as:</p>
 </div>
 <aside id=R-sidebar class=default-animation>
 <div id=R-header-topbar class=default-animation></div>
-<div id=R-header-wrapper class=default-animation>
-<div id=R-header class=default-animation>
-<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
-</div>
+<div id=R-header-wrapper class=default-animation><a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
 <search><form action=/search/index.html method=get>
 <div class="searchbox default-animation">
-<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
 <label class=a11y-only for=R-search-by>Search</label>
 <input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
-<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
 </div>
 </form></search>
 </div>
 <div id=R-homelinks class=default-animation>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-homelinks">
+<div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
 <ul class="space collapsible-menu">
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
 <ul>
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
 </div>
 <div id=R-content-wrapper class=highlightable>
-<div class="R-sidebarmenu R-shortcutmenu-main">
+<div class="R-sidebarmenu R-shortcutmenu-main default-animation">
 <ul class="enlarge morespace collapsible-menu">
 <li data-nav-id=/introduction/index.html><a class=padding href=/introduction/index.html>Introduction</a></li>
-<li class=parent data-nav-id=/example/index.html><a class=padding href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu>
+<li class=parent data-nav-id=/example/index.html><a class="padding default-animation" href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu>
 <li data-nav-id=/example/using-testing/index.html><a class=padding href=/example/using-testing/index.html>Using testing package</a></li>
 <li data-nav-id=/example/basic-testdeep/index.html><a class=padding href=/example/basic-testdeep/index.html>Basic go-testdeep approach</a></li>
 <li data-nav-id=/example/advanced-testdeep/index.html><a class=padding href=/example/advanced-testdeep/index.html>Advanced go-testdeep technique</a></li>
@@ -166,36 +171,37 @@ function, the previous example can be written as:</p>
 <li data-nav-id=/example/td-t/index.html><a class=padding href=/example/td-t/index.html>td.T type</a></li>
 <li data-nav-id=/example/anchoring/index.html><a class=padding href=/example/anchoring/index.html>Using anchoring</a></li>
 <li data-nav-id=/example/using-json/index.html><a class=padding href=/example/using-json/index.html>Using JSON</a></li></ul></li>
-<li data-nav-id=/functions/index.html><a class=padding href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
-<li data-nav-id=/operators/index.html><a class=padding href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu></ul></li>
+<li data-nav-id=/functions/index.html><a class="padding default-animation" href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
+<li data-nav-id=/operators/index.html><a class="padding default-animation" href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu></ul></li>
 <li data-nav-id=/helpers/index.html><a class=padding href=/helpers/index.html>Helpers</a></li>
 <li data-nav-id=/faq/index.html><a class=padding href=/faq/index.html>FAQ</a></li>
 </ul>
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+<div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
 <div class="nav-title padding">More</div>
 <ul class="space collapsible-menu">
 <li data-nav-id=/prez><a class=padding href=/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a></li>
-<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
+<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external><i class='fas fa-book'></i>&nbsp;godoc</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
 </ul>
 </div>
-<div id=R-footer-margin></div>
+<div id=R-footer-margin class=default-animation></div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
 <ul>
 </ul>
 </div>
-<div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
+<div id=R-footer class=default-animation><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1787215137 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787215137 defer></script>
-<script src=/js/theme.min.js?1787215137 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787336422 defer></script>
+<script src=/js/theme.min.js?1787336422 defer></script>
+<div id=toast-container role=status aria-live=polite aria-atomic=false></div>
 </body>
 </html>

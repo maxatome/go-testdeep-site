@@ -1,9 +1,9 @@
-<!doctype html><html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
+<!doctype html><html id=R-html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.148.2">
-<meta name=generator content="Relearn 8.0.0">
+<meta name=generator content="Hugo 0.165.0">
+<meta name=generator content="Relearn 9.0.3">
 <meta name=description content="All operators All all expected values have to match Any at least one expected value have to match Array compares the contents of an array or a pointer on an array ArrayEach compares each array or slice item Bag compares the contents of an array or a slice without taking care of the order of items Between checks that a number, string or time.Time is between two bounds Cap checks an array, slice or channel capacity Catch catches data on the fly before comparing it Code checks using a custom function Contains checks that a string, []byte, error or fmt.Stringer interfaces contain a rune, byte or a sub-string; or a slice contains a single value or a sub-slice; or an array or map contain a single value ContainsKey checks that a map contains a key Delay delays the operator construction till first use Empty checks that an array, a channel, a map, a slice or a string is empty ErrorIs checks the data is an error and matches a wrapped error First find the first matching item of a slice or an array then compare its content Grep reduces a slice or an array before comparing its content Gt checks that a number, string or time.Time is greater than a value Gte checks that a number, string or time.Time is greater or equal than a value HasPrefix checks the prefix of a string, []byte, error or fmt.Stringer interfaces HasSuffix checks the suffix of a string, []byte, error or fmt.Stringer interfaces Ignore allows to ignore a comparison Isa checks the data type or whether data implements an interface or not JSON compares against JSON representation JSONPointer compares against JSON representation using a JSON pointer Keys checks keys of a map Last find the last matching item of a slice or an array then compare its content Lax temporarily enables BeLax config flag Len checks an array, slice, map, string or channel length List compares the contents of an array or a slice with taking care of the order of items Lt checks that a number, string or time.Time is lesser than a value Lte checks that a number, string or time.Time is lesser or equal than a value Map compares the contents of a map MapEach compares each map entry N compares a number with a tolerance value NaN checks a floating number is math.NaN Nil compares to nil None no values have to match Not value must not match NotAny compares the contents of an array or a slice, no values have to match NotEmpty checks that an array, a channel, a map, a slice or a string is not empty NotNaN checks a floating number is not math.NaN NotNil checks that data is not nil NotZero checks that data is not zero regarding its type PPtr allows to easily test a pointer of pointer value Ptr allows to easily test a pointer value Re allows to apply a regexp on a string (or convertible), []byte, error or fmt.Stringer interfaces, and even test the captured groups ReAll allows to successively apply a regexp on a string (or convertible), []byte, error or fmt.Stringer interfaces, and even test the captured groups Recv checks the value read from a channel Set compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items Shallow compares pointers only, not their contents Slice compares the contents of a slice or a pointer on a slice Smuggle changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process Sort sorts a slice or an array before comparing its content Sorted checks a slice or an array is sorted SStruct strictly compares the contents of a struct or a pointer on a struct String checks a string, []byte, error or fmt.Stringer interfaces string contents Struct compares the contents of a struct or a pointer on a struct SubBagOf compares the contents of an array or a slice without taking care of the order of items but with potentially some exclusions SubJSONOf compares struct or map against JSON representation but with potentially some exclusions SubMapOf compares the contents of a map but with potentially some exclusions SubSetOf compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items but with potentially some exclusions SuperBagOf compares the contents of an array or a slice without taking care of the order of items but with potentially some extra items SuperJSONOf compares struct or map against JSON representation but with potentially extra entries SuperMapOf compares the contents of a map but with potentially some extra entries SuperSetOf compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items but with potentially some extra items SuperSliceOf compares the contents of a slice, a pointer on a slice, an array or a pointer on an array but with potentially some extra entries Tag names an operator or a value. Only useful as a parameter of JSON operator, to name placeholders TruncTime compares time.Time (or assignable) values after truncating them Values checks values of a map Zero checks data against its zero’ed conterpart Smuggler operators A smuggler operator is an operator able to transform the value (by changing its value or even its type) before comparing it.">
 <meta name=author content>
 <meta name=twitter:card content="summary">
@@ -22,34 +22,36 @@
 <meta itemprop=wordCount content="1192">
 <title>Operators :: go-testdeep</title>
 <link href=/operators/index.xml rel=alternate type=application/rss+xml title="Operators :: go-testdeep">
-<link href=/images/favicon.png?1787215137 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1787215137 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1787215137 defer></script>
-<script src=/js/search-lunr.min.js?1787215137 defer></script>
-<script src=/js/search.min.js?1787215137 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787215137"</script>
-<script src=/js/lunr/lunr.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1787215137 defer></script>
+<link href=/images/favicon.png?1787336422 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1787336422 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1787336422 defer></script>
+<script src=/js/search-lunr.min.js?1787336422 defer></script>
+<script src=/js/search.min.js?1787336422 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787336422"</script>
+<script src=/js/lunr/lunr.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1787336422 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787215137 rel=stylesheet>
-<link href=/css/theme.min.css?1787215137 rel=stylesheet>
-<link href=/css/format-html.min.css?1787215137 rel=stylesheet id=R-format-style>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/index.html",window.relearn.relBasePath="..",window.relearn.relBaseUri="..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787336422 rel=stylesheet>
+<link href=/css/theme.min.css?1787336422 rel=stylesheet>
+<link href=/css/format-html.min.css?1787336422 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/operators/index.html",window.relearn.relBasePath="..",window.relearn.relBaseUri="..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["green"],window.relearn.customvariantprefix="my-custom-",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant")??"";(!e||!e.startsWith(window.relearn.customvariantprefix)&&!window.relearn.themevariants.includes(e)||e.startsWith(window.relearn.customvariantprefix)&&!window.localStorage.getItem(window.relearn.absBaseUri+"/variantstylesheet-"+e))&&(e=window.relearn.themevariants[0],window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
-<body class="mobile-support html" data-url=/operators/index.html>
+<body class="mobile-support html" data-origin=/operators/index.html>
 <div id=R-body class=default-animation>
 <div id=R-body-overlay></div>
-<nav id=R-topbar>
-<div class=topbar-wrapper>
-<div class=topbar-sidebar-divider></div>
+<nav id=R-topbar class=default-animation>
+<div class="topbar-wrapper default-animation">
+<div class="topbar-sidebar-divider default-animation"></div>
 <div class="topbar-area topbar-area-start" data-area=start>
-<div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button>
+<div class="topbar-button topbar-button-sidebar default-animation" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></span>
 </div>
-<div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button>
+<div class="topbar-button topbar-button-toc default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-table-list"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 <nav class=TableOfContents>
@@ -66,11 +68,17 @@
 <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>Operators</span><meta itemprop=position content="2"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
-<div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/functions/td-t/index.html title="td.T (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+<div class="topbar-button topbar-button-edit default-animation" data-content-empty=disable data-width-s=area-more data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=https://github.com/maxatome/go-testdeep-site/edit/master/docs_src/content/operators/_index.md rel=external title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/matrix/index.html title="Operators matrices (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+<div class="topbar-button topbar-button-prev default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/functions/td-t/index.html title="td.T (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
+<div class="topbar-button topbar-button-next default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/operators/matrix/index.html title="Operators matrices (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+</div>
+<div class="topbar-button topbar-button-more default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 <div class="topbar-area topbar-area-more" data-area=more>
@@ -88,202 +96,202 @@
 <header class=headline>
 </header>
 <h1 id=operators>Operators</h1>
-<h2 id=all-operators>All operators</h2>
+<h2 id=all-operators>All operators<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <dl>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/all/ rel=external target=_blank><code>All</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/all/ rel=external><code>All</code></a></dt>
 <dd>all expected values have to match</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/any/ rel=external target=_blank><code>Any</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/any/ rel=external><code>Any</code></a></dt>
 <dd>at least one expected value have to match</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/array/ rel=external target=_blank><code>Array</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/array/ rel=external><code>Array</code></a></dt>
 <dd>compares the contents of an array or a pointer on an array</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/arrayeach/ rel=external target=_blank><code>ArrayEach</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/arrayeach/ rel=external><code>ArrayEach</code></a></dt>
 <dd>compares each array or slice item</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/bag/ rel=external target=_blank><code>Bag</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/bag/ rel=external><code>Bag</code></a></dt>
 <dd>compares the contents of an array or a slice without taking care of the order of items</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/between/ rel=external target=_blank><code>Between</code></a></dt>
-<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> is between two bounds</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/cap/ rel=external target=_blank><code>Cap</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/between/ rel=external><code>Between</code></a></dt>
+<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> is between two bounds</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/cap/ rel=external><code>Cap</code></a></dt>
 <dd>checks an array, slice or channel capacity</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/catch/ rel=external target=_blank><code>Catch</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/catch/ rel=external><code>Catch</code></a></dt>
 <dd>catches data on the fly before comparing it</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/code/ rel=external target=_blank><code>Code</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/code/ rel=external><code>Code</code></a></dt>
 <dd>checks using a custom function</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/contains/ rel=external target=_blank><code>Contains</code></a></dt>
-<dd>checks that a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces contain a rune, byte or a sub-string; or a slice contains a single value or a sub-slice; or an array or map contain a single value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/containskey/ rel=external target=_blank><code>ContainsKey</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/contains/ rel=external><code>Contains</code></a></dt>
+<dd>checks that a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces contain a rune, byte or a sub-string; or a slice contains a single value or a sub-slice; or an array or map contain a single value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/containskey/ rel=external><code>ContainsKey</code></a></dt>
 <dd>checks that a map contains a key</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/delay/ rel=external target=_blank><code>Delay</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/delay/ rel=external><code>Delay</code></a></dt>
 <dd>delays the operator construction till first use</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/empty/ rel=external target=_blank><code>Empty</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/empty/ rel=external><code>Empty</code></a></dt>
 <dd>checks that an array, a channel, a map, a slice or a string is empty</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/erroris/ rel=external target=_blank><code>ErrorIs</code></a></dt>
-<dd>checks the data is an <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> and matches a wrapped <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/first/ rel=external target=_blank><code>First</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/erroris/ rel=external><code>ErrorIs</code></a></dt>
+<dd>checks the data is an <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> and matches a wrapped <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/first/ rel=external><code>First</code></a></dt>
 <dd>find the first matching item of a slice or an array then compare its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/grep/ rel=external target=_blank><code>Grep</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/grep/ rel=external><code>Grep</code></a></dt>
 <dd>reduces a slice or an array before comparing its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/gt/ rel=external target=_blank><code>Gt</code></a></dt>
-<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> is greater than a value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/gte/ rel=external target=_blank><code>Gte</code></a></dt>
-<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> is greater or equal than a value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/hasprefix/ rel=external target=_blank><code>HasPrefix</code></a></dt>
-<dd>checks the prefix of a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/hassuffix/ rel=external target=_blank><code>HasSuffix</code></a></dt>
-<dd>checks the suffix of a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/ignore/ rel=external target=_blank><code>Ignore</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/gt/ rel=external><code>Gt</code></a></dt>
+<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> is greater than a value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/gte/ rel=external><code>Gte</code></a></dt>
+<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> is greater or equal than a value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/hasprefix/ rel=external><code>HasPrefix</code></a></dt>
+<dd>checks the prefix of a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/hassuffix/ rel=external><code>HasSuffix</code></a></dt>
+<dd>checks the suffix of a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/ignore/ rel=external><code>Ignore</code></a></dt>
 <dd>allows to ignore a comparison</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/isa/ rel=external target=_blank><code>Isa</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/isa/ rel=external><code>Isa</code></a></dt>
 <dd>checks the data type or whether data implements an interface or not</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/json/ rel=external target=_blank><code>JSON</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/json/ rel=external><code>JSON</code></a></dt>
 <dd>compares against JSON representation</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/jsonpointer/ rel=external target=_blank><code>JSONPointer</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/jsonpointer/ rel=external><code>JSONPointer</code></a></dt>
 <dd>compares against JSON representation using a JSON pointer</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/keys/ rel=external target=_blank><code>Keys</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/keys/ rel=external><code>Keys</code></a></dt>
 <dd>checks keys of a map</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/last/ rel=external target=_blank><code>Last</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/last/ rel=external><code>Last</code></a></dt>
 <dd>find the last matching item of a slice or an array then compare its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external target=_blank><code>Lax</code></a></dt>
-<dd>temporarily enables <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax rel=external target=_blank><code>BeLax</code> config flag</a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/len/ rel=external target=_blank><code>Len</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external><code>Lax</code></a></dt>
+<dd>temporarily enables <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax rel=external><code>BeLax</code> config flag</a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/len/ rel=external><code>Len</code></a></dt>
 <dd>checks an array, slice, map, string or channel length</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/list/ rel=external target=_blank><code>List</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/list/ rel=external><code>List</code></a></dt>
 <dd>compares the contents of an array or a slice with taking care of the order of items</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/lt/ rel=external target=_blank><code>Lt</code></a></dt>
-<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> is lesser than a value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/lte/ rel=external target=_blank><code>Lte</code></a></dt>
-<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> is lesser or equal than a value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external target=_blank><code>Map</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/lt/ rel=external><code>Lt</code></a></dt>
+<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> is lesser than a value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/lte/ rel=external><code>Lte</code></a></dt>
+<dd>checks that a number, string or <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> is lesser or equal than a value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/map/ rel=external><code>Map</code></a></dt>
 <dd>compares the contents of a map</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/mapeach/ rel=external target=_blank><code>MapEach</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/mapeach/ rel=external><code>MapEach</code></a></dt>
 <dd>compares each map entry</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/n/ rel=external target=_blank><code>N</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/n/ rel=external><code>N</code></a></dt>
 <dd>compares a number with a tolerance value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/nan/ rel=external target=_blank><code>NaN</code></a></dt>
-<dd>checks a floating number is <a href=https://pkg.go.dev/math/#NaN rel=external target=_blank><code>math.NaN</code></a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/nil/ rel=external target=_blank><code>Nil</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/nan/ rel=external><code>NaN</code></a></dt>
+<dd>checks a floating number is <a href=https://pkg.go.dev/math/#NaN rel=external><code>math.NaN</code></a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/nil/ rel=external><code>Nil</code></a></dt>
 <dd>compares to <code>nil</code></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/none/ rel=external target=_blank><code>None</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/none/ rel=external><code>None</code></a></dt>
 <dd>no values have to match</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/not/ rel=external target=_blank><code>Not</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/not/ rel=external><code>Not</code></a></dt>
 <dd>value must not match</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/notany/ rel=external target=_blank><code>NotAny</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/notany/ rel=external><code>NotAny</code></a></dt>
 <dd>compares the contents of an array or a slice, no values have to match</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/notempty/ rel=external target=_blank><code>NotEmpty</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/notempty/ rel=external><code>NotEmpty</code></a></dt>
 <dd>checks that an array, a channel, a map, a slice or a string is not empty</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/notnan/ rel=external target=_blank><code>NotNaN</code></a></dt>
-<dd>checks a floating number is not <a href=https://pkg.go.dev/math/#NaN rel=external target=_blank><code>math.NaN</code></a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/notnil/ rel=external target=_blank><code>NotNil</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/notnan/ rel=external><code>NotNaN</code></a></dt>
+<dd>checks a floating number is not <a href=https://pkg.go.dev/math/#NaN rel=external><code>math.NaN</code></a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/notnil/ rel=external><code>NotNil</code></a></dt>
 <dd>checks that data is not <code>nil</code></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/notzero/ rel=external target=_blank><code>NotZero</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/notzero/ rel=external><code>NotZero</code></a></dt>
 <dd>checks that data is not zero regarding its type</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/pptr/ rel=external target=_blank><code>PPtr</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/pptr/ rel=external><code>PPtr</code></a></dt>
 <dd>allows to easily test a pointer of pointer value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/ptr/ rel=external target=_blank><code>Ptr</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/ptr/ rel=external><code>Ptr</code></a></dt>
 <dd>allows to easily test a pointer value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/re/ rel=external target=_blank><code>Re</code></a></dt>
-<dd>allows to apply a regexp on a string (or convertible), <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces, and even test the captured groups</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/reall/ rel=external target=_blank><code>ReAll</code></a></dt>
-<dd>allows to successively apply a regexp on a string (or convertible), <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces, and even test the captured groups</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/recv/ rel=external target=_blank><code>Recv</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/re/ rel=external><code>Re</code></a></dt>
+<dd>allows to apply a regexp on a string (or convertible), <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces, and even test the captured groups</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/reall/ rel=external><code>ReAll</code></a></dt>
+<dd>allows to successively apply a regexp on a string (or convertible), <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces, and even test the captured groups</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/recv/ rel=external><code>Recv</code></a></dt>
 <dd>checks the value read from a channel</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/set/ rel=external target=_blank><code>Set</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/set/ rel=external><code>Set</code></a></dt>
 <dd>compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/shallow/ rel=external target=_blank><code>Shallow</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/shallow/ rel=external><code>Shallow</code></a></dt>
 <dd>compares pointers only, not their contents</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/slice/ rel=external target=_blank><code>Slice</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/slice/ rel=external><code>Slice</code></a></dt>
 <dd>compares the contents of a slice or a pointer on a slice</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external><code>Smuggle</code></a></dt>
 <dd>changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external><code>Sort</code></a></dt>
 <dd>sorts a slice or an array before comparing its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external target=_blank><code>Sorted</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/sorted/ rel=external><code>Sorted</code></a></dt>
 <dd>checks a slice or an array is sorted</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/sstruct/ rel=external target=_blank><code>SStruct</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/sstruct/ rel=external><code>SStruct</code></a></dt>
 <dd>strictly compares the contents of a struct or a pointer on a struct</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/string/ rel=external target=_blank><code>String</code></a></dt>
-<dd>checks a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces string contents</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/struct/ rel=external target=_blank><code>Struct</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/string/ rel=external><code>String</code></a></dt>
+<dd>checks a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces string contents</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/struct/ rel=external><code>Struct</code></a></dt>
 <dd>compares the contents of a struct or a pointer on a struct</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/subbagof/ rel=external target=_blank><code>SubBagOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/subbagof/ rel=external><code>SubBagOf</code></a></dt>
 <dd>compares the contents of an array or a slice without taking care of the order of items but with potentially some exclusions</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/subjsonof/ rel=external target=_blank><code>SubJSONOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/subjsonof/ rel=external><code>SubJSONOf</code></a></dt>
 <dd>compares struct or map against JSON representation but with potentially some exclusions</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/submapof/ rel=external target=_blank><code>SubMapOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/submapof/ rel=external><code>SubMapOf</code></a></dt>
 <dd>compares the contents of a map but with potentially some exclusions</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/subsetof/ rel=external target=_blank><code>SubSetOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/subsetof/ rel=external><code>SubSetOf</code></a></dt>
 <dd>compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items but with potentially some exclusions</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/superbagof/ rel=external target=_blank><code>SuperBagOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/superbagof/ rel=external><code>SuperBagOf</code></a></dt>
 <dd>compares the contents of an array or a slice without taking care of the order of items but with potentially some extra items</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/superjsonof/ rel=external target=_blank><code>SuperJSONOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/superjsonof/ rel=external><code>SuperJSONOf</code></a></dt>
 <dd>compares struct or map against JSON representation but with potentially extra entries</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/supermapof/ rel=external target=_blank><code>SuperMapOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/supermapof/ rel=external><code>SuperMapOf</code></a></dt>
 <dd>compares the contents of a map but with potentially some extra entries</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/supersetof/ rel=external target=_blank><code>SuperSetOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/supersetof/ rel=external><code>SuperSetOf</code></a></dt>
 <dd>compares the contents of an array or a slice ignoring duplicates and without taking care of the order of items but with potentially some extra items</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/supersliceof/ rel=external target=_blank><code>SuperSliceOf</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/supersliceof/ rel=external><code>SuperSliceOf</code></a></dt>
 <dd>compares the contents of a slice, a pointer on a slice, an array or a pointer on an array but with potentially some extra entries</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/tag/ rel=external target=_blank><code>Tag</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/tag/ rel=external><code>Tag</code></a></dt>
 <dd>names an operator or a value. Only useful as a parameter of JSON operator, to name placeholders</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/trunctime/ rel=external target=_blank><code>TruncTime</code></a></dt>
-<dd>compares <a href=https://pkg.go.dev/time/#Time rel=external target=_blank><code>time.Time</code></a> (or assignable) values after truncating them</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/values/ rel=external target=_blank><code>Values</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/trunctime/ rel=external><code>TruncTime</code></a></dt>
+<dd>compares <a href=https://pkg.go.dev/time/#Time rel=external><code>time.Time</code></a> (or assignable) values after truncating them</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/values/ rel=external><code>Values</code></a></dt>
 <dd>checks values of a map</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/zero/ rel=external target=_blank><code>Zero</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/zero/ rel=external><code>Zero</code></a></dt>
 <dd>checks data against its zero&rsquo;ed conterpart</dd>
 </dl>
-<h2 id=smuggler-operators>Smuggler operators</h2>
+<h2 id=smuggler-operators>Smuggler operators<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>A smuggler operator is an operator able to transform the value (by
 changing its value or even its type) before comparing it.</p>
 <p>The following operators are smuggler ones:</p>
 <dl>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/cap/ rel=external target=_blank><code>Cap</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/cap/ rel=external><code>Cap</code></a></dt>
 <dd>checks an array, slice or channel capacity</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/catch/ rel=external target=_blank><code>Catch</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/catch/ rel=external><code>Catch</code></a></dt>
 <dd>catches data on the fly before comparing it</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/contains/ rel=external target=_blank><code>Contains</code></a></dt>
-<dd>checks that a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external target=_blank><code>fmt.Stringer</code></a> interfaces contain a rune, byte or a sub-string; or a slice contains a single value or a sub-slice; or an array or map contain a single value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/containskey/ rel=external target=_blank><code>ContainsKey</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/contains/ rel=external><code>Contains</code></a></dt>
+<dd>checks that a string, <code>[]byte</code>, <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> or <a href=https://pkg.go.dev/fmt/#Stringer rel=external><code>fmt.Stringer</code></a> interfaces contain a rune, byte or a sub-string; or a slice contains a single value or a sub-slice; or an array or map contain a single value</dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/containskey/ rel=external><code>ContainsKey</code></a></dt>
 <dd>checks that a map contains a key</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/erroris/ rel=external target=_blank><code>ErrorIs</code></a></dt>
-<dd>checks the data is an <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a> and matches a wrapped <a href=https://pkg.go.dev/builtin#error rel=external target=_blank><code>error</code></a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/first/ rel=external target=_blank><code>First</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/erroris/ rel=external><code>ErrorIs</code></a></dt>
+<dd>checks the data is an <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a> and matches a wrapped <a href=https://pkg.go.dev/builtin#error rel=external><code>error</code></a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/first/ rel=external><code>First</code></a></dt>
 <dd>find the first matching item of a slice or an array then compare its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/grep/ rel=external target=_blank><code>Grep</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/grep/ rel=external><code>Grep</code></a></dt>
 <dd>reduces a slice or an array before comparing its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/jsonpointer/ rel=external target=_blank><code>JSONPointer</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/jsonpointer/ rel=external><code>JSONPointer</code></a></dt>
 <dd>compares against JSON representation using a JSON pointer</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/keys/ rel=external target=_blank><code>Keys</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/keys/ rel=external><code>Keys</code></a></dt>
 <dd>checks keys of a map</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/last/ rel=external target=_blank><code>Last</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/last/ rel=external><code>Last</code></a></dt>
 <dd>find the last matching item of a slice or an array then compare its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external target=_blank><code>Lax</code></a></dt>
-<dd>temporarily enables <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax rel=external target=_blank><code>BeLax</code> config flag</a></dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/len/ rel=external target=_blank><code>Len</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external><code>Lax</code></a></dt>
+<dd>temporarily enables <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#ContextConfig.BeLax rel=external><code>BeLax</code> config flag</a></dd>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/len/ rel=external><code>Len</code></a></dt>
 <dd>checks an array, slice, map, string or channel length</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/pptr/ rel=external target=_blank><code>PPtr</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/pptr/ rel=external><code>PPtr</code></a></dt>
 <dd>allows to easily test a pointer of pointer value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/ptr/ rel=external target=_blank><code>Ptr</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/ptr/ rel=external><code>Ptr</code></a></dt>
 <dd>allows to easily test a pointer value</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/recv/ rel=external target=_blank><code>Recv</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/recv/ rel=external><code>Recv</code></a></dt>
 <dd>checks the value read from a channel</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external target=_blank><code>Smuggle</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/smuggle/ rel=external><code>Smuggle</code></a></dt>
 <dd>changes data contents or mutates it into another type via a custom function or a struct fields-path before stepping down in favor of generic comparison process</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external target=_blank><code>Sort</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/sort/ rel=external><code>Sort</code></a></dt>
 <dd>sorts a slice or an array before comparing its content</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/tag/ rel=external target=_blank><code>Tag</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/tag/ rel=external><code>Tag</code></a></dt>
 <dd>names an operator or a value. Only useful as a parameter of JSON operator, to name placeholders</dd>
-<dt><a href=https://go-testdeep.zetta.rocks/operators/values/ rel=external target=_blank><code>Values</code></a></dt>
+<dt><a href=https://go-testdeep.zetta.rocks/operators/values/ rel=external><code>Values</code></a></dt>
 <dd>checks values of a map</dd>
 </dl>
-<h2 id=typebehind-method><code>TypeBehind</code> method</h2>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#a6e22e>TypeBehind</span>() <span style=color:#a6e22e>reflect</span>.<span style=color:#a6e22e>Type</span></span></span></code></pre></div>
+<h2 id=typebehind-method><code>TypeBehind</code> method<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#447fcf>TypeBehind</span>()<span style=color:#666> </span>reflect.Type</span></span></code></pre></div>
 <p>This method returns the type handled by the operator or <code>nil</code> if it is
 not known.
-<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><code>tdhttp</code> helper</a>
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external><code>tdhttp</code> helper</a>
 uses it to know how to unmarshal HTTP responses bodies before
 comparing them using the operator.</p>
 <p>It is usually not used outside the
-<a href=https://github.com/maxatome/go-testdeep rel=external target=_blank>go-testdeep repository</a>.</p>
+<a href=https://github.com/maxatome/go-testdeep rel=external>go-testdeep repository</a>.</p>
 <footer class=footline>
 </footer>
 </article>
@@ -292,45 +300,42 @@ comparing them using the operator.</p>
 </div>
 <aside id=R-sidebar class=default-animation>
 <div id=R-header-topbar class=default-animation></div>
-<div id=R-header-wrapper class=default-animation>
-<div id=R-header class=default-animation>
-<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
-</div>
+<div id=R-header-wrapper class=default-animation><a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
 <search><form action=/search/index.html method=get>
 <div class="searchbox default-animation">
-<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
 <label class=a11y-only for=R-search-by>Search</label>
 <input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
-<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
 </div>
 </form></search>
 </div>
 <div id=R-homelinks class=default-animation>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-homelinks">
+<div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
 <ul class="space collapsible-menu">
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
 <ul>
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
 </div>
 <div id=R-content-wrapper class=highlightable>
-<div class="R-sidebarmenu R-shortcutmenu-main">
+<div class="R-sidebarmenu R-shortcutmenu-main default-animation">
 <ul class="enlarge morespace collapsible-menu">
 <li data-nav-id=/introduction/index.html><a class=padding href=/introduction/index.html>Introduction</a></li>
-<li data-nav-id=/example/index.html><a class=padding href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
-<li data-nav-id=/functions/index.html><a class=padding href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
-<li class="active parent" data-nav-id=/operators/index.html><a class=padding href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu>
+<li data-nav-id=/example/index.html><a class="padding default-animation" href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
+<li data-nav-id=/functions/index.html><a class="padding default-animation" href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu></ul></li>
+<li class="active parent" data-nav-id=/operators/index.html><a class="padding default-animation" href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu>
 <li data-nav-id=/operators/matrix/index.html><a class=padding href=/operators/matrix/index.html>Operators matrices</a></li>
 <li data-nav-id=/operators/all/index.html><a class=padding href=/operators/all/index.html>All</a></li>
 <li data-nav-id=/operators/any/index.html><a class=padding href=/operators/any/index.html>Any</a></li>
@@ -406,30 +411,31 @@ comparing them using the operator.</p>
 <li data-nav-id=/faq/index.html><a class=padding href=/faq/index.html>FAQ</a></li>
 </ul>
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+<div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
 <div class="nav-title padding">More</div>
 <ul class="space collapsible-menu">
 <li data-nav-id=/prez><a class=padding href=/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a></li>
-<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
+<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external><i class='fas fa-book'></i>&nbsp;godoc</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
 </ul>
 </div>
-<div id=R-footer-margin></div>
+<div id=R-footer-margin class=default-animation></div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
 <ul>
 </ul>
 </div>
-<div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
+<div id=R-footer class=default-animation><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1787215137 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787215137 defer></script>
-<script src=/js/theme.min.js?1787215137 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787336422 defer></script>
+<script src=/js/theme.min.js?1787336422 defer></script>
+<div id=toast-container role=status aria-live=polite aria-atomic=false></div>
 </body>
 </html>

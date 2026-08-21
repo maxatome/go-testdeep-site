@@ -1,9 +1,9 @@
-<!doctype html><html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
+<!doctype html><html id=R-html lang=en-us dir=ltr itemscope itemtype=http://schema.org/Article data-r-output-format=html>
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="height=device-height,width=device-width,initial-scale=1,minimum-scale=1">
-<meta name=generator content="Hugo 0.148.2">
-<meta name=generator content="Relearn 8.0.0">
+<meta name=generator content="Hugo 0.165.0">
+<meta name=generator content="Relearn 9.0.3">
 <meta name=description content='Constructing *td.T import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *testing.T) { t := td.NewT(tt) t.Cmp(MyFunc(), 12) } func NewT(t testing.TB, config ...ContextConfig) *T func Assert(t testing.TB, config ...ContextConfig) *T func Require(t testing.TB, config ...ContextConfig) *T func AssertRequire(t testing.TB, config ...ContextConfig) (assert, require *T) Configuring *td.T func TestMyFunc(tt *testing.T) { t := td.NewT(tt).UseEqual().RootName("RECORD") ... } func (t *T) BeLax(enable ...bool) *T func (t *T) FailureIsFatal(enable ...bool) *T func (t *T) IgnoreUnexported(types ...any) *T func (t *T) RootName(rootName string) *T func (t *T) UseEqual(types ...any) *T Main methods of *td.T import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *testing.T) { t := td.NewT(tt).UseEqual() // Compares MyFunc() result against a fixed value t.Cmp(MyFunc(), 128, "MyFunc() result is 128") // Compares MyFunc() result using the Between Testdeep operator t.Cmp(MyFunc(), td.Between(100, 199), "MyFunc() result is between 100 and 199") } func (t *T) Cmp(got, expected any, args ...any) bool func (t *T) CmpError(got error, args ...any) bool func (t *T) CmpLax(got, expected any, args ...any) bool (in fact the shortcut of Lax operator) func (t *T) CmpNoError(got error, args ...any) bool func (t *T) CmpNotPanic(fn func(), args ...any) bool func (t *T) CmpPanic(fn func(), expected any, args ...any) bool func (t *T) False(got any, args ...any) bool func (t *T) Not(got, notExpected any, args ...any) bool (in fact the shortcut of Not operator) func (t *T) Run(name string, f func(t *T)) bool func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool func (t *T) True(got any, args ...any) bool CmpDeeply() method is now replaced by Cmp(), but it is still available for backward compatibility purpose.'>
 <meta name=author content>
 <meta name=twitter:card content="summary">
@@ -16,51 +16,53 @@
 <meta property="og:locale" content="en_us">
 <meta property="og:type" content="article">
 <meta property="article:section" content="Functions">
-<meta property="article:modified_time" content="2025-04-17T20:24:54+02:00">
+<meta property="article:modified_time" content="2026-08-21T20:18:56+02:00">
 <meta itemprop=name content="td.T :: go-testdeep">
 <meta itemprop=description content='Constructing *td.T import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *testing.T) { t := td.NewT(tt) t.Cmp(MyFunc(), 12) } func NewT(t testing.TB, config ...ContextConfig) *T func Assert(t testing.TB, config ...ContextConfig) *T func Require(t testing.TB, config ...ContextConfig) *T func AssertRequire(t testing.TB, config ...ContextConfig) (assert, require *T) Configuring *td.T func TestMyFunc(tt *testing.T) { t := td.NewT(tt).UseEqual().RootName("RECORD") ... } func (t *T) BeLax(enable ...bool) *T func (t *T) FailureIsFatal(enable ...bool) *T func (t *T) IgnoreUnexported(types ...any) *T func (t *T) RootName(rootName string) *T func (t *T) UseEqual(types ...any) *T Main methods of *td.T import ( "testing" "github.com/maxatome/go-testdeep/td" ) func TestMyFunc(tt *testing.T) { t := td.NewT(tt).UseEqual() // Compares MyFunc() result against a fixed value t.Cmp(MyFunc(), 128, "MyFunc() result is 128") // Compares MyFunc() result using the Between Testdeep operator t.Cmp(MyFunc(), td.Between(100, 199), "MyFunc() result is between 100 and 199") } func (t *T) Cmp(got, expected any, args ...any) bool func (t *T) CmpError(got error, args ...any) bool func (t *T) CmpLax(got, expected any, args ...any) bool (in fact the shortcut of Lax operator) func (t *T) CmpNoError(got error, args ...any) bool func (t *T) CmpNotPanic(fn func(), args ...any) bool func (t *T) CmpPanic(fn func(), expected any, args ...any) bool func (t *T) False(got any, args ...any) bool func (t *T) Not(got, notExpected any, args ...any) bool (in fact the shortcut of Not operator) func (t *T) Run(name string, f func(t *T)) bool func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool func (t *T) True(got any, args ...any) bool CmpDeeply() method is now replaced by Cmp(), but it is still available for backward compatibility purpose.'>
-<meta itemprop=dateModified content="2025-04-17T20:24:54+02:00">
-<meta itemprop=wordCount content="466">
+<meta itemprop=dateModified content="2026-08-21T20:18:56+02:00">
+<meta itemprop=wordCount content="492">
 <title>td.T :: go-testdeep</title>
-<link href=/images/favicon.png?1787215137 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1787215137 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1787215137 defer></script>
-<script src=/js/search-lunr.min.js?1787215137 defer></script>
-<script src=/js/search.min.js?1787215137 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787215137"</script>
-<script src=/js/lunr/lunr.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1787215137 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1787215137 defer></script>
+<link href=/images/favicon.png?1787336422 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1787336422 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1787336422 defer></script>
+<script src=/js/search-lunr.min.js?1787336422 defer></script>
+<script src=/js/search.min.js?1787336422 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787336422"</script>
+<script src=/js/lunr/lunr.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1787336422 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1787336422 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/fontawesome-all.min.css?1787215137 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787215137 rel=stylesheet>
-<link href=/css/theme.min.css?1787215137 rel=stylesheet>
-<link href=/css/format-html.min.css?1787215137 rel=stylesheet id=R-format-style>
-<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/functions/td-t/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableAnchorCopy=!1,window.relearn.disableAnchorScrolling=!1,window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.relearn.getItem=(e,t)=>e.getItem(t),window.relearn.setItem=(e,t,n)=>e.setItem(t,n),window.relearn.removeItem=(e,t)=>e.removeItem(t),window.T_Copy_to_clipboard=`Copy to clipboard`,window.T_Copied_to_clipboard=`Copied to clipboard!`,window.T_Copy_link_to_clipboard=`Copy link to clipboard`,window.T_Link_copied_to_clipboard=`Copied link to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.relearn.themevariants=["green"],window.relearn.customvariantname="my-custom-variant",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.relearn.getItem(window.localStorage,window.relearn.absBaseUri+"/variant")??"";e==window.relearn.customvariantname||(!e||!window.relearn.themevariants.includes(e))&&(e=window.relearn.themevariants[0],window.relearn.setItem(window.localStorage,window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
+<link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787336422 rel=stylesheet>
+<link href=/css/theme.min.css?1787336422 rel=stylesheet>
+<link href=/css/format-html.min.css?1787336422 rel=stylesheet id=R-format-style>
+<script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/functions/td-t/index.html",window.relearn.relBasePath="../..",window.relearn.relBaseUri="../..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["green"],window.relearn.customvariantprefix="my-custom-",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant")??"";(!e||!e.startsWith(window.relearn.customvariantprefix)&&!window.relearn.themevariants.includes(e)||e.startsWith(window.relearn.customvariantprefix)&&!window.localStorage.getItem(window.relearn.absBaseUri+"/variantstylesheet-"+e))&&(e=window.relearn.themevariants[0],window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
-<body class="mobile-support html" data-url=/functions/td-t/index.html>
+<body class="mobile-support html" data-origin=/functions/td-t/index.html>
 <div id=R-body class=default-animation>
 <div id=R-body-overlay></div>
-<nav id=R-topbar>
-<div class=topbar-wrapper>
-<div class=topbar-sidebar-divider></div>
+<nav id=R-topbar class=default-animation>
+<div class="topbar-wrapper default-animation">
+<div class="topbar-sidebar-divider default-animation"></div>
 <div class="topbar-area topbar-area-start" data-area=start>
-<div class="topbar-button topbar-button-sidebar" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide><button class=topbar-control onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button>
+<div class="topbar-button topbar-button-sidebar default-animation" data-content-empty=disable data-width-s=show data-width-m=hide data-width-l=hide>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleNav() type=button title="Menu (CTRL+ALT+n)"><i class="fa-fw fas fa-bars"></i></button></span>
 </div>
-<div class="topbar-button topbar-button-toc" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-list-alt"></i></button>
+<div class="topbar-button topbar-button-toc default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title="Table of Contents (CTRL+ALT+t)"><i class="fa-fw fas fa-table-list"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 <nav class=TableOfContents>
 <ul>
 <li>
 <ul>
-<li><a href=#constructing-tdt>Constructing <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
-<li><a href=#configuring-tdt>Configuring <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
-<li><a href=#main-methods-of-tdt>Main methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
-<li><a href=#anchoring-methods-of-tdt>Anchoring methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
-<li><a href=#shortcut-methods-of-tdt>Shortcut methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T><code>*td.T</code></a></a></li>
+<li><a href=#constructing-tdt>Constructing <code>*td.T</code></a></li>
+<li><a href=#configuring-tdt>Configuring <code>*td.T</code></a></li>
+<li><a href=#main-methods-of-tdt>Main methods of <code>*td.T</code></a></li>
+<li><a href=#anchoring-methods-of-tdt>Anchoring methods of <code>*td.T</code></a></li>
+<li><a href=#shortcut-methods-of-tdt>Shortcut methods of <code>*td.T</code></a></li>
 <li><a href=#comparison-hooks>Comparison hooks</a></li>
 </ul>
 </li>
@@ -73,11 +75,17 @@
 <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype=http://schema.org/BreadcrumbList><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/index.html><span itemprop=name>go-testdeep</span></a><meta itemprop=position content="1">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><a itemprop=item href=/functions/index.html><span itemprop=name>Functions</span></a><meta itemprop=position content="2">&nbsp;>&nbsp;</li><li itemscope itemtype=https://schema.org/ListItem itemprop=itemListElement><span itemprop=name>td.T</span><meta itemprop=position content="3"></li>
 </ol>
 <div class="topbar-area topbar-area-end" data-area=end>
-<div class="topbar-button topbar-button-prev" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/functions/index.html title="Functions (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+<div class="topbar-button topbar-button-edit default-animation" data-content-empty=disable data-width-s=area-more data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=https://github.com/maxatome/go-testdeep-site/edit/master/docs_src/content/functions/td-t.md rel=external title="Edit (CTRL+ALT+w)"><i class="fa-fw fas fa-pen"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-next" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show><a class=topbar-control href=/operators/index.html title="Operators (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+<div class="topbar-button topbar-button-prev default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/functions/index.html title="Functions (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
 </div>
-<div class="topbar-button topbar-button-more" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show><button class=topbar-control onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button>
+<div class="topbar-button topbar-button-next default-animation" data-content-empty=disable data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><a href=/operators/index.html title="Operators (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+</div>
+<div class="topbar-button topbar-button-more default-animation" data-content-empty=hide data-width-s=show data-width-m=show data-width-l=show>
+<span class="btn cstyle button link noborder notitle interactive"><button onclick=toggleTopbarFlyout(this) type=button title=More><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
 <div class=topbar-content>
 <div class=topbar-content-wrapper>
 <div class="topbar-area topbar-area-more" data-area=more>
@@ -95,124 +103,129 @@
 <header class=headline>
 </header>
 <h1 id=tdt>td.T</h1>
-<h3 id=constructing-tdt>Constructing <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*td.T</code></a></h3>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
-</span></span><span style=display:flex><span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>)
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>MyFunc</span>(), <span style=color:#ae81ff>12</span>)
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
+<h3 id=constructing-tdt>Constructing <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external><code>*td.T</code></a><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span><span style=color:#666> </span>(<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;testing&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestMyFunc</span>(tt<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>NewT</span>(tt)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>MyFunc</span>(),<span style=color:#666> </span><span style=color:#3677a9>12</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT rel=external target=_blank><code>func NewT(t testing.TB, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert rel=external target=_blank><code>func Assert(t testing.TB, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require rel=external target=_blank><code>func Require(t testing.TB, config ...ContextConfig) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire rel=external target=_blank><code>func AssertRequire(t testing.TB, config ...ContextConfig) (assert, require *T)</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#NewT rel=external><code>func NewT(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Assert rel=external><code>func Assert(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Require rel=external><code>func Require(t testing.TB, config ...ContextConfig) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#AssertRequire rel=external><code>func AssertRequire(t testing.TB, config ...ContextConfig) (assert, require *T)</code></a></li>
 </ul>
-<h3 id=configuring-tdt>Configuring <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*td.T</code></a></h3>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>).<span style=color:#a6e22e>UseEqual</span>().<span style=color:#a6e22e>RootName</span>(<span style=color:#e6db74>&#34;RECORD&#34;</span>)
-</span></span><span style=display:flex><span>  <span style=color:#f92672>...</span>
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
+<h3 id=configuring-tdt>Configuring <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external><code>*td.T</code></a><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestMyFunc</span>(tt<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>NewT</span>(tt).<span style=color:#447fcf>UseEqual</span>().<span style=color:#447fcf>RootName</span>(<span style=color:#ed9d13>&#34;RECORD&#34;</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>...<span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.BeLax rel=external target=_blank><code>func (t *T) BeLax(enable ...bool) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.FailureIsFatal rel=external target=_blank><code>func (t *T) FailureIsFatal(enable ...bool) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.IgnoreUnexported rel=external target=_blank><code>func (t *T) IgnoreUnexported(types ...any) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RootName rel=external target=_blank><code>func (t *T) RootName(rootName string) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.UseEqual rel=external target=_blank><code>func (t *T) UseEqual(types ...any) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.BeLax rel=external><code>func (t *T) BeLax(enable ...bool) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.FailureIsFatal rel=external><code>func (t *T) FailureIsFatal(enable ...bool) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.IgnoreUnexported rel=external><code>func (t *T) IgnoreUnexported(types ...any) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RootName rel=external><code>func (t *T) RootName(rootName string) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.UseEqual rel=external><code>func (t *T) UseEqual(types ...any) *T</code></a></li>
 </ul>
-<h3 id=main-methods-of-tdt>Main methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*td.T</code></a></h3>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
-</span></span><span style=display:flex><span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>).<span style=color:#a6e22e>UseEqual</span>()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Compares MyFunc() result against a fixed value</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>MyFunc</span>(), <span style=color:#ae81ff>128</span>, <span style=color:#e6db74>&#34;MyFunc() result is 128&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Compares MyFunc() result using the Between Testdeep operator</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>MyFunc</span>(), <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>199</span>),
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;MyFunc() result is between 100 and 199&#34;</span>)
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
+<h3 id=main-methods-of-tdt>Main methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external><code>*td.T</code></a><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span><span style=color:#666> </span>(<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;testing&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestMyFunc</span>(tt<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>NewT</span>(tt).<span style=color:#447fcf>UseEqual</span>()<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#999;font-style:italic>// Compares MyFunc() result against a fixed value</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>MyFunc</span>(),<span style=color:#666> </span><span style=color:#3677a9>128</span>,<span style=color:#666> </span><span style=color:#ed9d13>&#34;MyFunc() result is 128&#34;</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#999;font-style:italic>// Compares MyFunc() result using the Between Testdeep operator</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#447fcf>MyFunc</span>(),<span style=color:#666> </span>td.<span style=color:#447fcf>Between</span>(<span style=color:#3677a9>100</span>,<span style=color:#666> </span><span style=color:#3677a9>199</span>),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#ed9d13>&#34;MyFunc() result is between 100 and 199&#34;</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external target=_blank><code>func (t *T) Cmp(got, expected any, args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpError rel=external target=_blank><code>func (t *T) CmpError(got error, args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpLax rel=external target=_blank><code>func (t *T) CmpLax(got, expected any, args ...any) bool</code></a>
-(in fact the shortcut of <a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external target=_blank><code>Lax</code> operator</a>)</li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNoError rel=external target=_blank><code>func (t *T) CmpNoError(got error, args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNotPanic rel=external target=_blank><code>func (t *T) CmpNotPanic(fn func(), args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpPanic rel=external target=_blank><code>func (t *T) CmpPanic(fn func(), expected any, args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False rel=external target=_blank><code>func (t *T) False(got any, args ...any) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not rel=external target=_blank><code>func (t *T) Not(got, notExpected any, args ...any) bool</code></a>
-(in fact the shortcut of <a href=https://go-testdeep.zetta.rocks/operators/not/ rel=external target=_blank><code>Not</code> operator</a>)</li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run rel=external target=_blank><code>func (t *T) Run(name string, f func(t *T)) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire rel=external target=_blank><code>func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True rel=external target=_blank><code>func (t *T) True(got any, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external><code>func (t *T) Cmp(got, expected any, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpError rel=external><code>func (t *T) CmpError(got error, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpLax rel=external><code>func (t *T) CmpLax(got, expected any, args ...any) bool</code></a>
+(in fact the shortcut of <a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external><code>Lax</code> operator</a>)</li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNoError rel=external><code>func (t *T) CmpNoError(got error, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpNotPanic rel=external><code>func (t *T) CmpNotPanic(fn func(), args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpPanic rel=external><code>func (t *T) CmpPanic(fn func(), expected any, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.False rel=external><code>func (t *T) False(got any, args ...any) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Not rel=external><code>func (t *T) Not(got, notExpected any, args ...any) bool</code></a>
+(in fact the shortcut of <a href=https://go-testdeep.zetta.rocks/operators/not/ rel=external><code>Not</code> operator</a>)</li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Run rel=external><code>func (t *T) Run(name string, f func(t *T)) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.RunAssertRequire rel=external><code>func (t *T) RunAssertRequire(name string, f func(assert, require *T)) bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.True rel=external><code>func (t *T) True(got any, args ...any) bool</code></a></li>
 </ul>
-<p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply rel=external target=_blank><code>CmpDeeply()</code></a>
+<p><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.CmpDeeply rel=external><code>CmpDeeply()</code></a>
 method is now replaced by
-<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external target=_blank><code>Cmp()</code></a>,
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external><code>Cmp()</code></a>,
 but it is still available for backward compatibility purpose.</p>
-<h3 id=anchoring-methods-of-tdt>Anchoring methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*td.T</code></a></h3>
+<h3 id=anchoring-methods-of-tdt>Anchoring methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external><code>*td.T</code></a><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A rel=external target=_blank><code>func (t *T) A(operator TestDeep, model ...any) any</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor rel=external target=_blank><code>func (t *T) Anchor(operator TestDeep, model ...any) any</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorsPersistTemporarily rel=external target=_blank><code>func (t *T) AnchorsPersistTemporarily() func()</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.DoAnchorsPersist rel=external target=_blank><code>func (t *T) DoAnchorsPersist() bool</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.ResetAnchors rel=external target=_blank><code>func (t *T) ResetAnchors()</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist rel=external target=_blank><code>func (t *T) SetAnchorsPersist(persist bool)</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AT rel=external><code>func (t *T) AT[X any](operator TestDeep) X</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorT rel=external><code>func (t *T) AnchorT[X any](operator TestDeep) X</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.AnchorsPersistTemporarily rel=external><code>func (t *T) AnchorsPersistTemporarily() func()</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.DoAnchorsPersist rel=external><code>func (t *T) DoAnchorsPersist() bool</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.ResetAnchors rel=external><code>func (t *T) ResetAnchors()</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.SetAnchorsPersist rel=external><code>func (t *T) SetAnchorsPersist(persist bool)</code></a></li>
 </ul>
-<p>Thanks to generics, one can also use:</p>
+<p>Using generics but before go1.27, one can also use:</p>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A rel=external target=_blank><code>func A[X any](t *T, operator TestDeep) X</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor rel=external target=_blank><code>func Anchor[X any](t *T, operator TestDeep) X</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#A rel=external><code>func A[X any](t *T, operator TestDeep) X</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#Anchor rel=external><code>func Anchor[X any](t *T, operator TestDeep) X</code></a></li>
 </ul>
-<h3 id=shortcut-methods-of-tdt>Shortcut methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external target=_blank><code>*td.T</code></a></h3>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>import</span> (
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;testing&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;github.com/maxatome/go-testdeep/td&#34;</span>
-</span></span><span style=display:flex><span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestMyFunc</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>).<span style=color:#a6e22e>UseEqual</span>()
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Between</span>(<span style=color:#a6e22e>MyFunc</span>(), <span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>199</span>, <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>BoundsInIn</span>,
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;MyFunc() result is between 100 and 199&#34;</span>)
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
+<p>Before generics are available in go1.18, anchoring can be achieved using:</p>
+<ul>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.A rel=external><code>func (t *T) A(operator TestDeep, model ...any) any</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Anchor rel=external><code>func (t *T) Anchor(operator TestDeep, model ...any) any</code></a></li>
+</ul>
+<h3 id=shortcut-methods-of-tdt>Shortcut methods of <a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T rel=external><code>*td.T</code></a><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>import</span><span style=color:#666> </span>(<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;testing&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#ed9d13>&#34;github.com/maxatome/go-testdeep/td&#34;</span><span style=color:#666>
+</span></span></span><span style=display:flex><span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestMyFunc</span>(tt<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>NewT</span>(tt).<span style=color:#447fcf>UseEqual</span>()<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Between</span>(<span style=color:#447fcf>MyFunc</span>(),<span style=color:#666> </span><span style=color:#3677a9>100</span>,<span style=color:#666> </span><span style=color:#3677a9>199</span>,<span style=color:#666> </span>td.BoundsInIn,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>    </span><span style=color:#ed9d13>&#34;MyFunc() result is between 100 and 199&#34;</span>)<span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <p>For each of these methods, it is always a shortcut on
-<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external target=_blank><code>T.Cmp()</code></a> and
-the correponding <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>Testdeep operator</a>:</p>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0><code>T.HasPrefix(got, expected, …) ⇒ T.Cmp(t, got, HasPrefix(expected), …)
+<a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.Cmp rel=external><code>T.Cmp()</code></a> and
+the correponding <a href=https://go-testdeep.zetta.rocks/operators/ rel=external>Testdeep operator</a>:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0><code>T.HasPrefix(got, expected, …) ⇒ T.Cmp(t, got, HasPrefix(expected), …)
   ^-------^                                   ^-------^
       +-------------------------------------------+</code></pre></div>
-<p>Excluding <a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external target=_blank><code>Lax</code> operator</a> for which the
-shortcut method stays <a href=https://go-testdeep.zetta.rocks/operators/lax/#cmplax-shortcut rel=external target=_blank><code>CmpLax</code></a>.</p>
+<p>Excluding <a href=https://go-testdeep.zetta.rocks/operators/lax/ rel=external><code>Lax</code> operator</a> for which the
+shortcut method stays <a href=https://go-testdeep.zetta.rocks/operators/lax/#cmplax-shortcut rel=external><code>CmpLax</code></a>.</p>
 <p>Each shortcut method is described in the corresponding operator
-page. See <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target=_blank>operators list</a>.</p>
-<h3 id=comparison-hooks>Comparison hooks</h3>
-<div class="highlight wrap-code" dir=auto><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>TestCmpHook</span>(<span style=color:#a6e22e>tt</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>T</span>) {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>td</span>.<span style=color:#a6e22e>NewT</span>(<span style=color:#a6e22e>tt</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Test time.Time via its Equal() method instead of default</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// field/field (note it bypasses the UseEqual flag)</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>WithCmpHooks</span>((<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Time</span>).<span style=color:#a6e22e>Equal</span>)
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>date</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>Parse</span>(<span style=color:#a6e22e>time</span>.<span style=color:#a6e22e>RFC3339</span>, <span style=color:#e6db74>&#34;2020-09-08T22:13:54+02:00&#34;</span>)
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#a6e22e>date</span>, <span style=color:#a6e22e>date</span>.<span style=color:#a6e22e>UTC</span>()) <span style=color:#75715e>// succeeds</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// Each encountered string is converted to int</span>
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span> = <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>WithSmuggleHooks</span>(<span style=color:#a6e22e>strconv</span>.<span style=color:#a6e22e>Atoi</span>)
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>t</span>.<span style=color:#a6e22e>Cmp</span>(<span style=color:#e6db74>&#34;123&#34;</span>, <span style=color:#ae81ff>123</span>) <span style=color:#75715e>// succeeds</span>
-</span></span><span style=display:flex><span>}</span></span></code></pre></div>
+page. See <a href=https://go-testdeep.zetta.rocks/operators/ rel=external>operators list</a>.</p>
+<h3 id=comparison-hooks>Comparison hooks<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type=button title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir=auto><pre tabindex=0 style=color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#6ab825;font-weight:700>func</span><span style=color:#666> </span><span style=color:#447fcf>TestCmpHook</span>(tt<span style=color:#666> </span>*testing.T)<span style=color:#666> </span>{<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>:=<span style=color:#666> </span>td.<span style=color:#447fcf>NewT</span>(tt)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#999;font-style:italic>// Test time.Time via its Equal() method instead of default</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#999;font-style:italic>// field/field (note it bypasses the UseEqual flag)</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>=<span style=color:#666> </span>t.<span style=color:#447fcf>WithCmpHooks</span>((time.Time).Equal)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>date<span style=color:#666> </span>:=<span style=color:#666> </span>t.<span style=color:#447fcf>Must</span>(time.<span style=color:#447fcf>Parse</span>(time.RFC3339,<span style=color:#666> </span><span style=color:#ed9d13>&#34;2020-09-08T22:13:54+02:00&#34;</span>))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Cmp</span>(date,<span style=color:#666> </span>date.<span style=color:#447fcf>UTC</span>())<span style=color:#666> </span><span style=color:#999;font-style:italic>// succeeds</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span><span style=color:#999;font-style:italic>// Each encountered string is converted to int</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t<span style=color:#666> </span>=<span style=color:#666> </span>t.<span style=color:#447fcf>WithSmuggleHooks</span>(strconv.Atoi)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>  </span>t.<span style=color:#447fcf>Cmp</span>(<span style=color:#ed9d13>&#34;123&#34;</span>,<span style=color:#666> </span><span style=color:#3677a9>123</span>)<span style=color:#666> </span><span style=color:#999;font-style:italic>// succeeds</span><span style=color:#666>
+</span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 <ul>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks rel=external target=_blank><code>func (t *T) WithCmpHooks(fns ...any) *T</code></a></li>
-<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks rel=external target=_blank><code>func (t *T) WithSmuggleHooks(fns ...any) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithCmpHooks rel=external><code>func (t *T) WithCmpHooks(fns ...any) *T</code></a></li>
+<li><a href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td#T.WithSmuggleHooks rel=external><code>func (t *T) WithSmuggleHooks(fns ...any) *T</code></a></li>
 </ul>
 <footer class=footline>
 </footer>
@@ -222,74 +235,72 @@ page. See <a href=https://go-testdeep.zetta.rocks/operators/ rel=external target
 </div>
 <aside id=R-sidebar class=default-animation>
 <div id=R-header-topbar class=default-animation></div>
-<div id=R-header-wrapper class=default-animation>
-<div id=R-header class=default-animation>
-<a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
-</div>
+<div id=R-header-wrapper class=default-animation><a id=logo href=https://go-testdeep.zetta.rocks/><img src=https://go-testdeep.zetta.rocks//images/logo.svg></a>
 <search><form action=/search/index.html method=get>
 <div class="searchbox default-animation">
-<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+<button class=search-detail type=submit title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
 <label class=a11y-only for=R-search-by>Search</label>
 <input data-search-input id=R-search-by name=search-by class=search-by type=search placeholder=Search...>
-<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+<button class=search-clear type=button data-search-clear title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
 </div>
 </form></search>
 </div>
 <div id=R-homelinks class=default-animation>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-homelinks">
+<div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
 <ul class="space collapsible-menu">
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
 <ul>
 </ul>
 </div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
 </div>
 <div id=R-content-wrapper class=highlightable>
-<div class="R-sidebarmenu R-shortcutmenu-main">
+<div class="R-sidebarmenu R-shortcutmenu-main default-animation">
 <ul class="enlarge morespace collapsible-menu">
 <li data-nav-id=/introduction/index.html><a class=padding href=/introduction/index.html>Introduction</a></li>
-<li data-nav-id=/example/index.html><a class=padding href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
-<li class=parent data-nav-id=/functions/index.html><a class=padding href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu>
+<li data-nav-id=/example/index.html><a class="padding default-animation" href=/example/index.html>Tutorial</a><ul id=R-subsections-d5b8180a0a7fe1e9e661bfa1211066e5 class=collapsible-menu></ul></li>
+<li class=parent data-nav-id=/functions/index.html><a class="padding default-animation" href=/functions/index.html>Functions</a><ul id=R-subsections-501822a3ea1c7f0b946df0bd1ab5ce14 class=collapsible-menu>
 <li class=active data-nav-id=/functions/td-t/index.html><a class=padding href=/functions/td-t/index.html>td.T</a></li></ul></li>
-<li data-nav-id=/operators/index.html><a class=padding href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu></ul></li>
+<li data-nav-id=/operators/index.html><a class="padding default-animation" href=/operators/index.html>Operators</a><ul id=R-subsections-85c22d5653689112a82de1b1083a833a class=collapsible-menu></ul></li>
 <li data-nav-id=/helpers/index.html><a class=padding href=/helpers/index.html>Helpers</a></li>
 <li data-nav-id=/faq/index.html><a class=padding href=/faq/index.html>FAQ</a></li>
 </ul>
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+<div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
 <div class="nav-title padding">More</div>
 <ul class="space collapsible-menu">
 <li data-nav-id=/prez><a class=padding href=/prez><i class='fab fa-slideshare'></i>&nbsp;Presentation</a></li>
-<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external target=_blank><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
-<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external target=_blank><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
+<li data-nav-id=https://github.com/maxatome/go-testdeep><a class=padding href=https://github.com/maxatome/go-testdeep rel=external><i class='fab fa-github'></i>&nbsp;Github repo</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/td><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/td rel=external><i class='fas fa-book'></i>&nbsp;godoc</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdhttp rel=external><i class='fas fa-book'></i>&nbsp;godoc API tester — tdhttp</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsuite rel=external><i class='fas fa-book'></i>&nbsp;godoc testing suite — tdsuite</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdsynctest rel=external><i class='fas fa-book'></i>&nbsp;godoc testing/synctest helper — tdsynctest</a></li>
+<li data-nav-id=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil><a class=padding href=https://pkg.go.dev/github.com/maxatome/go-testdeep/helpers/tdutil rel=external><i class='fas fa-book'></i>&nbsp;godoc helpers utils — tdutil</a></li>
 </ul>
 </div>
-<div id=R-footer-margin></div>
+<div id=R-footer-margin class=default-animation></div>
 <div class="R-menu-divider default-animation">
-<hr class=padding>
+<hr class="padding default-animation">
 </div>
-<div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+<div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
 <ul>
 </ul>
 </div>
-<div id=R-footer><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
+<div id=R-footer class=default-animation><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/clipboard/clipboard.min.js?1787215137 defer></script>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787215137 defer></script>
-<script src=/js/theme.min.js?1787215137 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787336422 defer></script>
+<script src=/js/theme.min.js?1787336422 defer></script>
+<div id=toast-container role=status aria-live=polite aria-atomic=false></div>
 </body>
 </html>
