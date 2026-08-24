@@ -30,24 +30,24 @@ It handles any kind of API, with some specific features for the routes accepting
 All known web frameworks are handled:
 net/http standard, see Main example below Beego echo Gin gorilla/mux go-swagger HttpRouter pat and any other ones as long as they provide a net/http.Handler instance. See examples of use in tdhttp package example section, in FAQ or expand the one below:">
 <meta itemprop=dateModified content="2025-09-10T22:26:43+02:00">
-<meta itemprop=wordCount content="996">
+<meta itemprop=wordCount content="1051">
 <title>Helpers :: go-testdeep</title>
 <link href=/helpers/index.xml rel=alternate type=application/rss+xml title="Helpers :: go-testdeep">
-<link href=/images/favicon.png?1787336422 rel=icon type=image/png>
-<link href=/css/auto-complete/auto-complete.min.css?1787336422 rel=stylesheet>
-<script src=/js/auto-complete/auto-complete.min.js?1787336422 defer></script>
-<script src=/js/search-lunr.min.js?1787336422 defer></script>
-<script src=/js/search.min.js?1787336422 defer></script>
-<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787336422"</script>
-<script src=/js/lunr/lunr.min.js?1787336422 defer></script>
-<script src=/js/lunr/lunr.stemmer.support.min.js?1787336422 defer></script>
-<script src=/js/lunr/lunr.multi.min.js?1787336422 defer></script>
-<script src=/js/lunr/lunr.en.min.js?1787336422 defer></script>
+<link href=/images/favicon.png?1787604683 rel=icon type=image/png>
+<link href=/css/auto-complete/auto-complete.min.css?1787604683 rel=stylesheet>
+<script src=/js/auto-complete/auto-complete.min.js?1787604683 defer></script>
+<script src=/js/search-lunr.min.js?1787604683 defer></script>
+<script src=/js/search.min.js?1787604683 defer></script>
+<script>window.relearn=window.relearn||{},window.relearn.index_js_url="/searchindex.en.js?1787604683"</script>
+<script src=/js/lunr/lunr.min.js?1787604683 defer></script>
+<script src=/js/lunr/lunr.stemmer.support.min.js?1787604683 defer></script>
+<script src=/js/lunr/lunr.multi.min.js?1787604683 defer></script>
+<script src=/js/lunr/lunr.en.min.js?1787604683 defer></script>
 <script>window.relearn=window.relearn||{},window.relearn.contentLangs=["en"]</script>
-<link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/all.min.css?1787336422 rel=stylesheet></noscript>
-<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787336422 rel=stylesheet>
-<link href=/css/theme.min.css?1787336422 rel=stylesheet>
-<link href=/css/format-html.min.css?1787336422 rel=stylesheet id=R-format-style>
+<link href=/fonts/fontawesome/css/all.min.css?1787604683 rel=stylesheet media=print onload='this.media="all",this.onload=null'><noscript><link href=/fonts/fontawesome/css/all.min.css?1787604683 rel=stylesheet></noscript>
+<link href=/css/perfect-scrollbar/perfect-scrollbar.min.css?1787604683 rel=stylesheet>
+<link href=/css/theme.min.css?1787604683 rel=stylesheet>
+<link href=/css/format-html.min.css?1787604683 rel=stylesheet id=R-format-style>
 <script>window.relearn=window.relearn||{},window.relearn.min=`.min`,window.relearn.path="/helpers/index.html",window.relearn.relBasePath="..",window.relearn.relBaseUri="..",window.relearn.absBaseUri="https://go-testdeep.zetta.rocks",window.relearn.disableInlineCopyToClipboard=!0,window.relearn.enableBlockCodeWrap=!0,window.T_Copy_to_clipboard=`Copy text to clipboard`,window.T_Copied_to_clipboard=`Text copied to clipboard!`,window.T_Link_copied_to_clipboard=`Link copied to clipboard!`,window.T_Reset_view=`Reset view`,window.T_View_reset=`View reset!`,window.T_No_results_found=`No results found for "{0}"`,window.T_N_results_found=`{1} results found for "{0}"`,window.T_Browser_unsupported_feature=`This browser doesn't support this feature`,window.relearn.themevariants=["green"],window.relearn.customvariantprefix="my-custom-",window.relearn.changeVariant=function(e){var t=document.documentElement.dataset.rThemeVariant;window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e),document.documentElement.dataset.rThemeVariant=e,t!=e&&(document.dispatchEvent(new CustomEvent("themeVariantLoaded",{detail:{variant:e,oldVariant:t}})),window.relearn.markVariant())},window.relearn.markVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant");document.querySelectorAll(".R-variantswitcher select").forEach(t=>{t.value=e})},window.relearn.initVariant=function(){var e=window.localStorage.getItem(window.relearn.absBaseUri+"/variant")??"";(!e||!e.startsWith(window.relearn.customvariantprefix)&&!window.relearn.themevariants.includes(e)||e.startsWith(window.relearn.customvariantprefix)&&!window.localStorage.getItem(window.relearn.absBaseUri+"/variantstylesheet-"+e))&&(e=window.relearn.themevariants[0],window.localStorage.setItem(window.relearn.absBaseUri+"/variant",e)),document.documentElement.dataset.rThemeVariant=e},window.relearn.initVariant(),window.relearn.markVariant()</script><meta name=google-site-verification content="I15BdfDU61eURsp8IywfU9hV8Rygaa4JsH-U8kKAxVs">
 <style type=text/css>#body-inner pre{white-space:pre}dd{display:list-item;list-style:none;margin-inline-start:1.5rem}article a:hover>svg:only-child:empty,article a:active>svg:only-child:empty,article a:focus>svg:only-child:empty,article a:hover>img:only-child:empty,article a:active>img:only-child:empty,article a:focus>img:only-child:empty{outline:none}</style>
 </head>
@@ -366,12 +366,27 @@ Main example
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpStatus</span>(<span style=color:#3677a9>201</span>).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpHeader</span>(<span style=color:#447fcf>contentTypeIs</span>(<span style=color:#ed9d13>&#34;application/xml&#34;</span>)).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpXMLBody</span>(Person{<span style=color:#666> </span><span style=color:#999;font-style:italic>// using operator anchoring directly in literal</span><span style=color:#666>
-</span></span></span><span style=display:flex><span><span style=color:#666>			</span>ID:<span style=color:#666>        </span>ta.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Catch</span>(&amp;bobID,<span style=color:#666> </span>td.<span style=color:#447fcf>NotZero</span>()),<span style=color:#666> </span><span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>int64</span>),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>			</span>ID:<span style=color:#666>        </span>ta.AT[<span style=color:#6ab825;font-weight:700>int64</span>](td.<span style=color:#447fcf>Catch</span>(&amp;bobID,<span style=color:#666> </span>td.<span style=color:#447fcf>NotZero</span>())),<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>Name:<span style=color:#666>      </span><span style=color:#ed9d13>&#34;Bob&#34;</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>			</span>Age:<span style=color:#666>       </span><span style=color:#3677a9>32</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>			</span>CreatedAt:<span style=color:#666> </span>ta.AT[*time.Time](td.<span style=color:#447fcf>Ptr</span>(td.<span style=color:#447fcf>Between</span>(ta.<span style=color:#447fcf>SentAt</span>(),<span style=color:#666> </span>time.<span style=color:#447fcf>Now</span>()))),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span>})<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>	</span>t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;POST /person - XML: %t → Bob ID=%d\n&#34;</span>,<span style=color:#666> </span>!ta.<span style=color:#447fcf>Failed</span>(),<span style=color:#666> </span>bobID)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>	</span><span style=color:#999;font-style:italic>// before go1.27, use TestAPI.A instead of TestAPI.AT</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>	</span><span style=color:#6ab825;font-weight:700>var</span><span style=color:#666> </span>mikeID<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>int64</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>	</span>ta.<span style=color:#447fcf>PostXML</span>(<span style=color:#ed9d13>&#34;/person&#34;</span>,<span style=color:#666> </span>Person{Name:<span style=color:#666> </span><span style=color:#ed9d13>&#34;Mike&#34;</span>,<span style=color:#666> </span>Age:<span style=color:#666> </span><span style=color:#3677a9>32</span>},<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#ed9d13>&#34;Accept&#34;</span>,<span style=color:#666> </span><span style=color:#ed9d13>&#34;application/xml&#34;</span>).<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>Name</span>(<span style=color:#ed9d13>&#34;POST /person - XML&#34;</span>).<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpStatus</span>(<span style=color:#3677a9>201</span>).<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpHeader</span>(<span style=color:#447fcf>contentTypeIs</span>(<span style=color:#ed9d13>&#34;application/xml&#34;</span>)).<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpXMLBody</span>(Person{<span style=color:#666> </span><span style=color:#999;font-style:italic>// using operator anchoring directly in literal</span><span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>			</span>ID:<span style=color:#666>        </span>ta.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Catch</span>(&amp;mikeID,<span style=color:#666> </span>td.<span style=color:#447fcf>NotZero</span>()),<span style=color:#666> </span><span style=color:#24909d>int64</span>(<span style=color:#3677a9>0</span>)).(<span style=color:#6ab825;font-weight:700>int64</span>),<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>			</span>Name:<span style=color:#666>      </span><span style=color:#ed9d13>&#34;Mike&#34;</span>,<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>Age:<span style=color:#666>       </span><span style=color:#3677a9>32</span>,<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>CreatedAt:<span style=color:#666> </span>ta.<span style=color:#447fcf>A</span>(td.<span style=color:#447fcf>Ptr</span>(td.<span style=color:#447fcf>Between</span>(ta.<span style=color:#447fcf>SentAt</span>(),<span style=color:#666> </span>time.<span style=color:#447fcf>Now</span>()))).(*time.Time),<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span>})<span style=color:#666>
-</span></span></span><span style=display:flex><span><span style=color:#666>	</span>t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;POST /person - XML: %t → Bob ID=%d\n&#34;</span>,<span style=color:#666> </span>!ta.<span style=color:#447fcf>Failed</span>(),<span style=color:#666> </span>bobID)<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#666>	</span>t.<span style=color:#447fcf>Logf</span>(<span style=color:#ed9d13>&#34;POST /person - XML (pre go1.27): %t → Mike ID=%d\n&#34;</span>,<span style=color:#666> </span>!ta.<span style=color:#447fcf>Failed</span>(),<span style=color:#666> </span>mikeID)<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>	</span><span style=color:#6ab825;font-weight:700>var</span><span style=color:#666> </span>aliceID<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>int64</span><span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>	</span>ta.<span style=color:#447fcf>PostJSON</span>(<span style=color:#ed9d13>&#34;/person&#34;</span>,<span style=color:#666> </span>Person{Name:<span style=color:#666> </span><span style=color:#ed9d13>&#34;Alice&#34;</span>,<span style=color:#666> </span>Age:<span style=color:#666> </span><span style=color:#3677a9>35</span>},<span style=color:#666>
@@ -380,12 +395,12 @@ Main example
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpStatus</span>(<span style=color:#3677a9>201</span>).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpHeader</span>(<span style=color:#447fcf>contentTypeIs</span>(<span style=color:#ed9d13>&#34;application/json&#34;</span>)).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>` // using JSON operator (yes comment allowed in JSON!)
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;id&#34;:         $1,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;name&#34;:       &#34;Alice&#34;,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:        35,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;created_at&#34;: $2
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			{
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;id&#34;:         $1,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;name&#34;:       &#34;Alice&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;age&#34;:        35,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;created_at&#34;: $2
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			}`</span>,<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>td.<span style=color:#447fcf>Catch</span>(&amp;aliceID,<span style=color:#666> </span>td.<span style=color:#447fcf>NotZero</span>()),<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>td.<span style=color:#447fcf>Smuggle</span>(<span style=color:#6ab825;font-weight:700>func</span>(date<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>string</span>)<span style=color:#666> </span>(time.Time,<span style=color:#666> </span><span style=color:#6ab825;font-weight:700>error</span>)<span style=color:#666> </span>{<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>				</span><span style=color:#6ab825;font-weight:700>return</span><span style=color:#666> </span>time.<span style=color:#447fcf>Parse</span>(time.RFC3339Nano,<span style=color:#666> </span>date)<span style=color:#666>
@@ -433,12 +448,12 @@ Main example
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpStatus</span>(<span style=color:#3677a9>200</span>).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpHeader</span>(<span style=color:#447fcf>contentTypeIs</span>(<span style=color:#ed9d13>&#34;application/json&#34;</span>)).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>` // using JSON operator (yes comment allowed in JSON!)
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;id&#34;:         $1,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;name&#34;:       &#34;Alice&#34;,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;age&#34;:        35,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;created_at&#34;: $2
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>,<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			{
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;id&#34;:         $1,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;name&#34;:       &#34;Alice&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;age&#34;:        35,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;created_at&#34;: $2
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			}`</span>,<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>aliceID,<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>			</span>td.<span style=color:#447fcf>Not</span>(td.<span style=color:#447fcf>Re</span>(<span style=color:#ed9d13>`^0001-01-01`</span>)),<span style=color:#666> </span><span style=color:#999;font-style:italic>// time is not 0001-01-01… aka zero time.Time</span><span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span>))<span style=color:#666>
@@ -460,10 +475,10 @@ Main example
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpStatus</span>(<span style=color:#3677a9>404</span>).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpHeader</span>(<span style=color:#447fcf>contentTypeIs</span>(<span style=color:#ed9d13>&#34;application/json&#34;</span>)).<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>		</span><span style=color:#447fcf>CmpJSONBody</span>(td.<span style=color:#447fcf>JSON</span>(<span style=color:#ed9d13>`
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>{
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;message&#34;: &#34;Person does not exist&#34;,
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>  &#34;code&#34;:    404
-</span></span></span><span style=display:flex><span><span style=color:#ed9d13>}`</span>))<span style=color:#666>
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			{
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;message&#34;: &#34;Person does not exist&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>				&#34;code&#34;:    404
+</span></span></span><span style=display:flex><span><span style=color:#ed9d13>			}`</span>))<span style=color:#666>
 </span></span></span><span style=display:flex><span><span style=color:#666>	</span>t.<span style=color:#447fcf>Log</span>(<span style=color:#ed9d13>&#34;Alice is not found anymore:&#34;</span>,<span style=color:#666> </span>!ta.<span style=color:#447fcf>Failed</span>())<span style=color:#666>
 </span></span></span><span style=display:flex><span>}</span></span></code></pre></div>
 </div>
@@ -553,8 +568,8 @@ package.</p>
 <div id=R-footer class=default-animation><p>Built with <a href=https://github.com/McShelby/hugo-theme-relearn title=love><i class="fas fa-heart"></i></a> by <a href=https://gohugo.io/>Hugo</a></p></div>
 </div>
 </aside>
-<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787336422 defer></script>
-<script src=/js/theme.min.js?1787336422 defer></script>
+<script src=/js/perfect-scrollbar/perfect-scrollbar.min.js?1787604683 defer></script>
+<script src=/js/theme.min.js?1787604683 defer></script>
 <div id=toast-container role=status aria-live=polite aria-atomic=false></div>
 </body>
 </html>
