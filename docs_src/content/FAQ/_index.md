@@ -902,12 +902,12 @@ func TestMyGinGonicApi(t *testing.T) {
     Name("Create a new Person").
     CmpStatus(http.StatusCreated). // ← ③
     CmpJSONBody(td.JSON(`
-{
-  "id":         $id,
-  "name":       "Bob",
-  "age":        42,
-  "created_at": "$createdAt",
-}`,
+      {
+        "id":         $id,
+        "name":       "Bob",
+        "age":        42,
+        "created_at": "$createdAt",
+      }`,
       td.Tag("id", td.Catch(&id, td.NotZero())),        // ← ④
       td.Tag("createdAt", td.All(                       // ← ⑤
         td.HasSuffix("Z"),                              // ← ⑥

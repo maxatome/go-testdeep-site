@@ -89,13 +89,13 @@ func TestMyApi(t *testing.T) {
     Name("Create a new Person").
     CmpStatus(http.StatusCreated). // ← ③
     CmpJSONBody(td.JSON(`
-// Note that comments are allowed
-{
-  "id":         $id,             // set by the API/DB
-  "name":       "Alice",
-  "age":        Between(40, 45), // ← ④
-  "created_at": "$createdAt",    // set by the API/DB
-}`,
+      // Note that comments are allowed
+      {
+        "id":         $id,             // set by the API/DB
+        "name":       "Alice",
+        "age":        Between(40, 45), // ← ④
+        "created_at": "$createdAt",    // set by the API/DB
+      }`,
       td.Tag("id", td.Catch(&id, td.NotZero())),        // ← ⑤
       td.Tag("createdAt", td.All(                       // ← ⑥
         td.HasSuffix("Z"),                              // ← ⑦
